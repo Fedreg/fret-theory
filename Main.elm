@@ -227,15 +227,15 @@ keys key =
 
 
 chartStyle =
-    style [ ( "position", "relative" ), ( "width", "180px" ), ( "height", "153px" ), ( "border", "3px solid #555" ), ( "borderBottom", "none" ) ]
+    style [ ( "position", "relative" ), ( "width", "180px" ), ( "height", "153px" ), ( "border", "3px solid #333" ), ( "borderBottom", "none" ) ]
 
 
 stringStyle =
-    style [ ( "width", "180px" ), ( "height", "30px" ), ( "borderBottom", "3px solid #555" ) ]
+    style [ ( "width", "180px" ), ( "height", "30px" ), ( "borderBottom", "3px solid #333" ) ]
 
 
 nutStyle =
-    style [ ( "width", "10px" ), ( "height", "153px" ), ( "backgroundColor", "#555" ), ( "borderBottom", "3px solid #555" ) ]
+    style [ ( "width", "10px" ), ( "height", "153px" ), ( "backgroundColor", "#333" ), ( "borderBottom", "3px solid #333" ) ]
 
 
 chartContainerStyle direction =
@@ -243,11 +243,11 @@ chartContainerStyle direction =
 
 
 fretStyle fret =
-    style [ ( "position", "absolute" ), ( "top", "0" ), ( "right", (Basics.toString (43 * fret) ++ "px") ), ( "height", "150px" ), ( "borderRight", "3px solid #555" ) ]
+    style [ ( "position", "absolute" ), ( "top", "0" ), ( "right", (Basics.toString (43 * fret) ++ "px") ), ( "height", "150px" ), ( "borderRight", "3px solid #333" ) ]
 
 
 chordNameStyle =
-    style [ ( "color", "#777" ), ( "fontSize", "50px" ), ( "marginLeft", "150px" ), ( "margin", "0 auto" ) ]
+    style [ ( "color", "#E8F1F2" ), ( "fontSize", "50px" ), ( "marginLeft", "150px" ), ( "margin", "0 auto" ) ]
 
 
 chordFunctionStyle =
@@ -262,4 +262,4 @@ fretMarkerStyle dot =
         in
             style [ ( "position", "absolute" ), ( "top", dot.stringNo ), ( "right", dot.fretNo ), ( "width", "25px" ), ( "height", "25px" ), ( "borderRadius", "13px" ), ( "backgroundColor", "rgba(0,0,0,0)" ), ( "color", textColor ), ( "textTransform", "uppercase" ) ]
     else
-        style [ ( "position", "absolute" ), ( "top", dot.stringNo ), ( "right", dot.fretNo ), ( "width", "25px" ), ( "height", "25px" ), ( "borderRadius", "13px" ), ( "backgroundColor", dot.tint ), ( "color", "rgba(0,0,0,0)" ) ]
+        style [ ( "transition", "all 1s ease" ), ( "position", "absolute" ), ( "top", dot.stringNo ), ( "right", dot.fretNo ), ( "width", "25px" ), ( "height", "25px" ), ( "borderRadius", "13px" ), ( "backgroundColor", dot.tint ), ( "color", "rgba(0,0,0,0)" ) ]
