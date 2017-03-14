@@ -5,6 +5,8 @@ import Html.Attributes exposing (..)
 import Html.Events exposing (onClick, onInput)
 import String exposing (..)
 import List.Extra exposing (getAt)
+import Keys exposing (keys)
+import Styles exposing (..)
 
 
 main =
@@ -56,6 +58,9 @@ subscriptions model =
 
 fingerNo finger =
     case finger of
+        "b" ->
+            "bar"
+
         "1" ->
             "#E8F1F2"
 
@@ -139,6 +144,8 @@ view model =
             , option [ value "g" ] [ text "G" ]
             , option [ value "d" ] [ text "D" ]
             , option [ value "a" ] [ text "A" ]
+            , option [ value "e" ] [ text "E" ]
+            , option [ value "b" ] [ text "B" ]
             ]
         , div [ chartContainerStyle "row" ]
             [ div [ chartContainerStyle "column" ]
@@ -181,85 +188,3 @@ chordChart chord =
             ]
         , div [ nutStyle ] []
         ]
-
-
-keys key =
-    case key of
-        "c" ->
-            { i = "06x353242030121010"
-            , iv = "06x06x343232121010"
-            , v = "263152040030323413"
-            , vi = "06x050242332121010"
-            , names = [ "C", "F", "G", "Amin", "5" ]
-            }
-
-        "g" ->
-            { i = "263152040030323413"
-            , iv = "06x253142030323413"
-            , v = "06x05x040132323212"
-            , vi = "060152242030020010"
-            , names = [ "G", "C9", "D", "Emin", "0 or 12" ]
-            }
-
-        "d" ->
-            { i = "06x05x040132323212"
-            , iv = "263152040030323413"
-            , v = "06x050142232322010"
-            , vi = "06x152040030323212"
-            , names = [ "D", "G", "A", "Bmin", "7" ]
-            }
-
-        "a" ->
-            { i = "06x050142232322010"
-            , iv = "06x05x040132323212"
-            , v = "060252342131020010"
-            , vi = "162050040232322010"
-            , names = [ "A", "D", "E", "F#min", "2" ]
-            }
-
-        _ ->
-            { i = ""
-            , iv = ""
-            , v = ""
-            , vi = ""
-            , names = [ "", "", "", "", "" ]
-            }
-
-
-chartStyle =
-    style [ ( "position", "relative" ), ( "width", "180px" ), ( "height", "153px" ), ( "border", "3px solid #333" ), ( "borderBottom", "none" ) ]
-
-
-stringStyle =
-    style [ ( "width", "180px" ), ( "height", "30px" ), ( "borderBottom", "3px solid #333" ) ]
-
-
-nutStyle =
-    style [ ( "width", "10px" ), ( "height", "153px" ), ( "backgroundColor", "#333" ), ( "borderBottom", "3px solid #333" ) ]
-
-
-chartContainerStyle direction =
-    style [ ( "display", "flex" ), ( "margin", "25px auto" ), ( "flexDirection", direction ) ]
-
-
-fretStyle fret =
-    style [ ( "position", "absolute" ), ( "top", "0" ), ( "right", (Basics.toString (43 * fret) ++ "px") ), ( "height", "150px" ), ( "borderRight", "3px solid #333" ) ]
-
-
-chordNameStyle =
-    style [ ( "color", "#E8F1F2" ), ( "fontSize", "50px" ), ( "marginLeft", "150px" ), ( "margin", "0 auto" ) ]
-
-
-chordFunctionStyle =
-    style [ ( "color", "#3A86FF" ), ( "fontSize", "30px" ), ( "marginLeft", "150px" ), ( "margin", "0 auto" ) ]
-
-
-fretMarkerStyle dot =
-    if dot.fretNo == "-40" then
-        let
-            textColor =
-                "#777"
-        in
-            style [ ( "position", "absolute" ), ( "top", dot.stringNo ), ( "right", dot.fretNo ), ( "width", "25px" ), ( "height", "25px" ), ( "borderRadius", "13px" ), ( "backgroundColor", "rgba(0,0,0,0)" ), ( "color", textColor ), ( "textTransform", "uppercase" ) ]
-    else
-        style [ ( "transition", "all 1s ease" ), ( "position", "absolute" ), ( "top", dot.stringNo ), ( "right", dot.fretNo ), ( "width", "25px" ), ( "height", "25px" ), ( "borderRadius", "13px" ), ( "backgroundColor", dot.tint ), ( "color", "rgba(0,0,0,0)" ) ]

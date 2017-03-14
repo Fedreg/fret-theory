@@ -9590,226 +9590,7 @@ var _elm_lang$html$Html_Events$Options = F2(
 		return {stopPropagation: a, preventDefault: b};
 	});
 
-var _user$project$Main$fretMarkerStyle = function (dot) {
-	if (_elm_lang$core$Native_Utils.eq(dot.fretNo, '-40')) {
-		var textColor = '#777';
-		return _elm_lang$html$Html_Attributes$style(
-			{
-				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'position', _1: 'absolute'},
-				_1: {
-					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'top', _1: dot.stringNo},
-					_1: {
-						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'right', _1: dot.fretNo},
-						_1: {
-							ctor: '::',
-							_0: {ctor: '_Tuple2', _0: 'width', _1: '25px'},
-							_1: {
-								ctor: '::',
-								_0: {ctor: '_Tuple2', _0: 'height', _1: '25px'},
-								_1: {
-									ctor: '::',
-									_0: {ctor: '_Tuple2', _0: 'borderRadius', _1: '13px'},
-									_1: {
-										ctor: '::',
-										_0: {ctor: '_Tuple2', _0: 'backgroundColor', _1: 'rgba(0,0,0,0)'},
-										_1: {
-											ctor: '::',
-											_0: {ctor: '_Tuple2', _0: 'color', _1: textColor},
-											_1: {
-												ctor: '::',
-												_0: {ctor: '_Tuple2', _0: 'textTransform', _1: 'uppercase'},
-												_1: {ctor: '[]'}
-											}
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-			});
-	} else {
-		return _elm_lang$html$Html_Attributes$style(
-			{
-				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'transition', _1: 'all 1s ease'},
-				_1: {
-					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'position', _1: 'absolute'},
-					_1: {
-						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'top', _1: dot.stringNo},
-						_1: {
-							ctor: '::',
-							_0: {ctor: '_Tuple2', _0: 'right', _1: dot.fretNo},
-							_1: {
-								ctor: '::',
-								_0: {ctor: '_Tuple2', _0: 'width', _1: '25px'},
-								_1: {
-									ctor: '::',
-									_0: {ctor: '_Tuple2', _0: 'height', _1: '25px'},
-									_1: {
-										ctor: '::',
-										_0: {ctor: '_Tuple2', _0: 'borderRadius', _1: '13px'},
-										_1: {
-											ctor: '::',
-											_0: {ctor: '_Tuple2', _0: 'backgroundColor', _1: dot.tint},
-											_1: {
-												ctor: '::',
-												_0: {ctor: '_Tuple2', _0: 'color', _1: 'rgba(0,0,0,0)'},
-												_1: {ctor: '[]'}
-											}
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-			});
-	}
-};
-var _user$project$Main$chordFunctionStyle = _elm_lang$html$Html_Attributes$style(
-	{
-		ctor: '::',
-		_0: {ctor: '_Tuple2', _0: 'color', _1: '#3A86FF'},
-		_1: {
-			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '30px'},
-			_1: {
-				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'marginLeft', _1: '150px'},
-				_1: {
-					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'margin', _1: '0 auto'},
-					_1: {ctor: '[]'}
-				}
-			}
-		}
-	});
-var _user$project$Main$chordNameStyle = _elm_lang$html$Html_Attributes$style(
-	{
-		ctor: '::',
-		_0: {ctor: '_Tuple2', _0: 'color', _1: '#E8F1F2'},
-		_1: {
-			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '50px'},
-			_1: {
-				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'marginLeft', _1: '150px'},
-				_1: {
-					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'margin', _1: '0 auto'},
-					_1: {ctor: '[]'}
-				}
-			}
-		}
-	});
-var _user$project$Main$fretStyle = function (fret) {
-	return _elm_lang$html$Html_Attributes$style(
-		{
-			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'position', _1: 'absolute'},
-			_1: {
-				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'top', _1: '0'},
-				_1: {
-					ctor: '::',
-					_0: {
-						ctor: '_Tuple2',
-						_0: 'right',
-						_1: A2(
-							_elm_lang$core$Basics_ops['++'],
-							_elm_lang$core$Basics$toString(43 * fret),
-							'px')
-					},
-					_1: {
-						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'height', _1: '150px'},
-						_1: {
-							ctor: '::',
-							_0: {ctor: '_Tuple2', _0: 'borderRight', _1: '3px solid #333'},
-							_1: {ctor: '[]'}
-						}
-					}
-				}
-			}
-		});
-};
-var _user$project$Main$chartContainerStyle = function (direction) {
-	return _elm_lang$html$Html_Attributes$style(
-		{
-			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'display', _1: 'flex'},
-			_1: {
-				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'margin', _1: '25px auto'},
-				_1: {
-					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'flexDirection', _1: direction},
-					_1: {ctor: '[]'}
-				}
-			}
-		});
-};
-var _user$project$Main$nutStyle = _elm_lang$html$Html_Attributes$style(
-	{
-		ctor: '::',
-		_0: {ctor: '_Tuple2', _0: 'width', _1: '10px'},
-		_1: {
-			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'height', _1: '153px'},
-			_1: {
-				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'backgroundColor', _1: '#333'},
-				_1: {
-					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'borderBottom', _1: '3px solid #333'},
-					_1: {ctor: '[]'}
-				}
-			}
-		}
-	});
-var _user$project$Main$stringStyle = _elm_lang$html$Html_Attributes$style(
-	{
-		ctor: '::',
-		_0: {ctor: '_Tuple2', _0: 'width', _1: '180px'},
-		_1: {
-			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'height', _1: '30px'},
-			_1: {
-				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'borderBottom', _1: '3px solid #333'},
-				_1: {ctor: '[]'}
-			}
-		}
-	});
-var _user$project$Main$chartStyle = _elm_lang$html$Html_Attributes$style(
-	{
-		ctor: '::',
-		_0: {ctor: '_Tuple2', _0: 'position', _1: 'relative'},
-		_1: {
-			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'width', _1: '180px'},
-			_1: {
-				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'height', _1: '153px'},
-				_1: {
-					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'border', _1: '3px solid #333'},
-					_1: {
-						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'borderBottom', _1: 'none'},
-						_1: {ctor: '[]'}
-					}
-				}
-			}
-		}
-	});
-var _user$project$Main$keys = function (key) {
+var _user$project$Keys$keys = function (key) {
 	var _p0 = key;
 	switch (_p0) {
 		case 'c':
@@ -9924,6 +9705,62 @@ var _user$project$Main$keys = function (key) {
 					}
 				}
 			};
+		case 'e':
+			return {
+				i: '060252342131020010',
+				iv: '06x050142232322010',
+				v: '060252141332020412',
+				vi: '06x05x344434223112',
+				names: {
+					ctor: '::',
+					_0: 'E',
+					_1: {
+						ctor: '::',
+						_0: 'A',
+						_1: {
+							ctor: '::',
+							_0: 'B7',
+							_1: {
+								ctor: '::',
+								_0: 'C#min',
+								_1: {
+									ctor: '::',
+									_0: '9',
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				}
+			};
+		case 'b':
+			return {
+				i: '06xb52244334424112',
+				iv: '060252342131020010',
+				v: 'b62354444233122112',
+				vi: 'b62354444132122112',
+				names: {
+					ctor: '::',
+					_0: 'B',
+					_1: {
+						ctor: '::',
+						_0: 'E',
+						_1: {
+							ctor: '::',
+							_0: 'F#',
+							_1: {
+								ctor: '::',
+								_0: 'G#min',
+								_1: {
+									ctor: '::',
+									_0: '4',
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				}
+			};
 		default:
 			return {
 				i: '',
@@ -9954,12 +9791,282 @@ var _user$project$Main$keys = function (key) {
 			};
 	}
 };
+
+var _user$project$Styles$fretMarkerStyle = function (dot) {
+	if (_elm_lang$core$Native_Utils.eq(dot.tint, 'bar')) {
+		var stringHeight = A2(
+			_elm_lang$core$Result$withDefault,
+			-15,
+			_elm_lang$core$String$toInt(dot.stringNo));
+		var barSize = A2(
+			_elm_lang$core$Basics_ops['++'],
+			_elm_lang$core$Basics$toString(160 - stringHeight),
+			'px');
+		return _elm_lang$html$Html_Attributes$style(
+			{
+				ctor: '::',
+				_0: {ctor: '_Tuple2', _0: 'transition', _1: 'all 0.5s ease'},
+				_1: {
+					ctor: '::',
+					_0: {ctor: '_Tuple2', _0: 'position', _1: 'absolute'},
+					_1: {
+						ctor: '::',
+						_0: {ctor: '_Tuple2', _0: 'top', _1: dot.stringNo},
+						_1: {
+							ctor: '::',
+							_0: {ctor: '_Tuple2', _0: 'right', _1: dot.fretNo},
+							_1: {
+								ctor: '::',
+								_0: {ctor: '_Tuple2', _0: 'width', _1: '25px'},
+								_1: {
+									ctor: '::',
+									_0: {ctor: '_Tuple2', _0: 'height', _1: barSize},
+									_1: {
+										ctor: '::',
+										_0: {ctor: '_Tuple2', _0: 'borderRadius', _1: '13px'},
+										_1: {
+											ctor: '::',
+											_0: {ctor: '_Tuple2', _0: 'backgroundColor', _1: '#E8F1F2'},
+											_1: {ctor: '[]'}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			});
+	} else {
+		if (_elm_lang$core$Native_Utils.eq(dot.fretNo, '-40')) {
+			var textColor = '#777';
+			return _elm_lang$html$Html_Attributes$style(
+				{
+					ctor: '::',
+					_0: {ctor: '_Tuple2', _0: 'transition', _1: 'all 0.5s ease'},
+					_1: {
+						ctor: '::',
+						_0: {ctor: '_Tuple2', _0: 'position', _1: 'absolute'},
+						_1: {
+							ctor: '::',
+							_0: {ctor: '_Tuple2', _0: 'top', _1: dot.stringNo},
+							_1: {
+								ctor: '::',
+								_0: {ctor: '_Tuple2', _0: 'right', _1: dot.fretNo},
+								_1: {
+									ctor: '::',
+									_0: {ctor: '_Tuple2', _0: 'width', _1: '25px'},
+									_1: {
+										ctor: '::',
+										_0: {ctor: '_Tuple2', _0: 'height', _1: '25px'},
+										_1: {
+											ctor: '::',
+											_0: {ctor: '_Tuple2', _0: 'borderRadius', _1: '13px'},
+											_1: {
+												ctor: '::',
+												_0: {ctor: '_Tuple2', _0: 'backgroundColor', _1: 'rgba(0,0,0,0)'},
+												_1: {
+													ctor: '::',
+													_0: {ctor: '_Tuple2', _0: 'color', _1: textColor},
+													_1: {
+														ctor: '::',
+														_0: {ctor: '_Tuple2', _0: 'textTransform', _1: 'uppercase'},
+														_1: {ctor: '[]'}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				});
+		} else {
+			return _elm_lang$html$Html_Attributes$style(
+				{
+					ctor: '::',
+					_0: {ctor: '_Tuple2', _0: 'transition', _1: 'all 0.5s ease'},
+					_1: {
+						ctor: '::',
+						_0: {ctor: '_Tuple2', _0: 'position', _1: 'absolute'},
+						_1: {
+							ctor: '::',
+							_0: {ctor: '_Tuple2', _0: 'top', _1: dot.stringNo},
+							_1: {
+								ctor: '::',
+								_0: {ctor: '_Tuple2', _0: 'right', _1: dot.fretNo},
+								_1: {
+									ctor: '::',
+									_0: {ctor: '_Tuple2', _0: 'width', _1: '25px'},
+									_1: {
+										ctor: '::',
+										_0: {ctor: '_Tuple2', _0: 'height', _1: '25px'},
+										_1: {
+											ctor: '::',
+											_0: {ctor: '_Tuple2', _0: 'borderRadius', _1: '13px'},
+											_1: {
+												ctor: '::',
+												_0: {ctor: '_Tuple2', _0: 'backgroundColor', _1: dot.tint},
+												_1: {
+													ctor: '::',
+													_0: {ctor: '_Tuple2', _0: 'color', _1: 'rgba(0,0,0,0)'},
+													_1: {ctor: '[]'}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				});
+		}
+	}
+};
+var _user$project$Styles$chordFunctionStyle = _elm_lang$html$Html_Attributes$style(
+	{
+		ctor: '::',
+		_0: {ctor: '_Tuple2', _0: 'color', _1: '#3A86FF'},
+		_1: {
+			ctor: '::',
+			_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '30px'},
+			_1: {
+				ctor: '::',
+				_0: {ctor: '_Tuple2', _0: 'marginLeft', _1: '150px'},
+				_1: {
+					ctor: '::',
+					_0: {ctor: '_Tuple2', _0: 'margin', _1: '0 auto'},
+					_1: {ctor: '[]'}
+				}
+			}
+		}
+	});
+var _user$project$Styles$chordNameStyle = _elm_lang$html$Html_Attributes$style(
+	{
+		ctor: '::',
+		_0: {ctor: '_Tuple2', _0: 'color', _1: '#E8F1F2'},
+		_1: {
+			ctor: '::',
+			_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '50px'},
+			_1: {
+				ctor: '::',
+				_0: {ctor: '_Tuple2', _0: 'marginLeft', _1: '150px'},
+				_1: {
+					ctor: '::',
+					_0: {ctor: '_Tuple2', _0: 'margin', _1: '0 auto'},
+					_1: {ctor: '[]'}
+				}
+			}
+		}
+	});
+var _user$project$Styles$fretStyle = function (fret) {
+	return _elm_lang$html$Html_Attributes$style(
+		{
+			ctor: '::',
+			_0: {ctor: '_Tuple2', _0: 'position', _1: 'absolute'},
+			_1: {
+				ctor: '::',
+				_0: {ctor: '_Tuple2', _0: 'top', _1: '0'},
+				_1: {
+					ctor: '::',
+					_0: {
+						ctor: '_Tuple2',
+						_0: 'right',
+						_1: A2(
+							_elm_lang$core$Basics_ops['++'],
+							_elm_lang$core$Basics$toString(43 * fret),
+							'px')
+					},
+					_1: {
+						ctor: '::',
+						_0: {ctor: '_Tuple2', _0: 'height', _1: '150px'},
+						_1: {
+							ctor: '::',
+							_0: {ctor: '_Tuple2', _0: 'borderRight', _1: '3px solid #333'},
+							_1: {ctor: '[]'}
+						}
+					}
+				}
+			}
+		});
+};
+var _user$project$Styles$chartContainerStyle = function (direction) {
+	return _elm_lang$html$Html_Attributes$style(
+		{
+			ctor: '::',
+			_0: {ctor: '_Tuple2', _0: 'display', _1: 'flex'},
+			_1: {
+				ctor: '::',
+				_0: {ctor: '_Tuple2', _0: 'margin', _1: '25px auto'},
+				_1: {
+					ctor: '::',
+					_0: {ctor: '_Tuple2', _0: 'flexDirection', _1: direction},
+					_1: {ctor: '[]'}
+				}
+			}
+		});
+};
+var _user$project$Styles$nutStyle = _elm_lang$html$Html_Attributes$style(
+	{
+		ctor: '::',
+		_0: {ctor: '_Tuple2', _0: 'width', _1: '10px'},
+		_1: {
+			ctor: '::',
+			_0: {ctor: '_Tuple2', _0: 'height', _1: '153px'},
+			_1: {
+				ctor: '::',
+				_0: {ctor: '_Tuple2', _0: 'backgroundColor', _1: '#333'},
+				_1: {
+					ctor: '::',
+					_0: {ctor: '_Tuple2', _0: 'borderBottom', _1: '3px solid #333'},
+					_1: {ctor: '[]'}
+				}
+			}
+		}
+	});
+var _user$project$Styles$stringStyle = _elm_lang$html$Html_Attributes$style(
+	{
+		ctor: '::',
+		_0: {ctor: '_Tuple2', _0: 'width', _1: '180px'},
+		_1: {
+			ctor: '::',
+			_0: {ctor: '_Tuple2', _0: 'height', _1: '30px'},
+			_1: {
+				ctor: '::',
+				_0: {ctor: '_Tuple2', _0: 'borderBottom', _1: '3px solid #333'},
+				_1: {ctor: '[]'}
+			}
+		}
+	});
+var _user$project$Styles$chartStyle = _elm_lang$html$Html_Attributes$style(
+	{
+		ctor: '::',
+		_0: {ctor: '_Tuple2', _0: 'position', _1: 'relative'},
+		_1: {
+			ctor: '::',
+			_0: {ctor: '_Tuple2', _0: 'width', _1: '180px'},
+			_1: {
+				ctor: '::',
+				_0: {ctor: '_Tuple2', _0: 'height', _1: '153px'},
+				_1: {
+					ctor: '::',
+					_0: {ctor: '_Tuple2', _0: 'border', _1: '3px solid #333'},
+					_1: {
+						ctor: '::',
+						_0: {ctor: '_Tuple2', _0: 'borderBottom', _1: 'none'},
+						_1: {ctor: '[]'}
+					}
+				}
+			}
+		}
+	});
+
 var _user$project$Main$chordChart = function (chord) {
 	return A2(
 		_elm_lang$html$Html$div,
 		{
 			ctor: '::',
-			_0: _user$project$Main$chartContainerStyle('row'),
+			_0: _user$project$Styles$chartContainerStyle('row'),
 			_1: {ctor: '[]'}
 		},
 		{
@@ -9968,7 +10075,7 @@ var _user$project$Main$chordChart = function (chord) {
 				_elm_lang$html$Html$div,
 				{
 					ctor: '::',
-					_0: _user$project$Main$chartStyle,
+					_0: _user$project$Styles$chartStyle,
 					_1: {ctor: '[]'}
 				},
 				{
@@ -9977,7 +10084,7 @@ var _user$project$Main$chordChart = function (chord) {
 						_elm_lang$html$Html$div,
 						{
 							ctor: '::',
-							_0: _user$project$Main$stringStyle,
+							_0: _user$project$Styles$stringStyle,
 							_1: {ctor: '[]'}
 						},
 						{ctor: '[]'}),
@@ -9987,7 +10094,7 @@ var _user$project$Main$chordChart = function (chord) {
 							_elm_lang$html$Html$div,
 							{
 								ctor: '::',
-								_0: _user$project$Main$stringStyle,
+								_0: _user$project$Styles$stringStyle,
 								_1: {ctor: '[]'}
 							},
 							{ctor: '[]'}),
@@ -9997,7 +10104,7 @@ var _user$project$Main$chordChart = function (chord) {
 								_elm_lang$html$Html$div,
 								{
 									ctor: '::',
-									_0: _user$project$Main$stringStyle,
+									_0: _user$project$Styles$stringStyle,
 									_1: {ctor: '[]'}
 								},
 								{ctor: '[]'}),
@@ -10007,7 +10114,7 @@ var _user$project$Main$chordChart = function (chord) {
 									_elm_lang$html$Html$div,
 									{
 										ctor: '::',
-										_0: _user$project$Main$stringStyle,
+										_0: _user$project$Styles$stringStyle,
 										_1: {ctor: '[]'}
 									},
 									{ctor: '[]'}),
@@ -10017,7 +10124,7 @@ var _user$project$Main$chordChart = function (chord) {
 										_elm_lang$html$Html$div,
 										{
 											ctor: '::',
-											_0: _user$project$Main$stringStyle,
+											_0: _user$project$Styles$stringStyle,
 											_1: {ctor: '[]'}
 										},
 										{ctor: '[]'}),
@@ -10027,7 +10134,7 @@ var _user$project$Main$chordChart = function (chord) {
 											_elm_lang$html$Html$div,
 											{
 												ctor: '::',
-												_0: _user$project$Main$fretStyle(1),
+												_0: _user$project$Styles$fretStyle(1),
 												_1: {ctor: '[]'}
 											},
 											{ctor: '[]'}),
@@ -10037,7 +10144,7 @@ var _user$project$Main$chordChart = function (chord) {
 												_elm_lang$html$Html$div,
 												{
 													ctor: '::',
-													_0: _user$project$Main$fretStyle(2),
+													_0: _user$project$Styles$fretStyle(2),
 													_1: {ctor: '[]'}
 												},
 												{ctor: '[]'}),
@@ -10047,7 +10154,7 @@ var _user$project$Main$chordChart = function (chord) {
 													_elm_lang$html$Html$div,
 													{
 														ctor: '::',
-														_0: _user$project$Main$fretStyle(3),
+														_0: _user$project$Styles$fretStyle(3),
 														_1: {ctor: '[]'}
 													},
 													{ctor: '[]'}),
@@ -10070,7 +10177,7 @@ var _user$project$Main$chordChart = function (chord) {
 					_elm_lang$html$Html$div,
 					{
 						ctor: '::',
-						_0: _user$project$Main$nutStyle,
+						_0: _user$project$Styles$nutStyle,
 						_1: {ctor: '[]'}
 					},
 					{ctor: '[]'}),
@@ -10079,8 +10186,8 @@ var _user$project$Main$chordChart = function (chord) {
 		});
 };
 var _user$project$Main$fretNo = function (fret) {
-	var _p1 = fret;
-	switch (_p1) {
+	var _p0 = fret;
+	switch (_p0) {
 		case '0':
 			return '-40';
 		case '1':
@@ -10096,8 +10203,8 @@ var _user$project$Main$fretNo = function (fret) {
 	}
 };
 var _user$project$Main$stringNo = function (string) {
-	var _p2 = string;
-	switch (_p2) {
+	var _p1 = string;
+	switch (_p1) {
 		case '1':
 			return '135';
 		case '2':
@@ -10115,8 +10222,10 @@ var _user$project$Main$stringNo = function (string) {
 	}
 };
 var _user$project$Main$fingerNo = function (finger) {
-	var _p3 = finger;
-	switch (_p3) {
+	var _p2 = finger;
+	switch (_p2) {
+		case 'b':
+			return 'bar';
 		case '1':
 			return '#E8F1F2';
 		case '2':
@@ -10134,12 +10243,12 @@ var _user$project$Main$subscriptions = function (model) {
 };
 var _user$project$Main$update = F2(
 	function (msg, model) {
-		var _p4 = msg;
+		var _p3 = msg;
 		return {
 			ctor: '_Tuple2',
 			_0: _elm_lang$core$Native_Utils.update(
 				model,
-				{musKey: _p4._0}),
+				{musKey: _p3._0}),
 			_1: _elm_lang$core$Platform_Cmd$none
 		};
 	});
@@ -10166,7 +10275,7 @@ var _user$project$Main$chordBuilder = function (chord) {
 				_elm_lang$html$Html$div,
 				{
 					ctor: '::',
-					_0: _user$project$Main$fretMarkerStyle(
+					_0: _user$project$Styles$fretMarkerStyle(
 						A3(
 							_user$project$Main$Dot,
 							_user$project$Main$fingerNo(
@@ -10189,7 +10298,7 @@ var _user$project$Main$chordBuilder = function (chord) {
 					_elm_lang$html$Html$div,
 					{
 						ctor: '::',
-						_0: _user$project$Main$fretMarkerStyle(
+						_0: _user$project$Styles$fretMarkerStyle(
 							A3(
 								_user$project$Main$Dot,
 								_user$project$Main$fingerNo(
@@ -10212,7 +10321,7 @@ var _user$project$Main$chordBuilder = function (chord) {
 						_elm_lang$html$Html$div,
 						{
 							ctor: '::',
-							_0: _user$project$Main$fretMarkerStyle(
+							_0: _user$project$Styles$fretMarkerStyle(
 								A3(
 									_user$project$Main$Dot,
 									_user$project$Main$fingerNo(
@@ -10235,7 +10344,7 @@ var _user$project$Main$chordBuilder = function (chord) {
 							_elm_lang$html$Html$div,
 							{
 								ctor: '::',
-								_0: _user$project$Main$fretMarkerStyle(
+								_0: _user$project$Styles$fretMarkerStyle(
 									A3(
 										_user$project$Main$Dot,
 										_user$project$Main$fingerNo(
@@ -10258,7 +10367,7 @@ var _user$project$Main$chordBuilder = function (chord) {
 								_elm_lang$html$Html$div,
 								{
 									ctor: '::',
-									_0: _user$project$Main$fretMarkerStyle(
+									_0: _user$project$Styles$fretMarkerStyle(
 										A3(
 											_user$project$Main$Dot,
 											_user$project$Main$fingerNo(
@@ -10281,7 +10390,7 @@ var _user$project$Main$chordBuilder = function (chord) {
 									_elm_lang$html$Html$div,
 									{
 										ctor: '::',
-										_0: _user$project$Main$fretMarkerStyle(
+										_0: _user$project$Styles$fretMarkerStyle(
 											A3(
 												_user$project$Main$Dot,
 												_user$project$Main$fingerNo(
@@ -10404,7 +10513,37 @@ var _user$project$Main$view = function (model) {
 										_0: _elm_lang$html$Html$text('A'),
 										_1: {ctor: '[]'}
 									}),
-								_1: {ctor: '[]'}
+								_1: {
+									ctor: '::',
+									_0: A2(
+										_elm_lang$html$Html$option,
+										{
+											ctor: '::',
+											_0: _elm_lang$html$Html_Attributes$value('e'),
+											_1: {ctor: '[]'}
+										},
+										{
+											ctor: '::',
+											_0: _elm_lang$html$Html$text('E'),
+											_1: {ctor: '[]'}
+										}),
+									_1: {
+										ctor: '::',
+										_0: A2(
+											_elm_lang$html$Html$option,
+											{
+												ctor: '::',
+												_0: _elm_lang$html$Html_Attributes$value('b'),
+												_1: {ctor: '[]'}
+											},
+											{
+												ctor: '::',
+												_0: _elm_lang$html$Html$text('B'),
+												_1: {ctor: '[]'}
+											}),
+										_1: {ctor: '[]'}
+									}
+								}
 							}
 						}
 					}
@@ -10415,7 +10554,7 @@ var _user$project$Main$view = function (model) {
 					_elm_lang$html$Html$div,
 					{
 						ctor: '::',
-						_0: _user$project$Main$chartContainerStyle('row'),
+						_0: _user$project$Styles$chartContainerStyle('row'),
 						_1: {ctor: '[]'}
 					},
 					{
@@ -10424,21 +10563,21 @@ var _user$project$Main$view = function (model) {
 							_elm_lang$html$Html$div,
 							{
 								ctor: '::',
-								_0: _user$project$Main$chartContainerStyle('column'),
+								_0: _user$project$Styles$chartContainerStyle('column'),
 								_1: {ctor: '[]'}
 							},
 							{
 								ctor: '::',
 								_0: _user$project$Main$chordChart(
 									_user$project$Main$chordBuilder(
-										_user$project$Main$keys(model.musKey).i)),
+										_user$project$Keys$keys(model.musKey).i)),
 								_1: {
 									ctor: '::',
 									_0: A2(
 										_elm_lang$html$Html$div,
 										{
 											ctor: '::',
-											_0: _user$project$Main$chordNameStyle,
+											_0: _user$project$Styles$chordNameStyle,
 											_1: {ctor: '[]'}
 										},
 										{
@@ -10450,7 +10589,7 @@ var _user$project$Main$view = function (model) {
 													A2(
 														_elm_community$list_extra$List_Extra$getAt,
 														0,
-														_user$project$Main$keys(model.musKey).names))),
+														_user$project$Keys$keys(model.musKey).names))),
 											_1: {ctor: '[]'}
 										}),
 									_1: {
@@ -10459,7 +10598,7 @@ var _user$project$Main$view = function (model) {
 											_elm_lang$html$Html$div,
 											{
 												ctor: '::',
-												_0: _user$project$Main$chordFunctionStyle,
+												_0: _user$project$Styles$chordFunctionStyle,
 												_1: {ctor: '[]'}
 											},
 											{
@@ -10477,21 +10616,21 @@ var _user$project$Main$view = function (model) {
 								_elm_lang$html$Html$div,
 								{
 									ctor: '::',
-									_0: _user$project$Main$chartContainerStyle('column'),
+									_0: _user$project$Styles$chartContainerStyle('column'),
 									_1: {ctor: '[]'}
 								},
 								{
 									ctor: '::',
 									_0: _user$project$Main$chordChart(
 										_user$project$Main$chordBuilder(
-											_user$project$Main$keys(model.musKey).iv)),
+											_user$project$Keys$keys(model.musKey).iv)),
 									_1: {
 										ctor: '::',
 										_0: A2(
 											_elm_lang$html$Html$div,
 											{
 												ctor: '::',
-												_0: _user$project$Main$chordNameStyle,
+												_0: _user$project$Styles$chordNameStyle,
 												_1: {ctor: '[]'}
 											},
 											{
@@ -10503,7 +10642,7 @@ var _user$project$Main$view = function (model) {
 														A2(
 															_elm_community$list_extra$List_Extra$getAt,
 															1,
-															_user$project$Main$keys(model.musKey).names))),
+															_user$project$Keys$keys(model.musKey).names))),
 												_1: {ctor: '[]'}
 											}),
 										_1: {
@@ -10512,7 +10651,7 @@ var _user$project$Main$view = function (model) {
 												_elm_lang$html$Html$div,
 												{
 													ctor: '::',
-													_0: _user$project$Main$chordFunctionStyle,
+													_0: _user$project$Styles$chordFunctionStyle,
 													_1: {ctor: '[]'}
 												},
 												{
@@ -10530,21 +10669,21 @@ var _user$project$Main$view = function (model) {
 									_elm_lang$html$Html$div,
 									{
 										ctor: '::',
-										_0: _user$project$Main$chartContainerStyle('column'),
+										_0: _user$project$Styles$chartContainerStyle('column'),
 										_1: {ctor: '[]'}
 									},
 									{
 										ctor: '::',
 										_0: _user$project$Main$chordChart(
 											_user$project$Main$chordBuilder(
-												_user$project$Main$keys(model.musKey).v)),
+												_user$project$Keys$keys(model.musKey).v)),
 										_1: {
 											ctor: '::',
 											_0: A2(
 												_elm_lang$html$Html$div,
 												{
 													ctor: '::',
-													_0: _user$project$Main$chordNameStyle,
+													_0: _user$project$Styles$chordNameStyle,
 													_1: {ctor: '[]'}
 												},
 												{
@@ -10556,7 +10695,7 @@ var _user$project$Main$view = function (model) {
 															A2(
 																_elm_community$list_extra$List_Extra$getAt,
 																2,
-																_user$project$Main$keys(model.musKey).names))),
+																_user$project$Keys$keys(model.musKey).names))),
 													_1: {ctor: '[]'}
 												}),
 											_1: {
@@ -10565,7 +10704,7 @@ var _user$project$Main$view = function (model) {
 													_elm_lang$html$Html$div,
 													{
 														ctor: '::',
-														_0: _user$project$Main$chordFunctionStyle,
+														_0: _user$project$Styles$chordFunctionStyle,
 														_1: {ctor: '[]'}
 													},
 													{
@@ -10583,21 +10722,21 @@ var _user$project$Main$view = function (model) {
 										_elm_lang$html$Html$div,
 										{
 											ctor: '::',
-											_0: _user$project$Main$chartContainerStyle('column'),
+											_0: _user$project$Styles$chartContainerStyle('column'),
 											_1: {ctor: '[]'}
 										},
 										{
 											ctor: '::',
 											_0: _user$project$Main$chordChart(
 												_user$project$Main$chordBuilder(
-													_user$project$Main$keys(model.musKey).vi)),
+													_user$project$Keys$keys(model.musKey).vi)),
 											_1: {
 												ctor: '::',
 												_0: A2(
 													_elm_lang$html$Html$div,
 													{
 														ctor: '::',
-														_0: _user$project$Main$chordNameStyle,
+														_0: _user$project$Styles$chordNameStyle,
 														_1: {ctor: '[]'}
 													},
 													{
@@ -10609,7 +10748,7 @@ var _user$project$Main$view = function (model) {
 																A2(
 																	_elm_community$list_extra$List_Extra$getAt,
 																	3,
-																	_user$project$Main$keys(model.musKey).names))),
+																	_user$project$Keys$keys(model.musKey).names))),
 														_1: {ctor: '[]'}
 													}),
 												_1: {
@@ -10618,7 +10757,7 @@ var _user$project$Main$view = function (model) {
 														_elm_lang$html$Html$div,
 														{
 															ctor: '::',
-															_0: _user$project$Main$chordFunctionStyle,
+															_0: _user$project$Styles$chordFunctionStyle,
 															_1: {ctor: '[]'}
 														},
 														{
@@ -10661,7 +10800,7 @@ var _user$project$Main$view = function (model) {
 										A2(
 											_elm_community$list_extra$List_Extra$getAt,
 											4,
-											_user$project$Main$keys(model.musKey).names)))),
+											_user$project$Keys$keys(model.musKey).names)))),
 							_1: {ctor: '[]'}
 						}),
 					_1: {ctor: '[]'}
