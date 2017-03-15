@@ -1,4 +1,4 @@
-module Main exposing (..)
+port module Main exposing (..)
 
 import Html exposing (..)
 import Html.Attributes exposing (..)
@@ -7,6 +7,8 @@ import String exposing (..)
 import List.Extra exposing (getAt)
 import Keys exposing (keys)
 import Styles exposing (..)
+import Notes exposing (..)
+import Time exposing (..)
 
 
 main =
@@ -19,7 +21,9 @@ main =
 
 
 type alias Model =
-    { musKey : String }
+    { musKey : String 
+      tempo : String
+      }
 
 
 type alias Dot =
@@ -28,7 +32,17 @@ type alias Dot =
     , fretNo : String
     }
 
+type alias Note =
+	{ frequency : Float
+	, octave : Int
+	, sustain : Int
+	}
 
+type alias PlayBundle
+	{ note : Note
+	, tempo : Float
+	}
+	
 model =
     { musKey = "c"
     }
@@ -42,7 +56,9 @@ init =
 
 type Msg
     = ChangeKey String
+    = SendNotes
 
+port Send
 
 update msg model =
     case msg of
@@ -50,6 +66,10 @@ update msg model =
             ( { model | musKey = key }
             , Cmd.none
             )
+            
+          
+         SendNotes ->
+           (model, Cmd.send 
 
 
 subscriptions model =
