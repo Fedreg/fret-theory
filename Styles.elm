@@ -24,11 +24,11 @@ fretStyle fret =
 
 
 chordNameStyle =
-    style [ ( "color", "#E8F1F2" ), ( "fontSize", "50px" ), ( "marginLeft", "150px" ), ( "margin", "0 auto" ) ]
+    style [ ( "cursor", "pointer" ), ( "color", "#E8F1F2" ), ( "fontSize", "50px" ), ( "marginLeft", "150px" ), ( "margin", "0 auto" ) ]
 
 
 chordFunctionStyle =
-    style [ ( "color", "#3A86FF" ), ( "fontSize", "30px" ), ( "marginLeft", "150px" ), ( "margin", "0 auto" ) ]
+    style [ ( "cursor", "pointer" ), ( "color", "#3A86FF" ), ( "fontSize", "30px" ), ( "marginLeft", "150px" ), ( "margin", "0 auto" ) ]
 
 
 fretMarkerStyle dot =

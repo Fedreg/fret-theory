@@ -9,6 +9,7 @@ import Keys exposing (keys)
 import Styles exposing (..)
 import Notes exposing (..)
 import Time exposing (..)
+import Update.Extra.Infix exposing ((:>))
 
 
 main =
@@ -21,9 +22,10 @@ main =
 
 
 type alias Model =
-    { musKey : String 
-      tempo : String
-      }
+    { musKey : String
+    , index : Int
+    , currentChord : List String
+    }
 
 
 type alias Dot =
@@ -32,19 +34,17 @@ type alias Dot =
     , fretNo : String
     }
 
-type alias Note =
-	{ frequency : Float
-	, octave : Int
-	, sustain : Int
-	}
 
-type alias PlayBundle
-	{ note : Note
-	, tempo : Float
-	}
-	
+type alias PlayBundle =
+    { note : Note
+    , waveType : String
+    }
+
+
 model =
     { musKey = "c"
+    , index = 6
+    , currentChord = []
     }
 
 
@@ -56,9 +56,13 @@ init =
 
 type Msg
     = ChangeKey String
-    = SendNotes
+    | SendNotes
+    | Play (List String)
+    | ResetIndex
 
-port Send
+
+port send : PlayBundle -> Cmd msg
+
 
 update msg model =
     case msg of
@@ -66,14 +70,30 @@ update msg model =
             ( { model | musKey = key }
             , Cmd.none
             )
-            
-          
-         SendNotes ->
-           (model, Cmd.send 
+
+        Play chord ->
+            ( { model | currentChord = chord }, Cmd.none )
+                :> update ResetIndex
+                :> update SendNotes
+
+        ResetIndex ->
+            ( { model | index = 0 }, Cmd.none )
+
+        SendNotes ->
+            let
+                note =
+                    Notes.noteSorter <| Maybe.withDefault "e2w" <| getAt model.index model.currentChord
+            in
+                ( { model | index = model.index + 1 }
+                , send (PlayBundle note "triangle")
+                )
 
 
 subscriptions model =
-    Sub.none
+    if model.index < 6 then
+        Time.every (0.1 * Time.second) (always SendNotes)
+    else
+        Sub.none
 
 
 fingerNo finger =
@@ -170,27 +190,31 @@ view model =
         , div [ chartContainerStyle "row" ]
             [ div [ chartContainerStyle "column" ]
                 [ chordChart <| chordBuilder (keys model.musKey).i
-                , div [ chordNameStyle ] [ text <| Maybe.withDefault "C" (getAt 0 <| (keys model.musKey).names) ]
-                , div [ chordFunctionStyle ] [ text "I" ]
+                , div [ chordNameStyle, onClick (Play <| (Notes.notes model.musKey).i) ] [ text <| Maybe.withDefault "C" (getAt 0 <| (keys model.musKey).names) ]
+                , div [ chordFunctionStyle, onClick (Play <| (Notes.notes model.musKey).i) ] [ text "I" ]
                 ]
             , div [ chartContainerStyle "column" ]
                 [ chordChart <| chordBuilder (keys model.musKey).iv
-                , div [ chordNameStyle ] [ text <| Maybe.withDefault "C" (getAt 1 <| (keys model.musKey).names) ]
-                , div [ chordFunctionStyle ] [ text "IV" ]
+                , div [ chordNameStyle, onClick (Play <| (Notes.notes model.musKey).iv) ] [ text <| Maybe.withDefault "C" (getAt 1 <| (keys model.musKey).names) ]
+                , div [ chordFunctionStyle, onClick (Play <| (Notes.notes model.musKey).iv) ] [ text "IV" ]
                 ]
             , div [ chartContainerStyle "column" ]
                 [ chordChart <| chordBuilder (keys model.musKey).v
-                , div [ chordNameStyle ] [ text <| Maybe.withDefault "C" (getAt 2 <| (keys model.musKey).names) ]
-                , div [ chordFunctionStyle ] [ text "V" ]
+                , div [ chordNameStyle, onClick (Play <| (Notes.notes model.musKey).v) ] [ text <| Maybe.withDefault "C" (getAt 2 <| (keys model.musKey).names) ]
+                , div [ chordFunctionStyle, onClick (Play <| (Notes.notes model.musKey).v) ] [ text "V" ]
                 ]
             , div [ chartContainerStyle "column" ]
                 [ chordChart <| chordBuilder (keys model.musKey).vi
-                , div [ chordNameStyle ] [ text <| Maybe.withDefault "C" (getAt 3 <| (keys model.musKey).names) ]
-                , div [ chordFunctionStyle ] [ text "VI" ]
+                , div [ chordNameStyle, onClick (Play <| (Notes.notes model.musKey).vi) ] [ text <| Maybe.withDefault "C" (getAt 3 <| (keys model.musKey).names) ]
+                , div [ chordFunctionStyle, onClick (Play <| (Notes.notes model.musKey).vi) ] [ text "VI" ]
                 ]
             ]
         , div [ style [ ( "fontSize", "30px" ) ] ] [ text ("Solo on fret: " ++ Maybe.withDefault "0" (getAt 4 <| (keys model.musKey).names)) ]
         ]
+
+
+chordFunction num =
+    text <| Maybe.withDefault "0" (getAt num <| (keys model.musKey).names)
 
 
 chordChart chord =
