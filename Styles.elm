@@ -40,7 +40,7 @@ fretMarkerStyle dot =
             barSize =
                 toString (160 - stringHeight) ++ "px"
         in
-            style [ ( "transition", "all 0.5s ease" ), ( "position", "absolute" ), ( "top", dot.stringNo ), ( "right", dot.fretNo ), ( "width", "25px" ), ( "height", barSize ), ( "borderRadius", "13px" ), ( "backgroundColor", "#E8F1F2" ) ]
+            style [ ( "transition", "all 0.5s ease" ), ( "position", "absolute" ), ( "top", dot.stringNo ), ( "right", dot.fretNo ), ( "width", "25px" ), ( "height", barSize ), ( "borderRadius", "13px" ), ( "backgroundColor", "#E8F1F2" ), ( "color", "rgba(0,0,0,0)" ) ]
     else if dot.fretNo == "-40" then
         let
             textColor =

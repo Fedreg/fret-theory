@@ -10263,7 +10263,11 @@ var _user$project$Styles$fretMarkerStyle = function (dot) {
 										_1: {
 											ctor: '::',
 											_0: {ctor: '_Tuple2', _0: 'backgroundColor', _1: '#E8F1F2'},
-											_1: {ctor: '[]'}
+											_1: {
+												ctor: '::',
+												_0: {ctor: '_Tuple2', _0: 'color', _1: 'rgba(0,0,0,0)'},
+												_1: {ctor: '[]'}
+											}
 										}
 									}
 								}
@@ -10617,7 +10621,7 @@ var _user$project$Notes$notes = function (key) {
 								_0: 'a3q',
 								_1: {
 									ctor: '::',
-									_0: 'c3q',
+									_0: 'c4q',
 									_1: {
 										ctor: '::',
 										_0: 'f4q',
@@ -10717,10 +10721,10 @@ var _user$project$Notes$notes = function (key) {
 							_0: 'g3q',
 							_1: {
 								ctor: '::',
-								_0: 'c4q',
+								_0: 'd4q',
 								_1: {
 									ctor: '::',
-									_0: 'e4q',
+									_0: 'g4q',
 									_1: {
 										ctor: '::',
 										_0: 'c0s',
@@ -10774,6 +10778,418 @@ var _user$project$Notes$notes = function (key) {
 									_1: {
 										ctor: '::',
 										_0: 'e4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				}
+			};
+		case 'd':
+			return {
+				i: {
+					ctor: '::',
+					_0: 'd3q',
+					_1: {
+						ctor: '::',
+						_0: 'a3q',
+						_1: {
+							ctor: '::',
+							_0: 'd4q',
+							_1: {
+								ctor: '::',
+								_0: 'f#4q',
+								_1: {
+									ctor: '::',
+									_0: 'c0s',
+									_1: {
+										ctor: '::',
+										_0: 'c0s',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				iv: {
+					ctor: '::',
+					_0: 'g2q',
+					_1: {
+						ctor: '::',
+						_0: 'b2q',
+						_1: {
+							ctor: '::',
+							_0: 'd3q',
+							_1: {
+								ctor: '::',
+								_0: 'g3q',
+								_1: {
+									ctor: '::',
+									_0: 'd4q',
+									_1: {
+										ctor: '::',
+										_0: 'g4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				v: {
+					ctor: '::',
+					_0: 'a2q',
+					_1: {
+						ctor: '::',
+						_0: 'e2q',
+						_1: {
+							ctor: '::',
+							_0: 'a3q',
+							_1: {
+								ctor: '::',
+								_0: 'c#3q',
+								_1: {
+									ctor: '::',
+									_0: 'e4q',
+									_1: {
+										ctor: '::',
+										_0: 'c0s',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				vi: {
+					ctor: '::',
+					_0: 'b2q',
+					_1: {
+						ctor: '::',
+						_0: 'd3q',
+						_1: {
+							ctor: '::',
+							_0: 'g3q',
+							_1: {
+								ctor: '::',
+								_0: 'd4q',
+								_1: {
+									ctor: '::',
+									_0: 'f#4q',
+									_1: {
+										ctor: '::',
+										_0: 'c0s',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				}
+			};
+		case 'a':
+			return {
+				i: {
+					ctor: '::',
+					_0: 'a2q',
+					_1: {
+						ctor: '::',
+						_0: 'e2q',
+						_1: {
+							ctor: '::',
+							_0: 'a3q',
+							_1: {
+								ctor: '::',
+								_0: 'c#3q',
+								_1: {
+									ctor: '::',
+									_0: 'e4q',
+									_1: {
+										ctor: '::',
+										_0: 'c0s',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				iv: {
+					ctor: '::',
+					_0: 'd3q',
+					_1: {
+						ctor: '::',
+						_0: 'a3q',
+						_1: {
+							ctor: '::',
+							_0: 'd4q',
+							_1: {
+								ctor: '::',
+								_0: 'f#4q',
+								_1: {
+									ctor: '::',
+									_0: 'c0s',
+									_1: {
+										ctor: '::',
+										_0: 'c0s',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				v: {
+					ctor: '::',
+					_0: 'e2q',
+					_1: {
+						ctor: '::',
+						_0: 'b2q',
+						_1: {
+							ctor: '::',
+							_0: 'e3q',
+							_1: {
+								ctor: '::',
+								_0: 'g#3q',
+								_1: {
+									ctor: '::',
+									_0: 'b3q',
+									_1: {
+										ctor: '::',
+										_0: 'e4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				vi: {
+					ctor: '::',
+					_0: 'f#2q',
+					_1: {
+						ctor: '::',
+						_0: 'a2q',
+						_1: {
+							ctor: '::',
+							_0: 'd3q',
+							_1: {
+								ctor: '::',
+								_0: 'a3q',
+								_1: {
+									ctor: '::',
+									_0: 'c#4q',
+									_1: {
+										ctor: '::',
+										_0: 'e4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				}
+			};
+		case 'e':
+			return {
+				i: {
+					ctor: '::',
+					_0: 'e2q',
+					_1: {
+						ctor: '::',
+						_0: 'b2q',
+						_1: {
+							ctor: '::',
+							_0: 'e3q',
+							_1: {
+								ctor: '::',
+								_0: 'g#3q',
+								_1: {
+									ctor: '::',
+									_0: 'b3q',
+									_1: {
+										ctor: '::',
+										_0: 'e4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				iv: {
+					ctor: '::',
+					_0: 'a2q',
+					_1: {
+						ctor: '::',
+						_0: 'e2q',
+						_1: {
+							ctor: '::',
+							_0: 'a3q',
+							_1: {
+								ctor: '::',
+								_0: 'c#3q',
+								_1: {
+									ctor: '::',
+									_0: 'e4q',
+									_1: {
+										ctor: '::',
+										_0: 'c0s',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				v: {
+					ctor: '::',
+					_0: 'b2q',
+					_1: {
+						ctor: '::',
+						_0: 'd#3q',
+						_1: {
+							ctor: '::',
+							_0: 'a3q',
+							_1: {
+								ctor: '::',
+								_0: 'b3q',
+								_1: {
+									ctor: '::',
+									_0: 'f#4q',
+									_1: {
+										ctor: '::',
+										_0: 'c0s',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				vi: {
+					ctor: '::',
+					_0: 'g#3q',
+					_1: {
+						ctor: '::',
+						_0: 'c#4q',
+						_1: {
+							ctor: '::',
+							_0: 'e4q',
+							_1: {
+								ctor: '::',
+								_0: 'g#4q',
+								_1: {
+									ctor: '::',
+									_0: 'c0s',
+									_1: {
+										ctor: '::',
+										_0: 'c0s',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				}
+			};
+		case 'b':
+			return {
+				i: {
+					ctor: '::',
+					_0: 'b2q',
+					_1: {
+						ctor: '::',
+						_0: 'f#2q',
+						_1: {
+							ctor: '::',
+							_0: 'b3q',
+							_1: {
+								ctor: '::',
+								_0: 'd#3q',
+								_1: {
+									ctor: '::',
+									_0: 'f#4q',
+									_1: {
+										ctor: '::',
+										_0: 'c0s',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				iv: {
+					ctor: '::',
+					_0: 'e2q',
+					_1: {
+						ctor: '::',
+						_0: 'b2q',
+						_1: {
+							ctor: '::',
+							_0: 'e3q',
+							_1: {
+								ctor: '::',
+								_0: 'g#3q',
+								_1: {
+									ctor: '::',
+									_0: 'b3q',
+									_1: {
+										ctor: '::',
+										_0: 'e4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				v: {
+					ctor: '::',
+					_0: 'f#2q',
+					_1: {
+						ctor: '::',
+						_0: 'c#3q',
+						_1: {
+							ctor: '::',
+							_0: 'f#3q',
+							_1: {
+								ctor: '::',
+								_0: 'a#3q',
+								_1: {
+									ctor: '::',
+									_0: 'c#4q',
+									_1: {
+										ctor: '::',
+										_0: 'f#4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				vi: {
+					ctor: '::',
+					_0: 'g#2q',
+					_1: {
+						ctor: '::',
+						_0: 'd#2q',
+						_1: {
+							ctor: '::',
+							_0: 'g#3q',
+							_1: {
+								ctor: '::',
+								_0: 'b3q',
+								_1: {
+									ctor: '::',
+									_0: 'd#3q',
+									_1: {
+										ctor: '::',
+										_0: 'g#4q',
 										_1: {ctor: '[]'}
 									}
 								}
@@ -11303,6 +11719,18 @@ var _user$project$Main$ChangeKey = function (a) {
 	return {ctor: 'ChangeKey', _0: a};
 };
 var _user$project$Main$view = function (model) {
+	var soloFretMin = A2(
+		_elm_lang$core$Maybe$withDefault,
+		'0',
+		A2(
+			_elm_community$list_extra$List_Extra$getAt,
+			4,
+			_user$project$Keys$keys(model.musKey).names));
+	var soloFretMaj = _elm_lang$core$Basics$toString(
+		A2(
+			_elm_lang$core$Result$withDefault,
+			0,
+			_elm_lang$core$String$toInt(soloFretMin)) + 3);
 	return A2(
 		_elm_lang$html$Html$div,
 		{
@@ -11352,7 +11780,7 @@ var _user$project$Main$view = function (model) {
 						},
 						{
 							ctor: '::',
-							_0: _elm_lang$html$Html$text('C'),
+							_0: _elm_lang$html$Html$text('Major Keys'),
 							_1: {ctor: '[]'}
 						}),
 					_1: {
@@ -11361,12 +11789,12 @@ var _user$project$Main$view = function (model) {
 							_elm_lang$html$Html$option,
 							{
 								ctor: '::',
-								_0: _elm_lang$html$Html_Attributes$value('g'),
+								_0: _elm_lang$html$Html_Attributes$value('c'),
 								_1: {ctor: '[]'}
 							},
 							{
 								ctor: '::',
-								_0: _elm_lang$html$Html$text('G'),
+								_0: _elm_lang$html$Html$text('C'),
 								_1: {ctor: '[]'}
 							}),
 						_1: {
@@ -11375,12 +11803,12 @@ var _user$project$Main$view = function (model) {
 								_elm_lang$html$Html$option,
 								{
 									ctor: '::',
-									_0: _elm_lang$html$Html_Attributes$value('d'),
+									_0: _elm_lang$html$Html_Attributes$value('g'),
 									_1: {ctor: '[]'}
 								},
 								{
 									ctor: '::',
-									_0: _elm_lang$html$Html$text('D'),
+									_0: _elm_lang$html$Html$text('G'),
 									_1: {ctor: '[]'}
 								}),
 							_1: {
@@ -11389,12 +11817,12 @@ var _user$project$Main$view = function (model) {
 									_elm_lang$html$Html$option,
 									{
 										ctor: '::',
-										_0: _elm_lang$html$Html_Attributes$value('a'),
+										_0: _elm_lang$html$Html_Attributes$value('d'),
 										_1: {ctor: '[]'}
 									},
 									{
 										ctor: '::',
-										_0: _elm_lang$html$Html$text('A'),
+										_0: _elm_lang$html$Html$text('D'),
 										_1: {ctor: '[]'}
 									}),
 								_1: {
@@ -11403,12 +11831,12 @@ var _user$project$Main$view = function (model) {
 										_elm_lang$html$Html$option,
 										{
 											ctor: '::',
-											_0: _elm_lang$html$Html_Attributes$value('e'),
+											_0: _elm_lang$html$Html_Attributes$value('a'),
 											_1: {ctor: '[]'}
 										},
 										{
 											ctor: '::',
-											_0: _elm_lang$html$Html$text('E'),
+											_0: _elm_lang$html$Html$text('A'),
 											_1: {ctor: '[]'}
 										}),
 									_1: {
@@ -11417,15 +11845,30 @@ var _user$project$Main$view = function (model) {
 											_elm_lang$html$Html$option,
 											{
 												ctor: '::',
-												_0: _elm_lang$html$Html_Attributes$value('b'),
+												_0: _elm_lang$html$Html_Attributes$value('e'),
 												_1: {ctor: '[]'}
 											},
 											{
 												ctor: '::',
-												_0: _elm_lang$html$Html$text('B'),
+												_0: _elm_lang$html$Html$text('E'),
 												_1: {ctor: '[]'}
 											}),
-										_1: {ctor: '[]'}
+										_1: {
+											ctor: '::',
+											_0: A2(
+												_elm_lang$html$Html$option,
+												{
+													ctor: '::',
+													_0: _elm_lang$html$Html_Attributes$value('b'),
+													_1: {ctor: '[]'}
+												},
+												{
+													ctor: '::',
+													_0: _elm_lang$html$Html$text('B'),
+													_1: {ctor: '[]'}
+												}),
+											_1: {ctor: '[]'}
+										}
 									}
 								}
 							}
@@ -11715,7 +12158,7 @@ var _user$project$Main$view = function (model) {
 							_0: _elm_lang$html$Html_Attributes$style(
 								{
 									ctor: '::',
-									_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '30px'},
+									_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '20px'},
 									_1: {ctor: '[]'}
 								}),
 							_1: {ctor: '[]'}
@@ -11725,14 +12168,11 @@ var _user$project$Main$view = function (model) {
 							_0: _elm_lang$html$Html$text(
 								A2(
 									_elm_lang$core$Basics_ops['++'],
-									'Solo on fret: ',
+									'Solo on: Minor Scale, fret: ',
 									A2(
-										_elm_lang$core$Maybe$withDefault,
-										'0',
-										A2(
-											_elm_community$list_extra$List_Extra$getAt,
-											4,
-											_user$project$Keys$keys(model.musKey).names)))),
+										_elm_lang$core$Basics_ops['++'],
+										soloFretMin,
+										A2(_elm_lang$core$Basics_ops['++'], ', Major Scale, fret: ', soloFretMaj)))),
 							_1: {ctor: '[]'}
 						}),
 					_1: {ctor: '[]'}
