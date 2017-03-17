@@ -3,6 +3,10 @@ module Styles exposing (..)
 import Html.Attributes exposing (..)
 
 
+chordBarPosStyle =
+    style [ ( "position", "relative" ), ( "color", "deepPink" ), ( "transition", "all 0.3s ease" ) ]
+
+
 chartStyle =
     style [ ( "position", "relative" ), ( "width", "180px" ), ( "height", "153px" ), ( "border", "3px solid #333" ), ( "borderBottom", "none" ) ]
 
@@ -16,7 +20,7 @@ nutStyle =
 
 
 chartContainerStyle direction =
-    style [ ( "display", "flex" ), ( "margin", "25px auto" ), ( "flexDirection", direction ) ]
+    style [ ( "display", "flex" ), ( "margin", "25px auto" ), ( "flexDirection", direction ), ( "transition", "all 0.3s ease" ) ]
 
 
 fretStyle fret =
@@ -40,7 +44,7 @@ fretMarkerStyle dot =
             barSize =
                 toString (160 - stringHeight) ++ "px"
         in
-            style [ ( "transition", "all 0.5s ease" ), ( "position", "absolute" ), ( "top", dot.stringNo ), ( "right", dot.fretNo ), ( "width", "25px" ), ( "height", barSize ), ( "borderRadius", "13px" ), ( "backgroundColor", "#E8F1F2" ), ( "color", "rgba(0,0,0,0)" ) ]
+            style [ ( "transition", "all 0.5s ease" ), ( "position", "absolute" ), ( "top", dot.stringNo ), ( "right", dot.fretNo ), ( "width", "25px" ), ( "height", barSize ), ( "borderRadius", "13px" ), ( "backgroundColor", "#777" ), ( "color", "rgba(0,0,0,0)" ) ]
     else if dot.fretNo == "-40" then
         let
             textColor =

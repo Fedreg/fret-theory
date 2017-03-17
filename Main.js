@@ -10029,7 +10029,7 @@ var _elm_lang$html$Html_Events$Options = F2(
 var _user$project$Keys$keys = function (key) {
 	var _p0 = key;
 	switch (_p0) {
-		case 'c':
+		case 'C':
 			return {
 				i: '06x353242030121010',
 				iv: '06x06x343232121010',
@@ -10046,7 +10046,7 @@ var _user$project$Keys$keys = function (key) {
 							_0: 'G',
 							_1: {
 								ctor: '::',
-								_0: 'Amin',
+								_0: 'A Min',
 								_1: {
 									ctor: '::',
 									_0: '5',
@@ -10055,9 +10055,26 @@ var _user$project$Keys$keys = function (key) {
 							}
 						}
 					}
+				},
+				bars: {
+					ctor: '::',
+					_0: '',
+					_1: {
+						ctor: '::',
+						_0: '',
+						_1: {
+							ctor: '::',
+							_0: '',
+							_1: {
+								ctor: '::',
+								_0: '',
+								_1: {ctor: '[]'}
+							}
+						}
+					}
 				}
 			};
-		case 'g':
+		case 'G':
 			return {
 				i: '263152040030323413',
 				iv: '06x253142030323413',
@@ -10074,18 +10091,35 @@ var _user$project$Keys$keys = function (key) {
 							_0: 'D',
 							_1: {
 								ctor: '::',
-								_0: 'Emin',
+								_0: 'E Min',
 								_1: {
 									ctor: '::',
-									_0: '0 or 12',
+									_0: '0',
 									_1: {ctor: '[]'}
 								}
 							}
 						}
 					}
+				},
+				bars: {
+					ctor: '::',
+					_0: '',
+					_1: {
+						ctor: '::',
+						_0: '',
+						_1: {
+							ctor: '::',
+							_0: '',
+							_1: {
+								ctor: '::',
+								_0: '',
+								_1: {ctor: '[]'}
+							}
+						}
+					}
 				}
 			};
-		case 'd':
+		case 'D':
 			return {
 				i: '06x05x040132323212',
 				iv: '263152040030323413',
@@ -10102,7 +10136,7 @@ var _user$project$Keys$keys = function (key) {
 							_0: 'A',
 							_1: {
 								ctor: '::',
-								_0: 'Bmin',
+								_0: 'B Min',
 								_1: {
 									ctor: '::',
 									_0: '7',
@@ -10111,9 +10145,26 @@ var _user$project$Keys$keys = function (key) {
 							}
 						}
 					}
+				},
+				bars: {
+					ctor: '::',
+					_0: '',
+					_1: {
+						ctor: '::',
+						_0: '',
+						_1: {
+							ctor: '::',
+							_0: '',
+							_1: {
+								ctor: '::',
+								_0: '',
+								_1: {ctor: '[]'}
+							}
+						}
+					}
 				}
 			};
-		case 'a':
+		case 'A':
 			return {
 				i: '06x050142232322010',
 				iv: '06x05x040132323212',
@@ -10130,7 +10181,7 @@ var _user$project$Keys$keys = function (key) {
 							_0: 'E',
 							_1: {
 								ctor: '::',
-								_0: 'F#min',
+								_0: 'F# Min',
 								_1: {
 									ctor: '::',
 									_0: '2',
@@ -10139,9 +10190,26 @@ var _user$project$Keys$keys = function (key) {
 							}
 						}
 					}
+				},
+				bars: {
+					ctor: '::',
+					_0: '',
+					_1: {
+						ctor: '::',
+						_0: '',
+						_1: {
+							ctor: '::',
+							_0: '',
+							_1: {
+								ctor: '::',
+								_0: '',
+								_1: {ctor: '[]'}
+							}
+						}
+					}
 				}
 			};
-		case 'e':
+		case 'E':
 			return {
 				i: '060252342131020010',
 				iv: '06x050142232322010',
@@ -10158,7 +10226,7 @@ var _user$project$Keys$keys = function (key) {
 							_0: 'B7',
 							_1: {
 								ctor: '::',
-								_0: 'C#min',
+								_0: 'C# Min',
 								_1: {
 									ctor: '::',
 									_0: '9',
@@ -10167,9 +10235,26 @@ var _user$project$Keys$keys = function (key) {
 							}
 						}
 					}
+				},
+				bars: {
+					ctor: '::',
+					_0: '',
+					_1: {
+						ctor: '::',
+						_0: '',
+						_1: {
+							ctor: '::',
+							_0: '',
+							_1: {
+								ctor: '::',
+								_0: '',
+								_1: {ctor: '[]'}
+							}
+						}
+					}
 				}
 			};
-		case 'b':
+		case 'B':
 			return {
 				i: '06xb52244334424112',
 				iv: '060252342131020010',
@@ -10186,12 +10271,299 @@ var _user$project$Keys$keys = function (key) {
 							_0: 'F#',
 							_1: {
 								ctor: '::',
-								_0: 'G#min',
+								_0: 'G# Min',
 								_1: {
 									ctor: '::',
 									_0: '4',
 									_1: {ctor: '[]'}
 								}
+							}
+						}
+					}
+				},
+				bars: {
+					ctor: '::',
+					_0: '',
+					_1: {
+						ctor: '::',
+						_0: '',
+						_1: {
+							ctor: '::',
+							_0: '',
+							_1: {
+								ctor: '::',
+								_0: '4',
+								_1: {ctor: '[]'}
+							}
+						}
+					}
+				}
+			};
+		case 'F#':
+			return {
+				i: 'b62354444233122112',
+				iv: '06xb52244334424112',
+				v: '06xb52244334424112',
+				vi: '06xb52344434223112',
+				names: {
+					ctor: '::',
+					_0: 'F#',
+					_1: {
+						ctor: '::',
+						_0: 'B',
+						_1: {
+							ctor: '::',
+							_0: 'C#',
+							_1: {
+								ctor: '::',
+								_0: 'D# Min',
+								_1: {
+									ctor: '::',
+									_0: '11',
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				},
+				bars: {
+					ctor: '::',
+					_0: '',
+					_1: {
+						ctor: '::',
+						_0: '',
+						_1: {
+							ctor: '::',
+							_0: '4',
+							_1: {
+								ctor: '::',
+								_0: '6',
+								_1: {ctor: '[]'}
+							}
+						}
+					}
+				}
+			};
+		case 'Db':
+			return {
+				i: '06xb52244334424112',
+				iv: 'b62354444233122112',
+				v: 'b62354444233122112',
+				vi: '06xb52344434223112',
+				names: {
+					ctor: '::',
+					_0: 'Db',
+					_1: {
+						ctor: '::',
+						_0: 'Gb',
+						_1: {
+							ctor: '::',
+							_0: 'Ab',
+							_1: {
+								ctor: '::',
+								_0: 'Bb Min',
+								_1: {
+									ctor: '::',
+									_0: '6',
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				},
+				bars: {
+					ctor: '::',
+					_0: '4',
+					_1: {
+						ctor: '::',
+						_0: '',
+						_1: {
+							ctor: '::',
+							_0: '4',
+							_1: {
+								ctor: '::',
+								_0: '',
+								_1: {ctor: '[]'}
+							}
+						}
+					}
+				}
+			};
+		case 'Ab':
+			return {
+				i: 'b62354444233122112',
+				iv: '06xb52244334424112',
+				v: '06xb52244334424112',
+				vi: 'b61353443131121111',
+				names: {
+					ctor: '::',
+					_0: 'Ab',
+					_1: {
+						ctor: '::',
+						_0: 'Db',
+						_1: {
+							ctor: '::',
+							_0: 'Eb',
+							_1: {
+								ctor: '::',
+								_0: 'F Min',
+								_1: {
+									ctor: '::',
+									_0: '1',
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				},
+				bars: {
+					ctor: '::',
+					_0: '4',
+					_1: {
+						ctor: '::',
+						_0: '4',
+						_1: {
+							ctor: '::',
+							_0: '6',
+							_1: {
+								ctor: '::',
+								_0: '',
+								_1: {ctor: '[]'}
+							}
+						}
+					}
+				}
+			};
+		case 'Eb':
+			return {
+				i: '06xb52244334424112',
+				iv: 'b62354444233122112',
+				v: 'b62354444233122112',
+				vi: '06xb52344434223112',
+				names: {
+					ctor: '::',
+					_0: 'Eb',
+					_1: {
+						ctor: '::',
+						_0: 'Ab',
+						_1: {
+							ctor: '::',
+							_0: 'Bb',
+							_1: {
+								ctor: '::',
+								_0: 'C Min',
+								_1: {
+									ctor: '::',
+									_0: '4',
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				},
+				bars: {
+					ctor: '::',
+					_0: '6',
+					_1: {
+						ctor: '::',
+						_0: '4',
+						_1: {
+							ctor: '::',
+							_0: '6',
+							_1: {
+								ctor: '::',
+								_0: '3',
+								_1: {ctor: '[]'}
+							}
+						}
+					}
+				}
+			};
+		case 'Bb':
+			return {
+				i: '06xb51243333423111',
+				iv: '06xb52244334424112',
+				v: 'b61353443232121111',
+				vi: 'b62354444132122112',
+				names: {
+					ctor: '::',
+					_0: 'Bb',
+					_1: {
+						ctor: '::',
+						_0: 'Eb',
+						_1: {
+							ctor: '::',
+							_0: 'F',
+							_1: {
+								ctor: '::',
+								_0: 'G Min',
+								_1: {
+									ctor: '::',
+									_0: '3',
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				},
+				bars: {
+					ctor: '::',
+					_0: '',
+					_1: {
+						ctor: '::',
+						_0: '6',
+						_1: {
+							ctor: '::',
+							_0: '',
+							_1: {
+								ctor: '::',
+								_0: '3',
+								_1: {ctor: '[]'}
+							}
+						}
+					}
+				}
+			};
+		case 'F':
+			return {
+				i: '06x05x343232121010',
+				iv: '06xb51243333423111',
+				v: '06x353242030121010',
+				vi: '06x05x040232423111',
+				names: {
+					ctor: '::',
+					_0: 'F',
+					_1: {
+						ctor: '::',
+						_0: 'Bb',
+						_1: {
+							ctor: '::',
+							_0: 'C',
+							_1: {
+								ctor: '::',
+								_0: 'D Min',
+								_1: {
+									ctor: '::',
+									_0: '10',
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				},
+				bars: {
+					ctor: '::',
+					_0: '',
+					_1: {
+						ctor: '::',
+						_0: '',
+						_1: {
+							ctor: '::',
+							_0: '',
+							_1: {
+								ctor: '::',
+								_0: '',
+								_1: {ctor: '[]'}
 							}
 						}
 					}
@@ -10223,8 +10595,66 @@ var _user$project$Keys$keys = function (key) {
 							}
 						}
 					}
+				},
+				bars: {
+					ctor: '::',
+					_0: '',
+					_1: {ctor: '[]'}
 				}
 			};
+	}
+};
+var _user$project$Keys$keyList = {
+	ctor: '::',
+	_0: 'Major Keys',
+	_1: {
+		ctor: '::',
+		_0: 'C',
+		_1: {
+			ctor: '::',
+			_0: 'G',
+			_1: {
+				ctor: '::',
+				_0: 'D',
+				_1: {
+					ctor: '::',
+					_0: 'A',
+					_1: {
+						ctor: '::',
+						_0: 'E',
+						_1: {
+							ctor: '::',
+							_0: 'B',
+							_1: {
+								ctor: '::',
+								_0: 'F#',
+								_1: {
+									ctor: '::',
+									_0: 'Db',
+									_1: {
+										ctor: '::',
+										_0: 'Ab',
+										_1: {
+											ctor: '::',
+											_0: 'Eb',
+											_1: {
+												ctor: '::',
+												_0: 'Bb',
+												_1: {
+													ctor: '::',
+													_0: 'F',
+													_1: {ctor: '[]'}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
 	}
 };
 
@@ -10262,7 +10692,7 @@ var _user$project$Styles$fretMarkerStyle = function (dot) {
 										_0: {ctor: '_Tuple2', _0: 'borderRadius', _1: '13px'},
 										_1: {
 											ctor: '::',
-											_0: {ctor: '_Tuple2', _0: 'backgroundColor', _1: '#E8F1F2'},
+											_0: {ctor: '_Tuple2', _0: 'backgroundColor', _1: '#777'},
 											_1: {
 												ctor: '::',
 												_0: {ctor: '_Tuple2', _0: 'color', _1: 'rgba(0,0,0,0)'},
@@ -10449,7 +10879,11 @@ var _user$project$Styles$chartContainerStyle = function (direction) {
 				_1: {
 					ctor: '::',
 					_0: {ctor: '_Tuple2', _0: 'flexDirection', _1: direction},
-					_1: {ctor: '[]'}
+					_1: {
+						ctor: '::',
+						_0: {ctor: '_Tuple2', _0: 'transition', _1: 'all 0.3s ease'},
+						_1: {ctor: '[]'}
+					}
 				}
 			}
 		});
@@ -10505,6 +10939,20 @@ var _user$project$Styles$chartStyle = _elm_lang$html$Html_Attributes$style(
 						_1: {ctor: '[]'}
 					}
 				}
+			}
+		}
+	});
+var _user$project$Styles$chordBarPosStyle = _elm_lang$html$Html_Attributes$style(
+	{
+		ctor: '::',
+		_0: {ctor: '_Tuple2', _0: 'position', _1: 'relative'},
+		_1: {
+			ctor: '::',
+			_0: {ctor: '_Tuple2', _0: 'color', _1: 'deepPink'},
+			_1: {
+				ctor: '::',
+				_0: {ctor: '_Tuple2', _0: 'transition', _1: 'all 0.3s ease'},
+				_1: {ctor: '[]'}
 			}
 		}
 	});
@@ -10580,7 +11028,7 @@ var _user$project$Notes$sustain = function (duration) {
 var _user$project$Notes$notes = function (key) {
 	var _p3 = key;
 	switch (_p3) {
-		case 'c':
+		case 'C':
 			return {
 				i: {
 					ctor: '::',
@@ -10609,22 +11057,22 @@ var _user$project$Notes$notes = function (key) {
 				},
 				iv: {
 					ctor: '::',
-					_0: 'f2q',
+					_0: 'f3q',
 					_1: {
 						ctor: '::',
-						_0: 'c3q',
+						_0: 'a3q',
 						_1: {
 							ctor: '::',
-							_0: 'f3q',
+							_0: 'c4q',
 							_1: {
 								ctor: '::',
-								_0: 'a3q',
+								_0: 'e4q',
 								_1: {
 									ctor: '::',
-									_0: 'c4q',
+									_0: 'c0s',
 									_1: {
 										ctor: '::',
-										_0: 'f4q',
+										_0: 'c0s',
 										_1: {ctor: '[]'}
 									}
 								}
@@ -10659,22 +11107,22 @@ var _user$project$Notes$notes = function (key) {
 				},
 				vi: {
 					ctor: '::',
-					_0: 'e2q',
+					_0: 'a2q',
 					_1: {
 						ctor: '::',
-						_0: 'b2q',
+						_0: 'e3q',
 						_1: {
 							ctor: '::',
-							_0: 'e3q',
+							_0: 'a3q',
 							_1: {
 								ctor: '::',
-								_0: 'g3q',
+								_0: 'c4q',
 								_1: {
 									ctor: '::',
-									_0: 'b3q',
+									_0: 'e4q',
 									_1: {
 										ctor: '::',
-										_0: 'e4q',
+										_0: 'c0s',
 										_1: {ctor: '[]'}
 									}
 								}
@@ -10683,7 +11131,7 @@ var _user$project$Notes$notes = function (key) {
 					}
 				}
 			};
-		case 'g':
+		case 'G':
 			return {
 				i: {
 					ctor: '::',
@@ -10786,7 +11234,7 @@ var _user$project$Notes$notes = function (key) {
 					}
 				}
 			};
-		case 'd':
+		case 'D':
 			return {
 				i: {
 					ctor: '::',
@@ -10843,13 +11291,13 @@ var _user$project$Notes$notes = function (key) {
 					_0: 'a2q',
 					_1: {
 						ctor: '::',
-						_0: 'e2q',
+						_0: 'e3q',
 						_1: {
 							ctor: '::',
 							_0: 'a3q',
 							_1: {
 								ctor: '::',
-								_0: 'c#3q',
+								_0: 'c#4q',
 								_1: {
 									ctor: '::',
 									_0: 'e4q',
@@ -10889,20 +11337,20 @@ var _user$project$Notes$notes = function (key) {
 					}
 				}
 			};
-		case 'a':
+		case 'A':
 			return {
 				i: {
 					ctor: '::',
 					_0: 'a2q',
 					_1: {
 						ctor: '::',
-						_0: 'e2q',
+						_0: 'e3q',
 						_1: {
 							ctor: '::',
 							_0: 'a3q',
 							_1: {
 								ctor: '::',
-								_0: 'c#3q',
+								_0: 'c#4q',
 								_1: {
 									ctor: '::',
 									_0: 'e4q',
@@ -10992,7 +11440,7 @@ var _user$project$Notes$notes = function (key) {
 					}
 				}
 			};
-		case 'e':
+		case 'E':
 			return {
 				i: {
 					ctor: '::',
@@ -11024,13 +11472,13 @@ var _user$project$Notes$notes = function (key) {
 					_0: 'a2q',
 					_1: {
 						ctor: '::',
-						_0: 'e2q',
+						_0: 'e3q',
 						_1: {
 							ctor: '::',
 							_0: 'a3q',
 							_1: {
 								ctor: '::',
-								_0: 'c#3q',
+								_0: 'c#4q',
 								_1: {
 									ctor: '::',
 									_0: 'e4q',
@@ -11095,20 +11543,20 @@ var _user$project$Notes$notes = function (key) {
 					}
 				}
 			};
-		case 'b':
+		case 'B':
 			return {
 				i: {
 					ctor: '::',
 					_0: 'b2q',
 					_1: {
 						ctor: '::',
-						_0: 'f#2q',
+						_0: 'f#3q',
 						_1: {
 							ctor: '::',
 							_0: 'b3q',
 							_1: {
 								ctor: '::',
-								_0: 'd#3q',
+								_0: 'd#4q',
 								_1: {
 									ctor: '::',
 									_0: 'f#4q',
@@ -11177,7 +11625,7 @@ var _user$project$Notes$notes = function (key) {
 					_0: 'g#2q',
 					_1: {
 						ctor: '::',
-						_0: 'd#2q',
+						_0: 'd#3q',
 						_1: {
 							ctor: '::',
 							_0: 'g#3q',
@@ -11186,10 +11634,113 @@ var _user$project$Notes$notes = function (key) {
 								_0: 'b3q',
 								_1: {
 									ctor: '::',
-									_0: 'd#3q',
+									_0: 'd#4q',
 									_1: {
 										ctor: '::',
 										_0: 'g#4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				}
+			};
+		case 'F#':
+			return {
+				i: {
+					ctor: '::',
+					_0: 'f#2q',
+					_1: {
+						ctor: '::',
+						_0: 'c#3q',
+						_1: {
+							ctor: '::',
+							_0: 'f#3q',
+							_1: {
+								ctor: '::',
+								_0: 'a#3q',
+								_1: {
+									ctor: '::',
+									_0: 'c#4q',
+									_1: {
+										ctor: '::',
+										_0: 'f#4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				iv: {
+					ctor: '::',
+					_0: 'b2q',
+					_1: {
+						ctor: '::',
+						_0: 'f#3q',
+						_1: {
+							ctor: '::',
+							_0: 'b3q',
+							_1: {
+								ctor: '::',
+								_0: 'd#4q',
+								_1: {
+									ctor: '::',
+									_0: 'f#4q',
+									_1: {
+										ctor: '::',
+										_0: 'c0s',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				v: {
+					ctor: '::',
+					_0: 'c#3q',
+					_1: {
+						ctor: '::',
+						_0: 'g#3q',
+						_1: {
+							ctor: '::',
+							_0: 'c#4q',
+							_1: {
+								ctor: '::',
+								_0: 'f4q',
+								_1: {
+									ctor: '::',
+									_0: 'g#4q',
+									_1: {
+										ctor: '::',
+										_0: 'c0s',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				vi: {
+					ctor: '::',
+					_0: 'd#3q',
+					_1: {
+						ctor: '::',
+						_0: 'a#3q',
+						_1: {
+							ctor: '::',
+							_0: 'd#4q',
+							_1: {
+								ctor: '::',
+								_0: 'f#4q',
+								_1: {
+									ctor: '::',
+									_0: 'a#4q',
+									_1: {
+										ctor: '::',
+										_0: 'c0s',
 										_1: {ctor: '[]'}
 									}
 								}
@@ -11411,6 +11962,51 @@ var _user$project$Main$chordChart = function (chord) {
 			}
 		});
 };
+var _user$project$Main$chordBarPosition = F2(
+	function (index, key) {
+		var barPosition = A2(
+			_elm_community$list_extra$List_Extra$getAt,
+			index,
+			_user$project$Keys$keys(key).bars);
+		return (_elm_lang$core$Native_Utils.cmp(
+			_elm_lang$core$String$length(
+				A2(_elm_lang$core$Maybe$withDefault, '', barPosition)),
+			0) > 0) ? A2(
+			_elm_lang$html$Html$div,
+			{
+				ctor: '::',
+				_0: _user$project$Styles$chordBarPosStyle,
+				_1: {ctor: '[]'}
+			},
+			{
+				ctor: '::',
+				_0: _elm_lang$html$Html$text(
+					A2(
+						_elm_lang$core$Basics_ops['++'],
+						'Fret ',
+						A3(
+							_elm_lang$core$String$slice,
+							1,
+							2,
+							_elm_lang$core$Basics$toString(
+								A2(_elm_lang$core$Maybe$withDefault, '', barPosition))))),
+				_1: {ctor: '[]'}
+			}) : A2(
+			_elm_lang$html$Html$div,
+			{ctor: '[]'},
+			{ctor: '[]'});
+	});
+var _user$project$Main$chordFunction = F2(
+	function (num, key) {
+		return _elm_lang$html$Html$text(
+			A2(
+				_elm_lang$core$Maybe$withDefault,
+				'0',
+				A2(
+					_elm_community$list_extra$List_Extra$getAt,
+					num,
+					_user$project$Keys$keys(key).names)));
+	});
 var _user$project$Main$fretNo = function (fret) {
 	var _p0 = fret;
 	switch (_p0) {
@@ -11453,7 +12049,7 @@ var _user$project$Main$fingerNo = function (finger) {
 		case 'b':
 			return 'bar';
 		case '1':
-			return '#E8F1F2';
+			return '#777';
 		case '2':
 			return '#8338EC';
 		case '3':
@@ -11470,16 +12066,6 @@ var _user$project$Main$model = {
 	currentChord: {ctor: '[]'}
 };
 var _user$project$Main$init = {ctor: '_Tuple2', _0: _user$project$Main$model, _1: _elm_lang$core$Platform_Cmd$none};
-var _user$project$Main$chordFunction = function (num) {
-	return _elm_lang$html$Html$text(
-		A2(
-			_elm_lang$core$Maybe$withDefault,
-			'0',
-			A2(
-				_elm_community$list_extra$List_Extra$getAt,
-				num,
-				_user$project$Keys$keys(_user$project$Main$model.musKey).names)));
-};
 var _user$project$Main$send = _elm_lang$core$Native_Platform.outgoingPort(
 	'send',
 	function (v) {
@@ -11719,6 +12305,20 @@ var _user$project$Main$ChangeKey = function (a) {
 	return {ctor: 'ChangeKey', _0: a};
 };
 var _user$project$Main$view = function (model) {
+	var keyOptions = function (key) {
+		return A2(
+			_elm_lang$html$Html$option,
+			{
+				ctor: '::',
+				_0: _elm_lang$html$Html_Attributes$value(key),
+				_1: {ctor: '[]'}
+			},
+			{
+				ctor: '::',
+				_0: _elm_lang$html$Html$text(key),
+				_1: {ctor: '[]'}
+			});
+	};
 	var soloFretMin = A2(
 		_elm_lang$core$Maybe$withDefault,
 		'0',
@@ -11728,9 +12328,12 @@ var _user$project$Main$view = function (model) {
 			_user$project$Keys$keys(model.musKey).names));
 	var soloFretMaj = _elm_lang$core$Basics$toString(
 		A2(
-			_elm_lang$core$Result$withDefault,
-			0,
-			_elm_lang$core$String$toInt(soloFretMin)) + 3);
+			_elm_lang$core$Basics_ops['%'],
+			A2(
+				_elm_lang$core$Result$withDefault,
+				0,
+				_elm_lang$core$String$toInt(soloFretMin)) + 3,
+			12));
 	return A2(
 		_elm_lang$html$Html$div,
 		{
@@ -11769,112 +12372,7 @@ var _user$project$Main$view = function (model) {
 						_1: {ctor: '[]'}
 					}
 				},
-				{
-					ctor: '::',
-					_0: A2(
-						_elm_lang$html$Html$option,
-						{
-							ctor: '::',
-							_0: _elm_lang$html$Html_Attributes$value('c'),
-							_1: {ctor: '[]'}
-						},
-						{
-							ctor: '::',
-							_0: _elm_lang$html$Html$text('Major Keys'),
-							_1: {ctor: '[]'}
-						}),
-					_1: {
-						ctor: '::',
-						_0: A2(
-							_elm_lang$html$Html$option,
-							{
-								ctor: '::',
-								_0: _elm_lang$html$Html_Attributes$value('c'),
-								_1: {ctor: '[]'}
-							},
-							{
-								ctor: '::',
-								_0: _elm_lang$html$Html$text('C'),
-								_1: {ctor: '[]'}
-							}),
-						_1: {
-							ctor: '::',
-							_0: A2(
-								_elm_lang$html$Html$option,
-								{
-									ctor: '::',
-									_0: _elm_lang$html$Html_Attributes$value('g'),
-									_1: {ctor: '[]'}
-								},
-								{
-									ctor: '::',
-									_0: _elm_lang$html$Html$text('G'),
-									_1: {ctor: '[]'}
-								}),
-							_1: {
-								ctor: '::',
-								_0: A2(
-									_elm_lang$html$Html$option,
-									{
-										ctor: '::',
-										_0: _elm_lang$html$Html_Attributes$value('d'),
-										_1: {ctor: '[]'}
-									},
-									{
-										ctor: '::',
-										_0: _elm_lang$html$Html$text('D'),
-										_1: {ctor: '[]'}
-									}),
-								_1: {
-									ctor: '::',
-									_0: A2(
-										_elm_lang$html$Html$option,
-										{
-											ctor: '::',
-											_0: _elm_lang$html$Html_Attributes$value('a'),
-											_1: {ctor: '[]'}
-										},
-										{
-											ctor: '::',
-											_0: _elm_lang$html$Html$text('A'),
-											_1: {ctor: '[]'}
-										}),
-									_1: {
-										ctor: '::',
-										_0: A2(
-											_elm_lang$html$Html$option,
-											{
-												ctor: '::',
-												_0: _elm_lang$html$Html_Attributes$value('e'),
-												_1: {ctor: '[]'}
-											},
-											{
-												ctor: '::',
-												_0: _elm_lang$html$Html$text('E'),
-												_1: {ctor: '[]'}
-											}),
-										_1: {
-											ctor: '::',
-											_0: A2(
-												_elm_lang$html$Html$option,
-												{
-													ctor: '::',
-													_0: _elm_lang$html$Html_Attributes$value('b'),
-													_1: {ctor: '[]'}
-												},
-												{
-													ctor: '::',
-													_0: _elm_lang$html$Html$text('B'),
-													_1: {ctor: '[]'}
-												}),
-											_1: {ctor: '[]'}
-										}
-									}
-								}
-							}
-						}
-					}
-				}),
+				A2(_elm_lang$core$List$map, keyOptions, _user$project$Keys$keyList)),
 			_1: {
 				ctor: '::',
 				_0: A2(
@@ -11895,43 +12393,26 @@ var _user$project$Main$view = function (model) {
 							},
 							{
 								ctor: '::',
-								_0: _user$project$Main$chordChart(
-									_user$project$Main$chordBuilder(
-										_user$project$Keys$keys(model.musKey).i)),
+								_0: A2(
+									_elm_lang$html$Html$div,
+									{ctor: '[]'},
+									{
+										ctor: '::',
+										_0: A2(_user$project$Main$chordBarPosition, 0, model.musKey),
+										_1: {ctor: '[]'}
+									}),
 								_1: {
 									ctor: '::',
-									_0: A2(
-										_elm_lang$html$Html$div,
-										{
-											ctor: '::',
-											_0: _user$project$Styles$chordNameStyle,
-											_1: {
-												ctor: '::',
-												_0: _elm_lang$html$Html_Events$onClick(
-													_user$project$Main$Play(
-														_user$project$Notes$notes(model.musKey).i)),
-												_1: {ctor: '[]'}
-											}
-										},
-										{
-											ctor: '::',
-											_0: _elm_lang$html$Html$text(
-												A2(
-													_elm_lang$core$Maybe$withDefault,
-													'C',
-													A2(
-														_elm_community$list_extra$List_Extra$getAt,
-														0,
-														_user$project$Keys$keys(model.musKey).names))),
-											_1: {ctor: '[]'}
-										}),
+									_0: _user$project$Main$chordChart(
+										_user$project$Main$chordBuilder(
+											_user$project$Keys$keys(model.musKey).i)),
 									_1: {
 										ctor: '::',
 										_0: A2(
 											_elm_lang$html$Html$div,
 											{
 												ctor: '::',
-												_0: _user$project$Styles$chordFunctionStyle,
+												_0: _user$project$Styles$chordNameStyle,
 												_1: {
 													ctor: '::',
 													_0: _elm_lang$html$Html_Events$onClick(
@@ -11942,10 +12423,31 @@ var _user$project$Main$view = function (model) {
 											},
 											{
 												ctor: '::',
-												_0: _elm_lang$html$Html$text('I'),
+												_0: A2(_user$project$Main$chordFunction, 0, model.musKey),
 												_1: {ctor: '[]'}
 											}),
-										_1: {ctor: '[]'}
+										_1: {
+											ctor: '::',
+											_0: A2(
+												_elm_lang$html$Html$div,
+												{
+													ctor: '::',
+													_0: _user$project$Styles$chordFunctionStyle,
+													_1: {
+														ctor: '::',
+														_0: _elm_lang$html$Html_Events$onClick(
+															_user$project$Main$Play(
+																_user$project$Notes$notes(model.musKey).i)),
+														_1: {ctor: '[]'}
+													}
+												},
+												{
+													ctor: '::',
+													_0: _elm_lang$html$Html$text('I'),
+													_1: {ctor: '[]'}
+												}),
+											_1: {ctor: '[]'}
+										}
 									}
 								}
 							}),
@@ -11960,43 +12462,26 @@ var _user$project$Main$view = function (model) {
 								},
 								{
 									ctor: '::',
-									_0: _user$project$Main$chordChart(
-										_user$project$Main$chordBuilder(
-											_user$project$Keys$keys(model.musKey).iv)),
+									_0: A2(
+										_elm_lang$html$Html$div,
+										{ctor: '[]'},
+										{
+											ctor: '::',
+											_0: A2(_user$project$Main$chordBarPosition, 1, model.musKey),
+											_1: {ctor: '[]'}
+										}),
 									_1: {
 										ctor: '::',
-										_0: A2(
-											_elm_lang$html$Html$div,
-											{
-												ctor: '::',
-												_0: _user$project$Styles$chordNameStyle,
-												_1: {
-													ctor: '::',
-													_0: _elm_lang$html$Html_Events$onClick(
-														_user$project$Main$Play(
-															_user$project$Notes$notes(model.musKey).iv)),
-													_1: {ctor: '[]'}
-												}
-											},
-											{
-												ctor: '::',
-												_0: _elm_lang$html$Html$text(
-													A2(
-														_elm_lang$core$Maybe$withDefault,
-														'C',
-														A2(
-															_elm_community$list_extra$List_Extra$getAt,
-															1,
-															_user$project$Keys$keys(model.musKey).names))),
-												_1: {ctor: '[]'}
-											}),
+										_0: _user$project$Main$chordChart(
+											_user$project$Main$chordBuilder(
+												_user$project$Keys$keys(model.musKey).iv)),
 										_1: {
 											ctor: '::',
 											_0: A2(
 												_elm_lang$html$Html$div,
 												{
 													ctor: '::',
-													_0: _user$project$Styles$chordFunctionStyle,
+													_0: _user$project$Styles$chordNameStyle,
 													_1: {
 														ctor: '::',
 														_0: _elm_lang$html$Html_Events$onClick(
@@ -12007,10 +12492,31 @@ var _user$project$Main$view = function (model) {
 												},
 												{
 													ctor: '::',
-													_0: _elm_lang$html$Html$text('IV'),
+													_0: A2(_user$project$Main$chordFunction, 1, model.musKey),
 													_1: {ctor: '[]'}
 												}),
-											_1: {ctor: '[]'}
+											_1: {
+												ctor: '::',
+												_0: A2(
+													_elm_lang$html$Html$div,
+													{
+														ctor: '::',
+														_0: _user$project$Styles$chordFunctionStyle,
+														_1: {
+															ctor: '::',
+															_0: _elm_lang$html$Html_Events$onClick(
+																_user$project$Main$Play(
+																	_user$project$Notes$notes(model.musKey).iv)),
+															_1: {ctor: '[]'}
+														}
+													},
+													{
+														ctor: '::',
+														_0: _elm_lang$html$Html$text('IV'),
+														_1: {ctor: '[]'}
+													}),
+												_1: {ctor: '[]'}
+											}
 										}
 									}
 								}),
@@ -12025,43 +12531,26 @@ var _user$project$Main$view = function (model) {
 									},
 									{
 										ctor: '::',
-										_0: _user$project$Main$chordChart(
-											_user$project$Main$chordBuilder(
-												_user$project$Keys$keys(model.musKey).v)),
+										_0: A2(
+											_elm_lang$html$Html$div,
+											{ctor: '[]'},
+											{
+												ctor: '::',
+												_0: A2(_user$project$Main$chordBarPosition, 2, model.musKey),
+												_1: {ctor: '[]'}
+											}),
 										_1: {
 											ctor: '::',
-											_0: A2(
-												_elm_lang$html$Html$div,
-												{
-													ctor: '::',
-													_0: _user$project$Styles$chordNameStyle,
-													_1: {
-														ctor: '::',
-														_0: _elm_lang$html$Html_Events$onClick(
-															_user$project$Main$Play(
-																_user$project$Notes$notes(model.musKey).v)),
-														_1: {ctor: '[]'}
-													}
-												},
-												{
-													ctor: '::',
-													_0: _elm_lang$html$Html$text(
-														A2(
-															_elm_lang$core$Maybe$withDefault,
-															'C',
-															A2(
-																_elm_community$list_extra$List_Extra$getAt,
-																2,
-																_user$project$Keys$keys(model.musKey).names))),
-													_1: {ctor: '[]'}
-												}),
+											_0: _user$project$Main$chordChart(
+												_user$project$Main$chordBuilder(
+													_user$project$Keys$keys(model.musKey).v)),
 											_1: {
 												ctor: '::',
 												_0: A2(
 													_elm_lang$html$Html$div,
 													{
 														ctor: '::',
-														_0: _user$project$Styles$chordFunctionStyle,
+														_0: _user$project$Styles$chordNameStyle,
 														_1: {
 															ctor: '::',
 															_0: _elm_lang$html$Html_Events$onClick(
@@ -12072,10 +12561,31 @@ var _user$project$Main$view = function (model) {
 													},
 													{
 														ctor: '::',
-														_0: _elm_lang$html$Html$text('V'),
+														_0: A2(_user$project$Main$chordFunction, 2, model.musKey),
 														_1: {ctor: '[]'}
 													}),
-												_1: {ctor: '[]'}
+												_1: {
+													ctor: '::',
+													_0: A2(
+														_elm_lang$html$Html$div,
+														{
+															ctor: '::',
+															_0: _user$project$Styles$chordFunctionStyle,
+															_1: {
+																ctor: '::',
+																_0: _elm_lang$html$Html_Events$onClick(
+																	_user$project$Main$Play(
+																		_user$project$Notes$notes(model.musKey).v)),
+																_1: {ctor: '[]'}
+															}
+														},
+														{
+															ctor: '::',
+															_0: _elm_lang$html$Html$text('V'),
+															_1: {ctor: '[]'}
+														}),
+													_1: {ctor: '[]'}
+												}
 											}
 										}
 									}),
@@ -12090,43 +12600,26 @@ var _user$project$Main$view = function (model) {
 										},
 										{
 											ctor: '::',
-											_0: _user$project$Main$chordChart(
-												_user$project$Main$chordBuilder(
-													_user$project$Keys$keys(model.musKey).vi)),
+											_0: A2(
+												_elm_lang$html$Html$div,
+												{ctor: '[]'},
+												{
+													ctor: '::',
+													_0: A2(_user$project$Main$chordBarPosition, 3, model.musKey),
+													_1: {ctor: '[]'}
+												}),
 											_1: {
 												ctor: '::',
-												_0: A2(
-													_elm_lang$html$Html$div,
-													{
-														ctor: '::',
-														_0: _user$project$Styles$chordNameStyle,
-														_1: {
-															ctor: '::',
-															_0: _elm_lang$html$Html_Events$onClick(
-																_user$project$Main$Play(
-																	_user$project$Notes$notes(model.musKey).vi)),
-															_1: {ctor: '[]'}
-														}
-													},
-													{
-														ctor: '::',
-														_0: _elm_lang$html$Html$text(
-															A2(
-																_elm_lang$core$Maybe$withDefault,
-																'C',
-																A2(
-																	_elm_community$list_extra$List_Extra$getAt,
-																	3,
-																	_user$project$Keys$keys(model.musKey).names))),
-														_1: {ctor: '[]'}
-													}),
+												_0: _user$project$Main$chordChart(
+													_user$project$Main$chordBuilder(
+														_user$project$Keys$keys(model.musKey).vi)),
 												_1: {
 													ctor: '::',
 													_0: A2(
 														_elm_lang$html$Html$div,
 														{
 															ctor: '::',
-															_0: _user$project$Styles$chordFunctionStyle,
+															_0: _user$project$Styles$chordNameStyle,
 															_1: {
 																ctor: '::',
 																_0: _elm_lang$html$Html_Events$onClick(
@@ -12137,10 +12630,31 @@ var _user$project$Main$view = function (model) {
 														},
 														{
 															ctor: '::',
-															_0: _elm_lang$html$Html$text('VI'),
+															_0: A2(_user$project$Main$chordFunction, 3, model.musKey),
 															_1: {ctor: '[]'}
 														}),
-													_1: {ctor: '[]'}
+													_1: {
+														ctor: '::',
+														_0: A2(
+															_elm_lang$html$Html$div,
+															{
+																ctor: '::',
+																_0: _user$project$Styles$chordFunctionStyle,
+																_1: {
+																	ctor: '::',
+																	_0: _elm_lang$html$Html_Events$onClick(
+																		_user$project$Main$Play(
+																			_user$project$Notes$notes(model.musKey).vi)),
+																	_1: {ctor: '[]'}
+																}
+															},
+															{
+																ctor: '::',
+																_0: _elm_lang$html$Html$text('VI'),
+																_1: {ctor: '[]'}
+															}),
+														_1: {ctor: '[]'}
+													}
 												}
 											}
 										}),
@@ -12168,11 +12682,14 @@ var _user$project$Main$view = function (model) {
 							_0: _elm_lang$html$Html$text(
 								A2(
 									_elm_lang$core$Basics_ops['++'],
-									'Solo on: Minor Scale, fret: ',
+									'Solo on fret: ',
 									A2(
 										_elm_lang$core$Basics_ops['++'],
 										soloFretMin,
-										A2(_elm_lang$core$Basics_ops['++'], ', Major Scale, fret: ', soloFretMaj)))),
+										A2(
+											_elm_lang$core$Basics_ops['++'],
+											' (Minor scale), or fret: ',
+											A2(_elm_lang$core$Basics_ops['++'], soloFretMaj, ' (Major scale)'))))),
 							_1: {ctor: '[]'}
 						}),
 					_1: {ctor: '[]'}

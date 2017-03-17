@@ -102,7 +102,7 @@ fingerNo finger =
             "bar"
 
         "1" ->
-            "#E8F1F2"
+            "#777"
 
         "2" ->
             "#8338EC"
@@ -183,46 +183,57 @@ view model =
             Maybe.withDefault "0" (getAt 4 <| (keys model.musKey).names)
 
         soloFretMaj =
-            toString ((Result.withDefault 0 <| String.toInt soloFretMin) + 3)
+            toString (((Result.withDefault 0 <| String.toInt soloFretMin) + 3) % 12)
+
+        keyOptions key =
+            option [ value key ] [ text key ]
     in
         div [ style [ ( "textAlign", "center" ) ] ]
             [ select [ style [ ( "color", "#fff" ), ( "width", "100px" ), ( "marginTop", "50px" ) ], Html.Events.onInput ChangeKey ]
-                [ option [ value "c" ] [ text "Major Keys" ]
-                , option [ value "c" ] [ text "C" ]
-                , option [ value "g" ] [ text "G" ]
-                , option [ value "d" ] [ text "D" ]
-                , option [ value "a" ] [ text "A" ]
-                , option [ value "e" ] [ text "E" ]
-                , option [ value "b" ] [ text "B" ]
-                ]
+                (List.map keyOptions Keys.keyList)
             , div [ chartContainerStyle "row" ]
                 [ div [ chartContainerStyle "column" ]
-                    [ chordChart <| chordBuilder (keys model.musKey).i
-                    , div [ chordNameStyle, onClick (Play <| (Notes.notes model.musKey).i) ] [ text <| Maybe.withDefault "C" (getAt 0 <| (keys model.musKey).names) ]
+                    [ div [] [ chordBarPosition 0 model.musKey ]
+                    , chordChart <| chordBuilder (keys model.musKey).i
+                    , div [ chordNameStyle, onClick (Play <| (Notes.notes model.musKey).i) ] [ chordFunction 0 model.musKey ]
                     , div [ chordFunctionStyle, onClick (Play <| (Notes.notes model.musKey).i) ] [ text "I" ]
                     ]
                 , div [ chartContainerStyle "column" ]
-                    [ chordChart <| chordBuilder (keys model.musKey).iv
-                    , div [ chordNameStyle, onClick (Play <| (Notes.notes model.musKey).iv) ] [ text <| Maybe.withDefault "C" (getAt 1 <| (keys model.musKey).names) ]
+                    [ div [] [ chordBarPosition 1 model.musKey ]
+                    , chordChart <| chordBuilder (keys model.musKey).iv
+                    , div [ chordNameStyle, onClick (Play <| (Notes.notes model.musKey).iv) ] [ chordFunction 1 model.musKey ]
                     , div [ chordFunctionStyle, onClick (Play <| (Notes.notes model.musKey).iv) ] [ text "IV" ]
                     ]
                 , div [ chartContainerStyle "column" ]
-                    [ chordChart <| chordBuilder (keys model.musKey).v
-                    , div [ chordNameStyle, onClick (Play <| (Notes.notes model.musKey).v) ] [ text <| Maybe.withDefault "C" (getAt 2 <| (keys model.musKey).names) ]
+                    [ div [] [ chordBarPosition 2 model.musKey ]
+                    , chordChart <| chordBuilder (keys model.musKey).v
+                    , div [ chordNameStyle, onClick (Play <| (Notes.notes model.musKey).v) ] [ chordFunction 2 model.musKey ]
                     , div [ chordFunctionStyle, onClick (Play <| (Notes.notes model.musKey).v) ] [ text "V" ]
                     ]
                 , div [ chartContainerStyle "column" ]
-                    [ chordChart <| chordBuilder (keys model.musKey).vi
-                    , div [ chordNameStyle, onClick (Play <| (Notes.notes model.musKey).vi) ] [ text <| Maybe.withDefault "C" (getAt 3 <| (keys model.musKey).names) ]
+                    [ div [] [ chordBarPosition 3 model.musKey ]
+                    , chordChart <| chordBuilder (keys model.musKey).vi
+                    , div [ chordNameStyle, onClick (Play <| (Notes.notes model.musKey).vi) ] [ chordFunction 3 model.musKey ]
                     , div [ chordFunctionStyle, onClick (Play <| (Notes.notes model.musKey).vi) ] [ text "VI" ]
                     ]
                 ]
-            , div [ style [ ( "fontSize", "20px" ) ] ] [ text ("Solo on: Minor Scale, fret: " ++ soloFretMin ++ ", Major Scale, fret: " ++ soloFretMaj) ]
+            , div [ style [ ( "fontSize", "20px" ) ] ] [ text ("Solo on fret: " ++ soloFretMin ++ " (Minor scale), or fret: " ++ soloFretMaj ++ " (Major scale)") ]
             ]
 
 
-chordFunction num =
-    text <| Maybe.withDefault "0" (getAt num <| (keys model.musKey).names)
+chordFunction num key =
+    text <| Maybe.withDefault "0" (getAt num <| (keys key).names)
+
+
+chordBarPosition index key =
+    let
+        barPosition =
+            getAt index (Keys.keys key).bars
+    in
+        if String.length (Maybe.withDefault "" barPosition) > 0 then
+            div [ chordBarPosStyle ] [ text <| "Fret " ++ String.slice 1 2 (toString (Maybe.withDefault "" barPosition)) ]
+        else
+            div [] []
 
 
 chordChart chord =
