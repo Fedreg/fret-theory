@@ -42,7 +42,7 @@ type alias PlayBundle =
 
 
 model =
-    { musKey = "c"
+    { musKey = "C"
     , index = 6
     , currentChord = []
     }

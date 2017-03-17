@@ -4,7 +4,7 @@ import Html.Attributes exposing (..)
 
 
 chordBarPosStyle =
-    style [ ( "position", "relative" ), ( "color", "deepPink" ), ( "transition", "all 0.3s ease" ) ]
+    style [ ( "position", "absolute" ), ( "top", "-15px" ), ( "right", "30%" ), ( "color", "deepPink" ), ( "transition", "all 0.3s ease" ) ]
 
 
 chartStyle =
@@ -20,7 +20,7 @@ nutStyle =
 
 
 chartContainerStyle direction =
-    style [ ( "display", "flex" ), ( "margin", "25px auto" ), ( "flexDirection", direction ), ( "transition", "all 0.3s ease" ) ]
+    style [ ( "position", "relative" ), ( "display", "flex" ), ( "margin", "25px auto" ), ( "flexDirection", direction ), ( "transition", "all 0.3s ease" ) ]
 
 
 fretStyle fret =

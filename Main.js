@@ -10872,17 +10872,21 @@ var _user$project$Styles$chartContainerStyle = function (direction) {
 	return _elm_lang$html$Html_Attributes$style(
 		{
 			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'display', _1: 'flex'},
+			_0: {ctor: '_Tuple2', _0: 'position', _1: 'relative'},
 			_1: {
 				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'margin', _1: '25px auto'},
+				_0: {ctor: '_Tuple2', _0: 'display', _1: 'flex'},
 				_1: {
 					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'flexDirection', _1: direction},
+					_0: {ctor: '_Tuple2', _0: 'margin', _1: '25px auto'},
 					_1: {
 						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'transition', _1: 'all 0.3s ease'},
-						_1: {ctor: '[]'}
+						_0: {ctor: '_Tuple2', _0: 'flexDirection', _1: direction},
+						_1: {
+							ctor: '::',
+							_0: {ctor: '_Tuple2', _0: 'transition', _1: 'all 0.3s ease'},
+							_1: {ctor: '[]'}
+						}
 					}
 				}
 			}
@@ -10945,14 +10949,22 @@ var _user$project$Styles$chartStyle = _elm_lang$html$Html_Attributes$style(
 var _user$project$Styles$chordBarPosStyle = _elm_lang$html$Html_Attributes$style(
 	{
 		ctor: '::',
-		_0: {ctor: '_Tuple2', _0: 'position', _1: 'relative'},
+		_0: {ctor: '_Tuple2', _0: 'position', _1: 'absolute'},
 		_1: {
 			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'color', _1: 'deepPink'},
+			_0: {ctor: '_Tuple2', _0: 'top', _1: '-15px'},
 			_1: {
 				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'transition', _1: 'all 0.3s ease'},
-				_1: {ctor: '[]'}
+				_0: {ctor: '_Tuple2', _0: 'right', _1: '30%'},
+				_1: {
+					ctor: '::',
+					_0: {ctor: '_Tuple2', _0: 'color', _1: 'deepPink'},
+					_1: {
+						ctor: '::',
+						_0: {ctor: '_Tuple2', _0: 'transition', _1: 'all 0.3s ease'},
+						_1: {ctor: '[]'}
+					}
+				}
 			}
 		}
 	});
@@ -12061,7 +12073,7 @@ var _user$project$Main$fingerNo = function (finger) {
 	}
 };
 var _user$project$Main$model = {
-	musKey: 'c',
+	musKey: 'C',
 	index: 6,
 	currentChord: {ctor: '[]'}
 };
