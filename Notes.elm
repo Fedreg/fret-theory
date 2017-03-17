@@ -10,6 +10,9 @@ type alias Note =
     }
 
 
+{-| Defines audio Notes to be played for each string of every chord.
+-}
+notes : String -> { i : List String, iv : List String, v : List String, vi : List String }
 notes key =
     case key of
         -- 12 Major Keys
@@ -188,6 +191,8 @@ notes key =
             }
 
 
+{-| Builds the Note to from a string to send to the web audio function.
+-}
 noteSorter : String -> Note
 noteSorter string =
     -- let

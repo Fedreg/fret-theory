@@ -1,10 +1,14 @@
 module Keys exposing (keys, keyList)
 
 
+keyList : List String
 keyList =
     [ "Major Keys", "C", "G", "D", "A", "E", "B", "F#", "Db", "Ab", "Eb", "Bb", "F" ]
 
 
+{-| Defines dot placement of each chord.
+-}
+keys : String -> { bars : List String, i : String, iv : String, names : List String, v : String, vi : String }
 keys key =
     case key of
         "C" ->
