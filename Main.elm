@@ -96,6 +96,9 @@ subscriptions model =
         Sub.none
 
 
+{-| Determines color of chord chart dot.
+-}
+fingerNo : String -> String
 fingerNo finger =
     case finger of
         "b" ->
@@ -117,6 +120,9 @@ fingerNo finger =
             "none"
 
 
+{-| Determinses vertical position of chord chart dot.
+-}
+stringNo : String -> String
 stringNo string =
     case string of
         "1" ->
@@ -141,6 +147,9 @@ stringNo string =
             ""
 
 
+{-| Determines hotizontal position of chord chart dot.
+-}
+fretNo : String -> String
 fretNo fret =
     case fret of
         "0" ->
@@ -162,21 +171,7 @@ fretNo fret =
             "-40"
 
 
-chordBuilder chord =
-    let
-        string a b =
-            String.slice a b chord
-    in
-        div []
-            [ div [ fretMarkerStyle (Dot (fingerNo <| string 0 1) (stringNo <| string 1 2) (fretNo <| string 2 3)) ] [ text (string 2 3) ]
-            , div [ fretMarkerStyle (Dot (fingerNo <| string 3 4) (stringNo <| string 4 5) (fretNo <| string 5 6)) ] [ text (string 5 6) ]
-            , div [ fretMarkerStyle (Dot (fingerNo <| string 6 7) (stringNo <| string 7 8) (fretNo <| string 8 9)) ] [ text (string 8 9) ]
-            , div [ fretMarkerStyle (Dot (fingerNo <| string 9 10) (stringNo <| string 10 11) (fretNo <| string 11 12)) ] [ text (string 11 12) ]
-            , div [ fretMarkerStyle (Dot (fingerNo <| string 12 13) (stringNo <| string 13 14) (fretNo <| string 14 15)) ] [ text (string 14 15) ]
-            , div [ fretMarkerStyle (Dot (fingerNo <| string 15 16) (stringNo <| string 16 17) (fretNo <| string 17 18)) ] [ text (string 17 18) ]
-            ]
-
-
+view : Model -> Html Msg
 view model =
     let
         soloFretMin =
@@ -189,7 +184,8 @@ view model =
             option [ value key ] [ text key ]
     in
         div [ style [ ( "textAlign", "center" ) ] ]
-            [ select [ style [ ( "color", "#fff" ), ( "width", "100px" ), ( "marginTop", "50px" ) ], Html.Events.onInput ChangeKey ]
+            [ div [] [ fingerChart ]
+            , select [ style [ ( "color", "#fff" ), ( "width", "100px" ), ( "marginTop", "50px" ) ], Html.Events.onInput ChangeKey ]
                 (List.map keyOptions Keys.keyList)
             , div [ chartContainerStyle "row" ]
                 [ div [ chartContainerStyle "column" ]
@@ -221,10 +217,16 @@ view model =
             ]
 
 
+{-| Inserts chord name.
+-}
+chordFunction : Int -> String -> Html Msg
 chordFunction num key =
     text <| Maybe.withDefault "0" (getAt num <| (keys key).names)
 
 
+{-| Adds bar position marker above chord chart
+-}
+chordBarPosition : Int -> String -> Html Msg
 chordBarPosition index key =
     let
         barPosition =
@@ -236,6 +238,26 @@ chordBarPosition index key =
             div [] []
 
 
+{-| Draws the dots on the chord chart.
+-}
+chordBuilder : String -> Html Msg
+chordBuilder chord =
+    let
+        string a b =
+            String.slice a b chord
+    in
+        div []
+            [ div [ fretMarkerStyle (Dot (fingerNo <| string 0 1) (stringNo <| string 1 2) (fretNo <| string 2 3)) ] [ text (string 2 3) ]
+            , div [ fretMarkerStyle (Dot (fingerNo <| string 3 4) (stringNo <| string 4 5) (fretNo <| string 5 6)) ] [ text (string 5 6) ]
+            , div [ fretMarkerStyle (Dot (fingerNo <| string 6 7) (stringNo <| string 7 8) (fretNo <| string 8 9)) ] [ text (string 8 9) ]
+            , div [ fretMarkerStyle (Dot (fingerNo <| string 9 10) (stringNo <| string 10 11) (fretNo <| string 11 12)) ] [ text (string 11 12) ]
+            , div [ fretMarkerStyle (Dot (fingerNo <| string 12 13) (stringNo <| string 13 14) (fretNo <| string 14 15)) ] [ text (string 14 15) ]
+            , div [ fretMarkerStyle (Dot (fingerNo <| string 15 16) (stringNo <| string 16 17) (fretNo <| string 17 18)) ] [ text (string 17 18) ]
+            ]
+
+
+{-| Drawe blank chord chart.
+-}
 chordChart chord =
     div [ chartContainerStyle "row" ]
         [ div [ chartStyle ]
@@ -250,4 +272,27 @@ chordChart chord =
             , chord
             ]
         , div [ nutStyle ] []
+        ]
+
+
+{-| Shows a key defining which finger has which color.
+-}
+fingerChart =
+    div [ fingerChartStyle ]
+        [ div [ style [ ( "display", "flex" ) ] ]
+            [ div [ style [ ( "width", "15px" ), ( "height", "15px" ), ( "borderRadius", "13px" ), ( "backgroundColor", fingerNo "1" ) ] ] []
+            , div [ style [ ( "padding", "5px" ), ( "lineHeight", "9px" ) ] ] [ text "Pointer" ]
+            ]
+        , div [ style [ ( "display", "flex" ) ] ]
+            [ div [ style [ ( "width", "15px" ), ( "height", "15px" ), ( "borderRadius", "13px" ), ( "backgroundColor", fingerNo "2" ) ] ] []
+            , div [ style [ ( "padding", "5px" ), ( "lineHeight", "9px" ) ] ] [ text "Middle" ]
+            ]
+        , div [ style [ ( "display", "flex" ) ] ]
+            [ div [ style [ ( "width", "15px" ), ( "height", "15px" ), ( "borderRadius", "13px" ), ( "backgroundColor", fingerNo "3" ) ] ] []
+            , div [ style [ ( "padding", "5px" ), ( "lineHeight", "9px" ) ] ] [ text "Ring" ]
+            ]
+        , div [ style [ ( "display", "flex" ) ] ]
+            [ div [ style [ ( "width", "15px" ), ( "height", "15px" ), ( "borderRadius", "13px" ), ( "backgroundColor", fingerNo "4" ) ] ] []
+            , div [ style [ ( "padding", "5px" ), ( "lineHeight", "9px" ) ] ] [ text "Pinky" ]
+            ]
         ]

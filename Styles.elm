@@ -35,6 +35,12 @@ chordFunctionStyle =
     style [ ( "cursor", "pointer" ), ( "color", "#3A86FF" ), ( "fontSize", "30px" ), ( "marginLeft", "150px" ), ( "margin", "0 auto" ) ]
 
 
+fingerChartStyle =
+    style [ ( "display", "flex" ), ( "flexDirection", "column" ), ( "position", "absolute" ), ( "top", "20px" ), ( "left", "20px" ) ]
+
+
+{-| Determines if fret marker dot is a bar, a dot, or a 'X', or 'O'.
+-}
 fretMarkerStyle dot =
     if dot.tint == "bar" then
         let
