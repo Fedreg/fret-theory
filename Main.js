@@ -10844,7 +10844,7 @@ var _user$project$Keys$keys = function (key) {
 				i: '06xb52344434223112',
 				iv: 'b62354444132122112',
 				v: 'b62354444132122112',
-				vi: 'b62354444233122112',
+				vi: '06xb52244334424112',
 				names: {
 					ctor: '::',
 					_0: 'D# Min',
@@ -10856,7 +10856,7 @@ var _user$project$Keys$keys = function (key) {
 							_0: 'A# Min',
 							_1: {
 								ctor: '::',
-								_0: 'G#',
+								_0: 'B',
 								_1: {
 									ctor: '::',
 									_0: '11',
@@ -10877,7 +10877,7 @@ var _user$project$Keys$keys = function (key) {
 							_0: '6',
 							_1: {
 								ctor: '::',
-								_0: '4',
+								_0: '',
 								_1: {ctor: '[]'}
 							}
 						}
@@ -10931,7 +10931,7 @@ var _user$project$Keys$keys = function (key) {
 			};
 		case 'f':
 			return {
-				i: 'b61353443232111111',
+				i: 'b61353443131111111',
 				iv: '06xb51343433222111',
 				v: '06xb52344434223112',
 				vi: '06xb52244334424112',
@@ -13209,7 +13209,7 @@ var _user$project$Notes$notes = function (key) {
 						_0: 'a2q',
 						_1: {
 							ctor: '::',
-							_0: 'd3q',
+							_0: 'c#3q',
 							_1: {
 								ctor: '::',
 								_0: 'a3q',
@@ -13218,7 +13218,7 @@ var _user$project$Notes$notes = function (key) {
 									_0: 'c#4q',
 									_1: {
 										ctor: '::',
-										_0: 'e4q',
+										_0: 'f#4q',
 										_1: {ctor: '[]'}
 									}
 								}
@@ -13234,7 +13234,7 @@ var _user$project$Notes$notes = function (key) {
 						_0: 'd3q',
 						_1: {
 							ctor: '::',
-							_0: 'g3q',
+							_0: 'f#3q',
 							_1: {
 								ctor: '::',
 								_0: 'd4q',
@@ -13278,19 +13278,19 @@ var _user$project$Notes$notes = function (key) {
 				},
 				vi: {
 					ctor: '::',
-					_0: 'd#3q',
+					_0: 'd3q',
 					_1: {
 						ctor: '::',
-						_0: 'a#3q',
+						_0: 'a3q',
 						_1: {
 							ctor: '::',
-							_0: 'd#4q',
+							_0: 'd4q',
 							_1: {
 								ctor: '::',
-								_0: 'g4q',
+								_0: 'f#4q',
 								_1: {
 									ctor: '::',
-									_0: 'a#4q',
+									_0: 'c0s',
 									_1: {
 										ctor: '::',
 										_0: 'c0s',
@@ -13306,7 +13306,7 @@ var _user$project$Notes$notes = function (key) {
 			return {
 				i: {
 					ctor: '::',
-					_0: 'c#q3',
+					_0: 'c#3q',
 					_1: {
 						ctor: '::',
 						_0: 'g#3q',
@@ -13334,10 +13334,10 @@ var _user$project$Notes$notes = function (key) {
 					_0: 'f#2q',
 					_1: {
 						ctor: '::',
-						_0: 'a2q',
+						_0: 'c#3q',
 						_1: {
 							ctor: '::',
-							_0: 'd3q',
+							_0: 'f#3q',
 							_1: {
 								ctor: '::',
 								_0: 'a3q',
@@ -13346,7 +13346,7 @@ var _user$project$Notes$notes = function (key) {
 									_0: 'c#4q',
 									_1: {
 										ctor: '::',
-										_0: 'e4q',
+										_0: 'f#4q',
 										_1: {ctor: '[]'}
 									}
 								}
@@ -13381,19 +13381,19 @@ var _user$project$Notes$notes = function (key) {
 				},
 				vi: {
 					ctor: '::',
-					_0: 'a#2q',
+					_0: 'a2q',
 					_1: {
 						ctor: '::',
-						_0: 'f3q',
+						_0: 'e3q',
 						_1: {
 							ctor: '::',
-							_0: 'a#3q',
+							_0: 'a3q',
 							_1: {
 								ctor: '::',
-								_0: 'd4q',
+								_0: 'c#4q',
 								_1: {
 									ctor: '::',
-									_0: 'f4q',
+									_0: 'e4q',
 									_1: {
 										ctor: '::',
 										_0: 'c0s',
@@ -13577,7 +13577,7 @@ var _user$project$Notes$notes = function (key) {
 									_0: 'f4q',
 									_1: {
 										ctor: '::',
-										_0: 'c0s',
+										_0: 'a#4q',
 										_1: {ctor: '[]'}
 									}
 								}
@@ -13630,7 +13630,7 @@ var _user$project$Notes$notes = function (key) {
 									_0: 'f4q',
 									_1: {
 										ctor: '::',
-										_0: 'c0s',
+										_0: 'a#4q',
 										_1: {ctor: '[]'}
 									}
 								}
@@ -13665,22 +13665,22 @@ var _user$project$Notes$notes = function (key) {
 				},
 				v: {
 					ctor: '::',
-					_0: 'f2q',
+					_0: 'f3q',
 					_1: {
 						ctor: '::',
-						_0: 'c3q',
+						_0: 'c4q',
 						_1: {
 							ctor: '::',
-							_0: 'f3q',
+							_0: 'f4q',
 							_1: {
 								ctor: '::',
-								_0: 'g#3q',
+								_0: 'g#4q',
 								_1: {
 									ctor: '::',
-									_0: 'c4q',
+									_0: 'c5q',
 									_1: {
 										ctor: '::',
-										_0: 'f4q',
+										_0: 'c0s',
 										_1: {ctor: '[]'}
 									}
 								}
