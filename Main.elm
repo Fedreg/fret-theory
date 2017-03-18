@@ -184,7 +184,8 @@ view model =
             option [ value key ] [ text key ]
     in
         div [ style [ ( "textAlign", "center" ) ] ]
-            [ select [ style [ ( "color", "#fff" ), ( "width", "100px" ), ( "marginTop", "50px" ) ], Html.Events.onInput ChangeKey ]
+            [ div [] [ fingerChart ]
+            , select [ style [ ( "color", "#fff" ), ( "width", "100px" ), ( "marginTop", "50px" ) ], Html.Events.onInput ChangeKey ]
                 (List.map keyOptions Keys.keyList)
             , div [ chartContainerStyle "row" ]
                 [ div [ chartContainerStyle "column" ]
@@ -271,4 +272,27 @@ chordChart chord =
             , chord
             ]
         , div [ nutStyle ] []
+        ]
+
+
+{-| Shows a key defining which finger has which color.
+-}
+fingerChart =
+    div [ fingerChartStyle ]
+        [ div [ style [ ( "display", "flex" ) ] ]
+            [ div [ style [ ( "width", "15px" ), ( "height", "15px" ), ( "borderRadius", "13px" ), ( "backgroundColor", fingerNo "1" ) ] ] []
+            , div [ style [ ( "padding", "5px" ), ( "lineHeight", "9px" ) ] ] [ text "Pointer" ]
+            ]
+        , div [ style [ ( "display", "flex" ) ] ]
+            [ div [ style [ ( "width", "15px" ), ( "height", "15px" ), ( "borderRadius", "13px" ), ( "backgroundColor", fingerNo "2" ) ] ] []
+            , div [ style [ ( "padding", "5px" ), ( "lineHeight", "9px" ) ] ] [ text "Middle" ]
+            ]
+        , div [ style [ ( "display", "flex" ) ] ]
+            [ div [ style [ ( "width", "15px" ), ( "height", "15px" ), ( "borderRadius", "13px" ), ( "backgroundColor", fingerNo "3" ) ] ] []
+            , div [ style [ ( "padding", "5px" ), ( "lineHeight", "9px" ) ] ] [ text "Ring" ]
+            ]
+        , div [ style [ ( "display", "flex" ) ] ]
+            [ div [ style [ ( "width", "15px" ), ( "height", "15px" ), ( "borderRadius", "13px" ), ( "backgroundColor", fingerNo "4" ) ] ] []
+            , div [ style [ ( "padding", "5px" ), ( "lineHeight", "9px" ) ] ] [ text "Pinky" ]
+            ]
         ]
