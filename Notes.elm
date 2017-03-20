@@ -4,13 +4,6 @@ import String exposing (..)
 import Types exposing (..)
 
 
---type alias Note =
---    { frequency : Float
---    , octave : Int
---    , sustain : Float
---    }
-
-
 {-| Defines audio Notes to be played for each string of every chord.
 -}
 notes : String -> { i : List String, iv : List String, v : List String, vi : List String }

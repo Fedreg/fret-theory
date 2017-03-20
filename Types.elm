@@ -1,8 +1,11 @@
 module Types exposing (..)
 
+import Navigation exposing (Location)
+
 
 type alias Model =
-    { musKey : String
+    { route : Route
+    , musKey : String
     , index : Int
     , currentChord : List String
     }
@@ -33,3 +36,10 @@ type Msg
     | SendNotes
     | Play (List String)
     | ResetIndex
+    | OnLocationChange Location
+
+
+type Route
+    = ChordChartPage
+    | ScalesPage
+    | NotFoundPage

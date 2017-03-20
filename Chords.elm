@@ -11,9 +11,6 @@ import Keys exposing (..)
 import Types exposing (..)
 
 
---import Main exposing (update)
-
-
 chordChartPage : Model -> Html Msg
 chordChartPage model =
     let
