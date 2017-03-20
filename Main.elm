@@ -12,6 +12,7 @@ import Styles exposing (..)
 import Notes exposing (..)
 import Chords exposing (chordChartPage)
 import Scales exposing (scalesPage)
+import Fretboard exposing (fretboardPage)
 import Navigation exposing (Location)
 import Time exposing (..)
 import Update.Extra.Infix exposing ((:>))
@@ -87,6 +88,7 @@ view model =
     div []
         [ a [ href Routing.scalesPath ] [ text "SCALES" ]
         , a [ href Routing.chordsPath ] [ text "CHORDS" ]
+        , a [ href Routing.fretboardPath ] [ text "FRETBOARD" ]
         , page model
         ]
 
@@ -96,6 +98,9 @@ page model =
     case model.route of
         ChordChartPage ->
             Chords.chordChartPage model
+
+        FretboardPage ->
+            Fretboard.fretboardPage model
 
         ScalesPage ->
             Scales.scalesPage model

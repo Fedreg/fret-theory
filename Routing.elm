@@ -10,6 +10,7 @@ matchers =
     oneOf
         [ map ChordChartPage (s "chords")
         , map ScalesPage (s "scales")
+        , map FretboardPage (s "fretboard")
         ]
 
 
@@ -31,3 +32,8 @@ chordsPath =
 scalesPath : String
 scalesPath =
     "#scales"
+
+
+fretboardPath : String
+fretboardPath =
+    "#fretboard"

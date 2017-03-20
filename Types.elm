@@ -42,4 +42,5 @@ type Msg
 type Route
     = ChordChartPage
     | ScalesPage
+    | FretboardPage
     | NotFoundPage

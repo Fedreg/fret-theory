@@ -2,6 +2,7 @@ module Scales exposing (scalesPage)
 
 import Html exposing (..)
 import Html.Attributes exposing (..)
+import List exposing (map)
 
 
 scalesPage model =
