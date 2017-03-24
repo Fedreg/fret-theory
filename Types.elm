@@ -8,7 +8,7 @@ type alias Model =
     , musKey : String
     , index : Int
     , currentChord : List String
-    , notePosition : String
+    , notePosition : Int
     , showAccidental : String
     }
 

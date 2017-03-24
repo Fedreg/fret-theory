@@ -15,9 +15,10 @@ import List.Extra exposing (getAt)
 fretboardPage model =
     let
         highlight =
-            [ ( "background-color", "#3A86FF" )
-            , ( "transform", "scale(1.25, 1.25)" )
-            , ( "color", "black" )
+            [ ( "background-color", "#111" )
+            , ( "border", "2px solid #3A86FF" )
+            , ( "transform", "scale(1.5, 1.5)" )
+            , ( "color", "#fff" )
             , ( "z-index", "2" )
             ]
 
@@ -38,13 +39,13 @@ fretboardPage model =
                 sharp =
                     case String.length note of
                         1 ->
-                            "hidden"
+                            "0"
 
                         2 ->
-                            "visible"
+                            "1"
 
                         _ ->
-                            "hidden"
+                            "0"
             in
                 hover highlight div [ fretNoteStyle, onClick (Types.DrawNote index stringNo sharp) ] [ text note ]
 
@@ -122,6 +123,12 @@ fretNotation model =
         , hr [ hrStyle ] []
         , hr [ hrStyle ] []
         , hr [ hrStyle ] []
+        , hr [ hrLedgerStyleHi model 180 ] []
+        , hr [ hrLedgerStyleHi model 165 ] []
+        , hr [ hrLedgerStyleHi model 150 ] []
+        , hr [ hrLedgerStyleLo model 35 ] []
+        , hr [ hrLedgerStyleLo model 20 ] []
+        , hr [ hrLedgerStyleLo model 5 ] []
         ]
 
 
