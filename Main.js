@@ -7523,6 +7523,196 @@ var _elm_lang$core$Json_Decode$bool = _elm_lang$core$Native_Json.decodePrimitive
 var _elm_lang$core$Json_Decode$string = _elm_lang$core$Native_Json.decodePrimitive('string');
 var _elm_lang$core$Json_Decode$Decoder = {ctor: 'Decoder'};
 
+var _elm_lang$core$Process$kill = _elm_lang$core$Native_Scheduler.kill;
+var _elm_lang$core$Process$sleep = _elm_lang$core$Native_Scheduler.sleep;
+var _elm_lang$core$Process$spawn = _elm_lang$core$Native_Scheduler.spawn;
+
+var _elm_lang$dom$Native_Dom = function() {
+
+var fakeNode = {
+	addEventListener: function() {},
+	removeEventListener: function() {}
+};
+
+var onDocument = on(typeof document !== 'undefined' ? document : fakeNode);
+var onWindow = on(typeof window !== 'undefined' ? window : fakeNode);
+
+function on(node)
+{
+	return function(eventName, decoder, toTask)
+	{
+		return _elm_lang$core$Native_Scheduler.nativeBinding(function(callback) {
+
+			function performTask(event)
+			{
+				var result = A2(_elm_lang$core$Json_Decode$decodeValue, decoder, event);
+				if (result.ctor === 'Ok')
+				{
+					_elm_lang$core$Native_Scheduler.rawSpawn(toTask(result._0));
+				}
+			}
+
+			node.addEventListener(eventName, performTask);
+
+			return function()
+			{
+				node.removeEventListener(eventName, performTask);
+			};
+		});
+	};
+}
+
+var rAF = typeof requestAnimationFrame !== 'undefined'
+	? requestAnimationFrame
+	: function(callback) { callback(); };
+
+function withNode(id, doStuff)
+{
+	return _elm_lang$core$Native_Scheduler.nativeBinding(function(callback)
+	{
+		rAF(function()
+		{
+			var node = document.getElementById(id);
+			if (node === null)
+			{
+				callback(_elm_lang$core$Native_Scheduler.fail({ ctor: 'NotFound', _0: id }));
+				return;
+			}
+			callback(_elm_lang$core$Native_Scheduler.succeed(doStuff(node)));
+		});
+	});
+}
+
+
+// FOCUS
+
+function focus(id)
+{
+	return withNode(id, function(node) {
+		node.focus();
+		return _elm_lang$core$Native_Utils.Tuple0;
+	});
+}
+
+function blur(id)
+{
+	return withNode(id, function(node) {
+		node.blur();
+		return _elm_lang$core$Native_Utils.Tuple0;
+	});
+}
+
+
+// SCROLLING
+
+function getScrollTop(id)
+{
+	return withNode(id, function(node) {
+		return node.scrollTop;
+	});
+}
+
+function setScrollTop(id, desiredScrollTop)
+{
+	return withNode(id, function(node) {
+		node.scrollTop = desiredScrollTop;
+		return _elm_lang$core$Native_Utils.Tuple0;
+	});
+}
+
+function toBottom(id)
+{
+	return withNode(id, function(node) {
+		node.scrollTop = node.scrollHeight;
+		return _elm_lang$core$Native_Utils.Tuple0;
+	});
+}
+
+function getScrollLeft(id)
+{
+	return withNode(id, function(node) {
+		return node.scrollLeft;
+	});
+}
+
+function setScrollLeft(id, desiredScrollLeft)
+{
+	return withNode(id, function(node) {
+		node.scrollLeft = desiredScrollLeft;
+		return _elm_lang$core$Native_Utils.Tuple0;
+	});
+}
+
+function toRight(id)
+{
+	return withNode(id, function(node) {
+		node.scrollLeft = node.scrollWidth;
+		return _elm_lang$core$Native_Utils.Tuple0;
+	});
+}
+
+
+// SIZE
+
+function width(options, id)
+{
+	return withNode(id, function(node) {
+		switch (options.ctor)
+		{
+			case 'Content':
+				return node.scrollWidth;
+			case 'VisibleContent':
+				return node.clientWidth;
+			case 'VisibleContentWithBorders':
+				return node.offsetWidth;
+			case 'VisibleContentWithBordersAndMargins':
+				var rect = node.getBoundingClientRect();
+				return rect.right - rect.left;
+		}
+	});
+}
+
+function height(options, id)
+{
+	return withNode(id, function(node) {
+		switch (options.ctor)
+		{
+			case 'Content':
+				return node.scrollHeight;
+			case 'VisibleContent':
+				return node.clientHeight;
+			case 'VisibleContentWithBorders':
+				return node.offsetHeight;
+			case 'VisibleContentWithBordersAndMargins':
+				var rect = node.getBoundingClientRect();
+				return rect.bottom - rect.top;
+		}
+	});
+}
+
+return {
+	onDocument: F3(onDocument),
+	onWindow: F3(onWindow),
+
+	focus: focus,
+	blur: blur,
+
+	getScrollTop: getScrollTop,
+	setScrollTop: F2(setScrollTop),
+	getScrollLeft: getScrollLeft,
+	setScrollLeft: F2(setScrollLeft),
+	toBottom: toBottom,
+	toRight: toRight,
+
+	height: F2(height),
+	width: F2(width)
+};
+
+}();
+
+var _elm_lang$dom$Dom_LowLevel$onWindow = _elm_lang$dom$Native_Dom.onWindow;
+var _elm_lang$dom$Dom_LowLevel$onDocument = _elm_lang$dom$Native_Dom.onDocument;
+
 var _elm_lang$virtual_dom$VirtualDom_Debug$wrap;
 var _elm_lang$virtual_dom$VirtualDom_Debug$wrapWithFlags;
 
@@ -10026,1229 +10216,1169 @@ var _elm_lang$html$Html_Events$Options = F2(
 		return {stopPropagation: a, preventDefault: b};
 	});
 
-var _user$project$Keys$keys = function (key) {
-	var _p0 = key;
-	switch (_p0) {
-		case 'C':
-			return {
-				i: '06x353242030121010',
-				iv: '06x06x343232121010',
-				v: '263152040030323413',
-				vi: '06x050242332121010',
-				names: {
-					ctor: '::',
-					_0: 'C',
-					_1: {
-						ctor: '::',
-						_0: 'F',
-						_1: {
-							ctor: '::',
-							_0: 'G',
-							_1: {
-								ctor: '::',
-								_0: 'A Min',
-								_1: {
-									ctor: '::',
-									_0: '5',
-									_1: {ctor: '[]'}
-								}
-							}
-						}
-					}
-				},
-				bars: {
-					ctor: '::',
-					_0: '',
-					_1: {
-						ctor: '::',
-						_0: '',
-						_1: {
-							ctor: '::',
-							_0: '',
-							_1: {
-								ctor: '::',
-								_0: '',
-								_1: {ctor: '[]'}
-							}
-						}
-					}
+var _elm_lang$http$Native_Http = function() {
+
+
+// ENCODING AND DECODING
+
+function encodeUri(string)
+{
+	return encodeURIComponent(string);
+}
+
+function decodeUri(string)
+{
+	try
+	{
+		return _elm_lang$core$Maybe$Just(decodeURIComponent(string));
+	}
+	catch(e)
+	{
+		return _elm_lang$core$Maybe$Nothing;
+	}
+}
+
+
+// SEND REQUEST
+
+function toTask(request, maybeProgress)
+{
+	return _elm_lang$core$Native_Scheduler.nativeBinding(function(callback)
+	{
+		var xhr = new XMLHttpRequest();
+
+		configureProgress(xhr, maybeProgress);
+
+		xhr.addEventListener('error', function() {
+			callback(_elm_lang$core$Native_Scheduler.fail({ ctor: 'NetworkError' }));
+		});
+		xhr.addEventListener('timeout', function() {
+			callback(_elm_lang$core$Native_Scheduler.fail({ ctor: 'Timeout' }));
+		});
+		xhr.addEventListener('load', function() {
+			callback(handleResponse(xhr, request.expect.responseToResult));
+		});
+
+		try
+		{
+			xhr.open(request.method, request.url, true);
+		}
+		catch (e)
+		{
+			return callback(_elm_lang$core$Native_Scheduler.fail({ ctor: 'BadUrl', _0: request.url }));
+		}
+
+		configureRequest(xhr, request);
+		send(xhr, request.body);
+
+		return function() { xhr.abort(); };
+	});
+}
+
+function configureProgress(xhr, maybeProgress)
+{
+	if (maybeProgress.ctor === 'Nothing')
+	{
+		return;
+	}
+
+	xhr.addEventListener('progress', function(event) {
+		if (!event.lengthComputable)
+		{
+			return;
+		}
+		_elm_lang$core$Native_Scheduler.rawSpawn(maybeProgress._0({
+			bytes: event.loaded,
+			bytesExpected: event.total
+		}));
+	});
+}
+
+function configureRequest(xhr, request)
+{
+	function setHeader(pair)
+	{
+		xhr.setRequestHeader(pair._0, pair._1);
+	}
+
+	A2(_elm_lang$core$List$map, setHeader, request.headers);
+	xhr.responseType = request.expect.responseType;
+	xhr.withCredentials = request.withCredentials;
+
+	if (request.timeout.ctor === 'Just')
+	{
+		xhr.timeout = request.timeout._0;
+	}
+}
+
+function send(xhr, body)
+{
+	switch (body.ctor)
+	{
+		case 'EmptyBody':
+			xhr.send();
+			return;
+
+		case 'StringBody':
+			xhr.setRequestHeader('Content-Type', body._0);
+			xhr.send(body._1);
+			return;
+
+		case 'FormDataBody':
+			xhr.send(body._0);
+			return;
+	}
+}
+
+
+// RESPONSES
+
+function handleResponse(xhr, responseToResult)
+{
+	var response = toResponse(xhr);
+
+	if (xhr.status < 200 || 300 <= xhr.status)
+	{
+		response.body = xhr.responseText;
+		return _elm_lang$core$Native_Scheduler.fail({
+			ctor: 'BadStatus',
+			_0: response
+		});
+	}
+
+	var result = responseToResult(response);
+
+	if (result.ctor === 'Ok')
+	{
+		return _elm_lang$core$Native_Scheduler.succeed(result._0);
+	}
+	else
+	{
+		response.body = xhr.responseText;
+		return _elm_lang$core$Native_Scheduler.fail({
+			ctor: 'BadPayload',
+			_0: result._0,
+			_1: response
+		});
+	}
+}
+
+function toResponse(xhr)
+{
+	return {
+		status: { code: xhr.status, message: xhr.statusText },
+		headers: parseHeaders(xhr.getAllResponseHeaders()),
+		url: xhr.responseURL,
+		body: xhr.response
+	};
+}
+
+function parseHeaders(rawHeaders)
+{
+	var headers = _elm_lang$core$Dict$empty;
+
+	if (!rawHeaders)
+	{
+		return headers;
+	}
+
+	var headerPairs = rawHeaders.split('\u000d\u000a');
+	for (var i = headerPairs.length; i--; )
+	{
+		var headerPair = headerPairs[i];
+		var index = headerPair.indexOf('\u003a\u0020');
+		if (index > 0)
+		{
+			var key = headerPair.substring(0, index);
+			var value = headerPair.substring(index + 2);
+
+			headers = A3(_elm_lang$core$Dict$update, key, function(oldValue) {
+				if (oldValue.ctor === 'Just')
+				{
+					return _elm_lang$core$Maybe$Just(value + ', ' + oldValue._0);
 				}
-			};
-		case 'G':
-			return {
-				i: '263152040030323413',
-				iv: '06x253142030323413',
-				v: '06x05x040132323212',
-				vi: '060152242030020010',
-				names: {
-					ctor: '::',
-					_0: 'G',
-					_1: {
-						ctor: '::',
-						_0: 'C9',
-						_1: {
-							ctor: '::',
-							_0: 'D',
-							_1: {
-								ctor: '::',
-								_0: 'E Min',
-								_1: {
-									ctor: '::',
-									_0: '0',
-									_1: {ctor: '[]'}
-								}
-							}
-						}
-					}
-				},
-				bars: {
-					ctor: '::',
-					_0: '',
-					_1: {
-						ctor: '::',
-						_0: '',
-						_1: {
-							ctor: '::',
-							_0: '',
-							_1: {
-								ctor: '::',
-								_0: '',
-								_1: {ctor: '[]'}
-							}
-						}
-					}
-				}
-			};
-		case 'D':
-			return {
-				i: '06x05x040132323212',
-				iv: '263152040030323413',
-				v: '06x050142232322010',
-				vi: '06x152040030323212',
-				names: {
-					ctor: '::',
-					_0: 'D',
-					_1: {
-						ctor: '::',
-						_0: 'G',
-						_1: {
-							ctor: '::',
-							_0: 'A',
-							_1: {
-								ctor: '::',
-								_0: 'B Min',
-								_1: {
-									ctor: '::',
-									_0: '7',
-									_1: {ctor: '[]'}
-								}
-							}
-						}
-					}
-				},
-				bars: {
-					ctor: '::',
-					_0: '',
-					_1: {
-						ctor: '::',
-						_0: '',
-						_1: {
-							ctor: '::',
-							_0: '',
-							_1: {
-								ctor: '::',
-								_0: '',
-								_1: {ctor: '[]'}
-							}
-						}
-					}
-				}
-			};
-		case 'A':
-			return {
-				i: '06x050142232322010',
-				iv: '06x05x040132323212',
-				v: '060252342131020010',
-				vi: '162050040232322010',
-				names: {
-					ctor: '::',
-					_0: 'A',
-					_1: {
-						ctor: '::',
-						_0: 'D',
-						_1: {
-							ctor: '::',
-							_0: 'E',
-							_1: {
-								ctor: '::',
-								_0: 'F# Min',
-								_1: {
-									ctor: '::',
-									_0: '2',
-									_1: {ctor: '[]'}
-								}
-							}
-						}
-					}
-				},
-				bars: {
-					ctor: '::',
-					_0: '',
-					_1: {
-						ctor: '::',
-						_0: '',
-						_1: {
-							ctor: '::',
-							_0: '',
-							_1: {
-								ctor: '::',
-								_0: '',
-								_1: {ctor: '[]'}
-							}
-						}
-					}
-				}
-			};
-		case 'E':
-			return {
-				i: '060252342131020010',
-				iv: '06x050142232322010',
-				v: '060252141332020412',
-				vi: '06x05x344434223112',
-				names: {
-					ctor: '::',
-					_0: 'E',
-					_1: {
-						ctor: '::',
-						_0: 'A',
-						_1: {
-							ctor: '::',
-							_0: 'B7',
-							_1: {
-								ctor: '::',
-								_0: 'C# Min',
-								_1: {
-									ctor: '::',
-									_0: '9',
-									_1: {ctor: '[]'}
-								}
-							}
-						}
-					}
-				},
-				bars: {
-					ctor: '::',
-					_0: '',
-					_1: {
-						ctor: '::',
-						_0: '',
-						_1: {
-							ctor: '::',
-							_0: '',
-							_1: {
-								ctor: '::',
-								_0: '',
-								_1: {ctor: '[]'}
-							}
-						}
-					}
-				}
-			};
-		case 'B':
-			return {
-				i: '06xb52244334424112',
-				iv: '060252342131020010',
-				v: 'b62354444233122112',
-				vi: 'b62354444132122112',
-				names: {
-					ctor: '::',
-					_0: 'B',
-					_1: {
-						ctor: '::',
-						_0: 'E',
-						_1: {
-							ctor: '::',
-							_0: 'F#',
-							_1: {
-								ctor: '::',
-								_0: 'G# Min',
-								_1: {
-									ctor: '::',
-									_0: '4',
-									_1: {ctor: '[]'}
-								}
-							}
-						}
-					}
-				},
-				bars: {
-					ctor: '::',
-					_0: '',
-					_1: {
-						ctor: '::',
-						_0: '',
-						_1: {
-							ctor: '::',
-							_0: '',
-							_1: {
-								ctor: '::',
-								_0: '4',
-								_1: {ctor: '[]'}
-							}
-						}
-					}
-				}
-			};
-		case 'F#':
-			return {
-				i: 'b62354444233122112',
-				iv: '06xb52244334424112',
-				v: '06xb52244334424112',
-				vi: '06xb52344434223112',
-				names: {
-					ctor: '::',
-					_0: 'F#',
-					_1: {
-						ctor: '::',
-						_0: 'B',
-						_1: {
-							ctor: '::',
-							_0: 'C#',
-							_1: {
-								ctor: '::',
-								_0: 'D# Min',
-								_1: {
-									ctor: '::',
-									_0: '11',
-									_1: {ctor: '[]'}
-								}
-							}
-						}
-					}
-				},
-				bars: {
-					ctor: '::',
-					_0: '',
-					_1: {
-						ctor: '::',
-						_0: '',
-						_1: {
-							ctor: '::',
-							_0: '4',
-							_1: {
-								ctor: '::',
-								_0: '6',
-								_1: {ctor: '[]'}
-							}
-						}
-					}
-				}
-			};
-		case 'Db':
-			return {
-				i: '06xb52244334424112',
-				iv: 'b62354444233122112',
-				v: 'b62354444233122112',
-				vi: '06xb52344434223112',
-				names: {
-					ctor: '::',
-					_0: 'Db',
-					_1: {
-						ctor: '::',
-						_0: 'Gb',
-						_1: {
-							ctor: '::',
-							_0: 'Ab',
-							_1: {
-								ctor: '::',
-								_0: 'Bb Min',
-								_1: {
-									ctor: '::',
-									_0: '6',
-									_1: {ctor: '[]'}
-								}
-							}
-						}
-					}
-				},
-				bars: {
-					ctor: '::',
-					_0: '4',
-					_1: {
-						ctor: '::',
-						_0: '',
-						_1: {
-							ctor: '::',
-							_0: '4',
-							_1: {
-								ctor: '::',
-								_0: '',
-								_1: {ctor: '[]'}
-							}
-						}
-					}
-				}
-			};
-		case 'Ab':
-			return {
-				i: 'b62354444233122112',
-				iv: '06xb52244334424112',
-				v: '06xb52244334424112',
-				vi: 'b61353443131121111',
-				names: {
-					ctor: '::',
-					_0: 'Ab',
-					_1: {
-						ctor: '::',
-						_0: 'Db',
-						_1: {
-							ctor: '::',
-							_0: 'Eb',
-							_1: {
-								ctor: '::',
-								_0: 'F Min',
-								_1: {
-									ctor: '::',
-									_0: '1',
-									_1: {ctor: '[]'}
-								}
-							}
-						}
-					}
-				},
-				bars: {
-					ctor: '::',
-					_0: '4',
-					_1: {
-						ctor: '::',
-						_0: '4',
-						_1: {
-							ctor: '::',
-							_0: '6',
-							_1: {
-								ctor: '::',
-								_0: '',
-								_1: {ctor: '[]'}
-							}
-						}
-					}
-				}
-			};
-		case 'Eb':
-			return {
-				i: '06xb52244334424112',
-				iv: 'b62354444233122112',
-				v: 'b62354444233122112',
-				vi: '06xb52344434223112',
-				names: {
-					ctor: '::',
-					_0: 'Eb',
-					_1: {
-						ctor: '::',
-						_0: 'Ab',
-						_1: {
-							ctor: '::',
-							_0: 'Bb',
-							_1: {
-								ctor: '::',
-								_0: 'C Min',
-								_1: {
-									ctor: '::',
-									_0: '4',
-									_1: {ctor: '[]'}
-								}
-							}
-						}
-					}
-				},
-				bars: {
-					ctor: '::',
-					_0: '6',
-					_1: {
-						ctor: '::',
-						_0: '4',
-						_1: {
-							ctor: '::',
-							_0: '6',
-							_1: {
-								ctor: '::',
-								_0: '3',
-								_1: {ctor: '[]'}
-							}
-						}
-					}
-				}
-			};
-		case 'Bb':
-			return {
-				i: '06xb51243333423111',
-				iv: '06xb52244334424112',
-				v: 'b61353443232121111',
-				vi: 'b62354444132122112',
-				names: {
-					ctor: '::',
-					_0: 'Bb',
-					_1: {
-						ctor: '::',
-						_0: 'Eb',
-						_1: {
-							ctor: '::',
-							_0: 'F',
-							_1: {
-								ctor: '::',
-								_0: 'G Min',
-								_1: {
-									ctor: '::',
-									_0: '3',
-									_1: {ctor: '[]'}
-								}
-							}
-						}
-					}
-				},
-				bars: {
-					ctor: '::',
-					_0: '',
-					_1: {
-						ctor: '::',
-						_0: '6',
-						_1: {
-							ctor: '::',
-							_0: '',
-							_1: {
-								ctor: '::',
-								_0: '3',
-								_1: {ctor: '[]'}
-							}
-						}
-					}
-				}
-			};
-		case 'F':
-			return {
-				i: '06x05x343232121010',
-				iv: '06xb51243333423111',
-				v: '06x353242030121010',
-				vi: '06x05x040232423111',
-				names: {
-					ctor: '::',
-					_0: 'F',
-					_1: {
-						ctor: '::',
-						_0: 'Bb',
-						_1: {
-							ctor: '::',
-							_0: 'C',
-							_1: {
-								ctor: '::',
-								_0: 'D Min',
-								_1: {
-									ctor: '::',
-									_0: '10',
-									_1: {ctor: '[]'}
-								}
-							}
-						}
-					}
-				},
-				bars: {
-					ctor: '::',
-					_0: '',
-					_1: {
-						ctor: '::',
-						_0: '',
-						_1: {
-							ctor: '::',
-							_0: '',
-							_1: {
-								ctor: '::',
-								_0: '',
-								_1: {ctor: '[]'}
-							}
-						}
-					}
-				}
-			};
-		case 'a':
-			return {
-				i: '06x050242332121010',
-				iv: '06x05x040232423111',
-				v: '060152242030020010',
-				vi: '06x05x343232121010',
-				names: {
-					ctor: '::',
-					_0: 'A Min',
-					_1: {
-						ctor: '::',
-						_0: 'D Min',
-						_1: {
-							ctor: '::',
-							_0: 'E Min',
-							_1: {
-								ctor: '::',
-								_0: 'F',
-								_1: {
-									ctor: '::',
-									_0: '5',
-									_1: {ctor: '[]'}
-								}
-							}
-						}
-					}
-				},
-				bars: {
-					ctor: '::',
-					_0: '',
-					_1: {
-						ctor: '::',
-						_0: '',
-						_1: {
-							ctor: '::',
-							_0: '',
-							_1: {
-								ctor: '::',
-								_0: '',
-								_1: {ctor: '[]'}
-							}
-						}
-					}
-				}
-			};
-		case 'e':
-			return {
-				i: '060152242030020010',
-				iv: '06x050242332121010',
-				v: '06x152040030323212',
-				vi: '06x353242030121010',
-				names: {
-					ctor: '::',
-					_0: 'E Min',
-					_1: {
-						ctor: '::',
-						_0: 'A Min',
-						_1: {
-							ctor: '::',
-							_0: 'B Min',
-							_1: {
-								ctor: '::',
-								_0: 'C',
-								_1: {
-									ctor: '::',
-									_0: '0',
-									_1: {ctor: '[]'}
-								}
-							}
-						}
-					}
-				},
-				bars: {
-					ctor: '::',
-					_0: '',
-					_1: {
-						ctor: '::',
-						_0: '',
-						_1: {
-							ctor: '::',
-							_0: '',
-							_1: {
-								ctor: '::',
-								_0: '',
-								_1: {ctor: '[]'}
-							}
-						}
-					}
-				}
-			};
-		case 'b':
-			return {
-				i: '06x05x344434223112',
-				iv: '060152242030020010',
-				v: '162050040232322010',
-				vi: '263152040030323413',
-				names: {
-					ctor: '::',
-					_0: 'B Min',
-					_1: {
-						ctor: '::',
-						_0: 'E Min',
-						_1: {
-							ctor: '::',
-							_0: 'F# Min',
-							_1: {
-								ctor: '::',
-								_0: 'G',
-								_1: {
-									ctor: '::',
-									_0: '7',
-									_1: {ctor: '[]'}
-								}
-							}
-						}
-					}
-				},
-				bars: {
-					ctor: '::',
-					_0: '',
-					_1: {
-						ctor: '::',
-						_0: '',
-						_1: {
-							ctor: '::',
-							_0: '',
-							_1: {
-								ctor: '::',
-								_0: '',
-								_1: {ctor: '[]'}
-							}
-						}
-					}
-				}
-			};
-		case 'f#':
-			return {
-				i: 'b62354444132122112',
-				iv: '06xb52344434223112',
-				v: '06xb52344434223112',
-				vi: '06x05x040132323212',
-				names: {
-					ctor: '::',
-					_0: 'F# Min',
-					_1: {
-						ctor: '::',
-						_0: 'B Min',
-						_1: {
-							ctor: '::',
-							_0: 'C# Min',
-							_1: {
-								ctor: '::',
-								_0: 'D',
-								_1: {
-									ctor: '::',
-									_0: '2',
-									_1: {ctor: '[]'}
-								}
-							}
-						}
-					}
-				},
-				bars: {
-					ctor: '::',
-					_0: '',
-					_1: {
-						ctor: '::',
-						_0: '',
-						_1: {
-							ctor: '::',
-							_0: '4',
-							_1: {
-								ctor: '::',
-								_0: '',
-								_1: {ctor: '[]'}
-							}
-						}
-					}
-				}
-			};
-		case 'c#':
-			return {
-				i: '06xb52344434223112',
-				iv: 'b62354444132122112',
-				v: 'b62354444132122112',
-				vi: '06x050142232322010',
-				names: {
-					ctor: '::',
-					_0: 'C# Min',
-					_1: {
-						ctor: '::',
-						_0: 'F# Min',
-						_1: {
-							ctor: '::',
-							_0: 'G# Min',
-							_1: {
-								ctor: '::',
-								_0: 'A',
-								_1: {
-									ctor: '::',
-									_0: '9',
-									_1: {ctor: '[]'}
-								}
-							}
-						}
-					}
-				},
-				bars: {
-					ctor: '::',
-					_0: '4',
-					_1: {
-						ctor: '::',
-						_0: '',
-						_1: {
-							ctor: '::',
-							_0: '4',
-							_1: {
-								ctor: '::',
-								_0: '',
-								_1: {ctor: '[]'}
-							}
-						}
-					}
-				}
-			};
-		case 'g#':
-			return {
-				i: 'b62354444132122112',
-				iv: '06xb52344434223112',
-				v: '06xb52344434223112',
-				vi: '060152242131020010',
-				names: {
-					ctor: '::',
-					_0: 'G# Min',
-					_1: {
-						ctor: '::',
-						_0: 'C# Min',
-						_1: {
-							ctor: '::',
-							_0: 'D# Min',
-							_1: {
-								ctor: '::',
-								_0: 'E',
-								_1: {
-									ctor: '::',
-									_0: '4',
-									_1: {ctor: '[]'}
-								}
-							}
-						}
-					}
-				},
-				bars: {
-					ctor: '::',
-					_0: '4',
-					_1: {
-						ctor: '::',
-						_0: '4',
-						_1: {
-							ctor: '::',
-							_0: '6',
-							_1: {
-								ctor: '::',
-								_0: '',
-								_1: {ctor: '[]'}
-							}
-						}
-					}
-				}
-			};
-		case 'd#':
-			return {
-				i: '06xb52344434223112',
-				iv: 'b62354444132122112',
-				v: 'b62354444132122112',
-				vi: '06xb52244334424112',
-				names: {
-					ctor: '::',
-					_0: 'D# Min',
-					_1: {
-						ctor: '::',
-						_0: 'G# Min',
-						_1: {
-							ctor: '::',
-							_0: 'A# Min',
-							_1: {
-								ctor: '::',
-								_0: 'B',
-								_1: {
-									ctor: '::',
-									_0: '11',
-									_1: {ctor: '[]'}
-								}
-							}
-						}
-					}
-				},
-				bars: {
-					ctor: '::',
-					_0: '6',
-					_1: {
-						ctor: '::',
-						_0: '4',
-						_1: {
-							ctor: '::',
-							_0: '6',
-							_1: {
-								ctor: '::',
-								_0: '',
-								_1: {ctor: '[]'}
-							}
-						}
-					}
-				}
-			};
-		case 'bb':
-			return {
-				i: 'b62354444132122112',
-				iv: '06xb52344434223112',
-				v: '06xb52344434223112',
-				vi: 'b62354444233122112',
-				names: {
-					ctor: '::',
-					_0: 'Bb Min',
-					_1: {
-						ctor: '::',
-						_0: 'Eb Min',
-						_1: {
-							ctor: '::',
-							_0: 'F Min',
-							_1: {
-								ctor: '::',
-								_0: 'Gb',
-								_1: {
-									ctor: '::',
-									_0: '6',
-									_1: {ctor: '[]'}
-								}
-							}
-						}
-					}
-				},
-				bars: {
-					ctor: '::',
-					_0: '6',
-					_1: {
-						ctor: '::',
-						_0: '6',
-						_1: {
-							ctor: '::',
-							_0: '8',
-							_1: {
-								ctor: '::',
-								_0: '',
-								_1: {ctor: '[]'}
-							}
-						}
-					}
-				}
-			};
-		case 'f':
-			return {
-				i: 'b61353443131111111',
-				iv: '06xb51343433222111',
-				v: '06xb52344434223112',
-				vi: '06xb52244334424112',
-				names: {
-					ctor: '::',
-					_0: 'F Min',
-					_1: {
-						ctor: '::',
-						_0: 'Bb Min',
-						_1: {
-							ctor: '::',
-							_0: 'C Min',
-							_1: {
-								ctor: '::',
-								_0: 'Db',
-								_1: {
-									ctor: '::',
-									_0: '1',
-									_1: {ctor: '[]'}
-								}
-							}
-						}
-					}
-				},
-				bars: {
-					ctor: '::',
-					_0: '',
-					_1: {
-						ctor: '::',
-						_0: '',
-						_1: {
-							ctor: '::',
-							_0: '3',
-							_1: {
-								ctor: '::',
-								_0: '4',
-								_1: {ctor: '[]'}
-							}
-						}
-					}
-				}
-			};
-		case 'c':
-			return {
-				i: '06xb52344434223112',
-				iv: 'b61353443131121111',
-				v: 'b62354444132122112',
-				vi: 'b62354444233122112',
-				names: {
-					ctor: '::',
-					_0: 'C Min',
-					_1: {
-						ctor: '::',
-						_0: 'F Min',
-						_1: {
-							ctor: '::',
-							_0: 'G Min',
-							_1: {
-								ctor: '::',
-								_0: 'Ab',
-								_1: {
-									ctor: '::',
-									_0: '8',
-									_1: {ctor: '[]'}
-								}
-							}
-						}
-					}
-				},
-				bars: {
-					ctor: '::',
-					_0: '3',
-					_1: {
-						ctor: '::',
-						_0: '',
-						_1: {
-							ctor: '::',
-							_0: '3',
-							_1: {
-								ctor: '::',
-								_0: '6',
-								_1: {ctor: '[]'}
-							}
-						}
-					}
-				}
-			};
-		case 'g':
-			return {
-				i: 'b62354444132122112',
-				iv: '06xb52344434223112',
-				v: '06x05x040232423111',
-				vi: '06xb52244334424112',
-				names: {
-					ctor: '::',
-					_0: 'G Min',
-					_1: {
-						ctor: '::',
-						_0: 'C Min',
-						_1: {
-							ctor: '::',
-							_0: 'D Min',
-							_1: {
-								ctor: '::',
-								_0: 'Eb',
-								_1: {
-									ctor: '::',
-									_0: '3',
-									_1: {ctor: '[]'}
-								}
-							}
-						}
-					}
-				},
-				bars: {
-					ctor: '::',
-					_0: '3',
-					_1: {
-						ctor: '::',
-						_0: '3',
-						_1: {
-							ctor: '::',
-							_0: '',
-							_1: {
-								ctor: '::',
-								_0: '6',
-								_1: {ctor: '[]'}
-							}
-						}
-					}
-				}
-			};
-		case 'd':
-			return {
-				i: '06x05x040232423111',
-				iv: 'b62354444132122112',
-				v: '06x050242332121010',
-				vi: '06xb51243333423111',
-				names: {
-					ctor: '::',
-					_0: 'D Min',
-					_1: {
-						ctor: '::',
-						_0: 'G Min',
-						_1: {
-							ctor: '::',
-							_0: 'A Min',
-							_1: {
-								ctor: '::',
-								_0: 'Bb',
-								_1: {
-									ctor: '::',
-									_0: '10',
-									_1: {ctor: '[]'}
-								}
-							}
-						}
-					}
-				},
-				bars: {
-					ctor: '::',
-					_0: '',
-					_1: {
-						ctor: '::',
-						_0: '3',
-						_1: {
-							ctor: '::',
-							_0: '',
-							_1: {
-								ctor: '::',
-								_0: '',
-								_1: {ctor: '[]'}
-							}
-						}
-					}
-				}
-			};
-		default:
-			return {
-				i: '',
-				iv: '',
-				v: '',
-				vi: '',
-				names: {
-					ctor: '::',
-					_0: '',
-					_1: {
-						ctor: '::',
-						_0: '',
-						_1: {
-							ctor: '::',
-							_0: '',
-							_1: {
-								ctor: '::',
-								_0: '',
-								_1: {
-									ctor: '::',
-									_0: '',
-									_1: {ctor: '[]'}
-								}
-							}
-						}
-					}
-				},
-				bars: {
-					ctor: '::',
-					_0: '',
-					_1: {ctor: '[]'}
-				}
-			};
+				return _elm_lang$core$Maybe$Just(value);
+			}, headers);
+		}
+	}
+
+	return headers;
+}
+
+
+// EXPECTORS
+
+function expectStringResponse(responseToResult)
+{
+	return {
+		responseType: 'text',
+		responseToResult: responseToResult
+	};
+}
+
+function mapExpect(func, expect)
+{
+	return {
+		responseType: expect.responseType,
+		responseToResult: function(response) {
+			var convertedResponse = expect.responseToResult(response);
+			return A2(_elm_lang$core$Result$map, func, convertedResponse);
+		}
+	};
+}
+
+
+// BODY
+
+function multipart(parts)
+{
+	var formData = new FormData();
+
+	while (parts.ctor !== '[]')
+	{
+		var part = parts._0;
+		formData.append(part._0, part._1);
+		parts = parts._1;
+	}
+
+	return { ctor: 'FormDataBody', _0: formData };
+}
+
+return {
+	toTask: F2(toTask),
+	expectStringResponse: expectStringResponse,
+	mapExpect: F2(mapExpect),
+	multipart: multipart,
+	encodeUri: encodeUri,
+	decodeUri: decodeUri
+};
+
+}();
+
+var _elm_lang$http$Http_Internal$map = F2(
+	function (func, request) {
+		return _elm_lang$core$Native_Utils.update(
+			request,
+			{
+				expect: A2(_elm_lang$http$Native_Http.mapExpect, func, request.expect)
+			});
+	});
+var _elm_lang$http$Http_Internal$RawRequest = F7(
+	function (a, b, c, d, e, f, g) {
+		return {method: a, headers: b, url: c, body: d, expect: e, timeout: f, withCredentials: g};
+	});
+var _elm_lang$http$Http_Internal$Request = function (a) {
+	return {ctor: 'Request', _0: a};
+};
+var _elm_lang$http$Http_Internal$Expect = {ctor: 'Expect'};
+var _elm_lang$http$Http_Internal$FormDataBody = {ctor: 'FormDataBody'};
+var _elm_lang$http$Http_Internal$StringBody = F2(
+	function (a, b) {
+		return {ctor: 'StringBody', _0: a, _1: b};
+	});
+var _elm_lang$http$Http_Internal$EmptyBody = {ctor: 'EmptyBody'};
+var _elm_lang$http$Http_Internal$Header = F2(
+	function (a, b) {
+		return {ctor: 'Header', _0: a, _1: b};
+	});
+
+var _elm_lang$http$Http$decodeUri = _elm_lang$http$Native_Http.decodeUri;
+var _elm_lang$http$Http$encodeUri = _elm_lang$http$Native_Http.encodeUri;
+var _elm_lang$http$Http$expectStringResponse = _elm_lang$http$Native_Http.expectStringResponse;
+var _elm_lang$http$Http$expectJson = function (decoder) {
+	return _elm_lang$http$Http$expectStringResponse(
+		function (response) {
+			return A2(_elm_lang$core$Json_Decode$decodeString, decoder, response.body);
+		});
+};
+var _elm_lang$http$Http$expectString = _elm_lang$http$Http$expectStringResponse(
+	function (response) {
+		return _elm_lang$core$Result$Ok(response.body);
+	});
+var _elm_lang$http$Http$multipartBody = _elm_lang$http$Native_Http.multipart;
+var _elm_lang$http$Http$stringBody = _elm_lang$http$Http_Internal$StringBody;
+var _elm_lang$http$Http$jsonBody = function (value) {
+	return A2(
+		_elm_lang$http$Http_Internal$StringBody,
+		'application/json',
+		A2(_elm_lang$core$Json_Encode$encode, 0, value));
+};
+var _elm_lang$http$Http$emptyBody = _elm_lang$http$Http_Internal$EmptyBody;
+var _elm_lang$http$Http$header = _elm_lang$http$Http_Internal$Header;
+var _elm_lang$http$Http$request = _elm_lang$http$Http_Internal$Request;
+var _elm_lang$http$Http$post = F3(
+	function (url, body, decoder) {
+		return _elm_lang$http$Http$request(
+			{
+				method: 'POST',
+				headers: {ctor: '[]'},
+				url: url,
+				body: body,
+				expect: _elm_lang$http$Http$expectJson(decoder),
+				timeout: _elm_lang$core$Maybe$Nothing,
+				withCredentials: false
+			});
+	});
+var _elm_lang$http$Http$get = F2(
+	function (url, decoder) {
+		return _elm_lang$http$Http$request(
+			{
+				method: 'GET',
+				headers: {ctor: '[]'},
+				url: url,
+				body: _elm_lang$http$Http$emptyBody,
+				expect: _elm_lang$http$Http$expectJson(decoder),
+				timeout: _elm_lang$core$Maybe$Nothing,
+				withCredentials: false
+			});
+	});
+var _elm_lang$http$Http$getString = function (url) {
+	return _elm_lang$http$Http$request(
+		{
+			method: 'GET',
+			headers: {ctor: '[]'},
+			url: url,
+			body: _elm_lang$http$Http$emptyBody,
+			expect: _elm_lang$http$Http$expectString,
+			timeout: _elm_lang$core$Maybe$Nothing,
+			withCredentials: false
+		});
+};
+var _elm_lang$http$Http$toTask = function (_p0) {
+	var _p1 = _p0;
+	return A2(_elm_lang$http$Native_Http.toTask, _p1._0, _elm_lang$core$Maybe$Nothing);
+};
+var _elm_lang$http$Http$send = F2(
+	function (resultToMessage, request) {
+		return A2(
+			_elm_lang$core$Task$attempt,
+			resultToMessage,
+			_elm_lang$http$Http$toTask(request));
+	});
+var _elm_lang$http$Http$Response = F4(
+	function (a, b, c, d) {
+		return {url: a, status: b, headers: c, body: d};
+	});
+var _elm_lang$http$Http$BadPayload = F2(
+	function (a, b) {
+		return {ctor: 'BadPayload', _0: a, _1: b};
+	});
+var _elm_lang$http$Http$BadStatus = function (a) {
+	return {ctor: 'BadStatus', _0: a};
+};
+var _elm_lang$http$Http$NetworkError = {ctor: 'NetworkError'};
+var _elm_lang$http$Http$Timeout = {ctor: 'Timeout'};
+var _elm_lang$http$Http$BadUrl = function (a) {
+	return {ctor: 'BadUrl', _0: a};
+};
+var _elm_lang$http$Http$StringPart = F2(
+	function (a, b) {
+		return {ctor: 'StringPart', _0: a, _1: b};
+	});
+var _elm_lang$http$Http$stringPart = _elm_lang$http$Http$StringPart;
+
+var _elm_lang$navigation$Native_Navigation = function() {
+
+
+// FAKE NAVIGATION
+
+function go(n)
+{
+	return _elm_lang$core$Native_Scheduler.nativeBinding(function(callback)
+	{
+		if (n !== 0)
+		{
+			history.go(n);
+		}
+		callback(_elm_lang$core$Native_Scheduler.succeed(_elm_lang$core$Native_Utils.Tuple0));
+	});
+}
+
+function pushState(url)
+{
+	return _elm_lang$core$Native_Scheduler.nativeBinding(function(callback)
+	{
+		history.pushState({}, '', url);
+		callback(_elm_lang$core$Native_Scheduler.succeed(getLocation()));
+	});
+}
+
+function replaceState(url)
+{
+	return _elm_lang$core$Native_Scheduler.nativeBinding(function(callback)
+	{
+		history.replaceState({}, '', url);
+		callback(_elm_lang$core$Native_Scheduler.succeed(getLocation()));
+	});
+}
+
+
+// REAL NAVIGATION
+
+function reloadPage(skipCache)
+{
+	return _elm_lang$core$Native_Scheduler.nativeBinding(function(callback)
+	{
+		document.location.reload(skipCache);
+		callback(_elm_lang$core$Native_Scheduler.succeed(_elm_lang$core$Native_Utils.Tuple0));
+	});
+}
+
+function setLocation(url)
+{
+	return _elm_lang$core$Native_Scheduler.nativeBinding(function(callback)
+	{
+		try
+		{
+			window.location = url;
+		}
+		catch(err)
+		{
+			// Only Firefox can throw a NS_ERROR_MALFORMED_URI exception here.
+			// Other browsers reload the page, so let's be consistent about that.
+			document.location.reload(false);
+		}
+		callback(_elm_lang$core$Native_Scheduler.succeed(_elm_lang$core$Native_Utils.Tuple0));
+	});
+}
+
+
+// GET LOCATION
+
+function getLocation()
+{
+	var location = document.location;
+
+	return {
+		href: location.href,
+		host: location.host,
+		hostname: location.hostname,
+		protocol: location.protocol,
+		origin: location.origin,
+		port_: location.port,
+		pathname: location.pathname,
+		search: location.search,
+		hash: location.hash,
+		username: location.username,
+		password: location.password
+	};
+}
+
+
+// DETECT IE11 PROBLEMS
+
+function isInternetExplorer11()
+{
+	return window.navigator.userAgent.indexOf('Trident') !== -1;
+}
+
+
+return {
+	go: go,
+	setLocation: setLocation,
+	reloadPage: reloadPage,
+	pushState: pushState,
+	replaceState: replaceState,
+	getLocation: getLocation,
+	isInternetExplorer11: isInternetExplorer11
+};
+
+}();
+
+var _elm_lang$navigation$Navigation$replaceState = _elm_lang$navigation$Native_Navigation.replaceState;
+var _elm_lang$navigation$Navigation$pushState = _elm_lang$navigation$Native_Navigation.pushState;
+var _elm_lang$navigation$Navigation$go = _elm_lang$navigation$Native_Navigation.go;
+var _elm_lang$navigation$Navigation$reloadPage = _elm_lang$navigation$Native_Navigation.reloadPage;
+var _elm_lang$navigation$Navigation$setLocation = _elm_lang$navigation$Native_Navigation.setLocation;
+var _elm_lang$navigation$Navigation_ops = _elm_lang$navigation$Navigation_ops || {};
+_elm_lang$navigation$Navigation_ops['&>'] = F2(
+	function (task1, task2) {
+		return A2(
+			_elm_lang$core$Task$andThen,
+			function (_p0) {
+				return task2;
+			},
+			task1);
+	});
+var _elm_lang$navigation$Navigation$notify = F3(
+	function (router, subs, location) {
+		var send = function (_p1) {
+			var _p2 = _p1;
+			return A2(
+				_elm_lang$core$Platform$sendToApp,
+				router,
+				_p2._0(location));
+		};
+		return A2(
+			_elm_lang$navigation$Navigation_ops['&>'],
+			_elm_lang$core$Task$sequence(
+				A2(_elm_lang$core$List$map, send, subs)),
+			_elm_lang$core$Task$succeed(
+				{ctor: '_Tuple0'}));
+	});
+var _elm_lang$navigation$Navigation$cmdHelp = F3(
+	function (router, subs, cmd) {
+		var _p3 = cmd;
+		switch (_p3.ctor) {
+			case 'Jump':
+				return _elm_lang$navigation$Navigation$go(_p3._0);
+			case 'New':
+				return A2(
+					_elm_lang$core$Task$andThen,
+					A2(_elm_lang$navigation$Navigation$notify, router, subs),
+					_elm_lang$navigation$Navigation$pushState(_p3._0));
+			case 'Modify':
+				return A2(
+					_elm_lang$core$Task$andThen,
+					A2(_elm_lang$navigation$Navigation$notify, router, subs),
+					_elm_lang$navigation$Navigation$replaceState(_p3._0));
+			case 'Visit':
+				return _elm_lang$navigation$Navigation$setLocation(_p3._0);
+			default:
+				return _elm_lang$navigation$Navigation$reloadPage(_p3._0);
+		}
+	});
+var _elm_lang$navigation$Navigation$killPopWatcher = function (popWatcher) {
+	var _p4 = popWatcher;
+	if (_p4.ctor === 'Normal') {
+		return _elm_lang$core$Process$kill(_p4._0);
+	} else {
+		return A2(
+			_elm_lang$navigation$Navigation_ops['&>'],
+			_elm_lang$core$Process$kill(_p4._0),
+			_elm_lang$core$Process$kill(_p4._1));
 	}
 };
-var _user$project$Keys$keyList = {
-	ctor: '::',
-	_0: 'Major Keys',
-	_1: {
-		ctor: '::',
-		_0: 'C',
-		_1: {
-			ctor: '::',
-			_0: 'G',
-			_1: {
-				ctor: '::',
-				_0: 'D',
-				_1: {
+var _elm_lang$navigation$Navigation$onSelfMsg = F3(
+	function (router, location, state) {
+		return A2(
+			_elm_lang$navigation$Navigation_ops['&>'],
+			A3(_elm_lang$navigation$Navigation$notify, router, state.subs, location),
+			_elm_lang$core$Task$succeed(state));
+	});
+var _elm_lang$navigation$Navigation$subscription = _elm_lang$core$Native_Platform.leaf('Navigation');
+var _elm_lang$navigation$Navigation$command = _elm_lang$core$Native_Platform.leaf('Navigation');
+var _elm_lang$navigation$Navigation$Location = function (a) {
+	return function (b) {
+		return function (c) {
+			return function (d) {
+				return function (e) {
+					return function (f) {
+						return function (g) {
+							return function (h) {
+								return function (i) {
+									return function (j) {
+										return function (k) {
+											return {href: a, host: b, hostname: c, protocol: d, origin: e, port_: f, pathname: g, search: h, hash: i, username: j, password: k};
+										};
+									};
+								};
+							};
+						};
+					};
+				};
+			};
+		};
+	};
+};
+var _elm_lang$navigation$Navigation$State = F2(
+	function (a, b) {
+		return {subs: a, popWatcher: b};
+	});
+var _elm_lang$navigation$Navigation$init = _elm_lang$core$Task$succeed(
+	A2(
+		_elm_lang$navigation$Navigation$State,
+		{ctor: '[]'},
+		_elm_lang$core$Maybe$Nothing));
+var _elm_lang$navigation$Navigation$Reload = function (a) {
+	return {ctor: 'Reload', _0: a};
+};
+var _elm_lang$navigation$Navigation$reload = _elm_lang$navigation$Navigation$command(
+	_elm_lang$navigation$Navigation$Reload(false));
+var _elm_lang$navigation$Navigation$reloadAndSkipCache = _elm_lang$navigation$Navigation$command(
+	_elm_lang$navigation$Navigation$Reload(true));
+var _elm_lang$navigation$Navigation$Visit = function (a) {
+	return {ctor: 'Visit', _0: a};
+};
+var _elm_lang$navigation$Navigation$load = function (url) {
+	return _elm_lang$navigation$Navigation$command(
+		_elm_lang$navigation$Navigation$Visit(url));
+};
+var _elm_lang$navigation$Navigation$Modify = function (a) {
+	return {ctor: 'Modify', _0: a};
+};
+var _elm_lang$navigation$Navigation$modifyUrl = function (url) {
+	return _elm_lang$navigation$Navigation$command(
+		_elm_lang$navigation$Navigation$Modify(url));
+};
+var _elm_lang$navigation$Navigation$New = function (a) {
+	return {ctor: 'New', _0: a};
+};
+var _elm_lang$navigation$Navigation$newUrl = function (url) {
+	return _elm_lang$navigation$Navigation$command(
+		_elm_lang$navigation$Navigation$New(url));
+};
+var _elm_lang$navigation$Navigation$Jump = function (a) {
+	return {ctor: 'Jump', _0: a};
+};
+var _elm_lang$navigation$Navigation$back = function (n) {
+	return _elm_lang$navigation$Navigation$command(
+		_elm_lang$navigation$Navigation$Jump(0 - n));
+};
+var _elm_lang$navigation$Navigation$forward = function (n) {
+	return _elm_lang$navigation$Navigation$command(
+		_elm_lang$navigation$Navigation$Jump(n));
+};
+var _elm_lang$navigation$Navigation$cmdMap = F2(
+	function (_p5, myCmd) {
+		var _p6 = myCmd;
+		switch (_p6.ctor) {
+			case 'Jump':
+				return _elm_lang$navigation$Navigation$Jump(_p6._0);
+			case 'New':
+				return _elm_lang$navigation$Navigation$New(_p6._0);
+			case 'Modify':
+				return _elm_lang$navigation$Navigation$Modify(_p6._0);
+			case 'Visit':
+				return _elm_lang$navigation$Navigation$Visit(_p6._0);
+			default:
+				return _elm_lang$navigation$Navigation$Reload(_p6._0);
+		}
+	});
+var _elm_lang$navigation$Navigation$Monitor = function (a) {
+	return {ctor: 'Monitor', _0: a};
+};
+var _elm_lang$navigation$Navigation$program = F2(
+	function (locationToMessage, stuff) {
+		var init = stuff.init(
+			_elm_lang$navigation$Native_Navigation.getLocation(
+				{ctor: '_Tuple0'}));
+		var subs = function (model) {
+			return _elm_lang$core$Platform_Sub$batch(
+				{
 					ctor: '::',
-					_0: 'A',
+					_0: _elm_lang$navigation$Navigation$subscription(
+						_elm_lang$navigation$Navigation$Monitor(locationToMessage)),
 					_1: {
 						ctor: '::',
-						_0: 'E',
-						_1: {
-							ctor: '::',
-							_0: 'B',
-							_1: {
-								ctor: '::',
-								_0: 'F#',
-								_1: {
-									ctor: '::',
-									_0: 'Db',
-									_1: {
-										ctor: '::',
-										_0: 'Ab',
-										_1: {
-											ctor: '::',
-											_0: 'Eb',
-											_1: {
-												ctor: '::',
-												_0: 'Bb',
-												_1: {
-													ctor: '::',
-													_0: 'F',
-													_1: {
-														ctor: '::',
-														_0: 'Minor Keys',
-														_1: {
-															ctor: '::',
-															_0: 'a',
-															_1: {
-																ctor: '::',
-																_0: 'e',
-																_1: {
-																	ctor: '::',
-																	_0: 'b',
-																	_1: {
-																		ctor: '::',
-																		_0: 'f#',
-																		_1: {
-																			ctor: '::',
-																			_0: 'c#',
-																			_1: {
-																				ctor: '::',
-																				_0: 'g#',
-																				_1: {
-																					ctor: '::',
-																					_0: 'd#',
-																					_1: {
-																						ctor: '::',
-																						_0: 'bb',
-																						_1: {
-																							ctor: '::',
-																							_0: 'f',
-																							_1: {
-																								ctor: '::',
-																								_0: 'c',
-																								_1: {
-																									ctor: '::',
-																									_0: 'g',
-																									_1: {
-																										ctor: '::',
-																										_0: 'd',
-																										_1: {ctor: '[]'}
-																									}
-																								}
-																							}
-																						}
-																					}
-																				}
-																			}
-																		}
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								}
-							}
-						}
+						_0: stuff.subscriptions(model),
+						_1: {ctor: '[]'}
 					}
+				});
+		};
+		return _elm_lang$html$Html$program(
+			{init: init, view: stuff.view, update: stuff.update, subscriptions: subs});
+	});
+var _elm_lang$navigation$Navigation$programWithFlags = F2(
+	function (locationToMessage, stuff) {
+		var init = function (flags) {
+			return A2(
+				stuff.init,
+				flags,
+				_elm_lang$navigation$Native_Navigation.getLocation(
+					{ctor: '_Tuple0'}));
+		};
+		var subs = function (model) {
+			return _elm_lang$core$Platform_Sub$batch(
+				{
+					ctor: '::',
+					_0: _elm_lang$navigation$Navigation$subscription(
+						_elm_lang$navigation$Navigation$Monitor(locationToMessage)),
+					_1: {
+						ctor: '::',
+						_0: stuff.subscriptions(model),
+						_1: {ctor: '[]'}
+					}
+				});
+		};
+		return _elm_lang$html$Html$programWithFlags(
+			{init: init, view: stuff.view, update: stuff.update, subscriptions: subs});
+	});
+var _elm_lang$navigation$Navigation$subMap = F2(
+	function (func, _p7) {
+		var _p8 = _p7;
+		return _elm_lang$navigation$Navigation$Monitor(
+			function (_p9) {
+				return func(
+					_p8._0(_p9));
+			});
+	});
+var _elm_lang$navigation$Navigation$InternetExplorer = F2(
+	function (a, b) {
+		return {ctor: 'InternetExplorer', _0: a, _1: b};
+	});
+var _elm_lang$navigation$Navigation$Normal = function (a) {
+	return {ctor: 'Normal', _0: a};
+};
+var _elm_lang$navigation$Navigation$spawnPopWatcher = function (router) {
+	var reportLocation = function (_p10) {
+		return A2(
+			_elm_lang$core$Platform$sendToSelf,
+			router,
+			_elm_lang$navigation$Native_Navigation.getLocation(
+				{ctor: '_Tuple0'}));
+	};
+	return _elm_lang$navigation$Native_Navigation.isInternetExplorer11(
+		{ctor: '_Tuple0'}) ? A3(
+		_elm_lang$core$Task$map2,
+		_elm_lang$navigation$Navigation$InternetExplorer,
+		_elm_lang$core$Process$spawn(
+			A3(_elm_lang$dom$Dom_LowLevel$onWindow, 'popstate', _elm_lang$core$Json_Decode$value, reportLocation)),
+		_elm_lang$core$Process$spawn(
+			A3(_elm_lang$dom$Dom_LowLevel$onWindow, 'hashchange', _elm_lang$core$Json_Decode$value, reportLocation))) : A2(
+		_elm_lang$core$Task$map,
+		_elm_lang$navigation$Navigation$Normal,
+		_elm_lang$core$Process$spawn(
+			A3(_elm_lang$dom$Dom_LowLevel$onWindow, 'popstate', _elm_lang$core$Json_Decode$value, reportLocation)));
+};
+var _elm_lang$navigation$Navigation$onEffects = F4(
+	function (router, cmds, subs, _p11) {
+		var _p12 = _p11;
+		var _p15 = _p12.popWatcher;
+		var stepState = function () {
+			var _p13 = {ctor: '_Tuple2', _0: subs, _1: _p15};
+			_v6_2:
+			do {
+				if (_p13._0.ctor === '[]') {
+					if (_p13._1.ctor === 'Just') {
+						return A2(
+							_elm_lang$navigation$Navigation_ops['&>'],
+							_elm_lang$navigation$Navigation$killPopWatcher(_p13._1._0),
+							_elm_lang$core$Task$succeed(
+								A2(_elm_lang$navigation$Navigation$State, subs, _elm_lang$core$Maybe$Nothing)));
+					} else {
+						break _v6_2;
+					}
+				} else {
+					if (_p13._1.ctor === 'Nothing') {
+						return A2(
+							_elm_lang$core$Task$map,
+							function (_p14) {
+								return A2(
+									_elm_lang$navigation$Navigation$State,
+									subs,
+									_elm_lang$core$Maybe$Just(_p14));
+							},
+							_elm_lang$navigation$Navigation$spawnPopWatcher(router));
+					} else {
+						break _v6_2;
+					}
+				}
+			} while(false);
+			return _elm_lang$core$Task$succeed(
+				A2(_elm_lang$navigation$Navigation$State, subs, _p15));
+		}();
+		return A2(
+			_elm_lang$navigation$Navigation_ops['&>'],
+			_elm_lang$core$Task$sequence(
+				A2(
+					_elm_lang$core$List$map,
+					A2(_elm_lang$navigation$Navigation$cmdHelp, router, subs),
+					cmds)),
+			stepState);
+	});
+_elm_lang$core$Native_Platform.effectManagers['Navigation'] = {pkg: 'elm-lang/navigation', init: _elm_lang$navigation$Navigation$init, onEffects: _elm_lang$navigation$Navigation$onEffects, onSelfMsg: _elm_lang$navigation$Navigation$onSelfMsg, tag: 'fx', cmdMap: _elm_lang$navigation$Navigation$cmdMap, subMap: _elm_lang$navigation$Navigation$subMap};
+
+var _evancz$url_parser$UrlParser$toKeyValuePair = function (segment) {
+	var _p0 = A2(_elm_lang$core$String$split, '=', segment);
+	if (((_p0.ctor === '::') && (_p0._1.ctor === '::')) && (_p0._1._1.ctor === '[]')) {
+		return A3(
+			_elm_lang$core$Maybe$map2,
+			F2(
+				function (v0, v1) {
+					return {ctor: '_Tuple2', _0: v0, _1: v1};
+				}),
+			_elm_lang$http$Http$decodeUri(_p0._0),
+			_elm_lang$http$Http$decodeUri(_p0._1._0));
+	} else {
+		return _elm_lang$core$Maybe$Nothing;
+	}
+};
+var _evancz$url_parser$UrlParser$parseParams = function (queryString) {
+	return _elm_lang$core$Dict$fromList(
+		A2(
+			_elm_lang$core$List$filterMap,
+			_evancz$url_parser$UrlParser$toKeyValuePair,
+			A2(
+				_elm_lang$core$String$split,
+				'&',
+				A2(_elm_lang$core$String$dropLeft, 1, queryString))));
+};
+var _evancz$url_parser$UrlParser$splitUrl = function (url) {
+	var _p1 = A2(_elm_lang$core$String$split, '/', url);
+	if ((_p1.ctor === '::') && (_p1._0 === '')) {
+		return _p1._1;
+	} else {
+		return _p1;
+	}
+};
+var _evancz$url_parser$UrlParser$parseHelp = function (states) {
+	parseHelp:
+	while (true) {
+		var _p2 = states;
+		if (_p2.ctor === '[]') {
+			return _elm_lang$core$Maybe$Nothing;
+		} else {
+			var _p4 = _p2._0;
+			var _p3 = _p4.unvisited;
+			if (_p3.ctor === '[]') {
+				return _elm_lang$core$Maybe$Just(_p4.value);
+			} else {
+				if ((_p3._0 === '') && (_p3._1.ctor === '[]')) {
+					return _elm_lang$core$Maybe$Just(_p4.value);
+				} else {
+					var _v4 = _p2._1;
+					states = _v4;
+					continue parseHelp;
 				}
 			}
 		}
 	}
 };
+var _evancz$url_parser$UrlParser$parse = F3(
+	function (_p5, url, params) {
+		var _p6 = _p5;
+		return _evancz$url_parser$UrlParser$parseHelp(
+			_p6._0(
+				{
+					visited: {ctor: '[]'},
+					unvisited: _evancz$url_parser$UrlParser$splitUrl(url),
+					params: params,
+					value: _elm_lang$core$Basics$identity
+				}));
+	});
+var _evancz$url_parser$UrlParser$parseHash = F2(
+	function (parser, location) {
+		return A3(
+			_evancz$url_parser$UrlParser$parse,
+			parser,
+			A2(_elm_lang$core$String$dropLeft, 1, location.hash),
+			_evancz$url_parser$UrlParser$parseParams(location.search));
+	});
+var _evancz$url_parser$UrlParser$parsePath = F2(
+	function (parser, location) {
+		return A3(
+			_evancz$url_parser$UrlParser$parse,
+			parser,
+			location.pathname,
+			_evancz$url_parser$UrlParser$parseParams(location.search));
+	});
+var _evancz$url_parser$UrlParser$intParamHelp = function (maybeValue) {
+	var _p7 = maybeValue;
+	if (_p7.ctor === 'Nothing') {
+		return _elm_lang$core$Maybe$Nothing;
+	} else {
+		return _elm_lang$core$Result$toMaybe(
+			_elm_lang$core$String$toInt(_p7._0));
+	}
+};
+var _evancz$url_parser$UrlParser$mapHelp = F2(
+	function (func, _p8) {
+		var _p9 = _p8;
+		return {
+			visited: _p9.visited,
+			unvisited: _p9.unvisited,
+			params: _p9.params,
+			value: func(_p9.value)
+		};
+	});
+var _evancz$url_parser$UrlParser$State = F4(
+	function (a, b, c, d) {
+		return {visited: a, unvisited: b, params: c, value: d};
+	});
+var _evancz$url_parser$UrlParser$Parser = function (a) {
+	return {ctor: 'Parser', _0: a};
+};
+var _evancz$url_parser$UrlParser$s = function (str) {
+	return _evancz$url_parser$UrlParser$Parser(
+		function (_p10) {
+			var _p11 = _p10;
+			var _p12 = _p11.unvisited;
+			if (_p12.ctor === '[]') {
+				return {ctor: '[]'};
+			} else {
+				var _p13 = _p12._0;
+				return _elm_lang$core$Native_Utils.eq(_p13, str) ? {
+					ctor: '::',
+					_0: A4(
+						_evancz$url_parser$UrlParser$State,
+						{ctor: '::', _0: _p13, _1: _p11.visited},
+						_p12._1,
+						_p11.params,
+						_p11.value),
+					_1: {ctor: '[]'}
+				} : {ctor: '[]'};
+			}
+		});
+};
+var _evancz$url_parser$UrlParser$custom = F2(
+	function (tipe, stringToSomething) {
+		return _evancz$url_parser$UrlParser$Parser(
+			function (_p14) {
+				var _p15 = _p14;
+				var _p16 = _p15.unvisited;
+				if (_p16.ctor === '[]') {
+					return {ctor: '[]'};
+				} else {
+					var _p18 = _p16._0;
+					var _p17 = stringToSomething(_p18);
+					if (_p17.ctor === 'Ok') {
+						return {
+							ctor: '::',
+							_0: A4(
+								_evancz$url_parser$UrlParser$State,
+								{ctor: '::', _0: _p18, _1: _p15.visited},
+								_p16._1,
+								_p15.params,
+								_p15.value(_p17._0)),
+							_1: {ctor: '[]'}
+						};
+					} else {
+						return {ctor: '[]'};
+					}
+				}
+			});
+	});
+var _evancz$url_parser$UrlParser$string = A2(_evancz$url_parser$UrlParser$custom, 'STRING', _elm_lang$core$Result$Ok);
+var _evancz$url_parser$UrlParser$int = A2(_evancz$url_parser$UrlParser$custom, 'NUMBER', _elm_lang$core$String$toInt);
+var _evancz$url_parser$UrlParser_ops = _evancz$url_parser$UrlParser_ops || {};
+_evancz$url_parser$UrlParser_ops['</>'] = F2(
+	function (_p20, _p19) {
+		var _p21 = _p20;
+		var _p22 = _p19;
+		return _evancz$url_parser$UrlParser$Parser(
+			function (state) {
+				return A2(
+					_elm_lang$core$List$concatMap,
+					_p22._0,
+					_p21._0(state));
+			});
+	});
+var _evancz$url_parser$UrlParser$map = F2(
+	function (subValue, _p23) {
+		var _p24 = _p23;
+		return _evancz$url_parser$UrlParser$Parser(
+			function (_p25) {
+				var _p26 = _p25;
+				return A2(
+					_elm_lang$core$List$map,
+					_evancz$url_parser$UrlParser$mapHelp(_p26.value),
+					_p24._0(
+						{visited: _p26.visited, unvisited: _p26.unvisited, params: _p26.params, value: subValue}));
+			});
+	});
+var _evancz$url_parser$UrlParser$oneOf = function (parsers) {
+	return _evancz$url_parser$UrlParser$Parser(
+		function (state) {
+			return A2(
+				_elm_lang$core$List$concatMap,
+				function (_p27) {
+					var _p28 = _p27;
+					return _p28._0(state);
+				},
+				parsers);
+		});
+};
+var _evancz$url_parser$UrlParser$top = _evancz$url_parser$UrlParser$Parser(
+	function (state) {
+		return {
+			ctor: '::',
+			_0: state,
+			_1: {ctor: '[]'}
+		};
+	});
+var _evancz$url_parser$UrlParser_ops = _evancz$url_parser$UrlParser_ops || {};
+_evancz$url_parser$UrlParser_ops['<?>'] = F2(
+	function (_p30, _p29) {
+		var _p31 = _p30;
+		var _p32 = _p29;
+		return _evancz$url_parser$UrlParser$Parser(
+			function (state) {
+				return A2(
+					_elm_lang$core$List$concatMap,
+					_p32._0,
+					_p31._0(state));
+			});
+	});
+var _evancz$url_parser$UrlParser$QueryParser = function (a) {
+	return {ctor: 'QueryParser', _0: a};
+};
+var _evancz$url_parser$UrlParser$customParam = F2(
+	function (key, func) {
+		return _evancz$url_parser$UrlParser$QueryParser(
+			function (_p33) {
+				var _p34 = _p33;
+				var _p35 = _p34.params;
+				return {
+					ctor: '::',
+					_0: A4(
+						_evancz$url_parser$UrlParser$State,
+						_p34.visited,
+						_p34.unvisited,
+						_p35,
+						_p34.value(
+							func(
+								A2(_elm_lang$core$Dict$get, key, _p35)))),
+					_1: {ctor: '[]'}
+				};
+			});
+	});
+var _evancz$url_parser$UrlParser$stringParam = function (name) {
+	return A2(_evancz$url_parser$UrlParser$customParam, name, _elm_lang$core$Basics$identity);
+};
+var _evancz$url_parser$UrlParser$intParam = function (name) {
+	return A2(_evancz$url_parser$UrlParser$customParam, name, _evancz$url_parser$UrlParser$intParamHelp);
+};
+
+var _jinjor$elm_inline_hover$InlineHover$isValidChars = function (list) {
+	isValidChars:
+	while (true) {
+		var _p0 = list;
+		if (_p0.ctor === '::') {
+			var _p1 = _p0._0;
+			if (_elm_lang$core$Char$isLower(_p1) || _elm_lang$core$Native_Utils.eq(
+				_p1,
+				_elm_lang$core$Native_Utils.chr('-'))) {
+				var _v1 = _p0._1;
+				list = _v1;
+				continue isValidChars;
+			} else {
+				return false;
+			}
+		} else {
+			return true;
+		}
+	}
+};
+var _jinjor$elm_inline_hover$InlineHover$isValidKey = function (s) {
+	return (!_elm_lang$core$Native_Utils.eq(s, '')) && (A2(
+		_elm_lang$core$List$any,
+		_elm_lang$core$Char$isLower,
+		_elm_lang$core$String$toList(s)) && A2(
+		_elm_lang$core$List$all,
+		function (c) {
+			return _elm_lang$core$Char$isLower(c) || _elm_lang$core$Native_Utils.eq(
+				c,
+				_elm_lang$core$Native_Utils.chr('-'));
+		},
+		_elm_lang$core$String$toList(s)));
+};
+var _jinjor$elm_inline_hover$InlineHover$toCamelCase = function (s) {
+	return _elm_lang$core$String$fromList(
+		_elm_lang$core$List$reverse(
+			_elm_lang$core$Tuple$second(
+				A3(
+					_elm_lang$core$List$foldl,
+					F2(
+						function (c, _p2) {
+							var _p3 = _p2;
+							var _p4 = _p3._1;
+							return _elm_lang$core$Native_Utils.eq(
+								c,
+								_elm_lang$core$Native_Utils.chr('-')) ? {ctor: '_Tuple2', _0: true, _1: _p4} : (_p3._0 ? {
+								ctor: '_Tuple2',
+								_0: false,
+								_1: {
+									ctor: '::',
+									_0: _elm_lang$core$Char$toUpper(c),
+									_1: _p4
+								}
+							} : {
+								ctor: '_Tuple2',
+								_0: false,
+								_1: {ctor: '::', _0: c, _1: _p4}
+							});
+						}),
+					{
+						ctor: '_Tuple2',
+						_0: false,
+						_1: {ctor: '[]'}
+					},
+					_elm_lang$core$String$toList(s)))));
+};
+var _jinjor$elm_inline_hover$InlineHover$enterEach = function (_p5) {
+	var _p6 = _p5;
+	var _p8 = _p6._0;
+	var escapedValue = function (_p7) {
+		return A2(
+			_elm_lang$core$String$join,
+			'\"',
+			A2(_elm_lang$core$String$split, '\'', _p7));
+	}(_p6._1);
+	var keyCamel = _jinjor$elm_inline_hover$InlineHover$toCamelCase(_p8);
+	return A2(
+		_elm_lang$core$Basics_ops['++'],
+		'this.setAttribute(\'data-hover-',
+		A2(
+			_elm_lang$core$Basics_ops['++'],
+			_p8,
+			A2(
+				_elm_lang$core$Basics_ops['++'],
+				'\', this.style.',
+				A2(
+					_elm_lang$core$Basics_ops['++'],
+					keyCamel,
+					A2(
+						_elm_lang$core$Basics_ops['++'],
+						'||\'\');',
+						A2(
+							_elm_lang$core$Basics_ops['++'],
+							'this.style.',
+							A2(
+								_elm_lang$core$Basics_ops['++'],
+								keyCamel,
+								A2(
+									_elm_lang$core$Basics_ops['++'],
+									'=\'',
+									A2(_elm_lang$core$Basics_ops['++'], escapedValue, '\'')))))))));
+};
+var _jinjor$elm_inline_hover$InlineHover$leaveEach = function (_p9) {
+	var _p10 = _p9;
+	var _p11 = _p10._0;
+	var keyCamel = _jinjor$elm_inline_hover$InlineHover$toCamelCase(_p11);
+	return A2(
+		_elm_lang$core$Basics_ops['++'],
+		'this.style.',
+		A2(
+			_elm_lang$core$Basics_ops['++'],
+			keyCamel,
+			A2(
+				_elm_lang$core$Basics_ops['++'],
+				'=this.getAttribute(\'data-hover-',
+				A2(_elm_lang$core$Basics_ops['++'], _p11, '\')||\'\';'))));
+};
+var _jinjor$elm_inline_hover$InlineHover$hover = F4(
+	function (styles, tag, attrs, children) {
+		var validStyles = A2(
+			_elm_lang$core$List$filter,
+			function (_p12) {
+				var _p13 = _p12;
+				return _jinjor$elm_inline_hover$InlineHover$isValidKey(_p13._0);
+			},
+			styles);
+		var enter = A2(
+			_elm_lang$html$Html_Attributes$attribute,
+			'onmouseenter',
+			A2(
+				_elm_lang$core$String$join,
+				';',
+				A2(_elm_lang$core$List$map, _jinjor$elm_inline_hover$InlineHover$enterEach, validStyles)));
+		var leave = A2(
+			_elm_lang$html$Html_Attributes$attribute,
+			'onmouseleave',
+			A2(
+				_elm_lang$core$String$join,
+				';',
+				A2(_elm_lang$core$List$map, _jinjor$elm_inline_hover$InlineHover$leaveEach, validStyles)));
+		return A2(
+			tag,
+			{
+				ctor: '::',
+				_0: enter,
+				_1: {ctor: '::', _0: leave, _1: attrs}
+			},
+			children);
+	});
 
 var _user$project$Styles$fretMarkerStyle = function (dot) {
 	if (_elm_lang$core$Native_Utils.eq(dot.tint, 'bar')) {
@@ -11582,6 +11712,325 @@ var _user$project$Styles$chordBarPosStyle = _elm_lang$html$Html_Attributes$style
 			}
 		}
 	});
+var _user$project$Styles$hrStyle = _elm_lang$html$Html_Attributes$style(
+	{
+		ctor: '::',
+		_0: {ctor: '_Tuple2', _0: 'width', _1: '280px'},
+		_1: {
+			ctor: '::',
+			_0: {ctor: '_Tuple2', _0: 'margin', _1: '0 auto'},
+			_1: {
+				ctor: '::',
+				_0: {ctor: '_Tuple2', _0: 'padding', _1: '10px'},
+				_1: {ctor: '[]'}
+			}
+		}
+	});
+var _user$project$Styles$notationAccidentalStyle = F2(
+	function (offset, visibility) {
+		return _elm_lang$html$Html_Attributes$style(
+			{
+				ctor: '::',
+				_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '28px'},
+				_1: {
+					ctor: '::',
+					_0: {ctor: '_Tuple2', _0: 'position', _1: 'absolute'},
+					_1: {
+						ctor: '::',
+						_0: {ctor: '_Tuple2', _0: 'marginBottom', _1: '-10px'},
+						_1: {
+							ctor: '::',
+							_0: {ctor: '_Tuple2', _0: 'bottom', _1: offset},
+							_1: {
+								ctor: '::',
+								_0: {ctor: '_Tuple2', _0: 'left', _1: '44%'},
+								_1: {
+									ctor: '::',
+									_0: {ctor: '_Tuple2', _0: 'color', _1: '#3A86FF'},
+									_1: {
+										ctor: '::',
+										_0: {ctor: '_Tuple2', _0: 'visibility', _1: visibility},
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				}
+			});
+	});
+var _user$project$Styles$notationNoteStyle = function (offset) {
+	return _elm_lang$html$Html_Attributes$style(
+		{
+			ctor: '::',
+			_0: {ctor: '_Tuple2', _0: 'width', _1: '20px'},
+			_1: {
+				ctor: '::',
+				_0: {ctor: '_Tuple2', _0: 'height', _1: '20px'},
+				_1: {
+					ctor: '::',
+					_0: {ctor: '_Tuple2', _0: 'borderRadius', _1: '10px'},
+					_1: {
+						ctor: '::',
+						_0: {ctor: '_Tuple2', _0: 'position', _1: 'absolute'},
+						_1: {
+							ctor: '::',
+							_0: {ctor: '_Tuple2', _0: 'bottom', _1: offset},
+							_1: {
+								ctor: '::',
+								_0: {ctor: '_Tuple2', _0: 'left', _1: '50%'},
+								_1: {
+									ctor: '::',
+									_0: {ctor: '_Tuple2', _0: 'backgroundColor', _1: '#3A86FF'},
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				}
+			}
+		});
+};
+var _user$project$Styles$notationClefStyle = _elm_lang$html$Html_Attributes$style(
+	{
+		ctor: '::',
+		_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '140px'},
+		_1: {
+			ctor: '::',
+			_0: {ctor: '_Tuple2', _0: 'position', _1: 'absolute'},
+			_1: {
+				ctor: '::',
+				_0: {ctor: '_Tuple2', _0: 'bottom', _1: '0'},
+				_1: {
+					ctor: '::',
+					_0: {ctor: '_Tuple2', _0: 'left', _1: '10px'},
+					_1: {
+						ctor: '::',
+						_0: {ctor: '_Tuple2', _0: 'color', _1: '#fff'},
+						_1: {ctor: '[]'}
+					}
+				}
+			}
+		}
+	});
+var _user$project$Styles$notationContainerStyle = _elm_lang$html$Html_Attributes$style(
+	{
+		ctor: '::',
+		_0: {ctor: '_Tuple2', _0: 'width', _1: '300px'},
+		_1: {
+			ctor: '::',
+			_0: {ctor: '_Tuple2', _0: 'padding', _1: '50px 10px'},
+			_1: {
+				ctor: '::',
+				_0: {ctor: '_Tuple2', _0: 'margin', _1: '70px auto'},
+				_1: {
+					ctor: '::',
+					_0: {ctor: '_Tuple2', _0: 'backgroundColor', _1: '#111'},
+					_1: {
+						ctor: '::',
+						_0: {ctor: '_Tuple2', _0: 'position', _1: 'relative'},
+						_1: {
+							ctor: '::',
+							_0: {ctor: '_Tuple2', _0: 'textAlign', _1: 'center'},
+							_1: {
+								ctor: '::',
+								_0: {ctor: '_Tuple2', _0: 'border', _1: '1px solid #333'},
+								_1: {ctor: '[]'}
+							}
+						}
+					}
+				}
+			}
+		}
+	});
+var _user$project$Styles$noteGroupStyle = _elm_lang$html$Html_Attributes$style(
+	{
+		ctor: '::',
+		_0: {ctor: '_Tuple2', _0: 'postion', _1: 'relative'},
+		_1: {ctor: '[]'}
+	});
+var _user$project$Styles$fretNumberStyle = _elm_lang$html$Html_Attributes$style(
+	{
+		ctor: '::',
+		_0: {ctor: '_Tuple2', _0: 'width', _1: '100px'},
+		_1: {
+			ctor: '::',
+			_0: {ctor: '_Tuple2', _0: 'marginBottom', _1: '-70px'},
+			_1: {
+				ctor: '::',
+				_0: {ctor: '_Tuple2', _0: 'padding', _1: '5px'},
+				_1: {
+					ctor: '::',
+					_0: {ctor: '_Tuple2', _0: 'textTransform', _1: 'uppercase'},
+					_1: {
+						ctor: '::',
+						_0: {ctor: '_Tuple2', _0: 'color', _1: '#333'},
+						_1: {
+							ctor: '::',
+							_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '20px'},
+							_1: {
+								ctor: '::',
+								_0: {ctor: '_Tuple2', _0: 'textAlign', _1: 'left'},
+								_1: {ctor: '[]'}
+							}
+						}
+					}
+				}
+			}
+		}
+	});
+var _user$project$Styles$fretBlankStyle = _elm_lang$html$Html_Attributes$style(
+	{
+		ctor: '::',
+		_0: {ctor: '_Tuple2', _0: 'color', _1: 'rgba(0,0,0,0)'},
+		_1: {
+			ctor: '::',
+			_0: {ctor: '_Tuple2', _0: 'border', _1: '1px solid #222'},
+			_1: {
+				ctor: '::',
+				_0: {ctor: '_Tuple2', _0: 'width', _1: '100px'},
+				_1: {
+					ctor: '::',
+					_0: {ctor: '_Tuple2', _0: 'padding', _1: '5px'},
+					_1: {
+						ctor: '::',
+						_0: {ctor: '_Tuple2', _0: 'backgroundColor', _1: '#111'},
+						_1: {ctor: '[]'}
+					}
+				}
+			}
+		}
+	});
+var _user$project$Styles$fretNoteStyle = _elm_lang$html$Html_Attributes$style(
+	{
+		ctor: '::',
+		_0: {ctor: '_Tuple2', _0: 'width', _1: '100px'},
+		_1: {
+			ctor: '::',
+			_0: {ctor: '_Tuple2', _0: 'padding', _1: '5px'},
+			_1: {
+				ctor: '::',
+				_0: {ctor: '_Tuple2', _0: 'textTransform', _1: 'uppercase'},
+				_1: {
+					ctor: '::',
+					_0: {ctor: '_Tuple2', _0: 'color', _1: '#3A86FF'},
+					_1: {
+						ctor: '::',
+						_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '20px'},
+						_1: {
+							ctor: '::',
+							_0: {ctor: '_Tuple2', _0: 'textAlign', _1: 'center'},
+							_1: {
+								ctor: '::',
+								_0: {ctor: '_Tuple2', _0: 'border', _1: '1px solid #333'},
+								_1: {
+									ctor: '::',
+									_0: {ctor: '_Tuple2', _0: 'borderBottom', _1: '3px solid #333'},
+									_1: {
+										ctor: '::',
+										_0: {ctor: '_Tuple2', _0: 'borderCollapse', _1: 'collapse'},
+										_1: {
+											ctor: '::',
+											_0: {ctor: '_Tuple2', _0: 'transition', _1: 'all 0.4s ease'},
+											_1: {
+												ctor: '::',
+												_0: {ctor: '_Tuple2', _0: 'backgroundColor', _1: '#111'},
+												_1: {
+													ctor: '::',
+													_0: {ctor: '_Tuple2', _0: 'zIndex', _1: '1'},
+													_1: {ctor: '[]'}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	});
+var _user$project$Styles$fretboardStringStyle = _elm_lang$html$Html_Attributes$style(
+	{
+		ctor: '::',
+		_0: {ctor: '_Tuple2', _0: 'display', _1: 'flex'},
+		_1: {ctor: '[]'}
+	});
+var _user$project$Styles$fretboardContainerStyle = _elm_lang$html$Html_Attributes$style(
+	{
+		ctor: '::',
+		_0: {ctor: '_Tuple2', _0: 'margin', _1: '50px'},
+		_1: {
+			ctor: '::',
+			_0: {ctor: '_Tuple2', _0: 'width', _1: '90%'},
+			_1: {
+				ctor: '::',
+				_0: {ctor: '_Tuple2', _0: 'border', _1: '2px solid #444'},
+				_1: {
+					ctor: '::',
+					_0: {ctor: '_Tuple2', _0: 'position', _1: 'relative'},
+					_1: {ctor: '[]'}
+				}
+			}
+		}
+	});
+var _user$project$Styles$navItemStyle = _elm_lang$html$Html_Attributes$style(
+	{
+		ctor: '::',
+		_0: {ctor: '_Tuple2', _0: 'margin', _1: '10px auto'},
+		_1: {
+			ctor: '::',
+			_0: {ctor: '_Tuple2', _0: 'padding', _1: '5px'},
+			_1: {
+				ctor: '::',
+				_0: {ctor: '_Tuple2', _0: 'color', _1: '#fff'},
+				_1: {ctor: '[]'}
+			}
+		}
+	});
+var _user$project$Styles$navStyle = _elm_lang$html$Html_Attributes$style(
+	{
+		ctor: '::',
+		_0: {ctor: '_Tuple2', _0: 'textAlign', _1: 'center'},
+		_1: {ctor: '[]'}
+	});
+
+var _user$project$Types$Model = F6(
+	function (a, b, c, d, e, f) {
+		return {route: a, musKey: b, index: c, currentChord: d, notePosition: e, showAccidental: f};
+	});
+var _user$project$Types$Dot = F3(
+	function (a, b, c) {
+		return {tint: a, stringNo: b, fretNo: c};
+	});
+var _user$project$Types$Note = F3(
+	function (a, b, c) {
+		return {frequency: a, octave: b, sustain: c};
+	});
+var _user$project$Types$PlayBundle = F2(
+	function (a, b) {
+		return {note: a, waveType: b};
+	});
+var _user$project$Types$DrawNote = F3(
+	function (a, b, c) {
+		return {ctor: 'DrawNote', _0: a, _1: b, _2: c};
+	});
+var _user$project$Types$OnLocationChange = function (a) {
+	return {ctor: 'OnLocationChange', _0: a};
+};
+var _user$project$Types$ResetIndex = {ctor: 'ResetIndex'};
+var _user$project$Types$Play = function (a) {
+	return {ctor: 'Play', _0: a};
+};
+var _user$project$Types$SendNotes = {ctor: 'SendNotes'};
+var _user$project$Types$ChangeKey = function (a) {
+	return {ctor: 'ChangeKey', _0: a};
+};
+var _user$project$Types$NotFoundPage = {ctor: 'NotFoundPage'};
+var _user$project$Types$FretboardPage = {ctor: 'FretboardPage'};
+var _user$project$Types$ScalesPage = {ctor: 'ScalesPage'};
+var _user$project$Types$ChordChartPage = {ctor: 'ChordChartPage'};
 
 var _user$project$Notes$frequencies = function (note) {
 	var _p0 = note;
@@ -11651,9 +12100,68 @@ var _user$project$Notes$sustain = function (duration) {
 			return 0.0;
 	}
 };
-var _user$project$Notes$notes = function (key) {
-	var _p3 = key;
+var _user$project$Notes$noteSorter = function (string) {
+	var _p3 = _elm_lang$core$String$length(string);
 	switch (_p3) {
+		case 3:
+			return A3(
+				_user$project$Types$Note,
+				_user$project$Notes$frequencies(
+					A3(_elm_lang$core$String$slice, 0, 1, string)),
+				_user$project$Notes$octave(
+					A2(
+						_elm_lang$core$Result$withDefault,
+						0,
+						_elm_lang$core$String$toInt(
+							A3(_elm_lang$core$String$slice, 1, 2, string)))),
+				_user$project$Notes$sustain(
+					A3(_elm_lang$core$String$slice, 2, 3, string)));
+		case 4:
+			return _elm_lang$core$Native_Utils.eq(
+				A3(_elm_lang$core$String$slice, 1, 2, string),
+				'#') ? A3(
+				_user$project$Types$Note,
+				_user$project$Notes$frequencies(
+					A3(_elm_lang$core$String$slice, 0, 2, string)),
+				_user$project$Notes$octave(
+					A2(
+						_elm_lang$core$Result$withDefault,
+						0,
+						_elm_lang$core$String$toInt(
+							A3(_elm_lang$core$String$slice, 2, 3, string)))),
+				_user$project$Notes$sustain(
+					A3(_elm_lang$core$String$slice, 3, 4, string))) : A3(
+				_user$project$Types$Note,
+				_user$project$Notes$frequencies(
+					A3(_elm_lang$core$String$slice, 0, 1, string)),
+				_user$project$Notes$octave(
+					A2(
+						_elm_lang$core$Result$withDefault,
+						0,
+						_elm_lang$core$String$toInt(
+							A3(_elm_lang$core$String$slice, 1, 2, string)))),
+				_user$project$Notes$sustain(
+					A3(_elm_lang$core$String$slice, 2, 4, string)));
+		case 5:
+			return A3(
+				_user$project$Types$Note,
+				_user$project$Notes$frequencies(
+					A3(_elm_lang$core$String$slice, 0, 2, string)),
+				_user$project$Notes$octave(
+					A2(
+						_elm_lang$core$Result$withDefault,
+						0,
+						_elm_lang$core$String$toInt(
+							A3(_elm_lang$core$String$slice, 2, 3, string)))),
+				_user$project$Notes$sustain(
+					A3(_elm_lang$core$String$slice, 3, 5, string)));
+		default:
+			return A3(_user$project$Types$Note, 0.0, 0, 0.0);
+	}
+};
+var _user$project$Notes$notes = function (key) {
+	var _p4 = key;
+	switch (_p4) {
 		case 'C':
 			return {
 				i: {
@@ -12444,7 +12952,7 @@ var _user$project$Notes$notes = function (key) {
 									_0: 'd#4q',
 									_1: {
 										ctor: '::',
-										_0: 'g#5q',
+										_0: 'g#4q',
 										_1: {ctor: '[]'}
 									}
 								}
@@ -14151,71 +14659,1232 @@ var _user$project$Notes$notes = function (key) {
 			};
 	}
 };
-var _user$project$Notes$Note = F3(
-	function (a, b, c) {
-		return {frequency: a, octave: b, sustain: c};
-	});
-var _user$project$Notes$noteSorter = function (string) {
-	var _p4 = _elm_lang$core$String$length(string);
-	switch (_p4) {
-		case 3:
-			return A3(
-				_user$project$Notes$Note,
-				_user$project$Notes$frequencies(
-					A3(_elm_lang$core$String$slice, 0, 1, string)),
-				_user$project$Notes$octave(
-					A2(
-						_elm_lang$core$Result$withDefault,
-						0,
-						_elm_lang$core$String$toInt(
-							A3(_elm_lang$core$String$slice, 1, 2, string)))),
-				_user$project$Notes$sustain(
-					A3(_elm_lang$core$String$slice, 2, 3, string)));
-		case 4:
-			return _elm_lang$core$Native_Utils.eq(
-				A3(_elm_lang$core$String$slice, 1, 2, string),
-				'#') ? A3(
-				_user$project$Notes$Note,
-				_user$project$Notes$frequencies(
-					A3(_elm_lang$core$String$slice, 0, 2, string)),
-				_user$project$Notes$octave(
-					A2(
-						_elm_lang$core$Result$withDefault,
-						0,
-						_elm_lang$core$String$toInt(
-							A3(_elm_lang$core$String$slice, 2, 3, string)))),
-				_user$project$Notes$sustain(
-					A3(_elm_lang$core$String$slice, 3, 4, string))) : A3(
-				_user$project$Notes$Note,
-				_user$project$Notes$frequencies(
-					A3(_elm_lang$core$String$slice, 0, 1, string)),
-				_user$project$Notes$octave(
-					A2(
-						_elm_lang$core$Result$withDefault,
-						0,
-						_elm_lang$core$String$toInt(
-							A3(_elm_lang$core$String$slice, 1, 2, string)))),
-				_user$project$Notes$sustain(
-					A3(_elm_lang$core$String$slice, 2, 4, string)));
-		case 5:
-			return A3(
-				_user$project$Notes$Note,
-				_user$project$Notes$frequencies(
-					A3(_elm_lang$core$String$slice, 0, 2, string)),
-				_user$project$Notes$octave(
-					A2(
-						_elm_lang$core$Result$withDefault,
-						0,
-						_elm_lang$core$String$toInt(
-							A3(_elm_lang$core$String$slice, 2, 3, string)))),
-				_user$project$Notes$sustain(
-					A3(_elm_lang$core$String$slice, 3, 5, string)));
+
+var _user$project$Keys$keys = function (key) {
+	var _p0 = key;
+	switch (_p0) {
+		case 'C':
+			return {
+				i: '06x353242030121010',
+				iv: '06x06x343232121010',
+				v: '263152040030323413',
+				vi: '06x050242332121010',
+				names: {
+					ctor: '::',
+					_0: 'C',
+					_1: {
+						ctor: '::',
+						_0: 'F',
+						_1: {
+							ctor: '::',
+							_0: 'G',
+							_1: {
+								ctor: '::',
+								_0: 'Am',
+								_1: {
+									ctor: '::',
+									_0: '5',
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				},
+				bars: {
+					ctor: '::',
+					_0: '',
+					_1: {
+						ctor: '::',
+						_0: '',
+						_1: {
+							ctor: '::',
+							_0: '',
+							_1: {
+								ctor: '::',
+								_0: '',
+								_1: {ctor: '[]'}
+							}
+						}
+					}
+				}
+			};
+		case 'G':
+			return {
+				i: '263152040030323413',
+				iv: '06x253142030323413',
+				v: '06x05x040132323212',
+				vi: '060152242030020010',
+				names: {
+					ctor: '::',
+					_0: 'G',
+					_1: {
+						ctor: '::',
+						_0: 'C9',
+						_1: {
+							ctor: '::',
+							_0: 'D',
+							_1: {
+								ctor: '::',
+								_0: 'Em',
+								_1: {
+									ctor: '::',
+									_0: '0',
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				},
+				bars: {
+					ctor: '::',
+					_0: '',
+					_1: {
+						ctor: '::',
+						_0: '',
+						_1: {
+							ctor: '::',
+							_0: '',
+							_1: {
+								ctor: '::',
+								_0: '',
+								_1: {ctor: '[]'}
+							}
+						}
+					}
+				}
+			};
+		case 'D':
+			return {
+				i: '06x05x040132323212',
+				iv: '263152040030323413',
+				v: '06x050142232322010',
+				vi: '06x152040030323212',
+				names: {
+					ctor: '::',
+					_0: 'D',
+					_1: {
+						ctor: '::',
+						_0: 'G',
+						_1: {
+							ctor: '::',
+							_0: 'A',
+							_1: {
+								ctor: '::',
+								_0: 'Bm',
+								_1: {
+									ctor: '::',
+									_0: '7',
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				},
+				bars: {
+					ctor: '::',
+					_0: '',
+					_1: {
+						ctor: '::',
+						_0: '',
+						_1: {
+							ctor: '::',
+							_0: '',
+							_1: {
+								ctor: '::',
+								_0: '',
+								_1: {ctor: '[]'}
+							}
+						}
+					}
+				}
+			};
+		case 'A':
+			return {
+				i: '06x050142232322010',
+				iv: '06x05x040132323212',
+				v: '060252342131020010',
+				vi: '162050040232322010',
+				names: {
+					ctor: '::',
+					_0: 'A',
+					_1: {
+						ctor: '::',
+						_0: 'D',
+						_1: {
+							ctor: '::',
+							_0: 'E',
+							_1: {
+								ctor: '::',
+								_0: 'F#m',
+								_1: {
+									ctor: '::',
+									_0: '2',
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				},
+				bars: {
+					ctor: '::',
+					_0: '',
+					_1: {
+						ctor: '::',
+						_0: '',
+						_1: {
+							ctor: '::',
+							_0: '',
+							_1: {
+								ctor: '::',
+								_0: '',
+								_1: {ctor: '[]'}
+							}
+						}
+					}
+				}
+			};
+		case 'E':
+			return {
+				i: '060252342131020010',
+				iv: '06x050142232322010',
+				v: '060252141332020412',
+				vi: '06x05x344434223112',
+				names: {
+					ctor: '::',
+					_0: 'E',
+					_1: {
+						ctor: '::',
+						_0: 'A',
+						_1: {
+							ctor: '::',
+							_0: 'B7',
+							_1: {
+								ctor: '::',
+								_0: 'C#m',
+								_1: {
+									ctor: '::',
+									_0: '9',
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				},
+				bars: {
+					ctor: '::',
+					_0: '',
+					_1: {
+						ctor: '::',
+						_0: '',
+						_1: {
+							ctor: '::',
+							_0: '',
+							_1: {
+								ctor: '::',
+								_0: '',
+								_1: {ctor: '[]'}
+							}
+						}
+					}
+				}
+			};
+		case 'B':
+			return {
+				i: '06xb52244334424112',
+				iv: '060252342131020010',
+				v: 'b62354444233122112',
+				vi: 'b62354444132122112',
+				names: {
+					ctor: '::',
+					_0: 'B',
+					_1: {
+						ctor: '::',
+						_0: 'E',
+						_1: {
+							ctor: '::',
+							_0: 'F#',
+							_1: {
+								ctor: '::',
+								_0: 'G#m',
+								_1: {
+									ctor: '::',
+									_0: '4',
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				},
+				bars: {
+					ctor: '::',
+					_0: '',
+					_1: {
+						ctor: '::',
+						_0: '',
+						_1: {
+							ctor: '::',
+							_0: '',
+							_1: {
+								ctor: '::',
+								_0: '4',
+								_1: {ctor: '[]'}
+							}
+						}
+					}
+				}
+			};
+		case 'F#':
+			return {
+				i: 'b62354444233122112',
+				iv: '06xb52244334424112',
+				v: '06xb52244334424112',
+				vi: '06xb52344434223112',
+				names: {
+					ctor: '::',
+					_0: 'F#',
+					_1: {
+						ctor: '::',
+						_0: 'B',
+						_1: {
+							ctor: '::',
+							_0: 'C#',
+							_1: {
+								ctor: '::',
+								_0: 'D#m',
+								_1: {
+									ctor: '::',
+									_0: '11',
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				},
+				bars: {
+					ctor: '::',
+					_0: '',
+					_1: {
+						ctor: '::',
+						_0: '',
+						_1: {
+							ctor: '::',
+							_0: '4',
+							_1: {
+								ctor: '::',
+								_0: '6',
+								_1: {ctor: '[]'}
+							}
+						}
+					}
+				}
+			};
+		case 'Db':
+			return {
+				i: '06xb52244334424112',
+				iv: 'b62354444233122112',
+				v: 'b62354444233122112',
+				vi: '06xb52344434223112',
+				names: {
+					ctor: '::',
+					_0: 'Db',
+					_1: {
+						ctor: '::',
+						_0: 'Gb',
+						_1: {
+							ctor: '::',
+							_0: 'Ab',
+							_1: {
+								ctor: '::',
+								_0: 'Bbm',
+								_1: {
+									ctor: '::',
+									_0: '6',
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				},
+				bars: {
+					ctor: '::',
+					_0: '4',
+					_1: {
+						ctor: '::',
+						_0: '',
+						_1: {
+							ctor: '::',
+							_0: '4',
+							_1: {
+								ctor: '::',
+								_0: '',
+								_1: {ctor: '[]'}
+							}
+						}
+					}
+				}
+			};
+		case 'Ab':
+			return {
+				i: 'b62354444233122112',
+				iv: '06xb52244334424112',
+				v: '06xb52244334424112',
+				vi: 'b61353443131121111',
+				names: {
+					ctor: '::',
+					_0: 'Ab',
+					_1: {
+						ctor: '::',
+						_0: 'Db',
+						_1: {
+							ctor: '::',
+							_0: 'Eb',
+							_1: {
+								ctor: '::',
+								_0: 'Fm',
+								_1: {
+									ctor: '::',
+									_0: '1',
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				},
+				bars: {
+					ctor: '::',
+					_0: '4',
+					_1: {
+						ctor: '::',
+						_0: '4',
+						_1: {
+							ctor: '::',
+							_0: '6',
+							_1: {
+								ctor: '::',
+								_0: '',
+								_1: {ctor: '[]'}
+							}
+						}
+					}
+				}
+			};
+		case 'Eb':
+			return {
+				i: '06xb52244334424112',
+				iv: 'b62354444233122112',
+				v: 'b62354444233122112',
+				vi: '06xb52344434223112',
+				names: {
+					ctor: '::',
+					_0: 'Eb',
+					_1: {
+						ctor: '::',
+						_0: 'Ab',
+						_1: {
+							ctor: '::',
+							_0: 'Bb',
+							_1: {
+								ctor: '::',
+								_0: 'Cm',
+								_1: {
+									ctor: '::',
+									_0: '4',
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				},
+				bars: {
+					ctor: '::',
+					_0: '6',
+					_1: {
+						ctor: '::',
+						_0: '4',
+						_1: {
+							ctor: '::',
+							_0: '6',
+							_1: {
+								ctor: '::',
+								_0: '3',
+								_1: {ctor: '[]'}
+							}
+						}
+					}
+				}
+			};
+		case 'Bb':
+			return {
+				i: '06xb51243333423111',
+				iv: '06xb52244334424112',
+				v: 'b61353443232121111',
+				vi: 'b62354444132122112',
+				names: {
+					ctor: '::',
+					_0: 'Bb',
+					_1: {
+						ctor: '::',
+						_0: 'Eb',
+						_1: {
+							ctor: '::',
+							_0: 'F',
+							_1: {
+								ctor: '::',
+								_0: 'Gm',
+								_1: {
+									ctor: '::',
+									_0: '3',
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				},
+				bars: {
+					ctor: '::',
+					_0: '',
+					_1: {
+						ctor: '::',
+						_0: '6',
+						_1: {
+							ctor: '::',
+							_0: '',
+							_1: {
+								ctor: '::',
+								_0: '3',
+								_1: {ctor: '[]'}
+							}
+						}
+					}
+				}
+			};
+		case 'F':
+			return {
+				i: '06x05x343232121010',
+				iv: '06xb51243333423111',
+				v: '06x353242030121010',
+				vi: '06x05x040232423111',
+				names: {
+					ctor: '::',
+					_0: 'F',
+					_1: {
+						ctor: '::',
+						_0: 'Bb',
+						_1: {
+							ctor: '::',
+							_0: 'C',
+							_1: {
+								ctor: '::',
+								_0: 'Dm',
+								_1: {
+									ctor: '::',
+									_0: '10',
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				},
+				bars: {
+					ctor: '::',
+					_0: '',
+					_1: {
+						ctor: '::',
+						_0: '',
+						_1: {
+							ctor: '::',
+							_0: '',
+							_1: {
+								ctor: '::',
+								_0: '',
+								_1: {ctor: '[]'}
+							}
+						}
+					}
+				}
+			};
+		case 'a':
+			return {
+				i: '06x050242332121010',
+				iv: '06x05x040232423111',
+				v: '060152242030020010',
+				vi: '06x05x343232121010',
+				names: {
+					ctor: '::',
+					_0: 'Am',
+					_1: {
+						ctor: '::',
+						_0: 'Dm',
+						_1: {
+							ctor: '::',
+							_0: 'Em',
+							_1: {
+								ctor: '::',
+								_0: 'F',
+								_1: {
+									ctor: '::',
+									_0: '5',
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				},
+				bars: {
+					ctor: '::',
+					_0: '',
+					_1: {
+						ctor: '::',
+						_0: '',
+						_1: {
+							ctor: '::',
+							_0: '',
+							_1: {
+								ctor: '::',
+								_0: '',
+								_1: {ctor: '[]'}
+							}
+						}
+					}
+				}
+			};
+		case 'e':
+			return {
+				i: '060152242030020010',
+				iv: '06x050242332121010',
+				v: '06x152040030323212',
+				vi: '06x353242030121010',
+				names: {
+					ctor: '::',
+					_0: 'Em',
+					_1: {
+						ctor: '::',
+						_0: 'Am',
+						_1: {
+							ctor: '::',
+							_0: 'Bm',
+							_1: {
+								ctor: '::',
+								_0: 'C',
+								_1: {
+									ctor: '::',
+									_0: '0',
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				},
+				bars: {
+					ctor: '::',
+					_0: '',
+					_1: {
+						ctor: '::',
+						_0: '',
+						_1: {
+							ctor: '::',
+							_0: '',
+							_1: {
+								ctor: '::',
+								_0: '',
+								_1: {ctor: '[]'}
+							}
+						}
+					}
+				}
+			};
+		case 'b':
+			return {
+				i: '06x05x344434223112',
+				iv: '060152242030020010',
+				v: '162050040232322010',
+				vi: '263152040030323413',
+				names: {
+					ctor: '::',
+					_0: 'Bm',
+					_1: {
+						ctor: '::',
+						_0: 'Em',
+						_1: {
+							ctor: '::',
+							_0: 'F#m',
+							_1: {
+								ctor: '::',
+								_0: 'G',
+								_1: {
+									ctor: '::',
+									_0: '7',
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				},
+				bars: {
+					ctor: '::',
+					_0: '',
+					_1: {
+						ctor: '::',
+						_0: '',
+						_1: {
+							ctor: '::',
+							_0: '',
+							_1: {
+								ctor: '::',
+								_0: '',
+								_1: {ctor: '[]'}
+							}
+						}
+					}
+				}
+			};
+		case 'f#':
+			return {
+				i: 'b62354444132122112',
+				iv: '06xb52344434223112',
+				v: '06xb52344434223112',
+				vi: '06x05x040132323212',
+				names: {
+					ctor: '::',
+					_0: 'F#m',
+					_1: {
+						ctor: '::',
+						_0: 'Bm',
+						_1: {
+							ctor: '::',
+							_0: 'C#m',
+							_1: {
+								ctor: '::',
+								_0: 'D',
+								_1: {
+									ctor: '::',
+									_0: '2',
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				},
+				bars: {
+					ctor: '::',
+					_0: '',
+					_1: {
+						ctor: '::',
+						_0: '',
+						_1: {
+							ctor: '::',
+							_0: '4',
+							_1: {
+								ctor: '::',
+								_0: '',
+								_1: {ctor: '[]'}
+							}
+						}
+					}
+				}
+			};
+		case 'c#':
+			return {
+				i: '06xb52344434223112',
+				iv: 'b62354444132122112',
+				v: 'b62354444132122112',
+				vi: '06x050142232322010',
+				names: {
+					ctor: '::',
+					_0: 'C#m',
+					_1: {
+						ctor: '::',
+						_0: 'F#m',
+						_1: {
+							ctor: '::',
+							_0: 'G#m',
+							_1: {
+								ctor: '::',
+								_0: 'A',
+								_1: {
+									ctor: '::',
+									_0: '9',
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				},
+				bars: {
+					ctor: '::',
+					_0: '4',
+					_1: {
+						ctor: '::',
+						_0: '',
+						_1: {
+							ctor: '::',
+							_0: '4',
+							_1: {
+								ctor: '::',
+								_0: '',
+								_1: {ctor: '[]'}
+							}
+						}
+					}
+				}
+			};
+		case 'g#':
+			return {
+				i: 'b62354444132122112',
+				iv: '06xb52344434223112',
+				v: '06xb52344434223112',
+				vi: '060152242131020010',
+				names: {
+					ctor: '::',
+					_0: 'G#m',
+					_1: {
+						ctor: '::',
+						_0: 'C#m',
+						_1: {
+							ctor: '::',
+							_0: 'D#m',
+							_1: {
+								ctor: '::',
+								_0: 'E',
+								_1: {
+									ctor: '::',
+									_0: '4',
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				},
+				bars: {
+					ctor: '::',
+					_0: '4',
+					_1: {
+						ctor: '::',
+						_0: '4',
+						_1: {
+							ctor: '::',
+							_0: '6',
+							_1: {
+								ctor: '::',
+								_0: '',
+								_1: {ctor: '[]'}
+							}
+						}
+					}
+				}
+			};
+		case 'd#':
+			return {
+				i: '06xb52344434223112',
+				iv: 'b62354444132122112',
+				v: 'b62354444132122112',
+				vi: '06xb52244334424112',
+				names: {
+					ctor: '::',
+					_0: 'D#m',
+					_1: {
+						ctor: '::',
+						_0: 'G#m',
+						_1: {
+							ctor: '::',
+							_0: 'A#m',
+							_1: {
+								ctor: '::',
+								_0: 'B',
+								_1: {
+									ctor: '::',
+									_0: '11',
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				},
+				bars: {
+					ctor: '::',
+					_0: '6',
+					_1: {
+						ctor: '::',
+						_0: '4',
+						_1: {
+							ctor: '::',
+							_0: '6',
+							_1: {
+								ctor: '::',
+								_0: '',
+								_1: {ctor: '[]'}
+							}
+						}
+					}
+				}
+			};
+		case 'bb':
+			return {
+				i: 'b62354444132122112',
+				iv: '06xb52344434223112',
+				v: '06xb52344434223112',
+				vi: 'b62354444233122112',
+				names: {
+					ctor: '::',
+					_0: 'Bbm',
+					_1: {
+						ctor: '::',
+						_0: 'Ebm',
+						_1: {
+							ctor: '::',
+							_0: 'Fm',
+							_1: {
+								ctor: '::',
+								_0: 'Gb',
+								_1: {
+									ctor: '::',
+									_0: '6',
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				},
+				bars: {
+					ctor: '::',
+					_0: '6',
+					_1: {
+						ctor: '::',
+						_0: '6',
+						_1: {
+							ctor: '::',
+							_0: '8',
+							_1: {
+								ctor: '::',
+								_0: '',
+								_1: {ctor: '[]'}
+							}
+						}
+					}
+				}
+			};
+		case 'f':
+			return {
+				i: 'b61353443131111111',
+				iv: '06xb51343433222111',
+				v: '06xb52344434223112',
+				vi: '06xb52244334424112',
+				names: {
+					ctor: '::',
+					_0: 'Fm',
+					_1: {
+						ctor: '::',
+						_0: 'Bbm',
+						_1: {
+							ctor: '::',
+							_0: 'Cm',
+							_1: {
+								ctor: '::',
+								_0: 'Db',
+								_1: {
+									ctor: '::',
+									_0: '1',
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				},
+				bars: {
+					ctor: '::',
+					_0: '',
+					_1: {
+						ctor: '::',
+						_0: '',
+						_1: {
+							ctor: '::',
+							_0: '3',
+							_1: {
+								ctor: '::',
+								_0: '4',
+								_1: {ctor: '[]'}
+							}
+						}
+					}
+				}
+			};
+		case 'c':
+			return {
+				i: '06xb52344434223112',
+				iv: 'b61353443131121111',
+				v: 'b62354444132122112',
+				vi: 'b62354444233122112',
+				names: {
+					ctor: '::',
+					_0: 'Cm',
+					_1: {
+						ctor: '::',
+						_0: 'Fm',
+						_1: {
+							ctor: '::',
+							_0: 'Gm',
+							_1: {
+								ctor: '::',
+								_0: 'Ab',
+								_1: {
+									ctor: '::',
+									_0: '8',
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				},
+				bars: {
+					ctor: '::',
+					_0: '3',
+					_1: {
+						ctor: '::',
+						_0: '',
+						_1: {
+							ctor: '::',
+							_0: '3',
+							_1: {
+								ctor: '::',
+								_0: '6',
+								_1: {ctor: '[]'}
+							}
+						}
+					}
+				}
+			};
+		case 'g':
+			return {
+				i: 'b62354444132122112',
+				iv: '06xb52344434223112',
+				v: '06x05x040232423111',
+				vi: '06xb52244334424112',
+				names: {
+					ctor: '::',
+					_0: 'Gm',
+					_1: {
+						ctor: '::',
+						_0: 'Cm',
+						_1: {
+							ctor: '::',
+							_0: 'Dm',
+							_1: {
+								ctor: '::',
+								_0: 'Eb',
+								_1: {
+									ctor: '::',
+									_0: '3',
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				},
+				bars: {
+					ctor: '::',
+					_0: '3',
+					_1: {
+						ctor: '::',
+						_0: '3',
+						_1: {
+							ctor: '::',
+							_0: '',
+							_1: {
+								ctor: '::',
+								_0: '6',
+								_1: {ctor: '[]'}
+							}
+						}
+					}
+				}
+			};
+		case 'd':
+			return {
+				i: '06x05x040232423111',
+				iv: 'b62354444132122112',
+				v: '06x050242332121010',
+				vi: '06xb51243333423111',
+				names: {
+					ctor: '::',
+					_0: 'Dm',
+					_1: {
+						ctor: '::',
+						_0: 'Gm',
+						_1: {
+							ctor: '::',
+							_0: 'Am',
+							_1: {
+								ctor: '::',
+								_0: 'Bb',
+								_1: {
+									ctor: '::',
+									_0: '10',
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				},
+				bars: {
+					ctor: '::',
+					_0: '',
+					_1: {
+						ctor: '::',
+						_0: '3',
+						_1: {
+							ctor: '::',
+							_0: '',
+							_1: {
+								ctor: '::',
+								_0: '',
+								_1: {ctor: '[]'}
+							}
+						}
+					}
+				}
+			};
 		default:
-			return A3(_user$project$Notes$Note, 0.0, 0, 0.0);
+			return {
+				i: '',
+				iv: '',
+				v: '',
+				vi: '',
+				names: {
+					ctor: '::',
+					_0: '',
+					_1: {
+						ctor: '::',
+						_0: '',
+						_1: {
+							ctor: '::',
+							_0: '',
+							_1: {
+								ctor: '::',
+								_0: '',
+								_1: {
+									ctor: '::',
+									_0: '',
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				},
+				bars: {
+					ctor: '::',
+					_0: '',
+					_1: {ctor: '[]'}
+				}
+			};
+	}
+};
+var _user$project$Keys$keyList = {
+	ctor: '::',
+	_0: 'Major Keys',
+	_1: {
+		ctor: '::',
+		_0: 'C',
+		_1: {
+			ctor: '::',
+			_0: 'G',
+			_1: {
+				ctor: '::',
+				_0: 'D',
+				_1: {
+					ctor: '::',
+					_0: 'A',
+					_1: {
+						ctor: '::',
+						_0: 'E',
+						_1: {
+							ctor: '::',
+							_0: 'B',
+							_1: {
+								ctor: '::',
+								_0: 'F#',
+								_1: {
+									ctor: '::',
+									_0: 'Db',
+									_1: {
+										ctor: '::',
+										_0: 'Ab',
+										_1: {
+											ctor: '::',
+											_0: 'Eb',
+											_1: {
+												ctor: '::',
+												_0: 'Bb',
+												_1: {
+													ctor: '::',
+													_0: 'F',
+													_1: {
+														ctor: '::',
+														_0: 'Minor Keys',
+														_1: {
+															ctor: '::',
+															_0: 'a',
+															_1: {
+																ctor: '::',
+																_0: 'e',
+																_1: {
+																	ctor: '::',
+																	_0: 'b',
+																	_1: {
+																		ctor: '::',
+																		_0: 'f#',
+																		_1: {
+																			ctor: '::',
+																			_0: 'c#',
+																			_1: {
+																				ctor: '::',
+																				_0: 'g#',
+																				_1: {
+																					ctor: '::',
+																					_0: 'd#',
+																					_1: {
+																						ctor: '::',
+																						_0: 'bb',
+																						_1: {
+																							ctor: '::',
+																							_0: 'f',
+																							_1: {
+																								ctor: '::',
+																								_0: 'c',
+																								_1: {
+																									ctor: '::',
+																									_0: 'g',
+																									_1: {
+																										ctor: '::',
+																										_0: 'd',
+																										_1: {ctor: '[]'}
+																									}
+																								}
+																							}
+																						}
+																					}
+																				}
+																			}
+																		}
+																	}
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
 	}
 };
 
-var _user$project$Main$chordChart = function (chord) {
+var _user$project$Chords$chordChart = function (chord) {
 	return A2(
 		_elm_lang$html$Html$div,
 		{
@@ -14339,7 +16008,7 @@ var _user$project$Main$chordChart = function (chord) {
 			}
 		});
 };
-var _user$project$Main$chordBarPosition = F2(
+var _user$project$Chords$chordBarPosition = F2(
 	function (index, key) {
 		var barPosition = A2(
 			_elm_community$list_extra$List_Extra$getAt,
@@ -14373,7 +16042,7 @@ var _user$project$Main$chordBarPosition = F2(
 			{ctor: '[]'},
 			{ctor: '[]'});
 	});
-var _user$project$Main$chordFunction = F2(
+var _user$project$Chords$chordFunction = F2(
 	function (num, key) {
 		return _elm_lang$html$Html$text(
 			A2(
@@ -14384,7 +16053,7 @@ var _user$project$Main$chordFunction = F2(
 					num,
 					_user$project$Keys$keys(key).names)));
 	});
-var _user$project$Main$fretNo = function (fret) {
+var _user$project$Chords$fretNo = function (fret) {
 	var _p0 = fret;
 	switch (_p0) {
 		case '0':
@@ -14401,7 +16070,7 @@ var _user$project$Main$fretNo = function (fret) {
 			return '-40';
 	}
 };
-var _user$project$Main$stringNo = function (string) {
+var _user$project$Chords$stringNo = function (string) {
 	var _p1 = string;
 	switch (_p1) {
 		case '1':
@@ -14420,7 +16089,7 @@ var _user$project$Main$stringNo = function (string) {
 			return '';
 	}
 };
-var _user$project$Main$fingerNo = function (finger) {
+var _user$project$Chords$fingerNo = function (finger) {
 	var _p2 = finger;
 	switch (_p2) {
 		case 'b':
@@ -14437,7 +16106,161 @@ var _user$project$Main$fingerNo = function (finger) {
 			return 'none';
 	}
 };
-var _user$project$Main$fingerChart = A2(
+var _user$project$Chords$chordBuilder = function (chord) {
+	var string = F2(
+		function (a, b) {
+			return A3(_elm_lang$core$String$slice, a, b, chord);
+		});
+	return A2(
+		_elm_lang$html$Html$div,
+		{ctor: '[]'},
+		{
+			ctor: '::',
+			_0: A2(
+				_elm_lang$html$Html$div,
+				{
+					ctor: '::',
+					_0: _user$project$Styles$fretMarkerStyle(
+						A3(
+							_user$project$Types$Dot,
+							_user$project$Chords$fingerNo(
+								A2(string, 0, 1)),
+							_user$project$Chords$stringNo(
+								A2(string, 1, 2)),
+							_user$project$Chords$fretNo(
+								A2(string, 2, 3)))),
+					_1: {ctor: '[]'}
+				},
+				{
+					ctor: '::',
+					_0: _elm_lang$html$Html$text(
+						A2(string, 2, 3)),
+					_1: {ctor: '[]'}
+				}),
+			_1: {
+				ctor: '::',
+				_0: A2(
+					_elm_lang$html$Html$div,
+					{
+						ctor: '::',
+						_0: _user$project$Styles$fretMarkerStyle(
+							A3(
+								_user$project$Types$Dot,
+								_user$project$Chords$fingerNo(
+									A2(string, 3, 4)),
+								_user$project$Chords$stringNo(
+									A2(string, 4, 5)),
+								_user$project$Chords$fretNo(
+									A2(string, 5, 6)))),
+						_1: {ctor: '[]'}
+					},
+					{
+						ctor: '::',
+						_0: _elm_lang$html$Html$text(
+							A2(string, 5, 6)),
+						_1: {ctor: '[]'}
+					}),
+				_1: {
+					ctor: '::',
+					_0: A2(
+						_elm_lang$html$Html$div,
+						{
+							ctor: '::',
+							_0: _user$project$Styles$fretMarkerStyle(
+								A3(
+									_user$project$Types$Dot,
+									_user$project$Chords$fingerNo(
+										A2(string, 6, 7)),
+									_user$project$Chords$stringNo(
+										A2(string, 7, 8)),
+									_user$project$Chords$fretNo(
+										A2(string, 8, 9)))),
+							_1: {ctor: '[]'}
+						},
+						{
+							ctor: '::',
+							_0: _elm_lang$html$Html$text(
+								A2(string, 8, 9)),
+							_1: {ctor: '[]'}
+						}),
+					_1: {
+						ctor: '::',
+						_0: A2(
+							_elm_lang$html$Html$div,
+							{
+								ctor: '::',
+								_0: _user$project$Styles$fretMarkerStyle(
+									A3(
+										_user$project$Types$Dot,
+										_user$project$Chords$fingerNo(
+											A2(string, 9, 10)),
+										_user$project$Chords$stringNo(
+											A2(string, 10, 11)),
+										_user$project$Chords$fretNo(
+											A2(string, 11, 12)))),
+								_1: {ctor: '[]'}
+							},
+							{
+								ctor: '::',
+								_0: _elm_lang$html$Html$text(
+									A2(string, 11, 12)),
+								_1: {ctor: '[]'}
+							}),
+						_1: {
+							ctor: '::',
+							_0: A2(
+								_elm_lang$html$Html$div,
+								{
+									ctor: '::',
+									_0: _user$project$Styles$fretMarkerStyle(
+										A3(
+											_user$project$Types$Dot,
+											_user$project$Chords$fingerNo(
+												A2(string, 12, 13)),
+											_user$project$Chords$stringNo(
+												A2(string, 13, 14)),
+											_user$project$Chords$fretNo(
+												A2(string, 14, 15)))),
+									_1: {ctor: '[]'}
+								},
+								{
+									ctor: '::',
+									_0: _elm_lang$html$Html$text(
+										A2(string, 14, 15)),
+									_1: {ctor: '[]'}
+								}),
+							_1: {
+								ctor: '::',
+								_0: A2(
+									_elm_lang$html$Html$div,
+									{
+										ctor: '::',
+										_0: _user$project$Styles$fretMarkerStyle(
+											A3(
+												_user$project$Types$Dot,
+												_user$project$Chords$fingerNo(
+													A2(string, 15, 16)),
+												_user$project$Chords$stringNo(
+													A2(string, 16, 17)),
+												_user$project$Chords$fretNo(
+													A2(string, 17, 18)))),
+										_1: {ctor: '[]'}
+									},
+									{
+										ctor: '::',
+										_0: _elm_lang$html$Html$text(
+											A2(string, 17, 18)),
+										_1: {ctor: '[]'}
+									}),
+								_1: {ctor: '[]'}
+							}
+						}
+					}
+				}
+			}
+		});
+};
+var _user$project$Chords$fingerChart = A2(
 	_elm_lang$html$Html$div,
 	{
 		ctor: '::',
@@ -14479,7 +16302,7 @@ var _user$project$Main$fingerChart = A2(
 											_0: {
 												ctor: '_Tuple2',
 												_0: 'backgroundColor',
-												_1: _user$project$Main$fingerNo('1')
+												_1: _user$project$Chords$fingerNo('1')
 											},
 											_1: {ctor: '[]'}
 										}
@@ -14550,7 +16373,7 @@ var _user$project$Main$fingerChart = A2(
 												_0: {
 													ctor: '_Tuple2',
 													_0: 'backgroundColor',
-													_1: _user$project$Main$fingerNo('2')
+													_1: _user$project$Chords$fingerNo('2')
 												},
 												_1: {ctor: '[]'}
 											}
@@ -14621,7 +16444,7 @@ var _user$project$Main$fingerChart = A2(
 													_0: {
 														ctor: '_Tuple2',
 														_0: 'backgroundColor',
-														_1: _user$project$Main$fingerNo('3')
+														_1: _user$project$Chords$fingerNo('3')
 													},
 													_1: {ctor: '[]'}
 												}
@@ -14692,7 +16515,7 @@ var _user$project$Main$fingerChart = A2(
 														_0: {
 															ctor: '_Tuple2',
 															_0: 'backgroundColor',
-															_1: _user$project$Main$fingerNo('4')
+															_1: _user$project$Chords$fingerNo('4')
 														},
 														_1: {ctor: '[]'}
 													}
@@ -14733,251 +16556,7 @@ var _user$project$Main$fingerChart = A2(
 			}
 		}
 	});
-var _user$project$Main$model = {
-	musKey: 'C',
-	index: 6,
-	currentChord: {ctor: '[]'}
-};
-var _user$project$Main$init = {ctor: '_Tuple2', _0: _user$project$Main$model, _1: _elm_lang$core$Platform_Cmd$none};
-var _user$project$Main$send = _elm_lang$core$Native_Platform.outgoingPort(
-	'send',
-	function (v) {
-		return {
-			note: {frequency: v.note.frequency, octave: v.note.octave, sustain: v.note.sustain},
-			waveType: v.waveType
-		};
-	});
-var _user$project$Main$Model = F3(
-	function (a, b, c) {
-		return {musKey: a, index: b, currentChord: c};
-	});
-var _user$project$Main$Dot = F3(
-	function (a, b, c) {
-		return {tint: a, stringNo: b, fretNo: c};
-	});
-var _user$project$Main$chordBuilder = function (chord) {
-	var string = F2(
-		function (a, b) {
-			return A3(_elm_lang$core$String$slice, a, b, chord);
-		});
-	return A2(
-		_elm_lang$html$Html$div,
-		{ctor: '[]'},
-		{
-			ctor: '::',
-			_0: A2(
-				_elm_lang$html$Html$div,
-				{
-					ctor: '::',
-					_0: _user$project$Styles$fretMarkerStyle(
-						A3(
-							_user$project$Main$Dot,
-							_user$project$Main$fingerNo(
-								A2(string, 0, 1)),
-							_user$project$Main$stringNo(
-								A2(string, 1, 2)),
-							_user$project$Main$fretNo(
-								A2(string, 2, 3)))),
-					_1: {ctor: '[]'}
-				},
-				{
-					ctor: '::',
-					_0: _elm_lang$html$Html$text(
-						A2(string, 2, 3)),
-					_1: {ctor: '[]'}
-				}),
-			_1: {
-				ctor: '::',
-				_0: A2(
-					_elm_lang$html$Html$div,
-					{
-						ctor: '::',
-						_0: _user$project$Styles$fretMarkerStyle(
-							A3(
-								_user$project$Main$Dot,
-								_user$project$Main$fingerNo(
-									A2(string, 3, 4)),
-								_user$project$Main$stringNo(
-									A2(string, 4, 5)),
-								_user$project$Main$fretNo(
-									A2(string, 5, 6)))),
-						_1: {ctor: '[]'}
-					},
-					{
-						ctor: '::',
-						_0: _elm_lang$html$Html$text(
-							A2(string, 5, 6)),
-						_1: {ctor: '[]'}
-					}),
-				_1: {
-					ctor: '::',
-					_0: A2(
-						_elm_lang$html$Html$div,
-						{
-							ctor: '::',
-							_0: _user$project$Styles$fretMarkerStyle(
-								A3(
-									_user$project$Main$Dot,
-									_user$project$Main$fingerNo(
-										A2(string, 6, 7)),
-									_user$project$Main$stringNo(
-										A2(string, 7, 8)),
-									_user$project$Main$fretNo(
-										A2(string, 8, 9)))),
-							_1: {ctor: '[]'}
-						},
-						{
-							ctor: '::',
-							_0: _elm_lang$html$Html$text(
-								A2(string, 8, 9)),
-							_1: {ctor: '[]'}
-						}),
-					_1: {
-						ctor: '::',
-						_0: A2(
-							_elm_lang$html$Html$div,
-							{
-								ctor: '::',
-								_0: _user$project$Styles$fretMarkerStyle(
-									A3(
-										_user$project$Main$Dot,
-										_user$project$Main$fingerNo(
-											A2(string, 9, 10)),
-										_user$project$Main$stringNo(
-											A2(string, 10, 11)),
-										_user$project$Main$fretNo(
-											A2(string, 11, 12)))),
-								_1: {ctor: '[]'}
-							},
-							{
-								ctor: '::',
-								_0: _elm_lang$html$Html$text(
-									A2(string, 11, 12)),
-								_1: {ctor: '[]'}
-							}),
-						_1: {
-							ctor: '::',
-							_0: A2(
-								_elm_lang$html$Html$div,
-								{
-									ctor: '::',
-									_0: _user$project$Styles$fretMarkerStyle(
-										A3(
-											_user$project$Main$Dot,
-											_user$project$Main$fingerNo(
-												A2(string, 12, 13)),
-											_user$project$Main$stringNo(
-												A2(string, 13, 14)),
-											_user$project$Main$fretNo(
-												A2(string, 14, 15)))),
-									_1: {ctor: '[]'}
-								},
-								{
-									ctor: '::',
-									_0: _elm_lang$html$Html$text(
-										A2(string, 14, 15)),
-									_1: {ctor: '[]'}
-								}),
-							_1: {
-								ctor: '::',
-								_0: A2(
-									_elm_lang$html$Html$div,
-									{
-										ctor: '::',
-										_0: _user$project$Styles$fretMarkerStyle(
-											A3(
-												_user$project$Main$Dot,
-												_user$project$Main$fingerNo(
-													A2(string, 15, 16)),
-												_user$project$Main$stringNo(
-													A2(string, 16, 17)),
-												_user$project$Main$fretNo(
-													A2(string, 17, 18)))),
-										_1: {ctor: '[]'}
-									},
-									{
-										ctor: '::',
-										_0: _elm_lang$html$Html$text(
-											A2(string, 17, 18)),
-										_1: {ctor: '[]'}
-									}),
-								_1: {ctor: '[]'}
-							}
-						}
-					}
-				}
-			}
-		});
-};
-var _user$project$Main$PlayBundle = F2(
-	function (a, b) {
-		return {note: a, waveType: b};
-	});
-var _user$project$Main$ResetIndex = {ctor: 'ResetIndex'};
-var _user$project$Main$Play = function (a) {
-	return {ctor: 'Play', _0: a};
-};
-var _user$project$Main$SendNotes = {ctor: 'SendNotes'};
-var _user$project$Main$update = F2(
-	function (msg, model) {
-		var _p3 = msg;
-		switch (_p3.ctor) {
-			case 'ChangeKey':
-				return {
-					ctor: '_Tuple2',
-					_0: _elm_lang$core$Native_Utils.update(
-						model,
-						{musKey: _p3._0}),
-					_1: _elm_lang$core$Platform_Cmd$none
-				};
-			case 'Play':
-				return A2(
-					_ccapndave$elm_update_extra$Update_Extra_Infix_ops[':>'],
-					A2(
-						_ccapndave$elm_update_extra$Update_Extra_Infix_ops[':>'],
-						{
-							ctor: '_Tuple2',
-							_0: _elm_lang$core$Native_Utils.update(
-								model,
-								{currentChord: _p3._0}),
-							_1: _elm_lang$core$Platform_Cmd$none
-						},
-						_user$project$Main$update(_user$project$Main$ResetIndex)),
-					_user$project$Main$update(_user$project$Main$SendNotes));
-			case 'ResetIndex':
-				return {
-					ctor: '_Tuple2',
-					_0: _elm_lang$core$Native_Utils.update(
-						model,
-						{index: 0}),
-					_1: _elm_lang$core$Platform_Cmd$none
-				};
-			default:
-				var note = _user$project$Notes$noteSorter(
-					A2(
-						_elm_lang$core$Maybe$withDefault,
-						'e2w',
-						A2(_elm_community$list_extra$List_Extra$getAt, model.index, model.currentChord)));
-				return {
-					ctor: '_Tuple2',
-					_0: _elm_lang$core$Native_Utils.update(
-						model,
-						{index: model.index + 1}),
-					_1: _user$project$Main$send(
-						A2(_user$project$Main$PlayBundle, note, 'triangle'))
-				};
-		}
-	});
-var _user$project$Main$subscriptions = function (model) {
-	return (_elm_lang$core$Native_Utils.cmp(model.index, 6) < 0) ? A2(
-		_elm_lang$core$Time$every,
-		0.1 * _elm_lang$core$Time$second,
-		_elm_lang$core$Basics$always(_user$project$Main$SendNotes)) : _elm_lang$core$Platform_Sub$none;
-};
-var _user$project$Main$ChangeKey = function (a) {
-	return {ctor: 'ChangeKey', _0: a};
-};
-var _user$project$Main$view = function (model) {
+var _user$project$Chords$chordChartPage = function (model) {
 	var keyOptions = function (key) {
 		return A2(
 			_elm_lang$html$Html$option,
@@ -15026,7 +16605,7 @@ var _user$project$Main$view = function (model) {
 				{ctor: '[]'},
 				{
 					ctor: '::',
-					_0: _user$project$Main$fingerChart,
+					_0: _user$project$Chords$fingerChart,
 					_1: {ctor: '[]'}
 				}),
 			_1: {
@@ -15051,7 +16630,7 @@ var _user$project$Main$view = function (model) {
 							}),
 						_1: {
 							ctor: '::',
-							_0: _elm_lang$html$Html_Events$onInput(_user$project$Main$ChangeKey),
+							_0: _elm_lang$html$Html_Events$onInput(_user$project$Types$ChangeKey),
 							_1: {ctor: '[]'}
 						}
 					},
@@ -15081,13 +16660,13 @@ var _user$project$Main$view = function (model) {
 										{ctor: '[]'},
 										{
 											ctor: '::',
-											_0: A2(_user$project$Main$chordBarPosition, 0, model.musKey),
+											_0: A2(_user$project$Chords$chordBarPosition, 0, model.musKey),
 											_1: {ctor: '[]'}
 										}),
 									_1: {
 										ctor: '::',
-										_0: _user$project$Main$chordChart(
-											_user$project$Main$chordBuilder(
+										_0: _user$project$Chords$chordChart(
+											_user$project$Chords$chordBuilder(
 												_user$project$Keys$keys(model.musKey).i)),
 										_1: {
 											ctor: '::',
@@ -15099,14 +16678,14 @@ var _user$project$Main$view = function (model) {
 													_1: {
 														ctor: '::',
 														_0: _elm_lang$html$Html_Events$onClick(
-															_user$project$Main$Play(
+															_user$project$Types$Play(
 																_user$project$Notes$notes(model.musKey).i)),
 														_1: {ctor: '[]'}
 													}
 												},
 												{
 													ctor: '::',
-													_0: A2(_user$project$Main$chordFunction, 0, model.musKey),
+													_0: A2(_user$project$Chords$chordFunction, 0, model.musKey),
 													_1: {ctor: '[]'}
 												}),
 											_1: {
@@ -15119,7 +16698,7 @@ var _user$project$Main$view = function (model) {
 														_1: {
 															ctor: '::',
 															_0: _elm_lang$html$Html_Events$onClick(
-																_user$project$Main$Play(
+																_user$project$Types$Play(
 																	_user$project$Notes$notes(model.musKey).i)),
 															_1: {ctor: '[]'}
 														}
@@ -15150,13 +16729,13 @@ var _user$project$Main$view = function (model) {
 											{ctor: '[]'},
 											{
 												ctor: '::',
-												_0: A2(_user$project$Main$chordBarPosition, 1, model.musKey),
+												_0: A2(_user$project$Chords$chordBarPosition, 1, model.musKey),
 												_1: {ctor: '[]'}
 											}),
 										_1: {
 											ctor: '::',
-											_0: _user$project$Main$chordChart(
-												_user$project$Main$chordBuilder(
+											_0: _user$project$Chords$chordChart(
+												_user$project$Chords$chordBuilder(
 													_user$project$Keys$keys(model.musKey).iv)),
 											_1: {
 												ctor: '::',
@@ -15168,14 +16747,14 @@ var _user$project$Main$view = function (model) {
 														_1: {
 															ctor: '::',
 															_0: _elm_lang$html$Html_Events$onClick(
-																_user$project$Main$Play(
+																_user$project$Types$Play(
 																	_user$project$Notes$notes(model.musKey).iv)),
 															_1: {ctor: '[]'}
 														}
 													},
 													{
 														ctor: '::',
-														_0: A2(_user$project$Main$chordFunction, 1, model.musKey),
+														_0: A2(_user$project$Chords$chordFunction, 1, model.musKey),
 														_1: {ctor: '[]'}
 													}),
 												_1: {
@@ -15188,7 +16767,7 @@ var _user$project$Main$view = function (model) {
 															_1: {
 																ctor: '::',
 																_0: _elm_lang$html$Html_Events$onClick(
-																	_user$project$Main$Play(
+																	_user$project$Types$Play(
 																		_user$project$Notes$notes(model.musKey).iv)),
 																_1: {ctor: '[]'}
 															}
@@ -15219,13 +16798,13 @@ var _user$project$Main$view = function (model) {
 												{ctor: '[]'},
 												{
 													ctor: '::',
-													_0: A2(_user$project$Main$chordBarPosition, 2, model.musKey),
+													_0: A2(_user$project$Chords$chordBarPosition, 2, model.musKey),
 													_1: {ctor: '[]'}
 												}),
 											_1: {
 												ctor: '::',
-												_0: _user$project$Main$chordChart(
-													_user$project$Main$chordBuilder(
+												_0: _user$project$Chords$chordChart(
+													_user$project$Chords$chordBuilder(
 														_user$project$Keys$keys(model.musKey).v)),
 												_1: {
 													ctor: '::',
@@ -15237,14 +16816,14 @@ var _user$project$Main$view = function (model) {
 															_1: {
 																ctor: '::',
 																_0: _elm_lang$html$Html_Events$onClick(
-																	_user$project$Main$Play(
+																	_user$project$Types$Play(
 																		_user$project$Notes$notes(model.musKey).v)),
 																_1: {ctor: '[]'}
 															}
 														},
 														{
 															ctor: '::',
-															_0: A2(_user$project$Main$chordFunction, 2, model.musKey),
+															_0: A2(_user$project$Chords$chordFunction, 2, model.musKey),
 															_1: {ctor: '[]'}
 														}),
 													_1: {
@@ -15257,7 +16836,7 @@ var _user$project$Main$view = function (model) {
 																_1: {
 																	ctor: '::',
 																	_0: _elm_lang$html$Html_Events$onClick(
-																		_user$project$Main$Play(
+																		_user$project$Types$Play(
 																			_user$project$Notes$notes(model.musKey).v)),
 																	_1: {ctor: '[]'}
 																}
@@ -15288,13 +16867,13 @@ var _user$project$Main$view = function (model) {
 													{ctor: '[]'},
 													{
 														ctor: '::',
-														_0: A2(_user$project$Main$chordBarPosition, 3, model.musKey),
+														_0: A2(_user$project$Chords$chordBarPosition, 3, model.musKey),
 														_1: {ctor: '[]'}
 													}),
 												_1: {
 													ctor: '::',
-													_0: _user$project$Main$chordChart(
-														_user$project$Main$chordBuilder(
+													_0: _user$project$Chords$chordChart(
+														_user$project$Chords$chordBuilder(
 															_user$project$Keys$keys(model.musKey).vi)),
 													_1: {
 														ctor: '::',
@@ -15306,14 +16885,14 @@ var _user$project$Main$view = function (model) {
 																_1: {
 																	ctor: '::',
 																	_0: _elm_lang$html$Html_Events$onClick(
-																		_user$project$Main$Play(
+																		_user$project$Types$Play(
 																			_user$project$Notes$notes(model.musKey).vi)),
 																	_1: {ctor: '[]'}
 																}
 															},
 															{
 																ctor: '::',
-																_0: A2(_user$project$Main$chordFunction, 3, model.musKey),
+																_0: A2(_user$project$Chords$chordFunction, 3, model.musKey),
 																_1: {ctor: '[]'}
 															}),
 														_1: {
@@ -15326,7 +16905,7 @@ var _user$project$Main$view = function (model) {
 																	_1: {
 																		ctor: '::',
 																		_0: _elm_lang$html$Html_Events$onClick(
-																			_user$project$Main$Play(
+																			_user$project$Types$Play(
 																				_user$project$Notes$notes(model.musKey).vi)),
 																		_1: {ctor: '[]'}
 																	}
@@ -15381,7 +16960,983 @@ var _user$project$Main$view = function (model) {
 			}
 		});
 };
-var _user$project$Main$main = _elm_lang$html$Html$program(
+
+var _user$project$Fretboard$noteFretPos = function (index) {
+	var num = A2(
+		_elm_lang$core$Result$withDefault,
+		0,
+		_elm_lang$core$String$toInt(index));
+	return num * 10;
+};
+var _user$project$Fretboard$noteStringPos = function (stringNo) {
+	var num = A2(
+		_elm_lang$core$Result$withDefault,
+		0,
+		_elm_lang$core$String$toInt(stringNo));
+	var _p0 = num;
+	switch (_p0) {
+		case 6:
+			return 0;
+		case 5:
+			return 20;
+		case 4:
+			return 50;
+		case 3:
+			return 81;
+		case 2:
+			return 103;
+		case 1:
+			return 134;
+		default:
+			return 0;
+	}
+};
+var _user$project$Fretboard$fretNotation = function (model) {
+	return A2(
+		_elm_lang$html$Html$div,
+		{
+			ctor: '::',
+			_0: _user$project$Styles$notationContainerStyle,
+			_1: {ctor: '[]'}
+		},
+		{
+			ctor: '::',
+			_0: A2(
+				_elm_lang$html$Html$div,
+				{
+					ctor: '::',
+					_0: _user$project$Styles$notationClefStyle,
+					_1: {
+						ctor: '::',
+						_0: A2(
+							_elm_lang$html$Html_Attributes$property,
+							'innerHTML',
+							_elm_lang$core$Json_Encode$string('&#x1d11e;')),
+						_1: {ctor: '[]'}
+					}
+				},
+				{ctor: '[]'}),
+			_1: {
+				ctor: '::',
+				_0: A2(
+					_elm_lang$html$Html$div,
+					{
+						ctor: '::',
+						_0: _user$project$Styles$notationNoteStyle(model.notePosition),
+						_1: {ctor: '[]'}
+					},
+					{ctor: '[]'}),
+				_1: {
+					ctor: '::',
+					_0: A2(
+						_elm_lang$html$Html$div,
+						{
+							ctor: '::',
+							_0: A2(_user$project$Styles$notationAccidentalStyle, model.notePosition, model.showAccidental),
+							_1: {ctor: '[]'}
+						},
+						{
+							ctor: '::',
+							_0: _elm_lang$html$Html$text('#'),
+							_1: {ctor: '[]'}
+						}),
+					_1: {
+						ctor: '::',
+						_0: A2(
+							_elm_lang$html$Html$hr,
+							{
+								ctor: '::',
+								_0: _user$project$Styles$hrStyle,
+								_1: {ctor: '[]'}
+							},
+							{ctor: '[]'}),
+						_1: {
+							ctor: '::',
+							_0: A2(
+								_elm_lang$html$Html$hr,
+								{
+									ctor: '::',
+									_0: _user$project$Styles$hrStyle,
+									_1: {ctor: '[]'}
+								},
+								{ctor: '[]'}),
+							_1: {
+								ctor: '::',
+								_0: A2(
+									_elm_lang$html$Html$hr,
+									{
+										ctor: '::',
+										_0: _user$project$Styles$hrStyle,
+										_1: {ctor: '[]'}
+									},
+									{ctor: '[]'}),
+								_1: {
+									ctor: '::',
+									_0: A2(
+										_elm_lang$html$Html$hr,
+										{
+											ctor: '::',
+											_0: _user$project$Styles$hrStyle,
+											_1: {ctor: '[]'}
+										},
+										{ctor: '[]'}),
+									_1: {
+										ctor: '::',
+										_0: A2(
+											_elm_lang$html$Html$hr,
+											{
+												ctor: '::',
+												_0: _user$project$Styles$hrStyle,
+												_1: {ctor: '[]'}
+											},
+											{ctor: '[]'}),
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		});
+};
+var _user$project$Fretboard$revealNotes = {
+	ctor: '::',
+	_0: {ctor: '_Tuple2', _0: 'opacity', _1: '1'},
+	_1: {
+		ctor: '::',
+		_0: {ctor: '_Tuple2', _0: 'z-index', _1: '500'},
+		_1: {
+			ctor: '::',
+			_0: {ctor: '_Tuple2', _0: 'transform', _1: 'scale(3,3)'},
+			_1: {ctor: '[]'}
+		}
+	}
+};
+var _user$project$Fretboard$stringe = {
+	ctor: '::',
+	_0: '1/0/e',
+	_1: {
+		ctor: '::',
+		_0: '1/1/f',
+		_1: {
+			ctor: '::',
+			_0: '1/1/f#',
+			_1: {
+				ctor: '::',
+				_0: '1/2/g',
+				_1: {
+					ctor: '::',
+					_0: '1/2/g#',
+					_1: {
+						ctor: '::',
+						_0: '1/3/a',
+						_1: {
+							ctor: '::',
+							_0: '1/3/a#',
+							_1: {
+								ctor: '::',
+								_0: '1/4/b',
+								_1: {
+									ctor: '::',
+									_0: '1/5/c',
+									_1: {
+										ctor: '::',
+										_0: '1/5/c#',
+										_1: {
+											ctor: '::',
+											_0: '1/6/d',
+											_1: {
+												ctor: '::',
+												_0: '1/6/d#',
+												_1: {
+													ctor: '::',
+													_0: '1/7/e',
+													_1: {ctor: '[]'}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+};
+var _user$project$Fretboard$stringB = {
+	ctor: '::',
+	_0: '2/0/b',
+	_1: {
+		ctor: '::',
+		_0: '2/1/c',
+		_1: {
+			ctor: '::',
+			_0: '2/1/c#',
+			_1: {
+				ctor: '::',
+				_0: '2/2/d',
+				_1: {
+					ctor: '::',
+					_0: '2/2/d#',
+					_1: {
+						ctor: '::',
+						_0: '2/3/e',
+						_1: {
+							ctor: '::',
+							_0: '2/4/f',
+							_1: {
+								ctor: '::',
+								_0: '2/4/f#',
+								_1: {
+									ctor: '::',
+									_0: '2/5/g',
+									_1: {
+										ctor: '::',
+										_0: '2/5/g#',
+										_1: {
+											ctor: '::',
+											_0: '2/6/a',
+											_1: {
+												ctor: '::',
+												_0: '2/6/a#',
+												_1: {
+													ctor: '::',
+													_0: '2/7/b',
+													_1: {ctor: '[]'}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+};
+var _user$project$Fretboard$stringG = {
+	ctor: '::',
+	_0: '3/0/g',
+	_1: {
+		ctor: '::',
+		_0: '3/0/g#',
+		_1: {
+			ctor: '::',
+			_0: '3/1/a',
+			_1: {
+				ctor: '::',
+				_0: '3/1/a#',
+				_1: {
+					ctor: '::',
+					_0: '3/2/b',
+					_1: {
+						ctor: '::',
+						_0: '3/3/c',
+						_1: {
+							ctor: '::',
+							_0: '3/3/c#',
+							_1: {
+								ctor: '::',
+								_0: '3/4/d',
+								_1: {
+									ctor: '::',
+									_0: '3/4/d#',
+									_1: {
+										ctor: '::',
+										_0: '3/5/e',
+										_1: {
+											ctor: '::',
+											_0: '3/6/f',
+											_1: {
+												ctor: '::',
+												_0: '3/6/f#',
+												_1: {
+													ctor: '::',
+													_0: '3/7/g',
+													_1: {ctor: '[]'}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+};
+var _user$project$Fretboard$stringD = {
+	ctor: '::',
+	_0: '4/0/d',
+	_1: {
+		ctor: '::',
+		_0: '4/0/d#',
+		_1: {
+			ctor: '::',
+			_0: '4/1/e',
+			_1: {
+				ctor: '::',
+				_0: '4/2/f',
+				_1: {
+					ctor: '::',
+					_0: '4/2/f#',
+					_1: {
+						ctor: '::',
+						_0: '4/3/g',
+						_1: {
+							ctor: '::',
+							_0: '4/3/g#',
+							_1: {
+								ctor: '::',
+								_0: '4/4/a',
+								_1: {
+									ctor: '::',
+									_0: '4/4/a#',
+									_1: {
+										ctor: '::',
+										_0: '4/5/b',
+										_1: {
+											ctor: '::',
+											_0: '4/6/c',
+											_1: {
+												ctor: '::',
+												_0: '4/6/c#',
+												_1: {
+													ctor: '::',
+													_0: '4/7/d',
+													_1: {ctor: '[]'}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+};
+var _user$project$Fretboard$stringA = {
+	ctor: '::',
+	_0: '5/0/a',
+	_1: {
+		ctor: '::',
+		_0: '5/0/a#',
+		_1: {
+			ctor: '::',
+			_0: '5/1/b',
+			_1: {
+				ctor: '::',
+				_0: '5/2/c',
+				_1: {
+					ctor: '::',
+					_0: '5/2/c#',
+					_1: {
+						ctor: '::',
+						_0: '5/3/d',
+						_1: {
+							ctor: '::',
+							_0: '5/3/d#',
+							_1: {
+								ctor: '::',
+								_0: '5/4/e',
+								_1: {
+									ctor: '::',
+									_0: '5/5/f',
+									_1: {
+										ctor: '::',
+										_0: '5/5/f#',
+										_1: {
+											ctor: '::',
+											_0: '5/6/g',
+											_1: {
+												ctor: '::',
+												_0: '5/6/g#',
+												_1: {
+													ctor: '::',
+													_0: '5/7/a',
+													_1: {ctor: '[]'}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+};
+var _user$project$Fretboard$stringE = {
+	ctor: '::',
+	_0: '6/0/e',
+	_1: {
+		ctor: '::',
+		_0: '6/1/f',
+		_1: {
+			ctor: '::',
+			_0: '6/1/f#',
+			_1: {
+				ctor: '::',
+				_0: '6/2/g',
+				_1: {
+					ctor: '::',
+					_0: '6/2/g#',
+					_1: {
+						ctor: '::',
+						_0: '6/3/a',
+						_1: {
+							ctor: '::',
+							_0: '6/3/a#',
+							_1: {
+								ctor: '::',
+								_0: '6/4/b',
+								_1: {
+									ctor: '::',
+									_0: '6/5/c',
+									_1: {
+										ctor: '::',
+										_0: '6/5/c#',
+										_1: {
+											ctor: '::',
+											_0: '6/6/d',
+											_1: {
+												ctor: '::',
+												_0: '6/6/d#',
+												_1: {
+													ctor: '::',
+													_0: '6/7/e',
+													_1: {ctor: '[]'}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+};
+var _user$project$Fretboard$fretNumbers = A2(_elm_lang$core$List$range, 0, 12);
+var _user$project$Fretboard$fretboardPage = function (model) {
+	var blank = function (note) {
+		return A2(
+			_elm_lang$html$Html$div,
+			{
+				ctor: '::',
+				_0: _user$project$Styles$fretBlankStyle,
+				_1: {ctor: '[]'}
+			},
+			{
+				ctor: '::',
+				_0: _elm_lang$html$Html$text(note),
+				_1: {ctor: '[]'}
+			});
+	};
+	var fretNumberMarkers = function (num) {
+		return A2(
+			_elm_lang$html$Html$div,
+			{
+				ctor: '::',
+				_0: _user$project$Styles$fretNumberStyle,
+				_1: {ctor: '[]'}
+			},
+			{
+				ctor: '::',
+				_0: _elm_lang$html$Html$text(
+					_elm_lang$core$Basics$toString(num)),
+				_1: {ctor: '[]'}
+			});
+	};
+	var highlight = {
+		ctor: '::',
+		_0: {ctor: '_Tuple2', _0: 'background-color', _1: '#3A86FF'},
+		_1: {
+			ctor: '::',
+			_0: {ctor: '_Tuple2', _0: 'transform', _1: 'scale(1.25, 1.25)'},
+			_1: {
+				ctor: '::',
+				_0: {ctor: '_Tuple2', _0: 'color', _1: 'black'},
+				_1: {
+					ctor: '::',
+					_0: {ctor: '_Tuple2', _0: 'z-index', _1: '2'},
+					_1: {ctor: '[]'}
+				}
+			}
+		}
+	};
+	var frets = function (info) {
+		var stringData = A2(_elm_lang$core$String$split, '/', info);
+		var index = A2(
+			_elm_lang$core$Maybe$withDefault,
+			'0',
+			A2(_elm_community$list_extra$List_Extra$getAt, 1, stringData));
+		var stringNo = A2(
+			_elm_lang$core$Maybe$withDefault,
+			'0',
+			A2(_elm_community$list_extra$List_Extra$getAt, 0, stringData));
+		var note = A2(
+			_elm_lang$core$Maybe$withDefault,
+			'0',
+			A2(_elm_community$list_extra$List_Extra$getAt, 2, stringData));
+		var sharp = function () {
+			var _p1 = _elm_lang$core$String$length(note);
+			switch (_p1) {
+				case 1:
+					return 'hidden';
+				case 2:
+					return 'visible';
+				default:
+					return 'hidden';
+			}
+		}();
+		return A4(
+			_jinjor$elm_inline_hover$InlineHover$hover,
+			highlight,
+			_elm_lang$html$Html$div,
+			{
+				ctor: '::',
+				_0: _user$project$Styles$fretNoteStyle,
+				_1: {
+					ctor: '::',
+					_0: _elm_lang$html$Html_Events$onClick(
+						A3(_user$project$Types$DrawNote, index, stringNo, sharp)),
+					_1: {ctor: '[]'}
+				}
+			},
+			{
+				ctor: '::',
+				_0: _elm_lang$html$Html$text(note),
+				_1: {ctor: '[]'}
+			});
+	};
+	return A2(
+		_elm_lang$html$Html$div,
+		{
+			ctor: '::',
+			_0: _elm_lang$html$Html_Attributes$style(
+				{
+					ctor: '::',
+					_0: {ctor: '_Tuple2', _0: 'position', _1: 'relative'},
+					_1: {ctor: '[]'}
+				}),
+			_1: {ctor: '[]'}
+		},
+		{
+			ctor: '::',
+			_0: A2(
+				_elm_lang$html$Html$div,
+				{
+					ctor: '::',
+					_0: _user$project$Styles$fretboardContainerStyle,
+					_1: {ctor: '[]'}
+				},
+				{
+					ctor: '::',
+					_0: A2(
+						_elm_lang$html$Html$div,
+						{
+							ctor: '::',
+							_0: _user$project$Styles$fretboardStringStyle,
+							_1: {ctor: '[]'}
+						},
+						A2(
+							_elm_lang$core$List$map,
+							frets,
+							_elm_lang$core$List$reverse(_user$project$Fretboard$stringE))),
+					_1: {
+						ctor: '::',
+						_0: A2(
+							_elm_lang$html$Html$div,
+							{
+								ctor: '::',
+								_0: _user$project$Styles$fretboardStringStyle,
+								_1: {ctor: '[]'}
+							},
+							A2(
+								_elm_lang$core$List$map,
+								frets,
+								_elm_lang$core$List$reverse(_user$project$Fretboard$stringA))),
+						_1: {
+							ctor: '::',
+							_0: A2(
+								_elm_lang$html$Html$div,
+								{
+									ctor: '::',
+									_0: _user$project$Styles$fretboardStringStyle,
+									_1: {ctor: '[]'}
+								},
+								A2(
+									_elm_lang$core$List$map,
+									frets,
+									_elm_lang$core$List$reverse(_user$project$Fretboard$stringD))),
+							_1: {
+								ctor: '::',
+								_0: A2(
+									_elm_lang$html$Html$div,
+									{
+										ctor: '::',
+										_0: _user$project$Styles$fretboardStringStyle,
+										_1: {ctor: '[]'}
+									},
+									A2(
+										_elm_lang$core$List$map,
+										frets,
+										_elm_lang$core$List$reverse(_user$project$Fretboard$stringG))),
+								_1: {
+									ctor: '::',
+									_0: A2(
+										_elm_lang$html$Html$div,
+										{
+											ctor: '::',
+											_0: _user$project$Styles$fretboardStringStyle,
+											_1: {ctor: '[]'}
+										},
+										A2(
+											_elm_lang$core$List$map,
+											frets,
+											_elm_lang$core$List$reverse(_user$project$Fretboard$stringB))),
+									_1: {
+										ctor: '::',
+										_0: A2(
+											_elm_lang$html$Html$div,
+											{
+												ctor: '::',
+												_0: _user$project$Styles$fretboardStringStyle,
+												_1: {ctor: '[]'}
+											},
+											A2(
+												_elm_lang$core$List$map,
+												frets,
+												_elm_lang$core$List$reverse(_user$project$Fretboard$stringe))),
+										_1: {
+											ctor: '::',
+											_0: A2(
+												_elm_lang$html$Html$div,
+												{
+													ctor: '::',
+													_0: _user$project$Styles$fretboardStringStyle,
+													_1: {ctor: '[]'}
+												},
+												A2(
+													_elm_lang$core$List$map,
+													blank,
+													_elm_lang$core$List$reverse(_user$project$Fretboard$stringe))),
+											_1: {
+												ctor: '::',
+												_0: A2(
+													_elm_lang$html$Html$div,
+													{
+														ctor: '::',
+														_0: _user$project$Styles$fretboardStringStyle,
+														_1: {ctor: '[]'}
+													},
+													A2(
+														_elm_lang$core$List$map,
+														fretNumberMarkers,
+														_elm_lang$core$List$reverse(_user$project$Fretboard$fretNumbers))),
+												_1: {ctor: '[]'}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}),
+			_1: {
+				ctor: '::',
+				_0: _user$project$Fretboard$fretNotation(model),
+				_1: {ctor: '[]'}
+			}
+		});
+};
+
+var _user$project$Routing$fretboardPath = '#fretboard';
+var _user$project$Routing$scalesPath = '#scales';
+var _user$project$Routing$chordsPath = '#chords';
+var _user$project$Routing$matchers = _evancz$url_parser$UrlParser$oneOf(
+	{
+		ctor: '::',
+		_0: A2(
+			_evancz$url_parser$UrlParser$map,
+			_user$project$Types$ChordChartPage,
+			_evancz$url_parser$UrlParser$s('chords')),
+		_1: {
+			ctor: '::',
+			_0: A2(
+				_evancz$url_parser$UrlParser$map,
+				_user$project$Types$ScalesPage,
+				_evancz$url_parser$UrlParser$s('scales')),
+			_1: {
+				ctor: '::',
+				_0: A2(
+					_evancz$url_parser$UrlParser$map,
+					_user$project$Types$FretboardPage,
+					_evancz$url_parser$UrlParser$s('fretboard')),
+				_1: {ctor: '[]'}
+			}
+		}
+	});
+var _user$project$Routing$parseLocation = function (location) {
+	var _p0 = A2(_evancz$url_parser$UrlParser$parseHash, _user$project$Routing$matchers, location);
+	if (_p0.ctor === 'Just') {
+		return _p0._0;
+	} else {
+		return _user$project$Types$NotFoundPage;
+	}
+};
+
+var _user$project$Scales$scalesPage = function (model) {
+	return A2(
+		_elm_lang$html$Html$h1,
+		{
+			ctor: '::',
+			_0: _elm_lang$html$Html_Attributes$style(
+				{
+					ctor: '::',
+					_0: {ctor: '_Tuple2', _0: 'margin', _1: '100px auto'},
+					_1: {ctor: '[]'}
+				}),
+			_1: {ctor: '[]'}
+		},
+		{
+			ctor: '::',
+			_0: _elm_lang$html$Html$text(
+				A2(
+					_elm_lang$core$Basics_ops['++'],
+					'Scales Page! WIP!  ',
+					_elm_lang$core$Basics$toString(model.musKey))),
+			_1: {ctor: '[]'}
+		});
+};
+
+var _user$project$Main$page = function (model) {
+	var _p0 = model.route;
+	switch (_p0.ctor) {
+		case 'ChordChartPage':
+			return _user$project$Chords$chordChartPage(model);
+		case 'FretboardPage':
+			return _user$project$Fretboard$fretboardPage(model);
+		case 'ScalesPage':
+			return _user$project$Scales$scalesPage(model);
+		default:
+			return A2(
+				_elm_lang$html$Html$h1,
+				{
+					ctor: '::',
+					_0: _elm_lang$html$Html_Attributes$style(
+						{
+							ctor: '::',
+							_0: {ctor: '_Tuple2', _0: 'margin', _1: '100px auto'},
+							_1: {ctor: '[]'}
+						}),
+					_1: {ctor: '[]'}
+				},
+				{
+					ctor: '::',
+					_0: _elm_lang$html$Html$text('Page Not Found'),
+					_1: {ctor: '[]'}
+				});
+	}
+};
+var _user$project$Main$view = function (model) {
+	return A2(
+		_elm_lang$html$Html$div,
+		{ctor: '[]'},
+		{
+			ctor: '::',
+			_0: A2(
+				_elm_lang$html$Html$div,
+				{
+					ctor: '::',
+					_0: _user$project$Styles$navStyle,
+					_1: {ctor: '[]'}
+				},
+				{
+					ctor: '::',
+					_0: A2(
+						_elm_lang$html$Html$a,
+						{
+							ctor: '::',
+							_0: _elm_lang$html$Html_Attributes$href(_user$project$Routing$scalesPath),
+							_1: {
+								ctor: '::',
+								_0: _user$project$Styles$navItemStyle,
+								_1: {ctor: '[]'}
+							}
+						},
+						{
+							ctor: '::',
+							_0: _elm_lang$html$Html$text('SCALES'),
+							_1: {ctor: '[]'}
+						}),
+					_1: {
+						ctor: '::',
+						_0: A2(
+							_elm_lang$html$Html$a,
+							{
+								ctor: '::',
+								_0: _elm_lang$html$Html_Attributes$href(_user$project$Routing$chordsPath),
+								_1: {
+									ctor: '::',
+									_0: _user$project$Styles$navItemStyle,
+									_1: {ctor: '[]'}
+								}
+							},
+							{
+								ctor: '::',
+								_0: _elm_lang$html$Html$text('CHORDS'),
+								_1: {ctor: '[]'}
+							}),
+						_1: {
+							ctor: '::',
+							_0: A2(
+								_elm_lang$html$Html$a,
+								{
+									ctor: '::',
+									_0: _elm_lang$html$Html_Attributes$href(_user$project$Routing$fretboardPath),
+									_1: {
+										ctor: '::',
+										_0: _user$project$Styles$navItemStyle,
+										_1: {ctor: '[]'}
+									}
+								},
+								{
+									ctor: '::',
+									_0: _elm_lang$html$Html$text('FRETBOARD'),
+									_1: {ctor: '[]'}
+								}),
+							_1: {ctor: '[]'}
+						}
+					}
+				}),
+			_1: {
+				ctor: '::',
+				_0: _user$project$Main$page(model),
+				_1: {ctor: '[]'}
+			}
+		});
+};
+var _user$project$Main$subscriptions = function (model) {
+	return (_elm_lang$core$Native_Utils.cmp(model.index, 6) < 0) ? A2(
+		_elm_lang$core$Time$every,
+		0.1 * _elm_lang$core$Time$second,
+		_elm_lang$core$Basics$always(_user$project$Types$SendNotes)) : _elm_lang$core$Platform_Sub$none;
+};
+var _user$project$Main$init = function (location) {
+	var currentRoute = _user$project$Routing$parseLocation(location);
+	return {
+		ctor: '_Tuple2',
+		_0: {
+			route: currentRoute,
+			musKey: 'C',
+			index: 6,
+			currentChord: {ctor: '[]'},
+			notePosition: '0',
+			showAccidental: 'hidden'
+		},
+		_1: _elm_lang$core$Platform_Cmd$none
+	};
+};
+var _user$project$Main$send = _elm_lang$core$Native_Platform.outgoingPort(
+	'send',
+	function (v) {
+		return {
+			note: {frequency: v.note.frequency, octave: v.note.octave, sustain: v.note.sustain},
+			waveType: v.waveType
+		};
+	});
+var _user$project$Main$update = F2(
+	function (msg, model) {
+		var _p1 = msg;
+		switch (_p1.ctor) {
+			case 'OnLocationChange':
+				var newRoute = _user$project$Routing$parseLocation(_p1._0);
+				return {
+					ctor: '_Tuple2',
+					_0: _elm_lang$core$Native_Utils.update(
+						model,
+						{route: newRoute}),
+					_1: _elm_lang$core$Platform_Cmd$none
+				};
+			case 'ChangeKey':
+				return {
+					ctor: '_Tuple2',
+					_0: _elm_lang$core$Native_Utils.update(
+						model,
+						{musKey: _p1._0}),
+					_1: _elm_lang$core$Platform_Cmd$none
+				};
+			case 'Play':
+				return A2(
+					_ccapndave$elm_update_extra$Update_Extra_Infix_ops[':>'],
+					A2(
+						_ccapndave$elm_update_extra$Update_Extra_Infix_ops[':>'],
+						{
+							ctor: '_Tuple2',
+							_0: _elm_lang$core$Native_Utils.update(
+								model,
+								{currentChord: _p1._0}),
+							_1: _elm_lang$core$Platform_Cmd$none
+						},
+						_user$project$Main$update(_user$project$Types$ResetIndex)),
+					_user$project$Main$update(_user$project$Types$SendNotes));
+			case 'ResetIndex':
+				return {
+					ctor: '_Tuple2',
+					_0: _elm_lang$core$Native_Utils.update(
+						model,
+						{index: 0}),
+					_1: _elm_lang$core$Platform_Cmd$none
+				};
+			case 'SendNotes':
+				var note = _user$project$Notes$noteSorter(
+					A2(
+						_elm_lang$core$Maybe$withDefault,
+						'e2w',
+						A2(_elm_community$list_extra$List_Extra$getAt, model.index, model.currentChord)));
+				return {
+					ctor: '_Tuple2',
+					_0: _elm_lang$core$Native_Utils.update(
+						model,
+						{index: model.index + 1}),
+					_1: _user$project$Main$send(
+						A2(_user$project$Types$PlayBundle, note, 'triangle'))
+				};
+			default:
+				var fretOffset = _user$project$Fretboard$noteFretPos(_p1._0);
+				var stringOffset = _user$project$Fretboard$noteStringPos(_p1._1);
+				var finalOffset = A2(
+					_elm_lang$core$Basics_ops['++'],
+					_elm_lang$core$Basics$toString(fretOffset + stringOffset),
+					'px');
+				return {
+					ctor: '_Tuple2',
+					_0: _elm_lang$core$Native_Utils.update(
+						model,
+						{notePosition: finalOffset, showAccidental: _p1._2}),
+					_1: _elm_lang$core$Platform_Cmd$none
+				};
+		}
+	});
+var _user$project$Main$main = A2(
+	_elm_lang$navigation$Navigation$program,
+	_user$project$Types$OnLocationChange,
 	{init: _user$project$Main$init, update: _user$project$Main$update, view: _user$project$Main$view, subscriptions: _user$project$Main$subscriptions})();
 
 var Elm = {};
