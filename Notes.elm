@@ -1,13 +1,7 @@
 module Notes exposing (..)
 
 import String exposing (..)
-
-
-type alias Note =
-    { frequency : Float
-    , octave : Int
-    , sustain : Float
-    }
+import Types exposing (..)
 
 
 {-| Defines audio Notes to be played for each string of every chord.
