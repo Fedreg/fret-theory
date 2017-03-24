@@ -8,6 +8,8 @@ type alias Model =
     , musKey : String
     , index : Int
     , currentChord : List String
+    , notePosition : String
+    , showAccidental : String
     }
 
 
@@ -37,6 +39,7 @@ type Msg
     | Play (List String)
     | ResetIndex
     | OnLocationChange Location
+    | DrawNote String String String
 
 
 type Route

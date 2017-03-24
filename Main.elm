@@ -12,7 +12,7 @@ import Styles exposing (..)
 import Notes exposing (..)
 import Chords exposing (chordChartPage)
 import Scales exposing (scalesPage)
-import Fretboard exposing (fretboardPage)
+import Fretboard exposing (..)
 import Navigation exposing (Location)
 import Time exposing (..)
 import Update.Extra.Infix exposing ((:>))
@@ -36,6 +36,8 @@ init location =
           , musKey = "C"
           , index = 6
           , currentChord = []
+          , notePosition = "0"
+          , showAccidental = "hidden"
           }
         , Cmd.none
         )
@@ -75,6 +77,19 @@ update msg model =
                 , send (PlayBundle note "triangle")
                 )
 
+        DrawNote index string accidental ->
+            let
+                stringOffset =
+                    noteStringPos string
+
+                fretOffset =
+                    noteFretPos index
+
+                finalOffset =
+                    toString (fretOffset + stringOffset) ++ "px"
+            in
+                ( { model | notePosition = finalOffset, showAccidental = accidental }, Cmd.none )
+
 
 subscriptions model =
     if model.index < 6 then
@@ -86,9 +101,11 @@ subscriptions model =
 view : Model -> Html Msg
 view model =
     div []
-        [ a [ href Routing.scalesPath ] [ text "SCALES" ]
-        , a [ href Routing.chordsPath ] [ text "CHORDS" ]
-        , a [ href Routing.fretboardPath ] [ text "FRETBOARD" ]
+        [ div [ navStyle ]
+            [ a [ href Routing.scalesPath, navItemStyle ] [ text "SCALES" ]
+            , a [ href Routing.chordsPath, navItemStyle ] [ text "CHORDS" ]
+            , a [ href Routing.fretboardPath, navItemStyle ] [ text "FRETBOARD" ]
+            ]
         , page model
         ]
 
@@ -106,4 +123,4 @@ page model =
             Scales.scalesPage model
 
         NotFoundPage ->
-            div [] [ text "Page Not Found" ]
+            h1 [ style [ ( "margin", "100px auto" ) ] ] [ text "Page Not Found" ]
