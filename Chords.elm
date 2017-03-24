@@ -66,7 +66,7 @@ fingerNo finger =
             "bar"
 
         "1" ->
-            "#777"
+            "#333"
 
         "2" ->
             "#8338EC"
@@ -75,7 +75,7 @@ fingerNo finger =
             "#3A86FF"
 
         "4" ->
-            "#FF006E"
+            "#00059f"
 
         _ ->
             "none"

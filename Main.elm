@@ -36,8 +36,8 @@ init location =
           , musKey = "C"
           , index = 6
           , currentChord = []
-          , notePosition = "0"
-          , showAccidental = "hidden"
+          , notePosition = 0
+          , showAccidental = "0"
           }
         , Cmd.none
         )
@@ -86,7 +86,7 @@ update msg model =
                     noteFretPos index
 
                 finalOffset =
-                    toString (fretOffset + stringOffset) ++ "px"
+                    fretOffset + stringOffset
             in
                 ( { model | notePosition = finalOffset, showAccidental = accidental }, Cmd.none )
 
@@ -123,4 +123,4 @@ page model =
             Scales.scalesPage model
 
         NotFoundPage ->
-            h1 [ style [ ( "margin", "100px auto" ) ] ] [ text "Page Not Found" ]
+            div [ style [ ( "margin", "100px auto" ) ] ] [ text "Page Not Found" ]

@@ -15,7 +15,7 @@ navItemStyle =
     style
         [ ( "margin", "10px auto" )
         , ( "padding", "5px" )
-        , ( "color", "#fff" )
+        , ( "color", "#777" )
         ]
 
 
@@ -27,7 +27,7 @@ fretboardContainerStyle =
     style
         [ ( "margin", "50px" )
         , ( "width", "90%" )
-        , ( "border", "2px solid #444" )
+          --, ( "border", "2px solid #555" )
         , ( "position", "relative" )
         ]
 
@@ -39,13 +39,12 @@ fretboardStringStyle =
 fretNoteStyle =
     style
         [ ( "width", "100px" )
-        , ( "padding", "5px" )
+        , ( "padding", "14px 5px" )
         , ( "textTransform", "uppercase" )
-        , ( "color", "#3A86FF" )
-        , ( "fontSize", "20px" )
+        , ( "color", "#777" )
+        , ( "fontSize", "10px" )
         , ( "textAlign", "center" )
-        , ( "border", "1px solid #333" )
-        , ( "borderBottom", "3px solid #333" )
+        , ( "borderBottom", "1px solid #222" )
         , ( "borderCollapse", "collapse" )
         , ( "transition", "all 0.4s ease" )
         , ( "backgroundColor", "#111" )
@@ -56,7 +55,6 @@ fretNoteStyle =
 fretBlankStyle =
     style
         [ ( "color", "rgba(0,0,0,0)" )
-        , ( "border", "1px solid #222" )
         , ( "width", "100px" )
         , ( "padding", "5px" )
         , ( "backgroundColor", "#111" )
@@ -66,14 +64,12 @@ fretBlankStyle =
 fretNumberStyle =
     style
         [ ( "width", "100px" )
-          --, ( "position", "absolute" )
-          --, ( "left", "0" )
         , ( "marginBottom", "-70px" )
         , ( "padding", "5px" )
         , ( "textTransform", "uppercase" )
-        , ( "color", "#333" )
+        , ( "color", "#3A86FF" )
         , ( "fontSize", "20px" )
-        , ( "textAlign", "left" )
+        , ( "textAlign", "center" )
         ]
 
 
@@ -84,15 +80,12 @@ noteGroupStyle =
 
 notationContainerStyle =
     style
-        [ ( "width", "300px" )
+        [ ( "width", "350px" )
         , ( "padding", "50px 10px" )
         , ( "margin", "70px auto" )
         , ( "backgroundColor", "#111" )
         , ( "position", "relative" )
-          --, ( "top", "0" )
-          --, ( "transform", "scale(-99,-99)" )
         , ( "textAlign", "center" )
-        , ( "border", "1px solid #333" )
         ]
 
 
@@ -101,7 +94,7 @@ notationClefStyle =
         [ ( "fontSize", "140px" )
         , ( "position", "absolute" )
         , ( "bottom", "0" )
-        , ( "left", "10px" )
+        , ( "left", "30px" )
         , ( "color", "#fff" )
         ]
 
@@ -112,9 +105,11 @@ notationNoteStyle offset =
         , ( "height", "20px" )
         , ( "borderRadius", "10px" )
         , ( "position", "absolute" )
-        , ( "bottom", offset )
+        , ( "bottom", (toString offset) ++ "px" )
         , ( "left", "50%" )
         , ( "backgroundColor", "#3A86FF" )
+        , ( "transition", "all 0.5s ease" )
+        , ( "zIndex", "1" )
         ]
 
 
@@ -123,10 +118,12 @@ notationAccidentalStyle offset visibility =
         [ ( "fontSize", "28px" )
         , ( "position", "absolute" )
         , ( "marginBottom", "-10px" )
-        , ( "bottom", offset )
+        , ( "bottom", (toString offset) ++ "px" )
         , ( "left", "44%" )
         , ( "color", "#3A86FF" )
-        , ( "visibility", visibility )
+        , ( "opacity", visibility )
+        , ( "transition", "opacity 0.5s ease" )
+        , ( "zIndex", "1" )
         ]
 
 
@@ -138,6 +135,56 @@ hrStyle =
         ]
 
 
+hrLedgerStyleHi model offset =
+    let
+        pos =
+            model.notePosition
+
+        visibility =
+            if pos > offset then
+                "1"
+            else
+                "0"
+    in
+        style
+            [ ( "position", "absolute" )
+            , ( "bottom", (toString offset) ++ "px" )
+            , ( "left", "45%" )
+            , ( "width", "50px" )
+            , ( "margin", "0 auto" )
+            , ( "padding", "10px" )
+            , ( "lineHeight", "30px" )
+            , ( "opacity", visibility )
+            , ( "transition", "opacity 0.5s ease" )
+            , ( "zIndex", "0" )
+            ]
+
+
+hrLedgerStyleLo model offset =
+    let
+        pos =
+            model.notePosition
+
+        visibility =
+            if pos < (offset + 20) then
+                "1"
+            else
+                "0"
+    in
+        style
+            [ ( "position", "absolute" )
+            , ( "bottom", (toString offset) ++ "px" )
+            , ( "left", "45%" )
+            , ( "width", "50px" )
+            , ( "margin", "0 auto" )
+            , ( "padding", "10px" )
+            , ( "lineHeight", "30px" )
+            , ( "opacity", visibility )
+            , ( "transition", "opacity 0.5s ease" )
+            , ( "zIndex", "0" )
+            ]
+
+
 
 -- CHORDS
 
@@ -147,7 +194,7 @@ chordBarPosStyle =
         [ ( "position", "absolute" )
         , ( "top", "-15px" )
         , ( "right", "30%" )
-        , ( "color", "deepPink" )
+        , ( "color", "#3A86FF" )
         , ( "transition", "all 0.3s ease" )
         ]
 
@@ -157,7 +204,7 @@ chartStyle =
         [ ( "position", "relative" )
         , ( "width", "180px" )
         , ( "height", "153px" )
-        , ( "border", "3px solid #333" )
+        , ( "border", "1px solid #333" )
         , ( "borderBottom", "none" )
         ]
 
@@ -166,7 +213,7 @@ stringStyle =
     style
         [ ( "width", "180px" )
         , ( "height", "30px" )
-        , ( "borderBottom", "3px solid #333" )
+        , ( "borderBottom", "1px solid #333" )
         ]
 
 
@@ -175,7 +222,7 @@ nutStyle =
         [ ( "width", "10px" )
         , ( "height", "153px" )
         , ( "backgroundColor", "#333" )
-        , ( "borderBottom", "3px solid #333" )
+        , ( "borderBottom", "1px solid #333" )
         ]
 
 
@@ -195,7 +242,7 @@ fretStyle fret =
         , ( "top", "0" )
         , ( "right", (Basics.toString (43 * fret) ++ "px") )
         , ( "height", "150px" )
-        , ( "borderRight", "3px solid #333" )
+        , ( "borderRight", "1px solid #333" )
         ]
 
 
@@ -248,7 +295,7 @@ fretMarkerStyle dot =
                 , ( "width", "25px" )
                 , ( "height", barSize )
                 , ( "borderRadius", "13px" )
-                , ( "backgroundColor", "#777" )
+                , ( "backgroundColor", "#333" )
                 , ( "color", "rgba(0,0,0,0)" )
                 ]
     else if dot.fretNo == "-40" then
