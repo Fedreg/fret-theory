@@ -11,7 +11,7 @@
 
             app.ports.send.subscribe(play);
 
-            var ctx = new window.webkitAudioContext || window.AudioContext;
+            var ctx = new (window.webkitAudioContext || window.AudioContext);
 
             function play(args) {
                 var note = args.note;
