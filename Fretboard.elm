@@ -5,7 +5,6 @@ import Html.Events exposing (onClick)
 import Html.Attributes exposing (style, property)
 import String exposing (split, toInt)
 import List exposing (map, range)
-import Styles exposing (..)
 import Types exposing (..)
 import InlineHover exposing (hover)
 import Json.Encode as Encode
@@ -166,3 +165,169 @@ noteFretPos index =
             Result.withDefault 0 <| String.toInt index
     in
         num * 10
+
+
+
+-- STYLES
+
+
+fretboardContainerStyle =
+    style
+        [ ( "margin", "50px" )
+        , ( "width", "90%" )
+          --, ( "border", "2px solid #555" )
+        , ( "position", "relative" )
+        ]
+
+
+fretboardStringStyle =
+    style [ ( "display", "flex" ) ]
+
+
+fretNoteStyle =
+    style
+        [ ( "width", "100px" )
+        , ( "padding", "14px 5px" )
+        , ( "textTransform", "uppercase" )
+        , ( "color", "#777" )
+        , ( "fontSize", "10px" )
+        , ( "textAlign", "center" )
+        , ( "borderBottom", "1px solid #222" )
+        , ( "borderCollapse", "collapse" )
+        , ( "transition", "all 0.4s ease" )
+        , ( "backgroundColor", "#111" )
+        , ( "zIndex", "1" )
+        ]
+
+
+fretBlankStyle =
+    style
+        [ ( "color", "rgba(0,0,0,0)" )
+        , ( "width", "100px" )
+        , ( "padding", "5px" )
+        , ( "backgroundColor", "#111" )
+        ]
+
+
+fretNumberStyle =
+    style
+        [ ( "width", "100px" )
+        , ( "marginBottom", "-70px" )
+        , ( "padding", "5px" )
+        , ( "textTransform", "uppercase" )
+        , ( "color", "#3A86FF" )
+        , ( "fontSize", "20px" )
+        , ( "textAlign", "center" )
+        ]
+
+
+noteGroupStyle =
+    style
+        [ ( "postion", "relative" ) ]
+
+
+notationContainerStyle =
+    style
+        [ ( "width", "350px" )
+        , ( "padding", "50px 10px" )
+        , ( "margin", "70px auto" )
+        , ( "backgroundColor", "#111" )
+        , ( "position", "relative" )
+        , ( "textAlign", "center" )
+        ]
+
+
+notationClefStyle =
+    style
+        [ ( "fontSize", "140px" )
+        , ( "position", "absolute" )
+        , ( "bottom", "0" )
+        , ( "left", "30px" )
+        , ( "color", "#fff" )
+        ]
+
+
+notationNoteStyle offset =
+    style
+        [ ( "width", "20px" )
+        , ( "height", "20px" )
+        , ( "borderRadius", "10px" )
+        , ( "position", "absolute" )
+        , ( "bottom", (toString offset) ++ "px" )
+        , ( "left", "50%" )
+        , ( "backgroundColor", "#3A86FF" )
+        , ( "transition", "all 0.5s ease" )
+        , ( "zIndex", "1" )
+        ]
+
+
+notationAccidentalStyle offset visibility =
+    style
+        [ ( "fontSize", "28px" )
+        , ( "position", "absolute" )
+        , ( "marginBottom", "-10px" )
+        , ( "bottom", (toString offset) ++ "px" )
+        , ( "left", "44%" )
+        , ( "color", "#3A86FF" )
+        , ( "opacity", visibility )
+        , ( "transition", "opacity 0.5s ease" )
+        , ( "zIndex", "1" )
+        ]
+
+
+hrStyle =
+    style
+        [ ( "width", "280px" )
+        , ( "margin", "0 auto" )
+        , ( "padding", "10px" )
+        ]
+
+
+hrLedgerStyleHi model offset =
+    let
+        pos =
+            model.notePosition
+
+        visibility =
+            if pos > offset then
+                "1"
+            else
+                "0"
+    in
+        style
+            [ ( "position", "absolute" )
+            , ( "bottom", (toString offset) ++ "px" )
+            , ( "left", "45%" )
+            , ( "width", "50px" )
+            , ( "margin", "0 auto" )
+            , ( "padding", "10px" )
+            , ( "lineHeight", "30px" )
+            , ( "opacity", visibility )
+            , ( "transition", "opacity 0.5s ease" )
+            , ( "zIndex", "0" )
+            ]
+
+
+hrLedgerStyleLo model offset =
+    let
+        pos =
+            model.notePosition
+
+        visibility =
+            if pos < (offset + 20) then
+                "1"
+            else
+                "0"
+    in
+        style
+            [ ( "position", "absolute" )
+            , ( "bottom", (toString offset) ++ "px" )
+            , ( "left", "45%" )
+            , ( "width", "50px" )
+            , ( "margin", "0 auto" )
+            , ( "padding", "10px" )
+            , ( "lineHeight", "30px" )
+            , ( "opacity", visibility )
+            , ( "transition", "opacity 0.5s ease" )
+            , ( "zIndex", "0" )
+            ]

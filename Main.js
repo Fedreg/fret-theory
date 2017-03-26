@@ -11380,7 +11380,3054 @@ var _jinjor$elm_inline_hover$InlineHover$hover = F4(
 			children);
 	});
 
-var _user$project$Styles$fretMarkerStyle = function (dot) {
+var _user$project$Types$Model = F6(
+	function (a, b, c, d, e, f) {
+		return {route: a, musKey: b, index: c, currentChord: d, notePosition: e, showAccidental: f};
+	});
+var _user$project$Types$Dot = F3(
+	function (a, b, c) {
+		return {tint: a, stringNo: b, fretNo: c};
+	});
+var _user$project$Types$ChordChartData = F9(
+	function (a, b, c, d, e, f, g, h, i) {
+		return {i: a, ii: b, iii: c, iv: d, v: e, vi: f, vii: g, bars: h, names: i};
+	});
+var _user$project$Types$ChordAudioData = F7(
+	function (a, b, c, d, e, f, g) {
+		return {i: a, ii: b, iii: c, iv: d, v: e, vi: f, vii: g};
+	});
+var _user$project$Types$Note = F3(
+	function (a, b, c) {
+		return {frequency: a, octave: b, sustain: c};
+	});
+var _user$project$Types$PlayBundle = F2(
+	function (a, b) {
+		return {note: a, waveType: b};
+	});
+var _user$project$Types$DrawNote = F3(
+	function (a, b, c) {
+		return {ctor: 'DrawNote', _0: a, _1: b, _2: c};
+	});
+var _user$project$Types$OnLocationChange = function (a) {
+	return {ctor: 'OnLocationChange', _0: a};
+};
+var _user$project$Types$ResetIndex = {ctor: 'ResetIndex'};
+var _user$project$Types$Play = function (a) {
+	return {ctor: 'Play', _0: a};
+};
+var _user$project$Types$SendNotes = {ctor: 'SendNotes'};
+var _user$project$Types$ChangeKey = function (a) {
+	return {ctor: 'ChangeKey', _0: a};
+};
+var _user$project$Types$NotFoundPage = {ctor: 'NotFoundPage'};
+var _user$project$Types$FretboardPage = {ctor: 'FretboardPage'};
+var _user$project$Types$ScalesPage = {ctor: 'ScalesPage'};
+var _user$project$Types$ChordChartPage = {ctor: 'ChordChartPage'};
+
+var _user$project$Audio$frequencies = function (note) {
+	var _p0 = note;
+	switch (_p0) {
+		case 'c':
+			return 130.81;
+		case 'c#':
+			return 139.0;
+		case 'd':
+			return 146.83;
+		case 'd#':
+			return 156.0;
+		case 'e':
+			return 164.81;
+		case 'f':
+			return 174.61;
+		case 'f#':
+			return 185.0;
+		case 'g':
+			return 196.0;
+		case 'g#':
+			return 208.0;
+		case 'a':
+			return 220.0;
+		case 'a#':
+			return 233.0;
+		case 'b':
+			return 246.94;
+		case 'r':
+			return 0.0;
+		default:
+			return 0.0;
+	}
+};
+var _user$project$Audio$octave = function (num) {
+	var _p1 = num;
+	if (_p1 === 1) {
+		return 1;
+	} else {
+		return Math.pow(2, num - 1);
+	}
+};
+var _user$project$Audio$sustain = function (duration) {
+	var _p2 = duration;
+	switch (_p2) {
+		case 'w':
+			return 4.0;
+		case 'h':
+			return 2.0;
+		case 'q':
+			return 1.0;
+		case 'e':
+			return 0.5;
+		case 's':
+			return 0.25;
+		case 'w.':
+			return 6.0;
+		case 'h.':
+			return 3.0;
+		case 'q.':
+			return 1.5;
+		case 'e.':
+			return 0.75;
+		case 's.':
+			return 0.375;
+		default:
+			return 0.0;
+	}
+};
+var _user$project$Audio$noteSorter = function (string) {
+	var _p3 = _elm_lang$core$String$length(string);
+	switch (_p3) {
+		case 3:
+			return A3(
+				_user$project$Types$Note,
+				_user$project$Audio$frequencies(
+					A3(_elm_lang$core$String$slice, 0, 1, string)),
+				_user$project$Audio$octave(
+					A2(
+						_elm_lang$core$Result$withDefault,
+						0,
+						_elm_lang$core$String$toInt(
+							A3(_elm_lang$core$String$slice, 1, 2, string)))),
+				_user$project$Audio$sustain(
+					A3(_elm_lang$core$String$slice, 2, 3, string)));
+		case 4:
+			return _elm_lang$core$Native_Utils.eq(
+				A3(_elm_lang$core$String$slice, 1, 2, string),
+				'#') ? A3(
+				_user$project$Types$Note,
+				_user$project$Audio$frequencies(
+					A3(_elm_lang$core$String$slice, 0, 2, string)),
+				_user$project$Audio$octave(
+					A2(
+						_elm_lang$core$Result$withDefault,
+						0,
+						_elm_lang$core$String$toInt(
+							A3(_elm_lang$core$String$slice, 2, 3, string)))),
+				_user$project$Audio$sustain(
+					A3(_elm_lang$core$String$slice, 3, 4, string))) : A3(
+				_user$project$Types$Note,
+				_user$project$Audio$frequencies(
+					A3(_elm_lang$core$String$slice, 0, 1, string)),
+				_user$project$Audio$octave(
+					A2(
+						_elm_lang$core$Result$withDefault,
+						0,
+						_elm_lang$core$String$toInt(
+							A3(_elm_lang$core$String$slice, 1, 2, string)))),
+				_user$project$Audio$sustain(
+					A3(_elm_lang$core$String$slice, 2, 4, string)));
+		case 5:
+			return A3(
+				_user$project$Types$Note,
+				_user$project$Audio$frequencies(
+					A3(_elm_lang$core$String$slice, 0, 2, string)),
+				_user$project$Audio$octave(
+					A2(
+						_elm_lang$core$Result$withDefault,
+						0,
+						_elm_lang$core$String$toInt(
+							A3(_elm_lang$core$String$slice, 2, 3, string)))),
+				_user$project$Audio$sustain(
+					A3(_elm_lang$core$String$slice, 3, 5, string)));
+		default:
+			return A3(_user$project$Types$Note, 0.0, 0, 0.0);
+	}
+};
+var _user$project$Audio$notes = function (key) {
+	var _p4 = key;
+	switch (_p4) {
+		case 'C':
+			return {
+				i: {
+					ctor: '::',
+					_0: 'c3q',
+					_1: {
+						ctor: '::',
+						_0: 'e3q',
+						_1: {
+							ctor: '::',
+							_0: 'g3q',
+							_1: {
+								ctor: '::',
+								_0: 'c4q',
+								_1: {
+									ctor: '::',
+									_0: 'e4q',
+									_1: {
+										ctor: '::',
+										_0: 'c0s',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				ii: {
+					ctor: '::',
+					_0: '',
+					_1: {ctor: '[]'}
+				},
+				iii: {
+					ctor: '::',
+					_0: '',
+					_1: {ctor: '[]'}
+				},
+				iv: {
+					ctor: '::',
+					_0: 'f3q',
+					_1: {
+						ctor: '::',
+						_0: 'a3q',
+						_1: {
+							ctor: '::',
+							_0: 'c4q',
+							_1: {
+								ctor: '::',
+								_0: 'e4q',
+								_1: {
+									ctor: '::',
+									_0: 'c0s',
+									_1: {
+										ctor: '::',
+										_0: 'c0s',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				v: {
+					ctor: '::',
+					_0: 'g2q',
+					_1: {
+						ctor: '::',
+						_0: 'b2q',
+						_1: {
+							ctor: '::',
+							_0: 'd3q',
+							_1: {
+								ctor: '::',
+								_0: 'g3q',
+								_1: {
+									ctor: '::',
+									_0: 'd4q',
+									_1: {
+										ctor: '::',
+										_0: 'g4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				vi: {
+					ctor: '::',
+					_0: 'a2q',
+					_1: {
+						ctor: '::',
+						_0: 'e3q',
+						_1: {
+							ctor: '::',
+							_0: 'a3q',
+							_1: {
+								ctor: '::',
+								_0: 'c4q',
+								_1: {
+									ctor: '::',
+									_0: 'e4q',
+									_1: {
+										ctor: '::',
+										_0: 'c0s',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				vii: {
+					ctor: '::',
+					_0: '',
+					_1: {ctor: '[]'}
+				}
+			};
+		case 'G':
+			return {
+				i: {
+					ctor: '::',
+					_0: 'g2q',
+					_1: {
+						ctor: '::',
+						_0: 'b2q',
+						_1: {
+							ctor: '::',
+							_0: 'd3q',
+							_1: {
+								ctor: '::',
+								_0: 'g3q',
+								_1: {
+									ctor: '::',
+									_0: 'd4q',
+									_1: {
+										ctor: '::',
+										_0: 'g4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				ii: {
+					ctor: '::',
+					_0: '',
+					_1: {ctor: '[]'}
+				},
+				iii: {
+					ctor: '::',
+					_0: '',
+					_1: {ctor: '[]'}
+				},
+				iv: {
+					ctor: '::',
+					_0: 'c3q',
+					_1: {
+						ctor: '::',
+						_0: 'e3q',
+						_1: {
+							ctor: '::',
+							_0: 'g3q',
+							_1: {
+								ctor: '::',
+								_0: 'd4q',
+								_1: {
+									ctor: '::',
+									_0: 'g4q',
+									_1: {
+										ctor: '::',
+										_0: 'c0s',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				v: {
+					ctor: '::',
+					_0: 'd3q',
+					_1: {
+						ctor: '::',
+						_0: 'a3q',
+						_1: {
+							ctor: '::',
+							_0: 'd4q',
+							_1: {
+								ctor: '::',
+								_0: 'f#4q',
+								_1: {
+									ctor: '::',
+									_0: 'c0s',
+									_1: {
+										ctor: '::',
+										_0: 'c0s',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				vi: {
+					ctor: '::',
+					_0: 'e2q',
+					_1: {
+						ctor: '::',
+						_0: 'b2q',
+						_1: {
+							ctor: '::',
+							_0: 'e3q',
+							_1: {
+								ctor: '::',
+								_0: 'g3q',
+								_1: {
+									ctor: '::',
+									_0: 'b3q',
+									_1: {
+										ctor: '::',
+										_0: 'e4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				vii: {
+					ctor: '::',
+					_0: '',
+					_1: {ctor: '[]'}
+				}
+			};
+		case 'D':
+			return {
+				i: {
+					ctor: '::',
+					_0: 'd3q',
+					_1: {
+						ctor: '::',
+						_0: 'a3q',
+						_1: {
+							ctor: '::',
+							_0: 'd4q',
+							_1: {
+								ctor: '::',
+								_0: 'f#4q',
+								_1: {
+									ctor: '::',
+									_0: 'c0s',
+									_1: {
+										ctor: '::',
+										_0: 'c0s',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				ii: {
+					ctor: '::',
+					_0: '',
+					_1: {ctor: '[]'}
+				},
+				iii: {
+					ctor: '::',
+					_0: '',
+					_1: {ctor: '[]'}
+				},
+				iv: {
+					ctor: '::',
+					_0: 'g2q',
+					_1: {
+						ctor: '::',
+						_0: 'b2q',
+						_1: {
+							ctor: '::',
+							_0: 'd3q',
+							_1: {
+								ctor: '::',
+								_0: 'g3q',
+								_1: {
+									ctor: '::',
+									_0: 'd4q',
+									_1: {
+										ctor: '::',
+										_0: 'g4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				v: {
+					ctor: '::',
+					_0: 'a2q',
+					_1: {
+						ctor: '::',
+						_0: 'e3q',
+						_1: {
+							ctor: '::',
+							_0: 'a3q',
+							_1: {
+								ctor: '::',
+								_0: 'c#4q',
+								_1: {
+									ctor: '::',
+									_0: 'e4q',
+									_1: {
+										ctor: '::',
+										_0: 'c0s',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				vi: {
+					ctor: '::',
+					_0: 'b2q',
+					_1: {
+						ctor: '::',
+						_0: 'd3q',
+						_1: {
+							ctor: '::',
+							_0: 'g3q',
+							_1: {
+								ctor: '::',
+								_0: 'd4q',
+								_1: {
+									ctor: '::',
+									_0: 'f#4q',
+									_1: {
+										ctor: '::',
+										_0: 'c0s',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				vii: {
+					ctor: '::',
+					_0: '',
+					_1: {ctor: '[]'}
+				}
+			};
+		case 'A':
+			return {
+				i: {
+					ctor: '::',
+					_0: 'a2q',
+					_1: {
+						ctor: '::',
+						_0: 'e3q',
+						_1: {
+							ctor: '::',
+							_0: 'a3q',
+							_1: {
+								ctor: '::',
+								_0: 'c#4q',
+								_1: {
+									ctor: '::',
+									_0: 'e4q',
+									_1: {
+										ctor: '::',
+										_0: 'c0s',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				ii: {
+					ctor: '::',
+					_0: '',
+					_1: {ctor: '[]'}
+				},
+				iii: {
+					ctor: '::',
+					_0: '',
+					_1: {ctor: '[]'}
+				},
+				iv: {
+					ctor: '::',
+					_0: 'd3q',
+					_1: {
+						ctor: '::',
+						_0: 'a3q',
+						_1: {
+							ctor: '::',
+							_0: 'd4q',
+							_1: {
+								ctor: '::',
+								_0: 'f#4q',
+								_1: {
+									ctor: '::',
+									_0: 'c0s',
+									_1: {
+										ctor: '::',
+										_0: 'c0s',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				v: {
+					ctor: '::',
+					_0: 'e2q',
+					_1: {
+						ctor: '::',
+						_0: 'b2q',
+						_1: {
+							ctor: '::',
+							_0: 'e3q',
+							_1: {
+								ctor: '::',
+								_0: 'g#3q',
+								_1: {
+									ctor: '::',
+									_0: 'b3q',
+									_1: {
+										ctor: '::',
+										_0: 'e4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				vi: {
+					ctor: '::',
+					_0: 'f#2q',
+					_1: {
+						ctor: '::',
+						_0: 'a2q',
+						_1: {
+							ctor: '::',
+							_0: 'd3q',
+							_1: {
+								ctor: '::',
+								_0: 'a3q',
+								_1: {
+									ctor: '::',
+									_0: 'c#4q',
+									_1: {
+										ctor: '::',
+										_0: 'e4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				vii: {
+					ctor: '::',
+					_0: '',
+					_1: {ctor: '[]'}
+				}
+			};
+		case 'E':
+			return {
+				i: {
+					ctor: '::',
+					_0: 'e2q',
+					_1: {
+						ctor: '::',
+						_0: 'b2q',
+						_1: {
+							ctor: '::',
+							_0: 'e3q',
+							_1: {
+								ctor: '::',
+								_0: 'g#3q',
+								_1: {
+									ctor: '::',
+									_0: 'b3q',
+									_1: {
+										ctor: '::',
+										_0: 'e4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				ii: {
+					ctor: '::',
+					_0: '',
+					_1: {ctor: '[]'}
+				},
+				iii: {
+					ctor: '::',
+					_0: '',
+					_1: {ctor: '[]'}
+				},
+				iv: {
+					ctor: '::',
+					_0: 'a2q',
+					_1: {
+						ctor: '::',
+						_0: 'e3q',
+						_1: {
+							ctor: '::',
+							_0: 'a3q',
+							_1: {
+								ctor: '::',
+								_0: 'c#4q',
+								_1: {
+									ctor: '::',
+									_0: 'e4q',
+									_1: {
+										ctor: '::',
+										_0: 'c0s',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				v: {
+					ctor: '::',
+					_0: 'b2q',
+					_1: {
+						ctor: '::',
+						_0: 'd#3q',
+						_1: {
+							ctor: '::',
+							_0: 'a3q',
+							_1: {
+								ctor: '::',
+								_0: 'b3q',
+								_1: {
+									ctor: '::',
+									_0: 'f#4q',
+									_1: {
+										ctor: '::',
+										_0: 'c0s',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				vi: {
+					ctor: '::',
+					_0: 'g#3q',
+					_1: {
+						ctor: '::',
+						_0: 'c#4q',
+						_1: {
+							ctor: '::',
+							_0: 'e4q',
+							_1: {
+								ctor: '::',
+								_0: 'g#4q',
+								_1: {
+									ctor: '::',
+									_0: 'c0s',
+									_1: {
+										ctor: '::',
+										_0: 'c0s',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				vii: {
+					ctor: '::',
+					_0: '',
+					_1: {ctor: '[]'}
+				}
+			};
+		case 'B':
+			return {
+				i: {
+					ctor: '::',
+					_0: 'b2q',
+					_1: {
+						ctor: '::',
+						_0: 'f#3q',
+						_1: {
+							ctor: '::',
+							_0: 'b3q',
+							_1: {
+								ctor: '::',
+								_0: 'd#4q',
+								_1: {
+									ctor: '::',
+									_0: 'f#4q',
+									_1: {
+										ctor: '::',
+										_0: 'c0s',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				ii: {
+					ctor: '::',
+					_0: '',
+					_1: {ctor: '[]'}
+				},
+				iii: {
+					ctor: '::',
+					_0: '',
+					_1: {ctor: '[]'}
+				},
+				iv: {
+					ctor: '::',
+					_0: 'e2q',
+					_1: {
+						ctor: '::',
+						_0: 'b2q',
+						_1: {
+							ctor: '::',
+							_0: 'e3q',
+							_1: {
+								ctor: '::',
+								_0: 'g#3q',
+								_1: {
+									ctor: '::',
+									_0: 'b3q',
+									_1: {
+										ctor: '::',
+										_0: 'e4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				v: {
+					ctor: '::',
+					_0: 'f#2q',
+					_1: {
+						ctor: '::',
+						_0: 'c#3q',
+						_1: {
+							ctor: '::',
+							_0: 'f#3q',
+							_1: {
+								ctor: '::',
+								_0: 'a#3q',
+								_1: {
+									ctor: '::',
+									_0: 'c#4q',
+									_1: {
+										ctor: '::',
+										_0: 'f#4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				vi: {
+					ctor: '::',
+					_0: 'g#2q',
+					_1: {
+						ctor: '::',
+						_0: 'd#3q',
+						_1: {
+							ctor: '::',
+							_0: 'g#3q',
+							_1: {
+								ctor: '::',
+								_0: 'b3q',
+								_1: {
+									ctor: '::',
+									_0: 'd#4q',
+									_1: {
+										ctor: '::',
+										_0: 'g#4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				vii: {
+					ctor: '::',
+					_0: '',
+					_1: {ctor: '[]'}
+				}
+			};
+		case 'F#':
+			return {
+				i: {
+					ctor: '::',
+					_0: 'f#2q',
+					_1: {
+						ctor: '::',
+						_0: 'c#3q',
+						_1: {
+							ctor: '::',
+							_0: 'f#3q',
+							_1: {
+								ctor: '::',
+								_0: 'a#3q',
+								_1: {
+									ctor: '::',
+									_0: 'c#4q',
+									_1: {
+										ctor: '::',
+										_0: 'f#4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				ii: {
+					ctor: '::',
+					_0: '',
+					_1: {ctor: '[]'}
+				},
+				iii: {
+					ctor: '::',
+					_0: '',
+					_1: {ctor: '[]'}
+				},
+				iv: {
+					ctor: '::',
+					_0: 'b2q',
+					_1: {
+						ctor: '::',
+						_0: 'f#3q',
+						_1: {
+							ctor: '::',
+							_0: 'b3q',
+							_1: {
+								ctor: '::',
+								_0: 'd#4q',
+								_1: {
+									ctor: '::',
+									_0: 'f#4q',
+									_1: {
+										ctor: '::',
+										_0: 'c0s',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				v: {
+					ctor: '::',
+					_0: 'c#3q',
+					_1: {
+						ctor: '::',
+						_0: 'g#3q',
+						_1: {
+							ctor: '::',
+							_0: 'c#4q',
+							_1: {
+								ctor: '::',
+								_0: 'f4q',
+								_1: {
+									ctor: '::',
+									_0: 'g#4q',
+									_1: {
+										ctor: '::',
+										_0: 'c0s',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				vi: {
+					ctor: '::',
+					_0: 'd#3q',
+					_1: {
+						ctor: '::',
+						_0: 'a#3q',
+						_1: {
+							ctor: '::',
+							_0: 'd#4q',
+							_1: {
+								ctor: '::',
+								_0: 'f#4q',
+								_1: {
+									ctor: '::',
+									_0: 'a#4q',
+									_1: {
+										ctor: '::',
+										_0: 'c0s',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				vii: {
+					ctor: '::',
+					_0: '',
+					_1: {ctor: '[]'}
+				}
+			};
+		case 'Db':
+			return {
+				i: {
+					ctor: '::',
+					_0: 'c#3q',
+					_1: {
+						ctor: '::',
+						_0: 'g#3q',
+						_1: {
+							ctor: '::',
+							_0: 'c#4q',
+							_1: {
+								ctor: '::',
+								_0: 'f4q',
+								_1: {
+									ctor: '::',
+									_0: 'g#4q',
+									_1: {
+										ctor: '::',
+										_0: 'c0s',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				ii: {
+					ctor: '::',
+					_0: '',
+					_1: {ctor: '[]'}
+				},
+				iii: {
+					ctor: '::',
+					_0: '',
+					_1: {ctor: '[]'}
+				},
+				iv: {
+					ctor: '::',
+					_0: 'f#2q',
+					_1: {
+						ctor: '::',
+						_0: 'c#3q',
+						_1: {
+							ctor: '::',
+							_0: 'f#3q',
+							_1: {
+								ctor: '::',
+								_0: 'a#3q',
+								_1: {
+									ctor: '::',
+									_0: 'c#4q',
+									_1: {
+										ctor: '::',
+										_0: 'f#4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				v: {
+					ctor: '::',
+					_0: 'g#3q',
+					_1: {
+						ctor: '::',
+						_0: 'd#3q',
+						_1: {
+							ctor: '::',
+							_0: 'g#4q',
+							_1: {
+								ctor: '::',
+								_0: 'b#3q',
+								_1: {
+									ctor: '::',
+									_0: 'd#4q',
+									_1: {
+										ctor: '::',
+										_0: 'g#4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				vi: {
+					ctor: '::',
+					_0: 'a#2q',
+					_1: {
+						ctor: '::',
+						_0: 'f3q',
+						_1: {
+							ctor: '::',
+							_0: 'a#3q',
+							_1: {
+								ctor: '::',
+								_0: 'c#4q',
+								_1: {
+									ctor: '::',
+									_0: 'f4q',
+									_1: {
+										ctor: '::',
+										_0: 'c0s',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				vii: {
+					ctor: '::',
+					_0: '',
+					_1: {ctor: '[]'}
+				}
+			};
+		case 'Ab':
+			return {
+				i: {
+					ctor: '::',
+					_0: 'g#2q',
+					_1: {
+						ctor: '::',
+						_0: 'd#3q',
+						_1: {
+							ctor: '::',
+							_0: 'g#3q',
+							_1: {
+								ctor: '::',
+								_0: 'c4q',
+								_1: {
+									ctor: '::',
+									_0: 'd#4q',
+									_1: {
+										ctor: '::',
+										_0: 'g#4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				ii: {
+					ctor: '::',
+					_0: '',
+					_1: {ctor: '[]'}
+				},
+				iii: {
+					ctor: '::',
+					_0: '',
+					_1: {ctor: '[]'}
+				},
+				iv: {
+					ctor: '::',
+					_0: 'c#3q',
+					_1: {
+						ctor: '::',
+						_0: 'g#3q',
+						_1: {
+							ctor: '::',
+							_0: 'c#4q',
+							_1: {
+								ctor: '::',
+								_0: 'f4q',
+								_1: {
+									ctor: '::',
+									_0: 'g#4q',
+									_1: {
+										ctor: '::',
+										_0: 'c0s',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				v: {
+					ctor: '::',
+					_0: 'd#3q',
+					_1: {
+						ctor: '::',
+						_0: 'a#3q',
+						_1: {
+							ctor: '::',
+							_0: 'd#4q',
+							_1: {
+								ctor: '::',
+								_0: 'g4q',
+								_1: {
+									ctor: '::',
+									_0: 'a#4q',
+									_1: {
+										ctor: '::',
+										_0: 'c0s',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				vi: {
+					ctor: '::',
+					_0: 'f2q',
+					_1: {
+						ctor: '::',
+						_0: 'c3q',
+						_1: {
+							ctor: '::',
+							_0: 'f3q',
+							_1: {
+								ctor: '::',
+								_0: 'g#3q',
+								_1: {
+									ctor: '::',
+									_0: 'c4q',
+									_1: {
+										ctor: '::',
+										_0: 'f4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				vii: {
+					ctor: '::',
+					_0: '',
+					_1: {ctor: '[]'}
+				}
+			};
+		case 'Eb':
+			return {
+				i: {
+					ctor: '::',
+					_0: 'd#3q',
+					_1: {
+						ctor: '::',
+						_0: 'a#3q',
+						_1: {
+							ctor: '::',
+							_0: 'd#4q',
+							_1: {
+								ctor: '::',
+								_0: 'g4q',
+								_1: {
+									ctor: '::',
+									_0: 'a#4q',
+									_1: {
+										ctor: '::',
+										_0: 'c0s',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				ii: {
+					ctor: '::',
+					_0: '',
+					_1: {ctor: '[]'}
+				},
+				iii: {
+					ctor: '::',
+					_0: '',
+					_1: {ctor: '[]'}
+				},
+				iv: {
+					ctor: '::',
+					_0: 'g#2q',
+					_1: {
+						ctor: '::',
+						_0: 'd#3q',
+						_1: {
+							ctor: '::',
+							_0: 'g#3q',
+							_1: {
+								ctor: '::',
+								_0: 'c4q',
+								_1: {
+									ctor: '::',
+									_0: 'd#4q',
+									_1: {
+										ctor: '::',
+										_0: 'g#4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				v: {
+					ctor: '::',
+					_0: 'a#2q',
+					_1: {
+						ctor: '::',
+						_0: 'f3q',
+						_1: {
+							ctor: '::',
+							_0: 'a#3q',
+							_1: {
+								ctor: '::',
+								_0: 'd4q',
+								_1: {
+									ctor: '::',
+									_0: 'f4q',
+									_1: {
+										ctor: '::',
+										_0: 'a#4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				vi: {
+					ctor: '::',
+					_0: 'c3q',
+					_1: {
+						ctor: '::',
+						_0: 'g3q',
+						_1: {
+							ctor: '::',
+							_0: 'c4q',
+							_1: {
+								ctor: '::',
+								_0: 'd#4q',
+								_1: {
+									ctor: '::',
+									_0: 'g4q',
+									_1: {
+										ctor: '::',
+										_0: 'c0s',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				vii: {
+					ctor: '::',
+					_0: '',
+					_1: {ctor: '[]'}
+				}
+			};
+		case 'Bb':
+			return {
+				i: {
+					ctor: '::',
+					_0: 'a#2q',
+					_1: {
+						ctor: '::',
+						_0: 'f3q',
+						_1: {
+							ctor: '::',
+							_0: 'a#3q',
+							_1: {
+								ctor: '::',
+								_0: 'd4q',
+								_1: {
+									ctor: '::',
+									_0: 'f4q',
+									_1: {
+										ctor: '::',
+										_0: 'c0s',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				ii: {
+					ctor: '::',
+					_0: '',
+					_1: {ctor: '[]'}
+				},
+				iii: {
+					ctor: '::',
+					_0: '',
+					_1: {ctor: '[]'}
+				},
+				iv: {
+					ctor: '::',
+					_0: 'd#3q',
+					_1: {
+						ctor: '::',
+						_0: 'a#3q',
+						_1: {
+							ctor: '::',
+							_0: 'd#4q',
+							_1: {
+								ctor: '::',
+								_0: 'g4q',
+								_1: {
+									ctor: '::',
+									_0: 'a#4q',
+									_1: {
+										ctor: '::',
+										_0: 'c0s',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				v: {
+					ctor: '::',
+					_0: 'f2q',
+					_1: {
+						ctor: '::',
+						_0: 'c3q',
+						_1: {
+							ctor: '::',
+							_0: 'f3q',
+							_1: {
+								ctor: '::',
+								_0: 'a3q',
+								_1: {
+									ctor: '::',
+									_0: 'c4q',
+									_1: {
+										ctor: '::',
+										_0: 'f4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				vi: {
+					ctor: '::',
+					_0: 'g2q',
+					_1: {
+						ctor: '::',
+						_0: 'd2q',
+						_1: {
+							ctor: '::',
+							_0: 'g3q',
+							_1: {
+								ctor: '::',
+								_0: 'a#3q',
+								_1: {
+									ctor: '::',
+									_0: 'd4q',
+									_1: {
+										ctor: '::',
+										_0: 'g4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				vii: {
+					ctor: '::',
+					_0: '',
+					_1: {ctor: '[]'}
+				}
+			};
+		case 'F':
+			return {
+				i: {
+					ctor: '::',
+					_0: 'f3q',
+					_1: {
+						ctor: '::',
+						_0: 'a3q',
+						_1: {
+							ctor: '::',
+							_0: 'c4q',
+							_1: {
+								ctor: '::',
+								_0: 'e4q',
+								_1: {
+									ctor: '::',
+									_0: 'c0s',
+									_1: {
+										ctor: '::',
+										_0: 'c0s',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				ii: {
+					ctor: '::',
+					_0: '',
+					_1: {ctor: '[]'}
+				},
+				iii: {
+					ctor: '::',
+					_0: '',
+					_1: {ctor: '[]'}
+				},
+				iv: {
+					ctor: '::',
+					_0: 'a#2q',
+					_1: {
+						ctor: '::',
+						_0: 'f3q',
+						_1: {
+							ctor: '::',
+							_0: 'a#3q',
+							_1: {
+								ctor: '::',
+								_0: 'd4q',
+								_1: {
+									ctor: '::',
+									_0: 'f4q',
+									_1: {
+										ctor: '::',
+										_0: 'c0s',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				v: {
+					ctor: '::',
+					_0: 'c3q',
+					_1: {
+						ctor: '::',
+						_0: 'e3q',
+						_1: {
+							ctor: '::',
+							_0: 'g3q',
+							_1: {
+								ctor: '::',
+								_0: 'c4q',
+								_1: {
+									ctor: '::',
+									_0: 'e4q',
+									_1: {
+										ctor: '::',
+										_0: 'c0s',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				vi: {
+					ctor: '::',
+					_0: 'd3q',
+					_1: {
+						ctor: '::',
+						_0: 'a3q',
+						_1: {
+							ctor: '::',
+							_0: 'd4q',
+							_1: {
+								ctor: '::',
+								_0: 'f4q',
+								_1: {
+									ctor: '::',
+									_0: 'c0s',
+									_1: {
+										ctor: '::',
+										_0: 'c0s',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				vii: {
+					ctor: '::',
+					_0: '',
+					_1: {ctor: '[]'}
+				}
+			};
+		case 'a':
+			return {
+				i: {
+					ctor: '::',
+					_0: 'a2q',
+					_1: {
+						ctor: '::',
+						_0: 'e3q',
+						_1: {
+							ctor: '::',
+							_0: 'a3q',
+							_1: {
+								ctor: '::',
+								_0: 'c4q',
+								_1: {
+									ctor: '::',
+									_0: 'e4q',
+									_1: {
+										ctor: '::',
+										_0: 'c0s',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				ii: {
+					ctor: '::',
+					_0: '',
+					_1: {ctor: '[]'}
+				},
+				iii: {
+					ctor: '::',
+					_0: '',
+					_1: {ctor: '[]'}
+				},
+				iv: {
+					ctor: '::',
+					_0: 'd3q',
+					_1: {
+						ctor: '::',
+						_0: 'a3q',
+						_1: {
+							ctor: '::',
+							_0: 'd4q',
+							_1: {
+								ctor: '::',
+								_0: 'f4q',
+								_1: {
+									ctor: '::',
+									_0: 'c0s',
+									_1: {
+										ctor: '::',
+										_0: 'c0s',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				v: {
+					ctor: '::',
+					_0: 'e2q',
+					_1: {
+						ctor: '::',
+						_0: 'b2q',
+						_1: {
+							ctor: '::',
+							_0: 'e3q',
+							_1: {
+								ctor: '::',
+								_0: 'g3q',
+								_1: {
+									ctor: '::',
+									_0: 'b3q',
+									_1: {
+										ctor: '::',
+										_0: 'e4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				vi: {
+					ctor: '::',
+					_0: 'f3q',
+					_1: {
+						ctor: '::',
+						_0: 'a3q',
+						_1: {
+							ctor: '::',
+							_0: 'c4q',
+							_1: {
+								ctor: '::',
+								_0: 'e4q',
+								_1: {
+									ctor: '::',
+									_0: 'c0s',
+									_1: {
+										ctor: '::',
+										_0: 'c0s',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				vii: {
+					ctor: '::',
+					_0: '',
+					_1: {ctor: '[]'}
+				}
+			};
+		case 'e':
+			return {
+				i: {
+					ctor: '::',
+					_0: 'e2q',
+					_1: {
+						ctor: '::',
+						_0: 'b2q',
+						_1: {
+							ctor: '::',
+							_0: 'e3q',
+							_1: {
+								ctor: '::',
+								_0: 'g3q',
+								_1: {
+									ctor: '::',
+									_0: 'b3q',
+									_1: {
+										ctor: '::',
+										_0: 'e4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				ii: {
+					ctor: '::',
+					_0: '',
+					_1: {ctor: '[]'}
+				},
+				iii: {
+					ctor: '::',
+					_0: '',
+					_1: {ctor: '[]'}
+				},
+				iv: {
+					ctor: '::',
+					_0: 'a2q',
+					_1: {
+						ctor: '::',
+						_0: 'e3q',
+						_1: {
+							ctor: '::',
+							_0: 'a3q',
+							_1: {
+								ctor: '::',
+								_0: 'c4q',
+								_1: {
+									ctor: '::',
+									_0: 'e4q',
+									_1: {
+										ctor: '::',
+										_0: 'c0s',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				v: {
+					ctor: '::',
+					_0: 'b2q',
+					_1: {
+						ctor: '::',
+						_0: 'd3q',
+						_1: {
+							ctor: '::',
+							_0: 'g3q',
+							_1: {
+								ctor: '::',
+								_0: 'd4q',
+								_1: {
+									ctor: '::',
+									_0: 'f#4q',
+									_1: {
+										ctor: '::',
+										_0: 'c0s',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				vi: {
+					ctor: '::',
+					_0: 'c3q',
+					_1: {
+						ctor: '::',
+						_0: 'e3q',
+						_1: {
+							ctor: '::',
+							_0: 'g3q',
+							_1: {
+								ctor: '::',
+								_0: 'c4q',
+								_1: {
+									ctor: '::',
+									_0: 'e4q',
+									_1: {
+										ctor: '::',
+										_0: 'c0s',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				vii: {
+					ctor: '::',
+					_0: '',
+					_1: {ctor: '[]'}
+				}
+			};
+		case 'b':
+			return {
+				i: {
+					ctor: '::',
+					_0: 'b2q',
+					_1: {
+						ctor: '::',
+						_0: 'd3q',
+						_1: {
+							ctor: '::',
+							_0: 'g3q',
+							_1: {
+								ctor: '::',
+								_0: 'd4q',
+								_1: {
+									ctor: '::',
+									_0: 'f#4q',
+									_1: {
+										ctor: '::',
+										_0: 'c0s',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				ii: {
+					ctor: '::',
+					_0: '',
+					_1: {ctor: '[]'}
+				},
+				iii: {
+					ctor: '::',
+					_0: '',
+					_1: {ctor: '[]'}
+				},
+				iv: {
+					ctor: '::',
+					_0: 'e2q',
+					_1: {
+						ctor: '::',
+						_0: 'b2q',
+						_1: {
+							ctor: '::',
+							_0: 'e3q',
+							_1: {
+								ctor: '::',
+								_0: 'g3q',
+								_1: {
+									ctor: '::',
+									_0: 'b3q',
+									_1: {
+										ctor: '::',
+										_0: 'e4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				v: {
+					ctor: '::',
+					_0: 'f#2q',
+					_1: {
+						ctor: '::',
+						_0: 'a2q',
+						_1: {
+							ctor: '::',
+							_0: 'd3q',
+							_1: {
+								ctor: '::',
+								_0: 'a3q',
+								_1: {
+									ctor: '::',
+									_0: 'c#4q',
+									_1: {
+										ctor: '::',
+										_0: 'e4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				vi: {
+					ctor: '::',
+					_0: 'g2q',
+					_1: {
+						ctor: '::',
+						_0: 'b2q',
+						_1: {
+							ctor: '::',
+							_0: 'd3q',
+							_1: {
+								ctor: '::',
+								_0: 'g3q',
+								_1: {
+									ctor: '::',
+									_0: 'd4q',
+									_1: {
+										ctor: '::',
+										_0: 'g4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				vii: {
+					ctor: '::',
+					_0: '',
+					_1: {ctor: '[]'}
+				}
+			};
+		case 'f#':
+			return {
+				i: {
+					ctor: '::',
+					_0: 'f#2q',
+					_1: {
+						ctor: '::',
+						_0: 'a2q',
+						_1: {
+							ctor: '::',
+							_0: 'c#3q',
+							_1: {
+								ctor: '::',
+								_0: 'a3q',
+								_1: {
+									ctor: '::',
+									_0: 'c#4q',
+									_1: {
+										ctor: '::',
+										_0: 'f#4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				ii: {
+					ctor: '::',
+					_0: '',
+					_1: {ctor: '[]'}
+				},
+				iii: {
+					ctor: '::',
+					_0: '',
+					_1: {ctor: '[]'}
+				},
+				iv: {
+					ctor: '::',
+					_0: 'b2q',
+					_1: {
+						ctor: '::',
+						_0: 'd3q',
+						_1: {
+							ctor: '::',
+							_0: 'f#3q',
+							_1: {
+								ctor: '::',
+								_0: 'd4q',
+								_1: {
+									ctor: '::',
+									_0: 'f#4q',
+									_1: {
+										ctor: '::',
+										_0: 'c0s',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				v: {
+					ctor: '::',
+					_0: 'c#q3',
+					_1: {
+						ctor: '::',
+						_0: 'g#3q',
+						_1: {
+							ctor: '::',
+							_0: 'c#4q',
+							_1: {
+								ctor: '::',
+								_0: 'e4q',
+								_1: {
+									ctor: '::',
+									_0: 'g#4q',
+									_1: {
+										ctor: '::',
+										_0: 'c0s',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				vi: {
+					ctor: '::',
+					_0: 'd3q',
+					_1: {
+						ctor: '::',
+						_0: 'a3q',
+						_1: {
+							ctor: '::',
+							_0: 'd4q',
+							_1: {
+								ctor: '::',
+								_0: 'f#4q',
+								_1: {
+									ctor: '::',
+									_0: 'c0s',
+									_1: {
+										ctor: '::',
+										_0: 'c0s',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				vii: {
+					ctor: '::',
+					_0: '',
+					_1: {ctor: '[]'}
+				}
+			};
+		case 'c#':
+			return {
+				i: {
+					ctor: '::',
+					_0: 'c#3q',
+					_1: {
+						ctor: '::',
+						_0: 'g#3q',
+						_1: {
+							ctor: '::',
+							_0: 'c#4q',
+							_1: {
+								ctor: '::',
+								_0: 'e4q',
+								_1: {
+									ctor: '::',
+									_0: 'g#4q',
+									_1: {
+										ctor: '::',
+										_0: 'c0s',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				ii: {
+					ctor: '::',
+					_0: '',
+					_1: {ctor: '[]'}
+				},
+				iii: {
+					ctor: '::',
+					_0: '',
+					_1: {ctor: '[]'}
+				},
+				iv: {
+					ctor: '::',
+					_0: 'f#2q',
+					_1: {
+						ctor: '::',
+						_0: 'c#3q',
+						_1: {
+							ctor: '::',
+							_0: 'f#3q',
+							_1: {
+								ctor: '::',
+								_0: 'a3q',
+								_1: {
+									ctor: '::',
+									_0: 'c#4q',
+									_1: {
+										ctor: '::',
+										_0: 'f#4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				v: {
+					ctor: '::',
+					_0: 'g#2q',
+					_1: {
+						ctor: '::',
+						_0: 'd#3q',
+						_1: {
+							ctor: '::',
+							_0: 'g#3q',
+							_1: {
+								ctor: '::',
+								_0: 'b3q',
+								_1: {
+									ctor: '::',
+									_0: 'd#4q',
+									_1: {
+										ctor: '::',
+										_0: 'g#4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				vi: {
+					ctor: '::',
+					_0: 'a2q',
+					_1: {
+						ctor: '::',
+						_0: 'e3q',
+						_1: {
+							ctor: '::',
+							_0: 'a3q',
+							_1: {
+								ctor: '::',
+								_0: 'c#4q',
+								_1: {
+									ctor: '::',
+									_0: 'e4q',
+									_1: {
+										ctor: '::',
+										_0: 'c0s',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				vii: {
+					ctor: '::',
+					_0: '',
+					_1: {ctor: '[]'}
+				}
+			};
+		case 'g#':
+			return {
+				i: {
+					ctor: '::',
+					_0: 'g#2q',
+					_1: {
+						ctor: '::',
+						_0: 'd#3q',
+						_1: {
+							ctor: '::',
+							_0: 'g#3q',
+							_1: {
+								ctor: '::',
+								_0: 'b3q',
+								_1: {
+									ctor: '::',
+									_0: 'd#4q',
+									_1: {
+										ctor: '::',
+										_0: 'g#4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				ii: {
+					ctor: '::',
+					_0: '',
+					_1: {ctor: '[]'}
+				},
+				iii: {
+					ctor: '::',
+					_0: '',
+					_1: {ctor: '[]'}
+				},
+				iv: {
+					ctor: '::',
+					_0: 'c#q3',
+					_1: {
+						ctor: '::',
+						_0: 'g#3q',
+						_1: {
+							ctor: '::',
+							_0: 'c#4q',
+							_1: {
+								ctor: '::',
+								_0: 'e4q',
+								_1: {
+									ctor: '::',
+									_0: 'g#4q',
+									_1: {
+										ctor: '::',
+										_0: 'c0s',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				v: {
+					ctor: '::',
+					_0: 'd#3q',
+					_1: {
+						ctor: '::',
+						_0: 'a#3q',
+						_1: {
+							ctor: '::',
+							_0: 'd#4q',
+							_1: {
+								ctor: '::',
+								_0: 'f#4q',
+								_1: {
+									ctor: '::',
+									_0: 'a#4q',
+									_1: {
+										ctor: '::',
+										_0: 'c0s',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				vi: {
+					ctor: '::',
+					_0: 'e2q',
+					_1: {
+						ctor: '::',
+						_0: 'b2q',
+						_1: {
+							ctor: '::',
+							_0: 'e3q',
+							_1: {
+								ctor: '::',
+								_0: 'g#3q',
+								_1: {
+									ctor: '::',
+									_0: 'b3q',
+									_1: {
+										ctor: '::',
+										_0: 'e4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				vii: {
+					ctor: '::',
+					_0: '',
+					_1: {ctor: '[]'}
+				}
+			};
+		case 'd#':
+			return {
+				i: {
+					ctor: '::',
+					_0: 'd#3q',
+					_1: {
+						ctor: '::',
+						_0: 'a#3q',
+						_1: {
+							ctor: '::',
+							_0: 'd#4q',
+							_1: {
+								ctor: '::',
+								_0: 'f#4q',
+								_1: {
+									ctor: '::',
+									_0: 'a#4q',
+									_1: {
+										ctor: '::',
+										_0: 'c0s',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				ii: {
+					ctor: '::',
+					_0: '',
+					_1: {ctor: '[]'}
+				},
+				iii: {
+					ctor: '::',
+					_0: '',
+					_1: {ctor: '[]'}
+				},
+				iv: {
+					ctor: '::',
+					_0: 'g#2q',
+					_1: {
+						ctor: '::',
+						_0: 'd#3q',
+						_1: {
+							ctor: '::',
+							_0: 'g#3q',
+							_1: {
+								ctor: '::',
+								_0: 'b3q',
+								_1: {
+									ctor: '::',
+									_0: 'd#4q',
+									_1: {
+										ctor: '::',
+										_0: 'g#4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				v: {
+					ctor: '::',
+					_0: 'a#2q',
+					_1: {
+						ctor: '::',
+						_0: 'f3q',
+						_1: {
+							ctor: '::',
+							_0: 'a#3q',
+							_1: {
+								ctor: '::',
+								_0: 'c#4q',
+								_1: {
+									ctor: '::',
+									_0: 'f4q',
+									_1: {
+										ctor: '::',
+										_0: 'a#4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				vi: {
+					ctor: '::',
+					_0: 'b2q',
+					_1: {
+						ctor: '::',
+						_0: 'f#3q',
+						_1: {
+							ctor: '::',
+							_0: 'b3q',
+							_1: {
+								ctor: '::',
+								_0: 'd#4q',
+								_1: {
+									ctor: '::',
+									_0: 'f#4q',
+									_1: {
+										ctor: '::',
+										_0: 'c0s',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				vii: {
+					ctor: '::',
+					_0: '',
+					_1: {ctor: '[]'}
+				}
+			};
+		case 'bb':
+			return {
+				i: {
+					ctor: '::',
+					_0: 'a#2q',
+					_1: {
+						ctor: '::',
+						_0: 'f3q',
+						_1: {
+							ctor: '::',
+							_0: 'a#3q',
+							_1: {
+								ctor: '::',
+								_0: 'c#4q',
+								_1: {
+									ctor: '::',
+									_0: 'f4q',
+									_1: {
+										ctor: '::',
+										_0: 'a#4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				ii: {
+					ctor: '::',
+					_0: '',
+					_1: {ctor: '[]'}
+				},
+				iii: {
+					ctor: '::',
+					_0: '',
+					_1: {ctor: '[]'}
+				},
+				iv: {
+					ctor: '::',
+					_0: 'd#3q',
+					_1: {
+						ctor: '::',
+						_0: 'a#3q',
+						_1: {
+							ctor: '::',
+							_0: 'd#4q',
+							_1: {
+								ctor: '::',
+								_0: 'f#4q',
+								_1: {
+									ctor: '::',
+									_0: 'a#4q',
+									_1: {
+										ctor: '::',
+										_0: 'c0s',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				v: {
+					ctor: '::',
+					_0: 'f3q',
+					_1: {
+						ctor: '::',
+						_0: 'c4q',
+						_1: {
+							ctor: '::',
+							_0: 'f4q',
+							_1: {
+								ctor: '::',
+								_0: 'g#4q',
+								_1: {
+									ctor: '::',
+									_0: 'c5q',
+									_1: {
+										ctor: '::',
+										_0: 'c0s',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				vi: {
+					ctor: '::',
+					_0: 'f#2q',
+					_1: {
+						ctor: '::',
+						_0: 'c#3q',
+						_1: {
+							ctor: '::',
+							_0: 'f#3q',
+							_1: {
+								ctor: '::',
+								_0: 'a#3q',
+								_1: {
+									ctor: '::',
+									_0: 'c#4q',
+									_1: {
+										ctor: '::',
+										_0: 'f#4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				vii: {
+					ctor: '::',
+					_0: '',
+					_1: {ctor: '[]'}
+				}
+			};
+		case 'f':
+			return {
+				i: {
+					ctor: '::',
+					_0: 'f2q',
+					_1: {
+						ctor: '::',
+						_0: 'c3q',
+						_1: {
+							ctor: '::',
+							_0: 'f3q',
+							_1: {
+								ctor: '::',
+								_0: 'g#3q',
+								_1: {
+									ctor: '::',
+									_0: 'c4q',
+									_1: {
+										ctor: '::',
+										_0: 'f4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				ii: {
+					ctor: '::',
+					_0: '',
+					_1: {ctor: '[]'}
+				},
+				iii: {
+					ctor: '::',
+					_0: '',
+					_1: {ctor: '[]'}
+				},
+				iv: {
+					ctor: '::',
+					_0: 'a#2q',
+					_1: {
+						ctor: '::',
+						_0: 'f3q',
+						_1: {
+							ctor: '::',
+							_0: 'a#3q',
+							_1: {
+								ctor: '::',
+								_0: 'c#4q',
+								_1: {
+									ctor: '::',
+									_0: 'f4q',
+									_1: {
+										ctor: '::',
+										_0: 'c0s',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				v: {
+					ctor: '::',
+					_0: 'c3q',
+					_1: {
+						ctor: '::',
+						_0: 'g3q',
+						_1: {
+							ctor: '::',
+							_0: 'c4q',
+							_1: {
+								ctor: '::',
+								_0: 'd#4q',
+								_1: {
+									ctor: '::',
+									_0: 'g4q',
+									_1: {
+										ctor: '::',
+										_0: 'c0s',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				vi: {
+					ctor: '::',
+					_0: 'c#3q',
+					_1: {
+						ctor: '::',
+						_0: 'g#3q',
+						_1: {
+							ctor: '::',
+							_0: 'c#4q',
+							_1: {
+								ctor: '::',
+								_0: 'f4q',
+								_1: {
+									ctor: '::',
+									_0: 'g#4q',
+									_1: {
+										ctor: '::',
+										_0: 'c0s',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				vii: {
+					ctor: '::',
+					_0: '',
+					_1: {ctor: '[]'}
+				}
+			};
+		case 'c':
+			return {
+				i: {
+					ctor: '::',
+					_0: 'c3q',
+					_1: {
+						ctor: '::',
+						_0: 'g3q',
+						_1: {
+							ctor: '::',
+							_0: 'c4q',
+							_1: {
+								ctor: '::',
+								_0: 'd#4q',
+								_1: {
+									ctor: '::',
+									_0: 'g4q',
+									_1: {
+										ctor: '::',
+										_0: 'c0s',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				ii: {
+					ctor: '::',
+					_0: '',
+					_1: {ctor: '[]'}
+				},
+				iii: {
+					ctor: '::',
+					_0: '',
+					_1: {ctor: '[]'}
+				},
+				iv: {
+					ctor: '::',
+					_0: 'f2q',
+					_1: {
+						ctor: '::',
+						_0: 'c3q',
+						_1: {
+							ctor: '::',
+							_0: 'f3q',
+							_1: {
+								ctor: '::',
+								_0: 'g#3q',
+								_1: {
+									ctor: '::',
+									_0: 'c4q',
+									_1: {
+										ctor: '::',
+										_0: 'f4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				v: {
+					ctor: '::',
+					_0: 'g2q',
+					_1: {
+						ctor: '::',
+						_0: 'd3q',
+						_1: {
+							ctor: '::',
+							_0: 'g3q',
+							_1: {
+								ctor: '::',
+								_0: 'a#3q',
+								_1: {
+									ctor: '::',
+									_0: 'd4q',
+									_1: {
+										ctor: '::',
+										_0: 'g4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				vi: {
+					ctor: '::',
+					_0: 'g#2q',
+					_1: {
+						ctor: '::',
+						_0: 'd#3q',
+						_1: {
+							ctor: '::',
+							_0: 'g#3q',
+							_1: {
+								ctor: '::',
+								_0: 'c4q',
+								_1: {
+									ctor: '::',
+									_0: 'd#4q',
+									_1: {
+										ctor: '::',
+										_0: 'g#4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				vii: {
+					ctor: '::',
+					_0: '',
+					_1: {ctor: '[]'}
+				}
+			};
+		case 'g':
+			return {
+				i: {
+					ctor: '::',
+					_0: 'g2q',
+					_1: {
+						ctor: '::',
+						_0: 'd3q',
+						_1: {
+							ctor: '::',
+							_0: 'g3q',
+							_1: {
+								ctor: '::',
+								_0: 'a#3q',
+								_1: {
+									ctor: '::',
+									_0: 'd4q',
+									_1: {
+										ctor: '::',
+										_0: 'g4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				ii: {
+					ctor: '::',
+					_0: '',
+					_1: {ctor: '[]'}
+				},
+				iii: {
+					ctor: '::',
+					_0: '',
+					_1: {ctor: '[]'}
+				},
+				iv: {
+					ctor: '::',
+					_0: 'c3q',
+					_1: {
+						ctor: '::',
+						_0: 'g3q',
+						_1: {
+							ctor: '::',
+							_0: 'c4q',
+							_1: {
+								ctor: '::',
+								_0: 'd#4q',
+								_1: {
+									ctor: '::',
+									_0: 'g4q',
+									_1: {
+										ctor: '::',
+										_0: 'c0s',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				v: {
+					ctor: '::',
+					_0: 'd3q',
+					_1: {
+						ctor: '::',
+						_0: 'a3q',
+						_1: {
+							ctor: '::',
+							_0: 'd4q',
+							_1: {
+								ctor: '::',
+								_0: 'f4q',
+								_1: {
+									ctor: '::',
+									_0: 'c0s',
+									_1: {
+										ctor: '::',
+										_0: 'c0s',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				vi: {
+					ctor: '::',
+					_0: 'd#3q',
+					_1: {
+						ctor: '::',
+						_0: 'a#3q',
+						_1: {
+							ctor: '::',
+							_0: 'd#4q',
+							_1: {
+								ctor: '::',
+								_0: 'g4q',
+								_1: {
+									ctor: '::',
+									_0: 'a#4q',
+									_1: {
+										ctor: '::',
+										_0: 'c0s',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				vii: {
+					ctor: '::',
+					_0: '',
+					_1: {ctor: '[]'}
+				}
+			};
+		case 'd':
+			return {
+				i: {
+					ctor: '::',
+					_0: 'd3q',
+					_1: {
+						ctor: '::',
+						_0: 'a3q',
+						_1: {
+							ctor: '::',
+							_0: 'd4q',
+							_1: {
+								ctor: '::',
+								_0: 'f4q',
+								_1: {
+									ctor: '::',
+									_0: 'c0s',
+									_1: {
+										ctor: '::',
+										_0: 'c0s',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				ii: {
+					ctor: '::',
+					_0: '',
+					_1: {ctor: '[]'}
+				},
+				iii: {
+					ctor: '::',
+					_0: '',
+					_1: {ctor: '[]'}
+				},
+				iv: {
+					ctor: '::',
+					_0: 'g2q',
+					_1: {
+						ctor: '::',
+						_0: 'd3q',
+						_1: {
+							ctor: '::',
+							_0: 'g3q',
+							_1: {
+								ctor: '::',
+								_0: 'a#3q',
+								_1: {
+									ctor: '::',
+									_0: 'd4q',
+									_1: {
+										ctor: '::',
+										_0: 'g4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				v: {
+					ctor: '::',
+					_0: 'a2q',
+					_1: {
+						ctor: '::',
+						_0: 'e3q',
+						_1: {
+							ctor: '::',
+							_0: 'a3q',
+							_1: {
+								ctor: '::',
+								_0: 'c4q',
+								_1: {
+									ctor: '::',
+									_0: 'e4q',
+									_1: {
+										ctor: '::',
+										_0: 'c0s',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				vi: {
+					ctor: '::',
+					_0: 'a#2q',
+					_1: {
+						ctor: '::',
+						_0: 'f3q',
+						_1: {
+							ctor: '::',
+							_0: 'a#3q',
+							_1: {
+								ctor: '::',
+								_0: 'd4q',
+								_1: {
+									ctor: '::',
+									_0: 'f4q',
+									_1: {
+										ctor: '::',
+										_0: 'c0s',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				vii: {
+					ctor: '::',
+					_0: '',
+					_1: {ctor: '[]'}
+				}
+			};
+		default:
+			return {
+				i: {
+					ctor: '::',
+					_0: '',
+					_1: {ctor: '[]'}
+				},
+				ii: {
+					ctor: '::',
+					_0: '',
+					_1: {ctor: '[]'}
+				},
+				iii: {
+					ctor: '::',
+					_0: '',
+					_1: {ctor: '[]'}
+				},
+				iv: {
+					ctor: '::',
+					_0: '',
+					_1: {ctor: '[]'}
+				},
+				v: {
+					ctor: '::',
+					_0: '',
+					_1: {ctor: '[]'}
+				},
+				vi: {
+					ctor: '::',
+					_0: '',
+					_1: {ctor: '[]'}
+				},
+				vii: {
+					ctor: '::',
+					_0: '',
+					_1: {ctor: '[]'}
+				}
+			};
+	}
+};
+
+var _user$project$Chords$fretMarkerStyle = function (dot) {
 	if (_elm_lang$core$Native_Utils.eq(dot.tint, 'bar')) {
 		var stringHeight = A2(
 			_elm_lang$core$Result$withDefault,
@@ -11515,7 +14562,7 @@ var _user$project$Styles$fretMarkerStyle = function (dot) {
 		}
 	}
 };
-var _user$project$Styles$fingerChartStyle = _elm_lang$html$Html_Attributes$style(
+var _user$project$Chords$fingerChartStyle = _elm_lang$html$Html_Attributes$style(
 	{
 		ctor: '::',
 		_0: {ctor: '_Tuple2', _0: 'display', _1: 'flex'},
@@ -11537,7 +14584,7 @@ var _user$project$Styles$fingerChartStyle = _elm_lang$html$Html_Attributes$style
 			}
 		}
 	});
-var _user$project$Styles$chordFunctionStyle = _elm_lang$html$Html_Attributes$style(
+var _user$project$Chords$chordFunctionStyle = _elm_lang$html$Html_Attributes$style(
 	{
 		ctor: '::',
 		_0: {ctor: '_Tuple2', _0: 'cursor', _1: 'pointer'},
@@ -11559,7 +14606,7 @@ var _user$project$Styles$chordFunctionStyle = _elm_lang$html$Html_Attributes$sty
 			}
 		}
 	});
-var _user$project$Styles$chordNameStyle = _elm_lang$html$Html_Attributes$style(
+var _user$project$Chords$chordNameStyle = _elm_lang$html$Html_Attributes$style(
 	{
 		ctor: '::',
 		_0: {ctor: '_Tuple2', _0: 'cursor', _1: 'pointer'},
@@ -11581,7 +14628,7 @@ var _user$project$Styles$chordNameStyle = _elm_lang$html$Html_Attributes$style(
 			}
 		}
 	});
-var _user$project$Styles$fretStyle = function (fret) {
+var _user$project$Chords$fretStyle = function (fret) {
 	return _elm_lang$html$Html_Attributes$style(
 		{
 			ctor: '::',
@@ -11612,7 +14659,7 @@ var _user$project$Styles$fretStyle = function (fret) {
 			}
 		});
 };
-var _user$project$Styles$chartContainerStyle = function (direction) {
+var _user$project$Chords$chartContainerStyle = function (direction) {
 	return _elm_lang$html$Html_Attributes$style(
 		{
 			ctor: '::',
@@ -11636,7 +14683,7 @@ var _user$project$Styles$chartContainerStyle = function (direction) {
 			}
 		});
 };
-var _user$project$Styles$nutStyle = _elm_lang$html$Html_Attributes$style(
+var _user$project$Chords$nutStyle = _elm_lang$html$Html_Attributes$style(
 	{
 		ctor: '::',
 		_0: {ctor: '_Tuple2', _0: 'width', _1: '10px'},
@@ -11654,7 +14701,7 @@ var _user$project$Styles$nutStyle = _elm_lang$html$Html_Attributes$style(
 			}
 		}
 	});
-var _user$project$Styles$stringStyle = _elm_lang$html$Html_Attributes$style(
+var _user$project$Chords$stringStyle = _elm_lang$html$Html_Attributes$style(
 	{
 		ctor: '::',
 		_0: {ctor: '_Tuple2', _0: 'width', _1: '180px'},
@@ -11668,7 +14715,7 @@ var _user$project$Styles$stringStyle = _elm_lang$html$Html_Attributes$style(
 			}
 		}
 	});
-var _user$project$Styles$chartStyle = _elm_lang$html$Html_Attributes$style(
+var _user$project$Chords$chartStyle = _elm_lang$html$Html_Attributes$style(
 	{
 		ctor: '::',
 		_0: {ctor: '_Tuple2', _0: 'position', _1: 'relative'},
@@ -11690,7 +14737,7 @@ var _user$project$Styles$chartStyle = _elm_lang$html$Html_Attributes$style(
 			}
 		}
 	});
-var _user$project$Styles$chordBarPosStyle = _elm_lang$html$Html_Attributes$style(
+var _user$project$Chords$chordBarPosStyle = _elm_lang$html$Html_Attributes$style(
 	{
 		ctor: '::',
 		_0: {ctor: '_Tuple2', _0: 'position', _1: 'absolute'},
@@ -11712,3628 +14759,21 @@ var _user$project$Styles$chordBarPosStyle = _elm_lang$html$Html_Attributes$style
 			}
 		}
 	});
-var _user$project$Styles$hrLedgerStyleLo = F2(
-	function (model, offset) {
-		var pos = model.notePosition;
-		var visibility = (_elm_lang$core$Native_Utils.cmp(pos, offset + 20) < 0) ? '1' : '0';
-		return _elm_lang$html$Html_Attributes$style(
-			{
-				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'position', _1: 'absolute'},
-				_1: {
-					ctor: '::',
-					_0: {
-						ctor: '_Tuple2',
-						_0: 'bottom',
-						_1: A2(
-							_elm_lang$core$Basics_ops['++'],
-							_elm_lang$core$Basics$toString(offset),
-							'px')
-					},
-					_1: {
-						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'left', _1: '45%'},
-						_1: {
-							ctor: '::',
-							_0: {ctor: '_Tuple2', _0: 'width', _1: '50px'},
-							_1: {
-								ctor: '::',
-								_0: {ctor: '_Tuple2', _0: 'margin', _1: '0 auto'},
-								_1: {
-									ctor: '::',
-									_0: {ctor: '_Tuple2', _0: 'padding', _1: '10px'},
-									_1: {
-										ctor: '::',
-										_0: {ctor: '_Tuple2', _0: 'lineHeight', _1: '30px'},
-										_1: {
-											ctor: '::',
-											_0: {ctor: '_Tuple2', _0: 'opacity', _1: visibility},
-											_1: {
-												ctor: '::',
-												_0: {ctor: '_Tuple2', _0: 'transition', _1: 'opacity 0.5s ease'},
-												_1: {
-													ctor: '::',
-													_0: {ctor: '_Tuple2', _0: 'zIndex', _1: '0'},
-													_1: {ctor: '[]'}
-												}
-											}
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-			});
-	});
-var _user$project$Styles$hrLedgerStyleHi = F2(
-	function (model, offset) {
-		var pos = model.notePosition;
-		var visibility = (_elm_lang$core$Native_Utils.cmp(pos, offset) > 0) ? '1' : '0';
-		return _elm_lang$html$Html_Attributes$style(
-			{
-				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'position', _1: 'absolute'},
-				_1: {
-					ctor: '::',
-					_0: {
-						ctor: '_Tuple2',
-						_0: 'bottom',
-						_1: A2(
-							_elm_lang$core$Basics_ops['++'],
-							_elm_lang$core$Basics$toString(offset),
-							'px')
-					},
-					_1: {
-						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'left', _1: '45%'},
-						_1: {
-							ctor: '::',
-							_0: {ctor: '_Tuple2', _0: 'width', _1: '50px'},
-							_1: {
-								ctor: '::',
-								_0: {ctor: '_Tuple2', _0: 'margin', _1: '0 auto'},
-								_1: {
-									ctor: '::',
-									_0: {ctor: '_Tuple2', _0: 'padding', _1: '10px'},
-									_1: {
-										ctor: '::',
-										_0: {ctor: '_Tuple2', _0: 'lineHeight', _1: '30px'},
-										_1: {
-											ctor: '::',
-											_0: {ctor: '_Tuple2', _0: 'opacity', _1: visibility},
-											_1: {
-												ctor: '::',
-												_0: {ctor: '_Tuple2', _0: 'transition', _1: 'opacity 0.5s ease'},
-												_1: {
-													ctor: '::',
-													_0: {ctor: '_Tuple2', _0: 'zIndex', _1: '0'},
-													_1: {ctor: '[]'}
-												}
-											}
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-			});
-	});
-var _user$project$Styles$hrStyle = _elm_lang$html$Html_Attributes$style(
-	{
-		ctor: '::',
-		_0: {ctor: '_Tuple2', _0: 'width', _1: '280px'},
-		_1: {
-			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'margin', _1: '0 auto'},
-			_1: {
-				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'padding', _1: '10px'},
-				_1: {ctor: '[]'}
-			}
-		}
-	});
-var _user$project$Styles$notationAccidentalStyle = F2(
-	function (offset, visibility) {
-		return _elm_lang$html$Html_Attributes$style(
-			{
-				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '28px'},
-				_1: {
-					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'position', _1: 'absolute'},
-					_1: {
-						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'marginBottom', _1: '-10px'},
-						_1: {
-							ctor: '::',
-							_0: {
-								ctor: '_Tuple2',
-								_0: 'bottom',
-								_1: A2(
-									_elm_lang$core$Basics_ops['++'],
-									_elm_lang$core$Basics$toString(offset),
-									'px')
-							},
-							_1: {
-								ctor: '::',
-								_0: {ctor: '_Tuple2', _0: 'left', _1: '44%'},
-								_1: {
-									ctor: '::',
-									_0: {ctor: '_Tuple2', _0: 'color', _1: '#3A86FF'},
-									_1: {
-										ctor: '::',
-										_0: {ctor: '_Tuple2', _0: 'opacity', _1: visibility},
-										_1: {
-											ctor: '::',
-											_0: {ctor: '_Tuple2', _0: 'transition', _1: 'opacity 0.5s ease'},
-											_1: {
-												ctor: '::',
-												_0: {ctor: '_Tuple2', _0: 'zIndex', _1: '1'},
-												_1: {ctor: '[]'}
-											}
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-			});
-	});
-var _user$project$Styles$notationNoteStyle = function (offset) {
-	return _elm_lang$html$Html_Attributes$style(
-		{
-			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'width', _1: '20px'},
-			_1: {
-				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'height', _1: '20px'},
-				_1: {
-					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'borderRadius', _1: '10px'},
-					_1: {
-						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'position', _1: 'absolute'},
-						_1: {
-							ctor: '::',
-							_0: {
-								ctor: '_Tuple2',
-								_0: 'bottom',
-								_1: A2(
-									_elm_lang$core$Basics_ops['++'],
-									_elm_lang$core$Basics$toString(offset),
-									'px')
-							},
-							_1: {
-								ctor: '::',
-								_0: {ctor: '_Tuple2', _0: 'left', _1: '50%'},
-								_1: {
-									ctor: '::',
-									_0: {ctor: '_Tuple2', _0: 'backgroundColor', _1: '#3A86FF'},
-									_1: {
-										ctor: '::',
-										_0: {ctor: '_Tuple2', _0: 'transition', _1: 'all 0.5s ease'},
-										_1: {
-											ctor: '::',
-											_0: {ctor: '_Tuple2', _0: 'zIndex', _1: '1'},
-											_1: {ctor: '[]'}
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-		});
-};
-var _user$project$Styles$notationClefStyle = _elm_lang$html$Html_Attributes$style(
-	{
-		ctor: '::',
-		_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '140px'},
-		_1: {
-			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'position', _1: 'absolute'},
-			_1: {
-				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'bottom', _1: '0'},
-				_1: {
-					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'left', _1: '30px'},
-					_1: {
-						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'color', _1: '#fff'},
-						_1: {ctor: '[]'}
-					}
-				}
-			}
-		}
-	});
-var _user$project$Styles$notationContainerStyle = _elm_lang$html$Html_Attributes$style(
-	{
-		ctor: '::',
-		_0: {ctor: '_Tuple2', _0: 'width', _1: '350px'},
-		_1: {
-			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'padding', _1: '50px 10px'},
-			_1: {
-				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'margin', _1: '70px auto'},
-				_1: {
-					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'backgroundColor', _1: '#111'},
-					_1: {
-						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'position', _1: 'relative'},
-						_1: {
-							ctor: '::',
-							_0: {ctor: '_Tuple2', _0: 'textAlign', _1: 'center'},
-							_1: {ctor: '[]'}
-						}
-					}
-				}
-			}
-		}
-	});
-var _user$project$Styles$noteGroupStyle = _elm_lang$html$Html_Attributes$style(
-	{
-		ctor: '::',
-		_0: {ctor: '_Tuple2', _0: 'postion', _1: 'relative'},
-		_1: {ctor: '[]'}
-	});
-var _user$project$Styles$fretNumberStyle = _elm_lang$html$Html_Attributes$style(
-	{
-		ctor: '::',
-		_0: {ctor: '_Tuple2', _0: 'width', _1: '100px'},
-		_1: {
-			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'marginBottom', _1: '-70px'},
-			_1: {
-				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'padding', _1: '5px'},
-				_1: {
-					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'textTransform', _1: 'uppercase'},
-					_1: {
-						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'color', _1: '#3A86FF'},
-						_1: {
-							ctor: '::',
-							_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '20px'},
-							_1: {
-								ctor: '::',
-								_0: {ctor: '_Tuple2', _0: 'textAlign', _1: 'center'},
-								_1: {ctor: '[]'}
-							}
-						}
-					}
-				}
-			}
-		}
-	});
-var _user$project$Styles$fretBlankStyle = _elm_lang$html$Html_Attributes$style(
-	{
-		ctor: '::',
-		_0: {ctor: '_Tuple2', _0: 'color', _1: 'rgba(0,0,0,0)'},
-		_1: {
-			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'width', _1: '100px'},
-			_1: {
-				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'padding', _1: '5px'},
-				_1: {
-					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'backgroundColor', _1: '#111'},
-					_1: {ctor: '[]'}
-				}
-			}
-		}
-	});
-var _user$project$Styles$fretNoteStyle = _elm_lang$html$Html_Attributes$style(
-	{
-		ctor: '::',
-		_0: {ctor: '_Tuple2', _0: 'width', _1: '100px'},
-		_1: {
-			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'padding', _1: '14px 5px'},
-			_1: {
-				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'textTransform', _1: 'uppercase'},
-				_1: {
-					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'color', _1: '#777'},
-					_1: {
-						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '10px'},
-						_1: {
-							ctor: '::',
-							_0: {ctor: '_Tuple2', _0: 'textAlign', _1: 'center'},
-							_1: {
-								ctor: '::',
-								_0: {ctor: '_Tuple2', _0: 'borderBottom', _1: '1px solid #222'},
-								_1: {
-									ctor: '::',
-									_0: {ctor: '_Tuple2', _0: 'borderCollapse', _1: 'collapse'},
-									_1: {
-										ctor: '::',
-										_0: {ctor: '_Tuple2', _0: 'transition', _1: 'all 0.4s ease'},
-										_1: {
-											ctor: '::',
-											_0: {ctor: '_Tuple2', _0: 'backgroundColor', _1: '#111'},
-											_1: {
-												ctor: '::',
-												_0: {ctor: '_Tuple2', _0: 'zIndex', _1: '1'},
-												_1: {ctor: '[]'}
-											}
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-	});
-var _user$project$Styles$fretboardStringStyle = _elm_lang$html$Html_Attributes$style(
-	{
-		ctor: '::',
-		_0: {ctor: '_Tuple2', _0: 'display', _1: 'flex'},
-		_1: {ctor: '[]'}
-	});
-var _user$project$Styles$fretboardContainerStyle = _elm_lang$html$Html_Attributes$style(
-	{
-		ctor: '::',
-		_0: {ctor: '_Tuple2', _0: 'margin', _1: '50px'},
-		_1: {
-			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'width', _1: '90%'},
-			_1: {
-				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'position', _1: 'relative'},
-				_1: {ctor: '[]'}
-			}
-		}
-	});
-var _user$project$Styles$navItemStyle = _elm_lang$html$Html_Attributes$style(
-	{
-		ctor: '::',
-		_0: {ctor: '_Tuple2', _0: 'margin', _1: '10px auto'},
-		_1: {
-			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'padding', _1: '5px'},
-			_1: {
-				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'color', _1: '#777'},
-				_1: {ctor: '[]'}
-			}
-		}
-	});
-var _user$project$Styles$navStyle = _elm_lang$html$Html_Attributes$style(
-	{
-		ctor: '::',
-		_0: {ctor: '_Tuple2', _0: 'textAlign', _1: 'center'},
-		_1: {ctor: '[]'}
-	});
-
-var _user$project$Types$Model = F6(
-	function (a, b, c, d, e, f) {
-		return {route: a, musKey: b, index: c, currentChord: d, notePosition: e, showAccidental: f};
-	});
-var _user$project$Types$Dot = F3(
-	function (a, b, c) {
-		return {tint: a, stringNo: b, fretNo: c};
-	});
-var _user$project$Types$Note = F3(
-	function (a, b, c) {
-		return {frequency: a, octave: b, sustain: c};
-	});
-var _user$project$Types$PlayBundle = F2(
-	function (a, b) {
-		return {note: a, waveType: b};
-	});
-var _user$project$Types$DrawNote = F3(
-	function (a, b, c) {
-		return {ctor: 'DrawNote', _0: a, _1: b, _2: c};
-	});
-var _user$project$Types$OnLocationChange = function (a) {
-	return {ctor: 'OnLocationChange', _0: a};
-};
-var _user$project$Types$ResetIndex = {ctor: 'ResetIndex'};
-var _user$project$Types$Play = function (a) {
-	return {ctor: 'Play', _0: a};
-};
-var _user$project$Types$SendNotes = {ctor: 'SendNotes'};
-var _user$project$Types$ChangeKey = function (a) {
-	return {ctor: 'ChangeKey', _0: a};
-};
-var _user$project$Types$NotFoundPage = {ctor: 'NotFoundPage'};
-var _user$project$Types$FretboardPage = {ctor: 'FretboardPage'};
-var _user$project$Types$ScalesPage = {ctor: 'ScalesPage'};
-var _user$project$Types$ChordChartPage = {ctor: 'ChordChartPage'};
-
-var _user$project$Notes$frequencies = function (note) {
-	var _p0 = note;
-	switch (_p0) {
-		case 'c':
-			return 130.81;
-		case 'c#':
-			return 139.0;
-		case 'd':
-			return 146.83;
-		case 'd#':
-			return 156.0;
-		case 'e':
-			return 164.81;
-		case 'f':
-			return 174.61;
-		case 'f#':
-			return 185.0;
-		case 'g':
-			return 196.0;
-		case 'g#':
-			return 208.0;
-		case 'a':
-			return 220.0;
-		case 'a#':
-			return 233.0;
-		case 'b':
-			return 246.94;
-		case 'r':
-			return 0.0;
-		default:
-			return 0.0;
-	}
-};
-var _user$project$Notes$octave = function (num) {
-	var _p1 = num;
-	if (_p1 === 1) {
-		return 1;
-	} else {
-		return Math.pow(2, num - 1);
-	}
-};
-var _user$project$Notes$sustain = function (duration) {
-	var _p2 = duration;
-	switch (_p2) {
-		case 'w':
-			return 4.0;
-		case 'h':
-			return 2.0;
-		case 'q':
-			return 1.0;
-		case 'e':
-			return 0.5;
-		case 's':
-			return 0.25;
-		case 'w.':
-			return 6.0;
-		case 'h.':
-			return 3.0;
-		case 'q.':
-			return 1.5;
-		case 'e.':
-			return 0.75;
-		case 's.':
-			return 0.375;
-		default:
-			return 0.0;
-	}
-};
-var _user$project$Notes$noteSorter = function (string) {
-	var _p3 = _elm_lang$core$String$length(string);
-	switch (_p3) {
-		case 3:
-			return A3(
-				_user$project$Types$Note,
-				_user$project$Notes$frequencies(
-					A3(_elm_lang$core$String$slice, 0, 1, string)),
-				_user$project$Notes$octave(
-					A2(
-						_elm_lang$core$Result$withDefault,
-						0,
-						_elm_lang$core$String$toInt(
-							A3(_elm_lang$core$String$slice, 1, 2, string)))),
-				_user$project$Notes$sustain(
-					A3(_elm_lang$core$String$slice, 2, 3, string)));
-		case 4:
-			return _elm_lang$core$Native_Utils.eq(
-				A3(_elm_lang$core$String$slice, 1, 2, string),
-				'#') ? A3(
-				_user$project$Types$Note,
-				_user$project$Notes$frequencies(
-					A3(_elm_lang$core$String$slice, 0, 2, string)),
-				_user$project$Notes$octave(
-					A2(
-						_elm_lang$core$Result$withDefault,
-						0,
-						_elm_lang$core$String$toInt(
-							A3(_elm_lang$core$String$slice, 2, 3, string)))),
-				_user$project$Notes$sustain(
-					A3(_elm_lang$core$String$slice, 3, 4, string))) : A3(
-				_user$project$Types$Note,
-				_user$project$Notes$frequencies(
-					A3(_elm_lang$core$String$slice, 0, 1, string)),
-				_user$project$Notes$octave(
-					A2(
-						_elm_lang$core$Result$withDefault,
-						0,
-						_elm_lang$core$String$toInt(
-							A3(_elm_lang$core$String$slice, 1, 2, string)))),
-				_user$project$Notes$sustain(
-					A3(_elm_lang$core$String$slice, 2, 4, string)));
-		case 5:
-			return A3(
-				_user$project$Types$Note,
-				_user$project$Notes$frequencies(
-					A3(_elm_lang$core$String$slice, 0, 2, string)),
-				_user$project$Notes$octave(
-					A2(
-						_elm_lang$core$Result$withDefault,
-						0,
-						_elm_lang$core$String$toInt(
-							A3(_elm_lang$core$String$slice, 2, 3, string)))),
-				_user$project$Notes$sustain(
-					A3(_elm_lang$core$String$slice, 3, 5, string)));
-		default:
-			return A3(_user$project$Types$Note, 0.0, 0, 0.0);
-	}
-};
-var _user$project$Notes$notes = function (key) {
-	var _p4 = key;
-	switch (_p4) {
-		case 'C':
-			return {
-				i: {
-					ctor: '::',
-					_0: 'c3q',
-					_1: {
-						ctor: '::',
-						_0: 'e3q',
-						_1: {
-							ctor: '::',
-							_0: 'g3q',
-							_1: {
-								ctor: '::',
-								_0: 'c4q',
-								_1: {
-									ctor: '::',
-									_0: 'e4q',
-									_1: {
-										ctor: '::',
-										_0: 'c0s',
-										_1: {ctor: '[]'}
-									}
-								}
-							}
-						}
-					}
-				},
-				iv: {
-					ctor: '::',
-					_0: 'f3q',
-					_1: {
-						ctor: '::',
-						_0: 'a3q',
-						_1: {
-							ctor: '::',
-							_0: 'c4q',
-							_1: {
-								ctor: '::',
-								_0: 'e4q',
-								_1: {
-									ctor: '::',
-									_0: 'c0s',
-									_1: {
-										ctor: '::',
-										_0: 'c0s',
-										_1: {ctor: '[]'}
-									}
-								}
-							}
-						}
-					}
-				},
-				v: {
-					ctor: '::',
-					_0: 'g2q',
-					_1: {
-						ctor: '::',
-						_0: 'b2q',
-						_1: {
-							ctor: '::',
-							_0: 'd3q',
-							_1: {
-								ctor: '::',
-								_0: 'g3q',
-								_1: {
-									ctor: '::',
-									_0: 'd4q',
-									_1: {
-										ctor: '::',
-										_0: 'g4q',
-										_1: {ctor: '[]'}
-									}
-								}
-							}
-						}
-					}
-				},
-				vi: {
-					ctor: '::',
-					_0: 'a2q',
-					_1: {
-						ctor: '::',
-						_0: 'e3q',
-						_1: {
-							ctor: '::',
-							_0: 'a3q',
-							_1: {
-								ctor: '::',
-								_0: 'c4q',
-								_1: {
-									ctor: '::',
-									_0: 'e4q',
-									_1: {
-										ctor: '::',
-										_0: 'c0s',
-										_1: {ctor: '[]'}
-									}
-								}
-							}
-						}
-					}
-				}
-			};
-		case 'G':
-			return {
-				i: {
-					ctor: '::',
-					_0: 'g2q',
-					_1: {
-						ctor: '::',
-						_0: 'b2q',
-						_1: {
-							ctor: '::',
-							_0: 'd3q',
-							_1: {
-								ctor: '::',
-								_0: 'g3q',
-								_1: {
-									ctor: '::',
-									_0: 'd4q',
-									_1: {
-										ctor: '::',
-										_0: 'g4q',
-										_1: {ctor: '[]'}
-									}
-								}
-							}
-						}
-					}
-				},
-				iv: {
-					ctor: '::',
-					_0: 'c3q',
-					_1: {
-						ctor: '::',
-						_0: 'e3q',
-						_1: {
-							ctor: '::',
-							_0: 'g3q',
-							_1: {
-								ctor: '::',
-								_0: 'd4q',
-								_1: {
-									ctor: '::',
-									_0: 'g4q',
-									_1: {
-										ctor: '::',
-										_0: 'c0s',
-										_1: {ctor: '[]'}
-									}
-								}
-							}
-						}
-					}
-				},
-				v: {
-					ctor: '::',
-					_0: 'd3q',
-					_1: {
-						ctor: '::',
-						_0: 'a3q',
-						_1: {
-							ctor: '::',
-							_0: 'd4q',
-							_1: {
-								ctor: '::',
-								_0: 'f#4q',
-								_1: {
-									ctor: '::',
-									_0: 'c0s',
-									_1: {
-										ctor: '::',
-										_0: 'c0s',
-										_1: {ctor: '[]'}
-									}
-								}
-							}
-						}
-					}
-				},
-				vi: {
-					ctor: '::',
-					_0: 'e2q',
-					_1: {
-						ctor: '::',
-						_0: 'b2q',
-						_1: {
-							ctor: '::',
-							_0: 'e3q',
-							_1: {
-								ctor: '::',
-								_0: 'g3q',
-								_1: {
-									ctor: '::',
-									_0: 'b3q',
-									_1: {
-										ctor: '::',
-										_0: 'e4q',
-										_1: {ctor: '[]'}
-									}
-								}
-							}
-						}
-					}
-				}
-			};
-		case 'D':
-			return {
-				i: {
-					ctor: '::',
-					_0: 'd3q',
-					_1: {
-						ctor: '::',
-						_0: 'a3q',
-						_1: {
-							ctor: '::',
-							_0: 'd4q',
-							_1: {
-								ctor: '::',
-								_0: 'f#4q',
-								_1: {
-									ctor: '::',
-									_0: 'c0s',
-									_1: {
-										ctor: '::',
-										_0: 'c0s',
-										_1: {ctor: '[]'}
-									}
-								}
-							}
-						}
-					}
-				},
-				iv: {
-					ctor: '::',
-					_0: 'g2q',
-					_1: {
-						ctor: '::',
-						_0: 'b2q',
-						_1: {
-							ctor: '::',
-							_0: 'd3q',
-							_1: {
-								ctor: '::',
-								_0: 'g3q',
-								_1: {
-									ctor: '::',
-									_0: 'd4q',
-									_1: {
-										ctor: '::',
-										_0: 'g4q',
-										_1: {ctor: '[]'}
-									}
-								}
-							}
-						}
-					}
-				},
-				v: {
-					ctor: '::',
-					_0: 'a2q',
-					_1: {
-						ctor: '::',
-						_0: 'e3q',
-						_1: {
-							ctor: '::',
-							_0: 'a3q',
-							_1: {
-								ctor: '::',
-								_0: 'c#4q',
-								_1: {
-									ctor: '::',
-									_0: 'e4q',
-									_1: {
-										ctor: '::',
-										_0: 'c0s',
-										_1: {ctor: '[]'}
-									}
-								}
-							}
-						}
-					}
-				},
-				vi: {
-					ctor: '::',
-					_0: 'b2q',
-					_1: {
-						ctor: '::',
-						_0: 'd3q',
-						_1: {
-							ctor: '::',
-							_0: 'g3q',
-							_1: {
-								ctor: '::',
-								_0: 'd4q',
-								_1: {
-									ctor: '::',
-									_0: 'f#4q',
-									_1: {
-										ctor: '::',
-										_0: 'c0s',
-										_1: {ctor: '[]'}
-									}
-								}
-							}
-						}
-					}
-				}
-			};
-		case 'A':
-			return {
-				i: {
-					ctor: '::',
-					_0: 'a2q',
-					_1: {
-						ctor: '::',
-						_0: 'e3q',
-						_1: {
-							ctor: '::',
-							_0: 'a3q',
-							_1: {
-								ctor: '::',
-								_0: 'c#4q',
-								_1: {
-									ctor: '::',
-									_0: 'e4q',
-									_1: {
-										ctor: '::',
-										_0: 'c0s',
-										_1: {ctor: '[]'}
-									}
-								}
-							}
-						}
-					}
-				},
-				iv: {
-					ctor: '::',
-					_0: 'd3q',
-					_1: {
-						ctor: '::',
-						_0: 'a3q',
-						_1: {
-							ctor: '::',
-							_0: 'd4q',
-							_1: {
-								ctor: '::',
-								_0: 'f#4q',
-								_1: {
-									ctor: '::',
-									_0: 'c0s',
-									_1: {
-										ctor: '::',
-										_0: 'c0s',
-										_1: {ctor: '[]'}
-									}
-								}
-							}
-						}
-					}
-				},
-				v: {
-					ctor: '::',
-					_0: 'e2q',
-					_1: {
-						ctor: '::',
-						_0: 'b2q',
-						_1: {
-							ctor: '::',
-							_0: 'e3q',
-							_1: {
-								ctor: '::',
-								_0: 'g#3q',
-								_1: {
-									ctor: '::',
-									_0: 'b3q',
-									_1: {
-										ctor: '::',
-										_0: 'e4q',
-										_1: {ctor: '[]'}
-									}
-								}
-							}
-						}
-					}
-				},
-				vi: {
-					ctor: '::',
-					_0: 'f#2q',
-					_1: {
-						ctor: '::',
-						_0: 'a2q',
-						_1: {
-							ctor: '::',
-							_0: 'd3q',
-							_1: {
-								ctor: '::',
-								_0: 'a3q',
-								_1: {
-									ctor: '::',
-									_0: 'c#4q',
-									_1: {
-										ctor: '::',
-										_0: 'e4q',
-										_1: {ctor: '[]'}
-									}
-								}
-							}
-						}
-					}
-				}
-			};
-		case 'E':
-			return {
-				i: {
-					ctor: '::',
-					_0: 'e2q',
-					_1: {
-						ctor: '::',
-						_0: 'b2q',
-						_1: {
-							ctor: '::',
-							_0: 'e3q',
-							_1: {
-								ctor: '::',
-								_0: 'g#3q',
-								_1: {
-									ctor: '::',
-									_0: 'b3q',
-									_1: {
-										ctor: '::',
-										_0: 'e4q',
-										_1: {ctor: '[]'}
-									}
-								}
-							}
-						}
-					}
-				},
-				iv: {
-					ctor: '::',
-					_0: 'a2q',
-					_1: {
-						ctor: '::',
-						_0: 'e3q',
-						_1: {
-							ctor: '::',
-							_0: 'a3q',
-							_1: {
-								ctor: '::',
-								_0: 'c#4q',
-								_1: {
-									ctor: '::',
-									_0: 'e4q',
-									_1: {
-										ctor: '::',
-										_0: 'c0s',
-										_1: {ctor: '[]'}
-									}
-								}
-							}
-						}
-					}
-				},
-				v: {
-					ctor: '::',
-					_0: 'b2q',
-					_1: {
-						ctor: '::',
-						_0: 'd#3q',
-						_1: {
-							ctor: '::',
-							_0: 'a3q',
-							_1: {
-								ctor: '::',
-								_0: 'b3q',
-								_1: {
-									ctor: '::',
-									_0: 'f#4q',
-									_1: {
-										ctor: '::',
-										_0: 'c0s',
-										_1: {ctor: '[]'}
-									}
-								}
-							}
-						}
-					}
-				},
-				vi: {
-					ctor: '::',
-					_0: 'g#3q',
-					_1: {
-						ctor: '::',
-						_0: 'c#4q',
-						_1: {
-							ctor: '::',
-							_0: 'e4q',
-							_1: {
-								ctor: '::',
-								_0: 'g#4q',
-								_1: {
-									ctor: '::',
-									_0: 'c0s',
-									_1: {
-										ctor: '::',
-										_0: 'c0s',
-										_1: {ctor: '[]'}
-									}
-								}
-							}
-						}
-					}
-				}
-			};
-		case 'B':
-			return {
-				i: {
-					ctor: '::',
-					_0: 'b2q',
-					_1: {
-						ctor: '::',
-						_0: 'f#3q',
-						_1: {
-							ctor: '::',
-							_0: 'b3q',
-							_1: {
-								ctor: '::',
-								_0: 'd#4q',
-								_1: {
-									ctor: '::',
-									_0: 'f#4q',
-									_1: {
-										ctor: '::',
-										_0: 'c0s',
-										_1: {ctor: '[]'}
-									}
-								}
-							}
-						}
-					}
-				},
-				iv: {
-					ctor: '::',
-					_0: 'e2q',
-					_1: {
-						ctor: '::',
-						_0: 'b2q',
-						_1: {
-							ctor: '::',
-							_0: 'e3q',
-							_1: {
-								ctor: '::',
-								_0: 'g#3q',
-								_1: {
-									ctor: '::',
-									_0: 'b3q',
-									_1: {
-										ctor: '::',
-										_0: 'e4q',
-										_1: {ctor: '[]'}
-									}
-								}
-							}
-						}
-					}
-				},
-				v: {
-					ctor: '::',
-					_0: 'f#2q',
-					_1: {
-						ctor: '::',
-						_0: 'c#3q',
-						_1: {
-							ctor: '::',
-							_0: 'f#3q',
-							_1: {
-								ctor: '::',
-								_0: 'a#3q',
-								_1: {
-									ctor: '::',
-									_0: 'c#4q',
-									_1: {
-										ctor: '::',
-										_0: 'f#4q',
-										_1: {ctor: '[]'}
-									}
-								}
-							}
-						}
-					}
-				},
-				vi: {
-					ctor: '::',
-					_0: 'g#2q',
-					_1: {
-						ctor: '::',
-						_0: 'd#3q',
-						_1: {
-							ctor: '::',
-							_0: 'g#3q',
-							_1: {
-								ctor: '::',
-								_0: 'b3q',
-								_1: {
-									ctor: '::',
-									_0: 'd#4q',
-									_1: {
-										ctor: '::',
-										_0: 'g#4q',
-										_1: {ctor: '[]'}
-									}
-								}
-							}
-						}
-					}
-				}
-			};
-		case 'F#':
-			return {
-				i: {
-					ctor: '::',
-					_0: 'f#2q',
-					_1: {
-						ctor: '::',
-						_0: 'c#3q',
-						_1: {
-							ctor: '::',
-							_0: 'f#3q',
-							_1: {
-								ctor: '::',
-								_0: 'a#3q',
-								_1: {
-									ctor: '::',
-									_0: 'c#4q',
-									_1: {
-										ctor: '::',
-										_0: 'f#4q',
-										_1: {ctor: '[]'}
-									}
-								}
-							}
-						}
-					}
-				},
-				iv: {
-					ctor: '::',
-					_0: 'b2q',
-					_1: {
-						ctor: '::',
-						_0: 'f#3q',
-						_1: {
-							ctor: '::',
-							_0: 'b3q',
-							_1: {
-								ctor: '::',
-								_0: 'd#4q',
-								_1: {
-									ctor: '::',
-									_0: 'f#4q',
-									_1: {
-										ctor: '::',
-										_0: 'c0s',
-										_1: {ctor: '[]'}
-									}
-								}
-							}
-						}
-					}
-				},
-				v: {
-					ctor: '::',
-					_0: 'c#3q',
-					_1: {
-						ctor: '::',
-						_0: 'g#3q',
-						_1: {
-							ctor: '::',
-							_0: 'c#4q',
-							_1: {
-								ctor: '::',
-								_0: 'f4q',
-								_1: {
-									ctor: '::',
-									_0: 'g#4q',
-									_1: {
-										ctor: '::',
-										_0: 'c0s',
-										_1: {ctor: '[]'}
-									}
-								}
-							}
-						}
-					}
-				},
-				vi: {
-					ctor: '::',
-					_0: 'd#3q',
-					_1: {
-						ctor: '::',
-						_0: 'a#3q',
-						_1: {
-							ctor: '::',
-							_0: 'd#4q',
-							_1: {
-								ctor: '::',
-								_0: 'f#4q',
-								_1: {
-									ctor: '::',
-									_0: 'a#4q',
-									_1: {
-										ctor: '::',
-										_0: 'c0s',
-										_1: {ctor: '[]'}
-									}
-								}
-							}
-						}
-					}
-				}
-			};
-		case 'Db':
-			return {
-				i: {
-					ctor: '::',
-					_0: 'c#3q',
-					_1: {
-						ctor: '::',
-						_0: 'g#3q',
-						_1: {
-							ctor: '::',
-							_0: 'c#4q',
-							_1: {
-								ctor: '::',
-								_0: 'f4q',
-								_1: {
-									ctor: '::',
-									_0: 'g#4q',
-									_1: {
-										ctor: '::',
-										_0: 'c0s',
-										_1: {ctor: '[]'}
-									}
-								}
-							}
-						}
-					}
-				},
-				iv: {
-					ctor: '::',
-					_0: 'f#2q',
-					_1: {
-						ctor: '::',
-						_0: 'c#3q',
-						_1: {
-							ctor: '::',
-							_0: 'f#3q',
-							_1: {
-								ctor: '::',
-								_0: 'a#3q',
-								_1: {
-									ctor: '::',
-									_0: 'c#4q',
-									_1: {
-										ctor: '::',
-										_0: 'f#4q',
-										_1: {ctor: '[]'}
-									}
-								}
-							}
-						}
-					}
-				},
-				v: {
-					ctor: '::',
-					_0: 'g#3q',
-					_1: {
-						ctor: '::',
-						_0: 'd#3q',
-						_1: {
-							ctor: '::',
-							_0: 'g#4q',
-							_1: {
-								ctor: '::',
-								_0: 'b#3q',
-								_1: {
-									ctor: '::',
-									_0: 'd#4q',
-									_1: {
-										ctor: '::',
-										_0: 'g#4q',
-										_1: {ctor: '[]'}
-									}
-								}
-							}
-						}
-					}
-				},
-				vi: {
-					ctor: '::',
-					_0: 'a#2q',
-					_1: {
-						ctor: '::',
-						_0: 'f3q',
-						_1: {
-							ctor: '::',
-							_0: 'a#3q',
-							_1: {
-								ctor: '::',
-								_0: 'c#4q',
-								_1: {
-									ctor: '::',
-									_0: 'f4q',
-									_1: {
-										ctor: '::',
-										_0: 'c0s',
-										_1: {ctor: '[]'}
-									}
-								}
-							}
-						}
-					}
-				}
-			};
-		case 'Ab':
-			return {
-				i: {
-					ctor: '::',
-					_0: 'g#2q',
-					_1: {
-						ctor: '::',
-						_0: 'd#3q',
-						_1: {
-							ctor: '::',
-							_0: 'g#3q',
-							_1: {
-								ctor: '::',
-								_0: 'c4q',
-								_1: {
-									ctor: '::',
-									_0: 'd#4q',
-									_1: {
-										ctor: '::',
-										_0: 'g#4q',
-										_1: {ctor: '[]'}
-									}
-								}
-							}
-						}
-					}
-				},
-				iv: {
-					ctor: '::',
-					_0: 'c#3q',
-					_1: {
-						ctor: '::',
-						_0: 'g#3q',
-						_1: {
-							ctor: '::',
-							_0: 'c#4q',
-							_1: {
-								ctor: '::',
-								_0: 'f4q',
-								_1: {
-									ctor: '::',
-									_0: 'g#4q',
-									_1: {
-										ctor: '::',
-										_0: 'c0s',
-										_1: {ctor: '[]'}
-									}
-								}
-							}
-						}
-					}
-				},
-				v: {
-					ctor: '::',
-					_0: 'd#3q',
-					_1: {
-						ctor: '::',
-						_0: 'a#3q',
-						_1: {
-							ctor: '::',
-							_0: 'd#4q',
-							_1: {
-								ctor: '::',
-								_0: 'g4q',
-								_1: {
-									ctor: '::',
-									_0: 'a#4q',
-									_1: {
-										ctor: '::',
-										_0: 'c0s',
-										_1: {ctor: '[]'}
-									}
-								}
-							}
-						}
-					}
-				},
-				vi: {
-					ctor: '::',
-					_0: 'f2q',
-					_1: {
-						ctor: '::',
-						_0: 'c3q',
-						_1: {
-							ctor: '::',
-							_0: 'f3q',
-							_1: {
-								ctor: '::',
-								_0: 'g#3q',
-								_1: {
-									ctor: '::',
-									_0: 'c4q',
-									_1: {
-										ctor: '::',
-										_0: 'f4q',
-										_1: {ctor: '[]'}
-									}
-								}
-							}
-						}
-					}
-				}
-			};
-		case 'Eb':
-			return {
-				i: {
-					ctor: '::',
-					_0: 'd#3q',
-					_1: {
-						ctor: '::',
-						_0: 'a#3q',
-						_1: {
-							ctor: '::',
-							_0: 'd#4q',
-							_1: {
-								ctor: '::',
-								_0: 'g4q',
-								_1: {
-									ctor: '::',
-									_0: 'a#4q',
-									_1: {
-										ctor: '::',
-										_0: 'c0s',
-										_1: {ctor: '[]'}
-									}
-								}
-							}
-						}
-					}
-				},
-				iv: {
-					ctor: '::',
-					_0: 'g#2q',
-					_1: {
-						ctor: '::',
-						_0: 'd#3q',
-						_1: {
-							ctor: '::',
-							_0: 'g#3q',
-							_1: {
-								ctor: '::',
-								_0: 'c4q',
-								_1: {
-									ctor: '::',
-									_0: 'd#4q',
-									_1: {
-										ctor: '::',
-										_0: 'g#4q',
-										_1: {ctor: '[]'}
-									}
-								}
-							}
-						}
-					}
-				},
-				v: {
-					ctor: '::',
-					_0: 'a#2q',
-					_1: {
-						ctor: '::',
-						_0: 'f3q',
-						_1: {
-							ctor: '::',
-							_0: 'a#3q',
-							_1: {
-								ctor: '::',
-								_0: 'd4q',
-								_1: {
-									ctor: '::',
-									_0: 'f4q',
-									_1: {
-										ctor: '::',
-										_0: 'a#4q',
-										_1: {ctor: '[]'}
-									}
-								}
-							}
-						}
-					}
-				},
-				vi: {
-					ctor: '::',
-					_0: 'c3q',
-					_1: {
-						ctor: '::',
-						_0: 'g3q',
-						_1: {
-							ctor: '::',
-							_0: 'c4q',
-							_1: {
-								ctor: '::',
-								_0: 'd#4q',
-								_1: {
-									ctor: '::',
-									_0: 'g4q',
-									_1: {
-										ctor: '::',
-										_0: 'c0s',
-										_1: {ctor: '[]'}
-									}
-								}
-							}
-						}
-					}
-				}
-			};
-		case 'Bb':
-			return {
-				i: {
-					ctor: '::',
-					_0: 'a#2q',
-					_1: {
-						ctor: '::',
-						_0: 'f3q',
-						_1: {
-							ctor: '::',
-							_0: 'a#3q',
-							_1: {
-								ctor: '::',
-								_0: 'd4q',
-								_1: {
-									ctor: '::',
-									_0: 'f4q',
-									_1: {
-										ctor: '::',
-										_0: 'c0s',
-										_1: {ctor: '[]'}
-									}
-								}
-							}
-						}
-					}
-				},
-				iv: {
-					ctor: '::',
-					_0: 'd#3q',
-					_1: {
-						ctor: '::',
-						_0: 'a#3q',
-						_1: {
-							ctor: '::',
-							_0: 'd#4q',
-							_1: {
-								ctor: '::',
-								_0: 'g4q',
-								_1: {
-									ctor: '::',
-									_0: 'a#4q',
-									_1: {
-										ctor: '::',
-										_0: 'c0s',
-										_1: {ctor: '[]'}
-									}
-								}
-							}
-						}
-					}
-				},
-				v: {
-					ctor: '::',
-					_0: 'f2q',
-					_1: {
-						ctor: '::',
-						_0: 'c3q',
-						_1: {
-							ctor: '::',
-							_0: 'f3q',
-							_1: {
-								ctor: '::',
-								_0: 'a3q',
-								_1: {
-									ctor: '::',
-									_0: 'c4q',
-									_1: {
-										ctor: '::',
-										_0: 'f4q',
-										_1: {ctor: '[]'}
-									}
-								}
-							}
-						}
-					}
-				},
-				vi: {
-					ctor: '::',
-					_0: 'g2q',
-					_1: {
-						ctor: '::',
-						_0: 'd2q',
-						_1: {
-							ctor: '::',
-							_0: 'g3q',
-							_1: {
-								ctor: '::',
-								_0: 'a#3q',
-								_1: {
-									ctor: '::',
-									_0: 'd4q',
-									_1: {
-										ctor: '::',
-										_0: 'g4q',
-										_1: {ctor: '[]'}
-									}
-								}
-							}
-						}
-					}
-				}
-			};
-		case 'F':
-			return {
-				i: {
-					ctor: '::',
-					_0: 'f3q',
-					_1: {
-						ctor: '::',
-						_0: 'a3q',
-						_1: {
-							ctor: '::',
-							_0: 'c4q',
-							_1: {
-								ctor: '::',
-								_0: 'e4q',
-								_1: {
-									ctor: '::',
-									_0: 'c0s',
-									_1: {
-										ctor: '::',
-										_0: 'c0s',
-										_1: {ctor: '[]'}
-									}
-								}
-							}
-						}
-					}
-				},
-				iv: {
-					ctor: '::',
-					_0: 'a#2q',
-					_1: {
-						ctor: '::',
-						_0: 'f3q',
-						_1: {
-							ctor: '::',
-							_0: 'a#3q',
-							_1: {
-								ctor: '::',
-								_0: 'd4q',
-								_1: {
-									ctor: '::',
-									_0: 'f4q',
-									_1: {
-										ctor: '::',
-										_0: 'c0s',
-										_1: {ctor: '[]'}
-									}
-								}
-							}
-						}
-					}
-				},
-				v: {
-					ctor: '::',
-					_0: 'c3q',
-					_1: {
-						ctor: '::',
-						_0: 'e3q',
-						_1: {
-							ctor: '::',
-							_0: 'g3q',
-							_1: {
-								ctor: '::',
-								_0: 'c4q',
-								_1: {
-									ctor: '::',
-									_0: 'e4q',
-									_1: {
-										ctor: '::',
-										_0: 'c0s',
-										_1: {ctor: '[]'}
-									}
-								}
-							}
-						}
-					}
-				},
-				vi: {
-					ctor: '::',
-					_0: 'd3q',
-					_1: {
-						ctor: '::',
-						_0: 'a3q',
-						_1: {
-							ctor: '::',
-							_0: 'd4q',
-							_1: {
-								ctor: '::',
-								_0: 'f4q',
-								_1: {
-									ctor: '::',
-									_0: 'c0s',
-									_1: {
-										ctor: '::',
-										_0: 'c0s',
-										_1: {ctor: '[]'}
-									}
-								}
-							}
-						}
-					}
-				}
-			};
-		case 'a':
-			return {
-				i: {
-					ctor: '::',
-					_0: 'a2q',
-					_1: {
-						ctor: '::',
-						_0: 'e3q',
-						_1: {
-							ctor: '::',
-							_0: 'a3q',
-							_1: {
-								ctor: '::',
-								_0: 'c4q',
-								_1: {
-									ctor: '::',
-									_0: 'e4q',
-									_1: {
-										ctor: '::',
-										_0: 'c0s',
-										_1: {ctor: '[]'}
-									}
-								}
-							}
-						}
-					}
-				},
-				iv: {
-					ctor: '::',
-					_0: 'd3q',
-					_1: {
-						ctor: '::',
-						_0: 'a3q',
-						_1: {
-							ctor: '::',
-							_0: 'd4q',
-							_1: {
-								ctor: '::',
-								_0: 'f4q',
-								_1: {
-									ctor: '::',
-									_0: 'c0s',
-									_1: {
-										ctor: '::',
-										_0: 'c0s',
-										_1: {ctor: '[]'}
-									}
-								}
-							}
-						}
-					}
-				},
-				v: {
-					ctor: '::',
-					_0: 'e2q',
-					_1: {
-						ctor: '::',
-						_0: 'b2q',
-						_1: {
-							ctor: '::',
-							_0: 'e3q',
-							_1: {
-								ctor: '::',
-								_0: 'g3q',
-								_1: {
-									ctor: '::',
-									_0: 'b3q',
-									_1: {
-										ctor: '::',
-										_0: 'e4q',
-										_1: {ctor: '[]'}
-									}
-								}
-							}
-						}
-					}
-				},
-				vi: {
-					ctor: '::',
-					_0: 'f3q',
-					_1: {
-						ctor: '::',
-						_0: 'a3q',
-						_1: {
-							ctor: '::',
-							_0: 'c4q',
-							_1: {
-								ctor: '::',
-								_0: 'e4q',
-								_1: {
-									ctor: '::',
-									_0: 'c0s',
-									_1: {
-										ctor: '::',
-										_0: 'c0s',
-										_1: {ctor: '[]'}
-									}
-								}
-							}
-						}
-					}
-				}
-			};
-		case 'e':
-			return {
-				i: {
-					ctor: '::',
-					_0: 'e2q',
-					_1: {
-						ctor: '::',
-						_0: 'b2q',
-						_1: {
-							ctor: '::',
-							_0: 'e3q',
-							_1: {
-								ctor: '::',
-								_0: 'g3q',
-								_1: {
-									ctor: '::',
-									_0: 'b3q',
-									_1: {
-										ctor: '::',
-										_0: 'e4q',
-										_1: {ctor: '[]'}
-									}
-								}
-							}
-						}
-					}
-				},
-				iv: {
-					ctor: '::',
-					_0: 'a2q',
-					_1: {
-						ctor: '::',
-						_0: 'e3q',
-						_1: {
-							ctor: '::',
-							_0: 'a3q',
-							_1: {
-								ctor: '::',
-								_0: 'c4q',
-								_1: {
-									ctor: '::',
-									_0: 'e4q',
-									_1: {
-										ctor: '::',
-										_0: 'c0s',
-										_1: {ctor: '[]'}
-									}
-								}
-							}
-						}
-					}
-				},
-				v: {
-					ctor: '::',
-					_0: 'b2q',
-					_1: {
-						ctor: '::',
-						_0: 'd3q',
-						_1: {
-							ctor: '::',
-							_0: 'g3q',
-							_1: {
-								ctor: '::',
-								_0: 'd4q',
-								_1: {
-									ctor: '::',
-									_0: 'f#4q',
-									_1: {
-										ctor: '::',
-										_0: 'c0s',
-										_1: {ctor: '[]'}
-									}
-								}
-							}
-						}
-					}
-				},
-				vi: {
-					ctor: '::',
-					_0: 'c3q',
-					_1: {
-						ctor: '::',
-						_0: 'e3q',
-						_1: {
-							ctor: '::',
-							_0: 'g3q',
-							_1: {
-								ctor: '::',
-								_0: 'c4q',
-								_1: {
-									ctor: '::',
-									_0: 'e4q',
-									_1: {
-										ctor: '::',
-										_0: 'c0s',
-										_1: {ctor: '[]'}
-									}
-								}
-							}
-						}
-					}
-				}
-			};
-		case 'b':
-			return {
-				i: {
-					ctor: '::',
-					_0: 'b2q',
-					_1: {
-						ctor: '::',
-						_0: 'd3q',
-						_1: {
-							ctor: '::',
-							_0: 'g3q',
-							_1: {
-								ctor: '::',
-								_0: 'd4q',
-								_1: {
-									ctor: '::',
-									_0: 'f#4q',
-									_1: {
-										ctor: '::',
-										_0: 'c0s',
-										_1: {ctor: '[]'}
-									}
-								}
-							}
-						}
-					}
-				},
-				iv: {
-					ctor: '::',
-					_0: 'e2q',
-					_1: {
-						ctor: '::',
-						_0: 'b2q',
-						_1: {
-							ctor: '::',
-							_0: 'e3q',
-							_1: {
-								ctor: '::',
-								_0: 'g3q',
-								_1: {
-									ctor: '::',
-									_0: 'b3q',
-									_1: {
-										ctor: '::',
-										_0: 'e4q',
-										_1: {ctor: '[]'}
-									}
-								}
-							}
-						}
-					}
-				},
-				v: {
-					ctor: '::',
-					_0: 'f#2q',
-					_1: {
-						ctor: '::',
-						_0: 'a2q',
-						_1: {
-							ctor: '::',
-							_0: 'd3q',
-							_1: {
-								ctor: '::',
-								_0: 'a3q',
-								_1: {
-									ctor: '::',
-									_0: 'c#4q',
-									_1: {
-										ctor: '::',
-										_0: 'e4q',
-										_1: {ctor: '[]'}
-									}
-								}
-							}
-						}
-					}
-				},
-				vi: {
-					ctor: '::',
-					_0: 'g2q',
-					_1: {
-						ctor: '::',
-						_0: 'b2q',
-						_1: {
-							ctor: '::',
-							_0: 'd3q',
-							_1: {
-								ctor: '::',
-								_0: 'g3q',
-								_1: {
-									ctor: '::',
-									_0: 'd4q',
-									_1: {
-										ctor: '::',
-										_0: 'g4q',
-										_1: {ctor: '[]'}
-									}
-								}
-							}
-						}
-					}
-				}
-			};
-		case 'f#':
-			return {
-				i: {
-					ctor: '::',
-					_0: 'f#2q',
-					_1: {
-						ctor: '::',
-						_0: 'a2q',
-						_1: {
-							ctor: '::',
-							_0: 'c#3q',
-							_1: {
-								ctor: '::',
-								_0: 'a3q',
-								_1: {
-									ctor: '::',
-									_0: 'c#4q',
-									_1: {
-										ctor: '::',
-										_0: 'f#4q',
-										_1: {ctor: '[]'}
-									}
-								}
-							}
-						}
-					}
-				},
-				iv: {
-					ctor: '::',
-					_0: 'b2q',
-					_1: {
-						ctor: '::',
-						_0: 'd3q',
-						_1: {
-							ctor: '::',
-							_0: 'f#3q',
-							_1: {
-								ctor: '::',
-								_0: 'd4q',
-								_1: {
-									ctor: '::',
-									_0: 'f#4q',
-									_1: {
-										ctor: '::',
-										_0: 'c0s',
-										_1: {ctor: '[]'}
-									}
-								}
-							}
-						}
-					}
-				},
-				v: {
-					ctor: '::',
-					_0: 'c#q3',
-					_1: {
-						ctor: '::',
-						_0: 'g#3q',
-						_1: {
-							ctor: '::',
-							_0: 'c#4q',
-							_1: {
-								ctor: '::',
-								_0: 'e4q',
-								_1: {
-									ctor: '::',
-									_0: 'g#4q',
-									_1: {
-										ctor: '::',
-										_0: 'c0s',
-										_1: {ctor: '[]'}
-									}
-								}
-							}
-						}
-					}
-				},
-				vi: {
-					ctor: '::',
-					_0: 'd3q',
-					_1: {
-						ctor: '::',
-						_0: 'a3q',
-						_1: {
-							ctor: '::',
-							_0: 'd4q',
-							_1: {
-								ctor: '::',
-								_0: 'f#4q',
-								_1: {
-									ctor: '::',
-									_0: 'c0s',
-									_1: {
-										ctor: '::',
-										_0: 'c0s',
-										_1: {ctor: '[]'}
-									}
-								}
-							}
-						}
-					}
-				}
-			};
-		case 'c#':
-			return {
-				i: {
-					ctor: '::',
-					_0: 'c#3q',
-					_1: {
-						ctor: '::',
-						_0: 'g#3q',
-						_1: {
-							ctor: '::',
-							_0: 'c#4q',
-							_1: {
-								ctor: '::',
-								_0: 'e4q',
-								_1: {
-									ctor: '::',
-									_0: 'g#4q',
-									_1: {
-										ctor: '::',
-										_0: 'c0s',
-										_1: {ctor: '[]'}
-									}
-								}
-							}
-						}
-					}
-				},
-				iv: {
-					ctor: '::',
-					_0: 'f#2q',
-					_1: {
-						ctor: '::',
-						_0: 'c#3q',
-						_1: {
-							ctor: '::',
-							_0: 'f#3q',
-							_1: {
-								ctor: '::',
-								_0: 'a3q',
-								_1: {
-									ctor: '::',
-									_0: 'c#4q',
-									_1: {
-										ctor: '::',
-										_0: 'f#4q',
-										_1: {ctor: '[]'}
-									}
-								}
-							}
-						}
-					}
-				},
-				v: {
-					ctor: '::',
-					_0: 'g#2q',
-					_1: {
-						ctor: '::',
-						_0: 'd#3q',
-						_1: {
-							ctor: '::',
-							_0: 'g#3q',
-							_1: {
-								ctor: '::',
-								_0: 'b3q',
-								_1: {
-									ctor: '::',
-									_0: 'd#4q',
-									_1: {
-										ctor: '::',
-										_0: 'g#4q',
-										_1: {ctor: '[]'}
-									}
-								}
-							}
-						}
-					}
-				},
-				vi: {
-					ctor: '::',
-					_0: 'a2q',
-					_1: {
-						ctor: '::',
-						_0: 'e3q',
-						_1: {
-							ctor: '::',
-							_0: 'a3q',
-							_1: {
-								ctor: '::',
-								_0: 'c#4q',
-								_1: {
-									ctor: '::',
-									_0: 'e4q',
-									_1: {
-										ctor: '::',
-										_0: 'c0s',
-										_1: {ctor: '[]'}
-									}
-								}
-							}
-						}
-					}
-				}
-			};
-		case 'g#':
-			return {
-				i: {
-					ctor: '::',
-					_0: 'g#2q',
-					_1: {
-						ctor: '::',
-						_0: 'd#3q',
-						_1: {
-							ctor: '::',
-							_0: 'g#3q',
-							_1: {
-								ctor: '::',
-								_0: 'b3q',
-								_1: {
-									ctor: '::',
-									_0: 'd#4q',
-									_1: {
-										ctor: '::',
-										_0: 'g#4q',
-										_1: {ctor: '[]'}
-									}
-								}
-							}
-						}
-					}
-				},
-				iv: {
-					ctor: '::',
-					_0: 'c#q3',
-					_1: {
-						ctor: '::',
-						_0: 'g#3q',
-						_1: {
-							ctor: '::',
-							_0: 'c#4q',
-							_1: {
-								ctor: '::',
-								_0: 'e4q',
-								_1: {
-									ctor: '::',
-									_0: 'g#4q',
-									_1: {
-										ctor: '::',
-										_0: 'c0s',
-										_1: {ctor: '[]'}
-									}
-								}
-							}
-						}
-					}
-				},
-				v: {
-					ctor: '::',
-					_0: 'd#3q',
-					_1: {
-						ctor: '::',
-						_0: 'a#3q',
-						_1: {
-							ctor: '::',
-							_0: 'd#4q',
-							_1: {
-								ctor: '::',
-								_0: 'f#4q',
-								_1: {
-									ctor: '::',
-									_0: 'a#4q',
-									_1: {
-										ctor: '::',
-										_0: 'c0s',
-										_1: {ctor: '[]'}
-									}
-								}
-							}
-						}
-					}
-				},
-				vi: {
-					ctor: '::',
-					_0: 'e2q',
-					_1: {
-						ctor: '::',
-						_0: 'b2q',
-						_1: {
-							ctor: '::',
-							_0: 'e3q',
-							_1: {
-								ctor: '::',
-								_0: 'g#3q',
-								_1: {
-									ctor: '::',
-									_0: 'b3q',
-									_1: {
-										ctor: '::',
-										_0: 'e4q',
-										_1: {ctor: '[]'}
-									}
-								}
-							}
-						}
-					}
-				}
-			};
-		case 'd#':
-			return {
-				i: {
-					ctor: '::',
-					_0: 'd#3q',
-					_1: {
-						ctor: '::',
-						_0: 'a#3q',
-						_1: {
-							ctor: '::',
-							_0: 'd#4q',
-							_1: {
-								ctor: '::',
-								_0: 'f#4q',
-								_1: {
-									ctor: '::',
-									_0: 'a#4q',
-									_1: {
-										ctor: '::',
-										_0: 'c0s',
-										_1: {ctor: '[]'}
-									}
-								}
-							}
-						}
-					}
-				},
-				iv: {
-					ctor: '::',
-					_0: 'g#2q',
-					_1: {
-						ctor: '::',
-						_0: 'd#3q',
-						_1: {
-							ctor: '::',
-							_0: 'g#3q',
-							_1: {
-								ctor: '::',
-								_0: 'b3q',
-								_1: {
-									ctor: '::',
-									_0: 'd#4q',
-									_1: {
-										ctor: '::',
-										_0: 'g#4q',
-										_1: {ctor: '[]'}
-									}
-								}
-							}
-						}
-					}
-				},
-				v: {
-					ctor: '::',
-					_0: 'a#2q',
-					_1: {
-						ctor: '::',
-						_0: 'f3q',
-						_1: {
-							ctor: '::',
-							_0: 'a#3q',
-							_1: {
-								ctor: '::',
-								_0: 'c#4q',
-								_1: {
-									ctor: '::',
-									_0: 'f4q',
-									_1: {
-										ctor: '::',
-										_0: 'a#4q',
-										_1: {ctor: '[]'}
-									}
-								}
-							}
-						}
-					}
-				},
-				vi: {
-					ctor: '::',
-					_0: 'b2q',
-					_1: {
-						ctor: '::',
-						_0: 'f#3q',
-						_1: {
-							ctor: '::',
-							_0: 'b3q',
-							_1: {
-								ctor: '::',
-								_0: 'd#4q',
-								_1: {
-									ctor: '::',
-									_0: 'f#4q',
-									_1: {
-										ctor: '::',
-										_0: 'c0s',
-										_1: {ctor: '[]'}
-									}
-								}
-							}
-						}
-					}
-				}
-			};
-		case 'bb':
-			return {
-				i: {
-					ctor: '::',
-					_0: 'a#2q',
-					_1: {
-						ctor: '::',
-						_0: 'f3q',
-						_1: {
-							ctor: '::',
-							_0: 'a#3q',
-							_1: {
-								ctor: '::',
-								_0: 'c#4q',
-								_1: {
-									ctor: '::',
-									_0: 'f4q',
-									_1: {
-										ctor: '::',
-										_0: 'a#4q',
-										_1: {ctor: '[]'}
-									}
-								}
-							}
-						}
-					}
-				},
-				iv: {
-					ctor: '::',
-					_0: 'd#3q',
-					_1: {
-						ctor: '::',
-						_0: 'a#3q',
-						_1: {
-							ctor: '::',
-							_0: 'd#4q',
-							_1: {
-								ctor: '::',
-								_0: 'f#4q',
-								_1: {
-									ctor: '::',
-									_0: 'a#4q',
-									_1: {
-										ctor: '::',
-										_0: 'c0s',
-										_1: {ctor: '[]'}
-									}
-								}
-							}
-						}
-					}
-				},
-				v: {
-					ctor: '::',
-					_0: 'f3q',
-					_1: {
-						ctor: '::',
-						_0: 'c4q',
-						_1: {
-							ctor: '::',
-							_0: 'f4q',
-							_1: {
-								ctor: '::',
-								_0: 'g#4q',
-								_1: {
-									ctor: '::',
-									_0: 'c5q',
-									_1: {
-										ctor: '::',
-										_0: 'c0s',
-										_1: {ctor: '[]'}
-									}
-								}
-							}
-						}
-					}
-				},
-				vi: {
-					ctor: '::',
-					_0: 'f#2q',
-					_1: {
-						ctor: '::',
-						_0: 'c#3q',
-						_1: {
-							ctor: '::',
-							_0: 'f#3q',
-							_1: {
-								ctor: '::',
-								_0: 'a#3q',
-								_1: {
-									ctor: '::',
-									_0: 'c#4q',
-									_1: {
-										ctor: '::',
-										_0: 'f#4q',
-										_1: {ctor: '[]'}
-									}
-								}
-							}
-						}
-					}
-				}
-			};
-		case 'f':
-			return {
-				i: {
-					ctor: '::',
-					_0: 'f2q',
-					_1: {
-						ctor: '::',
-						_0: 'c3q',
-						_1: {
-							ctor: '::',
-							_0: 'f3q',
-							_1: {
-								ctor: '::',
-								_0: 'g#3q',
-								_1: {
-									ctor: '::',
-									_0: 'c4q',
-									_1: {
-										ctor: '::',
-										_0: 'f4q',
-										_1: {ctor: '[]'}
-									}
-								}
-							}
-						}
-					}
-				},
-				iv: {
-					ctor: '::',
-					_0: 'a#2q',
-					_1: {
-						ctor: '::',
-						_0: 'f3q',
-						_1: {
-							ctor: '::',
-							_0: 'a#3q',
-							_1: {
-								ctor: '::',
-								_0: 'c#4q',
-								_1: {
-									ctor: '::',
-									_0: 'f4q',
-									_1: {
-										ctor: '::',
-										_0: 'c0s',
-										_1: {ctor: '[]'}
-									}
-								}
-							}
-						}
-					}
-				},
-				v: {
-					ctor: '::',
-					_0: 'c3q',
-					_1: {
-						ctor: '::',
-						_0: 'g3q',
-						_1: {
-							ctor: '::',
-							_0: 'c4q',
-							_1: {
-								ctor: '::',
-								_0: 'd#4q',
-								_1: {
-									ctor: '::',
-									_0: 'g4q',
-									_1: {
-										ctor: '::',
-										_0: 'c0s',
-										_1: {ctor: '[]'}
-									}
-								}
-							}
-						}
-					}
-				},
-				vi: {
-					ctor: '::',
-					_0: 'c#3q',
-					_1: {
-						ctor: '::',
-						_0: 'g#3q',
-						_1: {
-							ctor: '::',
-							_0: 'c#4q',
-							_1: {
-								ctor: '::',
-								_0: 'f4q',
-								_1: {
-									ctor: '::',
-									_0: 'g#4q',
-									_1: {
-										ctor: '::',
-										_0: 'c0s',
-										_1: {ctor: '[]'}
-									}
-								}
-							}
-						}
-					}
-				}
-			};
-		case 'c':
-			return {
-				i: {
-					ctor: '::',
-					_0: 'c3q',
-					_1: {
-						ctor: '::',
-						_0: 'g3q',
-						_1: {
-							ctor: '::',
-							_0: 'c4q',
-							_1: {
-								ctor: '::',
-								_0: 'd#4q',
-								_1: {
-									ctor: '::',
-									_0: 'g4q',
-									_1: {
-										ctor: '::',
-										_0: 'c0s',
-										_1: {ctor: '[]'}
-									}
-								}
-							}
-						}
-					}
-				},
-				iv: {
-					ctor: '::',
-					_0: 'f2q',
-					_1: {
-						ctor: '::',
-						_0: 'c3q',
-						_1: {
-							ctor: '::',
-							_0: 'f3q',
-							_1: {
-								ctor: '::',
-								_0: 'g#3q',
-								_1: {
-									ctor: '::',
-									_0: 'c4q',
-									_1: {
-										ctor: '::',
-										_0: 'f4q',
-										_1: {ctor: '[]'}
-									}
-								}
-							}
-						}
-					}
-				},
-				v: {
-					ctor: '::',
-					_0: 'g2q',
-					_1: {
-						ctor: '::',
-						_0: 'd3q',
-						_1: {
-							ctor: '::',
-							_0: 'g3q',
-							_1: {
-								ctor: '::',
-								_0: 'a#3q',
-								_1: {
-									ctor: '::',
-									_0: 'd4q',
-									_1: {
-										ctor: '::',
-										_0: 'g4q',
-										_1: {ctor: '[]'}
-									}
-								}
-							}
-						}
-					}
-				},
-				vi: {
-					ctor: '::',
-					_0: 'g#2q',
-					_1: {
-						ctor: '::',
-						_0: 'd#3q',
-						_1: {
-							ctor: '::',
-							_0: 'g#3q',
-							_1: {
-								ctor: '::',
-								_0: 'c4q',
-								_1: {
-									ctor: '::',
-									_0: 'd#4q',
-									_1: {
-										ctor: '::',
-										_0: 'g#4q',
-										_1: {ctor: '[]'}
-									}
-								}
-							}
-						}
-					}
-				}
-			};
-		case 'g':
-			return {
-				i: {
-					ctor: '::',
-					_0: 'g2q',
-					_1: {
-						ctor: '::',
-						_0: 'd3q',
-						_1: {
-							ctor: '::',
-							_0: 'g3q',
-							_1: {
-								ctor: '::',
-								_0: 'a#3q',
-								_1: {
-									ctor: '::',
-									_0: 'd4q',
-									_1: {
-										ctor: '::',
-										_0: 'g4q',
-										_1: {ctor: '[]'}
-									}
-								}
-							}
-						}
-					}
-				},
-				iv: {
-					ctor: '::',
-					_0: 'c3q',
-					_1: {
-						ctor: '::',
-						_0: 'g3q',
-						_1: {
-							ctor: '::',
-							_0: 'c4q',
-							_1: {
-								ctor: '::',
-								_0: 'd#4q',
-								_1: {
-									ctor: '::',
-									_0: 'g4q',
-									_1: {
-										ctor: '::',
-										_0: 'c0s',
-										_1: {ctor: '[]'}
-									}
-								}
-							}
-						}
-					}
-				},
-				v: {
-					ctor: '::',
-					_0: 'd3q',
-					_1: {
-						ctor: '::',
-						_0: 'a3q',
-						_1: {
-							ctor: '::',
-							_0: 'd4q',
-							_1: {
-								ctor: '::',
-								_0: 'f4q',
-								_1: {
-									ctor: '::',
-									_0: 'c0s',
-									_1: {
-										ctor: '::',
-										_0: 'c0s',
-										_1: {ctor: '[]'}
-									}
-								}
-							}
-						}
-					}
-				},
-				vi: {
-					ctor: '::',
-					_0: 'd#3q',
-					_1: {
-						ctor: '::',
-						_0: 'a#3q',
-						_1: {
-							ctor: '::',
-							_0: 'd#4q',
-							_1: {
-								ctor: '::',
-								_0: 'g4q',
-								_1: {
-									ctor: '::',
-									_0: 'a#4q',
-									_1: {
-										ctor: '::',
-										_0: 'c0s',
-										_1: {ctor: '[]'}
-									}
-								}
-							}
-						}
-					}
-				}
-			};
-		case 'd':
-			return {
-				i: {
-					ctor: '::',
-					_0: 'd3q',
-					_1: {
-						ctor: '::',
-						_0: 'a3q',
-						_1: {
-							ctor: '::',
-							_0: 'd4q',
-							_1: {
-								ctor: '::',
-								_0: 'f4q',
-								_1: {
-									ctor: '::',
-									_0: 'c0s',
-									_1: {
-										ctor: '::',
-										_0: 'c0s',
-										_1: {ctor: '[]'}
-									}
-								}
-							}
-						}
-					}
-				},
-				iv: {
-					ctor: '::',
-					_0: 'g2q',
-					_1: {
-						ctor: '::',
-						_0: 'd3q',
-						_1: {
-							ctor: '::',
-							_0: 'g3q',
-							_1: {
-								ctor: '::',
-								_0: 'a#3q',
-								_1: {
-									ctor: '::',
-									_0: 'd4q',
-									_1: {
-										ctor: '::',
-										_0: 'g4q',
-										_1: {ctor: '[]'}
-									}
-								}
-							}
-						}
-					}
-				},
-				v: {
-					ctor: '::',
-					_0: 'a2q',
-					_1: {
-						ctor: '::',
-						_0: 'e3q',
-						_1: {
-							ctor: '::',
-							_0: 'a3q',
-							_1: {
-								ctor: '::',
-								_0: 'c4q',
-								_1: {
-									ctor: '::',
-									_0: 'e4q',
-									_1: {
-										ctor: '::',
-										_0: 'c0s',
-										_1: {ctor: '[]'}
-									}
-								}
-							}
-						}
-					}
-				},
-				vi: {
-					ctor: '::',
-					_0: 'a#2q',
-					_1: {
-						ctor: '::',
-						_0: 'f3q',
-						_1: {
-							ctor: '::',
-							_0: 'a#3q',
-							_1: {
-								ctor: '::',
-								_0: 'd4q',
-								_1: {
-									ctor: '::',
-									_0: 'f4q',
-									_1: {
-										ctor: '::',
-										_0: 'c0s',
-										_1: {ctor: '[]'}
-									}
-								}
-							}
-						}
-					}
-				}
-			};
-		default:
-			return {
-				i: {
-					ctor: '::',
-					_0: '',
-					_1: {ctor: '[]'}
-				},
-				iv: {
-					ctor: '::',
-					_0: '',
-					_1: {ctor: '[]'}
-				},
-				v: {
-					ctor: '::',
-					_0: '',
-					_1: {ctor: '[]'}
-				},
-				vi: {
-					ctor: '::',
-					_0: '',
-					_1: {ctor: '[]'}
-				}
-			};
-	}
-};
-
-var _user$project$Keys$keys = function (key) {
+var _user$project$Chords$keys = function (key) {
 	var _p0 = key;
 	switch (_p0) {
 		case 'C':
 			return {
 				i: '06x353242030121010',
+				ii: '06x05x040232423111',
+				iii: '060152242030020010',
 				iv: '06x06x343232121010',
 				v: '263152040030323413',
 				vi: '06x050242332121010',
+				vii: '06x15224343432301x',
 				names: {
 					ctor: '::',
 					_0: 'C',
-					_1: {
-						ctor: '::',
-						_0: 'F',
-						_1: {
-							ctor: '::',
-							_0: 'G',
-							_1: {
-								ctor: '::',
-								_0: 'Am',
-								_1: {
-									ctor: '::',
-									_0: '5',
-									_1: {ctor: '[]'}
-								}
-							}
-						}
-					}
-				},
-				bars: {
-					ctor: '::',
-					_0: '',
-					_1: {
-						ctor: '::',
-						_0: '',
-						_1: {
-							ctor: '::',
-							_0: '',
-							_1: {
-								ctor: '::',
-								_0: '',
-								_1: {ctor: '[]'}
-							}
-						}
-					}
-				}
-			};
-		case 'G':
-			return {
-				i: '263152040030323413',
-				iv: '06x253142030323413',
-				v: '06x05x040132323212',
-				vi: '060152242030020010',
-				names: {
-					ctor: '::',
-					_0: 'G',
-					_1: {
-						ctor: '::',
-						_0: 'C9',
-						_1: {
-							ctor: '::',
-							_0: 'D',
-							_1: {
-								ctor: '::',
-								_0: 'Em',
-								_1: {
-									ctor: '::',
-									_0: '0',
-									_1: {ctor: '[]'}
-								}
-							}
-						}
-					}
-				},
-				bars: {
-					ctor: '::',
-					_0: '',
-					_1: {
-						ctor: '::',
-						_0: '',
-						_1: {
-							ctor: '::',
-							_0: '',
-							_1: {
-								ctor: '::',
-								_0: '',
-								_1: {ctor: '[]'}
-							}
-						}
-					}
-				}
-			};
-		case 'D':
-			return {
-				i: '06x05x040132323212',
-				iv: '263152040030323413',
-				v: '06x050142232322010',
-				vi: '06x152040030323212',
-				names: {
-					ctor: '::',
-					_0: 'D',
-					_1: {
-						ctor: '::',
-						_0: 'G',
-						_1: {
-							ctor: '::',
-							_0: 'A',
-							_1: {
-								ctor: '::',
-								_0: 'Bm',
-								_1: {
-									ctor: '::',
-									_0: '7',
-									_1: {ctor: '[]'}
-								}
-							}
-						}
-					}
-				},
-				bars: {
-					ctor: '::',
-					_0: '',
-					_1: {
-						ctor: '::',
-						_0: '',
-						_1: {
-							ctor: '::',
-							_0: '',
-							_1: {
-								ctor: '::',
-								_0: '',
-								_1: {ctor: '[]'}
-							}
-						}
-					}
-				}
-			};
-		case 'A':
-			return {
-				i: '06x050142232322010',
-				iv: '06x05x040132323212',
-				v: '060252342131020010',
-				vi: '162050040232322010',
-				names: {
-					ctor: '::',
-					_0: 'A',
-					_1: {
-						ctor: '::',
-						_0: 'D',
-						_1: {
-							ctor: '::',
-							_0: 'E',
-							_1: {
-								ctor: '::',
-								_0: 'F#m',
-								_1: {
-									ctor: '::',
-									_0: '2',
-									_1: {ctor: '[]'}
-								}
-							}
-						}
-					}
-				},
-				bars: {
-					ctor: '::',
-					_0: '',
-					_1: {
-						ctor: '::',
-						_0: '',
-						_1: {
-							ctor: '::',
-							_0: '',
-							_1: {
-								ctor: '::',
-								_0: '',
-								_1: {ctor: '[]'}
-							}
-						}
-					}
-				}
-			};
-		case 'E':
-			return {
-				i: '060252342131020010',
-				iv: '06x050142232322010',
-				v: '060252141332020412',
-				vi: '06x05x344434223112',
-				names: {
-					ctor: '::',
-					_0: 'E',
-					_1: {
-						ctor: '::',
-						_0: 'A',
-						_1: {
-							ctor: '::',
-							_0: 'B7',
-							_1: {
-								ctor: '::',
-								_0: 'C#m',
-								_1: {
-									ctor: '::',
-									_0: '9',
-									_1: {ctor: '[]'}
-								}
-							}
-						}
-					}
-				},
-				bars: {
-					ctor: '::',
-					_0: '',
-					_1: {
-						ctor: '::',
-						_0: '',
-						_1: {
-							ctor: '::',
-							_0: '',
-							_1: {
-								ctor: '::',
-								_0: '',
-								_1: {ctor: '[]'}
-							}
-						}
-					}
-				}
-			};
-		case 'B':
-			return {
-				i: '06xb52244334424112',
-				iv: '060252342131020010',
-				v: 'b62354444233122112',
-				vi: 'b62354444132122112',
-				names: {
-					ctor: '::',
-					_0: 'B',
-					_1: {
-						ctor: '::',
-						_0: 'E',
-						_1: {
-							ctor: '::',
-							_0: 'F#',
-							_1: {
-								ctor: '::',
-								_0: 'G#m',
-								_1: {
-									ctor: '::',
-									_0: '4',
-									_1: {ctor: '[]'}
-								}
-							}
-						}
-					}
-				},
-				bars: {
-					ctor: '::',
-					_0: '',
-					_1: {
-						ctor: '::',
-						_0: '',
-						_1: {
-							ctor: '::',
-							_0: '',
-							_1: {
-								ctor: '::',
-								_0: '4',
-								_1: {ctor: '[]'}
-							}
-						}
-					}
-				}
-			};
-		case 'F#':
-			return {
-				i: 'b62354444233122112',
-				iv: '06xb52244334424112',
-				v: '06xb52244334424112',
-				vi: '06xb52344434223112',
-				names: {
-					ctor: '::',
-					_0: 'F#',
-					_1: {
-						ctor: '::',
-						_0: 'B',
-						_1: {
-							ctor: '::',
-							_0: 'C#',
-							_1: {
-								ctor: '::',
-								_0: 'D#m',
-								_1: {
-									ctor: '::',
-									_0: '11',
-									_1: {ctor: '[]'}
-								}
-							}
-						}
-					}
-				},
-				bars: {
-					ctor: '::',
-					_0: '',
-					_1: {
-						ctor: '::',
-						_0: '',
-						_1: {
-							ctor: '::',
-							_0: '4',
-							_1: {
-								ctor: '::',
-								_0: '6',
-								_1: {ctor: '[]'}
-							}
-						}
-					}
-				}
-			};
-		case 'Db':
-			return {
-				i: '06xb52244334424112',
-				iv: 'b62354444233122112',
-				v: 'b62354444233122112',
-				vi: '06xb52344434223112',
-				names: {
-					ctor: '::',
-					_0: 'Db',
-					_1: {
-						ctor: '::',
-						_0: 'Gb',
-						_1: {
-							ctor: '::',
-							_0: 'Ab',
-							_1: {
-								ctor: '::',
-								_0: 'Bbm',
-								_1: {
-									ctor: '::',
-									_0: '6',
-									_1: {ctor: '[]'}
-								}
-							}
-						}
-					}
-				},
-				bars: {
-					ctor: '::',
-					_0: '4',
-					_1: {
-						ctor: '::',
-						_0: '',
-						_1: {
-							ctor: '::',
-							_0: '4',
-							_1: {
-								ctor: '::',
-								_0: '',
-								_1: {ctor: '[]'}
-							}
-						}
-					}
-				}
-			};
-		case 'Ab':
-			return {
-				i: 'b62354444233122112',
-				iv: '06xb52244334424112',
-				v: '06xb52244334424112',
-				vi: 'b61353443131121111',
-				names: {
-					ctor: '::',
-					_0: 'Ab',
-					_1: {
-						ctor: '::',
-						_0: 'Db',
-						_1: {
-							ctor: '::',
-							_0: 'Eb',
-							_1: {
-								ctor: '::',
-								_0: 'Fm',
-								_1: {
-									ctor: '::',
-									_0: '1',
-									_1: {ctor: '[]'}
-								}
-							}
-						}
-					}
-				},
-				bars: {
-					ctor: '::',
-					_0: '4',
-					_1: {
-						ctor: '::',
-						_0: '4',
-						_1: {
-							ctor: '::',
-							_0: '6',
-							_1: {
-								ctor: '::',
-								_0: '',
-								_1: {ctor: '[]'}
-							}
-						}
-					}
-				}
-			};
-		case 'Eb':
-			return {
-				i: '06xb52244334424112',
-				iv: 'b62354444233122112',
-				v: 'b62354444233122112',
-				vi: '06xb52344434223112',
-				names: {
-					ctor: '::',
-					_0: 'Eb',
-					_1: {
-						ctor: '::',
-						_0: 'Ab',
-						_1: {
-							ctor: '::',
-							_0: 'Bb',
-							_1: {
-								ctor: '::',
-								_0: 'Cm',
-								_1: {
-									ctor: '::',
-									_0: '4',
-									_1: {ctor: '[]'}
-								}
-							}
-						}
-					}
-				},
-				bars: {
-					ctor: '::',
-					_0: '6',
-					_1: {
-						ctor: '::',
-						_0: '4',
-						_1: {
-							ctor: '::',
-							_0: '6',
-							_1: {
-								ctor: '::',
-								_0: '3',
-								_1: {ctor: '[]'}
-							}
-						}
-					}
-				}
-			};
-		case 'Bb':
-			return {
-				i: '06xb51243333423111',
-				iv: '06xb52244334424112',
-				v: 'b61353443232121111',
-				vi: 'b62354444132122112',
-				names: {
-					ctor: '::',
-					_0: 'Bb',
-					_1: {
-						ctor: '::',
-						_0: 'Eb',
-						_1: {
-							ctor: '::',
-							_0: 'F',
-							_1: {
-								ctor: '::',
-								_0: 'Gm',
-								_1: {
-									ctor: '::',
-									_0: '3',
-									_1: {ctor: '[]'}
-								}
-							}
-						}
-					}
-				},
-				bars: {
-					ctor: '::',
-					_0: '',
-					_1: {
-						ctor: '::',
-						_0: '6',
-						_1: {
-							ctor: '::',
-							_0: '',
-							_1: {
-								ctor: '::',
-								_0: '3',
-								_1: {ctor: '[]'}
-							}
-						}
-					}
-				}
-			};
-		case 'F':
-			return {
-				i: '06x05x343232121010',
-				iv: '06xb51243333423111',
-				v: '06x353242030121010',
-				vi: '06x05x040232423111',
-				names: {
-					ctor: '::',
-					_0: 'F',
-					_1: {
-						ctor: '::',
-						_0: 'Bb',
-						_1: {
-							ctor: '::',
-							_0: 'C',
-							_1: {
-								ctor: '::',
-								_0: 'Dm',
-								_1: {
-									ctor: '::',
-									_0: '10',
-									_1: {ctor: '[]'}
-								}
-							}
-						}
-					}
-				},
-				bars: {
-					ctor: '::',
-					_0: '',
-					_1: {
-						ctor: '::',
-						_0: '',
-						_1: {
-							ctor: '::',
-							_0: '',
-							_1: {
-								ctor: '::',
-								_0: '',
-								_1: {ctor: '[]'}
-							}
-						}
-					}
-				}
-			};
-		case 'a':
-			return {
-				i: '06x050242332121010',
-				iv: '06x05x040232423111',
-				v: '060152242030020010',
-				vi: '06x05x343232121010',
-				names: {
-					ctor: '::',
-					_0: 'Am',
 					_1: {
 						ctor: '::',
 						_0: 'Dm',
@@ -15345,533 +14785,26 @@ var _user$project$Keys$keys = function (key) {
 								_0: 'F',
 								_1: {
 									ctor: '::',
-									_0: '5',
-									_1: {ctor: '[]'}
+									_0: 'G',
+									_1: {
+										ctor: '::',
+										_0: 'Am',
+										_1: {
+											ctor: '::',
+											_0: 'Bdim7',
+											_1: {
+												ctor: '::',
+												_0: '5',
+												_1: {ctor: '[]'}
+											}
+										}
+									}
 								}
 							}
 						}
 					}
 				},
 				bars: {
-					ctor: '::',
-					_0: '',
-					_1: {
-						ctor: '::',
-						_0: '',
-						_1: {
-							ctor: '::',
-							_0: '',
-							_1: {
-								ctor: '::',
-								_0: '',
-								_1: {ctor: '[]'}
-							}
-						}
-					}
-				}
-			};
-		case 'e':
-			return {
-				i: '060152242030020010',
-				iv: '06x050242332121010',
-				v: '06x152040030323212',
-				vi: '06x353242030121010',
-				names: {
-					ctor: '::',
-					_0: 'Em',
-					_1: {
-						ctor: '::',
-						_0: 'Am',
-						_1: {
-							ctor: '::',
-							_0: 'Bm',
-							_1: {
-								ctor: '::',
-								_0: 'C',
-								_1: {
-									ctor: '::',
-									_0: '0',
-									_1: {ctor: '[]'}
-								}
-							}
-						}
-					}
-				},
-				bars: {
-					ctor: '::',
-					_0: '',
-					_1: {
-						ctor: '::',
-						_0: '',
-						_1: {
-							ctor: '::',
-							_0: '',
-							_1: {
-								ctor: '::',
-								_0: '',
-								_1: {ctor: '[]'}
-							}
-						}
-					}
-				}
-			};
-		case 'b':
-			return {
-				i: '06x05x344434223112',
-				iv: '060152242030020010',
-				v: '162050040232322010',
-				vi: '263152040030323413',
-				names: {
-					ctor: '::',
-					_0: 'Bm',
-					_1: {
-						ctor: '::',
-						_0: 'Em',
-						_1: {
-							ctor: '::',
-							_0: 'F#m',
-							_1: {
-								ctor: '::',
-								_0: 'G',
-								_1: {
-									ctor: '::',
-									_0: '7',
-									_1: {ctor: '[]'}
-								}
-							}
-						}
-					}
-				},
-				bars: {
-					ctor: '::',
-					_0: '',
-					_1: {
-						ctor: '::',
-						_0: '',
-						_1: {
-							ctor: '::',
-							_0: '',
-							_1: {
-								ctor: '::',
-								_0: '',
-								_1: {ctor: '[]'}
-							}
-						}
-					}
-				}
-			};
-		case 'f#':
-			return {
-				i: 'b62354444132122112',
-				iv: '06xb52344434223112',
-				v: '06xb52344434223112',
-				vi: '06x05x040132323212',
-				names: {
-					ctor: '::',
-					_0: 'F#m',
-					_1: {
-						ctor: '::',
-						_0: 'Bm',
-						_1: {
-							ctor: '::',
-							_0: 'C#m',
-							_1: {
-								ctor: '::',
-								_0: 'D',
-								_1: {
-									ctor: '::',
-									_0: '2',
-									_1: {ctor: '[]'}
-								}
-							}
-						}
-					}
-				},
-				bars: {
-					ctor: '::',
-					_0: '',
-					_1: {
-						ctor: '::',
-						_0: '',
-						_1: {
-							ctor: '::',
-							_0: '4',
-							_1: {
-								ctor: '::',
-								_0: '',
-								_1: {ctor: '[]'}
-							}
-						}
-					}
-				}
-			};
-		case 'c#':
-			return {
-				i: '06xb52344434223112',
-				iv: 'b62354444132122112',
-				v: 'b62354444132122112',
-				vi: '06x050142232322010',
-				names: {
-					ctor: '::',
-					_0: 'C#m',
-					_1: {
-						ctor: '::',
-						_0: 'F#m',
-						_1: {
-							ctor: '::',
-							_0: 'G#m',
-							_1: {
-								ctor: '::',
-								_0: 'A',
-								_1: {
-									ctor: '::',
-									_0: '9',
-									_1: {ctor: '[]'}
-								}
-							}
-						}
-					}
-				},
-				bars: {
-					ctor: '::',
-					_0: '4',
-					_1: {
-						ctor: '::',
-						_0: '',
-						_1: {
-							ctor: '::',
-							_0: '4',
-							_1: {
-								ctor: '::',
-								_0: '',
-								_1: {ctor: '[]'}
-							}
-						}
-					}
-				}
-			};
-		case 'g#':
-			return {
-				i: 'b62354444132122112',
-				iv: '06xb52344434223112',
-				v: '06xb52344434223112',
-				vi: '060152242131020010',
-				names: {
-					ctor: '::',
-					_0: 'G#m',
-					_1: {
-						ctor: '::',
-						_0: 'C#m',
-						_1: {
-							ctor: '::',
-							_0: 'D#m',
-							_1: {
-								ctor: '::',
-								_0: 'E',
-								_1: {
-									ctor: '::',
-									_0: '4',
-									_1: {ctor: '[]'}
-								}
-							}
-						}
-					}
-				},
-				bars: {
-					ctor: '::',
-					_0: '4',
-					_1: {
-						ctor: '::',
-						_0: '4',
-						_1: {
-							ctor: '::',
-							_0: '6',
-							_1: {
-								ctor: '::',
-								_0: '',
-								_1: {ctor: '[]'}
-							}
-						}
-					}
-				}
-			};
-		case 'd#':
-			return {
-				i: '06xb52344434223112',
-				iv: 'b62354444132122112',
-				v: 'b62354444132122112',
-				vi: '06xb52244334424112',
-				names: {
-					ctor: '::',
-					_0: 'D#m',
-					_1: {
-						ctor: '::',
-						_0: 'G#m',
-						_1: {
-							ctor: '::',
-							_0: 'A#m',
-							_1: {
-								ctor: '::',
-								_0: 'B',
-								_1: {
-									ctor: '::',
-									_0: '11',
-									_1: {ctor: '[]'}
-								}
-							}
-						}
-					}
-				},
-				bars: {
-					ctor: '::',
-					_0: '6',
-					_1: {
-						ctor: '::',
-						_0: '4',
-						_1: {
-							ctor: '::',
-							_0: '6',
-							_1: {
-								ctor: '::',
-								_0: '',
-								_1: {ctor: '[]'}
-							}
-						}
-					}
-				}
-			};
-		case 'bb':
-			return {
-				i: 'b62354444132122112',
-				iv: '06xb52344434223112',
-				v: '06xb52344434223112',
-				vi: 'b62354444233122112',
-				names: {
-					ctor: '::',
-					_0: 'Bbm',
-					_1: {
-						ctor: '::',
-						_0: 'Ebm',
-						_1: {
-							ctor: '::',
-							_0: 'Fm',
-							_1: {
-								ctor: '::',
-								_0: 'Gb',
-								_1: {
-									ctor: '::',
-									_0: '6',
-									_1: {ctor: '[]'}
-								}
-							}
-						}
-					}
-				},
-				bars: {
-					ctor: '::',
-					_0: '6',
-					_1: {
-						ctor: '::',
-						_0: '6',
-						_1: {
-							ctor: '::',
-							_0: '8',
-							_1: {
-								ctor: '::',
-								_0: '',
-								_1: {ctor: '[]'}
-							}
-						}
-					}
-				}
-			};
-		case 'f':
-			return {
-				i: 'b61353443131111111',
-				iv: '06xb51343433222111',
-				v: '06xb52344434223112',
-				vi: '06xb52244334424112',
-				names: {
-					ctor: '::',
-					_0: 'Fm',
-					_1: {
-						ctor: '::',
-						_0: 'Bbm',
-						_1: {
-							ctor: '::',
-							_0: 'Cm',
-							_1: {
-								ctor: '::',
-								_0: 'Db',
-								_1: {
-									ctor: '::',
-									_0: '1',
-									_1: {ctor: '[]'}
-								}
-							}
-						}
-					}
-				},
-				bars: {
-					ctor: '::',
-					_0: '',
-					_1: {
-						ctor: '::',
-						_0: '',
-						_1: {
-							ctor: '::',
-							_0: '3',
-							_1: {
-								ctor: '::',
-								_0: '4',
-								_1: {ctor: '[]'}
-							}
-						}
-					}
-				}
-			};
-		case 'c':
-			return {
-				i: '06xb52344434223112',
-				iv: 'b61353443131121111',
-				v: 'b62354444132122112',
-				vi: 'b62354444233122112',
-				names: {
-					ctor: '::',
-					_0: 'Cm',
-					_1: {
-						ctor: '::',
-						_0: 'Fm',
-						_1: {
-							ctor: '::',
-							_0: 'Gm',
-							_1: {
-								ctor: '::',
-								_0: 'Ab',
-								_1: {
-									ctor: '::',
-									_0: '8',
-									_1: {ctor: '[]'}
-								}
-							}
-						}
-					}
-				},
-				bars: {
-					ctor: '::',
-					_0: '3',
-					_1: {
-						ctor: '::',
-						_0: '',
-						_1: {
-							ctor: '::',
-							_0: '3',
-							_1: {
-								ctor: '::',
-								_0: '6',
-								_1: {ctor: '[]'}
-							}
-						}
-					}
-				}
-			};
-		case 'g':
-			return {
-				i: 'b62354444132122112',
-				iv: '06xb52344434223112',
-				v: '06x05x040232423111',
-				vi: '06xb52244334424112',
-				names: {
-					ctor: '::',
-					_0: 'Gm',
-					_1: {
-						ctor: '::',
-						_0: 'Cm',
-						_1: {
-							ctor: '::',
-							_0: 'Dm',
-							_1: {
-								ctor: '::',
-								_0: 'Eb',
-								_1: {
-									ctor: '::',
-									_0: '3',
-									_1: {ctor: '[]'}
-								}
-							}
-						}
-					}
-				},
-				bars: {
-					ctor: '::',
-					_0: '3',
-					_1: {
-						ctor: '::',
-						_0: '3',
-						_1: {
-							ctor: '::',
-							_0: '',
-							_1: {
-								ctor: '::',
-								_0: '6',
-								_1: {ctor: '[]'}
-							}
-						}
-					}
-				}
-			};
-		case 'd':
-			return {
-				i: '06x05x040232423111',
-				iv: 'b62354444132122112',
-				v: '06x050242332121010',
-				vi: '06xb51243333423111',
-				names: {
-					ctor: '::',
-					_0: 'Dm',
-					_1: {
-						ctor: '::',
-						_0: 'Gm',
-						_1: {
-							ctor: '::',
-							_0: 'Am',
-							_1: {
-								ctor: '::',
-								_0: 'Bb',
-								_1: {
-									ctor: '::',
-									_0: '10',
-									_1: {ctor: '[]'}
-								}
-							}
-						}
-					}
-				},
-				bars: {
-					ctor: '::',
-					_0: '',
-					_1: {
-						ctor: '::',
-						_0: '3',
-						_1: {
-							ctor: '::',
-							_0: '',
-							_1: {
-								ctor: '::',
-								_0: '',
-								_1: {ctor: '[]'}
-							}
-						}
-					}
-				}
-			};
-		default:
-			return {
-				i: '',
-				iv: '',
-				v: '',
-				vi: '',
-				names: {
 					ctor: '::',
 					_0: '',
 					_1: {
@@ -15886,11 +14819,1694 @@ var _user$project$Keys$keys = function (key) {
 								_1: {
 									ctor: '::',
 									_0: '',
-									_1: {ctor: '[]'}
+									_1: {
+										ctor: '::',
+										_0: '',
+										_1: {
+											ctor: '::',
+											_0: '',
+											_1: {ctor: '[]'}
+										}
+									}
 								}
 							}
 						}
 					}
+				}
+			};
+		case 'G':
+			return {
+				i: '263152040030323413',
+				ii: '06x050242332121010',
+				iii: '06x152040030323212',
+				iv: '06x253142030323413',
+				v: '06x05x040132323212',
+				vi: '060152242030020010',
+				vii: 'b62253344132424112',
+				names: {
+					ctor: '::',
+					_0: 'G',
+					_1: {
+						ctor: '::',
+						_0: 'Am',
+						_1: {
+							ctor: '::',
+							_0: 'Bm',
+							_1: {
+								ctor: '::',
+								_0: 'C9',
+								_1: {
+									ctor: '::',
+									_0: 'D',
+									_1: {
+										ctor: '::',
+										_0: 'Em',
+										_1: {
+											ctor: '::',
+											_0: 'F#dim7',
+											_1: {
+												ctor: '::',
+												_0: '0',
+												_1: {ctor: '[]'}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				bars: {
+					ctor: '::',
+					_0: '',
+					_1: {
+						ctor: '::',
+						_0: '',
+						_1: {
+							ctor: '::',
+							_0: '',
+							_1: {
+								ctor: '::',
+								_0: '',
+								_1: {
+									ctor: '::',
+									_0: '',
+									_1: {
+										ctor: '::',
+										_0: '',
+										_1: {
+											ctor: '::',
+											_0: '',
+											_1: {
+												ctor: '::',
+												_0: '',
+												_1: {ctor: '[]'}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			};
+		case 'D':
+			return {
+				i: '06x05x040132323212',
+				ii: '060152242030020010',
+				iii: '162050040232322010',
+				iv: '263152040030323413',
+				v: '06x050142232322010',
+				vi: '06x152040030323212',
+				vii: '06x15224343432301x',
+				names: {
+					ctor: '::',
+					_0: 'D',
+					_1: {
+						ctor: '::',
+						_0: 'Em',
+						_1: {
+							ctor: '::',
+							_0: 'F#m',
+							_1: {
+								ctor: '::',
+								_0: 'G',
+								_1: {
+									ctor: '::',
+									_0: 'A',
+									_1: {
+										ctor: '::',
+										_0: 'Bm',
+										_1: {
+											ctor: '::',
+											_0: 'C#dim7',
+											_1: {
+												ctor: '::',
+												_0: '7',
+												_1: {ctor: '[]'}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				bars: {
+					ctor: '::',
+					_0: '',
+					_1: {
+						ctor: '::',
+						_0: '',
+						_1: {
+							ctor: '::',
+							_0: '',
+							_1: {
+								ctor: '::',
+								_0: '',
+								_1: {
+									ctor: '::',
+									_0: '',
+									_1: {
+										ctor: '::',
+										_0: '',
+										_1: {
+											ctor: '::',
+											_0: '4',
+											_1: {ctor: '[]'}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			};
+		case 'A':
+			return {
+				i: '06x050142232322010',
+				ii: '06x152040030323212',
+				iii: '06x05x344434223112',
+				iv: '06x05x040132323212',
+				v: '060252342131020010',
+				vi: '162050040232322010',
+				vii: 'b62253344132424112',
+				names: {
+					ctor: '::',
+					_0: 'A',
+					_1: {
+						ctor: '::',
+						_0: 'Bm',
+						_1: {
+							ctor: '::',
+							_0: 'C#m',
+							_1: {
+								ctor: '::',
+								_0: 'D',
+								_1: {
+									ctor: '::',
+									_0: 'E',
+									_1: {
+										ctor: '::',
+										_0: 'F#m',
+										_1: {
+											ctor: '::',
+											_0: 'G#dim7',
+											_1: {
+												ctor: '::',
+												_0: '2',
+												_1: {ctor: '[]'}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				bars: {
+					ctor: '::',
+					_0: '',
+					_1: {
+						ctor: '::',
+						_0: '',
+						_1: {
+							ctor: '::',
+							_0: '',
+							_1: {
+								ctor: '::',
+								_0: '',
+								_1: {
+									ctor: '::',
+									_0: '',
+									_1: {
+										ctor: '::',
+										_0: '',
+										_1: {
+											ctor: '::',
+											_0: '4',
+											_1: {ctor: '[]'}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			};
+		case 'E':
+			return {
+				i: '060252342131020010',
+				ii: '162050040232322010',
+				iii: 'b62354444233122112',
+				iv: '06x050142232322010',
+				v: '060252141332020412',
+				vi: '06x05x344434223112',
+				vii: '06x05x141332221412',
+				names: {
+					ctor: '::',
+					_0: 'E',
+					_1: {
+						ctor: '::',
+						_0: 'F#m',
+						_1: {
+							ctor: '::',
+							_0: 'G#m',
+							_1: {
+								ctor: '::',
+								_0: 'A',
+								_1: {
+									ctor: '::',
+									_0: 'B7',
+									_1: {
+										ctor: '::',
+										_0: 'C#m',
+										_1: {
+											ctor: '::',
+											_0: 'D#dim7',
+											_1: {
+												ctor: '::',
+												_0: '9',
+												_1: {ctor: '[]'}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				bars: {
+					ctor: '::',
+					_0: '',
+					_1: {
+						ctor: '::',
+						_0: '',
+						_1: {
+							ctor: '::',
+							_0: '',
+							_1: {
+								ctor: '::',
+								_0: '',
+								_1: {
+									ctor: '::',
+									_0: '',
+									_1: {
+										ctor: '::',
+										_0: '',
+										_1: {
+											ctor: '::',
+											_0: '',
+											_1: {ctor: '[]'}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			};
+		case 'B':
+			return {
+				i: '06xb52244334424112',
+				ii: '',
+				iii: '',
+				iv: '060252342131020010',
+				v: 'b62354444233122112',
+				vi: 'b62354444132122112',
+				vii: '',
+				names: {
+					ctor: '::',
+					_0: 'B',
+					_1: {
+						ctor: '::',
+						_0: 'C#m',
+						_1: {
+							ctor: '::',
+							_0: 'D#m',
+							_1: {
+								ctor: '::',
+								_0: 'E',
+								_1: {
+									ctor: '::',
+									_0: 'F#',
+									_1: {
+										ctor: '::',
+										_0: 'G#m',
+										_1: {
+											ctor: '::',
+											_0: 'A#dim7',
+											_1: {
+												ctor: '::',
+												_0: '4',
+												_1: {ctor: '[]'}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				bars: {
+					ctor: '::',
+					_0: '',
+					_1: {
+						ctor: '::',
+						_0: '',
+						_1: {
+							ctor: '::',
+							_0: '',
+							_1: {
+								ctor: '::',
+								_0: '',
+								_1: {
+									ctor: '::',
+									_0: '',
+									_1: {
+										ctor: '::',
+										_0: '4',
+										_1: {
+											ctor: '::',
+											_0: '',
+											_1: {ctor: '[]'}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			};
+		case 'F#':
+			return {
+				i: 'b62354444233122112',
+				ii: '',
+				iii: '',
+				iv: '06xb52244334424112',
+				v: '06xb52244334424112',
+				vi: '06xb52344434223112',
+				vii: '',
+				names: {
+					ctor: '::',
+					_0: 'F#',
+					_1: {
+						ctor: '::',
+						_0: 'G#m',
+						_1: {
+							ctor: '::',
+							_0: 'A#m',
+							_1: {
+								ctor: '::',
+								_0: 'B',
+								_1: {
+									ctor: '::',
+									_0: 'C#',
+									_1: {
+										ctor: '::',
+										_0: 'D#m',
+										_1: {
+											ctor: '::',
+											_0: 'E#dim7',
+											_1: {
+												ctor: '::',
+												_0: '11',
+												_1: {ctor: '[]'}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				bars: {
+					ctor: '::',
+					_0: '',
+					_1: {
+						ctor: '::',
+						_0: '',
+						_1: {
+							ctor: '::',
+							_0: '',
+							_1: {
+								ctor: '::',
+								_0: '',
+								_1: {
+									ctor: '::',
+									_0: '4',
+									_1: {
+										ctor: '::',
+										_0: '6',
+										_1: {
+											ctor: '::',
+											_0: '',
+											_1: {ctor: '[]'}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			};
+		case 'Db':
+			return {
+				i: '06xb52244334424112',
+				ii: '',
+				iii: '',
+				iv: 'b62354444233122112',
+				v: 'b62354444233122112',
+				vi: '06xb52344434223112',
+				vii: '',
+				names: {
+					ctor: '::',
+					_0: 'Db',
+					_1: {
+						ctor: '::',
+						_0: 'Ebm',
+						_1: {
+							ctor: '::',
+							_0: 'Fm',
+							_1: {
+								ctor: '::',
+								_0: 'Gb',
+								_1: {
+									ctor: '::',
+									_0: 'Ab',
+									_1: {
+										ctor: '::',
+										_0: 'Bbm',
+										_1: {
+											ctor: '::',
+											_0: 'Cdim7',
+											_1: {
+												ctor: '::',
+												_0: '6',
+												_1: {ctor: '[]'}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				bars: {
+					ctor: '::',
+					_0: '4',
+					_1: {
+						ctor: '::',
+						_0: '',
+						_1: {
+							ctor: '::',
+							_0: '',
+							_1: {
+								ctor: '::',
+								_0: '',
+								_1: {
+									ctor: '::',
+									_0: '4',
+									_1: {
+										ctor: '::',
+										_0: '',
+										_1: {
+											ctor: '::',
+											_0: '',
+											_1: {ctor: '[]'}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			};
+		case 'Ab':
+			return {
+				i: 'b62354444233122112',
+				ii: '',
+				iii: '',
+				iv: '06xb52244334424112',
+				v: '06xb52244334424112',
+				vi: 'b61353443131121111',
+				vii: '',
+				names: {
+					ctor: '::',
+					_0: 'Ab',
+					_1: {
+						ctor: '::',
+						_0: 'Bbm',
+						_1: {
+							ctor: '::',
+							_0: 'Cm',
+							_1: {
+								ctor: '::',
+								_0: 'Db',
+								_1: {
+									ctor: '::',
+									_0: 'Eb',
+									_1: {
+										ctor: '::',
+										_0: 'Fm',
+										_1: {
+											ctor: '::',
+											_0: 'Gdim7',
+											_1: {
+												ctor: '::',
+												_0: '1',
+												_1: {ctor: '[]'}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				bars: {
+					ctor: '::',
+					_0: '4',
+					_1: {
+						ctor: '::',
+						_0: '',
+						_1: {
+							ctor: '::',
+							_0: '',
+							_1: {
+								ctor: '::',
+								_0: '4',
+								_1: {
+									ctor: '::',
+									_0: '6',
+									_1: {
+										ctor: '::',
+										_0: '',
+										_1: {
+											ctor: '::',
+											_0: '',
+											_1: {ctor: '[]'}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			};
+		case 'Eb':
+			return {
+				i: '06xb52244334424112',
+				ii: '',
+				iii: '',
+				iv: 'b62354444233122112',
+				v: 'b62354444233122112',
+				vi: '06xb52344434223112',
+				vii: '',
+				names: {
+					ctor: '::',
+					_0: 'Eb',
+					_1: {
+						ctor: '::',
+						_0: 'Fm',
+						_1: {
+							ctor: '::',
+							_0: 'Gm',
+							_1: {
+								ctor: '::',
+								_0: 'Ab',
+								_1: {
+									ctor: '::',
+									_0: 'Bb',
+									_1: {
+										ctor: '::',
+										_0: 'Cm',
+										_1: {
+											ctor: '::',
+											_0: 'Ddim7',
+											_1: {
+												ctor: '::',
+												_0: '4',
+												_1: {ctor: '[]'}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				bars: {
+					ctor: '::',
+					_0: '6',
+					_1: {
+						ctor: '::',
+						_0: '',
+						_1: {
+							ctor: '::',
+							_0: '',
+							_1: {
+								ctor: '::',
+								_0: '4',
+								_1: {
+									ctor: '::',
+									_0: '6',
+									_1: {
+										ctor: '::',
+										_0: '3',
+										_1: {
+											ctor: '::',
+											_0: '',
+											_1: {ctor: '[]'}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			};
+		case 'Bb':
+			return {
+				i: '06xb51243333423111',
+				ii: '',
+				iii: '',
+				iv: '06xb52244334424112',
+				v: 'b61353443232121111',
+				vi: 'b62354444132122112',
+				vii: '',
+				names: {
+					ctor: '::',
+					_0: 'Bb',
+					_1: {
+						ctor: '::',
+						_0: 'Cm',
+						_1: {
+							ctor: '::',
+							_0: 'Dm',
+							_1: {
+								ctor: '::',
+								_0: 'Eb',
+								_1: {
+									ctor: '::',
+									_0: 'F',
+									_1: {
+										ctor: '::',
+										_0: 'Gm',
+										_1: {
+											ctor: '::',
+											_0: 'Adim7',
+											_1: {
+												ctor: '::',
+												_0: '3',
+												_1: {ctor: '[]'}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				bars: {
+					ctor: '::',
+					_0: '',
+					_1: {
+						ctor: '::',
+						_0: '',
+						_1: {
+							ctor: '::',
+							_0: '',
+							_1: {
+								ctor: '::',
+								_0: '6',
+								_1: {
+									ctor: '::',
+									_0: '',
+									_1: {
+										ctor: '::',
+										_0: '3',
+										_1: {
+											ctor: '::',
+											_0: '',
+											_1: {ctor: '[]'}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			};
+		case 'F':
+			return {
+				i: '06x05x343232121010',
+				ii: '',
+				iii: '',
+				iv: '06xb51243333423111',
+				v: '06x353242030121010',
+				vi: '06x05x040232423111',
+				vii: '',
+				names: {
+					ctor: '::',
+					_0: 'F',
+					_1: {
+						ctor: '::',
+						_0: 'Gm',
+						_1: {
+							ctor: '::',
+							_0: 'Am',
+							_1: {
+								ctor: '::',
+								_0: 'Bb',
+								_1: {
+									ctor: '::',
+									_0: 'C',
+									_1: {
+										ctor: '::',
+										_0: 'Dm',
+										_1: {
+											ctor: '::',
+											_0: 'Edim7',
+											_1: {
+												ctor: '::',
+												_0: '10',
+												_1: {ctor: '[]'}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				bars: {
+					ctor: '::',
+					_0: '',
+					_1: {
+						ctor: '::',
+						_0: '',
+						_1: {
+							ctor: '::',
+							_0: '',
+							_1: {
+								ctor: '::',
+								_0: '',
+								_1: {
+									ctor: '::',
+									_0: '',
+									_1: {
+										ctor: '::',
+										_0: '',
+										_1: {
+											ctor: '::',
+											_0: '',
+											_1: {ctor: '[]'}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			};
+		case 'a':
+			return {
+				i: '06x050242332121010',
+				ii: '',
+				iii: '',
+				iv: '06x05x040232423111',
+				v: '060152242030020010',
+				vi: '06x05x343232121010',
+				vii: '',
+				names: {
+					ctor: '::',
+					_0: 'Am',
+					_1: {
+						ctor: '::',
+						_0: 'Bdim7',
+						_1: {
+							ctor: '::',
+							_0: 'C',
+							_1: {
+								ctor: '::',
+								_0: 'Dm',
+								_1: {
+									ctor: '::',
+									_0: 'Em',
+									_1: {
+										ctor: '::',
+										_0: 'F',
+										_1: {
+											ctor: '::',
+											_0: 'G',
+											_1: {
+												ctor: '::',
+												_0: '5',
+												_1: {ctor: '[]'}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				bars: {
+					ctor: '::',
+					_0: '',
+					_1: {
+						ctor: '::',
+						_0: '',
+						_1: {
+							ctor: '::',
+							_0: '',
+							_1: {
+								ctor: '::',
+								_0: '',
+								_1: {
+									ctor: '::',
+									_0: '',
+									_1: {
+										ctor: '::',
+										_0: '',
+										_1: {
+											ctor: '::',
+											_0: '',
+											_1: {ctor: '[]'}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			};
+		case 'e':
+			return {
+				i: '060152242030020010',
+				ii: '',
+				iii: '',
+				iv: '06x050242332121010',
+				v: '06x152040030323212',
+				vi: '06x353242030121010',
+				vii: '',
+				names: {
+					ctor: '::',
+					_0: 'Em',
+					_1: {
+						ctor: '::',
+						_0: 'F#dim7',
+						_1: {
+							ctor: '::',
+							_0: 'G',
+							_1: {
+								ctor: '::',
+								_0: 'Am',
+								_1: {
+									ctor: '::',
+									_0: 'Bm',
+									_1: {
+										ctor: '::',
+										_0: 'C',
+										_1: {
+											ctor: '::',
+											_0: 'D',
+											_1: {
+												ctor: '::',
+												_0: '0',
+												_1: {ctor: '[]'}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				bars: {
+					ctor: '::',
+					_0: '',
+					_1: {
+						ctor: '::',
+						_0: '',
+						_1: {
+							ctor: '::',
+							_0: '',
+							_1: {
+								ctor: '::',
+								_0: '',
+								_1: {
+									ctor: '::',
+									_0: '',
+									_1: {
+										ctor: '::',
+										_0: '',
+										_1: {
+											ctor: '::',
+											_0: '',
+											_1: {ctor: '[]'}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			};
+		case 'b':
+			return {
+				i: '06x05x344434223112',
+				ii: '',
+				iii: '',
+				iv: '060152242030020010',
+				v: '162050040232322010',
+				vi: '263152040030323413',
+				vii: '',
+				names: {
+					ctor: '::',
+					_0: 'Bm',
+					_1: {
+						ctor: '::',
+						_0: 'C#dim7',
+						_1: {
+							ctor: '::',
+							_0: 'D',
+							_1: {
+								ctor: '::',
+								_0: 'Em',
+								_1: {
+									ctor: '::',
+									_0: 'F#m',
+									_1: {
+										ctor: '::',
+										_0: 'G',
+										_1: {
+											ctor: '::',
+											_0: 'A',
+											_1: {
+												ctor: '::',
+												_0: '7',
+												_1: {ctor: '[]'}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				bars: {
+					ctor: '::',
+					_0: '',
+					_1: {
+						ctor: '::',
+						_0: '',
+						_1: {
+							ctor: '::',
+							_0: '',
+							_1: {
+								ctor: '::',
+								_0: '',
+								_1: {
+									ctor: '::',
+									_0: '',
+									_1: {
+										ctor: '::',
+										_0: '',
+										_1: {
+											ctor: '::',
+											_0: '',
+											_1: {ctor: '[]'}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			};
+		case 'f#':
+			return {
+				i: 'b62354444132122112',
+				ii: '',
+				iii: '',
+				iv: '06xb52344434223112',
+				v: '06xb52344434223112',
+				vi: '06x05x040132323212',
+				vii: '',
+				names: {
+					ctor: '::',
+					_0: 'F#m',
+					_1: {
+						ctor: '::',
+						_0: 'G#dim7',
+						_1: {
+							ctor: '::',
+							_0: 'A',
+							_1: {
+								ctor: '::',
+								_0: 'Bm',
+								_1: {
+									ctor: '::',
+									_0: 'C#m',
+									_1: {
+										ctor: '::',
+										_0: 'D',
+										_1: {
+											ctor: '::',
+											_0: 'E',
+											_1: {
+												ctor: '::',
+												_0: '2',
+												_1: {ctor: '[]'}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				bars: {
+					ctor: '::',
+					_0: '',
+					_1: {
+						ctor: '::',
+						_0: '',
+						_1: {
+							ctor: '::',
+							_0: '',
+							_1: {
+								ctor: '::',
+								_0: '',
+								_1: {
+									ctor: '::',
+									_0: '4',
+									_1: {
+										ctor: '::',
+										_0: '',
+										_1: {
+											ctor: '::',
+											_0: '',
+											_1: {ctor: '[]'}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			};
+		case 'c#':
+			return {
+				i: '06xb52344434223112',
+				ii: '',
+				iii: '',
+				iv: 'b62354444132122112',
+				v: 'b62354444132122112',
+				vi: '06x050142232322010',
+				vii: '',
+				names: {
+					ctor: '::',
+					_0: 'C#m',
+					_1: {
+						ctor: '::',
+						_0: 'D#dim7',
+						_1: {
+							ctor: '::',
+							_0: 'E',
+							_1: {
+								ctor: '::',
+								_0: 'F#m',
+								_1: {
+									ctor: '::',
+									_0: 'G#m',
+									_1: {
+										ctor: '::',
+										_0: 'A',
+										_1: {
+											ctor: '::',
+											_0: 'B',
+											_1: {
+												ctor: '::',
+												_0: '9',
+												_1: {ctor: '[]'}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				bars: {
+					ctor: '::',
+					_0: '4',
+					_1: {
+						ctor: '::',
+						_0: '',
+						_1: {
+							ctor: '::',
+							_0: '',
+							_1: {
+								ctor: '::',
+								_0: '',
+								_1: {
+									ctor: '::',
+									_0: '4',
+									_1: {
+										ctor: '::',
+										_0: '',
+										_1: {
+											ctor: '::',
+											_0: '',
+											_1: {ctor: '[]'}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			};
+		case 'g#':
+			return {
+				i: 'b62354444132122112',
+				ii: '',
+				iii: '',
+				iv: '06xb52344434223112',
+				v: '06xb52344434223112',
+				vi: '060152242131020010',
+				vii: '',
+				names: {
+					ctor: '::',
+					_0: 'G#m',
+					_1: {
+						ctor: '::',
+						_0: 'A#dim7',
+						_1: {
+							ctor: '::',
+							_0: 'B#',
+							_1: {
+								ctor: '::',
+								_0: 'C#m',
+								_1: {
+									ctor: '::',
+									_0: 'D#m',
+									_1: {
+										ctor: '::',
+										_0: 'E',
+										_1: {
+											ctor: '::',
+											_0: 'F#',
+											_1: {
+												ctor: '::',
+												_0: '4',
+												_1: {ctor: '[]'}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				bars: {
+					ctor: '::',
+					_0: '4',
+					_1: {
+						ctor: '::',
+						_0: '',
+						_1: {
+							ctor: '::',
+							_0: '',
+							_1: {
+								ctor: '::',
+								_0: '4',
+								_1: {
+									ctor: '::',
+									_0: '6',
+									_1: {
+										ctor: '::',
+										_0: '',
+										_1: {
+											ctor: '::',
+											_0: '',
+											_1: {ctor: '[]'}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			};
+		case 'd#':
+			return {
+				i: '06xb52344434223112',
+				ii: '',
+				iii: '',
+				iv: 'b62354444132122112',
+				v: 'b62354444132122112',
+				vi: '06xb52244334424112',
+				vii: '',
+				names: {
+					ctor: '::',
+					_0: 'D#m',
+					_1: {
+						ctor: '::',
+						_0: 'E#dim7',
+						_1: {
+							ctor: '::',
+							_0: 'F#',
+							_1: {
+								ctor: '::',
+								_0: 'G#m',
+								_1: {
+									ctor: '::',
+									_0: 'A#m',
+									_1: {
+										ctor: '::',
+										_0: 'B',
+										_1: {
+											ctor: '::',
+											_0: 'C#',
+											_1: {
+												ctor: '::',
+												_0: '11',
+												_1: {ctor: '[]'}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				bars: {
+					ctor: '::',
+					_0: '6',
+					_1: {
+						ctor: '::',
+						_0: '',
+						_1: {
+							ctor: '::',
+							_0: '',
+							_1: {
+								ctor: '::',
+								_0: '4',
+								_1: {
+									ctor: '::',
+									_0: '6',
+									_1: {
+										ctor: '::',
+										_0: '',
+										_1: {
+											ctor: '::',
+											_0: '',
+											_1: {ctor: '[]'}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			};
+		case 'bb':
+			return {
+				i: 'b62354444132122112',
+				ii: '',
+				iii: '',
+				iv: '06xb52344434223112',
+				v: '06xb52344434223112',
+				vi: 'b62354444233122112',
+				vii: '',
+				names: {
+					ctor: '::',
+					_0: 'Bbm',
+					_1: {
+						ctor: '::',
+						_0: 'Cdim7',
+						_1: {
+							ctor: '::',
+							_0: 'D',
+							_1: {
+								ctor: '::',
+								_0: 'Ebm',
+								_1: {
+									ctor: '::',
+									_0: 'Fm',
+									_1: {
+										ctor: '::',
+										_0: 'Gb',
+										_1: {
+											ctor: '::',
+											_0: 'Ab',
+											_1: {
+												ctor: '::',
+												_0: '6',
+												_1: {ctor: '[]'}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				bars: {
+					ctor: '::',
+					_0: '6',
+					_1: {
+						ctor: '::',
+						_0: '',
+						_1: {
+							ctor: '::',
+							_0: '',
+							_1: {
+								ctor: '::',
+								_0: '6',
+								_1: {
+									ctor: '::',
+									_0: '8',
+									_1: {
+										ctor: '::',
+										_0: '',
+										_1: {
+											ctor: '::',
+											_0: '',
+											_1: {ctor: '[]'}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			};
+		case 'f':
+			return {
+				i: 'b61353443131111111',
+				ii: '',
+				iii: '',
+				iv: '06xb51343433222111',
+				v: '06xb52344434223112',
+				vi: '06xb52244334424112',
+				vii: '',
+				names: {
+					ctor: '::',
+					_0: 'Fm',
+					_1: {
+						ctor: '::',
+						_0: 'Gdim7',
+						_1: {
+							ctor: '::',
+							_0: 'Ab',
+							_1: {
+								ctor: '::',
+								_0: 'Bbm',
+								_1: {
+									ctor: '::',
+									_0: 'Cm',
+									_1: {
+										ctor: '::',
+										_0: 'Db',
+										_1: {
+											ctor: '::',
+											_0: 'Eb',
+											_1: {
+												ctor: '::',
+												_0: '1',
+												_1: {ctor: '[]'}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				bars: {
+					ctor: '::',
+					_0: '',
+					_1: {
+						ctor: '::',
+						_0: '',
+						_1: {
+							ctor: '::',
+							_0: '',
+							_1: {
+								ctor: '::',
+								_0: '',
+								_1: {
+									ctor: '::',
+									_0: '3',
+									_1: {
+										ctor: '::',
+										_0: '4',
+										_1: {
+											ctor: '::',
+											_0: '',
+											_1: {ctor: '[]'}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			};
+		case 'c':
+			return {
+				i: '06xb52344434223112',
+				ii: '',
+				iii: '',
+				iv: 'b61353443131121111',
+				v: 'b62354444132122112',
+				vi: 'b62354444233122112',
+				vii: '',
+				names: {
+					ctor: '::',
+					_0: 'Cm',
+					_1: {
+						ctor: '::',
+						_0: 'Ddim7',
+						_1: {
+							ctor: '::',
+							_0: 'Eb',
+							_1: {
+								ctor: '::',
+								_0: 'Fm',
+								_1: {
+									ctor: '::',
+									_0: 'Gm',
+									_1: {
+										ctor: '::',
+										_0: 'Ab',
+										_1: {
+											ctor: '::',
+											_0: 'Bb',
+											_1: {
+												ctor: '::',
+												_0: '8',
+												_1: {ctor: '[]'}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				bars: {
+					ctor: '::',
+					_0: '3',
+					_1: {
+						ctor: '::',
+						_0: '',
+						_1: {
+							ctor: '::',
+							_0: '',
+							_1: {
+								ctor: '::',
+								_0: '',
+								_1: {
+									ctor: '::',
+									_0: '3',
+									_1: {
+										ctor: '::',
+										_0: '6',
+										_1: {
+											ctor: '::',
+											_0: '',
+											_1: {ctor: '[]'}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			};
+		case 'g':
+			return {
+				i: 'b62354444132122112',
+				ii: '',
+				iii: '',
+				iv: '06xb52344434223112',
+				v: '06x05x040232423111',
+				vi: '06xb52244334424112',
+				vii: '',
+				names: {
+					ctor: '::',
+					_0: 'Gm',
+					_1: {
+						ctor: '::',
+						_0: 'Adim7',
+						_1: {
+							ctor: '::',
+							_0: 'Bb',
+							_1: {
+								ctor: '::',
+								_0: 'Cm',
+								_1: {
+									ctor: '::',
+									_0: 'Dm',
+									_1: {
+										ctor: '::',
+										_0: 'Eb',
+										_1: {
+											ctor: '::',
+											_0: 'Ab',
+											_1: {
+												ctor: '::',
+												_0: '3',
+												_1: {ctor: '[]'}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				bars: {
+					ctor: '::',
+					_0: '3',
+					_1: {
+						ctor: '::',
+						_0: '',
+						_1: {
+							ctor: '::',
+							_0: '',
+							_1: {
+								ctor: '::',
+								_0: '3',
+								_1: {
+									ctor: '::',
+									_0: '',
+									_1: {
+										ctor: '::',
+										_0: '6',
+										_1: {
+											ctor: '::',
+											_0: '',
+											_1: {ctor: '[]'}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			};
+		case 'd':
+			return {
+				i: '06x05x040232423111',
+				ii: '',
+				iii: '',
+				iv: 'b62354444132122112',
+				v: '06x050242332121010',
+				vi: '06xb51243333423111',
+				vii: '',
+				names: {
+					ctor: '::',
+					_0: 'Dm',
+					_1: {
+						ctor: '::',
+						_0: 'Edim7',
+						_1: {
+							ctor: '::',
+							_0: 'F',
+							_1: {
+								ctor: '::',
+								_0: 'Gm',
+								_1: {
+									ctor: '::',
+									_0: 'Am',
+									_1: {
+										ctor: '::',
+										_0: 'Bb',
+										_1: {
+											ctor: '::',
+											_0: 'C',
+											_1: {
+												ctor: '::',
+												_0: '10',
+												_1: {ctor: '[]'}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				bars: {
+					ctor: '::',
+					_0: '',
+					_1: {
+						ctor: '::',
+						_0: '',
+						_1: {
+							ctor: '::',
+							_0: '',
+							_1: {
+								ctor: '::',
+								_0: '3',
+								_1: {
+									ctor: '::',
+									_0: '',
+									_1: {
+										ctor: '::',
+										_0: '',
+										_1: {
+											ctor: '::',
+											_0: '',
+											_1: {ctor: '[]'}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			};
+		default:
+			return {
+				i: '',
+				ii: '',
+				iii: '',
+				iv: '',
+				v: '',
+				vi: '',
+				vii: '',
+				names: {
+					ctor: '::',
+					_0: '',
+					_1: {ctor: '[]'}
 				},
 				bars: {
 					ctor: '::',
@@ -15900,7 +16516,7 @@ var _user$project$Keys$keys = function (key) {
 			};
 	}
 };
-var _user$project$Keys$keyList = {
+var _user$project$Chords$keyList = {
 	ctor: '::',
 	_0: 'Major Keys',
 	_1: {
@@ -16005,13 +16621,12 @@ var _user$project$Keys$keyList = {
 		}
 	}
 };
-
 var _user$project$Chords$chordChart = function (chord) {
 	return A2(
 		_elm_lang$html$Html$div,
 		{
 			ctor: '::',
-			_0: _user$project$Styles$chartContainerStyle('row'),
+			_0: _user$project$Chords$chartContainerStyle('row'),
 			_1: {ctor: '[]'}
 		},
 		{
@@ -16020,7 +16635,7 @@ var _user$project$Chords$chordChart = function (chord) {
 				_elm_lang$html$Html$div,
 				{
 					ctor: '::',
-					_0: _user$project$Styles$chartStyle,
+					_0: _user$project$Chords$chartStyle,
 					_1: {ctor: '[]'}
 				},
 				{
@@ -16029,7 +16644,7 @@ var _user$project$Chords$chordChart = function (chord) {
 						_elm_lang$html$Html$div,
 						{
 							ctor: '::',
-							_0: _user$project$Styles$stringStyle,
+							_0: _user$project$Chords$stringStyle,
 							_1: {ctor: '[]'}
 						},
 						{ctor: '[]'}),
@@ -16039,7 +16654,7 @@ var _user$project$Chords$chordChart = function (chord) {
 							_elm_lang$html$Html$div,
 							{
 								ctor: '::',
-								_0: _user$project$Styles$stringStyle,
+								_0: _user$project$Chords$stringStyle,
 								_1: {ctor: '[]'}
 							},
 							{ctor: '[]'}),
@@ -16049,7 +16664,7 @@ var _user$project$Chords$chordChart = function (chord) {
 								_elm_lang$html$Html$div,
 								{
 									ctor: '::',
-									_0: _user$project$Styles$stringStyle,
+									_0: _user$project$Chords$stringStyle,
 									_1: {ctor: '[]'}
 								},
 								{ctor: '[]'}),
@@ -16059,7 +16674,7 @@ var _user$project$Chords$chordChart = function (chord) {
 									_elm_lang$html$Html$div,
 									{
 										ctor: '::',
-										_0: _user$project$Styles$stringStyle,
+										_0: _user$project$Chords$stringStyle,
 										_1: {ctor: '[]'}
 									},
 									{ctor: '[]'}),
@@ -16069,7 +16684,7 @@ var _user$project$Chords$chordChart = function (chord) {
 										_elm_lang$html$Html$div,
 										{
 											ctor: '::',
-											_0: _user$project$Styles$stringStyle,
+											_0: _user$project$Chords$stringStyle,
 											_1: {ctor: '[]'}
 										},
 										{ctor: '[]'}),
@@ -16079,7 +16694,7 @@ var _user$project$Chords$chordChart = function (chord) {
 											_elm_lang$html$Html$div,
 											{
 												ctor: '::',
-												_0: _user$project$Styles$fretStyle(1),
+												_0: _user$project$Chords$fretStyle(1),
 												_1: {ctor: '[]'}
 											},
 											{ctor: '[]'}),
@@ -16089,7 +16704,7 @@ var _user$project$Chords$chordChart = function (chord) {
 												_elm_lang$html$Html$div,
 												{
 													ctor: '::',
-													_0: _user$project$Styles$fretStyle(2),
+													_0: _user$project$Chords$fretStyle(2),
 													_1: {ctor: '[]'}
 												},
 												{ctor: '[]'}),
@@ -16099,7 +16714,7 @@ var _user$project$Chords$chordChart = function (chord) {
 													_elm_lang$html$Html$div,
 													{
 														ctor: '::',
-														_0: _user$project$Styles$fretStyle(3),
+														_0: _user$project$Chords$fretStyle(3),
 														_1: {ctor: '[]'}
 													},
 													{ctor: '[]'}),
@@ -16122,7 +16737,7 @@ var _user$project$Chords$chordChart = function (chord) {
 					_elm_lang$html$Html$div,
 					{
 						ctor: '::',
-						_0: _user$project$Styles$nutStyle,
+						_0: _user$project$Chords$nutStyle,
 						_1: {ctor: '[]'}
 					},
 					{ctor: '[]'}),
@@ -16135,7 +16750,7 @@ var _user$project$Chords$chordBarPosition = F2(
 		var barPosition = A2(
 			_elm_community$list_extra$List_Extra$getAt,
 			index,
-			_user$project$Keys$keys(key).bars);
+			_user$project$Chords$keys(key).bars);
 		return (_elm_lang$core$Native_Utils.cmp(
 			_elm_lang$core$String$length(
 				A2(_elm_lang$core$Maybe$withDefault, '', barPosition)),
@@ -16143,7 +16758,7 @@ var _user$project$Chords$chordBarPosition = F2(
 			_elm_lang$html$Html$div,
 			{
 				ctor: '::',
-				_0: _user$project$Styles$chordBarPosStyle,
+				_0: _user$project$Chords$chordBarPosStyle,
 				_1: {ctor: '[]'}
 			},
 			{
@@ -16173,11 +16788,11 @@ var _user$project$Chords$chordFunction = F2(
 				A2(
 					_elm_community$list_extra$List_Extra$getAt,
 					num,
-					_user$project$Keys$keys(key).names)));
+					_user$project$Chords$keys(key).names)));
 	});
 var _user$project$Chords$fretNo = function (fret) {
-	var _p0 = fret;
-	switch (_p0) {
+	var _p1 = fret;
+	switch (_p1) {
 		case '0':
 			return '-40';
 		case '1':
@@ -16193,8 +16808,8 @@ var _user$project$Chords$fretNo = function (fret) {
 	}
 };
 var _user$project$Chords$stringNo = function (string) {
-	var _p1 = string;
-	switch (_p1) {
+	var _p2 = string;
+	switch (_p2) {
 		case '1':
 			return '135';
 		case '2':
@@ -16212,8 +16827,8 @@ var _user$project$Chords$stringNo = function (string) {
 	}
 };
 var _user$project$Chords$fingerNo = function (finger) {
-	var _p2 = finger;
-	switch (_p2) {
+	var _p3 = finger;
+	switch (_p3) {
 		case 'b':
 			return 'bar';
 		case '1':
@@ -16242,7 +16857,7 @@ var _user$project$Chords$chordBuilder = function (chord) {
 				_elm_lang$html$Html$div,
 				{
 					ctor: '::',
-					_0: _user$project$Styles$fretMarkerStyle(
+					_0: _user$project$Chords$fretMarkerStyle(
 						A3(
 							_user$project$Types$Dot,
 							_user$project$Chords$fingerNo(
@@ -16265,7 +16880,7 @@ var _user$project$Chords$chordBuilder = function (chord) {
 					_elm_lang$html$Html$div,
 					{
 						ctor: '::',
-						_0: _user$project$Styles$fretMarkerStyle(
+						_0: _user$project$Chords$fretMarkerStyle(
 							A3(
 								_user$project$Types$Dot,
 								_user$project$Chords$fingerNo(
@@ -16288,7 +16903,7 @@ var _user$project$Chords$chordBuilder = function (chord) {
 						_elm_lang$html$Html$div,
 						{
 							ctor: '::',
-							_0: _user$project$Styles$fretMarkerStyle(
+							_0: _user$project$Chords$fretMarkerStyle(
 								A3(
 									_user$project$Types$Dot,
 									_user$project$Chords$fingerNo(
@@ -16311,7 +16926,7 @@ var _user$project$Chords$chordBuilder = function (chord) {
 							_elm_lang$html$Html$div,
 							{
 								ctor: '::',
-								_0: _user$project$Styles$fretMarkerStyle(
+								_0: _user$project$Chords$fretMarkerStyle(
 									A3(
 										_user$project$Types$Dot,
 										_user$project$Chords$fingerNo(
@@ -16334,7 +16949,7 @@ var _user$project$Chords$chordBuilder = function (chord) {
 								_elm_lang$html$Html$div,
 								{
 									ctor: '::',
-									_0: _user$project$Styles$fretMarkerStyle(
+									_0: _user$project$Chords$fretMarkerStyle(
 										A3(
 											_user$project$Types$Dot,
 											_user$project$Chords$fingerNo(
@@ -16357,7 +16972,7 @@ var _user$project$Chords$chordBuilder = function (chord) {
 									_elm_lang$html$Html$div,
 									{
 										ctor: '::',
-										_0: _user$project$Styles$fretMarkerStyle(
+										_0: _user$project$Chords$fretMarkerStyle(
 											A3(
 												_user$project$Types$Dot,
 												_user$project$Chords$fingerNo(
@@ -16386,7 +17001,7 @@ var _user$project$Chords$fingerChart = A2(
 	_elm_lang$html$Html$div,
 	{
 		ctor: '::',
-		_0: _user$project$Styles$fingerChartStyle,
+		_0: _user$project$Chords$fingerChartStyle,
 		_1: {ctor: '[]'}
 	},
 	{
@@ -16678,6 +17293,79 @@ var _user$project$Chords$fingerChart = A2(
 			}
 		}
 	});
+var _user$project$Chords$chordChartModel = F5(
+	function (model, index, name, accessor1, accessor2) {
+		return A2(
+			_elm_lang$html$Html$div,
+			{
+				ctor: '::',
+				_0: _user$project$Chords$chartContainerStyle('column'),
+				_1: {ctor: '[]'}
+			},
+			{
+				ctor: '::',
+				_0: A2(
+					_elm_lang$html$Html$div,
+					{ctor: '[]'},
+					{
+						ctor: '::',
+						_0: A2(_user$project$Chords$chordBarPosition, index, model.musKey),
+						_1: {ctor: '[]'}
+					}),
+				_1: {
+					ctor: '::',
+					_0: _user$project$Chords$chordChart(
+						_user$project$Chords$chordBuilder(
+							accessor1(
+								_user$project$Chords$keys(model.musKey)))),
+					_1: {
+						ctor: '::',
+						_0: A2(
+							_elm_lang$html$Html$div,
+							{
+								ctor: '::',
+								_0: _user$project$Chords$chordNameStyle,
+								_1: {
+									ctor: '::',
+									_0: _elm_lang$html$Html_Events$onClick(
+										_user$project$Types$Play(
+											accessor2(
+												_user$project$Audio$notes(model.musKey)))),
+									_1: {ctor: '[]'}
+								}
+							},
+							{
+								ctor: '::',
+								_0: A2(_user$project$Chords$chordFunction, index, model.musKey),
+								_1: {ctor: '[]'}
+							}),
+						_1: {
+							ctor: '::',
+							_0: A2(
+								_elm_lang$html$Html$div,
+								{
+									ctor: '::',
+									_0: _user$project$Chords$chordFunctionStyle,
+									_1: {
+										ctor: '::',
+										_0: _elm_lang$html$Html_Events$onClick(
+											_user$project$Types$Play(
+												accessor2(
+													_user$project$Audio$notes(model.musKey)))),
+										_1: {ctor: '[]'}
+									}
+								},
+								{
+									ctor: '::',
+									_0: _elm_lang$html$Html$text(name),
+									_1: {ctor: '[]'}
+								}),
+							_1: {ctor: '[]'}
+						}
+					}
+				}
+			});
+	});
 var _user$project$Chords$chordChartPage = function (model) {
 	var keyOptions = function (key) {
 		return A2(
@@ -16699,7 +17387,7 @@ var _user$project$Chords$chordChartPage = function (model) {
 		A2(
 			_elm_community$list_extra$List_Extra$getAt,
 			4,
-			_user$project$Keys$keys(model.musKey).names));
+			_user$project$Chords$keys(model.musKey).names));
 	var soloFretMaj = _elm_lang$core$Basics$toString(
 		A2(
 			_elm_lang$core$Basics_ops['%'],
@@ -16756,291 +17444,67 @@ var _user$project$Chords$chordChartPage = function (model) {
 							_1: {ctor: '[]'}
 						}
 					},
-					A2(_elm_lang$core$List$map, keyOptions, _user$project$Keys$keyList)),
+					A2(_elm_lang$core$List$map, keyOptions, _user$project$Chords$keyList)),
 				_1: {
 					ctor: '::',
 					_0: A2(
 						_elm_lang$html$Html$div,
 						{
 							ctor: '::',
-							_0: _user$project$Styles$chartContainerStyle('row'),
+							_0: _user$project$Chords$chartContainerStyle('row'),
 							_1: {ctor: '[]'}
 						},
 						{
 							ctor: '::',
-							_0: A2(
-								_elm_lang$html$Html$div,
-								{
-									ctor: '::',
-									_0: _user$project$Styles$chartContainerStyle('column'),
-									_1: {ctor: '[]'}
+							_0: A5(
+								_user$project$Chords$chordChartModel,
+								model,
+								0,
+								'I',
+								function (_) {
+									return _.i;
 								},
-								{
-									ctor: '::',
-									_0: A2(
-										_elm_lang$html$Html$div,
-										{ctor: '[]'},
-										{
-											ctor: '::',
-											_0: A2(_user$project$Chords$chordBarPosition, 0, model.musKey),
-											_1: {ctor: '[]'}
-										}),
-									_1: {
-										ctor: '::',
-										_0: _user$project$Chords$chordChart(
-											_user$project$Chords$chordBuilder(
-												_user$project$Keys$keys(model.musKey).i)),
-										_1: {
-											ctor: '::',
-											_0: A2(
-												_elm_lang$html$Html$div,
-												{
-													ctor: '::',
-													_0: _user$project$Styles$chordNameStyle,
-													_1: {
-														ctor: '::',
-														_0: _elm_lang$html$Html_Events$onClick(
-															_user$project$Types$Play(
-																_user$project$Notes$notes(model.musKey).i)),
-														_1: {ctor: '[]'}
-													}
-												},
-												{
-													ctor: '::',
-													_0: A2(_user$project$Chords$chordFunction, 0, model.musKey),
-													_1: {ctor: '[]'}
-												}),
-											_1: {
-												ctor: '::',
-												_0: A2(
-													_elm_lang$html$Html$div,
-													{
-														ctor: '::',
-														_0: _user$project$Styles$chordFunctionStyle,
-														_1: {
-															ctor: '::',
-															_0: _elm_lang$html$Html_Events$onClick(
-																_user$project$Types$Play(
-																	_user$project$Notes$notes(model.musKey).i)),
-															_1: {ctor: '[]'}
-														}
-													},
-													{
-														ctor: '::',
-														_0: _elm_lang$html$Html$text('I'),
-														_1: {ctor: '[]'}
-													}),
-												_1: {ctor: '[]'}
-											}
-										}
-									}
+								function (_) {
+									return _.i;
 								}),
 							_1: {
 								ctor: '::',
-								_0: A2(
-									_elm_lang$html$Html$div,
-									{
-										ctor: '::',
-										_0: _user$project$Styles$chartContainerStyle('column'),
-										_1: {ctor: '[]'}
+								_0: A5(
+									_user$project$Chords$chordChartModel,
+									model,
+									3,
+									'IV',
+									function (_) {
+										return _.iv;
 									},
-									{
-										ctor: '::',
-										_0: A2(
-											_elm_lang$html$Html$div,
-											{ctor: '[]'},
-											{
-												ctor: '::',
-												_0: A2(_user$project$Chords$chordBarPosition, 1, model.musKey),
-												_1: {ctor: '[]'}
-											}),
-										_1: {
-											ctor: '::',
-											_0: _user$project$Chords$chordChart(
-												_user$project$Chords$chordBuilder(
-													_user$project$Keys$keys(model.musKey).iv)),
-											_1: {
-												ctor: '::',
-												_0: A2(
-													_elm_lang$html$Html$div,
-													{
-														ctor: '::',
-														_0: _user$project$Styles$chordNameStyle,
-														_1: {
-															ctor: '::',
-															_0: _elm_lang$html$Html_Events$onClick(
-																_user$project$Types$Play(
-																	_user$project$Notes$notes(model.musKey).iv)),
-															_1: {ctor: '[]'}
-														}
-													},
-													{
-														ctor: '::',
-														_0: A2(_user$project$Chords$chordFunction, 1, model.musKey),
-														_1: {ctor: '[]'}
-													}),
-												_1: {
-													ctor: '::',
-													_0: A2(
-														_elm_lang$html$Html$div,
-														{
-															ctor: '::',
-															_0: _user$project$Styles$chordFunctionStyle,
-															_1: {
-																ctor: '::',
-																_0: _elm_lang$html$Html_Events$onClick(
-																	_user$project$Types$Play(
-																		_user$project$Notes$notes(model.musKey).iv)),
-																_1: {ctor: '[]'}
-															}
-														},
-														{
-															ctor: '::',
-															_0: _elm_lang$html$Html$text('IV'),
-															_1: {ctor: '[]'}
-														}),
-													_1: {ctor: '[]'}
-												}
-											}
-										}
+									function (_) {
+										return _.iv;
 									}),
 								_1: {
 									ctor: '::',
-									_0: A2(
-										_elm_lang$html$Html$div,
-										{
-											ctor: '::',
-											_0: _user$project$Styles$chartContainerStyle('column'),
-											_1: {ctor: '[]'}
+									_0: A5(
+										_user$project$Chords$chordChartModel,
+										model,
+										4,
+										'V',
+										function (_) {
+											return _.v;
 										},
-										{
-											ctor: '::',
-											_0: A2(
-												_elm_lang$html$Html$div,
-												{ctor: '[]'},
-												{
-													ctor: '::',
-													_0: A2(_user$project$Chords$chordBarPosition, 2, model.musKey),
-													_1: {ctor: '[]'}
-												}),
-											_1: {
-												ctor: '::',
-												_0: _user$project$Chords$chordChart(
-													_user$project$Chords$chordBuilder(
-														_user$project$Keys$keys(model.musKey).v)),
-												_1: {
-													ctor: '::',
-													_0: A2(
-														_elm_lang$html$Html$div,
-														{
-															ctor: '::',
-															_0: _user$project$Styles$chordNameStyle,
-															_1: {
-																ctor: '::',
-																_0: _elm_lang$html$Html_Events$onClick(
-																	_user$project$Types$Play(
-																		_user$project$Notes$notes(model.musKey).v)),
-																_1: {ctor: '[]'}
-															}
-														},
-														{
-															ctor: '::',
-															_0: A2(_user$project$Chords$chordFunction, 2, model.musKey),
-															_1: {ctor: '[]'}
-														}),
-													_1: {
-														ctor: '::',
-														_0: A2(
-															_elm_lang$html$Html$div,
-															{
-																ctor: '::',
-																_0: _user$project$Styles$chordFunctionStyle,
-																_1: {
-																	ctor: '::',
-																	_0: _elm_lang$html$Html_Events$onClick(
-																		_user$project$Types$Play(
-																			_user$project$Notes$notes(model.musKey).v)),
-																	_1: {ctor: '[]'}
-																}
-															},
-															{
-																ctor: '::',
-																_0: _elm_lang$html$Html$text('V'),
-																_1: {ctor: '[]'}
-															}),
-														_1: {ctor: '[]'}
-													}
-												}
-											}
+										function (_) {
+											return _.v;
 										}),
 									_1: {
 										ctor: '::',
-										_0: A2(
-											_elm_lang$html$Html$div,
-											{
-												ctor: '::',
-												_0: _user$project$Styles$chartContainerStyle('column'),
-												_1: {ctor: '[]'}
+										_0: A5(
+											_user$project$Chords$chordChartModel,
+											model,
+											5,
+											'VI',
+											function (_) {
+												return _.vi;
 											},
-											{
-												ctor: '::',
-												_0: A2(
-													_elm_lang$html$Html$div,
-													{ctor: '[]'},
-													{
-														ctor: '::',
-														_0: A2(_user$project$Chords$chordBarPosition, 3, model.musKey),
-														_1: {ctor: '[]'}
-													}),
-												_1: {
-													ctor: '::',
-													_0: _user$project$Chords$chordChart(
-														_user$project$Chords$chordBuilder(
-															_user$project$Keys$keys(model.musKey).vi)),
-													_1: {
-														ctor: '::',
-														_0: A2(
-															_elm_lang$html$Html$div,
-															{
-																ctor: '::',
-																_0: _user$project$Styles$chordNameStyle,
-																_1: {
-																	ctor: '::',
-																	_0: _elm_lang$html$Html_Events$onClick(
-																		_user$project$Types$Play(
-																			_user$project$Notes$notes(model.musKey).vi)),
-																	_1: {ctor: '[]'}
-																}
-															},
-															{
-																ctor: '::',
-																_0: A2(_user$project$Chords$chordFunction, 3, model.musKey),
-																_1: {ctor: '[]'}
-															}),
-														_1: {
-															ctor: '::',
-															_0: A2(
-																_elm_lang$html$Html$div,
-																{
-																	ctor: '::',
-																	_0: _user$project$Styles$chordFunctionStyle,
-																	_1: {
-																		ctor: '::',
-																		_0: _elm_lang$html$Html_Events$onClick(
-																			_user$project$Types$Play(
-																				_user$project$Notes$notes(model.musKey).vi)),
-																		_1: {ctor: '[]'}
-																	}
-																},
-																{
-																	ctor: '::',
-																	_0: _elm_lang$html$Html$text('VI'),
-																	_1: {ctor: '[]'}
-																}),
-															_1: {ctor: '[]'}
-														}
-													}
-												}
+											function (_) {
+												return _.vi;
 											}),
 										_1: {ctor: '[]'}
 									}
@@ -17076,13 +17540,475 @@ var _user$project$Chords$chordChartPage = function (model) {
 												A2(_elm_lang$core$Basics_ops['++'], soloFretMaj, ' (Major scale)'))))),
 								_1: {ctor: '[]'}
 							}),
-						_1: {ctor: '[]'}
+						_1: {
+							ctor: '::',
+							_0: A2(
+								_elm_lang$html$Html$div,
+								{
+									ctor: '::',
+									_0: _elm_lang$html$Html_Attributes$style(
+										{
+											ctor: '::',
+											_0: {ctor: '_Tuple2', _0: 'paddingTop', _1: '50px'},
+											_1: {
+												ctor: '::',
+												_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '20px'},
+												_1: {ctor: '[]'}
+											}
+										}),
+									_1: {ctor: '[]'}
+								},
+								{
+									ctor: '::',
+									_0: _elm_lang$html$Html$text('ADDITIONAL CHORD OPTIONS:'),
+									_1: {ctor: '[]'}
+								}),
+							_1: {
+								ctor: '::',
+								_0: A2(
+									_elm_lang$html$Html$div,
+									{
+										ctor: '::',
+										_0: _user$project$Chords$chartContainerStyle('row'),
+										_1: {ctor: '[]'}
+									},
+									{
+										ctor: '::',
+										_0: A5(
+											_user$project$Chords$chordChartModel,
+											model,
+											1,
+											'II',
+											function (_) {
+												return _.ii;
+											},
+											function (_) {
+												return _.ii;
+											}),
+										_1: {
+											ctor: '::',
+											_0: A5(
+												_user$project$Chords$chordChartModel,
+												model,
+												2,
+												'III',
+												function (_) {
+													return _.iii;
+												},
+												function (_) {
+													return _.iii;
+												}),
+											_1: {
+												ctor: '::',
+												_0: A5(
+													_user$project$Chords$chordChartModel,
+													model,
+													6,
+													'VII',
+													function (_) {
+														return _.vii;
+													},
+													function (_) {
+														return _.vii;
+													}),
+												_1: {ctor: '[]'}
+											}
+										}
+									}),
+								_1: {ctor: '[]'}
+							}
+						}
 					}
 				}
 			}
 		});
 };
 
+var _user$project$Fretboard$hrLedgerStyleLo = F2(
+	function (model, offset) {
+		var pos = model.notePosition;
+		var visibility = (_elm_lang$core$Native_Utils.cmp(pos, offset + 20) < 0) ? '1' : '0';
+		return _elm_lang$html$Html_Attributes$style(
+			{
+				ctor: '::',
+				_0: {ctor: '_Tuple2', _0: 'position', _1: 'absolute'},
+				_1: {
+					ctor: '::',
+					_0: {
+						ctor: '_Tuple2',
+						_0: 'bottom',
+						_1: A2(
+							_elm_lang$core$Basics_ops['++'],
+							_elm_lang$core$Basics$toString(offset),
+							'px')
+					},
+					_1: {
+						ctor: '::',
+						_0: {ctor: '_Tuple2', _0: 'left', _1: '45%'},
+						_1: {
+							ctor: '::',
+							_0: {ctor: '_Tuple2', _0: 'width', _1: '50px'},
+							_1: {
+								ctor: '::',
+								_0: {ctor: '_Tuple2', _0: 'margin', _1: '0 auto'},
+								_1: {
+									ctor: '::',
+									_0: {ctor: '_Tuple2', _0: 'padding', _1: '10px'},
+									_1: {
+										ctor: '::',
+										_0: {ctor: '_Tuple2', _0: 'lineHeight', _1: '30px'},
+										_1: {
+											ctor: '::',
+											_0: {ctor: '_Tuple2', _0: 'opacity', _1: visibility},
+											_1: {
+												ctor: '::',
+												_0: {ctor: '_Tuple2', _0: 'transition', _1: 'opacity 0.5s ease'},
+												_1: {
+													ctor: '::',
+													_0: {ctor: '_Tuple2', _0: 'zIndex', _1: '0'},
+													_1: {ctor: '[]'}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			});
+	});
+var _user$project$Fretboard$hrLedgerStyleHi = F2(
+	function (model, offset) {
+		var pos = model.notePosition;
+		var visibility = (_elm_lang$core$Native_Utils.cmp(pos, offset) > 0) ? '1' : '0';
+		return _elm_lang$html$Html_Attributes$style(
+			{
+				ctor: '::',
+				_0: {ctor: '_Tuple2', _0: 'position', _1: 'absolute'},
+				_1: {
+					ctor: '::',
+					_0: {
+						ctor: '_Tuple2',
+						_0: 'bottom',
+						_1: A2(
+							_elm_lang$core$Basics_ops['++'],
+							_elm_lang$core$Basics$toString(offset),
+							'px')
+					},
+					_1: {
+						ctor: '::',
+						_0: {ctor: '_Tuple2', _0: 'left', _1: '45%'},
+						_1: {
+							ctor: '::',
+							_0: {ctor: '_Tuple2', _0: 'width', _1: '50px'},
+							_1: {
+								ctor: '::',
+								_0: {ctor: '_Tuple2', _0: 'margin', _1: '0 auto'},
+								_1: {
+									ctor: '::',
+									_0: {ctor: '_Tuple2', _0: 'padding', _1: '10px'},
+									_1: {
+										ctor: '::',
+										_0: {ctor: '_Tuple2', _0: 'lineHeight', _1: '30px'},
+										_1: {
+											ctor: '::',
+											_0: {ctor: '_Tuple2', _0: 'opacity', _1: visibility},
+											_1: {
+												ctor: '::',
+												_0: {ctor: '_Tuple2', _0: 'transition', _1: 'opacity 0.5s ease'},
+												_1: {
+													ctor: '::',
+													_0: {ctor: '_Tuple2', _0: 'zIndex', _1: '0'},
+													_1: {ctor: '[]'}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			});
+	});
+var _user$project$Fretboard$hrStyle = _elm_lang$html$Html_Attributes$style(
+	{
+		ctor: '::',
+		_0: {ctor: '_Tuple2', _0: 'width', _1: '280px'},
+		_1: {
+			ctor: '::',
+			_0: {ctor: '_Tuple2', _0: 'margin', _1: '0 auto'},
+			_1: {
+				ctor: '::',
+				_0: {ctor: '_Tuple2', _0: 'padding', _1: '10px'},
+				_1: {ctor: '[]'}
+			}
+		}
+	});
+var _user$project$Fretboard$notationAccidentalStyle = F2(
+	function (offset, visibility) {
+		return _elm_lang$html$Html_Attributes$style(
+			{
+				ctor: '::',
+				_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '28px'},
+				_1: {
+					ctor: '::',
+					_0: {ctor: '_Tuple2', _0: 'position', _1: 'absolute'},
+					_1: {
+						ctor: '::',
+						_0: {ctor: '_Tuple2', _0: 'marginBottom', _1: '-10px'},
+						_1: {
+							ctor: '::',
+							_0: {
+								ctor: '_Tuple2',
+								_0: 'bottom',
+								_1: A2(
+									_elm_lang$core$Basics_ops['++'],
+									_elm_lang$core$Basics$toString(offset),
+									'px')
+							},
+							_1: {
+								ctor: '::',
+								_0: {ctor: '_Tuple2', _0: 'left', _1: '44%'},
+								_1: {
+									ctor: '::',
+									_0: {ctor: '_Tuple2', _0: 'color', _1: '#3A86FF'},
+									_1: {
+										ctor: '::',
+										_0: {ctor: '_Tuple2', _0: 'opacity', _1: visibility},
+										_1: {
+											ctor: '::',
+											_0: {ctor: '_Tuple2', _0: 'transition', _1: 'opacity 0.5s ease'},
+											_1: {
+												ctor: '::',
+												_0: {ctor: '_Tuple2', _0: 'zIndex', _1: '1'},
+												_1: {ctor: '[]'}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			});
+	});
+var _user$project$Fretboard$notationNoteStyle = function (offset) {
+	return _elm_lang$html$Html_Attributes$style(
+		{
+			ctor: '::',
+			_0: {ctor: '_Tuple2', _0: 'width', _1: '20px'},
+			_1: {
+				ctor: '::',
+				_0: {ctor: '_Tuple2', _0: 'height', _1: '20px'},
+				_1: {
+					ctor: '::',
+					_0: {ctor: '_Tuple2', _0: 'borderRadius', _1: '10px'},
+					_1: {
+						ctor: '::',
+						_0: {ctor: '_Tuple2', _0: 'position', _1: 'absolute'},
+						_1: {
+							ctor: '::',
+							_0: {
+								ctor: '_Tuple2',
+								_0: 'bottom',
+								_1: A2(
+									_elm_lang$core$Basics_ops['++'],
+									_elm_lang$core$Basics$toString(offset),
+									'px')
+							},
+							_1: {
+								ctor: '::',
+								_0: {ctor: '_Tuple2', _0: 'left', _1: '50%'},
+								_1: {
+									ctor: '::',
+									_0: {ctor: '_Tuple2', _0: 'backgroundColor', _1: '#3A86FF'},
+									_1: {
+										ctor: '::',
+										_0: {ctor: '_Tuple2', _0: 'transition', _1: 'all 0.5s ease'},
+										_1: {
+											ctor: '::',
+											_0: {ctor: '_Tuple2', _0: 'zIndex', _1: '1'},
+											_1: {ctor: '[]'}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		});
+};
+var _user$project$Fretboard$notationClefStyle = _elm_lang$html$Html_Attributes$style(
+	{
+		ctor: '::',
+		_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '140px'},
+		_1: {
+			ctor: '::',
+			_0: {ctor: '_Tuple2', _0: 'position', _1: 'absolute'},
+			_1: {
+				ctor: '::',
+				_0: {ctor: '_Tuple2', _0: 'bottom', _1: '0'},
+				_1: {
+					ctor: '::',
+					_0: {ctor: '_Tuple2', _0: 'left', _1: '30px'},
+					_1: {
+						ctor: '::',
+						_0: {ctor: '_Tuple2', _0: 'color', _1: '#fff'},
+						_1: {ctor: '[]'}
+					}
+				}
+			}
+		}
+	});
+var _user$project$Fretboard$notationContainerStyle = _elm_lang$html$Html_Attributes$style(
+	{
+		ctor: '::',
+		_0: {ctor: '_Tuple2', _0: 'width', _1: '350px'},
+		_1: {
+			ctor: '::',
+			_0: {ctor: '_Tuple2', _0: 'padding', _1: '50px 10px'},
+			_1: {
+				ctor: '::',
+				_0: {ctor: '_Tuple2', _0: 'margin', _1: '70px auto'},
+				_1: {
+					ctor: '::',
+					_0: {ctor: '_Tuple2', _0: 'backgroundColor', _1: '#111'},
+					_1: {
+						ctor: '::',
+						_0: {ctor: '_Tuple2', _0: 'position', _1: 'relative'},
+						_1: {
+							ctor: '::',
+							_0: {ctor: '_Tuple2', _0: 'textAlign', _1: 'center'},
+							_1: {ctor: '[]'}
+						}
+					}
+				}
+			}
+		}
+	});
+var _user$project$Fretboard$noteGroupStyle = _elm_lang$html$Html_Attributes$style(
+	{
+		ctor: '::',
+		_0: {ctor: '_Tuple2', _0: 'postion', _1: 'relative'},
+		_1: {ctor: '[]'}
+	});
+var _user$project$Fretboard$fretNumberStyle = _elm_lang$html$Html_Attributes$style(
+	{
+		ctor: '::',
+		_0: {ctor: '_Tuple2', _0: 'width', _1: '100px'},
+		_1: {
+			ctor: '::',
+			_0: {ctor: '_Tuple2', _0: 'marginBottom', _1: '-70px'},
+			_1: {
+				ctor: '::',
+				_0: {ctor: '_Tuple2', _0: 'padding', _1: '5px'},
+				_1: {
+					ctor: '::',
+					_0: {ctor: '_Tuple2', _0: 'textTransform', _1: 'uppercase'},
+					_1: {
+						ctor: '::',
+						_0: {ctor: '_Tuple2', _0: 'color', _1: '#3A86FF'},
+						_1: {
+							ctor: '::',
+							_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '20px'},
+							_1: {
+								ctor: '::',
+								_0: {ctor: '_Tuple2', _0: 'textAlign', _1: 'center'},
+								_1: {ctor: '[]'}
+							}
+						}
+					}
+				}
+			}
+		}
+	});
+var _user$project$Fretboard$fretBlankStyle = _elm_lang$html$Html_Attributes$style(
+	{
+		ctor: '::',
+		_0: {ctor: '_Tuple2', _0: 'color', _1: 'rgba(0,0,0,0)'},
+		_1: {
+			ctor: '::',
+			_0: {ctor: '_Tuple2', _0: 'width', _1: '100px'},
+			_1: {
+				ctor: '::',
+				_0: {ctor: '_Tuple2', _0: 'padding', _1: '5px'},
+				_1: {
+					ctor: '::',
+					_0: {ctor: '_Tuple2', _0: 'backgroundColor', _1: '#111'},
+					_1: {ctor: '[]'}
+				}
+			}
+		}
+	});
+var _user$project$Fretboard$fretNoteStyle = _elm_lang$html$Html_Attributes$style(
+	{
+		ctor: '::',
+		_0: {ctor: '_Tuple2', _0: 'width', _1: '100px'},
+		_1: {
+			ctor: '::',
+			_0: {ctor: '_Tuple2', _0: 'padding', _1: '14px 5px'},
+			_1: {
+				ctor: '::',
+				_0: {ctor: '_Tuple2', _0: 'textTransform', _1: 'uppercase'},
+				_1: {
+					ctor: '::',
+					_0: {ctor: '_Tuple2', _0: 'color', _1: '#777'},
+					_1: {
+						ctor: '::',
+						_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '10px'},
+						_1: {
+							ctor: '::',
+							_0: {ctor: '_Tuple2', _0: 'textAlign', _1: 'center'},
+							_1: {
+								ctor: '::',
+								_0: {ctor: '_Tuple2', _0: 'borderBottom', _1: '1px solid #222'},
+								_1: {
+									ctor: '::',
+									_0: {ctor: '_Tuple2', _0: 'borderCollapse', _1: 'collapse'},
+									_1: {
+										ctor: '::',
+										_0: {ctor: '_Tuple2', _0: 'transition', _1: 'all 0.4s ease'},
+										_1: {
+											ctor: '::',
+											_0: {ctor: '_Tuple2', _0: 'backgroundColor', _1: '#111'},
+											_1: {
+												ctor: '::',
+												_0: {ctor: '_Tuple2', _0: 'zIndex', _1: '1'},
+												_1: {ctor: '[]'}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	});
+var _user$project$Fretboard$fretboardStringStyle = _elm_lang$html$Html_Attributes$style(
+	{
+		ctor: '::',
+		_0: {ctor: '_Tuple2', _0: 'display', _1: 'flex'},
+		_1: {ctor: '[]'}
+	});
+var _user$project$Fretboard$fretboardContainerStyle = _elm_lang$html$Html_Attributes$style(
+	{
+		ctor: '::',
+		_0: {ctor: '_Tuple2', _0: 'margin', _1: '50px'},
+		_1: {
+			ctor: '::',
+			_0: {ctor: '_Tuple2', _0: 'width', _1: '90%'},
+			_1: {
+				ctor: '::',
+				_0: {ctor: '_Tuple2', _0: 'position', _1: 'relative'},
+				_1: {ctor: '[]'}
+			}
+		}
+	});
 var _user$project$Fretboard$noteFretPos = function (index) {
 	var num = A2(
 		_elm_lang$core$Result$withDefault,
@@ -17118,7 +18044,7 @@ var _user$project$Fretboard$fretNotation = function (model) {
 		_elm_lang$html$Html$div,
 		{
 			ctor: '::',
-			_0: _user$project$Styles$notationContainerStyle,
+			_0: _user$project$Fretboard$notationContainerStyle,
 			_1: {ctor: '[]'}
 		},
 		{
@@ -17127,7 +18053,7 @@ var _user$project$Fretboard$fretNotation = function (model) {
 				_elm_lang$html$Html$div,
 				{
 					ctor: '::',
-					_0: _user$project$Styles$notationClefStyle,
+					_0: _user$project$Fretboard$notationClefStyle,
 					_1: {
 						ctor: '::',
 						_0: A2(
@@ -17144,7 +18070,7 @@ var _user$project$Fretboard$fretNotation = function (model) {
 					_elm_lang$html$Html$div,
 					{
 						ctor: '::',
-						_0: _user$project$Styles$notationNoteStyle(model.notePosition),
+						_0: _user$project$Fretboard$notationNoteStyle(model.notePosition),
 						_1: {ctor: '[]'}
 					},
 					{ctor: '[]'}),
@@ -17154,7 +18080,7 @@ var _user$project$Fretboard$fretNotation = function (model) {
 						_elm_lang$html$Html$div,
 						{
 							ctor: '::',
-							_0: A2(_user$project$Styles$notationAccidentalStyle, model.notePosition, model.showAccidental),
+							_0: A2(_user$project$Fretboard$notationAccidentalStyle, model.notePosition, model.showAccidental),
 							_1: {ctor: '[]'}
 						},
 						{
@@ -17168,7 +18094,7 @@ var _user$project$Fretboard$fretNotation = function (model) {
 							_elm_lang$html$Html$hr,
 							{
 								ctor: '::',
-								_0: _user$project$Styles$hrStyle,
+								_0: _user$project$Fretboard$hrStyle,
 								_1: {ctor: '[]'}
 							},
 							{ctor: '[]'}),
@@ -17178,7 +18104,7 @@ var _user$project$Fretboard$fretNotation = function (model) {
 								_elm_lang$html$Html$hr,
 								{
 									ctor: '::',
-									_0: _user$project$Styles$hrStyle,
+									_0: _user$project$Fretboard$hrStyle,
 									_1: {ctor: '[]'}
 								},
 								{ctor: '[]'}),
@@ -17188,7 +18114,7 @@ var _user$project$Fretboard$fretNotation = function (model) {
 									_elm_lang$html$Html$hr,
 									{
 										ctor: '::',
-										_0: _user$project$Styles$hrStyle,
+										_0: _user$project$Fretboard$hrStyle,
 										_1: {ctor: '[]'}
 									},
 									{ctor: '[]'}),
@@ -17198,7 +18124,7 @@ var _user$project$Fretboard$fretNotation = function (model) {
 										_elm_lang$html$Html$hr,
 										{
 											ctor: '::',
-											_0: _user$project$Styles$hrStyle,
+											_0: _user$project$Fretboard$hrStyle,
 											_1: {ctor: '[]'}
 										},
 										{ctor: '[]'}),
@@ -17208,7 +18134,7 @@ var _user$project$Fretboard$fretNotation = function (model) {
 											_elm_lang$html$Html$hr,
 											{
 												ctor: '::',
-												_0: _user$project$Styles$hrStyle,
+												_0: _user$project$Fretboard$hrStyle,
 												_1: {ctor: '[]'}
 											},
 											{ctor: '[]'}),
@@ -17218,7 +18144,7 @@ var _user$project$Fretboard$fretNotation = function (model) {
 												_elm_lang$html$Html$hr,
 												{
 													ctor: '::',
-													_0: A2(_user$project$Styles$hrLedgerStyleHi, model, 180),
+													_0: A2(_user$project$Fretboard$hrLedgerStyleHi, model, 180),
 													_1: {ctor: '[]'}
 												},
 												{ctor: '[]'}),
@@ -17228,7 +18154,7 @@ var _user$project$Fretboard$fretNotation = function (model) {
 													_elm_lang$html$Html$hr,
 													{
 														ctor: '::',
-														_0: A2(_user$project$Styles$hrLedgerStyleHi, model, 165),
+														_0: A2(_user$project$Fretboard$hrLedgerStyleHi, model, 165),
 														_1: {ctor: '[]'}
 													},
 													{ctor: '[]'}),
@@ -17238,7 +18164,7 @@ var _user$project$Fretboard$fretNotation = function (model) {
 														_elm_lang$html$Html$hr,
 														{
 															ctor: '::',
-															_0: A2(_user$project$Styles$hrLedgerStyleHi, model, 150),
+															_0: A2(_user$project$Fretboard$hrLedgerStyleHi, model, 150),
 															_1: {ctor: '[]'}
 														},
 														{ctor: '[]'}),
@@ -17248,7 +18174,7 @@ var _user$project$Fretboard$fretNotation = function (model) {
 															_elm_lang$html$Html$hr,
 															{
 																ctor: '::',
-																_0: A2(_user$project$Styles$hrLedgerStyleLo, model, 35),
+																_0: A2(_user$project$Fretboard$hrLedgerStyleLo, model, 35),
 																_1: {ctor: '[]'}
 															},
 															{ctor: '[]'}),
@@ -17258,7 +18184,7 @@ var _user$project$Fretboard$fretNotation = function (model) {
 																_elm_lang$html$Html$hr,
 																{
 																	ctor: '::',
-																	_0: A2(_user$project$Styles$hrLedgerStyleLo, model, 20),
+																	_0: A2(_user$project$Fretboard$hrLedgerStyleLo, model, 20),
 																	_1: {ctor: '[]'}
 																},
 																{ctor: '[]'}),
@@ -17268,7 +18194,7 @@ var _user$project$Fretboard$fretNotation = function (model) {
 																	_elm_lang$html$Html$hr,
 																	{
 																		ctor: '::',
-																		_0: A2(_user$project$Styles$hrLedgerStyleLo, model, 5),
+																		_0: A2(_user$project$Fretboard$hrLedgerStyleLo, model, 5),
 																		_1: {ctor: '[]'}
 																	},
 																	{ctor: '[]'}),
@@ -17626,7 +18552,7 @@ var _user$project$Fretboard$fretboardPage = function (model) {
 			_elm_lang$html$Html$div,
 			{
 				ctor: '::',
-				_0: _user$project$Styles$fretBlankStyle,
+				_0: _user$project$Fretboard$fretBlankStyle,
 				_1: {ctor: '[]'}
 			},
 			{
@@ -17640,7 +18566,7 @@ var _user$project$Fretboard$fretboardPage = function (model) {
 			_elm_lang$html$Html$div,
 			{
 				ctor: '::',
-				_0: _user$project$Styles$fretNumberStyle,
+				_0: _user$project$Fretboard$fretNumberStyle,
 				_1: {ctor: '[]'}
 			},
 			{
@@ -17702,7 +18628,7 @@ var _user$project$Fretboard$fretboardPage = function (model) {
 			_elm_lang$html$Html$div,
 			{
 				ctor: '::',
-				_0: _user$project$Styles$fretNoteStyle,
+				_0: _user$project$Fretboard$fretNoteStyle,
 				_1: {
 					ctor: '::',
 					_0: _elm_lang$html$Html_Events$onClick(
@@ -17734,7 +18660,7 @@ var _user$project$Fretboard$fretboardPage = function (model) {
 				_elm_lang$html$Html$div,
 				{
 					ctor: '::',
-					_0: _user$project$Styles$fretboardContainerStyle,
+					_0: _user$project$Fretboard$fretboardContainerStyle,
 					_1: {ctor: '[]'}
 				},
 				{
@@ -17743,7 +18669,7 @@ var _user$project$Fretboard$fretboardPage = function (model) {
 						_elm_lang$html$Html$div,
 						{
 							ctor: '::',
-							_0: _user$project$Styles$fretboardStringStyle,
+							_0: _user$project$Fretboard$fretboardStringStyle,
 							_1: {ctor: '[]'}
 						},
 						A2(
@@ -17756,7 +18682,7 @@ var _user$project$Fretboard$fretboardPage = function (model) {
 							_elm_lang$html$Html$div,
 							{
 								ctor: '::',
-								_0: _user$project$Styles$fretboardStringStyle,
+								_0: _user$project$Fretboard$fretboardStringStyle,
 								_1: {ctor: '[]'}
 							},
 							A2(
@@ -17769,7 +18695,7 @@ var _user$project$Fretboard$fretboardPage = function (model) {
 								_elm_lang$html$Html$div,
 								{
 									ctor: '::',
-									_0: _user$project$Styles$fretboardStringStyle,
+									_0: _user$project$Fretboard$fretboardStringStyle,
 									_1: {ctor: '[]'}
 								},
 								A2(
@@ -17782,7 +18708,7 @@ var _user$project$Fretboard$fretboardPage = function (model) {
 									_elm_lang$html$Html$div,
 									{
 										ctor: '::',
-										_0: _user$project$Styles$fretboardStringStyle,
+										_0: _user$project$Fretboard$fretboardStringStyle,
 										_1: {ctor: '[]'}
 									},
 									A2(
@@ -17795,7 +18721,7 @@ var _user$project$Fretboard$fretboardPage = function (model) {
 										_elm_lang$html$Html$div,
 										{
 											ctor: '::',
-											_0: _user$project$Styles$fretboardStringStyle,
+											_0: _user$project$Fretboard$fretboardStringStyle,
 											_1: {ctor: '[]'}
 										},
 										A2(
@@ -17808,7 +18734,7 @@ var _user$project$Fretboard$fretboardPage = function (model) {
 											_elm_lang$html$Html$div,
 											{
 												ctor: '::',
-												_0: _user$project$Styles$fretboardStringStyle,
+												_0: _user$project$Fretboard$fretboardStringStyle,
 												_1: {ctor: '[]'}
 											},
 											A2(
@@ -17821,7 +18747,7 @@ var _user$project$Fretboard$fretboardPage = function (model) {
 												_elm_lang$html$Html$div,
 												{
 													ctor: '::',
-													_0: _user$project$Styles$fretboardStringStyle,
+													_0: _user$project$Fretboard$fretboardStringStyle,
 													_1: {ctor: '[]'}
 												},
 												A2(
@@ -17834,7 +18760,7 @@ var _user$project$Fretboard$fretboardPage = function (model) {
 													_elm_lang$html$Html$div,
 													{
 														ctor: '::',
-														_0: _user$project$Styles$fretboardStringStyle,
+														_0: _user$project$Fretboard$fretboardStringStyle,
 														_1: {ctor: '[]'}
 													},
 													A2(
@@ -17917,6 +18843,26 @@ var _user$project$Scales$scalesPage = function (model) {
 		});
 };
 
+var _user$project$Main$navItemStyle = _elm_lang$html$Html_Attributes$style(
+	{
+		ctor: '::',
+		_0: {ctor: '_Tuple2', _0: 'margin', _1: '10px auto'},
+		_1: {
+			ctor: '::',
+			_0: {ctor: '_Tuple2', _0: 'padding', _1: '5px'},
+			_1: {
+				ctor: '::',
+				_0: {ctor: '_Tuple2', _0: 'color', _1: '#777'},
+				_1: {ctor: '[]'}
+			}
+		}
+	});
+var _user$project$Main$navStyle = _elm_lang$html$Html_Attributes$style(
+	{
+		ctor: '::',
+		_0: {ctor: '_Tuple2', _0: 'textAlign', _1: 'center'},
+		_1: {ctor: '[]'}
+	});
 var _user$project$Main$page = function (model) {
 	var _p0 = model.route;
 	switch (_p0.ctor) {
@@ -17956,7 +18902,7 @@ var _user$project$Main$view = function (model) {
 				_elm_lang$html$Html$div,
 				{
 					ctor: '::',
-					_0: _user$project$Styles$navStyle,
+					_0: _user$project$Main$navStyle,
 					_1: {ctor: '[]'}
 				},
 				{
@@ -17968,7 +18914,7 @@ var _user$project$Main$view = function (model) {
 							_0: _elm_lang$html$Html_Attributes$href(_user$project$Routing$scalesPath),
 							_1: {
 								ctor: '::',
-								_0: _user$project$Styles$navItemStyle,
+								_0: _user$project$Main$navItemStyle,
 								_1: {ctor: '[]'}
 							}
 						},
@@ -17986,7 +18932,7 @@ var _user$project$Main$view = function (model) {
 								_0: _elm_lang$html$Html_Attributes$href(_user$project$Routing$chordsPath),
 								_1: {
 									ctor: '::',
-									_0: _user$project$Styles$navItemStyle,
+									_0: _user$project$Main$navItemStyle,
 									_1: {ctor: '[]'}
 								}
 							},
@@ -18004,7 +18950,7 @@ var _user$project$Main$view = function (model) {
 									_0: _elm_lang$html$Html_Attributes$href(_user$project$Routing$fretboardPath),
 									_1: {
 										ctor: '::',
-										_0: _user$project$Styles$navItemStyle,
+										_0: _user$project$Main$navItemStyle,
 										_1: {ctor: '[]'}
 									}
 								},
@@ -18097,7 +19043,7 @@ var _user$project$Main$update = F2(
 					_1: _elm_lang$core$Platform_Cmd$none
 				};
 			case 'SendNotes':
-				var note = _user$project$Notes$noteSorter(
+				var note = _user$project$Audio$noteSorter(
 					A2(
 						_elm_lang$core$Maybe$withDefault,
 						'e2w',

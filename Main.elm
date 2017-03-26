@@ -2,14 +2,10 @@ port module Main exposing (..)
 
 import Html exposing (..)
 import Html.Attributes exposing (..)
-import Html.Events exposing (onClick, onInput)
-import String exposing (..)
 import List.Extra exposing (getAt)
 import Routing
 import Types exposing (..)
-import Keys exposing (keys)
-import Styles exposing (..)
-import Notes exposing (..)
+import Audio exposing (..)
 import Chords exposing (chordChartPage)
 import Scales exposing (scalesPage)
 import Fretboard exposing (..)
@@ -18,6 +14,7 @@ import Time exposing (..)
 import Update.Extra.Infix exposing ((:>))
 
 
+main : Program Never { currentChord : List String, index : Int, musKey : String, notePosition : Int, route : Route, showAccidental : String } Msg
 main =
     Navigation.program Types.OnLocationChange
         { init = init
@@ -71,7 +68,7 @@ update msg model =
         SendNotes ->
             let
                 note =
-                    Notes.noteSorter <| Maybe.withDefault "e2w" <| getAt model.index model.currentChord
+                    Audio.noteSorter <| Maybe.withDefault "e2w" <| getAt model.index model.currentChord
             in
                 ( { model | index = model.index + 1 }
                 , send (PlayBundle note "triangle")
@@ -91,6 +88,7 @@ update msg model =
                 ( { model | notePosition = finalOffset, showAccidental = accidental }, Cmd.none )
 
 
+subscriptions : Model -> Sub Msg
 subscriptions model =
     if model.index < 6 then
         Time.every (0.1 * Time.second) (always SendNotes)
@@ -124,3 +122,22 @@ page model =
 
         NotFoundPage ->
             div [ style [ ( "margin", "100px auto" ) ] ] [ text "Page Not Found" ]
+
+
+
+-- STYLES
+
+
+navStyle : Attribute msg
+navStyle =
+    style
+        [ ( "textAlign", "center" ) ]
+
+
+navItemStyle : Attribute msg
+navItemStyle =
+    style
+        [ ( "margin", "10px auto" )
+        , ( "padding", "5px" )
+        , ( "color", "#777" )
+        ]

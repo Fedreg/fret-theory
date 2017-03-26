@@ -20,6 +20,30 @@ type alias Dot =
     }
 
 
+type alias ChordChartData =
+    { i : String
+    , ii : String
+    , iii : String
+    , iv : String
+    , v : String
+    , vi : String
+    , vii : String
+    , bars : List String
+    , names : List String
+    }
+
+
+type alias ChordAudioData =
+    { i : List String
+    , ii : List String
+    , iii : List String
+    , iv : List String
+    , v : List String
+    , vi : List String
+    , vii : List String
+    }
+
+
 type alias Note =
     { frequency : Float
     , octave : Int

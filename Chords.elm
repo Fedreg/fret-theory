@@ -5,9 +5,7 @@ import Html.Attributes exposing (..)
 import Html.Events exposing (onClick, onInput)
 import String exposing (..)
 import List.Extra exposing (getAt)
-import Styles exposing (..)
-import Notes exposing (..)
-import Keys exposing (..)
+import Audio exposing (..)
 import Types exposing (..)
 
 
@@ -26,35 +24,34 @@ chordChartPage model =
         div [ style [ ( "textAlign", "center" ) ] ]
             [ div [] [ fingerChart ]
             , select [ style [ ( "color", "#fff" ), ( "width", "100px" ), ( "marginTop", "50px" ) ], Html.Events.onInput ChangeKey ]
-                (List.map keyOptions Keys.keyList)
+                (List.map keyOptions keyList)
             , div [ chartContainerStyle "row" ]
-                [ div [ chartContainerStyle "column" ]
-                    [ div [] [ chordBarPosition 0 model.musKey ]
-                    , chordChart <| chordBuilder (keys model.musKey).i
-                    , div [ chordNameStyle, onClick (Play <| (Notes.notes model.musKey).i) ] [ chordFunction 0 model.musKey ]
-                    , div [ chordFunctionStyle, onClick (Play <| (Notes.notes model.musKey).i) ] [ text "I" ]
-                    ]
-                , div [ chartContainerStyle "column" ]
-                    [ div [] [ chordBarPosition 1 model.musKey ]
-                    , chordChart <| chordBuilder (keys model.musKey).iv
-                    , div [ chordNameStyle, onClick (Play <| (Notes.notes model.musKey).iv) ] [ chordFunction 1 model.musKey ]
-                    , div [ chordFunctionStyle, onClick (Play <| (Notes.notes model.musKey).iv) ] [ text "IV" ]
-                    ]
-                , div [ chartContainerStyle "column" ]
-                    [ div [] [ chordBarPosition 2 model.musKey ]
-                    , chordChart <| chordBuilder (keys model.musKey).v
-                    , div [ chordNameStyle, onClick (Play <| (Notes.notes model.musKey).v) ] [ chordFunction 2 model.musKey ]
-                    , div [ chordFunctionStyle, onClick (Play <| (Notes.notes model.musKey).v) ] [ text "V" ]
-                    ]
-                , div [ chartContainerStyle "column" ]
-                    [ div [] [ chordBarPosition 3 model.musKey ]
-                    , chordChart <| chordBuilder (keys model.musKey).vi
-                    , div [ chordNameStyle, onClick (Play <| (Notes.notes model.musKey).vi) ] [ chordFunction 3 model.musKey ]
-                    , div [ chordFunctionStyle, onClick (Play <| (Notes.notes model.musKey).vi) ] [ text "VI" ]
-                    ]
+                [ chordChartModel model 0 "I" .i .i
+                , chordChartModel model 3 "IV" .iv .iv
+                , chordChartModel model 4 "V" .v .v
+                , chordChartModel model 5 "VI" .vi .vi
                 ]
             , div [ style [ ( "fontSize", "20px" ) ] ] [ text ("Solo on fret: " ++ soloFretMin ++ " (Minor scale), or fret: " ++ soloFretMaj ++ " (Major scale)") ]
+            , div [ style [ ( "paddingTop", "50px" ), ( "fontSize", "20px" ) ] ] [ text "ADDITIONAL CHORD OPTIONS:" ]
+            , div [ chartContainerStyle "row" ]
+                [ chordChartModel model 1 "II" .ii .ii
+                , chordChartModel model 2 "III" .iii .iii
+                , chordChartModel model 6 "VII" .vii .vii
+                ]
             ]
+
+
+
+--chordChartModel : Model -> Int -> String -> ({ m | i : a } -> a) -> Html Msg
+
+
+chordChartModel model index name accessor1 accessor2 =
+    div [ chartContainerStyle "column" ]
+        [ div [] [ chordBarPosition index model.musKey ]
+        , chordChart <| chordBuilder ((keys model.musKey) |> accessor1)
+        , div [ chordNameStyle, onClick (Play ((Audio.notes model.musKey) |> accessor2)) ] [ chordFunction index model.musKey ]
+        , div [ chordFunctionStyle, onClick (Play ((Audio.notes model.musKey) |> accessor2)) ] [ text name ]
+        ]
 
 
 {-| Determines color of chord chart dot.
@@ -145,7 +142,7 @@ chordBarPosition : Int -> String -> Html Msg
 chordBarPosition index key =
     let
         barPosition =
-            getAt index (Keys.keys key).bars
+            getAt index (keys key).bars
     in
         if String.length (Maybe.withDefault "" barPosition) > 0 then
             div [ chordBarPosStyle ] [ text <| "Fret " ++ String.slice 1 2 (toString (Maybe.withDefault "" barPosition)) ]
@@ -211,3 +208,469 @@ fingerChart =
             , div [ style [ ( "padding", "5px" ), ( "lineHeight", "9px" ) ] ] [ text "Pinky" ]
             ]
         ]
+
+
+keyList : List String
+keyList =
+    [ "Major Keys", "C", "G", "D", "A", "E", "B", "F#", "Db", "Ab", "Eb", "Bb", "F", "Minor Keys", "a", "e", "b", "f#", "c#", "g#", "d#", "bb", "f", "c", "g", "d" ]
+
+
+{-| Defines dot placement of each chord.
+-}
+keys : String -> ChordChartData
+keys key =
+    case key of
+        "C" ->
+            { i = "06x353242030121010"
+            , ii = "06x05x040232423111"
+            , iii = "060152242030020010"
+            , iv = "06x06x343232121010"
+            , v = "263152040030323413"
+            , vi = "06x050242332121010"
+            , vii = "06x15224343432301x"
+            , names = [ "C", "Dm", "Em", "F", "G", "Am", "Bdim7", "5" ]
+            , bars = [ "", "", "", "", "", "", "" ]
+            }
+
+        "G" ->
+            { i = "263152040030323413"
+            , ii = "06x050242332121010"
+            , iii = "06x152040030323212"
+            , iv = "06x253142030323413"
+            , v = "06x05x040132323212"
+            , vi = "060152242030020010"
+            , vii = "b62253344132424112"
+            , names = [ "G", "Am", "Bm", "C9", "D", "Em", "F#dim7", "0" ]
+            , bars = [ "", "", "", "", "", "", "", "" ]
+            }
+
+        "D" ->
+            { i = "06x05x040132323212"
+            , ii = "060152242030020010"
+            , iii = "162050040232322010"
+            , iv = "263152040030323413"
+            , v = "06x050142232322010"
+            , vi = "06x152040030323212"
+            , vii = "06x15224343432301x"
+            , names = [ "D", "Em", "F#m", "G", "A", "Bm", "C#dim7", "7" ]
+            , bars = [ "", "", "", "", "", "", "4" ]
+            }
+
+        "A" ->
+            { i = "06x050142232322010"
+            , ii = "06x152040030323212"
+            , iii = "06x05x344434223112"
+            , iv = "06x05x040132323212"
+            , v = "060252342131020010"
+            , vi = "162050040232322010"
+            , vii = "b62253344132424112"
+            , names = [ "A", "Bm", "C#m", "D", "E", "F#m", "G#dim7", "2" ]
+            , bars = [ "", "", "", "", "", "", "4" ]
+            }
+
+        "E" ->
+            { i = "060252342131020010"
+            , ii = "162050040232322010"
+            , iii = "b62354444233122112"
+            , iv = "06x050142232322010"
+            , v = "060252141332020412"
+            , vi = "06x05x344434223112"
+            , vii = "06x05x141332221412"
+            , names = [ "E", "F#m", "G#m", "A", "B7", "C#m", "D#dim7", "9" ]
+            , bars = [ "", "", "", "", "", "", "" ]
+            }
+
+        "B" ->
+            { i = "06xb52244334424112"
+            , ii = ""
+            , iii = ""
+            , iv = "060252342131020010"
+            , v = "b62354444233122112"
+            , vi = "b62354444132122112"
+            , vii = ""
+            , names = [ "B", "C#m", "D#m", "E", "F#", "G#m", "A#dim7", "4" ]
+            , bars = [ "", "", "", "", "", "4", "" ]
+            }
+
+        "F#" ->
+            { i = "b62354444233122112"
+            , ii = ""
+            , iii = ""
+            , iv = "06xb52244334424112"
+            , v = "06xb52244334424112"
+            , vi = "06xb52344434223112"
+            , vii = ""
+            , names = [ "F#", "G#m", "A#m", "B", "C#", "D#m", "E#dim7", "11" ]
+            , bars = [ "", "", "", "", "4", "6", "" ]
+            }
+
+        "Db" ->
+            { i = "06xb52244334424112"
+            , ii = ""
+            , iii = ""
+            , iv = "b62354444233122112"
+            , v = "b62354444233122112"
+            , vi = "06xb52344434223112"
+            , vii = ""
+            , names = [ "Db", "Ebm", "Fm", "Gb", "Ab", "Bbm", "Cdim7", "6" ]
+            , bars = [ "4", "", "", "", "4", "", "" ]
+            }
+
+        "Ab" ->
+            { i = "b62354444233122112"
+            , ii = ""
+            , iii = ""
+            , iv = "06xb52244334424112"
+            , v = "06xb52244334424112"
+            , vi = "b61353443131121111"
+            , vii = ""
+            , names = [ "Ab", "Bbm", "Cm", "Db", "Eb", "Fm", "Gdim7", "1" ]
+            , bars = [ "4", "", "", "4", "6", "", "" ]
+            }
+
+        "Eb" ->
+            { i = "06xb52244334424112"
+            , ii = ""
+            , iii = ""
+            , iv = "b62354444233122112"
+            , v = "b62354444233122112"
+            , vi = "06xb52344434223112"
+            , vii = ""
+            , names = [ "Eb", "Fm", "Gm", "Ab", "Bb", "Cm", "Ddim7", "4" ]
+            , bars = [ "6", "", "", "4", "6", "3", "" ]
+            }
+
+        "Bb" ->
+            { i = "06xb51243333423111"
+            , ii = ""
+            , iii = ""
+            , iv = "06xb52244334424112"
+            , v = "b61353443232121111"
+            , vi = "b62354444132122112"
+            , vii = ""
+            , names = [ "Bb", "Cm", "Dm", "Eb", "F", "Gm", "Adim7", "3" ]
+            , bars = [ "", "", "", "6", "", "3", "" ]
+            }
+
+        "F" ->
+            { i = "06x05x343232121010"
+            , ii = ""
+            , iii = ""
+            , iv = "06xb51243333423111"
+            , v = "06x353242030121010"
+            , vi = "06x05x040232423111"
+            , vii = ""
+            , names = [ "F", "Gm", "Am", "Bb", "C", "Dm", "Edim7", "10" ]
+            , bars = [ "", "", "", "", "", "", "" ]
+            }
+
+        -- --12mor Keys.
+        "a" ->
+            { i = "06x050242332121010"
+            , ii = ""
+            , iii = ""
+            , iv = "06x05x040232423111"
+            , v = "060152242030020010"
+            , vi = "06x05x343232121010"
+            , vii = ""
+            , names = [ "Am", "Bdim7", "C", "Dm", "Em", "F", "G", "5" ]
+            , bars = [ "", "", "", "", "", "", "" ]
+            }
+
+        "e" ->
+            { i = "060152242030020010"
+            , ii = ""
+            , iii = ""
+            , iv = "06x050242332121010"
+            , v = "06x152040030323212"
+            , vi = "06x353242030121010"
+            , vii = ""
+            , names = [ "Em", "F#dim7", "G", "Am", "Bm", "C", "D", "0" ]
+            , bars = [ "", "", "", "", "", "", "" ]
+            }
+
+        "b" ->
+            { i = "06x05x344434223112"
+            , ii = ""
+            , iii = ""
+            , iv = "060152242030020010"
+            , v = "162050040232322010"
+            , vi = "263152040030323413"
+            , vii = ""
+            , names = [ "Bm", "C#dim7", "D", "Em", "F#m", "G", "A", "7" ]
+            , bars = [ "", "", "", "", "", "", "" ]
+            }
+
+        "f#" ->
+            { i = "b62354444132122112"
+            , ii = ""
+            , iii = ""
+            , iv = "06xb52344434223112"
+            , v = "06xb52344434223112"
+            , vi = "06x05x040132323212"
+            , vii = ""
+            , names = [ "F#m", "G#dim7", "A", "Bm", "C#m", "D", "E", "2" ]
+            , bars = [ "", "", "", "", "4", "", "" ]
+            }
+
+        "c#" ->
+            { i = "06xb52344434223112"
+            , ii = ""
+            , iii = ""
+            , iv = "b62354444132122112"
+            , v = "b62354444132122112"
+            , vi = "06x050142232322010"
+            , vii = ""
+            , names = [ "C#m", "D#dim7", "E", "F#m", "G#m", "A", "B", "9" ]
+            , bars = [ "4", "", "", "", "4", "", "" ]
+            }
+
+        "g#" ->
+            { i = "b62354444132122112"
+            , ii = ""
+            , iii = ""
+            , iv = "06xb52344434223112"
+            , v = "06xb52344434223112"
+            , vi = "060152242131020010"
+            , vii = ""
+            , names = [ "G#m", "A#dim7", "B#", "C#m", "D#m", "E", "F#", "4" ]
+            , bars = [ "4", "", "", "4", "6", "", "" ]
+            }
+
+        "d#" ->
+            { i = "06xb52344434223112"
+            , ii = ""
+            , iii = ""
+            , iv = "b62354444132122112"
+            , v = "b62354444132122112"
+            , vi = "06xb52244334424112"
+            , vii = ""
+            , names = [ "D#m", "E#dim7", "F#", "G#m", "A#m", "B", "C#", "11" ]
+            , bars = [ "6", "", "", "4", "6", "", "" ]
+            }
+
+        "bb" ->
+            { i = "b62354444132122112"
+            , ii = ""
+            , iii = ""
+            , iv = "06xb52344434223112"
+            , v = "06xb52344434223112"
+            , vi = "b62354444233122112"
+            , vii = ""
+            , names = [ "Bbm", "Cdim7", "D", "Ebm", "Fm", "Gb", "Ab", "6" ]
+            , bars = [ "6", "", "", "6", "8", "", "" ]
+            }
+
+        "f" ->
+            { i = "b61353443131111111"
+            , ii = ""
+            , iii = ""
+            , iv = "06xb51343433222111"
+            , v = "06xb52344434223112"
+            , vi = "06xb52244334424112"
+            , vii = ""
+            , names = [ "Fm", "Gdim7", "Ab", "Bbm", "Cm", "Db", "Eb", "1" ]
+            , bars = [ "", "", "", "", "3", "4", "" ]
+            }
+
+        "c" ->
+            { i = "06xb52344434223112"
+            , ii = ""
+            , iii = ""
+            , iv = "b61353443131121111"
+            , v = "b62354444132122112"
+            , vi = "b62354444233122112"
+            , vii = ""
+            , names = [ "Cm", "Ddim7", "Eb", "Fm", "Gm", "Ab", "Bb", "8" ]
+            , bars = [ "3", "", "", "", "3", "6", "" ]
+            }
+
+        "g" ->
+            { i = "b62354444132122112"
+            , ii = ""
+            , iii = ""
+            , iv = "06xb52344434223112"
+            , v = "06x05x040232423111"
+            , vi = "06xb52244334424112"
+            , vii = ""
+            , names = [ "Gm", "Adim7", "Bb", "Cm", "Dm", "Eb", "Ab", "3" ]
+            , bars = [ "3", "", "", "3", "", "6", "" ]
+            }
+
+        "d" ->
+            { i = "06x05x040232423111"
+            , ii = ""
+            , iii = ""
+            , iv = "b62354444132122112"
+            , v = "06x050242332121010"
+            , vi = "06xb51243333423111"
+            , vii = ""
+            , names = [ "Dm", "Edim7", "F", "Gm", "Am", "Bb", "C", "10" ]
+            , bars = [ "", "", "", "3", "", "", "" ]
+            }
+
+        _ ->
+            { i = ""
+            , ii = ""
+            , iii = ""
+            , iv = ""
+            , v = ""
+            , vi = ""
+            , vii = ""
+            , names = [ "" ]
+            , bars = [ "" ]
+            }
+
+
+
+-- STYLES
+
+
+chordBarPosStyle : Attribute Msg
+chordBarPosStyle =
+    style
+        [ ( "position", "absolute" )
+        , ( "top", "-15px" )
+        , ( "right", "30%" )
+        , ( "color", "#3A86FF" )
+        , ( "transition", "all 0.3s ease" )
+        ]
+
+
+chartStyle : Attribute Msg
+chartStyle =
+    style
+        [ ( "position", "relative" )
+        , ( "width", "180px" )
+        , ( "height", "153px" )
+        , ( "border", "1px solid #333" )
+        , ( "borderBottom", "none" )
+        ]
+
+
+stringStyle : Attribute Msg
+stringStyle =
+    style
+        [ ( "width", "180px" )
+        , ( "height", "30px" )
+        , ( "borderBottom", "1px solid #333" )
+        ]
+
+
+nutStyle : Attribute Msg
+nutStyle =
+    style
+        [ ( "width", "10px" )
+        , ( "height", "153px" )
+        , ( "backgroundColor", "#333" )
+        , ( "borderBottom", "1px solid #333" )
+        ]
+
+
+chartContainerStyle : String -> Attribute Msg
+chartContainerStyle direction =
+    style
+        [ ( "position", "relative" )
+        , ( "display", "flex" )
+        , ( "margin", "25px auto" )
+        , ( "flexDirection", direction )
+        , ( "transition", "all 0.3s ease" )
+        ]
+
+
+fretStyle : Int -> Attribute Msg
+fretStyle fret =
+    style
+        [ ( "position", "absolute" )
+        , ( "top", "0" )
+        , ( "right", (Basics.toString (43 * fret) ++ "px") )
+        , ( "height", "150px" )
+        , ( "borderRight", "1px solid #333" )
+        ]
+
+
+chordNameStyle : Attribute Msg
+chordNameStyle =
+    style
+        [ ( "cursor", "pointer" )
+        , ( "color", "#E8F1F2" )
+        , ( "fontSize", "50px" )
+        , ( "marginLeft", "150px" )
+        , ( "margin", "0 auto" )
+        ]
+
+
+chordFunctionStyle : Attribute Msg
+chordFunctionStyle =
+    style
+        [ ( "cursor", "pointer" )
+        , ( "color", "#3A86FF" )
+        , ( "fontSize", "30px" )
+        , ( "marginLeft", "150px" )
+        , ( "margin", "0 auto" )
+        ]
+
+
+fingerChartStyle : Attribute Msg
+fingerChartStyle =
+    style
+        [ ( "display", "flex" )
+        , ( "flexDirection", "column" )
+        , ( "position", "absolute" )
+        , ( "top", "20px" )
+        , ( "left", "20px" )
+        ]
+
+
+{-| Determines if fret marker dot is a bar, a dot, or a 'X', or 'O'.
+-}
+fretMarkerStyle : Dot -> Attribute Msg
+fretMarkerStyle dot =
+    if dot.tint == "bar" then
+        let
+            stringHeight =
+                Result.withDefault -15 (String.toInt dot.stringNo)
+
+            barSize =
+                toString (160 - stringHeight) ++ "px"
+        in
+            style
+                [ ( "transition", "all 0.5s ease" )
+                , ( "position", "absolute" )
+                , ( "top", dot.stringNo )
+                , ( "right", dot.fretNo )
+                , ( "width", "25px" )
+                , ( "height", barSize )
+                , ( "borderRadius", "13px" )
+                , ( "backgroundColor", "#333" )
+                , ( "color", "rgba(0,0,0,0)" )
+                ]
+    else if dot.fretNo == "-40" then
+        let
+            textColor =
+                "#777"
+        in
+            style
+                [ ( "transition", "all 0.5s ease" )
+                , ( "position", "absolute" )
+                , ( "top", dot.stringNo )
+                , ( "right", dot.fretNo )
+                , ( "width", "25px" )
+                , ( "height", "25px" )
+                , ( "borderRadius", "13px" )
+                , ( "backgroundColor", "rgba(0,0,0,0)" )
+                , ( "color", textColor )
+                , ( "textTransform", "uppercase" )
+                ]
+    else
+        style
+            [ ( "transition", "all 0.5s ease" )
+            , ( "position", "absolute" )
+            , ( "top", dot.stringNo )
+            , ( "right", dot.fretNo )
+            , ( "width", "25px" )
+            , ( "height", "25px" )
+            , ( "borderRadius", "13px" )
+            , ( "backgroundColor", dot.tint )
+            , ( "color", "rgba(0,0,0,0)" )
+            ]
