@@ -15446,7 +15446,7 @@ var _user$project$Chords$keys = function (key) {
 											_0: 'Ddim7',
 											_1: {
 												ctor: '::',
-												_0: '4',
+												_0: '8',
 												_1: {ctor: '[]'}
 											}
 										}
@@ -17386,7 +17386,7 @@ var _user$project$Chords$chordChartPage = function (model) {
 		'0',
 		A2(
 			_elm_community$list_extra$List_Extra$getAt,
-			4,
+			7,
 			_user$project$Chords$keys(model.musKey).names));
 	var soloFretMaj = _elm_lang$core$Basics$toString(
 		A2(

@@ -13,7 +13,7 @@ chordChartPage : Model -> Html Msg
 chordChartPage model =
     let
         soloFretMin =
-            Maybe.withDefault "0" (getAt 4 <| (keys model.musKey).names)
+            Maybe.withDefault "0" (getAt 7 <| (keys model.musKey).names)
 
         soloFretMaj =
             toString (((Result.withDefault 0 <| String.toInt soloFretMin) + 3) % 12)
@@ -336,7 +336,7 @@ keys key =
             , v = "b62354444233122112"
             , vi = "06xb52344434223112"
             , vii = ""
-            , names = [ "Eb", "Fm", "Gm", "Ab", "Bb", "Cm", "Ddim7", "4" ]
+            , names = [ "Eb", "Fm", "Gm", "Ab", "Bb", "Cm", "Ddim7", "8" ]
             , bars = [ "6", "", "", "4", "6", "3", "" ]
             }
 
