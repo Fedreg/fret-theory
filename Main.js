@@ -11583,13 +11583,53 @@ var _user$project$Audio$notes = function (key) {
 				},
 				ii: {
 					ctor: '::',
-					_0: '',
-					_1: {ctor: '[]'}
+					_0: 'd3q',
+					_1: {
+						ctor: '::',
+						_0: 'a3q',
+						_1: {
+							ctor: '::',
+							_0: 'd4q',
+							_1: {
+								ctor: '::',
+								_0: 'f4q',
+								_1: {
+									ctor: '::',
+									_0: 'c0s',
+									_1: {
+										ctor: '::',
+										_0: 'c0s',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
 				},
 				iii: {
 					ctor: '::',
-					_0: '',
-					_1: {ctor: '[]'}
+					_0: 'e2q',
+					_1: {
+						ctor: '::',
+						_0: 'b2q',
+						_1: {
+							ctor: '::',
+							_0: 'e3q',
+							_1: {
+								ctor: '::',
+								_0: 'g3q',
+								_1: {
+									ctor: '::',
+									_0: 'b3q',
+									_1: {
+										ctor: '::',
+										_0: 'e4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
 				},
 				iv: {
 					ctor: '::',
@@ -11668,8 +11708,28 @@ var _user$project$Audio$notes = function (key) {
 				},
 				vii: {
 					ctor: '::',
-					_0: '',
-					_1: {ctor: '[]'}
+					_0: 'b2q',
+					_1: {
+						ctor: '::',
+						_0: 'f3q',
+						_1: {
+							ctor: '::',
+							_0: 'g#3q',
+							_1: {
+								ctor: '::',
+								_0: 'd4q',
+								_1: {
+									ctor: '::',
+									_0: 'c0s',
+									_1: {
+										ctor: '::',
+										_0: 'c0s',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
 				}
 			};
 		case 'G':
@@ -11701,13 +11761,53 @@ var _user$project$Audio$notes = function (key) {
 				},
 				ii: {
 					ctor: '::',
-					_0: '',
-					_1: {ctor: '[]'}
+					_0: 'a2q',
+					_1: {
+						ctor: '::',
+						_0: 'e3q',
+						_1: {
+							ctor: '::',
+							_0: 'a3q',
+							_1: {
+								ctor: '::',
+								_0: 'c4q',
+								_1: {
+									ctor: '::',
+									_0: 'e4q',
+									_1: {
+										ctor: '::',
+										_0: 'c0s',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
 				},
 				iii: {
 					ctor: '::',
-					_0: '',
-					_1: {ctor: '[]'}
+					_0: 'b2q',
+					_1: {
+						ctor: '::',
+						_0: 'd3q',
+						_1: {
+							ctor: '::',
+							_0: 'g3q',
+							_1: {
+								ctor: '::',
+								_0: 'd4q',
+								_1: {
+									ctor: '::',
+									_0: 'f#4q',
+									_1: {
+										ctor: '::',
+										_0: 'c0s',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
 				},
 				iv: {
 					ctor: '::',
@@ -11786,8 +11886,28 @@ var _user$project$Audio$notes = function (key) {
 				},
 				vii: {
 					ctor: '::',
-					_0: '',
-					_1: {ctor: '[]'}
+					_0: 'f#2',
+					_1: {
+						ctor: '::',
+						_0: 'c3q',
+						_1: {
+							ctor: '::',
+							_0: 'f#3q',
+							_1: {
+								ctor: '::',
+								_0: 'a3q',
+								_1: {
+									ctor: '::',
+									_0: 'd#4q',
+									_1: {
+										ctor: '::',
+										_0: 'f#4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
 				}
 			};
 		case 'D':
@@ -11819,13 +11939,53 @@ var _user$project$Audio$notes = function (key) {
 				},
 				ii: {
 					ctor: '::',
-					_0: '',
-					_1: {ctor: '[]'}
+					_0: 'e2q',
+					_1: {
+						ctor: '::',
+						_0: 'b2q',
+						_1: {
+							ctor: '::',
+							_0: 'e3q',
+							_1: {
+								ctor: '::',
+								_0: 'g3q',
+								_1: {
+									ctor: '::',
+									_0: 'b3q',
+									_1: {
+										ctor: '::',
+										_0: 'e4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
 				},
 				iii: {
 					ctor: '::',
-					_0: '',
-					_1: {ctor: '[]'}
+					_0: 'f#2q',
+					_1: {
+						ctor: '::',
+						_0: 'a2q',
+						_1: {
+							ctor: '::',
+							_0: 'd3q',
+							_1: {
+								ctor: '::',
+								_0: 'a3q',
+								_1: {
+									ctor: '::',
+									_0: 'c#4q',
+									_1: {
+										ctor: '::',
+										_0: 'e4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
 				},
 				iv: {
 					ctor: '::',
@@ -11904,8 +12064,28 @@ var _user$project$Audio$notes = function (key) {
 				},
 				vii: {
 					ctor: '::',
-					_0: '',
-					_1: {ctor: '[]'}
+					_0: 'c#3q',
+					_1: {
+						ctor: '::',
+						_0: 'f#3q',
+						_1: {
+							ctor: '::',
+							_0: 'b3q',
+							_1: {
+								ctor: '::',
+								_0: 'e4q',
+								_1: {
+									ctor: '::',
+									_0: 'e4q',
+									_1: {
+										ctor: '::',
+										_0: 'c0s',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
 				}
 			};
 		case 'A':
@@ -11937,13 +12117,53 @@ var _user$project$Audio$notes = function (key) {
 				},
 				ii: {
 					ctor: '::',
-					_0: '',
-					_1: {ctor: '[]'}
+					_0: 'b2q',
+					_1: {
+						ctor: '::',
+						_0: 'd3q',
+						_1: {
+							ctor: '::',
+							_0: 'g3q',
+							_1: {
+								ctor: '::',
+								_0: 'd4q',
+								_1: {
+									ctor: '::',
+									_0: 'f#4q',
+									_1: {
+										ctor: '::',
+										_0: 'c0s',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
 				},
 				iii: {
 					ctor: '::',
-					_0: '',
-					_1: {ctor: '[]'}
+					_0: 'c#3q',
+					_1: {
+						ctor: '::',
+						_0: 'g#3q',
+						_1: {
+							ctor: '::',
+							_0: 'c#4q',
+							_1: {
+								ctor: '::',
+								_0: 'e4q',
+								_1: {
+									ctor: '::',
+									_0: 'g#4q',
+									_1: {
+										ctor: '::',
+										_0: 'c0s',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
 				},
 				iv: {
 					ctor: '::',
@@ -12022,8 +12242,28 @@ var _user$project$Audio$notes = function (key) {
 				},
 				vii: {
 					ctor: '::',
-					_0: '',
-					_1: {ctor: '[]'}
+					_0: 'g#2q',
+					_1: {
+						ctor: '::',
+						_0: 'd3q',
+						_1: {
+							ctor: '::',
+							_0: 'g#3q',
+							_1: {
+								ctor: '::',
+								_0: 'b3q',
+								_1: {
+									ctor: '::',
+									_0: 'f4q',
+									_1: {
+										ctor: '::',
+										_0: 'g#4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
 				}
 			};
 		case 'E':
@@ -12055,13 +12295,53 @@ var _user$project$Audio$notes = function (key) {
 				},
 				ii: {
 					ctor: '::',
-					_0: '',
-					_1: {ctor: '[]'}
+					_0: 'f#2q',
+					_1: {
+						ctor: '::',
+						_0: 'a2q',
+						_1: {
+							ctor: '::',
+							_0: 'd3q',
+							_1: {
+								ctor: '::',
+								_0: 'a3q',
+								_1: {
+									ctor: '::',
+									_0: 'c#4q',
+									_1: {
+										ctor: '::',
+										_0: 'e4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
 				},
 				iii: {
 					ctor: '::',
-					_0: '',
-					_1: {ctor: '[]'}
+					_0: 'g#2q',
+					_1: {
+						ctor: '::',
+						_0: 'd#3q',
+						_1: {
+							ctor: '::',
+							_0: 'g#3q',
+							_1: {
+								ctor: '::',
+								_0: 'b3q',
+								_1: {
+									ctor: '::',
+									_0: 'd#4q',
+									_1: {
+										ctor: '::',
+										_0: 'g#4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
 				},
 				iv: {
 					ctor: '::',
@@ -12115,19 +12395,19 @@ var _user$project$Audio$notes = function (key) {
 				},
 				vi: {
 					ctor: '::',
-					_0: 'g#3q',
+					_0: 'c#3q',
 					_1: {
 						ctor: '::',
-						_0: 'c#4q',
+						_0: 'g#3q',
 						_1: {
 							ctor: '::',
-							_0: 'e4q',
+							_0: 'c#4q',
 							_1: {
 								ctor: '::',
-								_0: 'g#4q',
+								_0: 'e4q',
 								_1: {
 									ctor: '::',
-									_0: 'c0s',
+									_0: 'g#4q',
 									_1: {
 										ctor: '::',
 										_0: 'c0s',
@@ -12140,8 +12420,28 @@ var _user$project$Audio$notes = function (key) {
 				},
 				vii: {
 					ctor: '::',
-					_0: '',
-					_1: {ctor: '[]'}
+					_0: 'd#3q',
+					_1: {
+						ctor: '::',
+						_0: 'a3q',
+						_1: {
+							ctor: '::',
+							_0: 'c4q',
+							_1: {
+								ctor: '::',
+								_0: 'f#4q',
+								_1: {
+									ctor: '::',
+									_0: 'c0s',
+									_1: {
+										ctor: '::',
+										_0: 'c0s',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
 				}
 			};
 		case 'B':
@@ -12173,13 +12473,53 @@ var _user$project$Audio$notes = function (key) {
 				},
 				ii: {
 					ctor: '::',
-					_0: '',
-					_1: {ctor: '[]'}
+					_0: 'c#3q',
+					_1: {
+						ctor: '::',
+						_0: 'g#3q',
+						_1: {
+							ctor: '::',
+							_0: 'c#4q',
+							_1: {
+								ctor: '::',
+								_0: 'e4q',
+								_1: {
+									ctor: '::',
+									_0: 'g#4q',
+									_1: {
+										ctor: '::',
+										_0: 'c0s',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
 				},
 				iii: {
 					ctor: '::',
-					_0: '',
-					_1: {ctor: '[]'}
+					_0: 'd#3q',
+					_1: {
+						ctor: '::',
+						_0: 'a#3q',
+						_1: {
+							ctor: '::',
+							_0: 'd#4q',
+							_1: {
+								ctor: '::',
+								_0: 'f#4q',
+								_1: {
+									ctor: '::',
+									_0: 'a#4q',
+									_1: {
+										ctor: '::',
+										_0: 'c0s',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
 				},
 				iv: {
 					ctor: '::',
@@ -12258,8 +12598,28 @@ var _user$project$Audio$notes = function (key) {
 				},
 				vii: {
 					ctor: '::',
-					_0: '',
-					_1: {ctor: '[]'}
+					_0: 'a#2q',
+					_1: {
+						ctor: '::',
+						_0: 'e3q',
+						_1: {
+							ctor: '::',
+							_0: 'g3q',
+							_1: {
+								ctor: '::',
+								_0: 'c#4q',
+								_1: {
+									ctor: '::',
+									_0: 'e4q',
+									_1: {
+										ctor: '::',
+										_0: 'c0s',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
 				}
 			};
 		case 'F#':
@@ -12291,13 +12651,53 @@ var _user$project$Audio$notes = function (key) {
 				},
 				ii: {
 					ctor: '::',
-					_0: '',
-					_1: {ctor: '[]'}
+					_0: 'g#2q',
+					_1: {
+						ctor: '::',
+						_0: 'd#3q',
+						_1: {
+							ctor: '::',
+							_0: 'g#3q',
+							_1: {
+								ctor: '::',
+								_0: 'b3q',
+								_1: {
+									ctor: '::',
+									_0: 'd#4q',
+									_1: {
+										ctor: '::',
+										_0: 'g#4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
 				},
 				iii: {
 					ctor: '::',
-					_0: '',
-					_1: {ctor: '[]'}
+					_0: 'a#2q',
+					_1: {
+						ctor: '::',
+						_0: 'f3q',
+						_1: {
+							ctor: '::',
+							_0: 'a#3q',
+							_1: {
+								ctor: '::',
+								_0: 'c#4q',
+								_1: {
+									ctor: '::',
+									_0: 'f4q',
+									_1: {
+										ctor: '::',
+										_0: 'c0s',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
 				},
 				iv: {
 					ctor: '::',
@@ -12376,8 +12776,28 @@ var _user$project$Audio$notes = function (key) {
 				},
 				vii: {
 					ctor: '::',
-					_0: '',
-					_1: {ctor: '[]'}
+					_0: 'f3q',
+					_1: {
+						ctor: '::',
+						_0: 'b3q',
+						_1: {
+							ctor: '::',
+							_0: 'd4q',
+							_1: {
+								ctor: '::',
+								_0: 'g#4q',
+								_1: {
+									ctor: '::',
+									_0: 'c0s',
+									_1: {
+										ctor: '::',
+										_0: 'c0s',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
 				}
 			};
 		case 'Db':
@@ -12409,13 +12829,53 @@ var _user$project$Audio$notes = function (key) {
 				},
 				ii: {
 					ctor: '::',
-					_0: '',
-					_1: {ctor: '[]'}
+					_0: 'd#3q',
+					_1: {
+						ctor: '::',
+						_0: 'a#3q',
+						_1: {
+							ctor: '::',
+							_0: 'd#4q',
+							_1: {
+								ctor: '::',
+								_0: 'f#4q',
+								_1: {
+									ctor: '::',
+									_0: 'a#4q',
+									_1: {
+										ctor: '::',
+										_0: 'c0s',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
 				},
 				iii: {
 					ctor: '::',
-					_0: '',
-					_1: {ctor: '[]'}
+					_0: 'f2q',
+					_1: {
+						ctor: '::',
+						_0: 'c3q',
+						_1: {
+							ctor: '::',
+							_0: 'f3q',
+							_1: {
+								ctor: '::',
+								_0: 'g#3q',
+								_1: {
+									ctor: '::',
+									_0: 'c4q',
+									_1: {
+										ctor: '::',
+										_0: 'f4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
 				},
 				iv: {
 					ctor: '::',
@@ -12494,8 +12954,28 @@ var _user$project$Audio$notes = function (key) {
 				},
 				vii: {
 					ctor: '::',
-					_0: '',
-					_1: {ctor: '[]'}
+					_0: 'c3q',
+					_1: {
+						ctor: '::',
+						_0: 'f#3q',
+						_1: {
+							ctor: '::',
+							_0: 'a3q',
+							_1: {
+								ctor: '::',
+								_0: 'd#4q',
+								_1: {
+									ctor: '::',
+									_0: 'c0s',
+									_1: {
+										ctor: '::',
+										_0: 'c0s',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
 				}
 			};
 		case 'Ab':
@@ -12527,13 +13007,53 @@ var _user$project$Audio$notes = function (key) {
 				},
 				ii: {
 					ctor: '::',
-					_0: '',
-					_1: {ctor: '[]'}
+					_0: 'a#2q',
+					_1: {
+						ctor: '::',
+						_0: 'f3q',
+						_1: {
+							ctor: '::',
+							_0: 'a#3q',
+							_1: {
+								ctor: '::',
+								_0: 'c#4q',
+								_1: {
+									ctor: '::',
+									_0: 'f4q',
+									_1: {
+										ctor: '::',
+										_0: 'c0s',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
 				},
 				iii: {
 					ctor: '::',
-					_0: '',
-					_1: {ctor: '[]'}
+					_0: 'c3q',
+					_1: {
+						ctor: '::',
+						_0: 'g3q',
+						_1: {
+							ctor: '::',
+							_0: 'c4q',
+							_1: {
+								ctor: '::',
+								_0: 'd#4q',
+								_1: {
+									ctor: '::',
+									_0: 'g4q',
+									_1: {
+										ctor: '::',
+										_0: 'c0s',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
 				},
 				iv: {
 					ctor: '::',
@@ -12612,8 +13132,28 @@ var _user$project$Audio$notes = function (key) {
 				},
 				vii: {
 					ctor: '::',
-					_0: '',
-					_1: {ctor: '[]'}
+					_0: 'g3q',
+					_1: {
+						ctor: '::',
+						_0: 'c#4q',
+						_1: {
+							ctor: '::',
+							_0: 'e4q',
+							_1: {
+								ctor: '::',
+								_0: 'a#5q',
+								_1: {
+									ctor: '::',
+									_0: 'c0s',
+									_1: {
+										ctor: '::',
+										_0: 'c0s',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
 				}
 			};
 		case 'Eb':
@@ -12645,13 +13185,53 @@ var _user$project$Audio$notes = function (key) {
 				},
 				ii: {
 					ctor: '::',
-					_0: '',
-					_1: {ctor: '[]'}
+					_0: 'f2q',
+					_1: {
+						ctor: '::',
+						_0: 'c3q',
+						_1: {
+							ctor: '::',
+							_0: 'f3q',
+							_1: {
+								ctor: '::',
+								_0: 'g#3q',
+								_1: {
+									ctor: '::',
+									_0: 'c4q',
+									_1: {
+										ctor: '::',
+										_0: 'f4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
 				},
 				iii: {
 					ctor: '::',
-					_0: '',
-					_1: {ctor: '[]'}
+					_0: 'g2q',
+					_1: {
+						ctor: '::',
+						_0: 'd2q',
+						_1: {
+							ctor: '::',
+							_0: 'g3q',
+							_1: {
+								ctor: '::',
+								_0: 'a#3q',
+								_1: {
+									ctor: '::',
+									_0: 'd4q',
+									_1: {
+										ctor: '::',
+										_0: 'g4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
 				},
 				iv: {
 					ctor: '::',
@@ -12730,8 +13310,28 @@ var _user$project$Audio$notes = function (key) {
 				},
 				vii: {
 					ctor: '::',
-					_0: '',
-					_1: {ctor: '[]'}
+					_0: 'd3q',
+					_1: {
+						ctor: '::',
+						_0: 'g#3q',
+						_1: {
+							ctor: '::',
+							_0: 'b3q',
+							_1: {
+								ctor: '::',
+								_0: 'f4q',
+								_1: {
+									ctor: '::',
+									_0: 'c0s',
+									_1: {
+										ctor: '::',
+										_0: 'c0s',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
 				}
 			};
 		case 'Bb':
@@ -12763,13 +13363,53 @@ var _user$project$Audio$notes = function (key) {
 				},
 				ii: {
 					ctor: '::',
-					_0: '',
-					_1: {ctor: '[]'}
+					_0: 'c3q',
+					_1: {
+						ctor: '::',
+						_0: 'g3q',
+						_1: {
+							ctor: '::',
+							_0: 'c4q',
+							_1: {
+								ctor: '::',
+								_0: 'd#4q',
+								_1: {
+									ctor: '::',
+									_0: 'g4q',
+									_1: {
+										ctor: '::',
+										_0: 'c0s',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
 				},
 				iii: {
 					ctor: '::',
-					_0: '',
-					_1: {ctor: '[]'}
+					_0: 'd3q',
+					_1: {
+						ctor: '::',
+						_0: 'a3q',
+						_1: {
+							ctor: '::',
+							_0: 'd4q',
+							_1: {
+								ctor: '::',
+								_0: 'f4q',
+								_1: {
+									ctor: '::',
+									_0: 'c0s',
+									_1: {
+										ctor: '::',
+										_0: 'c0s',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
 				},
 				iv: {
 					ctor: '::',
@@ -12848,8 +13488,28 @@ var _user$project$Audio$notes = function (key) {
 				},
 				vii: {
 					ctor: '::',
-					_0: '',
-					_1: {ctor: '[]'}
+					_0: 'd#3q',
+					_1: {
+						ctor: '::',
+						_0: 'a3q',
+						_1: {
+							ctor: '::',
+							_0: 'c4q',
+							_1: {
+								ctor: '::',
+								_0: 'f#4q',
+								_1: {
+									ctor: '::',
+									_0: 'c0s',
+									_1: {
+										ctor: '::',
+										_0: 'c0s',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
 				}
 			};
 		case 'F':
@@ -12881,13 +13541,53 @@ var _user$project$Audio$notes = function (key) {
 				},
 				ii: {
 					ctor: '::',
-					_0: '',
-					_1: {ctor: '[]'}
+					_0: 'g2q',
+					_1: {
+						ctor: '::',
+						_0: 'd2q',
+						_1: {
+							ctor: '::',
+							_0: 'g3q',
+							_1: {
+								ctor: '::',
+								_0: 'a#3q',
+								_1: {
+									ctor: '::',
+									_0: 'd4q',
+									_1: {
+										ctor: '::',
+										_0: 'g4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
 				},
 				iii: {
 					ctor: '::',
-					_0: '',
-					_1: {ctor: '[]'}
+					_0: 'a2q',
+					_1: {
+						ctor: '::',
+						_0: 'e3q',
+						_1: {
+							ctor: '::',
+							_0: 'a3q',
+							_1: {
+								ctor: '::',
+								_0: 'c4q',
+								_1: {
+									ctor: '::',
+									_0: 'e4q',
+									_1: {
+										ctor: '::',
+										_0: 'c0s',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
 				},
 				iv: {
 					ctor: '::',
@@ -12999,13 +13699,53 @@ var _user$project$Audio$notes = function (key) {
 				},
 				ii: {
 					ctor: '::',
-					_0: '',
-					_1: {ctor: '[]'}
+					_0: 'b2q',
+					_1: {
+						ctor: '::',
+						_0: 'f3q',
+						_1: {
+							ctor: '::',
+							_0: 'g#3q',
+							_1: {
+								ctor: '::',
+								_0: 'd4q',
+								_1: {
+									ctor: '::',
+									_0: 'c0s',
+									_1: {
+										ctor: '::',
+										_0: 'c0s',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
 				},
 				iii: {
 					ctor: '::',
-					_0: '',
-					_1: {ctor: '[]'}
+					_0: 'c3q',
+					_1: {
+						ctor: '::',
+						_0: 'e3q',
+						_1: {
+							ctor: '::',
+							_0: 'g3q',
+							_1: {
+								ctor: '::',
+								_0: 'c4q',
+								_1: {
+									ctor: '::',
+									_0: 'e4q',
+									_1: {
+										ctor: '::',
+										_0: 'c0s',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
 				},
 				iv: {
 					ctor: '::',
@@ -13084,8 +13824,28 @@ var _user$project$Audio$notes = function (key) {
 				},
 				vii: {
 					ctor: '::',
-					_0: '',
-					_1: {ctor: '[]'}
+					_0: 'g2q',
+					_1: {
+						ctor: '::',
+						_0: 'b2q',
+						_1: {
+							ctor: '::',
+							_0: 'd3q',
+							_1: {
+								ctor: '::',
+								_0: 'g3q',
+								_1: {
+									ctor: '::',
+									_0: 'd4q',
+									_1: {
+										ctor: '::',
+										_0: 'g4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
 				}
 			};
 		case 'e':
@@ -13117,13 +13877,53 @@ var _user$project$Audio$notes = function (key) {
 				},
 				ii: {
 					ctor: '::',
-					_0: '',
-					_1: {ctor: '[]'}
+					_0: 'f#2',
+					_1: {
+						ctor: '::',
+						_0: 'c3q',
+						_1: {
+							ctor: '::',
+							_0: 'f#3q',
+							_1: {
+								ctor: '::',
+								_0: 'a3q',
+								_1: {
+									ctor: '::',
+									_0: 'd#4q',
+									_1: {
+										ctor: '::',
+										_0: 'f#4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
 				},
 				iii: {
 					ctor: '::',
-					_0: '',
-					_1: {ctor: '[]'}
+					_0: 'g2q',
+					_1: {
+						ctor: '::',
+						_0: 'b2q',
+						_1: {
+							ctor: '::',
+							_0: 'd3q',
+							_1: {
+								ctor: '::',
+								_0: 'g3q',
+								_1: {
+									ctor: '::',
+									_0: 'd4q',
+									_1: {
+										ctor: '::',
+										_0: 'g4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
 				},
 				iv: {
 					ctor: '::',
@@ -13202,8 +14002,28 @@ var _user$project$Audio$notes = function (key) {
 				},
 				vii: {
 					ctor: '::',
-					_0: '',
-					_1: {ctor: '[]'}
+					_0: 'd3q',
+					_1: {
+						ctor: '::',
+						_0: 'a3q',
+						_1: {
+							ctor: '::',
+							_0: 'd4q',
+							_1: {
+								ctor: '::',
+								_0: 'f#4q',
+								_1: {
+									ctor: '::',
+									_0: 'c0s',
+									_1: {
+										ctor: '::',
+										_0: 'c0s',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
 				}
 			};
 		case 'b':
@@ -13235,13 +14055,53 @@ var _user$project$Audio$notes = function (key) {
 				},
 				ii: {
 					ctor: '::',
-					_0: '',
-					_1: {ctor: '[]'}
+					_0: 'c#3q',
+					_1: {
+						ctor: '::',
+						_0: 'f#3q',
+						_1: {
+							ctor: '::',
+							_0: 'b3q',
+							_1: {
+								ctor: '::',
+								_0: 'e4q',
+								_1: {
+									ctor: '::',
+									_0: 'e4q',
+									_1: {
+										ctor: '::',
+										_0: 'c0s',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
 				},
 				iii: {
 					ctor: '::',
-					_0: '',
-					_1: {ctor: '[]'}
+					_0: 'd3q',
+					_1: {
+						ctor: '::',
+						_0: 'a3q',
+						_1: {
+							ctor: '::',
+							_0: 'd4q',
+							_1: {
+								ctor: '::',
+								_0: 'f#4q',
+								_1: {
+									ctor: '::',
+									_0: 'c0s',
+									_1: {
+										ctor: '::',
+										_0: 'c0s',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
 				},
 				iv: {
 					ctor: '::',
@@ -13320,8 +14180,28 @@ var _user$project$Audio$notes = function (key) {
 				},
 				vii: {
 					ctor: '::',
-					_0: '',
-					_1: {ctor: '[]'}
+					_0: 'a2q',
+					_1: {
+						ctor: '::',
+						_0: 'e3q',
+						_1: {
+							ctor: '::',
+							_0: 'a3q',
+							_1: {
+								ctor: '::',
+								_0: 'c#4q',
+								_1: {
+									ctor: '::',
+									_0: 'e4q',
+									_1: {
+										ctor: '::',
+										_0: 'c0s',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
 				}
 			};
 		case 'f#':
@@ -13353,13 +14233,53 @@ var _user$project$Audio$notes = function (key) {
 				},
 				ii: {
 					ctor: '::',
-					_0: '',
-					_1: {ctor: '[]'}
+					_0: 'g#2q',
+					_1: {
+						ctor: '::',
+						_0: 'd3q',
+						_1: {
+							ctor: '::',
+							_0: 'g#3q',
+							_1: {
+								ctor: '::',
+								_0: 'b3q',
+								_1: {
+									ctor: '::',
+									_0: 'f4q',
+									_1: {
+										ctor: '::',
+										_0: 'g#4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
 				},
 				iii: {
 					ctor: '::',
-					_0: '',
-					_1: {ctor: '[]'}
+					_0: 'a2q',
+					_1: {
+						ctor: '::',
+						_0: 'e3q',
+						_1: {
+							ctor: '::',
+							_0: 'a3q',
+							_1: {
+								ctor: '::',
+								_0: 'c#4q',
+								_1: {
+									ctor: '::',
+									_0: 'e4q',
+									_1: {
+										ctor: '::',
+										_0: 'c0s',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
 				},
 				iv: {
 					ctor: '::',
@@ -13438,8 +14358,28 @@ var _user$project$Audio$notes = function (key) {
 				},
 				vii: {
 					ctor: '::',
-					_0: '',
-					_1: {ctor: '[]'}
+					_0: 'e2q',
+					_1: {
+						ctor: '::',
+						_0: 'b2q',
+						_1: {
+							ctor: '::',
+							_0: 'e3q',
+							_1: {
+								ctor: '::',
+								_0: 'g#3q',
+								_1: {
+									ctor: '::',
+									_0: 'b3q',
+									_1: {
+										ctor: '::',
+										_0: 'e4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
 				}
 			};
 		case 'c#':
@@ -13471,13 +14411,53 @@ var _user$project$Audio$notes = function (key) {
 				},
 				ii: {
 					ctor: '::',
-					_0: '',
-					_1: {ctor: '[]'}
+					_0: 'd#3q',
+					_1: {
+						ctor: '::',
+						_0: 'a3q',
+						_1: {
+							ctor: '::',
+							_0: 'c4q',
+							_1: {
+								ctor: '::',
+								_0: 'f#4q',
+								_1: {
+									ctor: '::',
+									_0: 'c0s',
+									_1: {
+										ctor: '::',
+										_0: 'c0s',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
 				},
 				iii: {
 					ctor: '::',
-					_0: '',
-					_1: {ctor: '[]'}
+					_0: 'e2q',
+					_1: {
+						ctor: '::',
+						_0: 'b2q',
+						_1: {
+							ctor: '::',
+							_0: 'e3q',
+							_1: {
+								ctor: '::',
+								_0: 'g#3q',
+								_1: {
+									ctor: '::',
+									_0: 'b3q',
+									_1: {
+										ctor: '::',
+										_0: 'e4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
 				},
 				iv: {
 					ctor: '::',
@@ -13556,8 +14536,28 @@ var _user$project$Audio$notes = function (key) {
 				},
 				vii: {
 					ctor: '::',
-					_0: '',
-					_1: {ctor: '[]'}
+					_0: 'b2q',
+					_1: {
+						ctor: '::',
+						_0: 'f#3q',
+						_1: {
+							ctor: '::',
+							_0: 'b3q',
+							_1: {
+								ctor: '::',
+								_0: 'd#4q',
+								_1: {
+									ctor: '::',
+									_0: 'f#4q',
+									_1: {
+										ctor: '::',
+										_0: 'c0s',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
 				}
 			};
 		case 'g#':
@@ -13589,13 +14589,53 @@ var _user$project$Audio$notes = function (key) {
 				},
 				ii: {
 					ctor: '::',
-					_0: '',
-					_1: {ctor: '[]'}
+					_0: 'a#2q',
+					_1: {
+						ctor: '::',
+						_0: 'e3q',
+						_1: {
+							ctor: '::',
+							_0: 'g3q',
+							_1: {
+								ctor: '::',
+								_0: 'c#4q',
+								_1: {
+									ctor: '::',
+									_0: 'e4q',
+									_1: {
+										ctor: '::',
+										_0: 'c0s',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
 				},
 				iii: {
 					ctor: '::',
-					_0: '',
-					_1: {ctor: '[]'}
+					_0: 'c2q',
+					_1: {
+						ctor: '::',
+						_0: 'g3q',
+						_1: {
+							ctor: '::',
+							_0: 'c3q',
+							_1: {
+								ctor: '::',
+								_0: 'e4q',
+								_1: {
+									ctor: '::',
+									_0: 'g4q',
+									_1: {
+										ctor: '::',
+										_0: 'c0s',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
 				},
 				iv: {
 					ctor: '::',
@@ -13674,8 +14714,28 @@ var _user$project$Audio$notes = function (key) {
 				},
 				vii: {
 					ctor: '::',
-					_0: '',
-					_1: {ctor: '[]'}
+					_0: 'f#2q',
+					_1: {
+						ctor: '::',
+						_0: 'c#3q',
+						_1: {
+							ctor: '::',
+							_0: 'f#3q',
+							_1: {
+								ctor: '::',
+								_0: 'a#3q',
+								_1: {
+									ctor: '::',
+									_0: 'c#4q',
+									_1: {
+										ctor: '::',
+										_0: 'f#4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
 				}
 			};
 		case 'd#':
@@ -13707,13 +14767,53 @@ var _user$project$Audio$notes = function (key) {
 				},
 				ii: {
 					ctor: '::',
-					_0: '',
-					_1: {ctor: '[]'}
+					_0: 'f3q',
+					_1: {
+						ctor: '::',
+						_0: 'b3q',
+						_1: {
+							ctor: '::',
+							_0: 'd4q',
+							_1: {
+								ctor: '::',
+								_0: 'g#4q',
+								_1: {
+									ctor: '::',
+									_0: 'c0s',
+									_1: {
+										ctor: '::',
+										_0: 'c0s',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
 				},
 				iii: {
 					ctor: '::',
-					_0: '',
-					_1: {ctor: '[]'}
+					_0: 'f#2q',
+					_1: {
+						ctor: '::',
+						_0: 'c#3q',
+						_1: {
+							ctor: '::',
+							_0: 'f#3q',
+							_1: {
+								ctor: '::',
+								_0: 'a#3q',
+								_1: {
+									ctor: '::',
+									_0: 'c#4q',
+									_1: {
+										ctor: '::',
+										_0: 'f#4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
 				},
 				iv: {
 					ctor: '::',
@@ -13792,8 +14892,28 @@ var _user$project$Audio$notes = function (key) {
 				},
 				vii: {
 					ctor: '::',
-					_0: '',
-					_1: {ctor: '[]'}
+					_0: 'c#3q',
+					_1: {
+						ctor: '::',
+						_0: 'g#3q',
+						_1: {
+							ctor: '::',
+							_0: 'c#4q',
+							_1: {
+								ctor: '::',
+								_0: 'f4q',
+								_1: {
+									ctor: '::',
+									_0: 'g#4q',
+									_1: {
+										ctor: '::',
+										_0: 'c0s',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
 				}
 			};
 		case 'bb':
@@ -13825,13 +14945,53 @@ var _user$project$Audio$notes = function (key) {
 				},
 				ii: {
 					ctor: '::',
-					_0: '',
-					_1: {ctor: '[]'}
+					_0: 'c3q',
+					_1: {
+						ctor: '::',
+						_0: 'f#3q',
+						_1: {
+							ctor: '::',
+							_0: 'a3q',
+							_1: {
+								ctor: '::',
+								_0: 'd#4q',
+								_1: {
+									ctor: '::',
+									_0: 'c0s',
+									_1: {
+										ctor: '::',
+										_0: 'c0s',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
 				},
 				iii: {
 					ctor: '::',
-					_0: '',
-					_1: {ctor: '[]'}
+					_0: 'c#3q',
+					_1: {
+						ctor: '::',
+						_0: 'g#3q',
+						_1: {
+							ctor: '::',
+							_0: 'c#4q',
+							_1: {
+								ctor: '::',
+								_0: 'f4q',
+								_1: {
+									ctor: '::',
+									_0: 'g#4q',
+									_1: {
+										ctor: '::',
+										_0: 'c0s',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
 				},
 				iv: {
 					ctor: '::',
@@ -13910,8 +15070,28 @@ var _user$project$Audio$notes = function (key) {
 				},
 				vii: {
 					ctor: '::',
-					_0: '',
-					_1: {ctor: '[]'}
+					_0: 'g#2q',
+					_1: {
+						ctor: '::',
+						_0: 'd#3q',
+						_1: {
+							ctor: '::',
+							_0: 'g#3q',
+							_1: {
+								ctor: '::',
+								_0: 'c4q',
+								_1: {
+									ctor: '::',
+									_0: 'd#4q',
+									_1: {
+										ctor: '::',
+										_0: 'g#4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
 				}
 			};
 		case 'f':
@@ -13943,13 +15123,53 @@ var _user$project$Audio$notes = function (key) {
 				},
 				ii: {
 					ctor: '::',
-					_0: '',
-					_1: {ctor: '[]'}
+					_0: 'g3q',
+					_1: {
+						ctor: '::',
+						_0: 'c#4q',
+						_1: {
+							ctor: '::',
+							_0: 'e4q',
+							_1: {
+								ctor: '::',
+								_0: 'a#5q',
+								_1: {
+									ctor: '::',
+									_0: 'c0s',
+									_1: {
+										ctor: '::',
+										_0: 'c0s',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
 				},
 				iii: {
 					ctor: '::',
-					_0: '',
-					_1: {ctor: '[]'}
+					_0: 'g#2q',
+					_1: {
+						ctor: '::',
+						_0: 'd#3q',
+						_1: {
+							ctor: '::',
+							_0: 'g#3q',
+							_1: {
+								ctor: '::',
+								_0: 'c4q',
+								_1: {
+									ctor: '::',
+									_0: 'd#4q',
+									_1: {
+										ctor: '::',
+										_0: 'g#4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
 				},
 				iv: {
 					ctor: '::',
@@ -14028,8 +15248,28 @@ var _user$project$Audio$notes = function (key) {
 				},
 				vii: {
 					ctor: '::',
-					_0: '',
-					_1: {ctor: '[]'}
+					_0: 'd#3q',
+					_1: {
+						ctor: '::',
+						_0: 'a#3q',
+						_1: {
+							ctor: '::',
+							_0: 'd#4q',
+							_1: {
+								ctor: '::',
+								_0: 'g4q',
+								_1: {
+									ctor: '::',
+									_0: 'a#4q',
+									_1: {
+										ctor: '::',
+										_0: 'c0s',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
 				}
 			};
 		case 'c':
@@ -14061,13 +15301,53 @@ var _user$project$Audio$notes = function (key) {
 				},
 				ii: {
 					ctor: '::',
-					_0: '',
-					_1: {ctor: '[]'}
+					_0: 'd3q',
+					_1: {
+						ctor: '::',
+						_0: 'g#3q',
+						_1: {
+							ctor: '::',
+							_0: 'b3q',
+							_1: {
+								ctor: '::',
+								_0: 'f4q',
+								_1: {
+									ctor: '::',
+									_0: 'c0s',
+									_1: {
+										ctor: '::',
+										_0: 'c0s',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
 				},
 				iii: {
 					ctor: '::',
-					_0: '',
-					_1: {ctor: '[]'}
+					_0: 'd#3q',
+					_1: {
+						ctor: '::',
+						_0: 'a#3q',
+						_1: {
+							ctor: '::',
+							_0: 'd#4q',
+							_1: {
+								ctor: '::',
+								_0: 'g4q',
+								_1: {
+									ctor: '::',
+									_0: 'a#4q',
+									_1: {
+										ctor: '::',
+										_0: 'c0s',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
 				},
 				iv: {
 					ctor: '::',
@@ -14146,8 +15426,28 @@ var _user$project$Audio$notes = function (key) {
 				},
 				vii: {
 					ctor: '::',
-					_0: '',
-					_1: {ctor: '[]'}
+					_0: 'a#2q',
+					_1: {
+						ctor: '::',
+						_0: 'f3q',
+						_1: {
+							ctor: '::',
+							_0: 'a#3q',
+							_1: {
+								ctor: '::',
+								_0: 'd4q',
+								_1: {
+									ctor: '::',
+									_0: 'f4q',
+									_1: {
+										ctor: '::',
+										_0: 'c0s',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
 				}
 			};
 		case 'g':
@@ -14179,13 +15479,53 @@ var _user$project$Audio$notes = function (key) {
 				},
 				ii: {
 					ctor: '::',
-					_0: '',
-					_1: {ctor: '[]'}
+					_0: 'd#3q',
+					_1: {
+						ctor: '::',
+						_0: 'a3q',
+						_1: {
+							ctor: '::',
+							_0: 'c4q',
+							_1: {
+								ctor: '::',
+								_0: 'f#4q',
+								_1: {
+									ctor: '::',
+									_0: 'c0s',
+									_1: {
+										ctor: '::',
+										_0: 'c0s',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
 				},
 				iii: {
 					ctor: '::',
-					_0: '',
-					_1: {ctor: '[]'}
+					_0: 'a#2q',
+					_1: {
+						ctor: '::',
+						_0: 'f3q',
+						_1: {
+							ctor: '::',
+							_0: 'a#3q',
+							_1: {
+								ctor: '::',
+								_0: 'd4q',
+								_1: {
+									ctor: '::',
+									_0: 'f4q',
+									_1: {
+										ctor: '::',
+										_0: 'c0s',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
 				},
 				iv: {
 					ctor: '::',
@@ -14264,8 +15604,28 @@ var _user$project$Audio$notes = function (key) {
 				},
 				vii: {
 					ctor: '::',
-					_0: '',
-					_1: {ctor: '[]'}
+					_0: 'f3q',
+					_1: {
+						ctor: '::',
+						_0: 'a3q',
+						_1: {
+							ctor: '::',
+							_0: 'c4q',
+							_1: {
+								ctor: '::',
+								_0: 'e4q',
+								_1: {
+									ctor: '::',
+									_0: 'c0s',
+									_1: {
+										ctor: '::',
+										_0: 'c0s',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
 				}
 			};
 		case 'd':
@@ -14297,13 +15657,53 @@ var _user$project$Audio$notes = function (key) {
 				},
 				ii: {
 					ctor: '::',
-					_0: '',
-					_1: {ctor: '[]'}
+					_0: 'a#2q',
+					_1: {
+						ctor: '::',
+						_0: 'e3q',
+						_1: {
+							ctor: '::',
+							_0: 'g3q',
+							_1: {
+								ctor: '::',
+								_0: 'd4q',
+								_1: {
+									ctor: '::',
+									_0: 'e5q',
+									_1: {
+										ctor: '::',
+										_0: 'c0s',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
 				},
 				iii: {
 					ctor: '::',
-					_0: '',
-					_1: {ctor: '[]'}
+					_0: 'f3q',
+					_1: {
+						ctor: '::',
+						_0: 'a3q',
+						_1: {
+							ctor: '::',
+							_0: 'c4q',
+							_1: {
+								ctor: '::',
+								_0: 'e4q',
+								_1: {
+									ctor: '::',
+									_0: 'c0s',
+									_1: {
+										ctor: '::',
+										_0: 'c0s',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
 				},
 				iv: {
 					ctor: '::',
@@ -14382,8 +15782,28 @@ var _user$project$Audio$notes = function (key) {
 				},
 				vii: {
 					ctor: '::',
-					_0: '',
-					_1: {ctor: '[]'}
+					_0: 'c3q',
+					_1: {
+						ctor: '::',
+						_0: 'e3q',
+						_1: {
+							ctor: '::',
+							_0: 'g3q',
+							_1: {
+								ctor: '::',
+								_0: 'c4q',
+								_1: {
+									ctor: '::',
+									_0: 'e4q',
+									_1: {
+										ctor: '::',
+										_0: 'c0s',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
 				}
 			};
 		default:
@@ -14587,21 +16007,17 @@ var _user$project$Chords$fingerChartStyle = _elm_lang$html$Html_Attributes$style
 var _user$project$Chords$chordFunctionStyle = _elm_lang$html$Html_Attributes$style(
 	{
 		ctor: '::',
-		_0: {ctor: '_Tuple2', _0: 'cursor', _1: 'pointer'},
+		_0: {ctor: '_Tuple2', _0: 'color', _1: '#3A86FF'},
 		_1: {
 			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'color', _1: '#3A86FF'},
+			_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '30px'},
 			_1: {
 				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '30px'},
+				_0: {ctor: '_Tuple2', _0: 'marginLeft', _1: '150px'},
 				_1: {
 					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'marginLeft', _1: '150px'},
-					_1: {
-						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'margin', _1: '0 auto'},
-						_1: {ctor: '[]'}
-					}
+					_0: {ctor: '_Tuple2', _0: 'margin', _1: '0 auto'},
+					_1: {ctor: '[]'}
 				}
 			}
 		}
@@ -14609,21 +16025,17 @@ var _user$project$Chords$chordFunctionStyle = _elm_lang$html$Html_Attributes$sty
 var _user$project$Chords$chordNameStyle = _elm_lang$html$Html_Attributes$style(
 	{
 		ctor: '::',
-		_0: {ctor: '_Tuple2', _0: 'cursor', _1: 'pointer'},
+		_0: {ctor: '_Tuple2', _0: 'color', _1: '#E8F1F2'},
 		_1: {
 			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'color', _1: '#E8F1F2'},
+			_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '50px'},
 			_1: {
 				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '50px'},
+				_0: {ctor: '_Tuple2', _0: 'marginLeft', _1: '150px'},
 				_1: {
 					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'marginLeft', _1: '150px'},
-					_1: {
-						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'margin', _1: '0 auto'},
-						_1: {ctor: '[]'}
-					}
+					_0: {ctor: '_Tuple2', _0: 'margin', _1: '0 auto'},
+					_1: {ctor: '[]'}
 				}
 			}
 		}
@@ -14676,7 +16088,11 @@ var _user$project$Chords$chartContainerStyle = function (direction) {
 						_1: {
 							ctor: '::',
 							_0: {ctor: '_Tuple2', _0: 'transition', _1: 'all 0.3s ease'},
-							_1: {ctor: '[]'}
+							_1: {
+								ctor: '::',
+								_0: {ctor: '_Tuple2', _0: 'cursor', _1: 'pointer'},
+								_1: {ctor: '[]'}
+							}
 						}
 					}
 				}
@@ -15113,7 +16529,7 @@ var _user$project$Chords$keys = function (key) {
 									_0: '',
 									_1: {
 										ctor: '::',
-										_0: '',
+										_0: '4',
 										_1: {
 											ctor: '::',
 											_0: '',
@@ -15129,12 +16545,12 @@ var _user$project$Chords$keys = function (key) {
 		case 'B':
 			return {
 				i: '06xb52244334424112',
-				ii: '',
-				iii: '',
+				ii: '06xb52344434223112',
+				iii: '06xb52344434223112',
 				iv: '060252342131020010',
 				v: 'b62354444233122112',
 				vi: 'b62354444132122112',
-				vii: '',
+				vii: '06x151242030322010',
 				names: {
 					ctor: '::',
 					_0: 'B',
@@ -15173,10 +16589,10 @@ var _user$project$Chords$keys = function (key) {
 					_0: '',
 					_1: {
 						ctor: '::',
-						_0: '',
+						_0: '4',
 						_1: {
 							ctor: '::',
-							_0: '',
+							_0: '6',
 							_1: {
 								ctor: '::',
 								_0: '',
@@ -15201,12 +16617,12 @@ var _user$project$Chords$keys = function (key) {
 		case 'F#':
 			return {
 				i: 'b62354444233122112',
-				ii: '',
-				iii: '',
+				ii: 'b62354444132122112',
+				iii: 'b62354444132122112',
 				iv: '06xb52244334424112',
 				v: '06xb52244334424112',
 				vi: '06xb52344434223112',
-				vii: '',
+				vii: '06x05x143334223414',
 				names: {
 					ctor: '::',
 					_0: 'F#',
@@ -15245,10 +16661,10 @@ var _user$project$Chords$keys = function (key) {
 					_0: '',
 					_1: {
 						ctor: '::',
-						_0: '',
+						_0: '4',
 						_1: {
 							ctor: '::',
-							_0: '',
+							_0: '6',
 							_1: {
 								ctor: '::',
 								_0: '',
@@ -15273,12 +16689,12 @@ var _user$project$Chords$keys = function (key) {
 		case 'Db':
 			return {
 				i: '06xb52244334424112',
-				ii: '',
-				iii: '',
+				ii: '06xb52344434223112',
+				iii: 'b61353443131121111',
 				iv: 'b62354444233122112',
 				v: 'b62354444233122112',
-				vi: '06xb52344434223112',
-				vii: '',
+				vi: 'b62354444132122112',
+				vii: '06x2533441324240x0',
 				names: {
 					ctor: '::',
 					_0: 'Db',
@@ -15317,7 +16733,7 @@ var _user$project$Chords$keys = function (key) {
 					_0: '4',
 					_1: {
 						ctor: '::',
-						_0: '',
+						_0: '6',
 						_1: {
 							ctor: '::',
 							_0: '',
@@ -15329,7 +16745,7 @@ var _user$project$Chords$keys = function (key) {
 									_0: '4',
 									_1: {
 										ctor: '::',
-										_0: '',
+										_0: '6',
 										_1: {
 											ctor: '::',
 											_0: '',
@@ -15345,12 +16761,12 @@ var _user$project$Chords$keys = function (key) {
 		case 'Ab':
 			return {
 				i: 'b62354444233122112',
-				ii: '',
-				iii: '',
+				ii: 'b62354444132122112',
+				iii: '06xb52344434223112',
 				iv: '06xb52244334424112',
 				v: '06xb52244334424112',
 				vi: 'b61353443131121111',
-				vii: '',
+				vii: '06x05x142333222413',
 				names: {
 					ctor: '::',
 					_0: 'Ab',
@@ -15389,10 +16805,10 @@ var _user$project$Chords$keys = function (key) {
 					_0: '4',
 					_1: {
 						ctor: '::',
-						_0: '',
+						_0: '6',
 						_1: {
 							ctor: '::',
-							_0: '',
+							_0: '3',
 							_1: {
 								ctor: '::',
 								_0: '4',
@@ -15404,7 +16820,7 @@ var _user$project$Chords$keys = function (key) {
 										_0: '',
 										_1: {
 											ctor: '::',
-											_0: '',
+											_0: '5',
 											_1: {ctor: '[]'}
 										}
 									}
@@ -15417,12 +16833,12 @@ var _user$project$Chords$keys = function (key) {
 		case 'Eb':
 			return {
 				i: '06xb52244334424112',
-				ii: '',
-				iii: '',
+				ii: 'b61353443131121111',
+				iii: 'b62354444132122112',
 				iv: 'b62354444233122112',
 				v: 'b62354444233122112',
 				vi: '06xb52344434223112',
-				vii: '',
+				vii: '06x2533441324240x0',
 				names: {
 					ctor: '::',
 					_0: 'Eb',
@@ -15464,7 +16880,7 @@ var _user$project$Chords$keys = function (key) {
 						_0: '',
 						_1: {
 							ctor: '::',
-							_0: '',
+							_0: '3',
 							_1: {
 								ctor: '::',
 								_0: '4',
@@ -15476,7 +16892,7 @@ var _user$project$Chords$keys = function (key) {
 										_0: '3',
 										_1: {
 											ctor: '::',
-											_0: '',
+											_0: '4',
 											_1: {ctor: '[]'}
 										}
 									}
@@ -15489,12 +16905,12 @@ var _user$project$Chords$keys = function (key) {
 		case 'Bb':
 			return {
 				i: '06xb51243333423111',
-				ii: '',
-				iii: '',
+				ii: '06xb52344434223112',
+				iii: '06xb52344434223112',
 				iv: '06xb52244334424112',
 				v: 'b61353443232121111',
 				vi: 'b62354444132122112',
-				vii: '',
+				vii: '06x05x141332221412',
 				names: {
 					ctor: '::',
 					_0: 'Bb',
@@ -15533,10 +16949,10 @@ var _user$project$Chords$keys = function (key) {
 					_0: '',
 					_1: {
 						ctor: '::',
-						_0: '',
+						_0: '3',
 						_1: {
 							ctor: '::',
-							_0: '',
+							_0: '5',
 							_1: {
 								ctor: '::',
 								_0: '6',
@@ -15561,12 +16977,12 @@ var _user$project$Chords$keys = function (key) {
 		case 'F':
 			return {
 				i: '06x05x343232121010',
-				ii: '',
-				iii: '',
+				ii: 'b62354444132122112',
+				iii: '06x050242332121010',
 				iv: '06xb51243333423111',
 				v: '06x353242030121010',
 				vi: '06x05x040232423111',
-				vii: '',
+				vii: '060151242030423010',
 				names: {
 					ctor: '::',
 					_0: 'F',
@@ -15605,10 +17021,10 @@ var _user$project$Chords$keys = function (key) {
 					_0: '',
 					_1: {
 						ctor: '::',
-						_0: '',
+						_0: '3',
 						_1: {
 							ctor: '::',
-							_0: '',
+							_0: '5',
 							_1: {
 								ctor: '::',
 								_0: '',
@@ -15633,12 +17049,12 @@ var _user$project$Chords$keys = function (key) {
 		case 'a':
 			return {
 				i: '06x050242332121010',
-				ii: '',
-				iii: '',
+				ii: '06x15224343432301x',
+				iii: '06x353242030121010',
 				iv: '06x05x040232423111',
 				v: '060152242030020010',
 				vi: '06x05x343232121010',
-				vii: '',
+				vii: '263152040030323413',
 				names: {
 					ctor: '::',
 					_0: 'Am',
@@ -15705,12 +17121,12 @@ var _user$project$Chords$keys = function (key) {
 		case 'e':
 			return {
 				i: '060152242030020010',
-				ii: '',
-				iii: '',
+				ii: 'b62253344132424112',
+				iii: '263152040030323413',
 				iv: '06x050242332121010',
 				v: '06x152040030323212',
 				vi: '06x353242030121010',
-				vii: '',
+				vii: '06x05x040132323212',
 				names: {
 					ctor: '::',
 					_0: 'Em',
@@ -15777,12 +17193,12 @@ var _user$project$Chords$keys = function (key) {
 		case 'b':
 			return {
 				i: '06x05x344434223112',
-				ii: '',
-				iii: '',
+				ii: '06x253344132424010',
+				iii: '06x05x040132323212',
 				iv: '060152242030020010',
 				v: '162050040232322010',
 				vi: '263152040030323413',
-				vii: '',
+				vii: '06x050142232322010',
 				names: {
 					ctor: '::',
 					_0: 'Bm',
@@ -15821,7 +17237,7 @@ var _user$project$Chords$keys = function (key) {
 					_0: '',
 					_1: {
 						ctor: '::',
-						_0: '',
+						_0: '4',
 						_1: {
 							ctor: '::',
 							_0: '',
@@ -15849,12 +17265,12 @@ var _user$project$Chords$keys = function (key) {
 		case 'f#':
 			return {
 				i: 'b62354444132122112',
-				ii: '',
-				iii: '',
+				ii: 'b62253344132424112',
+				iii: '06x050142232322010',
 				iv: '06xb52344434223112',
 				v: '06xb52344434223112',
 				vi: '06x05x040132323212',
-				vii: '',
+				vii: '060252342131020010',
 				names: {
 					ctor: '::',
 					_0: 'F#m',
@@ -15893,7 +17309,7 @@ var _user$project$Chords$keys = function (key) {
 					_0: '',
 					_1: {
 						ctor: '::',
-						_0: '',
+						_0: '4',
 						_1: {
 							ctor: '::',
 							_0: '',
@@ -15921,12 +17337,12 @@ var _user$project$Chords$keys = function (key) {
 		case 'c#':
 			return {
 				i: '06xb52344434223112',
-				ii: '',
-				iii: '',
+				ii: '06x05x141332221412',
+				iii: '060252342131020010',
 				iv: 'b62354444132122112',
 				v: 'b62354444132122112',
 				vi: '06x050142232322010',
-				vii: '',
+				vii: '06xb52244334424112',
 				names: {
 					ctor: '::',
 					_0: 'C#m',
@@ -15993,12 +17409,12 @@ var _user$project$Chords$keys = function (key) {
 		case 'g#':
 			return {
 				i: 'b62354444132122112',
-				ii: '',
-				iii: '',
+				ii: '06x151242030322010',
+				iii: '06xb52244334424112',
 				iv: '06xb52344434223112',
 				v: '06xb52344434223112',
 				vi: '060152242131020010',
-				vii: '',
+				vii: 'b62354444233122112',
 				names: {
 					ctor: '::',
 					_0: 'G#m',
@@ -16040,7 +17456,7 @@ var _user$project$Chords$keys = function (key) {
 						_0: '',
 						_1: {
 							ctor: '::',
-							_0: '',
+							_0: '3',
 							_1: {
 								ctor: '::',
 								_0: '4',
@@ -16065,12 +17481,12 @@ var _user$project$Chords$keys = function (key) {
 		case 'd#':
 			return {
 				i: '06xb52344434223112',
-				ii: '',
-				iii: '',
+				ii: '06x05x143334223414',
+				iii: 'b62354444233122112',
 				iv: 'b62354444132122112',
 				v: 'b62354444132122112',
 				vi: '06xb52244334424112',
-				vii: '',
+				vii: '06xb52244334424112',
 				names: {
 					ctor: '::',
 					_0: 'D#m',
@@ -16124,7 +17540,7 @@ var _user$project$Chords$keys = function (key) {
 										_0: '',
 										_1: {
 											ctor: '::',
-											_0: '',
+											_0: '4',
 											_1: {ctor: '[]'}
 										}
 									}
@@ -16137,12 +17553,12 @@ var _user$project$Chords$keys = function (key) {
 		case 'bb':
 			return {
 				i: 'b62354444132122112',
-				ii: '',
-				iii: '',
+				ii: '06x2533441324240x0',
+				iii: '06x05x040132323212',
 				iv: '06xb52344434223112',
 				v: '06xb52344434223112',
 				vi: 'b62354444233122112',
-				vii: '',
+				vii: 'b62354444233122112',
 				names: {
 					ctor: '::',
 					_0: 'Bbm',
@@ -16196,7 +17612,7 @@ var _user$project$Chords$keys = function (key) {
 										_0: '',
 										_1: {
 											ctor: '::',
-											_0: '',
+											_0: '4',
 											_1: {ctor: '[]'}
 										}
 									}
@@ -16209,12 +17625,12 @@ var _user$project$Chords$keys = function (key) {
 		case 'f':
 			return {
 				i: 'b61353443131111111',
-				ii: '',
-				iii: '',
+				ii: '06x05x142333222413',
+				iii: 'b62354444233122112',
 				iv: '06xb51343433222111',
 				v: '06xb52344434223112',
 				vi: '06xb52244334424112',
-				vii: '',
+				vii: '06xb52244334424112',
 				names: {
 					ctor: '::',
 					_0: 'Fm',
@@ -16253,7 +17669,7 @@ var _user$project$Chords$keys = function (key) {
 					_0: '',
 					_1: {
 						ctor: '::',
-						_0: '',
+						_0: '5',
 						_1: {
 							ctor: '::',
 							_0: '',
@@ -16268,7 +17684,7 @@ var _user$project$Chords$keys = function (key) {
 										_0: '4',
 										_1: {
 											ctor: '::',
-											_0: '',
+											_0: '6',
 											_1: {ctor: '[]'}
 										}
 									}
@@ -16281,12 +17697,12 @@ var _user$project$Chords$keys = function (key) {
 		case 'c':
 			return {
 				i: '06xb52344434223112',
-				ii: '',
-				iii: '',
+				ii: '06x2533441324240x0',
+				iii: '06xb52244334424112',
 				iv: 'b61353443131121111',
 				v: 'b62354444132122112',
 				vi: 'b62354444233122112',
-				vii: '',
+				vii: '06xb51243333423111',
 				names: {
 					ctor: '::',
 					_0: 'Cm',
@@ -16325,10 +17741,10 @@ var _user$project$Chords$keys = function (key) {
 					_0: '3',
 					_1: {
 						ctor: '::',
-						_0: '',
+						_0: '4',
 						_1: {
 							ctor: '::',
-							_0: '',
+							_0: '6',
 							_1: {
 								ctor: '::',
 								_0: '',
@@ -16353,12 +17769,12 @@ var _user$project$Chords$keys = function (key) {
 		case 'g':
 			return {
 				i: 'b62354444132122112',
-				ii: '',
-				iii: '',
+				ii: '06x05x141332221412',
+				iii: '06xb51243333423111',
 				iv: '06xb52344434223112',
 				v: '06x05x040232423111',
 				vi: '06xb52244334424112',
-				vii: '',
+				vii: 'b62354444333122112',
 				names: {
 					ctor: '::',
 					_0: 'Gm',
@@ -16412,7 +17828,7 @@ var _user$project$Chords$keys = function (key) {
 										_0: '6',
 										_1: {
 											ctor: '::',
-											_0: '',
+											_0: '4',
 											_1: {ctor: '[]'}
 										}
 									}
@@ -16425,12 +17841,12 @@ var _user$project$Chords$keys = function (key) {
 		case 'd':
 			return {
 				i: '06x05x040232423111',
-				ii: '',
-				iii: '',
+				ii: '060151242030423010',
+				iii: '06x05x343232121010',
 				iv: 'b62354444132122112',
 				v: '06x050242332121010',
 				vi: '06xb51243333423111',
-				vii: '',
+				vii: '06x353242030121010',
 				names: {
 					ctor: '::',
 					_0: 'Dm',
@@ -17300,7 +18716,14 @@ var _user$project$Chords$chordChartModel = F5(
 			{
 				ctor: '::',
 				_0: _user$project$Chords$chartContainerStyle('column'),
-				_1: {ctor: '[]'}
+				_1: {
+					ctor: '::',
+					_0: _elm_lang$html$Html_Events$onClick(
+						_user$project$Types$Play(
+							accessor1(
+								_user$project$Audio$notes(model.musKey)))),
+					_1: {ctor: '[]'}
+				}
 			},
 			{
 				ctor: '::',
@@ -17316,7 +18739,7 @@ var _user$project$Chords$chordChartModel = F5(
 					ctor: '::',
 					_0: _user$project$Chords$chordChart(
 						_user$project$Chords$chordBuilder(
-							accessor1(
+							accessor2(
 								_user$project$Chords$keys(model.musKey)))),
 					_1: {
 						ctor: '::',
@@ -17325,14 +18748,7 @@ var _user$project$Chords$chordChartModel = F5(
 							{
 								ctor: '::',
 								_0: _user$project$Chords$chordNameStyle,
-								_1: {
-									ctor: '::',
-									_0: _elm_lang$html$Html_Events$onClick(
-										_user$project$Types$Play(
-											accessor2(
-												_user$project$Audio$notes(model.musKey)))),
-									_1: {ctor: '[]'}
-								}
+								_1: {ctor: '[]'}
 							},
 							{
 								ctor: '::',
@@ -17346,14 +18762,7 @@ var _user$project$Chords$chordChartModel = F5(
 								{
 									ctor: '::',
 									_0: _user$project$Chords$chordFunctionStyle,
-									_1: {
-										ctor: '::',
-										_0: _elm_lang$html$Html_Events$onClick(
-											_user$project$Types$Play(
-												accessor2(
-													_user$project$Audio$notes(model.musKey)))),
-										_1: {ctor: '[]'}
-									}
+									_1: {ctor: '[]'}
 								},
 								{
 									ctor: '::',
