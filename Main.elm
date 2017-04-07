@@ -14,7 +14,6 @@ import Time exposing (..)
 import Update.Extra.Infix exposing ((:>))
 
 
-main : Program Never { currentChord : List String, index : Int, musKey : String, notePosition : Int, route : Route, showAccidental : String } Msg
 main =
     Navigation.program Types.OnLocationChange
         { init = init
@@ -35,6 +34,7 @@ init location =
           , currentChord = []
           , notePosition = 0
           , showAccidental = "0"
+          , sliderValue = 1
           }
         , Cmd.none
         )
@@ -45,12 +45,18 @@ port send : PlayBundle -> Cmd msg
 
 update msg model =
     case msg of
+        NoOp ->
+            ( model, Cmd.none )
+
         OnLocationChange location ->
             let
                 newRoute =
                     Routing.parseLocation location
+
+                newKey =
+                    Maybe.withDefault "C" <| Routing.modelUpdateOnHash model location
             in
-                ( { model | route = newRoute }, Cmd.none )
+                ( { model | route = newRoute, musKey = newKey }, Cmd.none )
 
         ChangeKey key ->
             ( { model | musKey = key }
@@ -87,21 +93,32 @@ update msg model =
             in
                 ( { model | notePosition = finalOffset, showAccidental = accidental }, Cmd.none )
 
+        ChangeSliderValue newVal ->
+            let
+                val =
+                    Result.withDefault 1 <| String.toInt newVal
+            in
+                ( { model | sliderValue = val }, Cmd.none )
+
 
 subscriptions : Model -> Sub Msg
 subscriptions model =
-    if model.index < 6 then
-        Time.every (0.1 * Time.second) (always SendNotes)
-    else
-        Sub.none
+    let
+        val =
+            toFloat model.sliderValue / 10.0
+    in
+        if model.index < 6 then
+            Time.every (val * Time.second) (always SendNotes)
+        else
+            Sub.none
 
 
 view : Model -> Html Msg
 view model =
     div []
         [ div [ navStyle ]
-            [ a [ href Routing.scalesPath, navItemStyle ] [ text "SCALES" ]
-            , a [ href Routing.chordsPath, navItemStyle ] [ text "CHORDS" ]
+            [ a [ href (Routing.scalesPath model.musKey), navItemStyle ] [ text "SCALES" ]
+            , a [ href (Routing.chordsPath model.musKey), navItemStyle ] [ text "CHORDS" ]
             , a [ href Routing.fretboardPath, navItemStyle ] [ text "FRETBOARD" ]
             ]
         , page model
@@ -111,17 +128,17 @@ view model =
 page : Model -> Html Msg
 page model =
     case model.route of
-        ChordChartPage ->
+        ChordChartPage key ->
             Chords.chordChartPage model
 
         FretboardPage ->
             Fretboard.fretboardPage model
 
-        ScalesPage ->
+        ScalesPage key ->
             Scales.scalesPage model
 
         NotFoundPage ->
-            div [ style [ ( "margin", "100px auto" ) ] ] [ text "Page Not Found" ]
+            div [ style [ ( "margin", "100px auto" ) ] ] [ text ("Page Not Found" ++ model.musKey) ]
 
 
 

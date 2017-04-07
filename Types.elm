@@ -10,6 +10,7 @@ type alias Model =
     , currentChord : List String
     , notePosition : Int
     , showAccidental : String
+    , sliderValue : Int
     }
 
 
@@ -64,10 +65,12 @@ type Msg
     | ResetIndex
     | OnLocationChange Location
     | DrawNote String String String
+    | ChangeSliderValue String
+    | NoOp
 
 
 type Route
-    = ChordChartPage
-    | ScalesPage
+    = ChordChartPage String
+    | ScalesPage String
     | FretboardPage
     | NotFoundPage

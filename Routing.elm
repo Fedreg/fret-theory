@@ -1,20 +1,19 @@
 module Routing exposing (..)
 
 import Navigation exposing (Location)
-import Types exposing (Route(..))
+import Types exposing (Route(..), Msg(NoOp))
 import UrlParser exposing (..)
 
 
 matchers : Parser (Route -> a) a
 matchers =
     oneOf
-        [ map ChordChartPage (s "chords")
-        , map ScalesPage (s "scales")
+        [ map ChordChartPage (s "chords" </> string)
+        , map ScalesPage (s "scales" </> string)
         , map FretboardPage (s "fretboard")
         ]
 
 
-parseLocation : Location -> Route
 parseLocation location =
     case (parseHash matchers location) of
         Just route ->
@@ -24,14 +23,29 @@ parseLocation location =
             NotFoundPage
 
 
-chordsPath : String
-chordsPath =
-    "#chords"
+modelUpdateOnHash model location =
+    case model.route of
+        ChordChartPage key ->
+            parseHash (s "chords" </> string) location
+
+        ScalesPage key ->
+            parseHash (s "scales" </> string) location
+
+        FretboardPage ->
+            parseHash (s "fretboard" </> string) location
+
+        NotFoundPage ->
+            parseHash (s "" </> string) location
 
 
-scalesPath : String
-scalesPath =
-    "#scales"
+chordsPath : String -> String
+chordsPath key =
+    "#chords/" ++ key
+
+
+scalesPath : String -> String
+scalesPath key =
+    "#scales/" ++ key
 
 
 fretboardPath : String

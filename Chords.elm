@@ -25,6 +25,7 @@ chordChartPage model =
             [ div [] [ fingerChart ]
             , select [ style [ ( "color", "#fff" ), ( "width", "100px" ), ( "marginTop", "50px" ) ], Html.Events.onInput ChangeKey ]
                 (List.map keyOptions keyList)
+            , playbackSpeedSlider model
             , div [ chartContainerStyle "row" ]
                 [ chordChartModel model 0 "I" .i .i
                 , chordChartModel model 3 "IV" .iv .iv
@@ -215,6 +216,20 @@ keyList =
     [ "Major Keys", "C", "G", "D", "A", "E", "B", "F#", "Db", "Ab", "Eb", "Bb", "F", "Minor Keys", "a", "e", "b", "f#", "c#", "g#", "d#", "bb", "f", "c", "g", "d" ]
 
 
+playbackSpeedSlider model =
+    div [ style [ ( "appearance", "none" ) ] ]
+        [ input
+            [ type_ "range"
+            , Html.Attributes.min "1"
+            , Html.Attributes.max "10"
+            , value <| toString model.sliderValue
+            , onInput ChangeSliderValue
+            ]
+            []
+        , text "  Chord Playback Speed"
+        ]
+
+
 {-| Defines dot placement of each chord.
 -}
 keys : String -> ChordChartData
@@ -251,7 +266,7 @@ keys key =
             , iv = "263152040030323413"
             , v = "06x050142232322010"
             , vi = "06x152040030323212"
-            , vii = "06x15224343432301x"
+            , vii = "06x152243434323010"
             , names = [ "D", "Em", "F#m", "G", "A", "Bm", "C#dim7", "7" ]
             , bars = [ "", "", "", "", "", "", "4" ]
             }
@@ -271,13 +286,13 @@ keys key =
         "E" ->
             { i = "060252342131020010"
             , ii = "162050040232322010"
-            , iii = "b62354444233122112"
+            , iii = "b62354444132122112"
             , iv = "06x050142232322010"
             , v = "060252141332020412"
             , vi = "06x05x344434223112"
             , vii = "06x05x141332221412"
             , names = [ "E", "F#m", "G#m", "A", "B7", "C#m", "D#dim7", "9" ]
-            , bars = [ "", "", "", "", "", "4", "" ]
+            , bars = [ "", "", "4", "", "", "4", "" ]
             }
 
         "B" ->

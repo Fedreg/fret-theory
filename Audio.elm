@@ -4,7 +4,7 @@ import String exposing (..)
 import Types exposing (..)
 
 
-{-| Defines audio Notes to be played for each string of every chord.
+{-| Defines audio Notes to be played for each string of every chord. "c0s" is default for no sound.
 -}
 notes : String -> ChordAudioData
 notes key =
@@ -27,7 +27,7 @@ notes key =
             , iv = [ "c3q", "e3q", "g3q", "d4q", "g4q", "c0s" ]
             , v = [ "d3q", "a3q", "d4q", "f#4q", "c0s", "c0s" ]
             , vi = [ "e2q", "b2q", "e3q", "g3q", "b3q", "e4q" ]
-            , vii = [ "f#2", "c3q", "f#3q", "a3q", "d#4q", "f#4q" ]
+            , vii = [ "f#2q", "c3q", "f#3q", "a3q", "d#4q", "f#4q" ]
             }
 
         "D" ->
@@ -44,7 +44,7 @@ notes key =
         "A" ->
             { i = [ "a2q", "e3q", "a3q", "c#4q", "e4q", "c0s" ]
             , ii = [ "b2q", "d3q", "g3q", "d4q", "f#4q", "c0s" ]
-            , iii = [ "c#3q", "g#3q", "c#4q", "e4q", "g#4q", "c0s" ]
+            , iii = [ "g#3q", "c#4q", "e4q", "g#4q", "c0s", "c0s" ]
             , iv = [ "d3q", "a3q", "d4q", "f#4q", "c0s", "c0s" ]
             , v = [ "e2q", "b2q", "e3q", "g#3q", "b3q", "e4q" ]
             , vi = [ "f#2q", "a2q", "d3q", "a3q", "c#4q", "e4q" ]
@@ -57,7 +57,7 @@ notes key =
             , iii = [ "g#2q", "d#3q", "g#3q", "b3q", "d#4q", "g#4q" ]
             , iv = [ "a2q", "e3q", "a3q", "c#4q", "e4q", "c0s" ]
             , v = [ "b2q", "d#3q", "a3q", "b3q", "f#4q", "c0s" ]
-            , vi = [ "c#3q", "g#3q", "c#4q", "e4q", "g#4q", "c0s" ]
+            , vi = [ "g#3q", "c#4q", "e4q", "g#4q", "c0s", "c0s" ]
             , vii = [ "d#3q", "a3q", "c4q", "f#4q", "c0s", "c0s" ]
             }
 
@@ -114,10 +114,10 @@ notes key =
         "Bb" ->
             { i = [ "a#2q", "f3q", "a#3q", "d4q", "f4q", "c0s" ]
             , ii = [ "c3q", "g3q", "c4q", "d#4q", "g4q", "c0s" ]
-            , iii = [ "d3q", "a3q", "d4q", "f4q", "c0s", "c0s" ]
+            , iii = [ "d3q", "a3q", "d4q", "f4q", "a4q", "c0s" ]
             , iv = [ "d#3q", "a#3q", "d#4q", "g4q", "a#4q", "c0s" ]
             , v = [ "f2q", "c3q", "f3q", "a3q", "c4q", "f4q" ]
-            , vi = [ "g2q", "d2q", "g3q", "a#3q", "d4q", "g4q" ]
+            , vi = [ "g2q", "d3q", "g3q", "a#3q", "d4q", "g4q" ]
             , vii = [ "d#3q", "a3q", "c4q", "f#4q", "c0s", "c0s" ]
             }
 
@@ -394,8 +394,9 @@ frequencies note =
 
 
 
---
---
--- tempo : Int -> Float
--- tempo bpm =
--- 			    (Basics.toFloat 60 / Basics.toFloat bpm) * 0.5
+--nywhere else you want. Here are a few of the most common:
+--ii-V sub: Substitute ii for IV, so that you have a ii-V turnaround. For example, if you're playing in the key of C, the V chord is G7 and the ii chord is Dm7. So instead of C-F-G7, play C-Dm7-G7. This is far and away the easiest and most common substitution, and in fact it's the standard turnaround in jazz.
+--Secondary Dominants: Use secondary dominants, i.e. V chords of V chords. Again, if you're playing in the key of C, the V chord is G7 and the V of G is D7, so instead of playing C-F-G7, play C-D7-G7 instead. You can extend this as much as you want, i.e. use V chords of V chords of V chords, etc. Entire songs have been written around this idea ("Salty Dog" comes to mind).
+--Tritone Subs: In general, you can make what's called a "tritone substitution" on any dominant chord (i.e. any 7th chord). It works like this: if the root of the V chord is X, replace the chord with a 7th chord whose root is a tritone away from X. So in the key of C, again the V chord is a G7. The note that's a tritone away from G is D♭, so replace the G7 with a D♭7. Combined with the ii-for-IV substitution, the turnaround goes from C-F-G to C-Dm7-D♭7, which has some really nice voice-leading in the bass notes. Combine tritone subs with secondary dominants and you can have a field day with different patterns and substitutions.
+--Diminished Subs: Every diminished chord is a 7th chord with a flatted 9 in four different ways. For example, the diminished chord with the notes D♭-E-G-B♭ is, simultaneously, a C7-9, an E♭7-9, an F♯7-9, and an A7-9. This offers a dizzying array of substitutional opportunities, and it also means that diminished scales and arpeggios sound great over 7th chords.
+--Median Subs: Another general substitution is called a "median substitution". For this, you replace a chord whose root note is X with a chord whose root note is a third above or a third below X. You want to stay within the diatonic harmony of the key you're playing in, so the new chord may not be the same type of chord as the original. For example, if you're playing in the key of C, you can replace the I chord (C Major) with a iii chord (Em7) or a vi chord (Am7), because iii is a third above I and vi is a third below I. In fact, the ii-for-IV substitution I mentioned first is just a median sub (ii being a third below IV).
