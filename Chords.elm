@@ -23,7 +23,7 @@ chordChartPage model =
     in
         div [ style [ ( "textAlign", "center" ) ] ]
             [ div [] [ fingerChart ]
-            , select [ style [ ( "color", "#fff" ), ( "width", "100px" ), ( "marginTop", "50px" ) ], Html.Events.onInput ChangeKey ]
+            , select [ style [ ( "color", "#fff" ), ( "width", "200px" ), ( "marginTop", "50px" ), ( "borderColor", "#ddd" ) ], Html.Events.onInput ChangeKey ]
                 (List.map keyOptions keyList)
             , playbackSpeedSlider model
             , div [ chartContainerStyle "row" ]
@@ -32,12 +32,17 @@ chordChartPage model =
                 , chordChartModel model 4 "V" .v .v
                 , chordChartModel model 5 "VI" .vi .vi
                 ]
-            , div [ style [ ( "fontSize", "20px" ) ] ] [ text ("Solo on fret: " ++ soloFretMin ++ " (Minor scale), or fret: " ++ soloFretMaj ++ " (Major scale)") ]
-            , div [ style [ ( "paddingTop", "50px" ), ( "fontSize", "20px" ) ] ] [ text "ADDITIONAL CHORD OPTIONS:" ]
             , div [ chartContainerStyle "row" ]
                 [ chordChartModel model 1 "II" .ii .ii
                 , chordChartModel model 2 "III" .iii .iii
                 , chordChartModel model 6 "VII" .vii .vii
+                ]
+            , div [ style [ ( "fontSize", "18px" ), ( "paddingBottom", "50px" ), ( "color", "#A8A7A7" ) ] ]
+                [ span [] [ text "SOLO ON FRET: " ]
+                , span [ style [ ( "fontSize", "25px" ), ( "color", "#E84A5F" ) ] ] [ text soloFretMin ]
+                , span [] [ text " (MINOR SCALE), OR FRET: " ]
+                , span [ style [ ( "fontSize", "25px" ), ( "color", "#E84A5F" ) ] ] [ text soloFretMaj ]
+                , span [] [ text " (MAJOR SCALE)" ]
                 ]
             ]
 
@@ -64,16 +69,16 @@ fingerNo finger =
             "bar"
 
         "1" ->
-            "#333"
+            "#636363"
 
         "2" ->
-            "#8338EC"
+            "#E8175D"
 
         "3" ->
-            "#3A86FF"
+            "#446CB3"
 
         "4" ->
-            "#00059f"
+            "#A8A7A7"
 
         _ ->
             "none"
@@ -115,16 +120,16 @@ fretNo fret =
             "-40"
 
         "1" ->
-            "10"
+            "15"
 
         "2" ->
-            "53"
+            "58"
 
         "3" ->
-            "97"
+            "102"
 
         "4" ->
-            "140"
+            "145"
 
         _ ->
             "-40"
@@ -193,20 +198,20 @@ chordChart chord =
 fingerChart =
     div [ fingerChartStyle ]
         [ div [ style [ ( "display", "flex" ) ] ]
-            [ div [ style [ ( "width", "15px" ), ( "height", "15px" ), ( "borderRadius", "13px" ), ( "backgroundColor", fingerNo "1" ) ] ] []
-            , div [ style [ ( "padding", "5px" ), ( "lineHeight", "9px" ) ] ] [ text "Pointer" ]
+            [ div [ style [ ( "width", "15px" ), ( "height", "25px" ), ( "borderRadius", "7px" ), ( "backgroundColor", fingerNo "1" ) ] ] []
+            , div [ style [ ( "padding", "15px" ), ( "lineHeight", "9px" ) ] ] [ text "Pointer" ]
             ]
         , div [ style [ ( "display", "flex" ) ] ]
-            [ div [ style [ ( "width", "15px" ), ( "height", "15px" ), ( "borderRadius", "13px" ), ( "backgroundColor", fingerNo "2" ) ] ] []
-            , div [ style [ ( "padding", "5px" ), ( "lineHeight", "9px" ) ] ] [ text "Middle" ]
+            [ div [ style [ ( "width", "15px" ), ( "height", "25px" ), ( "borderRadius", "7px" ), ( "backgroundColor", fingerNo "2" ) ] ] []
+            , div [ style [ ( "padding", "15px" ), ( "lineHeight", "9px" ) ] ] [ text "Middle" ]
             ]
         , div [ style [ ( "display", "flex" ) ] ]
-            [ div [ style [ ( "width", "15px" ), ( "height", "15px" ), ( "borderRadius", "13px" ), ( "backgroundColor", fingerNo "3" ) ] ] []
-            , div [ style [ ( "padding", "5px" ), ( "lineHeight", "9px" ) ] ] [ text "Ring" ]
+            [ div [ style [ ( "width", "15px" ), ( "height", "25px" ), ( "borderRadius", "7px" ), ( "backgroundColor", fingerNo "3" ) ] ] []
+            , div [ style [ ( "padding", "15px" ), ( "lineHeight", "9px" ) ] ] [ text "Ring" ]
             ]
         , div [ style [ ( "display", "flex" ) ] ]
-            [ div [ style [ ( "width", "15px" ), ( "height", "15px" ), ( "borderRadius", "13px" ), ( "backgroundColor", fingerNo "4" ) ] ] []
-            , div [ style [ ( "padding", "5px" ), ( "lineHeight", "9px" ) ] ] [ text "Pinky" ]
+            [ div [ style [ ( "width", "15px" ), ( "height", "25px" ), ( "borderRadius", "7px" ), ( "backgroundColor", fingerNo "4" ) ] ] []
+            , div [ style [ ( "padding", "15px" ), ( "lineHeight", "9px" ) ] ] [ text "Pinky" ]
             ]
         ]
 
@@ -217,8 +222,9 @@ keyList =
 
 
 playbackSpeedSlider model =
-    div [ style [ ( "appearance", "none" ) ] ]
-        [ input
+    div []
+        [ div [] [ text "+    CHORD PLAYBACK SPEED    -" ]
+        , input
             [ type_ "range"
             , Html.Attributes.min "1"
             , Html.Attributes.max "10"
@@ -226,7 +232,6 @@ playbackSpeedSlider model =
             , onInput ChangeSliderValue
             ]
             []
-        , text "  Chord Playback Speed"
         ]
 
 
@@ -413,7 +418,7 @@ keys key =
             , vi = "263152040030323413"
             , vii = "06x050142232322010"
             , names = [ "Bm", "C#dim7", "D", "Em", "F#m", "G", "A", "7" ]
-            , bars = [ "", "4", "", "", "", "", "" ]
+            , bars = [ "", "3", "", "", "", "", "" ]
             }
 
         "f#" ->
@@ -446,7 +451,7 @@ keys key =
             , iii = "06xb52244334424112"
             , iv = "06xb52344434223112"
             , v = "06xb52344434223112"
-            , vi = "060152242131020010"
+            , vi = "060252342131020010"
             , vii = "b62354444233122112"
             , names = [ "G#m", "A#dim7", "B#", "C#m", "D#m", "E", "F#", "4" ]
             , bars = [ "4", "", "3", "4", "6", "", "" ]
@@ -547,7 +552,7 @@ chordBarPosStyle =
         [ ( "position", "absolute" )
         , ( "top", "-15px" )
         , ( "right", "30%" )
-        , ( "color", "#3A86FF" )
+        , ( "color", "#E8175D" )
         , ( "transition", "all 0.3s ease" )
         ]
 
@@ -559,6 +564,7 @@ chartStyle =
         , ( "width", "180px" )
         , ( "height", "153px" )
         , ( "border", "1px solid #333" )
+        , ( "borderTopLeftRadius", "20px" )
         , ( "borderBottom", "none" )
         ]
 
@@ -609,7 +615,7 @@ chordNameStyle : Attribute Msg
 chordNameStyle =
     style
         [ ( "color", "#E8F1F2" )
-        , ( "fontSize", "50px" )
+        , ( "fontSize", "25px" )
         , ( "marginLeft", "150px" )
         , ( "margin", "0 auto" )
         ]
@@ -618,8 +624,8 @@ chordNameStyle =
 chordFunctionStyle : Attribute Msg
 chordFunctionStyle =
     style
-        [ ( "color", "#3A86FF" )
-        , ( "fontSize", "30px" )
+        [ ( "color", "#34495E" )
+        , ( "fontSize", "20px" )
         , ( "marginLeft", "150px" )
         , ( "margin", "0 auto" )
         ]
@@ -653,10 +659,10 @@ fretMarkerStyle dot =
                 , ( "position", "absolute" )
                 , ( "top", dot.stringNo )
                 , ( "right", dot.fretNo )
-                , ( "width", "25px" )
+                , ( "width", "15px" )
                 , ( "height", barSize )
-                , ( "borderRadius", "13px" )
-                , ( "backgroundColor", "#333" )
+                , ( "borderRadius", "7px" )
+                , ( "backgroundColor", "#636363" )
                 , ( "color", "rgba(0,0,0,0)" )
                 ]
     else if dot.fretNo == "-40" then
@@ -669,9 +675,9 @@ fretMarkerStyle dot =
                 , ( "position", "absolute" )
                 , ( "top", dot.stringNo )
                 , ( "right", dot.fretNo )
-                , ( "width", "25px" )
+                , ( "width", "15px" )
                 , ( "height", "25px" )
-                , ( "borderRadius", "13px" )
+                , ( "borderRadius", "7px" )
                 , ( "backgroundColor", "rgba(0,0,0,0)" )
                 , ( "color", textColor )
                 , ( "textTransform", "uppercase" )
@@ -682,9 +688,9 @@ fretMarkerStyle dot =
             , ( "position", "absolute" )
             , ( "top", dot.stringNo )
             , ( "right", dot.fretNo )
-            , ( "width", "25px" )
+            , ( "width", "15px" )
             , ( "height", "25px" )
-            , ( "borderRadius", "13px" )
+            , ( "borderRadius", "7px" )
             , ( "backgroundColor", dot.tint )
             , ( "color", "rgba(0,0,0,0)" )
             ]

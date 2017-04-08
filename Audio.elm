@@ -154,7 +154,7 @@ notes key =
 
         "b" ->
             { i = [ "b2q", "d3q", "g3q", "d4q", "f#4q", "c0s" ]
-            , ii = [ "c#3q", "f#3q", "b3q", "e4q", "e4q", "c0s" ]
+            , ii = [ "c#3q", "g3q", "a#3q", "e4q", "c0s", "c0s" ]
             , iii = [ "d3q", "a3q", "d4q", "f#4q", "c0s", "c0s" ]
             , iv = [ "e2q", "b2q", "e3q", "g3q", "b3q", "e4q" ]
             , v = [ "f#2q", "a2q", "d3q", "a3q", "c#4q", "e4q" ]

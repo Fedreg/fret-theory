@@ -156,5 +156,5 @@ navItemStyle =
     style
         [ ( "margin", "10px auto" )
         , ( "padding", "5px" )
-        , ( "color", "#777" )
+        , ( "color", "#A8A7A7" )
         ]

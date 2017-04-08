@@ -14066,16 +14066,16 @@ var _user$project$Audio$notes = function (key) {
 					_0: 'c#3q',
 					_1: {
 						ctor: '::',
-						_0: 'f#3q',
+						_0: 'g3q',
 						_1: {
 							ctor: '::',
-							_0: 'b3q',
+							_0: 'a#3q',
 							_1: {
 								ctor: '::',
 								_0: 'e4q',
 								_1: {
 									ctor: '::',
-									_0: 'e4q',
+									_0: 'c0s',
 									_1: {
 										ctor: '::',
 										_0: 'c0s',
@@ -15880,16 +15880,16 @@ var _user$project$Chords$fretMarkerStyle = function (dot) {
 							_0: {ctor: '_Tuple2', _0: 'right', _1: dot.fretNo},
 							_1: {
 								ctor: '::',
-								_0: {ctor: '_Tuple2', _0: 'width', _1: '25px'},
+								_0: {ctor: '_Tuple2', _0: 'width', _1: '15px'},
 								_1: {
 									ctor: '::',
 									_0: {ctor: '_Tuple2', _0: 'height', _1: barSize},
 									_1: {
 										ctor: '::',
-										_0: {ctor: '_Tuple2', _0: 'borderRadius', _1: '13px'},
+										_0: {ctor: '_Tuple2', _0: 'borderRadius', _1: '7px'},
 										_1: {
 											ctor: '::',
-											_0: {ctor: '_Tuple2', _0: 'backgroundColor', _1: '#333'},
+											_0: {ctor: '_Tuple2', _0: 'backgroundColor', _1: '#636363'},
 											_1: {
 												ctor: '::',
 												_0: {ctor: '_Tuple2', _0: 'color', _1: 'rgba(0,0,0,0)'},
@@ -15921,13 +15921,13 @@ var _user$project$Chords$fretMarkerStyle = function (dot) {
 								_0: {ctor: '_Tuple2', _0: 'right', _1: dot.fretNo},
 								_1: {
 									ctor: '::',
-									_0: {ctor: '_Tuple2', _0: 'width', _1: '25px'},
+									_0: {ctor: '_Tuple2', _0: 'width', _1: '15px'},
 									_1: {
 										ctor: '::',
 										_0: {ctor: '_Tuple2', _0: 'height', _1: '25px'},
 										_1: {
 											ctor: '::',
-											_0: {ctor: '_Tuple2', _0: 'borderRadius', _1: '13px'},
+											_0: {ctor: '_Tuple2', _0: 'borderRadius', _1: '7px'},
 											_1: {
 												ctor: '::',
 												_0: {ctor: '_Tuple2', _0: 'backgroundColor', _1: 'rgba(0,0,0,0)'},
@@ -15964,13 +15964,13 @@ var _user$project$Chords$fretMarkerStyle = function (dot) {
 								_0: {ctor: '_Tuple2', _0: 'right', _1: dot.fretNo},
 								_1: {
 									ctor: '::',
-									_0: {ctor: '_Tuple2', _0: 'width', _1: '25px'},
+									_0: {ctor: '_Tuple2', _0: 'width', _1: '15px'},
 									_1: {
 										ctor: '::',
 										_0: {ctor: '_Tuple2', _0: 'height', _1: '25px'},
 										_1: {
 											ctor: '::',
-											_0: {ctor: '_Tuple2', _0: 'borderRadius', _1: '13px'},
+											_0: {ctor: '_Tuple2', _0: 'borderRadius', _1: '7px'},
 											_1: {
 												ctor: '::',
 												_0: {ctor: '_Tuple2', _0: 'backgroundColor', _1: dot.tint},
@@ -16015,10 +16015,10 @@ var _user$project$Chords$fingerChartStyle = _elm_lang$html$Html_Attributes$style
 var _user$project$Chords$chordFunctionStyle = _elm_lang$html$Html_Attributes$style(
 	{
 		ctor: '::',
-		_0: {ctor: '_Tuple2', _0: 'color', _1: '#3A86FF'},
+		_0: {ctor: '_Tuple2', _0: 'color', _1: '#34495E'},
 		_1: {
 			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '30px'},
+			_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '20px'},
 			_1: {
 				ctor: '::',
 				_0: {ctor: '_Tuple2', _0: 'marginLeft', _1: '150px'},
@@ -16036,7 +16036,7 @@ var _user$project$Chords$chordNameStyle = _elm_lang$html$Html_Attributes$style(
 		_0: {ctor: '_Tuple2', _0: 'color', _1: '#E8F1F2'},
 		_1: {
 			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '50px'},
+			_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '25px'},
 			_1: {
 				ctor: '::',
 				_0: {ctor: '_Tuple2', _0: 'marginLeft', _1: '150px'},
@@ -16154,8 +16154,12 @@ var _user$project$Chords$chartStyle = _elm_lang$html$Html_Attributes$style(
 					_0: {ctor: '_Tuple2', _0: 'border', _1: '1px solid #333'},
 					_1: {
 						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'borderBottom', _1: 'none'},
-						_1: {ctor: '[]'}
+						_0: {ctor: '_Tuple2', _0: 'borderTopLeftRadius', _1: '20px'},
+						_1: {
+							ctor: '::',
+							_0: {ctor: '_Tuple2', _0: 'borderBottom', _1: 'none'},
+							_1: {ctor: '[]'}
+						}
 					}
 				}
 			}
@@ -16173,7 +16177,7 @@ var _user$project$Chords$chordBarPosStyle = _elm_lang$html$Html_Attributes$style
 				_0: {ctor: '_Tuple2', _0: 'right', _1: '30%'},
 				_1: {
 					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'color', _1: '#3A86FF'},
+					_0: {ctor: '_Tuple2', _0: 'color', _1: '#E8175D'},
 					_1: {
 						ctor: '::',
 						_0: {ctor: '_Tuple2', _0: 'transition', _1: 'all 0.3s ease'},
@@ -17245,7 +17249,7 @@ var _user$project$Chords$keys = function (key) {
 					_0: '',
 					_1: {
 						ctor: '::',
-						_0: '4',
+						_0: '3',
 						_1: {
 							ctor: '::',
 							_0: '',
@@ -17421,7 +17425,7 @@ var _user$project$Chords$keys = function (key) {
 				iii: '06xb52244334424112',
 				iv: '06xb52344434223112',
 				v: '06xb52344434223112',
-				vi: '060152242131020010',
+				vi: '060252342131020010',
 				vii: 'b62354444233122112',
 				names: {
 					ctor: '::',
@@ -17943,46 +17947,44 @@ var _user$project$Chords$keys = function (key) {
 var _user$project$Chords$playbackSpeedSlider = function (model) {
 	return A2(
 		_elm_lang$html$Html$div,
-		{
-			ctor: '::',
-			_0: _elm_lang$html$Html_Attributes$style(
-				{
-					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'appearance', _1: 'none'},
-					_1: {ctor: '[]'}
-				}),
-			_1: {ctor: '[]'}
-		},
+		{ctor: '[]'},
 		{
 			ctor: '::',
 			_0: A2(
-				_elm_lang$html$Html$input,
+				_elm_lang$html$Html$div,
+				{ctor: '[]'},
 				{
 					ctor: '::',
-					_0: _elm_lang$html$Html_Attributes$type_('range'),
-					_1: {
+					_0: _elm_lang$html$Html$text('+    CHORD PLAYBACK SPEED    -'),
+					_1: {ctor: '[]'}
+				}),
+			_1: {
+				ctor: '::',
+				_0: A2(
+					_elm_lang$html$Html$input,
+					{
 						ctor: '::',
-						_0: _elm_lang$html$Html_Attributes$min('1'),
+						_0: _elm_lang$html$Html_Attributes$type_('range'),
 						_1: {
 							ctor: '::',
-							_0: _elm_lang$html$Html_Attributes$max('10'),
+							_0: _elm_lang$html$Html_Attributes$min('1'),
 							_1: {
 								ctor: '::',
-								_0: _elm_lang$html$Html_Attributes$value(
-									_elm_lang$core$Basics$toString(model.sliderValue)),
+								_0: _elm_lang$html$Html_Attributes$max('10'),
 								_1: {
 									ctor: '::',
-									_0: _elm_lang$html$Html_Events$onInput(_user$project$Types$ChangeSliderValue),
-									_1: {ctor: '[]'}
+									_0: _elm_lang$html$Html_Attributes$value(
+										_elm_lang$core$Basics$toString(model.sliderValue)),
+									_1: {
+										ctor: '::',
+										_0: _elm_lang$html$Html_Events$onInput(_user$project$Types$ChangeSliderValue),
+										_1: {ctor: '[]'}
+									}
 								}
 							}
 						}
-					}
-				},
-				{ctor: '[]'}),
-			_1: {
-				ctor: '::',
-				_0: _elm_lang$html$Html$text('  Chord Playback Speed'),
+					},
+					{ctor: '[]'}),
 				_1: {ctor: '[]'}
 			}
 		});
@@ -18267,13 +18269,13 @@ var _user$project$Chords$fretNo = function (fret) {
 		case '0':
 			return '-40';
 		case '1':
-			return '10';
+			return '15';
 		case '2':
-			return '53';
+			return '58';
 		case '3':
-			return '97';
+			return '102';
 		case '4':
-			return '140';
+			return '145';
 		default:
 			return '-40';
 	}
@@ -18303,13 +18305,13 @@ var _user$project$Chords$fingerNo = function (finger) {
 		case 'b':
 			return 'bar';
 		case '1':
-			return '#333';
+			return '#636363';
 		case '2':
-			return '#8338EC';
+			return '#E8175D';
 		case '3':
-			return '#3A86FF';
+			return '#446CB3';
 		case '4':
-			return '#00059f';
+			return '#A8A7A7';
 		default:
 			return 'none';
 	}
@@ -18501,10 +18503,10 @@ var _user$project$Chords$fingerChart = A2(
 								_0: {ctor: '_Tuple2', _0: 'width', _1: '15px'},
 								_1: {
 									ctor: '::',
-									_0: {ctor: '_Tuple2', _0: 'height', _1: '15px'},
+									_0: {ctor: '_Tuple2', _0: 'height', _1: '25px'},
 									_1: {
 										ctor: '::',
-										_0: {ctor: '_Tuple2', _0: 'borderRadius', _1: '13px'},
+										_0: {ctor: '_Tuple2', _0: 'borderRadius', _1: '7px'},
 										_1: {
 											ctor: '::',
 											_0: {
@@ -18529,7 +18531,7 @@ var _user$project$Chords$fingerChart = A2(
 							_0: _elm_lang$html$Html_Attributes$style(
 								{
 									ctor: '::',
-									_0: {ctor: '_Tuple2', _0: 'padding', _1: '5px'},
+									_0: {ctor: '_Tuple2', _0: 'padding', _1: '15px'},
 									_1: {
 										ctor: '::',
 										_0: {ctor: '_Tuple2', _0: 'lineHeight', _1: '9px'},
@@ -18572,10 +18574,10 @@ var _user$project$Chords$fingerChart = A2(
 									_0: {ctor: '_Tuple2', _0: 'width', _1: '15px'},
 									_1: {
 										ctor: '::',
-										_0: {ctor: '_Tuple2', _0: 'height', _1: '15px'},
+										_0: {ctor: '_Tuple2', _0: 'height', _1: '25px'},
 										_1: {
 											ctor: '::',
-											_0: {ctor: '_Tuple2', _0: 'borderRadius', _1: '13px'},
+											_0: {ctor: '_Tuple2', _0: 'borderRadius', _1: '7px'},
 											_1: {
 												ctor: '::',
 												_0: {
@@ -18600,7 +18602,7 @@ var _user$project$Chords$fingerChart = A2(
 								_0: _elm_lang$html$Html_Attributes$style(
 									{
 										ctor: '::',
-										_0: {ctor: '_Tuple2', _0: 'padding', _1: '5px'},
+										_0: {ctor: '_Tuple2', _0: 'padding', _1: '15px'},
 										_1: {
 											ctor: '::',
 											_0: {ctor: '_Tuple2', _0: 'lineHeight', _1: '9px'},
@@ -18643,10 +18645,10 @@ var _user$project$Chords$fingerChart = A2(
 										_0: {ctor: '_Tuple2', _0: 'width', _1: '15px'},
 										_1: {
 											ctor: '::',
-											_0: {ctor: '_Tuple2', _0: 'height', _1: '15px'},
+											_0: {ctor: '_Tuple2', _0: 'height', _1: '25px'},
 											_1: {
 												ctor: '::',
-												_0: {ctor: '_Tuple2', _0: 'borderRadius', _1: '13px'},
+												_0: {ctor: '_Tuple2', _0: 'borderRadius', _1: '7px'},
 												_1: {
 													ctor: '::',
 													_0: {
@@ -18671,7 +18673,7 @@ var _user$project$Chords$fingerChart = A2(
 									_0: _elm_lang$html$Html_Attributes$style(
 										{
 											ctor: '::',
-											_0: {ctor: '_Tuple2', _0: 'padding', _1: '5px'},
+											_0: {ctor: '_Tuple2', _0: 'padding', _1: '15px'},
 											_1: {
 												ctor: '::',
 												_0: {ctor: '_Tuple2', _0: 'lineHeight', _1: '9px'},
@@ -18714,10 +18716,10 @@ var _user$project$Chords$fingerChart = A2(
 											_0: {ctor: '_Tuple2', _0: 'width', _1: '15px'},
 											_1: {
 												ctor: '::',
-												_0: {ctor: '_Tuple2', _0: 'height', _1: '15px'},
+												_0: {ctor: '_Tuple2', _0: 'height', _1: '25px'},
 												_1: {
 													ctor: '::',
-													_0: {ctor: '_Tuple2', _0: 'borderRadius', _1: '13px'},
+													_0: {ctor: '_Tuple2', _0: 'borderRadius', _1: '7px'},
 													_1: {
 														ctor: '::',
 														_0: {
@@ -18742,7 +18744,7 @@ var _user$project$Chords$fingerChart = A2(
 										_0: _elm_lang$html$Html_Attributes$style(
 											{
 												ctor: '::',
-												_0: {ctor: '_Tuple2', _0: 'padding', _1: '5px'},
+												_0: {ctor: '_Tuple2', _0: 'padding', _1: '15px'},
 												_1: {
 													ctor: '::',
 													_0: {ctor: '_Tuple2', _0: 'lineHeight', _1: '9px'},
@@ -18894,11 +18896,15 @@ var _user$project$Chords$chordChartPage = function (model) {
 								_0: {ctor: '_Tuple2', _0: 'color', _1: '#fff'},
 								_1: {
 									ctor: '::',
-									_0: {ctor: '_Tuple2', _0: 'width', _1: '100px'},
+									_0: {ctor: '_Tuple2', _0: 'width', _1: '200px'},
 									_1: {
 										ctor: '::',
 										_0: {ctor: '_Tuple2', _0: 'marginTop', _1: '50px'},
-										_1: {ctor: '[]'}
+										_1: {
+											ctor: '::',
+											_0: {ctor: '_Tuple2', _0: 'borderColor', _1: '#ddd'},
+											_1: {ctor: '[]'}
+										}
 									}
 								}
 							}),
@@ -18984,28 +18990,51 @@ var _user$project$Chords$chordChartPage = function (model) {
 								_elm_lang$html$Html$div,
 								{
 									ctor: '::',
-									_0: _elm_lang$html$Html_Attributes$style(
-										{
-											ctor: '::',
-											_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '20px'},
-											_1: {ctor: '[]'}
-										}),
+									_0: _user$project$Chords$chartContainerStyle('row'),
 									_1: {ctor: '[]'}
 								},
 								{
 									ctor: '::',
-									_0: _elm_lang$html$Html$text(
-										A2(
-											_elm_lang$core$Basics_ops['++'],
-											'Solo on fret: ',
-											A2(
-												_elm_lang$core$Basics_ops['++'],
-												soloFretMin,
-												A2(
-													_elm_lang$core$Basics_ops['++'],
-													' (Minor scale), or fret: ',
-													A2(_elm_lang$core$Basics_ops['++'], soloFretMaj, ' (Major scale)'))))),
-									_1: {ctor: '[]'}
+									_0: A5(
+										_user$project$Chords$chordChartModel,
+										model,
+										1,
+										'II',
+										function (_) {
+											return _.ii;
+										},
+										function (_) {
+											return _.ii;
+										}),
+									_1: {
+										ctor: '::',
+										_0: A5(
+											_user$project$Chords$chordChartModel,
+											model,
+											2,
+											'III',
+											function (_) {
+												return _.iii;
+											},
+											function (_) {
+												return _.iii;
+											}),
+										_1: {
+											ctor: '::',
+											_0: A5(
+												_user$project$Chords$chordChartModel,
+												model,
+												6,
+												'VII',
+												function (_) {
+													return _.vii;
+												},
+												function (_) {
+													return _.vii;
+												}),
+											_1: {ctor: '[]'}
+										}
+									}
 								}),
 							_1: {
 								ctor: '::',
@@ -19016,74 +19045,102 @@ var _user$project$Chords$chordChartPage = function (model) {
 										_0: _elm_lang$html$Html_Attributes$style(
 											{
 												ctor: '::',
-												_0: {ctor: '_Tuple2', _0: 'paddingTop', _1: '50px'},
+												_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '18px'},
 												_1: {
 													ctor: '::',
-													_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '20px'},
-													_1: {ctor: '[]'}
+													_0: {ctor: '_Tuple2', _0: 'paddingBottom', _1: '50px'},
+													_1: {
+														ctor: '::',
+														_0: {ctor: '_Tuple2', _0: 'color', _1: '#A8A7A7'},
+														_1: {ctor: '[]'}
+													}
 												}
 											}),
 										_1: {ctor: '[]'}
 									},
 									{
 										ctor: '::',
-										_0: _elm_lang$html$Html$text('ADDITIONAL CHORD OPTIONS:'),
-										_1: {ctor: '[]'}
-									}),
-								_1: {
-									ctor: '::',
-									_0: A2(
-										_elm_lang$html$Html$div,
-										{
+										_0: A2(
+											_elm_lang$html$Html$span,
+											{ctor: '[]'},
+											{
+												ctor: '::',
+												_0: _elm_lang$html$Html$text('SOLO ON FRET: '),
+												_1: {ctor: '[]'}
+											}),
+										_1: {
 											ctor: '::',
-											_0: _user$project$Chords$chartContainerStyle('row'),
-											_1: {ctor: '[]'}
-										},
-										{
-											ctor: '::',
-											_0: A5(
-												_user$project$Chords$chordChartModel,
-												model,
-												1,
-												'II',
-												function (_) {
-													return _.ii;
+											_0: A2(
+												_elm_lang$html$Html$span,
+												{
+													ctor: '::',
+													_0: _elm_lang$html$Html_Attributes$style(
+														{
+															ctor: '::',
+															_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '25px'},
+															_1: {
+																ctor: '::',
+																_0: {ctor: '_Tuple2', _0: 'color', _1: '#E84A5F'},
+																_1: {ctor: '[]'}
+															}
+														}),
+													_1: {ctor: '[]'}
 												},
-												function (_) {
-													return _.ii;
+												{
+													ctor: '::',
+													_0: _elm_lang$html$Html$text(soloFretMin),
+													_1: {ctor: '[]'}
 												}),
 											_1: {
 												ctor: '::',
-												_0: A5(
-													_user$project$Chords$chordChartModel,
-													model,
-													2,
-													'III',
-													function (_) {
-														return _.iii;
-													},
-													function (_) {
-														return _.iii;
+												_0: A2(
+													_elm_lang$html$Html$span,
+													{ctor: '[]'},
+													{
+														ctor: '::',
+														_0: _elm_lang$html$Html$text(' (MINOR SCALE), OR FRET: '),
+														_1: {ctor: '[]'}
 													}),
 												_1: {
 													ctor: '::',
-													_0: A5(
-														_user$project$Chords$chordChartModel,
-														model,
-														6,
-														'VII',
-														function (_) {
-															return _.vii;
+													_0: A2(
+														_elm_lang$html$Html$span,
+														{
+															ctor: '::',
+															_0: _elm_lang$html$Html_Attributes$style(
+																{
+																	ctor: '::',
+																	_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '25px'},
+																	_1: {
+																		ctor: '::',
+																		_0: {ctor: '_Tuple2', _0: 'color', _1: '#E84A5F'},
+																		_1: {ctor: '[]'}
+																	}
+																}),
+															_1: {ctor: '[]'}
 														},
-														function (_) {
-															return _.vii;
+														{
+															ctor: '::',
+															_0: _elm_lang$html$Html$text(soloFretMaj),
+															_1: {ctor: '[]'}
 														}),
-													_1: {ctor: '[]'}
+													_1: {
+														ctor: '::',
+														_0: A2(
+															_elm_lang$html$Html$span,
+															{ctor: '[]'},
+															{
+																ctor: '::',
+																_0: _elm_lang$html$Html$text(' (MAJOR SCALE)'),
+																_1: {ctor: '[]'}
+															}),
+														_1: {ctor: '[]'}
+													}
 												}
 											}
-										}),
-									_1: {ctor: '[]'}
-								}
+										}
+									}),
+								_1: {ctor: '[]'}
 							}
 						}
 					}
@@ -20368,7 +20425,7 @@ var _user$project$Main$navItemStyle = _elm_lang$html$Html_Attributes$style(
 			_0: {ctor: '_Tuple2', _0: 'padding', _1: '5px'},
 			_1: {
 				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'color', _1: '#777'},
+				_0: {ctor: '_Tuple2', _0: 'color', _1: '#A8A7A7'},
 				_1: {ctor: '[]'}
 			}
 		}
