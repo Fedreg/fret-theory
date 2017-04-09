@@ -98,7 +98,7 @@ notes key =
             , iv = [ "c#3q", "g#3q", "c#4q", "f4q", "g#4q", "c0s" ]
             , v = [ "d#3q", "a#3q", "d#4q", "g4q", "a#4q", "c0s" ]
             , vi = [ "f2q", "c3q", "f3q", "g#3q", "c4q", "f4q" ]
-            , vii = [ "g3q", "c#4q", "e4q", "a#5q", "c0s", "c0s" ]
+            , vii = [ "g3q", "c#4q", "e4q", "a#4q", "c0s", "c0s" ]
             }
 
         "Eb" ->

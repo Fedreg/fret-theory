@@ -11,6 +11,7 @@ type alias Model =
     , notePosition : Int
     , showAccidental : String
     , sliderValue : Int
+    , navMenuOpen : Bool
     }
 
 
@@ -67,6 +68,7 @@ type Msg
     | DrawNote String String String
     | ChangeSliderValue String
     | NoOp
+    | ShowNavMenu
 
 
 type Route

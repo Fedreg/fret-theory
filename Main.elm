@@ -2,6 +2,7 @@ port module Main exposing (..)
 
 import Html exposing (..)
 import Html.Attributes exposing (..)
+import Html.Events exposing (onClick)
 import List.Extra exposing (getAt)
 import Routing
 import Types exposing (..)
@@ -35,6 +36,7 @@ init location =
           , notePosition = 0
           , showAccidental = "0"
           , sliderValue = 1
+          , navMenuOpen = False
           }
         , Cmd.none
         )
@@ -47,6 +49,9 @@ update msg model =
     case msg of
         NoOp ->
             ( model, Cmd.none )
+
+        ShowNavMenu ->
+            ( { model | navMenuOpen = not model.navMenuOpen }, Cmd.none )
 
         OnLocationChange location ->
             let
@@ -115,13 +120,30 @@ subscriptions model =
 
 view : Model -> Html Msg
 view model =
-    div []
-        [ div [ navStyle ]
+    div [ style [ ( "position", "relative" ), ( "overflow", "hidden" ) ] ]
+        [ nav model
+        , page model
+        ]
+
+
+nav : Model -> Html Msg
+nav model =
+    div [ navMenuStyle model ]
+        [ navIcon model
+        , div []
             [ a [ href (Routing.scalesPath model.musKey), navItemStyle ] [ text "SCALES" ]
             , a [ href (Routing.chordsPath model.musKey), navItemStyle ] [ text "CHORDS" ]
             , a [ href Routing.fretboardPath, navItemStyle ] [ text "FRETBOARD" ]
             ]
-        , page model
+        ]
+
+
+navIcon : Model -> Html Msg
+navIcon model =
+    div [ navIconStyle model, onClick ShowNavMenu ]
+        [ hr [ navIconStyleHr ] []
+        , hr [ navIconStyleHr ] []
+        , hr [ navIconStyleHr ] []
         ]
 
 
@@ -145,6 +167,60 @@ page model =
 -- STYLES
 
 
+navMenuStyle model =
+    let
+        baseStyles difference =
+            style
+                [ ( "position", "absolute" )
+                , ( "top", "0" )
+                , ( "right", "0" )
+                , ( "transform", "translateX(0)" )
+                , ( "width", "250px" )
+                , ( "height", "100%" )
+                , ( "padding", "15px" )
+                , ( "backgroundColor", "#111" )
+                , ( "transition", "all 0.5s" )
+                , ( "zIndex", "10000" )
+                , ( "borderLeft", "1px solid #222" )
+                , ( "transform", difference )
+                ]
+    in
+        case model.navMenuOpen of
+            True ->
+                baseStyles "translateX(0)"
+
+            False ->
+                baseStyles "translateX(250px)"
+
+
+navIconStyle model =
+    let
+        baseStyles difference =
+            style
+                [ ( "position", "absolute" )
+                , ( "top", "20px" )
+                , ( "left", "-40px" )
+                , ( "width", "25px" )
+                , ( "transition", "all 0.5s" )
+                , ( "cursor", "pointer" )
+                , ( "transform", difference )
+                ]
+    in
+        case model.navMenuOpen of
+            True ->
+                baseStyles "rotate(270deg)"
+
+            False ->
+                baseStyles "none"
+
+
+navIconStyleHr =
+    style
+        [ ( "borderTop", "1px solid #fff" )
+        , ( "margin", "0 0 5px" )
+        ]
+
+
 navStyle : Attribute msg
 navStyle =
     style
@@ -154,7 +230,8 @@ navStyle =
 navItemStyle : Attribute msg
 navItemStyle =
     style
-        [ ( "margin", "10px auto" )
+        [ ( "display", "block" )
+        , ( "margin", "0 0 8px" )
         , ( "padding", "5px" )
         , ( "color", "#A8A7A7" )
         ]
