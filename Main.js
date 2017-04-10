@@ -20349,11 +20349,33 @@ var _user$project$Routing$parseLocation = function (location) {
 	}
 };
 
+var _user$project$Scales$stringContainerStyle = _elm_lang$html$Html_Attributes$style(
+	{
+		ctor: '::',
+		_0: {ctor: '_Tuple2', _0: 'position', _1: 'absolute'},
+		_1: {
+			ctor: '::',
+			_0: {ctor: '_Tuple2', _0: 'top', _1: '20px'},
+			_1: {
+				ctor: '::',
+				_0: {ctor: '_Tuple2', _0: 'left', _1: '0'},
+				_1: {ctor: '[]'}
+			}
+		}
+	});
 var _user$project$Scales$stringStyle = _elm_lang$html$Html_Attributes$style(
 	{
 		ctor: '::',
-		_0: {ctor: '_Tuple2', _0: 'borderBottom', _1: '1px solid #fff'},
-		_1: {ctor: '[]'}
+		_0: {ctor: '_Tuple2', _0: 'width', _1: '800px'},
+		_1: {
+			ctor: '::',
+			_0: {ctor: '_Tuple2', _0: 'borderBottom', _1: '1px solid #777'},
+			_1: {
+				ctor: '::',
+				_0: {ctor: '_Tuple2', _0: 'marginTop', _1: '42px'},
+				_1: {ctor: '[]'}
+			}
+		}
 	});
 var _user$project$Scales$dorianMode = {
 	e: {
@@ -20791,7 +20813,11 @@ var _user$project$Scales$scaleStringSchema = F3(
 	});
 var _user$project$Scales$stringView = A2(
 	_elm_lang$html$Html$div,
-	{ctor: '[]'},
+	{
+		ctor: '::',
+		_0: _user$project$Scales$stringContainerStyle,
+		_1: {ctor: '[]'}
+	},
 	{
 		ctor: '::',
 		_0: A2(
@@ -20894,7 +20920,20 @@ var _user$project$Scales$dorianModeView = function (model) {
 	};
 	return A2(
 		_elm_lang$html$Html$div,
-		{ctor: '[]'},
+		{
+			ctor: '::',
+			_0: _elm_lang$html$Html_Attributes$style(
+				{
+					ctor: '::',
+					_0: {ctor: '_Tuple2', _0: 'position', _1: 'relative'},
+					_1: {
+						ctor: '::',
+						_0: {ctor: '_Tuple2', _0: 'margin', _1: '0 auto'},
+						_1: {ctor: '[]'}
+					}
+				}),
+			_1: {ctor: '[]'}
+		},
 		{
 			ctor: '::',
 			_0: A2(
@@ -20907,25 +20946,7 @@ var _user$project$Scales$dorianModeView = function (model) {
 				}),
 			_1: {
 				ctor: '::',
-				_0: A2(
-					_elm_lang$html$Html$div,
-					{
-						ctor: '::',
-						_0: _elm_lang$html$Html_Attributes$style(
-							{
-								ctor: '::',
-								_0: {ctor: '_Tuple2', _0: 'margin', _1: '5px 420px'},
-								_1: {ctor: '[]'}
-							}),
-						_1: {ctor: '[]'}
-					},
-					A2(
-						_elm_lang$core$List$map,
-						markup,
-						data(
-							function (_) {
-								return _.one;
-							}))),
+				_0: _user$project$Scales$stringView,
 				_1: {
 					ctor: '::',
 					_0: A2(
@@ -20935,7 +20956,7 @@ var _user$project$Scales$dorianModeView = function (model) {
 							_0: _elm_lang$html$Html_Attributes$style(
 								{
 									ctor: '::',
-									_0: {ctor: '_Tuple2', _0: 'margin', _1: '5px 340px'},
+									_0: {ctor: '_Tuple2', _0: 'margin', _1: '5px 420px'},
 									_1: {ctor: '[]'}
 								}),
 							_1: {ctor: '[]'}
@@ -20945,7 +20966,7 @@ var _user$project$Scales$dorianModeView = function (model) {
 							markup,
 							data(
 								function (_) {
-									return _.two;
+									return _.one;
 								}))),
 					_1: {
 						ctor: '::',
@@ -20956,7 +20977,7 @@ var _user$project$Scales$dorianModeView = function (model) {
 								_0: _elm_lang$html$Html_Attributes$style(
 									{
 										ctor: '::',
-										_0: {ctor: '_Tuple2', _0: 'margin', _1: '5px 260px'},
+										_0: {ctor: '_Tuple2', _0: 'margin', _1: '5px 340px'},
 										_1: {ctor: '[]'}
 									}),
 								_1: {ctor: '[]'}
@@ -20966,7 +20987,7 @@ var _user$project$Scales$dorianModeView = function (model) {
 								markup,
 								data(
 									function (_) {
-										return _.three;
+										return _.two;
 									}))),
 						_1: {
 							ctor: '::',
@@ -20977,7 +20998,7 @@ var _user$project$Scales$dorianModeView = function (model) {
 									_0: _elm_lang$html$Html_Attributes$style(
 										{
 											ctor: '::',
-											_0: {ctor: '_Tuple2', _0: 'margin', _1: '5px 180px'},
+											_0: {ctor: '_Tuple2', _0: 'margin', _1: '5px 260px'},
 											_1: {ctor: '[]'}
 										}),
 									_1: {ctor: '[]'}
@@ -20987,7 +21008,7 @@ var _user$project$Scales$dorianModeView = function (model) {
 									markup,
 									data(
 										function (_) {
-											return _.four;
+											return _.three;
 										}))),
 							_1: {
 								ctor: '::',
@@ -20998,7 +21019,7 @@ var _user$project$Scales$dorianModeView = function (model) {
 										_0: _elm_lang$html$Html_Attributes$style(
 											{
 												ctor: '::',
-												_0: {ctor: '_Tuple2', _0: 'margin', _1: '5px 100px'},
+												_0: {ctor: '_Tuple2', _0: 'margin', _1: '5px 180px'},
 												_1: {ctor: '[]'}
 											}),
 										_1: {ctor: '[]'}
@@ -21008,7 +21029,7 @@ var _user$project$Scales$dorianModeView = function (model) {
 										markup,
 										data(
 											function (_) {
-												return _.five;
+												return _.four;
 											}))),
 								_1: {
 									ctor: '::',
@@ -21019,7 +21040,7 @@ var _user$project$Scales$dorianModeView = function (model) {
 											_0: _elm_lang$html$Html_Attributes$style(
 												{
 													ctor: '::',
-													_0: {ctor: '_Tuple2', _0: 'margin', _1: '5px 20px'},
+													_0: {ctor: '_Tuple2', _0: 'margin', _1: '5px 100px'},
 													_1: {ctor: '[]'}
 												}),
 											_1: {ctor: '[]'}
@@ -21029,9 +21050,31 @@ var _user$project$Scales$dorianModeView = function (model) {
 											markup,
 											data(
 												function (_) {
-													return _.six;
+													return _.five;
 												}))),
-									_1: {ctor: '[]'}
+									_1: {
+										ctor: '::',
+										_0: A2(
+											_elm_lang$html$Html$div,
+											{
+												ctor: '::',
+												_0: _elm_lang$html$Html_Attributes$style(
+													{
+														ctor: '::',
+														_0: {ctor: '_Tuple2', _0: 'margin', _1: '5px 20px'},
+														_1: {ctor: '[]'}
+													}),
+												_1: {ctor: '[]'}
+											},
+											A2(
+												_elm_lang$core$List$map,
+												markup,
+												data(
+													function (_) {
+														return _.six;
+													}))),
+										_1: {ctor: '[]'}
+									}
 								}
 							}
 						}
@@ -21075,7 +21118,20 @@ var _user$project$Scales$mixolydianModeView = function (model) {
 	};
 	return A2(
 		_elm_lang$html$Html$div,
-		{ctor: '[]'},
+		{
+			ctor: '::',
+			_0: _elm_lang$html$Html_Attributes$style(
+				{
+					ctor: '::',
+					_0: {ctor: '_Tuple2', _0: 'position', _1: 'relative'},
+					_1: {
+						ctor: '::',
+						_0: {ctor: '_Tuple2', _0: 'margin', _1: '0 auto'},
+						_1: {ctor: '[]'}
+					}
+				}),
+			_1: {ctor: '[]'}
+		},
 		{
 			ctor: '::',
 			_0: A2(
@@ -21088,25 +21144,7 @@ var _user$project$Scales$mixolydianModeView = function (model) {
 				}),
 			_1: {
 				ctor: '::',
-				_0: A2(
-					_elm_lang$html$Html$div,
-					{
-						ctor: '::',
-						_0: _elm_lang$html$Html_Attributes$style(
-							{
-								ctor: '::',
-								_0: {ctor: '_Tuple2', _0: 'margin', _1: '5px 420px'},
-								_1: {ctor: '[]'}
-							}),
-						_1: {ctor: '[]'}
-					},
-					A2(
-						_elm_lang$core$List$map,
-						markup,
-						data(
-							function (_) {
-								return _.one;
-							}))),
+				_0: _user$project$Scales$stringView,
 				_1: {
 					ctor: '::',
 					_0: A2(
@@ -21116,7 +21154,7 @@ var _user$project$Scales$mixolydianModeView = function (model) {
 							_0: _elm_lang$html$Html_Attributes$style(
 								{
 									ctor: '::',
-									_0: {ctor: '_Tuple2', _0: 'margin', _1: '5px 340px'},
+									_0: {ctor: '_Tuple2', _0: 'margin', _1: '5px 420px'},
 									_1: {ctor: '[]'}
 								}),
 							_1: {ctor: '[]'}
@@ -21126,7 +21164,7 @@ var _user$project$Scales$mixolydianModeView = function (model) {
 							markup,
 							data(
 								function (_) {
-									return _.two;
+									return _.one;
 								}))),
 					_1: {
 						ctor: '::',
@@ -21137,7 +21175,7 @@ var _user$project$Scales$mixolydianModeView = function (model) {
 								_0: _elm_lang$html$Html_Attributes$style(
 									{
 										ctor: '::',
-										_0: {ctor: '_Tuple2', _0: 'margin', _1: '5px 260px'},
+										_0: {ctor: '_Tuple2', _0: 'margin', _1: '5px 340px'},
 										_1: {ctor: '[]'}
 									}),
 								_1: {ctor: '[]'}
@@ -21147,7 +21185,7 @@ var _user$project$Scales$mixolydianModeView = function (model) {
 								markup,
 								data(
 									function (_) {
-										return _.three;
+										return _.two;
 									}))),
 						_1: {
 							ctor: '::',
@@ -21158,7 +21196,7 @@ var _user$project$Scales$mixolydianModeView = function (model) {
 									_0: _elm_lang$html$Html_Attributes$style(
 										{
 											ctor: '::',
-											_0: {ctor: '_Tuple2', _0: 'margin', _1: '5px 180px'},
+											_0: {ctor: '_Tuple2', _0: 'margin', _1: '5px 260px'},
 											_1: {ctor: '[]'}
 										}),
 									_1: {ctor: '[]'}
@@ -21168,7 +21206,7 @@ var _user$project$Scales$mixolydianModeView = function (model) {
 									markup,
 									data(
 										function (_) {
-											return _.four;
+											return _.three;
 										}))),
 							_1: {
 								ctor: '::',
@@ -21179,7 +21217,7 @@ var _user$project$Scales$mixolydianModeView = function (model) {
 										_0: _elm_lang$html$Html_Attributes$style(
 											{
 												ctor: '::',
-												_0: {ctor: '_Tuple2', _0: 'margin', _1: '5px 100px'},
+												_0: {ctor: '_Tuple2', _0: 'margin', _1: '5px 180px'},
 												_1: {ctor: '[]'}
 											}),
 										_1: {ctor: '[]'}
@@ -21189,7 +21227,7 @@ var _user$project$Scales$mixolydianModeView = function (model) {
 										markup,
 										data(
 											function (_) {
-												return _.five;
+												return _.four;
 											}))),
 								_1: {
 									ctor: '::',
@@ -21200,7 +21238,7 @@ var _user$project$Scales$mixolydianModeView = function (model) {
 											_0: _elm_lang$html$Html_Attributes$style(
 												{
 													ctor: '::',
-													_0: {ctor: '_Tuple2', _0: 'margin', _1: '5px 20px'},
+													_0: {ctor: '_Tuple2', _0: 'margin', _1: '5px 100px'},
 													_1: {ctor: '[]'}
 												}),
 											_1: {ctor: '[]'}
@@ -21210,9 +21248,31 @@ var _user$project$Scales$mixolydianModeView = function (model) {
 											markup,
 											data(
 												function (_) {
-													return _.six;
+													return _.five;
 												}))),
-									_1: {ctor: '[]'}
+									_1: {
+										ctor: '::',
+										_0: A2(
+											_elm_lang$html$Html$div,
+											{
+												ctor: '::',
+												_0: _elm_lang$html$Html_Attributes$style(
+													{
+														ctor: '::',
+														_0: {ctor: '_Tuple2', _0: 'margin', _1: '5px 20px'},
+														_1: {ctor: '[]'}
+													}),
+												_1: {ctor: '[]'}
+											},
+											A2(
+												_elm_lang$core$List$map,
+												markup,
+												data(
+													function (_) {
+														return _.six;
+													}))),
+										_1: {ctor: '[]'}
+									}
 								}
 							}
 						}
@@ -21256,7 +21316,20 @@ var _user$project$Scales$lydianModeView = function (model) {
 	};
 	return A2(
 		_elm_lang$html$Html$div,
-		{ctor: '[]'},
+		{
+			ctor: '::',
+			_0: _elm_lang$html$Html_Attributes$style(
+				{
+					ctor: '::',
+					_0: {ctor: '_Tuple2', _0: 'position', _1: 'relative'},
+					_1: {
+						ctor: '::',
+						_0: {ctor: '_Tuple2', _0: 'margin', _1: '0 auto'},
+						_1: {ctor: '[]'}
+					}
+				}),
+			_1: {ctor: '[]'}
+		},
 		{
 			ctor: '::',
 			_0: A2(
@@ -21269,25 +21342,7 @@ var _user$project$Scales$lydianModeView = function (model) {
 				}),
 			_1: {
 				ctor: '::',
-				_0: A2(
-					_elm_lang$html$Html$div,
-					{
-						ctor: '::',
-						_0: _elm_lang$html$Html_Attributes$style(
-							{
-								ctor: '::',
-								_0: {ctor: '_Tuple2', _0: 'margin', _1: '5px 420px'},
-								_1: {ctor: '[]'}
-							}),
-						_1: {ctor: '[]'}
-					},
-					A2(
-						_elm_lang$core$List$map,
-						markup,
-						data(
-							function (_) {
-								return _.one;
-							}))),
+				_0: _user$project$Scales$stringView,
 				_1: {
 					ctor: '::',
 					_0: A2(
@@ -21297,7 +21352,7 @@ var _user$project$Scales$lydianModeView = function (model) {
 							_0: _elm_lang$html$Html_Attributes$style(
 								{
 									ctor: '::',
-									_0: {ctor: '_Tuple2', _0: 'margin', _1: '5px 340px'},
+									_0: {ctor: '_Tuple2', _0: 'margin', _1: '5px 420px'},
 									_1: {ctor: '[]'}
 								}),
 							_1: {ctor: '[]'}
@@ -21307,7 +21362,7 @@ var _user$project$Scales$lydianModeView = function (model) {
 							markup,
 							data(
 								function (_) {
-									return _.two;
+									return _.one;
 								}))),
 					_1: {
 						ctor: '::',
@@ -21318,7 +21373,7 @@ var _user$project$Scales$lydianModeView = function (model) {
 								_0: _elm_lang$html$Html_Attributes$style(
 									{
 										ctor: '::',
-										_0: {ctor: '_Tuple2', _0: 'margin', _1: '5px 260px'},
+										_0: {ctor: '_Tuple2', _0: 'margin', _1: '5px 340px'},
 										_1: {ctor: '[]'}
 									}),
 								_1: {ctor: '[]'}
@@ -21328,7 +21383,7 @@ var _user$project$Scales$lydianModeView = function (model) {
 								markup,
 								data(
 									function (_) {
-										return _.three;
+										return _.two;
 									}))),
 						_1: {
 							ctor: '::',
@@ -21339,7 +21394,7 @@ var _user$project$Scales$lydianModeView = function (model) {
 									_0: _elm_lang$html$Html_Attributes$style(
 										{
 											ctor: '::',
-											_0: {ctor: '_Tuple2', _0: 'margin', _1: '5px 180px'},
+											_0: {ctor: '_Tuple2', _0: 'margin', _1: '5px 260px'},
 											_1: {ctor: '[]'}
 										}),
 									_1: {ctor: '[]'}
@@ -21349,7 +21404,7 @@ var _user$project$Scales$lydianModeView = function (model) {
 									markup,
 									data(
 										function (_) {
-											return _.four;
+											return _.three;
 										}))),
 							_1: {
 								ctor: '::',
@@ -21360,7 +21415,7 @@ var _user$project$Scales$lydianModeView = function (model) {
 										_0: _elm_lang$html$Html_Attributes$style(
 											{
 												ctor: '::',
-												_0: {ctor: '_Tuple2', _0: 'margin', _1: '5px 100px'},
+												_0: {ctor: '_Tuple2', _0: 'margin', _1: '5px 180px'},
 												_1: {ctor: '[]'}
 											}),
 										_1: {ctor: '[]'}
@@ -21370,7 +21425,7 @@ var _user$project$Scales$lydianModeView = function (model) {
 										markup,
 										data(
 											function (_) {
-												return _.five;
+												return _.four;
 											}))),
 								_1: {
 									ctor: '::',
@@ -21381,7 +21436,7 @@ var _user$project$Scales$lydianModeView = function (model) {
 											_0: _elm_lang$html$Html_Attributes$style(
 												{
 													ctor: '::',
-													_0: {ctor: '_Tuple2', _0: 'margin', _1: '5px 20px'},
+													_0: {ctor: '_Tuple2', _0: 'margin', _1: '5px 100px'},
 													_1: {ctor: '[]'}
 												}),
 											_1: {ctor: '[]'}
@@ -21391,9 +21446,31 @@ var _user$project$Scales$lydianModeView = function (model) {
 											markup,
 											data(
 												function (_) {
-													return _.six;
+													return _.five;
 												}))),
-									_1: {ctor: '[]'}
+									_1: {
+										ctor: '::',
+										_0: A2(
+											_elm_lang$html$Html$div,
+											{
+												ctor: '::',
+												_0: _elm_lang$html$Html_Attributes$style(
+													{
+														ctor: '::',
+														_0: {ctor: '_Tuple2', _0: 'margin', _1: '5px 20px'},
+														_1: {ctor: '[]'}
+													}),
+												_1: {ctor: '[]'}
+											},
+											A2(
+												_elm_lang$core$List$map,
+												markup,
+												data(
+													function (_) {
+														return _.six;
+													}))),
+										_1: {ctor: '[]'}
+									}
 								}
 							}
 						}
@@ -21436,7 +21513,20 @@ var _user$project$Scales$aeolianModeView = function (model) {
 	};
 	return A2(
 		_elm_lang$html$Html$div,
-		{ctor: '[]'},
+		{
+			ctor: '::',
+			_0: _elm_lang$html$Html_Attributes$style(
+				{
+					ctor: '::',
+					_0: {ctor: '_Tuple2', _0: 'position', _1: 'relative'},
+					_1: {
+						ctor: '::',
+						_0: {ctor: '_Tuple2', _0: 'margin', _1: '0 auto'},
+						_1: {ctor: '[]'}
+					}
+				}),
+			_1: {ctor: '[]'}
+		},
 		{
 			ctor: '::',
 			_0: A2(
@@ -21449,25 +21539,7 @@ var _user$project$Scales$aeolianModeView = function (model) {
 				}),
 			_1: {
 				ctor: '::',
-				_0: A2(
-					_elm_lang$html$Html$div,
-					{
-						ctor: '::',
-						_0: _elm_lang$html$Html_Attributes$style(
-							{
-								ctor: '::',
-								_0: {ctor: '_Tuple2', _0: 'margin', _1: '5px 420px'},
-								_1: {ctor: '[]'}
-							}),
-						_1: {ctor: '[]'}
-					},
-					A2(
-						_elm_lang$core$List$map,
-						markup,
-						data(
-							function (_) {
-								return _.one;
-							}))),
+				_0: _user$project$Scales$stringView,
 				_1: {
 					ctor: '::',
 					_0: A2(
@@ -21477,7 +21549,7 @@ var _user$project$Scales$aeolianModeView = function (model) {
 							_0: _elm_lang$html$Html_Attributes$style(
 								{
 									ctor: '::',
-									_0: {ctor: '_Tuple2', _0: 'margin', _1: '5px 340px'},
+									_0: {ctor: '_Tuple2', _0: 'margin', _1: '5px 420px'},
 									_1: {ctor: '[]'}
 								}),
 							_1: {ctor: '[]'}
@@ -21487,7 +21559,7 @@ var _user$project$Scales$aeolianModeView = function (model) {
 							markup,
 							data(
 								function (_) {
-									return _.two;
+									return _.one;
 								}))),
 					_1: {
 						ctor: '::',
@@ -21498,7 +21570,7 @@ var _user$project$Scales$aeolianModeView = function (model) {
 								_0: _elm_lang$html$Html_Attributes$style(
 									{
 										ctor: '::',
-										_0: {ctor: '_Tuple2', _0: 'margin', _1: '5px 260px'},
+										_0: {ctor: '_Tuple2', _0: 'margin', _1: '5px 340px'},
 										_1: {ctor: '[]'}
 									}),
 								_1: {ctor: '[]'}
@@ -21508,7 +21580,7 @@ var _user$project$Scales$aeolianModeView = function (model) {
 								markup,
 								data(
 									function (_) {
-										return _.three;
+										return _.two;
 									}))),
 						_1: {
 							ctor: '::',
@@ -21519,7 +21591,7 @@ var _user$project$Scales$aeolianModeView = function (model) {
 									_0: _elm_lang$html$Html_Attributes$style(
 										{
 											ctor: '::',
-											_0: {ctor: '_Tuple2', _0: 'margin', _1: '5px 180px'},
+											_0: {ctor: '_Tuple2', _0: 'margin', _1: '5px 260px'},
 											_1: {ctor: '[]'}
 										}),
 									_1: {ctor: '[]'}
@@ -21529,7 +21601,7 @@ var _user$project$Scales$aeolianModeView = function (model) {
 									markup,
 									data(
 										function (_) {
-											return _.four;
+											return _.three;
 										}))),
 							_1: {
 								ctor: '::',
@@ -21540,7 +21612,7 @@ var _user$project$Scales$aeolianModeView = function (model) {
 										_0: _elm_lang$html$Html_Attributes$style(
 											{
 												ctor: '::',
-												_0: {ctor: '_Tuple2', _0: 'margin', _1: '5px 100px'},
+												_0: {ctor: '_Tuple2', _0: 'margin', _1: '5px 180px'},
 												_1: {ctor: '[]'}
 											}),
 										_1: {ctor: '[]'}
@@ -21550,7 +21622,7 @@ var _user$project$Scales$aeolianModeView = function (model) {
 										markup,
 										data(
 											function (_) {
-												return _.five;
+												return _.four;
 											}))),
 								_1: {
 									ctor: '::',
@@ -21561,7 +21633,7 @@ var _user$project$Scales$aeolianModeView = function (model) {
 											_0: _elm_lang$html$Html_Attributes$style(
 												{
 													ctor: '::',
-													_0: {ctor: '_Tuple2', _0: 'margin', _1: '5px 20px'},
+													_0: {ctor: '_Tuple2', _0: 'margin', _1: '5px 100px'},
 													_1: {ctor: '[]'}
 												}),
 											_1: {ctor: '[]'}
@@ -21571,9 +21643,31 @@ var _user$project$Scales$aeolianModeView = function (model) {
 											markup,
 											data(
 												function (_) {
-													return _.six;
+													return _.five;
 												}))),
-									_1: {ctor: '[]'}
+									_1: {
+										ctor: '::',
+										_0: A2(
+											_elm_lang$html$Html$div,
+											{
+												ctor: '::',
+												_0: _elm_lang$html$Html_Attributes$style(
+													{
+														ctor: '::',
+														_0: {ctor: '_Tuple2', _0: 'margin', _1: '5px 20px'},
+														_1: {ctor: '[]'}
+													}),
+												_1: {ctor: '[]'}
+											},
+											A2(
+												_elm_lang$core$List$map,
+												markup,
+												data(
+													function (_) {
+														return _.six;
+													}))),
+										_1: {ctor: '[]'}
+									}
 								}
 							}
 						}
@@ -21622,8 +21716,12 @@ var _user$project$Scales$ionianModeView = function (model) {
 			_0: _elm_lang$html$Html_Attributes$style(
 				{
 					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'margin', _1: '0 auto'},
-					_1: {ctor: '[]'}
+					_0: {ctor: '_Tuple2', _0: 'position', _1: 'relative'},
+					_1: {
+						ctor: '::',
+						_0: {ctor: '_Tuple2', _0: 'margin', _1: '0 auto'},
+						_1: {ctor: '[]'}
+					}
 				}),
 			_1: {ctor: '[]'}
 		},
@@ -21639,25 +21737,7 @@ var _user$project$Scales$ionianModeView = function (model) {
 				}),
 			_1: {
 				ctor: '::',
-				_0: A2(
-					_elm_lang$html$Html$div,
-					{
-						ctor: '::',
-						_0: _elm_lang$html$Html_Attributes$style(
-							{
-								ctor: '::',
-								_0: {ctor: '_Tuple2', _0: 'margin', _1: '5px 480px'},
-								_1: {ctor: '[]'}
-							}),
-						_1: {ctor: '[]'}
-					},
-					A2(
-						_elm_lang$core$List$map,
-						markup,
-						data(
-							function (_) {
-								return _.one;
-							}))),
+				_0: _user$project$Scales$stringView,
 				_1: {
 					ctor: '::',
 					_0: A2(
@@ -21667,7 +21747,7 @@ var _user$project$Scales$ionianModeView = function (model) {
 							_0: _elm_lang$html$Html_Attributes$style(
 								{
 									ctor: '::',
-									_0: {ctor: '_Tuple2', _0: 'margin', _1: '5px 400px'},
+									_0: {ctor: '_Tuple2', _0: 'margin', _1: '5px 480px'},
 									_1: {ctor: '[]'}
 								}),
 							_1: {ctor: '[]'}
@@ -21677,7 +21757,7 @@ var _user$project$Scales$ionianModeView = function (model) {
 							markup,
 							data(
 								function (_) {
-									return _.two;
+									return _.one;
 								}))),
 					_1: {
 						ctor: '::',
@@ -21688,7 +21768,7 @@ var _user$project$Scales$ionianModeView = function (model) {
 								_0: _elm_lang$html$Html_Attributes$style(
 									{
 										ctor: '::',
-										_0: {ctor: '_Tuple2', _0: 'margin', _1: '5px 300px'},
+										_0: {ctor: '_Tuple2', _0: 'margin', _1: '5px 400px'},
 										_1: {ctor: '[]'}
 									}),
 								_1: {ctor: '[]'}
@@ -21698,7 +21778,7 @@ var _user$project$Scales$ionianModeView = function (model) {
 								markup,
 								data(
 									function (_) {
-										return _.three;
+										return _.two;
 									}))),
 						_1: {
 							ctor: '::',
@@ -21709,7 +21789,7 @@ var _user$project$Scales$ionianModeView = function (model) {
 									_0: _elm_lang$html$Html_Attributes$style(
 										{
 											ctor: '::',
-											_0: {ctor: '_Tuple2', _0: 'margin', _1: '5px 200px'},
+											_0: {ctor: '_Tuple2', _0: 'margin', _1: '5px 300px'},
 											_1: {ctor: '[]'}
 										}),
 									_1: {ctor: '[]'}
@@ -21719,7 +21799,7 @@ var _user$project$Scales$ionianModeView = function (model) {
 									markup,
 									data(
 										function (_) {
-											return _.four;
+											return _.three;
 										}))),
 							_1: {
 								ctor: '::',
@@ -21730,7 +21810,7 @@ var _user$project$Scales$ionianModeView = function (model) {
 										_0: _elm_lang$html$Html_Attributes$style(
 											{
 												ctor: '::',
-												_0: {ctor: '_Tuple2', _0: 'margin', _1: '5px 100px'},
+												_0: {ctor: '_Tuple2', _0: 'margin', _1: '5px 200px'},
 												_1: {ctor: '[]'}
 											}),
 										_1: {ctor: '[]'}
@@ -21740,7 +21820,7 @@ var _user$project$Scales$ionianModeView = function (model) {
 										markup,
 										data(
 											function (_) {
-												return _.five;
+												return _.four;
 											}))),
 								_1: {
 									ctor: '::',
@@ -21751,7 +21831,7 @@ var _user$project$Scales$ionianModeView = function (model) {
 											_0: _elm_lang$html$Html_Attributes$style(
 												{
 													ctor: '::',
-													_0: {ctor: '_Tuple2', _0: 'margin', _1: '5px 20px'},
+													_0: {ctor: '_Tuple2', _0: 'margin', _1: '5px 100px'},
 													_1: {ctor: '[]'}
 												}),
 											_1: {ctor: '[]'}
@@ -21761,9 +21841,31 @@ var _user$project$Scales$ionianModeView = function (model) {
 											markup,
 											data(
 												function (_) {
-													return _.six;
+													return _.five;
 												}))),
-									_1: {ctor: '[]'}
+									_1: {
+										ctor: '::',
+										_0: A2(
+											_elm_lang$html$Html$div,
+											{
+												ctor: '::',
+												_0: _elm_lang$html$Html_Attributes$style(
+													{
+														ctor: '::',
+														_0: {ctor: '_Tuple2', _0: 'margin', _1: '5px 20px'},
+														_1: {ctor: '[]'}
+													}),
+												_1: {ctor: '[]'}
+											},
+											A2(
+												_elm_lang$core$List$map,
+												markup,
+												data(
+													function (_) {
+														return _.six;
+													}))),
+										_1: {ctor: '[]'}
+									}
 								}
 							}
 						}
@@ -21794,8 +21896,16 @@ var _user$project$Scales$scalesPage = function (model) {
 			_0: _elm_lang$html$Html_Attributes$style(
 				{
 					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'margin', _1: '0 auto'},
-					_1: {ctor: '[]'}
+					_0: {ctor: '_Tuple2', _0: 'display', _1: 'flex'},
+					_1: {
+						ctor: '::',
+						_0: {ctor: '_Tuple2', _0: 'flexDirection', _1: 'column'},
+						_1: {
+							ctor: '::',
+							_0: {ctor: '_Tuple2', _0: 'alignItems', _1: 'center'},
+							_1: {ctor: '[]'}
+						}
+					}
 				}),
 			_1: {ctor: '[]'}
 		},

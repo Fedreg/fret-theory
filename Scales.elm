@@ -13,7 +13,7 @@ scalesPage model =
         keyOptions key =
             option [ value key ] [ text key ]
     in
-        div [ style [ ( "margin", "0 auto" ) ] ]
+        div [ style [ ( "display", "flex" ), ( "flexDirection", "column" ), ( "alignItems", "center" ) ] ]
             [ select [ style [ ( "color", "#fff" ), ( "width", "200px" ), ( "marginTop", "25px" ), ( "borderColor", "#ddd" ) ], Html.Events.onInput ChangeKey ]
                 (List.map keyOptions Chords.keyList)
             , ionianModeView model
@@ -32,8 +32,9 @@ ionianModeView model =
         markup a =
             span [ style [ ( "paddingRight", "10px" ), ( "fontSize", "24px" ) ] ] [ text (toString a) ]
     in
-        div [ style [ ( "margin", "0 auto" ) ] ]
+        div [ style [ ( "position", "relative" ), ( "margin", "0 auto" ) ] ]
             [ h6 [] [ text "MAJOR SCALE" ]
+            , stringView
             , div [ style [ ( "margin", "5px 480px" ) ] ] (List.map markup <| data .one)
             , div [ style [ ( "margin", "5px 400px" ) ] ] (List.map markup <| data .two)
             , div [ style [ ( "margin", "5px 300px" ) ] ] (List.map markup <| data .three)
@@ -57,8 +58,9 @@ aeolianModeView model =
         markup a =
             span [ style [ ( "paddingRight", "10px" ), ( "fontSize", "24px" ) ] ] [ text (toString a) ]
     in
-        div []
+        div [ style [ ( "position", "relative" ), ( "margin", "0 auto" ) ] ]
             [ h6 [] [ text "MINOR SCALE" ]
+            , stringView
             , div [ style [ ( "margin", "5px 420px" ) ] ] (List.map markup <| data .one)
             , div [ style [ ( "margin", "5px 340px" ) ] ] (List.map markup <| data .two)
             , div [ style [ ( "margin", "5px 260px" ) ] ] (List.map markup <| data .three)
@@ -76,8 +78,9 @@ lydianModeView model =
         markup a =
             span [ style [ ( "paddingRight", "10px" ), ( "fontSize", "24px" ) ] ] [ text (toString a) ]
     in
-        div []
+        div [ style [ ( "position", "relative" ), ( "margin", "0 auto" ) ] ]
             [ h6 [] [ text "LYDIAN MODE" ]
+            , stringView
             , div [ style [ ( "margin", "5px 420px" ) ] ] (List.map markup <| data .one)
             , div [ style [ ( "margin", "5px 340px" ) ] ] (List.map markup <| data .two)
             , div [ style [ ( "margin", "5px 260px" ) ] ] (List.map markup <| data .three)
@@ -95,8 +98,9 @@ mixolydianModeView model =
         markup a =
             span [ style [ ( "paddingRight", "10px" ), ( "fontSize", "24px" ) ] ] [ text (toString a) ]
     in
-        div []
+        div [ style [ ( "position", "relative" ), ( "margin", "0 auto" ) ] ]
             [ h6 [] [ text "MIXOLYDIAN MODE" ]
+            , stringView
             , div [ style [ ( "margin", "5px 420px" ) ] ] (List.map markup <| data .one)
             , div [ style [ ( "margin", "5px 340px" ) ] ] (List.map markup <| data .two)
             , div [ style [ ( "margin", "5px 260px" ) ] ] (List.map markup <| data .three)
@@ -114,8 +118,9 @@ dorianModeView model =
         markup a =
             span [ style [ ( "paddingRight", "10px" ), ( "fontSize", "24px" ) ] ] [ text (toString a) ]
     in
-        div []
+        div [ style [ ( "position", "relative" ), ( "margin", "0 auto" ) ] ]
             [ h6 [] [ text "DORIAN MODE" ]
+            , stringView
             , div [ style [ ( "margin", "5px 420px" ) ] ] (List.map markup <| data .one)
             , div [ style [ ( "margin", "5px 340px" ) ] ] (List.map markup <| data .two)
             , div [ style [ ( "margin", "5px 260px" ) ] ] (List.map markup <| data .three)
@@ -126,7 +131,7 @@ dorianModeView model =
 
 
 stringView =
-    div []
+    div [ stringContainerStyle ]
         [ div [ stringStyle ] []
         , div [ stringStyle ] []
         , div [ stringStyle ] []
@@ -237,7 +242,7 @@ fretOffset model =
 
 
 
-{- Layout of scales in frets per string. -}
+-- Layout of scales in frets per string.
 
 
 ionianMode =
@@ -296,4 +301,15 @@ dorianMode =
 
 stringStyle =
     style
-        [ ( "borderBottom", "1px solid #fff" ) ]
+        [ ( "width", "800px" )
+        , ( "borderBottom", "1px solid #777" )
+        , ( "marginTop", "42px" )
+        ]
+
+
+stringContainerStyle =
+    style
+        [ ( "position", "absolute" )
+        , ( "top", "20px" )
+        , ( "left", "0" )
+        ]
