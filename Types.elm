@@ -46,6 +46,16 @@ type alias ChordAudioData =
     }
 
 
+type alias ScaleData =
+    { e : List Int
+    , b : List Int
+    , g : List Int
+    , d : List Int
+    , a : List Int
+    , e6 : List Int
+    }
+
+
 type alias Note =
     { frequency : Float
     , octave : Int
