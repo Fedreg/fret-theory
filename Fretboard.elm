@@ -15,7 +15,7 @@ fretboardPage model =
     let
         highlight =
             [ ( "background-color", "#111" )
-            , ( "border", "2px solid #3A86FF" )
+            , ( "border", "2px solid #E8175D" )
             , ( "transform", "scale(1.5, 1.5)" )
             , ( "color", "#fff" )
             , ( "z-index", "2" )
@@ -215,7 +215,7 @@ fretNumberStyle =
         , ( "marginBottom", "-70px" )
         , ( "padding", "5px" )
         , ( "textTransform", "uppercase" )
-        , ( "color", "#3A86FF" )
+        , ( "color", "#E8175D" )
         , ( "fontSize", "20px" )
         , ( "textAlign", "center" )
         ]

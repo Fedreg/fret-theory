@@ -169,7 +169,7 @@ page model =
 
 navMenuStyle model =
     let
-        baseStyles difference =
+        baseStyles difference color =
             style
                 [ ( "position", "absolute" )
                 , ( "top", "0" )
@@ -181,16 +181,16 @@ navMenuStyle model =
                 , ( "backgroundColor", "#111" )
                 , ( "transition", "all 0.5s" )
                 , ( "zIndex", "10000" )
-                , ( "borderLeft", "1px solid #222" )
+                , ( "borderLeft", "3px solid " ++ color )
                 , ( "transform", difference )
                 ]
     in
         case model.navMenuOpen of
             True ->
-                baseStyles "translateX(0)"
+                baseStyles "translateX(0)" "#E91750"
 
             False ->
-                baseStyles "translateX(250px)"
+                baseStyles "translateX(250px)" "#111"
 
 
 navIconStyle model =
@@ -216,7 +216,7 @@ navIconStyle model =
 
 navIconStyleHr =
     style
-        [ ( "borderTop", "1px solid #fff" )
+        [ ( "borderTop", "1px solid #E91750" )
         , ( "margin", "0 0 5px" )
         ]
 
@@ -233,5 +233,5 @@ navItemStyle =
         [ ( "display", "block" )
         , ( "margin", "0 0 8px" )
         , ( "padding", "5px" )
-        , ( "color", "#A8A7A7" )
+        , ( "color", "#bbb" )
         ]
