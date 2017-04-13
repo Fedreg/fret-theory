@@ -6,6 +6,7 @@ import Html.Events exposing (onInput)
 import List exposing (map)
 import Types exposing (ScaleData, Msg(ChangeKey))
 import Chords exposing (keyList)
+import List.Extra exposing (getAt, elemIndex)
 
 
 scalesPage model =
@@ -13,14 +14,18 @@ scalesPage model =
         keyOptions key =
             option [ value key ] [ text key ]
     in
-        div [ style [ ( "display", "flex" ), ( "flexDirection", "column" ), ( "alignItems", "center" ) ] ]
-            [ select [ style [ ( "color", "#fff" ), ( "width", "200px" ), ( "marginTop", "25px" ), ( "borderColor", "#ddd" ) ], Html.Events.onInput ChangeKey ]
+        div []
+            [ select [ style [ ( "color", "#fff" ), ( "width", "200px" ), ( "margin", "25px auto" ), ( "borderColor", "#ddd" ) ], Html.Events.onInput ChangeKey ]
                 (List.map keyOptions Chords.keyList)
-            , ionianModeView model
-            , aeolianModeView model
-            , lydianModeView model
-            , mixolydianModeView model
-            , dorianModeView model
+            , div [ scalePageStyle ]
+                [ ionianModeView model
+                , aeolianModeView model
+                , majorPentatonicView model
+                , minorPentatonicView model
+                , lydianModeView model
+                , mixolydianModeView model
+                , dorianModeView model
+                ]
             ]
 
 
@@ -30,43 +35,83 @@ ionianModeView model =
             (scaleStringSchema (fretOffset model) model.musKey ionianMode) |> accessor
 
         markup a =
-            span [ style [ ( "paddingRight", "10px" ), ( "fontSize", "24px" ) ] ] [ text (toString a) ]
+            span [ style [ ( "paddingRight", "10px" ), ( "fontSize", "18px" ) ] ] [ text (toString a) ]
     in
-        div [ style [ ( "position", "relative" ), ( "margin", "0 auto" ) ] ]
-            [ h6 [] [ text "MAJOR SCALE" ]
+        div [ scaleContainerStyle ]
+            [ span [ scaleTitleStyle ] [ scaleNameMajor model " MAJOR SCALE " "" ]
             , stringView
-            , div [ style [ ( "margin", "5px 480px" ) ] ] (List.map markup <| data .one)
-            , div [ style [ ( "margin", "5px 400px" ) ] ] (List.map markup <| data .two)
-            , div [ style [ ( "margin", "5px 300px" ) ] ] (List.map markup <| data .three)
-            , div [ style [ ( "margin", "5px 200px" ) ] ] (List.map markup <| data .four)
-            , div [ style [ ( "margin", "5px 100px" ) ] ] (List.map markup <| data .five)
-            , div [ style [ ( "margin", "5px 20px" ) ] ] (List.map markup <| data .six)
+            , div [ fretNumberStyle "480px" ] (List.map markup <| data .one)
+            , div [ fretNumberStyle "400px" ] (List.map markup <| data .two)
+            , div [ fretNumberStyle "300px" ] (List.map markup <| data .three)
+            , div [ fretNumberStyle "200px" ] (List.map markup <| data .four)
+            , div [ fretNumberStyle "100px" ] (List.map markup <| data .five)
+            , div [ fretNumberStyle "20px" ] (List.map markup <| data .six)
             ]
 
 
 aeolianModeView model =
     let
         computedOffset =
-            if (fretOffset model) < 0 then
-                (fretOffset model) + 12
-            else
-                (fretOffset model)
+            fretOffset model - 3
 
         data accessor =
             (scaleStringSchema computedOffset model.musKey aeolianMode) |> accessor
 
         markup a =
-            span [ style [ ( "paddingRight", "10px" ), ( "fontSize", "24px" ) ] ] [ text (toString a) ]
+            span [ style [ ( "paddingRight", "10px" ), ( "fontSize", "18px" ) ] ] [ text (toString a) ]
     in
-        div [ style [ ( "position", "relative" ), ( "margin", "0 auto" ) ] ]
-            [ h6 [] [ text "MINOR SCALE" ]
+        div [ scaleContainerStyle ]
+            [ span [ scaleTitleStyle ] [ scaleNameMinor model " MINOR SCALE " ]
             , stringView
-            , div [ style [ ( "margin", "5px 420px" ) ] ] (List.map markup <| data .one)
-            , div [ style [ ( "margin", "5px 340px" ) ] ] (List.map markup <| data .two)
-            , div [ style [ ( "margin", "5px 260px" ) ] ] (List.map markup <| data .three)
-            , div [ style [ ( "margin", "5px 180px" ) ] ] (List.map markup <| data .four)
-            , div [ style [ ( "margin", "5px 100px" ) ] ] (List.map markup <| data .five)
-            , div [ style [ ( "margin", "5px 20px" ) ] ] (List.map markup <| data .six)
+            , div [ fretNumberStyle "420px" ] (List.map markup <| data .one)
+            , div [ fretNumberStyle "340px" ] (List.map markup <| data .two)
+            , div [ fretNumberStyle "260px" ] (List.map markup <| data .three)
+            , div [ fretNumberStyle "180px" ] (List.map markup <| data .four)
+            , div [ fretNumberStyle "100px" ] (List.map markup <| data .five)
+            , div [ fretNumberStyle "20px" ] (List.map markup <| data .six)
+            ]
+
+
+majorPentatonicView model =
+    let
+        data accessor =
+            (scaleStringSchema (fretOffset model) model.musKey majorPentatonicMode) |> accessor
+
+        markup a =
+            span [ style [ ( "paddingRight", "10px" ), ( "fontSize", "18px" ) ] ] [ text (toString a) ]
+    in
+        div [ scaleContainerStyle ]
+            [ span [ scaleTitleStyle ] [ scaleNameMajor model " MAJOR PENTATONIC SCALE " "" ]
+            , stringView
+            , div [ fretNumberStyle "480px" ] (List.map markup <| data .one)
+            , div [ fretNumberStyle "400px" ] (List.map markup <| data .two)
+            , div [ fretNumberStyle "300px" ] (List.map markup <| data .three)
+            , div [ fretNumberStyle "200px" ] (List.map markup <| data .four)
+            , div [ fretNumberStyle "100px" ] (List.map markup <| data .five)
+            , div [ fretNumberStyle "20px" ] (List.map markup <| data .six)
+            ]
+
+
+minorPentatonicView model =
+    let
+        computedOffset =
+            fretOffset model - 3
+
+        data accessor =
+            (scaleStringSchema computedOffset model.musKey minorPentatonicMode) |> accessor
+
+        markup a =
+            span [ style [ ( "paddingRight", "10px" ), ( "fontSize", "18px" ) ] ] [ text (toString a) ]
+    in
+        div [ scaleContainerStyle ]
+            [ span [ scaleTitleStyle ] [ scaleNameMinor model " MINOR PENTATONIC SCALE " ]
+            , stringView
+            , div [ fretNumberStyle "420px" ] (List.map markup <| data .one)
+            , div [ fretNumberStyle "340px" ] (List.map markup <| data .two)
+            , div [ fretNumberStyle "260px" ] (List.map markup <| data .three)
+            , div [ fretNumberStyle "180px" ] (List.map markup <| data .four)
+            , div [ fretNumberStyle "100px" ] (List.map markup <| data .five)
+            , div [ fretNumberStyle "20px" ] (List.map markup <| data .six)
             ]
 
 
@@ -76,17 +121,17 @@ lydianModeView model =
             (scaleStringSchema (fretOffset model) model.musKey lydianMode) |> accessor
 
         markup a =
-            span [ style [ ( "paddingRight", "10px" ), ( "fontSize", "24px" ) ] ] [ text (toString a) ]
+            span [ style [ ( "paddingRight", "10px" ), ( "fontSize", "18px" ) ] ] [ text (toString a) ]
     in
-        div [ style [ ( "position", "relative" ), ( "margin", "0 auto" ) ] ]
-            [ h6 [] [ text "LYDIAN MODE" ]
+        div [ scaleContainerStyle ]
+            [ span [ scaleTitleStyle ] [ scaleNameMajor model " LYDIAN MODE " " ( #4 ) " ]
             , stringView
-            , div [ style [ ( "margin", "5px 420px" ) ] ] (List.map markup <| data .one)
-            , div [ style [ ( "margin", "5px 340px" ) ] ] (List.map markup <| data .two)
-            , div [ style [ ( "margin", "5px 260px" ) ] ] (List.map markup <| data .three)
-            , div [ style [ ( "margin", "5px 180px" ) ] ] (List.map markup <| data .four)
-            , div [ style [ ( "margin", "5px 100px" ) ] ] (List.map markup <| data .five)
-            , div [ style [ ( "margin", "5px 20px" ) ] ] (List.map markup <| data .six)
+            , div [ fretNumberStyle "420px" ] (List.map markup <| data .one)
+            , div [ fretNumberStyle "340px" ] (List.map markup <| data .two)
+            , div [ fretNumberStyle "260px" ] (List.map markup <| data .three)
+            , div [ fretNumberStyle "180px" ] (List.map markup <| data .four)
+            , div [ fretNumberStyle "100px" ] (List.map markup <| data .five)
+            , div [ fretNumberStyle "20px" ] (List.map markup <| data .six)
             ]
 
 
@@ -96,17 +141,17 @@ mixolydianModeView model =
             (scaleStringSchema (fretOffset model) model.musKey mixolydianMode) |> accessor
 
         markup a =
-            span [ style [ ( "paddingRight", "10px" ), ( "fontSize", "24px" ) ] ] [ text (toString a) ]
+            span [ style [ ( "paddingRight", "10px" ), ( "fontSize", "18px" ) ] ] [ text (toString a) ]
     in
-        div [ style [ ( "position", "relative" ), ( "margin", "0 auto" ) ] ]
-            [ h6 [] [ text "MIXOLYDIAN MODE" ]
+        div [ scaleContainerStyle ]
+            [ span [ scaleTitleStyle ] [ scaleNameMajor model " MIXOLYDIAN MODE " " ( b7 ) " ]
             , stringView
-            , div [ style [ ( "margin", "5px 420px" ) ] ] (List.map markup <| data .one)
-            , div [ style [ ( "margin", "5px 340px" ) ] ] (List.map markup <| data .two)
-            , div [ style [ ( "margin", "5px 260px" ) ] ] (List.map markup <| data .three)
-            , div [ style [ ( "margin", "5px 180px" ) ] ] (List.map markup <| data .four)
-            , div [ style [ ( "margin", "5px 100px" ) ] ] (List.map markup <| data .five)
-            , div [ style [ ( "margin", "5px 20px" ) ] ] (List.map markup <| data .six)
+            , div [ fretNumberStyle "420px" ] (List.map markup <| data .one)
+            , div [ fretNumberStyle "340px" ] (List.map markup <| data .two)
+            , div [ fretNumberStyle "260px" ] (List.map markup <| data .three)
+            , div [ fretNumberStyle "180px" ] (List.map markup <| data .four)
+            , div [ fretNumberStyle "100px" ] (List.map markup <| data .five)
+            , div [ fretNumberStyle "20px" ] (List.map markup <| data .six)
             ]
 
 
@@ -116,17 +161,17 @@ dorianModeView model =
             (scaleStringSchema (fretOffset model) model.musKey dorianMode) |> accessor
 
         markup a =
-            span [ style [ ( "paddingRight", "10px" ), ( "fontSize", "24px" ) ] ] [ text (toString a) ]
+            span [ style [ ( "paddingRight", "10px" ), ( "fontSize", "18px" ) ] ] [ text (toString a) ]
     in
-        div [ style [ ( "position", "relative" ), ( "margin", "0 auto" ) ] ]
-            [ h6 [] [ text "DORIAN MODE" ]
+        div [ scaleContainerStyle ]
+            [ span [ scaleTitleStyle ] [ scaleNameMajor model " DORIAN MODE " " ( b3, b7 ) " ]
             , stringView
-            , div [ style [ ( "margin", "5px 420px" ) ] ] (List.map markup <| data .one)
-            , div [ style [ ( "margin", "5px 340px" ) ] ] (List.map markup <| data .two)
-            , div [ style [ ( "margin", "5px 260px" ) ] ] (List.map markup <| data .three)
-            , div [ style [ ( "margin", "5px 180px" ) ] ] (List.map markup <| data .four)
-            , div [ style [ ( "margin", "5px 100px" ) ] ] (List.map markup <| data .five)
-            , div [ style [ ( "margin", "5px 20px" ) ] ] (List.map markup <| data .six)
+            , div [ fretNumberStyle "420px" ] (List.map markup <| data .one)
+            , div [ fretNumberStyle "340px" ] (List.map markup <| data .two)
+            , div [ fretNumberStyle "260px" ] (List.map markup <| data .three)
+            , div [ fretNumberStyle "180px" ] (List.map markup <| data .four)
+            , div [ fretNumberStyle "100px" ] (List.map markup <| data .five)
+            , div [ fretNumberStyle "20px" ] (List.map markup <| data .six)
             ]
 
 
@@ -241,6 +286,51 @@ fretOffset model =
             0
 
 
+scaleNameMajor : Types.Model -> String -> String -> Html Msg
+scaleNameMajor model scaleName modifiedNotes =
+    let
+        index =
+            Maybe.withDefault 0 <| elemIndex model.musKey Chords.keyList
+
+        slicer =
+            String.slice 0 1
+    in
+        if slicer (String.toUpper model.musKey) == slicer model.musKey then
+            div []
+                [ span [] [ text model.musKey ]
+                , span [ style [ ( "color", "#777" ) ] ] [ text scaleName ]
+                , span [] [ text modifiedNotes ]
+                ]
+        else
+            div []
+                [ span [] [ text (Maybe.withDefault "C" <| getAt (index - 13) Chords.keyList) ]
+                , span [ style [ ( "color", "#777" ) ] ] [ text scaleName ]
+                , span [] [ text modifiedNotes ]
+                , span [ style [ ( "color", "#777" ) ] ] [ text (", relative major") ]
+                ]
+
+
+scaleNameMinor : Types.Model -> String -> Html Msg
+scaleNameMinor model scaleName =
+    let
+        index =
+            Maybe.withDefault 0 <| elemIndex model.musKey Chords.keyList
+
+        slicer =
+            String.slice 0 1
+    in
+        if slicer (String.toLower model.musKey) == slicer model.musKey then
+            div []
+                [ span [] [ text (String.toUpper (slicer model.musKey) ++ String.slice 1 2 model.musKey) ]
+                , span [ style [ ( "color", "#777" ) ] ] [ text (" " ++ scaleName) ]
+                ]
+        else
+            div []
+                [ span [] [ text (String.toUpper (Maybe.withDefault "a" <| getAt (index + 13) Chords.keyList)) ]
+                , span [ style [ ( "color", "#777" ) ] ] [ text (" " ++ scaleName ++ " , relative minor") ]
+                ]
+
+
 
 -- Layout of scales in frets per string.
 
@@ -256,17 +346,37 @@ ionianMode =
 
 
 aeolianMode =
-    { e = [ 5, 7, 8 ]
-    , b = [ 5, 6, 8 ]
-    , g = [ 4, 5, 7 ]
-    , d = [ 5, 7 ]
-    , a = [ 5, 7, 8 ]
-    , e6 = [ 5, 7, 8 ]
+    { e = [ 8, 10, 11 ]
+    , b = [ 8, 9, 11 ]
+    , g = [ 7, 8, 10 ]
+    , d = [ 8, 10 ]
+    , a = [ 8, 10, 11 ]
+    , e6 = [ 8, 10, 11 ]
+    }
+
+
+majorPentatonicMode =
+    { e = [ 8, 10 ]
+    , b = [ 8, 10 ]
+    , g = [ 7, 10 ]
+    , d = [ 7, 10 ]
+    , a = [ 7, 10 ]
+    , e6 = [ 8, 10 ]
+    }
+
+
+minorPentatonicMode =
+    { e = [ 8, 11 ]
+    , b = [ 8, 11 ]
+    , g = [ 8, 10 ]
+    , d = [ 8, 10 ]
+    , a = [ 8, 10 ]
+    , e6 = [ 8, 11 ]
     }
 
 
 lydianMode =
-    { e = [ 7, 8 ]
+    { e = [ 7, 8, 10 ]
     , b = [ 7, 8, 10 ]
     , g = [ 7, 9 ]
     , d = [ 7, 9, 10 ]
@@ -299,17 +409,51 @@ dorianMode =
 -- STYLES
 
 
+scaleTitleStyle =
+    style
+        [ ( "position", "relative" )
+        , ( "color", "#E91750" )
+        ]
+
+
+scaleContainerStyle =
+    style
+        [ ( "position", "relative" )
+        , ( "width", "650px" )
+        , ( "margin", "30px 0" )
+        ]
+
+
 stringStyle =
     style
-        [ ( "width", "800px" )
-        , ( "borderBottom", "1px solid #777" )
-        , ( "marginTop", "42px" )
+        [ ( "width", "600px" )
+        , ( "borderBottom", "1px solid #333" )
+        , ( "marginTop", "32px" )
+        , ( "zIndex", "0" )
         ]
 
 
 stringContainerStyle =
     style
         [ ( "position", "absolute" )
-        , ( "top", "20px" )
+        , ( "top", "12px" )
         , ( "left", "0" )
+        ]
+
+
+fretNumberStyle margin =
+    style
+        [ ( "position", "relative" )
+        , ( "margin", "5px " ++ margin )
+        , ( "color", "#fff" )
+        , ( "zIndex", "1" )
+        ]
+
+
+scalePageStyle =
+    style
+        [ ( "display", "flex" )
+        , ( "flexDirection", "row" )
+        , ( "flexWrap", "wrap" )
+        , ( "justifyContent", "center" )
         ]
