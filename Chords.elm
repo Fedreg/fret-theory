@@ -7,6 +7,7 @@ import String exposing (..)
 import List.Extra exposing (getAt)
 import Audio exposing (..)
 import Types exposing (..)
+import Routing exposing (scalesPath)
 
 
 chordChartPage : Model -> Html Msg
@@ -23,8 +24,6 @@ chordChartPage model =
     in
         div [ style [ ( "textAlign", "center" ) ] ]
             [ div [] [ fingerChart ]
-            , select [ style [ ( "color", "#fff" ), ( "width", "200px" ), ( "marginTop", "25px" ), ( "borderColor", "#ddd" ) ], Html.Events.onInput ChangeKey ]
-                (List.map keyOptions keyList)
             , playbackSpeedSlider model
             , div [ chartContainerStyle "row" ]
                 [ chordChartModel model 0 "I" .i .i
@@ -37,12 +36,12 @@ chordChartPage model =
                 , chordChartModel model 2 "III" .iii .iii
                 , chordChartModel model 6 "VII" .vii .vii
                 ]
-            , div [ style [ ( "fontSize", "18px" ), ( "paddingBottom", "50px" ), ( "color", "#A8A7A7" ) ] ]
+            , div [ style [ ( "fontSize", "18px" ), ( "paddingBottom", "50px" ), ( "color", "#A8A7A7" ), ( "textDecoration", "inherit" ) ] ]
                 [ span [] [ text "SOLO ON FRET: " ]
                 , span [ style [ ( "fontSize", "25px" ), ( "color", "#E84A5F" ) ] ] [ text soloFretMin ]
-                , span [] [ text " (MINOR SCALE), OR FRET: " ]
+                , a [ style [ ( "color", "#aaa" ) ], href (Routing.scalesPath model.musKey) ] [ text " (MINOR SCALE), OR FRET: " ]
                 , span [ style [ ( "fontSize", "25px" ), ( "color", "#E84A5F" ) ] ] [ text soloFretMaj ]
-                , span [] [ text " (MAJOR SCALE)" ]
+                , a [ style [ ( "color", "#aaa" ) ], href (Routing.scalesPath model.musKey) ] [ text " (MAJOR SCALE)" ]
                 ]
             ]
 
@@ -212,12 +211,12 @@ fingerChart =
 
 keyList : List String
 keyList =
-    [ "Major Keys", "C", "G", "D", "A", "E", "B", "F#", "Db", "Ab", "Eb", "Bb", "F", "Minor Keys", "a", "e", "b", "f#", "c#", "g#", "d#", "bb", "f", "c", "g", "d" ]
+    [ "C", "G", "D", "A", "E", "B", "F#", "Db", "Ab", "Eb", "Bb", "F", "a", "e", "b", "f#", "c#", "g#", "d#", "bb", "f", "c", "g", "d" ]
 
 
 playbackSpeedSlider model =
-    div []
-        [ div [] [ text "+    CHORD PLAYBACK SPEED    -" ]
+    div [ style [ ( "marginTop", "10px" ) ] ]
+        [ div [] [ text "+ CHORD PLAYBACK SPEED -" ]
         , input
             [ type_ "range"
             , Html.Attributes.min "1"
