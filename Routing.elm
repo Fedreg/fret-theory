@@ -8,7 +8,8 @@ import UrlParser exposing (..)
 matchers : Parser (Route -> a) a
 matchers =
     oneOf
-        [ map ChordChartPage (s "chords" </> string)
+        [ map HomePage (s "home")
+        , map ChordChartPage (s "chords" </> string)
         , map ScalesPage (s "scales" </> string)
         , map FretboardPage (s "fretboard")
         ]
@@ -34,6 +35,9 @@ modelUpdateOnHash model location =
         FretboardPage ->
             parseHash (s "fretboard" </> string) location
 
+        HomePage ->
+            parseHash (s "home" </> string) location
+
         NotFoundPage ->
             parseHash (s "" </> string) location
 
@@ -51,3 +55,8 @@ scalesPath key =
 fretboardPath : String
 fretboardPath =
     "#fretboard"
+
+
+homePath : String
+homePath =
+    "#home/"

@@ -8,7 +8,7 @@ type alias Model =
     , musKey : String
     , index : Int
     , currentChord : List String
-    , notePosition : Int
+    , notePosition : Float
     , showAccidental : String
     , sliderValue : Int
     , navMenuOpen : Bool
@@ -86,3 +86,4 @@ type Route
     | ScalesPage String
     | FretboardPage
     | NotFoundPage
+    | HomePage

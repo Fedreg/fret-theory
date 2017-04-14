@@ -1,6 +1,6 @@
 module Fretboard exposing (..)
 
-import Html exposing (div, hr, text)
+import Html exposing (div, hr, text, span)
 import Html.Events exposing (onClick)
 import Html.Attributes exposing (style, property)
 import String exposing (split, toInt)
@@ -14,8 +14,7 @@ import List.Extra exposing (getAt)
 fretboardPage model =
     let
         highlight =
-            [ ( "background-color", "#111" )
-            , ( "border", "2px solid #E8175D" )
+            [ ( "background-color", "#E91750" )
             , ( "transform", "scale(1.5, 1.5)" )
             , ( "color", "#fff" )
             , ( "z-index", "2" )
@@ -56,7 +55,8 @@ fretboardPage model =
     in
         div [ style [ ( "position", "relative" ) ] ]
             [ div [ fretboardContainerStyle ]
-                [ div [ fretboardStringStyle ]
+                [ div [ fretboardTitleStyle ] [ text "CLICK ON A FRET TO SEE THE MUSICAL NOTE" ]
+                , div [ fretboardStringStyle ]
                     (List.map frets <| List.reverse stringE)
                 , div [ fretboardStringStyle ]
                     (List.map frets <| List.reverse stringA)
@@ -112,6 +112,8 @@ revealNotes =
     ]
 
 
+{-| Draws the musical staff and ledge lines.
+-}
 fretNotation model =
     div [ notationContainerStyle ]
         [ div [ notationClefStyle, property "innerHTML" (Encode.string "&#x1d11e;") ] []
@@ -122,15 +124,17 @@ fretNotation model =
         , hr [ hrStyle ] []
         , hr [ hrStyle ] []
         , hr [ hrStyle ] []
-        , hr [ hrLedgerStyleHi model 180 ] []
-        , hr [ hrLedgerStyleHi model 165 ] []
-        , hr [ hrLedgerStyleHi model 150 ] []
-        , hr [ hrLedgerStyleLo model 35 ] []
-        , hr [ hrLedgerStyleLo model 20 ] []
-        , hr [ hrLedgerStyleLo model 5 ] []
+        , hr [ hrLedgerStyleHi model 195 ] []
+        , hr [ hrLedgerStyleHi model 175 ] []
+        , hr [ hrLedgerStyleHi model 155 ] []
+        , hr [ hrLedgerStyleLo model 30 ] []
+        , hr [ hrLedgerStyleLo model 10 ] []
+        , hr [ hrLedgerStyleLo model -10 ] []
         ]
 
 
+{-| Determines note x position per string.
+-}
 noteStringPos stringNo =
     let
         num =
@@ -138,44 +142,54 @@ noteStringPos stringNo =
     in
         case num of
             6 ->
-                0
+                -8
 
             5 ->
-                20
+                22
 
             4 ->
-                50
+                52
 
             3 ->
-                81
+                82
 
             2 ->
-                103
+                104
 
             1 ->
-                134
+                136
 
             _ ->
                 0
 
 
+{-| More specifically determines note x position per note on fretboard.
+-}
 noteFretPos index =
     let
         num =
             Result.withDefault 0 <| String.toInt index
     in
-        num * 10
+        toFloat num * 10.1
 
 
 
 -- STYLES
 
 
+fretboardTitleStyle =
+    style
+        [ ( "fontSize", "20px" )
+        , ( "textAlign", "center" )
+        , ( "marginBottom", "30px" )
+        , ( "color", "#E9175D" )
+        ]
+
+
 fretboardContainerStyle =
     style
         [ ( "margin", "50px" )
         , ( "width", "90%" )
-          --, ( "border", "2px solid #555" )
         , ( "position", "relative" )
         ]
 
@@ -190,7 +204,7 @@ fretNoteStyle =
         , ( "padding", "14px 5px" )
         , ( "textTransform", "uppercase" )
         , ( "color", "#777" )
-        , ( "fontSize", "10px" )
+        , ( "fontSize", "12px" )
         , ( "textAlign", "center" )
         , ( "borderBottom", "1px solid #222" )
         , ( "borderCollapse", "collapse" )
@@ -215,7 +229,7 @@ fretNumberStyle =
         , ( "marginBottom", "-70px" )
         , ( "padding", "5px" )
         , ( "textTransform", "uppercase" )
-        , ( "color", "#E8175D" )
+        , ( "color", "#E91750" )
         , ( "fontSize", "20px" )
         , ( "textAlign", "center" )
         ]
@@ -247,15 +261,17 @@ notationClefStyle =
         ]
 
 
+{-| Dynamicall adds high or low ledger lines as needed
+-}
 notationNoteStyle offset =
     style
-        [ ( "width", "20px" )
-        , ( "height", "20px" )
-        , ( "borderRadius", "10px" )
+        [ ( "width", "18px" )
+        , ( "height", "18px" )
+        , ( "borderRadius", "9px" )
         , ( "position", "absolute" )
         , ( "bottom", (toString offset) ++ "px" )
         , ( "left", "50%" )
-        , ( "backgroundColor", "#3A86FF" )
+        , ( "backgroundColor", "#E91750" )
         , ( "transition", "all 0.5s ease" )
         , ( "zIndex", "1" )
         ]
@@ -268,9 +284,9 @@ notationAccidentalStyle offset visibility =
         , ( "marginBottom", "-10px" )
         , ( "bottom", (toString offset) ++ "px" )
         , ( "left", "44%" )
-        , ( "color", "#3A86FF" )
+        , ( "color", "#E91750" )
         , ( "opacity", visibility )
-        , ( "transition", "opacity 0.5s ease" )
+        , ( "transition", "all 0.5s ease" )
         , ( "zIndex", "1" )
         ]
 
@@ -301,7 +317,6 @@ hrLedgerStyleHi model offset =
             , ( "width", "50px" )
             , ( "margin", "0 auto" )
             , ( "padding", "10px" )
-            , ( "lineHeight", "30px" )
             , ( "opacity", visibility )
             , ( "transition", "opacity 0.5s ease" )
             , ( "zIndex", "0" )
@@ -326,7 +341,6 @@ hrLedgerStyleLo model offset =
             , ( "width", "50px" )
             , ( "margin", "0 auto" )
             , ( "padding", "10px" )
-            , ( "lineHeight", "30px" )
             , ( "opacity", visibility )
             , ( "transition", "opacity 0.5s ease" )
             , ( "zIndex", "0" )

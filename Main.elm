@@ -7,6 +7,7 @@ import List.Extra exposing (getAt)
 import Routing
 import Types exposing (..)
 import Audio exposing (..)
+import Home exposing (homePage)
 import Chords exposing (chordChartPage)
 import Scales exposing (scalesPage)
 import Fretboard exposing (..)
@@ -34,7 +35,7 @@ init location =
           , musKey = "C"
           , index = 6
           , currentChord = []
-          , notePosition = 0
+          , notePosition = 0.0
           , showAccidental = "0"
           , sliderValue = 1
           , navMenuOpen = False
@@ -132,7 +133,8 @@ nav model =
     div [ navMenuStyle model ]
         [ navIcon model
         , div []
-            [ a [ href (Routing.scalesPath model.musKey), navItemStyle ] [ text "SCALES" ]
+            [ a [ href Routing.homePath, navItemStyle ] [ text "HOME" ]
+            , a [ href (Routing.scalesPath model.musKey), navItemStyle ] [ text "SCALES" ]
             , a [ href (Routing.chordsPath model.musKey), navItemStyle ] [ text "CHORDS" ]
             , a [ href Routing.fretboardPath, navItemStyle ] [ text "FRETBOARD" ]
             , div [ style [ ( "marginTop", "100px" ), ( "color", "#E91750" ) ] ] [ text "SELECT KEY:" ]
@@ -173,8 +175,11 @@ page model =
         ScalesPage key ->
             Scales.scalesPage model
 
+        HomePage ->
+            Home.homePage model
+
         NotFoundPage ->
-            div [ style [ ( "margin", "100px auto" ), ( "color", "#E91750" ) ] ] [ text ("Page Not Found" ++ model.musKey) ]
+            div [ style [ ( "margin", "100px auto" ), ( "color", "#E91750" ) ] ] [ text ("Page Not Found " ++ model.musKey) ]
 
 
 
