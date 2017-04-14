@@ -13,6 +13,7 @@ import Fretboard exposing (..)
 import Navigation exposing (Location)
 import Time exposing (..)
 import Update.Extra.Infix exposing ((:>))
+import Json.Decode exposing (..)
 
 
 main =
@@ -134,6 +135,8 @@ nav model =
             [ a [ href (Routing.scalesPath model.musKey), navItemStyle ] [ text "SCALES" ]
             , a [ href (Routing.chordsPath model.musKey), navItemStyle ] [ text "CHORDS" ]
             , a [ href Routing.fretboardPath, navItemStyle ] [ text "FRETBOARD" ]
+            , div [ style [ ( "marginTop", "100px" ), ( "color", "#E91750" ) ] ] [ text "SELECT KEY:" ]
+            , keyListView model
             ]
         ]
 
@@ -145,6 +148,17 @@ navIcon model =
         , hr [ navIconStyleHr ] []
         , hr [ navIconStyleHr ] []
         ]
+
+
+keyListView model =
+    let
+        keyOptions key =
+            span [ keyListStyle, onClick <| ChangeKey key ] [ text key ]
+    in
+        div [ keyListContainerStyle ]
+            [ div [ textContainerStyle ]
+                (List.map keyOptions Chords.keyList)
+            ]
 
 
 page : Model -> Html Msg
@@ -160,7 +174,7 @@ page model =
             Scales.scalesPage model
 
         NotFoundPage ->
-            div [ style [ ( "margin", "100px auto" ) ] ] [ text ("Page Not Found" ++ model.musKey) ]
+            div [ style [ ( "margin", "100px auto" ), ( "color", "#E91750" ) ] ] [ text ("Page Not Found" ++ model.musKey) ]
 
 
 
@@ -197,7 +211,7 @@ navIconStyle model =
     let
         baseStyles difference =
             style
-                [ ( "position", "absolute" )
+                [ ( "position", "fixed" )
                 , ( "top", "20px" )
                 , ( "left", "-40px" )
                 , ( "width", "25px" )
@@ -234,4 +248,33 @@ navItemStyle =
         , ( "margin", "0 0 8px" )
         , ( "padding", "5px" )
         , ( "color", "#bbb" )
+        ]
+
+
+keyListStyle =
+    style
+        [ ( "width", "50px" )
+        , ( "margin", "5px 5px 5px 0" )
+        , ( "border", "1px solid #222" )
+        , ( "borderRadius", "25px" )
+        , ( "cursor", "pointer" )
+        , ( "lineHeight", "50px" )
+        , ( "color", "#fff" )
+        , ( "backgroundColor", "#222" )
+        ]
+
+
+keyListContainerStyle =
+    style
+        [ ( "width", "240px" )
+        , ( "height", "400px" )
+        , ( "textAlign", "center" )
+        , ( "backgroundColor", "#111" )
+        ]
+
+
+textContainerStyle =
+    style
+        [ ( "display", "flex" )
+        , ( "flexFlow", "row wrap" )
         ]
