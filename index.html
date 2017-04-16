@@ -3,7 +3,7 @@
         <title>Simple Chord Harmony</title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.2.0/milligram.min.css">
     </head>
-    <body style="background-color: #111;">
+    <body style="background-color: #000;">
         <div id="main"></div>
         <script src="Main.js"></script>
         <script>
@@ -14,6 +14,7 @@
             var ctx = new (window.webkitAudioContext || window.AudioContext);
 
             function play(args) {
+                console.log(args);
                 var note = args.note;
                 var waveType = args.waveType;
                 var hz = note.frequency;

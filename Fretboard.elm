@@ -1,4 +1,4 @@
-module Fretboard exposing (..)
+module Fretboard exposing (fretboardPage, fretNotation, noteFretPos, noteStringPos)
 
 import Html exposing (div, hr, text, span)
 import Html.Events exposing (onClick)
@@ -55,7 +55,7 @@ fretboardPage model =
     in
         div [ style [ ( "position", "relative" ) ] ]
             [ div [ fretboardContainerStyle ]
-                [ div [ fretboardTitleStyle ] [ text "CLICK ON A FRET TO SEE THE MUSICAL NOTE" ]
+                [ div [ fretboardTitleStyle ] [ text "Click On The Fret To See A Musical Note" ]
                 , div [ fretboardStringStyle ]
                     (List.map frets <| List.reverse stringE)
                 , div [ fretboardStringStyle ]
@@ -170,7 +170,7 @@ noteFretPos index =
         num =
             Result.withDefault 0 <| String.toInt index
     in
-        toFloat num * 10.1
+        toFloat num * 10.25
 
 
 
@@ -179,10 +179,10 @@ noteFretPos index =
 
 fretboardTitleStyle =
     style
-        [ ( "fontSize", "20px" )
+        [ ( "fontSize", "14px" )
         , ( "textAlign", "center" )
         , ( "marginBottom", "30px" )
-        , ( "color", "#E9175D" )
+        , ( "color", "#fff" )
         ]
 
 
@@ -209,7 +209,7 @@ fretNoteStyle =
         , ( "borderBottom", "1px solid #222" )
         , ( "borderCollapse", "collapse" )
         , ( "transition", "all 0.4s ease" )
-        , ( "backgroundColor", "#111" )
+        , ( "backgroundColor", "#000" )
         , ( "zIndex", "1" )
         ]
 
@@ -219,7 +219,7 @@ fretBlankStyle =
         [ ( "color", "rgba(0,0,0,0)" )
         , ( "width", "100px" )
         , ( "padding", "5px" )
-        , ( "backgroundColor", "#111" )
+        , ( "backgroundColor", "#000" )
         ]
 
 
@@ -245,7 +245,7 @@ notationContainerStyle =
         [ ( "width", "350px" )
         , ( "padding", "50px 10px" )
         , ( "margin", "70px auto" )
-        , ( "backgroundColor", "#111" )
+        , ( "backgroundColor", "#000" )
         , ( "position", "relative" )
         , ( "textAlign", "center" )
         ]
@@ -271,7 +271,7 @@ notationNoteStyle offset =
         , ( "position", "absolute" )
         , ( "bottom", (toString offset) ++ "px" )
         , ( "left", "50%" )
-        , ( "backgroundColor", "#E91750" )
+        , ( "backgroundColor", "#5CE6CD" )
         , ( "transition", "all 0.5s ease" )
         , ( "zIndex", "1" )
         ]
@@ -284,7 +284,7 @@ notationAccidentalStyle offset visibility =
         , ( "marginBottom", "-10px" )
         , ( "bottom", (toString offset) ++ "px" )
         , ( "left", "44%" )
-        , ( "color", "#E91750" )
+        , ( "color", "#5CE6CD" )
         , ( "opacity", visibility )
         , ( "transition", "all 0.5s ease" )
         , ( "zIndex", "1" )

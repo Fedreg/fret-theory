@@ -2,6 +2,7 @@ module Audio exposing (..)
 
 import String exposing (..)
 import Types exposing (..)
+import List.Extra exposing (getAt)
 
 
 {-| Defines audio Notes to be played for each string of every chord. "c0s" is default for no sound.
@@ -263,14 +264,40 @@ notes key =
             }
 
 
+{-| List of half-steps from root note for each scale.  Will be fed into 440 * (1.059463..)x
+-}
+scales : String -> List String
+scales scale =
+    case scale of
+        "major" ->
+            [ "c3s", "d3s", "e3s", "f3s", "g3s", "a3s", "b3s", "c4s", "d4s", "e4s", "f4s", "g4s", "a4s", "b4s", "c5s" ]
+
+        "minor" ->
+            [ "c3s", "d3s", "d#3s", "f3s", "g3s", "g#3s", "a#3s", "c4s", "d4s", "d#4s", "f4s", "g4s", "g#4s", "a#4s", "c5s" ]
+
+        "majPentatonic" ->
+            [ "c3s", "d3s", "e3s", "g3s", "a3s", "c4s", "d4s", "e4s", "g4s", "a4s", "c5s" ]
+
+        "minPentatonic" ->
+            [ "c3s", "d#3s", "f3s", "g3s", "a#3s", "c4s", "d#4s", "f4s", "g4s", "a#4s", "c5s" ]
+
+        "lydian" ->
+            [ "c3s", "d3s", "e3s", "f#3s", "g3s", "a3s", "b3s", "c4s", "d4s", "e4s", "f#4s", "g4s", "a4s", "b4s", "c5s" ]
+
+        "mixolydian" ->
+            [ "c3s", "d3s", "e3s", "f3s", "g3s", "a3s", "a#3s", "c4s", "d4s", "e4s", "f4s", "g4s", "a4s", "a#4s", "c5s" ]
+
+        "dorian" ->
+            [ "c3s", "d3s", "d#3s", "f3s", "g3s", "a3s", "a#3s", "c4s", "d4s", "d#4s", "f4s", "g4s", "a4s", "a#4s", "c5s" ]
+
+        _ ->
+            []
+
+
 {-| Builds the Note to from a string to send to the web audio function.
 -}
 noteSorter : String -> Note
 noteSorter string =
-    -- let
-    --     _ =
-    --         Debug.log "Note_" string
-    -- in
     case (String.length string) of
         3 ->
             Note (frequencies <| slice 0 1 string) (octave <| Result.withDefault 0 <| toInt <| slice 1 2 string) (sustain <| slice 2 3 string)
@@ -290,10 +317,6 @@ noteSorter string =
 
 sustain : String -> Float
 sustain duration =
-    -- let
-    --     _ =
-    --         Debug.log "Duration_" duration
-    -- in
     case duration of
         "w" ->
             4.0
@@ -331,10 +354,6 @@ sustain duration =
 
 octave : Int -> Int
 octave num =
-    -- let
-    --     _ =
-    --         Debug.log "octave_" octave
-    -- in
     case num of
         1 ->
             1
@@ -345,10 +364,6 @@ octave num =
 
 frequencies : String -> Float
 frequencies note =
-    -- let
-    --     _ =
-    --         Debug.log "Note_" note
-    -- in
     case note of
         "c" ->
             130.81
@@ -393,8 +408,51 @@ frequencies note =
             0.0
 
 
+stringToNote : List String -> Int -> List Note
+stringToNote chord n =
+    let
+        chordList =
+            []
 
---nywhere else you want. Here are a few of the most common:
+        _ =
+            Debug.log "ChordList " n
+
+        note =
+            Maybe.withDefault "c0s" <| getAt n chord
+
+        computedNote =
+            noteSorter note
+    in
+        if n < List.length chord then
+            computedNote :: chordList
+        else
+            stringToNote chord (n + 1)
+
+
+scaleBuilder scale model n =
+    let
+        _ =
+            Debug.log "Index:" n
+
+        baseHz =
+            frequencies model.musKey
+
+        exponent =
+            Maybe.withDefault 1 <| getAt n scale
+
+        scaleList =
+            []
+
+        note =
+            baseHz * (1.059463 ^ exponent)
+    in
+        if n < List.length scale then
+            note :: scaleList
+        else
+            scaleBuilder scale model (n + 1)
+
+
+
 --ii-V sub: Substitute ii for IV, so that you have a ii-V turnaround. For example, if you're playing in the key of C, the V chord is G7 and the ii chord is Dm7. So instead of C-F-G7, play C-Dm7-G7. This is far and away the easiest and most common substitution, and in fact it's the standard turnaround in jazz.
 --Secondary Dominants: Use secondary dominants, i.e. V chords of V chords. Again, if you're playing in the key of C, the V chord is G7 and the V of G is D7, so instead of playing C-F-G7, play C-D7-G7 instead. You can extend this as much as you want, i.e. use V chords of V chords of V chords, etc. Entire songs have been written around this idea ("Salty Dog" comes to mind).
 --Tritone Subs: In general, you can make what's called a "tritone substitution" on any dominant chord (i.e. any 7th chord). It works like this: if the root of the V chord is X, replace the chord with a 7th chord whose root is a tritone away from X. So in the key of C, again the V chord is a G7. The note that's a tritone away from G is D♭, so replace the G7 with a D♭7. Combined with the ii-for-IV substitution, the turnaround goes from C-F-G to C-Dm7-D♭7, which has some really nice voice-leading in the bass notes. Combine tritone subs with secondary dominants and you can have a field day with different patterns and substitutions.

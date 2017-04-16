@@ -12,6 +12,7 @@ type alias Model =
     , showAccidental : String
     , sliderValue : Int
     , navMenuOpen : Bool
+    , pitchShift : Int
     }
 
 
@@ -72,7 +73,7 @@ type alias PlayBundle =
 type Msg
     = ChangeKey String
     | SendNotes
-    | Play (List String)
+    | Play (List String) Int
     | ResetIndex
     | OnLocationChange Location
     | DrawNote String String String

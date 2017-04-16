@@ -1,4 +1,4 @@
-module Chords exposing (chordChartPage, keyList)
+module Chords exposing (chordChartPage, keyList, chordChartModel, playbackSpeedSlider)
 
 import Html exposing (..)
 import Html.Attributes exposing (..)
@@ -24,7 +24,7 @@ chordChartPage model =
     in
         div [ style [ ( "textAlign", "center" ) ] ]
             [ div [] [ fingerChart ]
-            , playbackSpeedSlider model
+            , playbackSpeedSlider "CHORD ARPEGGIO SPEED" model
             , div [ chartContainerStyle "row" ]
                 [ chordChartModel model 0 "I" .i .i
                 , chordChartModel model 3 "IV" .iv .iv
@@ -51,7 +51,7 @@ chordChartPage model =
 
 
 chordChartModel model index name accessor1 accessor2 =
-    div [ chartContainerStyle "column", onClick (Play ((Audio.notes model.musKey) |> accessor1)) ]
+    div [ chartContainerStyle "column", onClick (Play ((Audio.notes model.musKey) |> accessor1) 0) ]
         [ div [] [ chordBarPosition index model.musKey ]
         , chordChart <| chordBuilder ((keys model.musKey) |> accessor2)
         , div [ chordNameStyle ] [ chordFunction index model.musKey ]
@@ -74,7 +74,7 @@ fingerNo finger =
             "#E8175D"
 
         "3" ->
-            "#446CB3"
+            "#5CE6CD"
 
         "4" ->
             "#A8A7A7"
@@ -214,9 +214,9 @@ keyList =
     [ "C", "G", "D", "A", "E", "B", "F#", "Db", "Ab", "Eb", "Bb", "F", "a", "e", "b", "f#", "c#", "g#", "d#", "bb", "f", "c", "g", "d" ]
 
 
-playbackSpeedSlider model =
+playbackSpeedSlider message model =
     div [ style [ ( "marginTop", "10px" ) ] ]
-        [ div [] [ text "+ CHORD PLAYBACK SPEED -" ]
+        [ div [] [ text ("+ " ++ message ++ " -") ]
         , input
             [ type_ "range"
             , Html.Attributes.min "1"
@@ -556,7 +556,7 @@ chartStyle =
         [ ( "position", "relative" )
         , ( "width", "180px" )
         , ( "height", "153px" )
-        , ( "border", "1px solid #333" )
+        , ( "border", "1px solid #222" )
         , ( "borderTopLeftRadius", "20px" )
         , ( "borderBottom", "none" )
         ]
@@ -567,7 +567,7 @@ stringStyle =
     style
         [ ( "width", "180px" )
         , ( "height", "30px" )
-        , ( "borderBottom", "1px solid #333" )
+        , ( "borderBottom", "1px solid #222" )
         ]
 
 
@@ -576,8 +576,8 @@ nutStyle =
     style
         [ ( "width", "10px" )
         , ( "height", "153px" )
-        , ( "backgroundColor", "#333" )
-        , ( "borderBottom", "1px solid #333" )
+        , ( "backgroundColor", "#222" )
+        , ( "borderBottom", "1px solid #222" )
         ]
 
 
@@ -600,7 +600,7 @@ fretStyle fret =
         , ( "top", "0" )
         , ( "right", (Basics.toString (43 * fret) ++ "px") )
         , ( "height", "150px" )
-        , ( "borderRight", "1px solid #333" )
+        , ( "borderRight", "1px solid #222" )
         ]
 
 
