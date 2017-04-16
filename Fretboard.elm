@@ -4,11 +4,11 @@ import Html exposing (div, hr, text, span)
 import Html.Events exposing (onClick)
 import Html.Attributes exposing (style, property)
 import String exposing (split, toInt)
-import List exposing (map, range)
+import List exposing (map, range, member)
 import Types exposing (..)
 import InlineHover exposing (hover)
 import Json.Encode as Encode
-import List.Extra exposing (getAt)
+import List.Extra exposing (getAt, elemIndex)
 
 
 fretboardPage model =
@@ -45,7 +45,10 @@ fretboardPage model =
                         _ ->
                             "0"
             in
-                hover highlight div [ fretNoteStyle, onClick (Types.DrawNote index stringNo sharp) ] [ text note ]
+                if List.member note (notesInKey model.musKey) then
+                    hover highlight div [ fretNoteStyle "#fff", onClick (Types.DrawNote index stringNo sharp) ] [ text note ]
+                else
+                    hover highlight div [ fretNoteStyle "#444", onClick (Types.DrawNote index stringNo sharp) ] [ text note ]
 
         fretNumberMarkers num =
             div [ fretNumberStyle ] [ text <| toString num ]
@@ -56,6 +59,7 @@ fretboardPage model =
         div [ style [ ( "position", "relative" ) ] ]
             [ div [ fretboardContainerStyle ]
                 [ div [ fretboardTitleStyle ] [ text "Click On The Fret To See A Musical Note" ]
+                , div [ fretboardTitleStyle ] [ text ("KEY OF " ++ model.musKey) ]
                 , div [ fretboardStringStyle ]
                     (List.map frets <| List.reverse stringE)
                 , div [ fretboardStringStyle ]
@@ -173,8 +177,47 @@ noteFretPos index =
         toFloat num * 10.25
 
 
+chromaticNotesList =
+    [ "c", "c#", "d", "d#", "e", "f", "f#", "g", "g#", "a", "a#", "b" ]
 
--- STYLES
+
+{-| Determines which notes are in key to highlight them on the fretboard page
+-}
+notesInKey key =
+    let
+        index =
+            -- If Key is a flat key (like Eb), will sitch to enharmonic # (D#).
+            if String.length key == 2 && String.slice 1 2 key == "b" then
+                let
+                    newIndex =
+                        String.toLower <| String.slice 0 1 key
+                in
+                    (Maybe.withDefault 0 <| elemIndex newIndex chromaticNotesList) - 1
+            else
+                Maybe.withDefault 0 <| elemIndex (String.toLower key) chromaticNotesList
+
+        noteList =
+            []
+
+        inserter n =
+            let
+                a =
+                    if n > 11 then
+                        n - 12
+                    else
+                        n
+            in
+                [ (Maybe.withDefault "c" <| getAt a chromaticNotesList) ]
+    in
+        -- Determines major or minor key and inserts into blank list.
+        if String.toUpper key == key then
+            noteList ++ inserter (index) ++ inserter (index + 2) ++ inserter (index + 4) ++ inserter (index + 5) ++ inserter (index + 7) ++ inserter (index + 9) ++ inserter (index + 11)
+        else
+            noteList ++ inserter (index) ++ inserter (index + 2) ++ inserter (index + 3) ++ inserter (index + 5) ++ inserter (index + 7) ++ inserter (index + 8) ++ inserter (index + 10)
+
+
+
+---- STYLES
 
 
 fretboardTitleStyle =
@@ -198,12 +241,12 @@ fretboardStringStyle =
     style [ ( "display", "flex" ) ]
 
 
-fretNoteStyle =
+fretNoteStyle color =
     style
         [ ( "width", "100px" )
         , ( "padding", "14px 5px" )
         , ( "textTransform", "uppercase" )
-        , ( "color", "#777" )
+        , ( "color", color )
         , ( "fontSize", "12px" )
         , ( "textAlign", "center" )
         , ( "borderBottom", "1px solid #222" )

@@ -133,7 +133,6 @@ view model =
     div [ style [ ( "position", "relative" ), ( "overflow", "hidden" ) ] ]
         [ nav model
         , page model
-        , div [] [ text (toString model.pitchShift) ]
         ]
 
 

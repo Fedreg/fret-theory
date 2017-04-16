@@ -414,9 +414,6 @@ stringToNote chord n =
         chordList =
             []
 
-        _ =
-            Debug.log "ChordList " n
-
         note =
             Maybe.withDefault "c0s" <| getAt n chord
 
@@ -431,9 +428,6 @@ stringToNote chord n =
 
 scaleBuilder scale model n =
     let
-        _ =
-            Debug.log "Index:" n
-
         baseHz =
             frequencies model.musKey
 
