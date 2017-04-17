@@ -1,4 +1,4 @@
-module Chords exposing (chordChartPage, keyList, chordChartModel, playbackSpeedSlider)
+module Chords exposing (chordChartPage, keyList, chordChartModel, playbackSpeedSlider, chartContainerStyle)
 
 import Html exposing (..)
 import Html.Attributes exposing (..)

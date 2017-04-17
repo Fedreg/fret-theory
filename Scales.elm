@@ -425,6 +425,7 @@ scaleContainerStyle =
         [ ( "position", "relative" )
         , ( "width", "650px" )
         , ( "margin", "30px 0" )
+        , ( "cursor", "pointer" )
         ]
 
 

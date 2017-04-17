@@ -85,6 +85,6 @@ type Msg
 type Route
     = ChordChartPage String
     | ScalesPage String
-    | FretboardPage
+    | FretboardPage String
     | NotFoundPage
     | HomePage

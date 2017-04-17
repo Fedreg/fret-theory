@@ -48,7 +48,7 @@ fretboardPage model =
                 if List.member note (notesInKey model.musKey) then
                     hover highlight div [ fretNoteStyle "#fff", onClick (Types.DrawNote index stringNo sharp) ] [ text note ]
                 else
-                    hover highlight div [ fretNoteStyle "#444", onClick (Types.DrawNote index stringNo sharp) ] [ text note ]
+                    hover highlight div [ fretNoteStyle "#222", onClick (Types.DrawNote index stringNo sharp) ] [ text note ]
 
         fretNumberMarkers num =
             div [ fretNumberStyle ] [ text <| toString num ]

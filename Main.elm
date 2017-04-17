@@ -144,7 +144,7 @@ nav model =
             [ hover highlight a [ href Routing.homePath, navItemStyle ] [ text "HOME" ]
             , hover highlight a [ href (Routing.scalesPath model.musKey), navItemStyle ] [ text "SCALES" ]
             , hover highlight a [ href (Routing.chordsPath model.musKey), navItemStyle ] [ text "CHORDS" ]
-            , hover highlight a [ href Routing.fretboardPath, navItemStyle ] [ text "FRETBOARD" ]
+            , hover highlight a [ href (Routing.fretboardPath model.musKey), navItemStyle ] [ text "FRETBOARD" ]
             , div [ style [ ( "marginTop", "100px" ), ( "color", "#E91750" ) ] ] [ text "SELECT KEY:" ]
             , keyListView model
             ]
@@ -177,7 +177,7 @@ page model =
         ChordChartPage key ->
             Chords.chordChartPage model
 
-        FretboardPage ->
+        FretboardPage key ->
             Fretboard.fretboardPage model
 
         ScalesPage key ->
