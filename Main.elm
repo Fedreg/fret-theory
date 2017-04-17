@@ -7,6 +7,7 @@ import List.Extra exposing (getAt)
 import Routing
 import Types exposing (..)
 import Audio exposing (..)
+import Home exposing (homePage)
 import Chords exposing (chordChartPage)
 import Scales exposing (scalesPage)
 import Fretboard exposing (..)
@@ -14,6 +15,7 @@ import Navigation exposing (Location)
 import Time exposing (..)
 import Update.Extra.Infix exposing ((:>))
 import Json.Decode exposing (..)
+import InlineHover exposing (hover)
 
 
 main =
@@ -34,10 +36,11 @@ init location =
           , musKey = "C"
           , index = 6
           , currentChord = []
-          , notePosition = 0
+          , notePosition = 80.0
           , showAccidental = "0"
           , sliderValue = 1
           , navMenuOpen = False
+          , pitchShift = 0
           }
         , Cmd.none
         )
@@ -65,12 +68,12 @@ update msg model =
                 ( { model | route = newRoute, musKey = newKey }, Cmd.none )
 
         ChangeKey key ->
-            ( { model | musKey = key }
+            ( { model | musKey = key, navMenuOpen = False }
             , Cmd.none
             )
 
-        Play chord ->
-            ( { model | currentChord = chord }, Cmd.none )
+        Play chord hzShift ->
+            ( { model | currentChord = chord, pitchShift = hzShift }, Cmd.none )
                 :> update ResetIndex
                 :> update SendNotes
 
@@ -81,9 +84,15 @@ update msg model =
             let
                 note =
                     Audio.noteSorter <| Maybe.withDefault "e2w" <| getAt model.index model.currentChord
+
+                shiftedNote =
+                    { note | frequency = note.frequency * (1.059463 ^ (toFloat model.pitchShift)), sustain = note.sustain * (toFloat model.sliderValue / 2) }
+
+                _ =
+                    Debug.log "SN:" shiftedNote
             in
                 ( { model | index = model.index + 1 }
-                , send (PlayBundle note "triangle")
+                , send (PlayBundle shiftedNote "triangle")
                 )
 
         DrawNote index string accidental ->
@@ -113,7 +122,7 @@ subscriptions model =
         val =
             toFloat model.sliderValue / 10.0
     in
-        if model.index < 6 then
+        if model.index < List.length model.currentChord then
             Time.every (val * Time.second) (always SendNotes)
         else
             Sub.none
@@ -132,9 +141,10 @@ nav model =
     div [ navMenuStyle model ]
         [ navIcon model
         , div []
-            [ a [ href (Routing.scalesPath model.musKey), navItemStyle ] [ text "SCALES" ]
-            , a [ href (Routing.chordsPath model.musKey), navItemStyle ] [ text "CHORDS" ]
-            , a [ href Routing.fretboardPath, navItemStyle ] [ text "FRETBOARD" ]
+            [ hover highlight a [ href Routing.homePath, navItemStyle ] [ text "HOME" ]
+            , hover highlight a [ href (Routing.scalesPath model.musKey), navItemStyle ] [ text "SCALES" ]
+            , hover highlight a [ href (Routing.chordsPath model.musKey), navItemStyle ] [ text "CHORDS" ]
+            , hover highlight a [ href (Routing.fretboardPath model.musKey), navItemStyle ] [ text "FRETBOARD" ]
             , div [ style [ ( "marginTop", "100px" ), ( "color", "#E91750" ) ] ] [ text "SELECT KEY:" ]
             , keyListView model
             ]
@@ -153,7 +163,7 @@ navIcon model =
 keyListView model =
     let
         keyOptions key =
-            span [ keyListStyle, onClick <| ChangeKey key ] [ text key ]
+            hover highlight span [ keyListStyle, onClick <| ChangeKey key ] [ text key ]
     in
         div [ keyListContainerStyle ]
             [ div [ textContainerStyle ]
@@ -167,14 +177,17 @@ page model =
         ChordChartPage key ->
             Chords.chordChartPage model
 
-        FretboardPage ->
+        FretboardPage key ->
             Fretboard.fretboardPage model
 
         ScalesPage key ->
             Scales.scalesPage model
 
+        HomePage ->
+            Home.homePage model
+
         NotFoundPage ->
-            div [ style [ ( "margin", "100px auto" ), ( "color", "#E91750" ) ] ] [ text ("Page Not Found" ++ model.musKey) ]
+            div [ style [ ( "margin", "100px auto" ), ( "color", "#E91750" ) ] ] [ text ("Page Not Found " ++ model.musKey) ]
 
 
 
@@ -192,19 +205,19 @@ navMenuStyle model =
                 , ( "width", "250px" )
                 , ( "height", "100%" )
                 , ( "padding", "15px" )
-                , ( "backgroundColor", "#111" )
+                , ( "backgroundColor", "#000" )
                 , ( "transition", "all 0.5s" )
                 , ( "zIndex", "10000" )
-                , ( "borderLeft", "3px solid " ++ color )
+                , ( "borderLeft", "1px solid " ++ color )
                 , ( "transform", difference )
                 ]
     in
         case model.navMenuOpen of
             True ->
-                baseStyles "translateX(0)" "#E91750"
+                baseStyles "translateX(0)" "#fff"
 
             False ->
-                baseStyles "translateX(250px)" "#111"
+                baseStyles "translateX(250px)" "#000"
 
 
 navIconStyle model =
@@ -230,7 +243,7 @@ navIconStyle model =
 
 navIconStyleHr =
     style
-        [ ( "borderTop", "1px solid #E91750" )
+        [ ( "borderTop", "1px solid #fff" )
         , ( "margin", "0 0 5px" )
         ]
 
@@ -245,9 +258,10 @@ navItemStyle : Attribute msg
 navItemStyle =
     style
         [ ( "display", "block" )
+        , ( "fontSize", "12px" )
         , ( "margin", "0 0 8px" )
         , ( "padding", "5px" )
-        , ( "color", "#bbb" )
+        , ( "color", "#fff" )
         ]
 
 
@@ -255,7 +269,7 @@ keyListStyle =
     style
         [ ( "width", "50px" )
         , ( "margin", "5px 5px 5px 0" )
-        , ( "border", "1px solid #222" )
+          --, ( "border", "1px solid #666" )
         , ( "borderRadius", "25px" )
         , ( "cursor", "pointer" )
         , ( "lineHeight", "50px" )
@@ -269,7 +283,7 @@ keyListContainerStyle =
         [ ( "width", "240px" )
         , ( "height", "400px" )
         , ( "textAlign", "center" )
-        , ( "backgroundColor", "#111" )
+        , ( "backgroundColor", "#000" )
         ]
 
 
@@ -278,3 +292,10 @@ textContainerStyle =
         [ ( "display", "flex" )
         , ( "flexFlow", "row wrap" )
         ]
+
+
+highlight =
+    [ ( "color", "#aaa" )
+    , ( "backgroundColor", "#5CE6CD" )
+    , ( "transition", "color 0.3s ease" )
+    ]

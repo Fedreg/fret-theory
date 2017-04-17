@@ -8,10 +8,11 @@ type alias Model =
     , musKey : String
     , index : Int
     , currentChord : List String
-    , notePosition : Int
+    , notePosition : Float
     , showAccidental : String
     , sliderValue : Int
     , navMenuOpen : Bool
+    , pitchShift : Int
     }
 
 
@@ -72,7 +73,7 @@ type alias PlayBundle =
 type Msg
     = ChangeKey String
     | SendNotes
-    | Play (List String)
+    | Play (List String) Int
     | ResetIndex
     | OnLocationChange Location
     | DrawNote String String String
@@ -84,5 +85,6 @@ type Msg
 type Route
     = ChordChartPage String
     | ScalesPage String
-    | FretboardPage
+    | FretboardPage String
     | NotFoundPage
+    | HomePage

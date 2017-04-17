@@ -1,21 +1,20 @@
-module Fretboard exposing (..)
+module Fretboard exposing (fretboardPage, fretNotation, noteFretPos, noteStringPos)
 
-import Html exposing (div, hr, text)
+import Html exposing (div, hr, text, span)
 import Html.Events exposing (onClick)
 import Html.Attributes exposing (style, property)
 import String exposing (split, toInt)
-import List exposing (map, range)
+import List exposing (map, range, member)
 import Types exposing (..)
 import InlineHover exposing (hover)
 import Json.Encode as Encode
-import List.Extra exposing (getAt)
+import List.Extra exposing (getAt, elemIndex)
 
 
 fretboardPage model =
     let
         highlight =
-            [ ( "background-color", "#111" )
-            , ( "border", "2px solid #E8175D" )
+            [ ( "background-color", "#E91750" )
             , ( "transform", "scale(1.5, 1.5)" )
             , ( "color", "#fff" )
             , ( "z-index", "2" )
@@ -46,7 +45,10 @@ fretboardPage model =
                         _ ->
                             "0"
             in
-                hover highlight div [ fretNoteStyle, onClick (Types.DrawNote index stringNo sharp) ] [ text note ]
+                if List.member note (notesInKey model.musKey) then
+                    hover highlight div [ fretNoteStyle "#fff", onClick (Types.DrawNote index stringNo sharp) ] [ text note ]
+                else
+                    hover highlight div [ fretNoteStyle "#222", onClick (Types.DrawNote index stringNo sharp) ] [ text note ]
 
         fretNumberMarkers num =
             div [ fretNumberStyle ] [ text <| toString num ]
@@ -56,7 +58,9 @@ fretboardPage model =
     in
         div [ style [ ( "position", "relative" ) ] ]
             [ div [ fretboardContainerStyle ]
-                [ div [ fretboardStringStyle ]
+                [ div [ fretboardTitleStyle ] [ text "Click On The Fret To See A Musical Note" ]
+                , div [ fretboardTitleStyle ] [ text ("KEY OF " ++ model.musKey) ]
+                , div [ fretboardStringStyle ]
                     (List.map frets <| List.reverse stringE)
                 , div [ fretboardStringStyle ]
                     (List.map frets <| List.reverse stringA)
@@ -112,6 +116,8 @@ revealNotes =
     ]
 
 
+{-| Draws the musical staff and ledge lines.
+-}
 fretNotation model =
     div [ notationContainerStyle ]
         [ div [ notationClefStyle, property "innerHTML" (Encode.string "&#x1d11e;") ] []
@@ -122,15 +128,17 @@ fretNotation model =
         , hr [ hrStyle ] []
         , hr [ hrStyle ] []
         , hr [ hrStyle ] []
-        , hr [ hrLedgerStyleHi model 180 ] []
-        , hr [ hrLedgerStyleHi model 165 ] []
-        , hr [ hrLedgerStyleHi model 150 ] []
-        , hr [ hrLedgerStyleLo model 35 ] []
-        , hr [ hrLedgerStyleLo model 20 ] []
-        , hr [ hrLedgerStyleLo model 5 ] []
+        , hr [ hrLedgerStyleHi model 195 ] []
+        , hr [ hrLedgerStyleHi model 175 ] []
+        , hr [ hrLedgerStyleHi model 155 ] []
+        , hr [ hrLedgerStyleLo model 30 ] []
+        , hr [ hrLedgerStyleLo model 10 ] []
+        , hr [ hrLedgerStyleLo model -10 ] []
         ]
 
 
+{-| Determines note x position per string.
+-}
 noteStringPos stringNo =
     let
         num =
@@ -138,44 +146,93 @@ noteStringPos stringNo =
     in
         case num of
             6 ->
-                0
+                -8
 
             5 ->
-                20
+                22
 
             4 ->
-                50
+                52
 
             3 ->
-                81
+                82
 
             2 ->
-                103
+                104
 
             1 ->
-                134
+                136
 
             _ ->
                 0
 
 
+{-| More specifically determines note x position per note on fretboard.
+-}
 noteFretPos index =
     let
         num =
             Result.withDefault 0 <| String.toInt index
     in
-        num * 10
+        toFloat num * 10.25
+
+
+chromaticNotesList =
+    [ "c", "c#", "d", "d#", "e", "f", "f#", "g", "g#", "a", "a#", "b" ]
+
+
+{-| Determines which notes are in key to highlight them on the fretboard page
+-}
+notesInKey key =
+    let
+        index =
+            -- If Key is a flat key (like Eb), will sitch to enharmonic # (D#).
+            if String.length key == 2 && String.slice 1 2 key == "b" then
+                let
+                    newIndex =
+                        String.toLower <| String.slice 0 1 key
+                in
+                    (Maybe.withDefault 0 <| elemIndex newIndex chromaticNotesList) - 1
+            else
+                Maybe.withDefault 0 <| elemIndex (String.toLower key) chromaticNotesList
+
+        noteList =
+            []
+
+        inserter n =
+            let
+                a =
+                    if n > 11 then
+                        n - 12
+                    else
+                        n
+            in
+                [ (Maybe.withDefault "c" <| getAt a chromaticNotesList) ]
+    in
+        -- Determines major or minor key and inserts into blank list.
+        if String.toUpper key == key then
+            noteList ++ inserter (index) ++ inserter (index + 2) ++ inserter (index + 4) ++ inserter (index + 5) ++ inserter (index + 7) ++ inserter (index + 9) ++ inserter (index + 11)
+        else
+            noteList ++ inserter (index) ++ inserter (index + 2) ++ inserter (index + 3) ++ inserter (index + 5) ++ inserter (index + 7) ++ inserter (index + 8) ++ inserter (index + 10)
 
 
 
--- STYLES
+---- STYLES
+
+
+fretboardTitleStyle =
+    style
+        [ ( "fontSize", "14px" )
+        , ( "textAlign", "center" )
+        , ( "marginBottom", "30px" )
+        , ( "color", "#fff" )
+        ]
 
 
 fretboardContainerStyle =
     style
         [ ( "margin", "50px" )
         , ( "width", "90%" )
-          --, ( "border", "2px solid #555" )
         , ( "position", "relative" )
         ]
 
@@ -184,18 +241,18 @@ fretboardStringStyle =
     style [ ( "display", "flex" ) ]
 
 
-fretNoteStyle =
+fretNoteStyle color =
     style
         [ ( "width", "100px" )
         , ( "padding", "14px 5px" )
         , ( "textTransform", "uppercase" )
-        , ( "color", "#777" )
-        , ( "fontSize", "10px" )
+        , ( "color", color )
+        , ( "fontSize", "12px" )
         , ( "textAlign", "center" )
         , ( "borderBottom", "1px solid #222" )
         , ( "borderCollapse", "collapse" )
         , ( "transition", "all 0.4s ease" )
-        , ( "backgroundColor", "#111" )
+        , ( "backgroundColor", "#000" )
         , ( "zIndex", "1" )
         ]
 
@@ -205,7 +262,7 @@ fretBlankStyle =
         [ ( "color", "rgba(0,0,0,0)" )
         , ( "width", "100px" )
         , ( "padding", "5px" )
-        , ( "backgroundColor", "#111" )
+        , ( "backgroundColor", "#000" )
         ]
 
 
@@ -215,7 +272,7 @@ fretNumberStyle =
         , ( "marginBottom", "-70px" )
         , ( "padding", "5px" )
         , ( "textTransform", "uppercase" )
-        , ( "color", "#E8175D" )
+        , ( "color", "#E91750" )
         , ( "fontSize", "20px" )
         , ( "textAlign", "center" )
         ]
@@ -231,7 +288,7 @@ notationContainerStyle =
         [ ( "width", "350px" )
         , ( "padding", "50px 10px" )
         , ( "margin", "70px auto" )
-        , ( "backgroundColor", "#111" )
+        , ( "backgroundColor", "#000" )
         , ( "position", "relative" )
         , ( "textAlign", "center" )
         ]
@@ -247,15 +304,17 @@ notationClefStyle =
         ]
 
 
+{-| Dynamicall adds high or low ledger lines as needed
+-}
 notationNoteStyle offset =
     style
-        [ ( "width", "20px" )
-        , ( "height", "20px" )
-        , ( "borderRadius", "10px" )
+        [ ( "width", "18px" )
+        , ( "height", "18px" )
+        , ( "borderRadius", "9px" )
         , ( "position", "absolute" )
         , ( "bottom", (toString offset) ++ "px" )
         , ( "left", "50%" )
-        , ( "backgroundColor", "#3A86FF" )
+        , ( "backgroundColor", "#5CE6CD" )
         , ( "transition", "all 0.5s ease" )
         , ( "zIndex", "1" )
         ]
@@ -268,9 +327,9 @@ notationAccidentalStyle offset visibility =
         , ( "marginBottom", "-10px" )
         , ( "bottom", (toString offset) ++ "px" )
         , ( "left", "44%" )
-        , ( "color", "#3A86FF" )
+        , ( "color", "#5CE6CD" )
         , ( "opacity", visibility )
-        , ( "transition", "opacity 0.5s ease" )
+        , ( "transition", "all 0.5s ease" )
         , ( "zIndex", "1" )
         ]
 
@@ -301,7 +360,6 @@ hrLedgerStyleHi model offset =
             , ( "width", "50px" )
             , ( "margin", "0 auto" )
             , ( "padding", "10px" )
-            , ( "lineHeight", "30px" )
             , ( "opacity", visibility )
             , ( "transition", "opacity 0.5s ease" )
             , ( "zIndex", "0" )
@@ -326,7 +384,6 @@ hrLedgerStyleLo model offset =
             , ( "width", "50px" )
             , ( "margin", "0 auto" )
             , ( "padding", "10px" )
-            , ( "lineHeight", "30px" )
             , ( "opacity", visibility )
             , ( "transition", "opacity 0.5s ease" )
             , ( "zIndex", "0" )
