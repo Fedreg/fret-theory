@@ -13,6 +13,7 @@ type alias Model =
     , sliderValue : Int
     , navMenuOpen : Bool
     , pitchShift : Int
+    , modalOpen : Bool
     }
 
 
@@ -80,6 +81,7 @@ type Msg
     | ChangeSliderValue String
     | NoOp
     | ShowNavMenu
+    | ShowModal
 
 
 type Route

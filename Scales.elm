@@ -4,7 +4,7 @@ import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Events exposing (onInput, onClick)
 import List exposing (map)
-import Types exposing (ScaleData, Msg(ChangeKey, Play))
+import Types exposing (ScaleData, Msg(ChangeKey, Play), Model)
 import Chords exposing (keyList, playbackSpeedSlider)
 import List.Extra exposing (getAt, elemIndex)
 import Audio exposing (scales)
@@ -21,6 +21,7 @@ scalesPage model =
             , lydianModeView model
             , mixolydianModeView model
             , dorianModeView model
+            , scalesModal model
             ]
         ]
 
@@ -34,7 +35,7 @@ ionianModeView model =
             span [ style [ ( "paddingRight", "10px" ), ( "fontSize", "18px" ) ] ] [ text (toString a) ]
     in
         div [ scaleContainerStyle, onClick (Play (Audio.scales "major") (fretOffset model)) ]
-            [ span [ scaleTitleStyle ] [ scaleNameMajor model " MAJOR SCALE " "" ]
+            [ div [ scaleTitleStyle ] [ scaleNameMajor model " MAJOR SCALE " "" ]
             , stringView
             , div [ fretNumberStyle "490px" ] (List.map markup <| data .one)
             , div [ fretNumberStyle "420px" ] (List.map markup <| data .two)
@@ -60,7 +61,7 @@ aeolianModeView model =
             span [ style [ ( "paddingRight", "10px" ), ( "fontSize", "18px" ) ] ] [ text (toString a) ]
     in
         div [ scaleContainerStyle, onClick (Play (Audio.scales "minor") (fretOffset model)) ]
-            [ span [ scaleTitleStyle ] [ scaleNameMinor model " MINOR SCALE " ]
+            [ div [ scaleTitleStyle ] [ scaleNameMinor model " MINOR SCALE " ]
             , stringView
             , div [ fretNumberStyle "460px" ] (List.map markup <| data .one)
             , div [ fretNumberStyle "380px" ] (List.map markup <| data .two)
@@ -80,7 +81,7 @@ majorPentatonicView model =
             span [ style [ ( "paddingRight", "10px" ), ( "fontSize", "18px" ) ] ] [ text (toString a) ]
     in
         div [ scaleContainerStyle, onClick (Play (Audio.scales "majPentatonic") (fretOffset model)) ]
-            [ span [ scaleTitleStyle ] [ scaleNameMajor model " MAJOR PENTATONIC SCALE " "" ]
+            [ div [ scaleTitleStyle ] [ scaleNameMajor model " MAJOR PENTATONIC SCALE " "" ]
             , stringView
             , div [ fretNumberStyle "450px" ] (List.map markup <| data .one)
             , div [ fretNumberStyle "370px" ] (List.map markup <| data .two)
@@ -106,7 +107,7 @@ minorPentatonicView model =
             span [ style [ ( "paddingRight", "10px" ), ( "fontSize", "18px" ) ] ] [ text (toString a) ]
     in
         div [ scaleContainerStyle, onClick (Play (Audio.scales "minPentatonic") (fretOffset model)) ]
-            [ span [ scaleTitleStyle ] [ scaleNameMinor model " MINOR PENTATONIC SCALE " ]
+            [ div [ scaleTitleStyle ] [ scaleNameMinor model " MINOR PENTATONIC SCALE " ]
             , stringView
             , div [ fretNumberStyle "450px" ] (List.map markup <| data .one)
             , div [ fretNumberStyle "370px" ] (List.map markup <| data .two)
@@ -126,7 +127,7 @@ lydianModeView model =
             span [ style [ ( "paddingRight", "10px" ), ( "fontSize", "18px" ) ] ] [ text (toString a) ]
     in
         div [ scaleContainerStyle, onClick (Play (Audio.scales "lydian") (fretOffset model)) ]
-            [ span [ scaleTitleStyle ] [ scaleNameMajor model " LYDIAN MODE " " ( #4 ) " ]
+            [ div [ scaleTitleStyle ] [ scaleNameMajor model " LYDIAN MODE " " ( #4 ) " ]
             , stringView
             , div [ fretNumberStyle "490px" ] (List.map markup <| data .one)
             , div [ fretNumberStyle "390px" ] (List.map markup <| data .two)
@@ -146,7 +147,7 @@ mixolydianModeView model =
             span [ style [ ( "paddingRight", "10px" ), ( "fontSize", "18px" ) ] ] [ text (toString a) ]
     in
         div [ scaleContainerStyle, onClick (Play (Audio.scales "mixolydian") (fretOffset model)) ]
-            [ span [ scaleTitleStyle ] [ scaleNameMajor model " MIXOLYDIAN MODE " " ( b7 ) " ]
+            [ div [ scaleTitleStyle ] [ scaleNameMajor model " MIXOLYDIAN MODE " " ( b7 ) " ]
             , stringView
             , div [ fretNumberStyle "490px" ] (List.map markup <| data .one)
             , div [ fretNumberStyle "390px" ] (List.map markup <| data .two)
@@ -166,7 +167,7 @@ dorianModeView model =
             span [ style [ ( "paddingRight", "10px" ), ( "fontSize", "18px" ) ] ] [ text (toString a) ]
     in
         div [ scaleContainerStyle, onClick (Play (Audio.scales "dorian") (fretOffset model)) ]
-            [ span [ scaleTitleStyle ] [ scaleNameMajor model " DORIAN MODE " " ( b3, b7 ) " ]
+            [ div [ scaleTitleStyle ] [ scaleNameMajor model " DORIAN MODE " " ( b3, b7 ) " ]
             , stringView
             , div [ fretNumberStyle "500px" ] (List.map markup <| data .one)
             , div [ fretNumberStyle "410px" ] (List.map markup <| data .two)
@@ -206,12 +207,7 @@ scaleStringSchema offset key scale =
 
 {-| Shifts scale schema numbers up or down depending on key.
 -}
-
-
-
---fretOffset : Model -> Int
-
-
+fretOffset : Model -> Int
 fretOffset model =
     case model.musKey of
         "C" ->
@@ -333,6 +329,10 @@ scaleNameMinor model scaleName =
                 [ span [] [ text (String.toUpper (Maybe.withDefault "a" <| getAt (index + 12) Chords.keyList)) ]
                 , span [ style [ ( "color", "#777" ) ] ] [ text (" " ++ scaleName ++ " , relative minor") ]
                 ]
+
+
+scalesModal model =
+    div [ scalesModalStyle model ] [ text ("Scales Page. Instructions Coming Soon! Key: " ++ model.musKey) ]
 
 
 
@@ -462,3 +462,24 @@ scalePageStyle =
         , ( "flexWrap", "wrap" )
         , ( "justifyContent", "center" )
         ]
+
+
+scalesModalStyle model =
+    let
+        baseStyles display =
+            style
+                [ ( "display", display )
+                , ( "position", "absolute" )
+                , ( "top", "50px" )
+                , ( "left", "50px" )
+                , ( "width", "90vw" )
+                , ( "height", "90vh" )
+                , ( "opacity", "0.75" )
+                ]
+    in
+        case model.modalOpen of
+            True ->
+                baseStyles "block"
+
+            False ->
+                baseStyles "none"

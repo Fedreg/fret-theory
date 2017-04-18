@@ -43,6 +43,7 @@ chordChartPage model =
                 , span [ style [ ( "fontSize", "25px" ), ( "color", "#E84A5F" ) ] ] [ text soloFretMaj ]
                 , a [ style [ ( "color", "#aaa" ) ], href (Routing.scalesPath model.musKey) ] [ text " (MAJOR SCALE)" ]
                 ]
+            , chordModal model
             ]
 
 
@@ -226,6 +227,10 @@ playbackSpeedSlider message model =
             ]
             []
         ]
+
+
+chordModal model =
+    div [ chordModalStyle model ] [ text ("Chord Page. Instructions Coming Soon! Key: " ++ model.musKey) ]
 
 
 {-| Defines dot placement of each chord.
@@ -687,3 +692,24 @@ fretMarkerStyle dot =
             , ( "backgroundColor", dot.tint )
             , ( "color", "rgba(0,0,0,0)" )
             ]
+
+
+chordModalStyle model =
+    let
+        baseStyles display =
+            style
+                [ ( "display", display )
+                , ( "position", "absolute" )
+                , ( "top", "50px" )
+                , ( "left", "50px" )
+                , ( "width", "90vw" )
+                , ( "height", "90vh" )
+                , ( "opacity", "0.75" )
+                ]
+    in
+        case model.modalOpen of
+            True ->
+                baseStyles "block"
+
+            False ->
+                baseStyles "none"

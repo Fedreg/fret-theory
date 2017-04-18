@@ -1,8 +1,8 @@
 module Fretboard exposing (fretboardPage, fretNotation, noteFretPos, noteStringPos)
 
-import Html exposing (div, hr, text, span)
+import Html exposing (div, hr, text, img)
 import Html.Events exposing (onClick)
-import Html.Attributes exposing (style, property)
+import Html.Attributes exposing (style, src)
 import String exposing (split, toInt)
 import List exposing (map, range, member)
 import Types exposing (..)
@@ -78,6 +78,7 @@ fretboardPage model =
                     (List.map fretNumberMarkers <| List.reverse fretNumbers)
                 ]
             , fretNotation model
+            , fretboardModal model
             ]
 
 
@@ -117,10 +118,11 @@ revealNotes =
 
 
 {-| Draws the musical staff and ledge lines.
+--
 -}
 fretNotation model =
     div [ notationContainerStyle ]
-        [ div [ notationClefStyle, property "innerHTML" (Encode.string "&#x1d11e;") ] []
+        [ img [ notationClefStyle, src "Public/clef.png" ] []
         , div [ notationNoteStyle model.notePosition ] []
         , div [ notationAccidentalStyle model.notePosition model.showAccidental ] [ text "#" ]
         , hr [ hrStyle ] []
@@ -211,9 +213,14 @@ notesInKey key =
     in
         -- Determines major or minor key and inserts into blank list.
         if String.toUpper key == key then
+            -- REFACTOR THIS! SHAME...
             noteList ++ inserter (index) ++ inserter (index + 2) ++ inserter (index + 4) ++ inserter (index + 5) ++ inserter (index + 7) ++ inserter (index + 9) ++ inserter (index + 11)
         else
             noteList ++ inserter (index) ++ inserter (index + 2) ++ inserter (index + 3) ++ inserter (index + 5) ++ inserter (index + 7) ++ inserter (index + 8) ++ inserter (index + 10)
+
+
+fretboardModal model =
+    div [ fretboardModalStyle model ] [ text ("Fretboard Page. Instructions Coming Soon! Key: " ++ model.musKey) ]
 
 
 
@@ -296,10 +303,10 @@ notationContainerStyle =
 
 notationClefStyle =
     style
-        [ ( "fontSize", "140px" )
-        , ( "position", "absolute" )
-        , ( "bottom", "0" )
-        , ( "left", "30px" )
+        [ ( "position", "absolute" )
+        , ( "bottom", "50px" )
+        , ( "left", "40px" )
+        , ( "height", "100px" )
         , ( "color", "#fff" )
         ]
 
@@ -388,3 +395,24 @@ hrLedgerStyleLo model offset =
             , ( "transition", "opacity 0.5s ease" )
             , ( "zIndex", "0" )
             ]
+
+
+fretboardModalStyle model =
+    let
+        baseStyles display =
+            style
+                [ ( "display", display )
+                , ( "position", "absolute" )
+                , ( "top", "50px" )
+                , ( "left", "50px" )
+                , ( "width", "90vw" )
+                , ( "height", "90vh" )
+                , ( "opacity", "0.75" )
+                ]
+    in
+        case model.modalOpen of
+            True ->
+                baseStyles "block"
+
+            False ->
+                baseStyles "none"
