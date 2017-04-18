@@ -10,7 +10,7 @@ import Scales exposing (..)
 homePage model =
     div [ homePageStyle ]
         [ div [ titleStyle "50px" "#fff" ] [ text "FRETBOARD THEORY" ]
-        , div [ titleStyle "25px" "#E8175D" ] [ text "Basic Music Theory For Guitarists" ]
+        , div [ titleStyle "20px" "#E8175D" ] [ text "Basic Music Theory For Guitarists" ]
         , div [ chartContainerStyle "row" ]
             [ Chords.chordChartModel model 1 "ii" .ii .ii
             , Chords.chordChartModel model 4 "V" .v .v

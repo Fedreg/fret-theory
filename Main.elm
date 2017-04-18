@@ -41,6 +41,7 @@ init location =
           , sliderValue = 1
           , navMenuOpen = False
           , pitchShift = 0
+          , modalOpen = False
           }
         , Cmd.none
         )
@@ -55,7 +56,10 @@ update msg model =
             ( model, Cmd.none )
 
         ShowNavMenu ->
-            ( { model | navMenuOpen = not model.navMenuOpen }, Cmd.none )
+            ( { model | navMenuOpen = not model.navMenuOpen, modalOpen = False }, Cmd.none )
+
+        ShowModal ->
+            ( { model | modalOpen = not model.modalOpen }, Cmd.none )
 
         OnLocationChange location ->
             let
@@ -65,7 +69,7 @@ update msg model =
                 newKey =
                     Maybe.withDefault "C" <| Routing.modelUpdateOnHash model location
             in
-                ( { model | route = newRoute, musKey = newKey }, Cmd.none )
+                ( { model | route = newRoute, musKey = newKey, modalOpen = False }, Cmd.none )
 
         ChangeKey key ->
             ( { model | musKey = key, navMenuOpen = False }
@@ -87,9 +91,6 @@ update msg model =
 
                 shiftedNote =
                     { note | frequency = note.frequency * (1.059463 ^ (toFloat model.pitchShift)), sustain = note.sustain * (toFloat model.sliderValue / 2) }
-
-                _ =
-                    Debug.log "SN:" shiftedNote
             in
                 ( { model | index = model.index + 1 }
                 , send (PlayBundle shiftedNote "triangle")
@@ -132,6 +133,7 @@ view : Model -> Html Msg
 view model =
     div [ style [ ( "position", "relative" ), ( "overflow", "hidden" ) ] ]
         [ nav model
+        , modalIcon model
         , page model
         ]
 
@@ -190,7 +192,21 @@ page model =
             div [ style [ ( "margin", "100px auto" ), ( "color", "#E91750" ) ] ] [ text ("Page Not Found " ++ model.musKey) ]
 
 
+modalIcon model =
+    div [ modalIconStyle model, onClick ShowModal ] [ text "?" ]
 
+
+
+--modal page =
+--    case page of
+--        "chords" ->
+--            Chords.chordModal
+--        "fretboard" ->
+--            Fretboard.fretboardModal
+--        "scales" ->
+--            Scales.scaleModal
+--        _ ->
+--            noModal
 -- STYLES
 
 
@@ -214,7 +230,7 @@ navMenuStyle model =
     in
         case model.navMenuOpen of
             True ->
-                baseStyles "translateX(0)" "#fff"
+                baseStyles "translateX(0)" "#aaa"
 
             False ->
                 baseStyles "translateX(250px)" "#000"
@@ -269,7 +285,6 @@ keyListStyle =
     style
         [ ( "width", "50px" )
         , ( "margin", "5px 5px 5px 0" )
-          --, ( "border", "1px solid #666" )
         , ( "borderRadius", "25px" )
         , ( "cursor", "pointer" )
         , ( "lineHeight", "50px" )
@@ -292,6 +307,33 @@ textContainerStyle =
         [ ( "display", "flex" )
         , ( "flexFlow", "row wrap" )
         ]
+
+
+modalIconStyle model =
+    let
+        baseStyles difference =
+            style
+                [ ( "position", "absolute" )
+                , ( "top", "17px" )
+                , ( "right", "50px" )
+                , ( "width", "20px" )
+                , ( "height", "20px" )
+                , ( "color", "fff" )
+                , ( "textAlign", "center" )
+                , ( "fontSize", "12px" )
+                , ( "cursor", "pointer" )
+                , ( "border", "1px solid #fff" )
+                , ( "borderRadius", "10px" )
+                , ( "transition", "translate 0.5s" )
+                , ( "transform", difference )
+                ]
+    in
+        case model.navMenuOpen of
+            True ->
+                baseStyles "translateX(-250px)"
+
+            False ->
+                baseStyles "translateX(0)"
 
 
 highlight =
