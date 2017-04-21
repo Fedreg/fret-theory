@@ -1,11 +1,13 @@
-module Home exposing (homePage)
+module Assets.Views.Home exposing (homePage)
 
 import Html exposing (..)
 import Html.Attributes exposing (..)
-import Chords exposing (chordChartModel, chartContainerStyle)
-import Fretboard exposing (..)
-import Scales exposing (..)
-import Types exposing (Model, Msg(..))
+import Assets.Views.Chords exposing (chordChartModel)
+import Assets.Views.Fretboard exposing (..)
+import Assets.Views.Scales exposing (..)
+import Assets.Logic.Types exposing (Model, Msg(..))
+import Assets.Styles.HomeStyles exposing (..)
+import Assets.Styles.ChordStyles exposing (chartContainerStyle)
 
 
 homePage : Model -> Html Msg
@@ -14,9 +16,9 @@ homePage model =
         [ div [ titleStyle "50px" "#fff" ] [ text "FRETBOARD THEORY" ]
         , div [ titleStyle "20px" "#E8175D" ] [ text "Basic Music Theory For Guitarists" ]
         , div [ chartContainerStyle "row" ]
-            [ Chords.chordChartModel model 1 "ii" .ii .ii
-            , Chords.chordChartModel model 4 "V" .v .v
-            , Chords.chordChartModel model 0 "I" .i .i
+            [ chordChartModel model 1 "ii" .ii .ii
+            , chordChartModel model 4 "V" .v .v
+            , chordChartModel model 0 "I" .i .i
             ]
         , div [] [ text "THIS SITE WILL HELP TEACH YOU ABOUT SOME OF THE FUNDAMENTALS OF MUSIC THEORY INCLUDING" ]
         , ul []
@@ -26,27 +28,4 @@ homePage model =
             ]
         , div [] [ text "Instructions and theory coming soon!!!" ]
         , div [] [ text "Use the menu on the right to navigate and select your key.  Click on the chord or scale to hear audio." ]
-        ]
-
-
-
--- STYLES
-
-
-homePageStyle : Attribute msg
-homePageStyle =
-    style
-        [ ( "textAlign", "center" )
-        , ( "backgroundColor", "#000" )
-        , ( "paddingTop", "80px" )
-        ]
-
-
-titleStyle : String -> String -> Attribute msg
-titleStyle fontSize color =
-    style
-        [ ( "margin", "0 auto" )
-        , ( "fontSize", fontSize )
-        , ( "color", color )
-        , ( "zIndex", "50" )
         ]

@@ -1,7 +1,7 @@
-module Audio exposing (..)
+module Assets.Logic.Audio exposing (..)
 
 import String exposing (..)
-import Types exposing (..)
+import Assets.Logic.Types exposing (..)
 import List.Extra exposing (getAt)
 
 
