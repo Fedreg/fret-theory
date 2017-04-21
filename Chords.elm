@@ -176,6 +176,7 @@ chordBuilder chord =
 
 {-| Drawe blank chord chart.
 -}
+chordChart : Html Msg -> Html Msg
 chordChart chord =
     div [ chartContainerStyle "row" ]
         [ div [ chartStyle ]
@@ -195,6 +196,7 @@ chordChart chord =
 
 {-| Shows a key defining which finger has which color.
 -}
+fingerChart : Html Msg
 fingerChart =
     div [ fingerChartStyle ]
         [ div [ style [ ( "display", "flex" ) ] ]
@@ -230,7 +232,10 @@ playbackSpeedSlider message model =
 
 
 chordModal model =
-    div [ chordModalStyle model ] [ text ("Chord Page. Instructions Coming Soon! Key: " ++ model.musKey) ]
+    div [ chordModalStyle model ]
+        [ div [ closeModalIcon, onClick ShowModal ] [ text "close" ]
+        , div [] [ text ("Chord Page. Instructions Coming Soon! Key: " ++ model.musKey) ]
+        ]
 
 
 {-| Defines dot placement of each chord.
@@ -694,6 +699,7 @@ fretMarkerStyle dot =
             ]
 
 
+chordModalStyle : Model -> Attribute msg
 chordModalStyle model =
     let
         baseStyles display =
@@ -704,7 +710,12 @@ chordModalStyle model =
                 , ( "left", "50px" )
                 , ( "width", "90vw" )
                 , ( "height", "90vh" )
-                , ( "opacity", "0.75" )
+                , ( "border", "1px solid #fff" )
+                , ( "backgroundColor", "#000" )
+                , ( "opacity", "0.9" )
+                , ( "zIndex", "50" )
+                , ( "color", "#fff" )
+                , ( "textAlign", "center" )
                 ]
     in
         case model.modalOpen of
@@ -713,3 +724,17 @@ chordModalStyle model =
 
             False ->
                 baseStyles "none"
+
+
+closeModalIcon : Attribute msg
+closeModalIcon =
+    style
+        [ ( "position", "absolute" )
+        , ( "top", "5px" )
+        , ( "right", "5px" )
+        , ( "width", "50px" )
+        , ( "padding", "2px" )
+        , ( "border", "1px solid #E91750" )
+        , ( "cursor", "pointer" )
+        , ( "color", "#E91750" )
+        ]

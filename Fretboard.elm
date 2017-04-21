@@ -1,6 +1,6 @@
 module Fretboard exposing (fretboardPage, fretNotation, noteFretPos, noteStringPos)
 
-import Html exposing (div, hr, text, img)
+import Html exposing (..)
 import Html.Events exposing (onClick)
 import Html.Attributes exposing (style, src)
 import String exposing (split, toInt)
@@ -11,6 +11,7 @@ import Json.Encode as Encode
 import List.Extra exposing (getAt, elemIndex)
 
 
+fretboardPage : Model -> Html Msg
 fretboardPage model =
     let
         highlight =
@@ -82,6 +83,7 @@ fretboardPage model =
             ]
 
 
+fretNumbers : List Int
 fretNumbers =
     List.range 0 12
 
@@ -110,6 +112,7 @@ stringe =
     [ "1/0/e", "1/1/f", "1/1/f#", "1/2/g", "1/2/g#", "1/3/a", "1/3/a#", "1/4/b", "1/5/c", "1/5/c#", "1/6/d", "1/6/d#", "1/7/e" ]
 
 
+revealNotes : List ( String, String )
 revealNotes =
     [ ( "opacity", "1" )
     , ( "z-index", "500" )
@@ -120,6 +123,7 @@ revealNotes =
 {-| Draws the musical staff and ledge lines.
 --
 -}
+fretNotation : Model -> Html Msg
 fretNotation model =
     div [ notationContainerStyle ]
         [ img [ notationClefStyle, src "Public/clef.png" ] []
@@ -130,17 +134,18 @@ fretNotation model =
         , hr [ hrStyle ] []
         , hr [ hrStyle ] []
         , hr [ hrStyle ] []
-        , hr [ hrLedgerStyleHi model 195 ] []
-        , hr [ hrLedgerStyleHi model 175 ] []
-        , hr [ hrLedgerStyleHi model 155 ] []
-        , hr [ hrLedgerStyleLo model 30 ] []
-        , hr [ hrLedgerStyleLo model 10 ] []
-        , hr [ hrLedgerStyleLo model -10 ] []
+        , hr [ hrLedgerStyleHi model.notePosition 195.0 ] []
+        , hr [ hrLedgerStyleHi model.notePosition 175.0 ] []
+        , hr [ hrLedgerStyleHi model.notePosition 155.0 ] []
+        , hr [ hrLedgerStyleLo model.notePosition 30.0 ] []
+        , hr [ hrLedgerStyleLo model.notePosition 10.0 ] []
+        , hr [ hrLedgerStyleLo model.notePosition -10.0 ] []
         ]
 
 
 {-| Determines note x position per string.
 -}
+noteStringPos : String -> Float
 noteStringPos stringNo =
     let
         num =
@@ -148,29 +153,30 @@ noteStringPos stringNo =
     in
         case num of
             6 ->
-                -8
+                -8.0
 
             5 ->
-                22
+                22.0
 
             4 ->
-                52
+                52.0
 
             3 ->
-                82
+                82.0
 
             2 ->
-                104
+                104.0
 
             1 ->
-                136
+                136.0
 
             _ ->
-                0
+                0.0
 
 
 {-| More specifically determines note x position per note on fretboard.
 -}
+noteFretPos : String -> Float
 noteFretPos index =
     let
         num =
@@ -179,16 +185,18 @@ noteFretPos index =
         toFloat num * 10.25
 
 
+chromaticNotesList : List String
 chromaticNotesList =
     [ "c", "c#", "d", "d#", "e", "f", "f#", "g", "g#", "a", "a#", "b" ]
 
 
 {-| Determines which notes are in key to highlight them on the fretboard page
 -}
+notesInKey : String -> List String
 notesInKey key =
     let
         index =
-            -- If Key is a flat key (like Eb), will sitch to enharmonic # (D#).
+            -- If Key is a flat key (like Eb), will switch to enharmonic # (D#).
             if String.length key == 2 && String.slice 1 2 key == "b" then
                 let
                     newIndex =
@@ -201,6 +209,15 @@ notesInKey key =
         noteList =
             []
 
+        intervalListMajor =
+            [ 0, 2, 4, 5, 7, 9, 11 ]
+
+        intervalListMinor =
+            [ 0, 2, 3, 5, 7, 8, 10 ]
+
+        mapper =
+            List.map (\a -> inserter (index + a))
+
         inserter n =
             let
                 a =
@@ -209,24 +226,28 @@ notesInKey key =
                     else
                         n
             in
-                [ (Maybe.withDefault "c" <| getAt a chromaticNotesList) ]
+                (Maybe.withDefault "c" <| getAt a chromaticNotesList)
     in
         -- Determines major or minor key and inserts into blank list.
         if String.toUpper key == key then
-            -- REFACTOR THIS! SHAME...
-            noteList ++ inserter (index) ++ inserter (index + 2) ++ inserter (index + 4) ++ inserter (index + 5) ++ inserter (index + 7) ++ inserter (index + 9) ++ inserter (index + 11)
+            noteList ++ (mapper intervalListMajor)
         else
-            noteList ++ inserter (index) ++ inserter (index + 2) ++ inserter (index + 3) ++ inserter (index + 5) ++ inserter (index + 7) ++ inserter (index + 8) ++ inserter (index + 10)
+            noteList ++ (mapper intervalListMinor)
 
 
+fretboardModal : Model -> Html Msg
 fretboardModal model =
-    div [ fretboardModalStyle model ] [ text ("Fretboard Page. Instructions Coming Soon! Key: " ++ model.musKey) ]
+    div [ fretboardModalStyle model ]
+        [ div [ closeModalIcon, onClick ShowModal ] [ text "close" ]
+        , div [] [ text ("Fretboard Page. Instructions Coming Soon! Key: " ++ model.musKey) ]
+        ]
 
 
 
 ---- STYLES
 
 
+fretboardTitleStyle : Attribute msg
 fretboardTitleStyle =
     style
         [ ( "fontSize", "14px" )
@@ -236,6 +257,7 @@ fretboardTitleStyle =
         ]
 
 
+fretboardContainerStyle : Attribute msg
 fretboardContainerStyle =
     style
         [ ( "margin", "50px" )
@@ -244,10 +266,12 @@ fretboardContainerStyle =
         ]
 
 
+fretboardStringStyle : Attribute msg
 fretboardStringStyle =
     style [ ( "display", "flex" ) ]
 
 
+fretNoteStyle : String -> Attribute msg
 fretNoteStyle color =
     style
         [ ( "width", "100px" )
@@ -264,6 +288,7 @@ fretNoteStyle color =
         ]
 
 
+fretBlankStyle : Attribute msg
 fretBlankStyle =
     style
         [ ( "color", "rgba(0,0,0,0)" )
@@ -273,6 +298,7 @@ fretBlankStyle =
         ]
 
 
+fretNumberStyle : Attribute msg
 fretNumberStyle =
     style
         [ ( "width", "100px" )
@@ -285,11 +311,13 @@ fretNumberStyle =
         ]
 
 
+noteGroupStyle : Attribute msg
 noteGroupStyle =
     style
         [ ( "postion", "relative" ) ]
 
 
+notationContainerStyle : Attribute msg
 notationContainerStyle =
     style
         [ ( "width", "350px" )
@@ -301,6 +329,7 @@ notationContainerStyle =
         ]
 
 
+notationClefStyle : Attribute msg
 notationClefStyle =
     style
         [ ( "position", "absolute" )
@@ -313,6 +342,7 @@ notationClefStyle =
 
 {-| Dynamicall adds high or low ledger lines as needed
 -}
+notationNoteStyle : Float -> Attribute msg
 notationNoteStyle offset =
     style
         [ ( "width", "18px" )
@@ -327,6 +357,7 @@ notationNoteStyle offset =
         ]
 
 
+notationAccidentalStyle : Float -> String -> Attribute msg
 notationAccidentalStyle offset visibility =
     style
         [ ( "fontSize", "28px" )
@@ -341,6 +372,7 @@ notationAccidentalStyle offset visibility =
         ]
 
 
+hrStyle : Attribute msg
 hrStyle =
     style
         [ ( "width", "280px" )
@@ -349,10 +381,11 @@ hrStyle =
         ]
 
 
-hrLedgerStyleHi model offset =
+hrLedgerStyleHi : Float -> Float -> Attribute msg
+hrLedgerStyleHi notePosition offset =
     let
         pos =
-            model.notePosition
+            notePosition
 
         visibility =
             if pos > offset then
@@ -373,13 +406,14 @@ hrLedgerStyleHi model offset =
             ]
 
 
-hrLedgerStyleLo model offset =
+hrLedgerStyleLo : Float -> Float -> Attribute msg
+hrLedgerStyleLo notePosition offset =
     let
         pos =
-            model.notePosition
+            notePosition
 
         visibility =
-            if pos < (offset + 20) then
+            if pos < (offset + 20.0) then
                 "1"
             else
                 "0"
@@ -397,6 +431,7 @@ hrLedgerStyleLo model offset =
             ]
 
 
+fretboardModalStyle : Model -> Attribute msg
 fretboardModalStyle model =
     let
         baseStyles display =
@@ -407,7 +442,12 @@ fretboardModalStyle model =
                 , ( "left", "50px" )
                 , ( "width", "90vw" )
                 , ( "height", "90vh" )
-                , ( "opacity", "0.75" )
+                , ( "border", "1px solid #fff" )
+                , ( "backgroundColor", "#000" )
+                , ( "opacity", "0.9" )
+                , ( "zIndex", "50" )
+                , ( "color", "#fff" )
+                , ( "textAlign", "center" )
                 ]
     in
         case model.modalOpen of
@@ -416,3 +456,17 @@ fretboardModalStyle model =
 
             False ->
                 baseStyles "none"
+
+
+closeModalIcon : Attribute msg
+closeModalIcon =
+    style
+        [ ( "position", "absolute" )
+        , ( "top", "5px" )
+        , ( "right", "5px" )
+        , ( "width", "50px" )
+        , ( "padding", "2px" )
+        , ( "border", "1px solid #E91750" )
+        , ( "cursor", "pointer" )
+        , ( "color", "#E91750" )
+        ]

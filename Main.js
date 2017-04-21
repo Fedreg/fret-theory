@@ -7527,6 +7527,385 @@ var _elm_lang$core$Process$kill = _elm_lang$core$Native_Scheduler.kill;
 var _elm_lang$core$Process$sleep = _elm_lang$core$Native_Scheduler.sleep;
 var _elm_lang$core$Process$spawn = _elm_lang$core$Native_Scheduler.spawn;
 
+var _elm_lang$core$Random$onSelfMsg = F3(
+	function (_p1, _p0, seed) {
+		return _elm_lang$core$Task$succeed(seed);
+	});
+var _elm_lang$core$Random$magicNum8 = 2147483562;
+var _elm_lang$core$Random$range = function (_p2) {
+	return {ctor: '_Tuple2', _0: 0, _1: _elm_lang$core$Random$magicNum8};
+};
+var _elm_lang$core$Random$magicNum7 = 2147483399;
+var _elm_lang$core$Random$magicNum6 = 2147483563;
+var _elm_lang$core$Random$magicNum5 = 3791;
+var _elm_lang$core$Random$magicNum4 = 40692;
+var _elm_lang$core$Random$magicNum3 = 52774;
+var _elm_lang$core$Random$magicNum2 = 12211;
+var _elm_lang$core$Random$magicNum1 = 53668;
+var _elm_lang$core$Random$magicNum0 = 40014;
+var _elm_lang$core$Random$step = F2(
+	function (_p3, seed) {
+		var _p4 = _p3;
+		return _p4._0(seed);
+	});
+var _elm_lang$core$Random$onEffects = F3(
+	function (router, commands, seed) {
+		var _p5 = commands;
+		if (_p5.ctor === '[]') {
+			return _elm_lang$core$Task$succeed(seed);
+		} else {
+			var _p6 = A2(_elm_lang$core$Random$step, _p5._0._0, seed);
+			var value = _p6._0;
+			var newSeed = _p6._1;
+			return A2(
+				_elm_lang$core$Task$andThen,
+				function (_p7) {
+					return A3(_elm_lang$core$Random$onEffects, router, _p5._1, newSeed);
+				},
+				A2(_elm_lang$core$Platform$sendToApp, router, value));
+		}
+	});
+var _elm_lang$core$Random$listHelp = F4(
+	function (list, n, generate, seed) {
+		listHelp:
+		while (true) {
+			if (_elm_lang$core$Native_Utils.cmp(n, 1) < 0) {
+				return {
+					ctor: '_Tuple2',
+					_0: _elm_lang$core$List$reverse(list),
+					_1: seed
+				};
+			} else {
+				var _p8 = generate(seed);
+				var value = _p8._0;
+				var newSeed = _p8._1;
+				var _v2 = {ctor: '::', _0: value, _1: list},
+					_v3 = n - 1,
+					_v4 = generate,
+					_v5 = newSeed;
+				list = _v2;
+				n = _v3;
+				generate = _v4;
+				seed = _v5;
+				continue listHelp;
+			}
+		}
+	});
+var _elm_lang$core$Random$minInt = -2147483648;
+var _elm_lang$core$Random$maxInt = 2147483647;
+var _elm_lang$core$Random$iLogBase = F2(
+	function (b, i) {
+		return (_elm_lang$core$Native_Utils.cmp(i, b) < 0) ? 1 : (1 + A2(_elm_lang$core$Random$iLogBase, b, (i / b) | 0));
+	});
+var _elm_lang$core$Random$command = _elm_lang$core$Native_Platform.leaf('Random');
+var _elm_lang$core$Random$Generator = function (a) {
+	return {ctor: 'Generator', _0: a};
+};
+var _elm_lang$core$Random$list = F2(
+	function (n, _p9) {
+		var _p10 = _p9;
+		return _elm_lang$core$Random$Generator(
+			function (seed) {
+				return A4(
+					_elm_lang$core$Random$listHelp,
+					{ctor: '[]'},
+					n,
+					_p10._0,
+					seed);
+			});
+	});
+var _elm_lang$core$Random$map = F2(
+	function (func, _p11) {
+		var _p12 = _p11;
+		return _elm_lang$core$Random$Generator(
+			function (seed0) {
+				var _p13 = _p12._0(seed0);
+				var a = _p13._0;
+				var seed1 = _p13._1;
+				return {
+					ctor: '_Tuple2',
+					_0: func(a),
+					_1: seed1
+				};
+			});
+	});
+var _elm_lang$core$Random$map2 = F3(
+	function (func, _p15, _p14) {
+		var _p16 = _p15;
+		var _p17 = _p14;
+		return _elm_lang$core$Random$Generator(
+			function (seed0) {
+				var _p18 = _p16._0(seed0);
+				var a = _p18._0;
+				var seed1 = _p18._1;
+				var _p19 = _p17._0(seed1);
+				var b = _p19._0;
+				var seed2 = _p19._1;
+				return {
+					ctor: '_Tuple2',
+					_0: A2(func, a, b),
+					_1: seed2
+				};
+			});
+	});
+var _elm_lang$core$Random$pair = F2(
+	function (genA, genB) {
+		return A3(
+			_elm_lang$core$Random$map2,
+			F2(
+				function (v0, v1) {
+					return {ctor: '_Tuple2', _0: v0, _1: v1};
+				}),
+			genA,
+			genB);
+	});
+var _elm_lang$core$Random$map3 = F4(
+	function (func, _p22, _p21, _p20) {
+		var _p23 = _p22;
+		var _p24 = _p21;
+		var _p25 = _p20;
+		return _elm_lang$core$Random$Generator(
+			function (seed0) {
+				var _p26 = _p23._0(seed0);
+				var a = _p26._0;
+				var seed1 = _p26._1;
+				var _p27 = _p24._0(seed1);
+				var b = _p27._0;
+				var seed2 = _p27._1;
+				var _p28 = _p25._0(seed2);
+				var c = _p28._0;
+				var seed3 = _p28._1;
+				return {
+					ctor: '_Tuple2',
+					_0: A3(func, a, b, c),
+					_1: seed3
+				};
+			});
+	});
+var _elm_lang$core$Random$map4 = F5(
+	function (func, _p32, _p31, _p30, _p29) {
+		var _p33 = _p32;
+		var _p34 = _p31;
+		var _p35 = _p30;
+		var _p36 = _p29;
+		return _elm_lang$core$Random$Generator(
+			function (seed0) {
+				var _p37 = _p33._0(seed0);
+				var a = _p37._0;
+				var seed1 = _p37._1;
+				var _p38 = _p34._0(seed1);
+				var b = _p38._0;
+				var seed2 = _p38._1;
+				var _p39 = _p35._0(seed2);
+				var c = _p39._0;
+				var seed3 = _p39._1;
+				var _p40 = _p36._0(seed3);
+				var d = _p40._0;
+				var seed4 = _p40._1;
+				return {
+					ctor: '_Tuple2',
+					_0: A4(func, a, b, c, d),
+					_1: seed4
+				};
+			});
+	});
+var _elm_lang$core$Random$map5 = F6(
+	function (func, _p45, _p44, _p43, _p42, _p41) {
+		var _p46 = _p45;
+		var _p47 = _p44;
+		var _p48 = _p43;
+		var _p49 = _p42;
+		var _p50 = _p41;
+		return _elm_lang$core$Random$Generator(
+			function (seed0) {
+				var _p51 = _p46._0(seed0);
+				var a = _p51._0;
+				var seed1 = _p51._1;
+				var _p52 = _p47._0(seed1);
+				var b = _p52._0;
+				var seed2 = _p52._1;
+				var _p53 = _p48._0(seed2);
+				var c = _p53._0;
+				var seed3 = _p53._1;
+				var _p54 = _p49._0(seed3);
+				var d = _p54._0;
+				var seed4 = _p54._1;
+				var _p55 = _p50._0(seed4);
+				var e = _p55._0;
+				var seed5 = _p55._1;
+				return {
+					ctor: '_Tuple2',
+					_0: A5(func, a, b, c, d, e),
+					_1: seed5
+				};
+			});
+	});
+var _elm_lang$core$Random$andThen = F2(
+	function (callback, _p56) {
+		var _p57 = _p56;
+		return _elm_lang$core$Random$Generator(
+			function (seed) {
+				var _p58 = _p57._0(seed);
+				var result = _p58._0;
+				var newSeed = _p58._1;
+				var _p59 = callback(result);
+				var genB = _p59._0;
+				return genB(newSeed);
+			});
+	});
+var _elm_lang$core$Random$State = F2(
+	function (a, b) {
+		return {ctor: 'State', _0: a, _1: b};
+	});
+var _elm_lang$core$Random$initState = function (seed) {
+	var s = A2(_elm_lang$core$Basics$max, seed, 0 - seed);
+	var q = (s / (_elm_lang$core$Random$magicNum6 - 1)) | 0;
+	var s2 = A2(_elm_lang$core$Basics_ops['%'], q, _elm_lang$core$Random$magicNum7 - 1);
+	var s1 = A2(_elm_lang$core$Basics_ops['%'], s, _elm_lang$core$Random$magicNum6 - 1);
+	return A2(_elm_lang$core$Random$State, s1 + 1, s2 + 1);
+};
+var _elm_lang$core$Random$next = function (_p60) {
+	var _p61 = _p60;
+	var _p63 = _p61._1;
+	var _p62 = _p61._0;
+	var k2 = (_p63 / _elm_lang$core$Random$magicNum3) | 0;
+	var rawState2 = (_elm_lang$core$Random$magicNum4 * (_p63 - (k2 * _elm_lang$core$Random$magicNum3))) - (k2 * _elm_lang$core$Random$magicNum5);
+	var newState2 = (_elm_lang$core$Native_Utils.cmp(rawState2, 0) < 0) ? (rawState2 + _elm_lang$core$Random$magicNum7) : rawState2;
+	var k1 = (_p62 / _elm_lang$core$Random$magicNum1) | 0;
+	var rawState1 = (_elm_lang$core$Random$magicNum0 * (_p62 - (k1 * _elm_lang$core$Random$magicNum1))) - (k1 * _elm_lang$core$Random$magicNum2);
+	var newState1 = (_elm_lang$core$Native_Utils.cmp(rawState1, 0) < 0) ? (rawState1 + _elm_lang$core$Random$magicNum6) : rawState1;
+	var z = newState1 - newState2;
+	var newZ = (_elm_lang$core$Native_Utils.cmp(z, 1) < 0) ? (z + _elm_lang$core$Random$magicNum8) : z;
+	return {
+		ctor: '_Tuple2',
+		_0: newZ,
+		_1: A2(_elm_lang$core$Random$State, newState1, newState2)
+	};
+};
+var _elm_lang$core$Random$split = function (_p64) {
+	var _p65 = _p64;
+	var _p68 = _p65._1;
+	var _p67 = _p65._0;
+	var _p66 = _elm_lang$core$Tuple$second(
+		_elm_lang$core$Random$next(_p65));
+	var t1 = _p66._0;
+	var t2 = _p66._1;
+	var new_s2 = _elm_lang$core$Native_Utils.eq(_p68, 1) ? (_elm_lang$core$Random$magicNum7 - 1) : (_p68 - 1);
+	var new_s1 = _elm_lang$core$Native_Utils.eq(_p67, _elm_lang$core$Random$magicNum6 - 1) ? 1 : (_p67 + 1);
+	return {
+		ctor: '_Tuple2',
+		_0: A2(_elm_lang$core$Random$State, new_s1, t2),
+		_1: A2(_elm_lang$core$Random$State, t1, new_s2)
+	};
+};
+var _elm_lang$core$Random$Seed = function (a) {
+	return {ctor: 'Seed', _0: a};
+};
+var _elm_lang$core$Random$int = F2(
+	function (a, b) {
+		return _elm_lang$core$Random$Generator(
+			function (_p69) {
+				var _p70 = _p69;
+				var _p75 = _p70._0;
+				var base = 2147483561;
+				var f = F3(
+					function (n, acc, state) {
+						f:
+						while (true) {
+							var _p71 = n;
+							if (_p71 === 0) {
+								return {ctor: '_Tuple2', _0: acc, _1: state};
+							} else {
+								var _p72 = _p75.next(state);
+								var x = _p72._0;
+								var nextState = _p72._1;
+								var _v27 = n - 1,
+									_v28 = x + (acc * base),
+									_v29 = nextState;
+								n = _v27;
+								acc = _v28;
+								state = _v29;
+								continue f;
+							}
+						}
+					});
+				var _p73 = (_elm_lang$core$Native_Utils.cmp(a, b) < 0) ? {ctor: '_Tuple2', _0: a, _1: b} : {ctor: '_Tuple2', _0: b, _1: a};
+				var lo = _p73._0;
+				var hi = _p73._1;
+				var k = (hi - lo) + 1;
+				var n = A2(_elm_lang$core$Random$iLogBase, base, k);
+				var _p74 = A3(f, n, 1, _p75.state);
+				var v = _p74._0;
+				var nextState = _p74._1;
+				return {
+					ctor: '_Tuple2',
+					_0: lo + A2(_elm_lang$core$Basics_ops['%'], v, k),
+					_1: _elm_lang$core$Random$Seed(
+						_elm_lang$core$Native_Utils.update(
+							_p75,
+							{state: nextState}))
+				};
+			});
+	});
+var _elm_lang$core$Random$bool = A2(
+	_elm_lang$core$Random$map,
+	F2(
+		function (x, y) {
+			return _elm_lang$core$Native_Utils.eq(x, y);
+		})(1),
+	A2(_elm_lang$core$Random$int, 0, 1));
+var _elm_lang$core$Random$float = F2(
+	function (a, b) {
+		return _elm_lang$core$Random$Generator(
+			function (seed) {
+				var _p76 = A2(
+					_elm_lang$core$Random$step,
+					A2(_elm_lang$core$Random$int, _elm_lang$core$Random$minInt, _elm_lang$core$Random$maxInt),
+					seed);
+				var number = _p76._0;
+				var newSeed = _p76._1;
+				var negativeOneToOne = _elm_lang$core$Basics$toFloat(number) / _elm_lang$core$Basics$toFloat(_elm_lang$core$Random$maxInt - _elm_lang$core$Random$minInt);
+				var _p77 = (_elm_lang$core$Native_Utils.cmp(a, b) < 0) ? {ctor: '_Tuple2', _0: a, _1: b} : {ctor: '_Tuple2', _0: b, _1: a};
+				var lo = _p77._0;
+				var hi = _p77._1;
+				var scaled = ((lo + hi) / 2) + ((hi - lo) * negativeOneToOne);
+				return {ctor: '_Tuple2', _0: scaled, _1: newSeed};
+			});
+	});
+var _elm_lang$core$Random$initialSeed = function (n) {
+	return _elm_lang$core$Random$Seed(
+		{
+			state: _elm_lang$core$Random$initState(n),
+			next: _elm_lang$core$Random$next,
+			split: _elm_lang$core$Random$split,
+			range: _elm_lang$core$Random$range
+		});
+};
+var _elm_lang$core$Random$init = A2(
+	_elm_lang$core$Task$andThen,
+	function (t) {
+		return _elm_lang$core$Task$succeed(
+			_elm_lang$core$Random$initialSeed(
+				_elm_lang$core$Basics$round(t)));
+	},
+	_elm_lang$core$Time$now);
+var _elm_lang$core$Random$Generate = function (a) {
+	return {ctor: 'Generate', _0: a};
+};
+var _elm_lang$core$Random$generate = F2(
+	function (tagger, generator) {
+		return _elm_lang$core$Random$command(
+			_elm_lang$core$Random$Generate(
+				A2(_elm_lang$core$Random$map, tagger, generator)));
+	});
+var _elm_lang$core$Random$cmdMap = F2(
+	function (func, _p78) {
+		var _p79 = _p78;
+		return _elm_lang$core$Random$Generate(
+			A2(_elm_lang$core$Random$map, func, _p79._0));
+	});
+_elm_lang$core$Native_Platform.effectManagers['Random'] = {pkg: 'elm-lang/core', init: _elm_lang$core$Random$init, onEffects: _elm_lang$core$Random$onEffects, onSelfMsg: _elm_lang$core$Random$onSelfMsg, tag: 'cmd', cmdMap: _elm_lang$core$Random$cmdMap};
+
 var _elm_lang$dom$Native_Dom = function() {
 
 var fakeNode = {
@@ -11390,7 +11769,9 @@ var _user$project$Types$Model = function (a) {
 							return function (h) {
 								return function (i) {
 									return function (j) {
-										return {route: a, musKey: b, index: c, currentChord: d, notePosition: e, showAccidental: f, sliderValue: g, navMenuOpen: h, pitchShift: i, modalOpen: j};
+										return function (k) {
+											return {route: a, musKey: b, index: c, currentChord: d, notePosition: e, showAccidental: f, sliderValue: g, navMenuOpen: h, pitchShift: i, modalOpen: j, strumArrow: k};
+										};
 									};
 								};
 							};
@@ -11417,6 +11798,10 @@ var _user$project$Types$ScaleData = F6(
 	function (a, b, c, d, e, f) {
 		return {e: a, b: b, g: c, d: d, a: e, e6: f};
 	});
+var _user$project$Types$ScaleSchemaData = F6(
+	function (a, b, c, d, e, f) {
+		return {one: a, two: b, three: c, four: d, five: e, six: f};
+	});
 var _user$project$Types$Note = F3(
 	function (a, b, c) {
 		return {frequency: a, octave: b, sustain: c};
@@ -11425,6 +11810,10 @@ var _user$project$Types$PlayBundle = F2(
 	function (a, b) {
 		return {note: a, waveType: b};
 	});
+var _user$project$Types$Randomize = {ctor: 'Randomize'};
+var _user$project$Types$StrumArrowDirection = function (a) {
+	return {ctor: 'StrumArrowDirection', _0: a};
+};
 var _user$project$Types$ShowModal = {ctor: 'ShowModal'};
 var _user$project$Types$ShowNavMenu = {ctor: 'ShowNavMenu'};
 var _user$project$Types$NoOp = {ctor: 'NoOp'};
@@ -11447,6 +11836,7 @@ var _user$project$Types$SendNotes = {ctor: 'SendNotes'};
 var _user$project$Types$ChangeKey = function (a) {
 	return {ctor: 'ChangeKey', _0: a};
 };
+var _user$project$Types$StrumPage = {ctor: 'StrumPage'};
 var _user$project$Types$HomePage = {ctor: 'HomePage'};
 var _user$project$Types$NotFoundPage = {ctor: 'NotFoundPage'};
 var _user$project$Types$FretboardPage = function (a) {
@@ -11493,7 +11883,7 @@ var _user$project$Audio$frequencies = function (note) {
 	}
 };
 var _user$project$Audio$scaleBuilder = F3(
-	function (scale, model, n) {
+	function (scale, key, n) {
 		scaleBuilder:
 		while (true) {
 			var scaleList = {ctor: '[]'};
@@ -11501,7 +11891,7 @@ var _user$project$Audio$scaleBuilder = F3(
 				_elm_lang$core$Maybe$withDefault,
 				1,
 				A2(_elm_community$list_extra$List_Extra$getAt, n, scale));
-			var baseHz = _user$project$Audio$frequencies(model.musKey);
+			var baseHz = _user$project$Audio$frequencies(key);
 			var note = baseHz * Math.pow(1.059463, exponent);
 			if (_elm_lang$core$Native_Utils.cmp(
 				n,
@@ -11509,10 +11899,10 @@ var _user$project$Audio$scaleBuilder = F3(
 				return {ctor: '::', _0: note, _1: scaleList};
 			} else {
 				var _v1 = scale,
-					_v2 = model,
+					_v2 = key,
 					_v3 = n + 1;
 				scale = _v1;
-				model = _v2;
+				key = _v2;
 				n = _v3;
 				continue scaleBuilder;
 			}
@@ -16341,6 +16731,7 @@ var _user$project$Audio$notes = function (key) {
 };
 
 var _user$project$Routing$homePath = '#home/';
+var _user$project$Routing$strumPath = '#strum/';
 var _user$project$Routing$fretboardPath = function (key) {
 	return A2(_elm_lang$core$Basics_ops['++'], '#fretboard/', key);
 };
@@ -16376,6 +16767,14 @@ var _user$project$Routing$modelUpdateOnHash = F2(
 					A2(
 						_evancz$url_parser$UrlParser_ops['</>'],
 						_evancz$url_parser$UrlParser$s('fretboard'),
+						_evancz$url_parser$UrlParser$string),
+					location);
+			case 'StrumPage':
+				return A2(
+					_evancz$url_parser$UrlParser$parseHash,
+					A2(
+						_evancz$url_parser$UrlParser_ops['</>'],
+						_evancz$url_parser$UrlParser$s('strum'),
 						_evancz$url_parser$UrlParser$string),
 					location);
 			case 'HomePage':
@@ -16430,7 +16829,14 @@ var _user$project$Routing$matchers = _evancz$url_parser$UrlParser$oneOf(
 							_evancz$url_parser$UrlParser_ops['</>'],
 							_evancz$url_parser$UrlParser$s('fretboard'),
 							_evancz$url_parser$UrlParser$string)),
-					_1: {ctor: '[]'}
+					_1: {
+						ctor: '::',
+						_0: A2(
+							_evancz$url_parser$UrlParser$map,
+							_user$project$Types$StrumPage,
+							_evancz$url_parser$UrlParser$s('strum')),
+						_1: {ctor: '[]'}
+					}
 				}
 			}
 		}
@@ -16444,6 +16850,40 @@ var _user$project$Routing$parseLocation = function (location) {
 	}
 };
 
+var _user$project$Chords$closeModalIcon = _elm_lang$html$Html_Attributes$style(
+	{
+		ctor: '::',
+		_0: {ctor: '_Tuple2', _0: 'position', _1: 'absolute'},
+		_1: {
+			ctor: '::',
+			_0: {ctor: '_Tuple2', _0: 'top', _1: '5px'},
+			_1: {
+				ctor: '::',
+				_0: {ctor: '_Tuple2', _0: 'right', _1: '5px'},
+				_1: {
+					ctor: '::',
+					_0: {ctor: '_Tuple2', _0: 'width', _1: '50px'},
+					_1: {
+						ctor: '::',
+						_0: {ctor: '_Tuple2', _0: 'padding', _1: '2px'},
+						_1: {
+							ctor: '::',
+							_0: {ctor: '_Tuple2', _0: 'border', _1: '1px solid #E91750'},
+							_1: {
+								ctor: '::',
+								_0: {ctor: '_Tuple2', _0: 'cursor', _1: 'pointer'},
+								_1: {
+									ctor: '::',
+									_0: {ctor: '_Tuple2', _0: 'color', _1: '#E91750'},
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	});
 var _user$project$Chords$chordModalStyle = function (model) {
 	var baseStyles = function (display) {
 		return _elm_lang$html$Html_Attributes$style(
@@ -16467,8 +16907,28 @@ var _user$project$Chords$chordModalStyle = function (model) {
 									_0: {ctor: '_Tuple2', _0: 'height', _1: '90vh'},
 									_1: {
 										ctor: '::',
-										_0: {ctor: '_Tuple2', _0: 'opacity', _1: '0.75'},
-										_1: {ctor: '[]'}
+										_0: {ctor: '_Tuple2', _0: 'border', _1: '1px solid #fff'},
+										_1: {
+											ctor: '::',
+											_0: {ctor: '_Tuple2', _0: 'backgroundColor', _1: '#000'},
+											_1: {
+												ctor: '::',
+												_0: {ctor: '_Tuple2', _0: 'opacity', _1: '0.9'},
+												_1: {
+													ctor: '::',
+													_0: {ctor: '_Tuple2', _0: 'zIndex', _1: '50'},
+													_1: {
+														ctor: '::',
+														_0: {ctor: '_Tuple2', _0: 'color', _1: '#fff'},
+														_1: {
+															ctor: '::',
+															_0: {ctor: '_Tuple2', _0: 'textAlign', _1: 'center'},
+															_1: {ctor: '[]'}
+														}
+													}
+												}
+											}
+										}
 									}
 								}
 							}
@@ -18583,9 +19043,35 @@ var _user$project$Chords$chordModal = function (model) {
 		},
 		{
 			ctor: '::',
-			_0: _elm_lang$html$Html$text(
-				A2(_elm_lang$core$Basics_ops['++'], 'Chord Page. Instructions Coming Soon! Key: ', model.musKey)),
-			_1: {ctor: '[]'}
+			_0: A2(
+				_elm_lang$html$Html$div,
+				{
+					ctor: '::',
+					_0: _user$project$Chords$closeModalIcon,
+					_1: {
+						ctor: '::',
+						_0: _elm_lang$html$Html_Events$onClick(_user$project$Types$ShowModal),
+						_1: {ctor: '[]'}
+					}
+				},
+				{
+					ctor: '::',
+					_0: _elm_lang$html$Html$text('close'),
+					_1: {ctor: '[]'}
+				}),
+			_1: {
+				ctor: '::',
+				_0: A2(
+					_elm_lang$html$Html$div,
+					{ctor: '[]'},
+					{
+						ctor: '::',
+						_0: _elm_lang$html$Html$text(
+							A2(_elm_lang$core$Basics_ops['++'], 'Chord Page. Instructions Coming Soon! Key: ', model.musKey)),
+						_1: {ctor: '[]'}
+					}),
+				_1: {ctor: '[]'}
+			}
 		});
 };
 var _user$project$Chords$playbackSpeedSlider = F2(
@@ -19757,6 +20243,40 @@ var _user$project$Chords$chordChartPage = function (model) {
 		});
 };
 
+var _user$project$Fretboard$closeModalIcon = _elm_lang$html$Html_Attributes$style(
+	{
+		ctor: '::',
+		_0: {ctor: '_Tuple2', _0: 'position', _1: 'absolute'},
+		_1: {
+			ctor: '::',
+			_0: {ctor: '_Tuple2', _0: 'top', _1: '5px'},
+			_1: {
+				ctor: '::',
+				_0: {ctor: '_Tuple2', _0: 'right', _1: '5px'},
+				_1: {
+					ctor: '::',
+					_0: {ctor: '_Tuple2', _0: 'width', _1: '50px'},
+					_1: {
+						ctor: '::',
+						_0: {ctor: '_Tuple2', _0: 'padding', _1: '2px'},
+						_1: {
+							ctor: '::',
+							_0: {ctor: '_Tuple2', _0: 'border', _1: '1px solid #E91750'},
+							_1: {
+								ctor: '::',
+								_0: {ctor: '_Tuple2', _0: 'cursor', _1: 'pointer'},
+								_1: {
+									ctor: '::',
+									_0: {ctor: '_Tuple2', _0: 'color', _1: '#E91750'},
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	});
 var _user$project$Fretboard$fretboardModalStyle = function (model) {
 	var baseStyles = function (display) {
 		return _elm_lang$html$Html_Attributes$style(
@@ -19780,8 +20300,28 @@ var _user$project$Fretboard$fretboardModalStyle = function (model) {
 									_0: {ctor: '_Tuple2', _0: 'height', _1: '90vh'},
 									_1: {
 										ctor: '::',
-										_0: {ctor: '_Tuple2', _0: 'opacity', _1: '0.75'},
-										_1: {ctor: '[]'}
+										_0: {ctor: '_Tuple2', _0: 'border', _1: '1px solid #fff'},
+										_1: {
+											ctor: '::',
+											_0: {ctor: '_Tuple2', _0: 'backgroundColor', _1: '#000'},
+											_1: {
+												ctor: '::',
+												_0: {ctor: '_Tuple2', _0: 'opacity', _1: '0.9'},
+												_1: {
+													ctor: '::',
+													_0: {ctor: '_Tuple2', _0: 'zIndex', _1: '50'},
+													_1: {
+														ctor: '::',
+														_0: {ctor: '_Tuple2', _0: 'color', _1: '#fff'},
+														_1: {
+															ctor: '::',
+															_0: {ctor: '_Tuple2', _0: 'textAlign', _1: 'center'},
+															_1: {ctor: '[]'}
+														}
+													}
+												}
+											}
+										}
 									}
 								}
 							}
@@ -19798,9 +20338,9 @@ var _user$project$Fretboard$fretboardModalStyle = function (model) {
 	}
 };
 var _user$project$Fretboard$hrLedgerStyleLo = F2(
-	function (model, offset) {
-		var pos = model.notePosition;
-		var visibility = (_elm_lang$core$Native_Utils.cmp(pos, offset + 20) < 0) ? '1' : '0';
+	function (notePosition, offset) {
+		var pos = notePosition;
+		var visibility = (_elm_lang$core$Native_Utils.cmp(pos, offset + 20.0) < 0) ? '1' : '0';
 		return _elm_lang$html$Html_Attributes$style(
 			{
 				ctor: '::',
@@ -19848,8 +20388,8 @@ var _user$project$Fretboard$hrLedgerStyleLo = F2(
 			});
 	});
 var _user$project$Fretboard$hrLedgerStyleHi = F2(
-	function (model, offset) {
-		var pos = model.notePosition;
+	function (notePosition, offset) {
+		var pos = notePosition;
 		var visibility = (_elm_lang$core$Native_Utils.cmp(pos, offset) > 0) ? '1' : '0';
 		return _elm_lang$html$Html_Attributes$style(
 			{
@@ -20204,9 +20744,35 @@ var _user$project$Fretboard$fretboardModal = function (model) {
 		},
 		{
 			ctor: '::',
-			_0: _elm_lang$html$Html$text(
-				A2(_elm_lang$core$Basics_ops['++'], 'Fretboard Page. Instructions Coming Soon! Key: ', model.musKey)),
-			_1: {ctor: '[]'}
+			_0: A2(
+				_elm_lang$html$Html$div,
+				{
+					ctor: '::',
+					_0: _user$project$Fretboard$closeModalIcon,
+					_1: {
+						ctor: '::',
+						_0: _elm_lang$html$Html_Events$onClick(_user$project$Types$ShowModal),
+						_1: {ctor: '[]'}
+					}
+				},
+				{
+					ctor: '::',
+					_0: _elm_lang$html$Html$text('close'),
+					_1: {ctor: '[]'}
+				}),
+			_1: {
+				ctor: '::',
+				_0: A2(
+					_elm_lang$html$Html$div,
+					{ctor: '[]'},
+					{
+						ctor: '::',
+						_0: _elm_lang$html$Html$text(
+							A2(_elm_lang$core$Basics_ops['++'], 'Fretboard Page. Instructions Coming Soon! Key: ', model.musKey)),
+						_1: {ctor: '[]'}
+					}),
+				_1: {ctor: '[]'}
+			}
 		});
 };
 var _user$project$Fretboard$chromaticNotesList = {
@@ -20261,14 +20827,68 @@ var _user$project$Fretboard$chromaticNotesList = {
 var _user$project$Fretboard$notesInKey = function (key) {
 	var inserter = function (n) {
 		var a = (_elm_lang$core$Native_Utils.cmp(n, 11) > 0) ? (n - 12) : n;
-		return {
+		return A2(
+			_elm_lang$core$Maybe$withDefault,
+			'c',
+			A2(_elm_community$list_extra$List_Extra$getAt, a, _user$project$Fretboard$chromaticNotesList));
+	};
+	var intervalListMinor = {
+		ctor: '::',
+		_0: 0,
+		_1: {
 			ctor: '::',
-			_0: A2(
-				_elm_lang$core$Maybe$withDefault,
-				'c',
-				A2(_elm_community$list_extra$List_Extra$getAt, a, _user$project$Fretboard$chromaticNotesList)),
-			_1: {ctor: '[]'}
-		};
+			_0: 2,
+			_1: {
+				ctor: '::',
+				_0: 3,
+				_1: {
+					ctor: '::',
+					_0: 5,
+					_1: {
+						ctor: '::',
+						_0: 7,
+						_1: {
+							ctor: '::',
+							_0: 8,
+							_1: {
+								ctor: '::',
+								_0: 10,
+								_1: {ctor: '[]'}
+							}
+						}
+					}
+				}
+			}
+		}
+	};
+	var intervalListMajor = {
+		ctor: '::',
+		_0: 0,
+		_1: {
+			ctor: '::',
+			_0: 2,
+			_1: {
+				ctor: '::',
+				_0: 4,
+				_1: {
+					ctor: '::',
+					_0: 5,
+					_1: {
+						ctor: '::',
+						_0: 7,
+						_1: {
+							ctor: '::',
+							_0: 9,
+							_1: {
+								ctor: '::',
+								_0: 11,
+								_1: {ctor: '[]'}
+							}
+						}
+					}
+				}
+			}
+		}
 	};
 	var noteList = {ctor: '[]'};
 	var index = function () {
@@ -20293,51 +20913,19 @@ var _user$project$Fretboard$notesInKey = function (key) {
 					_user$project$Fretboard$chromaticNotesList));
 		}
 	}();
+	var mapper = _elm_lang$core$List$map(
+		function (a) {
+			return inserter(index + a);
+		});
 	return _elm_lang$core$Native_Utils.eq(
 		_elm_lang$core$String$toUpper(key),
 		key) ? A2(
 		_elm_lang$core$Basics_ops['++'],
 		noteList,
-		A2(
-			_elm_lang$core$Basics_ops['++'],
-			inserter(index),
-			A2(
-				_elm_lang$core$Basics_ops['++'],
-				inserter(index + 2),
-				A2(
-					_elm_lang$core$Basics_ops['++'],
-					inserter(index + 4),
-					A2(
-						_elm_lang$core$Basics_ops['++'],
-						inserter(index + 5),
-						A2(
-							_elm_lang$core$Basics_ops['++'],
-							inserter(index + 7),
-							A2(
-								_elm_lang$core$Basics_ops['++'],
-								inserter(index + 9),
-								inserter(index + 11)))))))) : A2(
+		mapper(intervalListMajor)) : A2(
 		_elm_lang$core$Basics_ops['++'],
 		noteList,
-		A2(
-			_elm_lang$core$Basics_ops['++'],
-			inserter(index),
-			A2(
-				_elm_lang$core$Basics_ops['++'],
-				inserter(index + 2),
-				A2(
-					_elm_lang$core$Basics_ops['++'],
-					inserter(index + 3),
-					A2(
-						_elm_lang$core$Basics_ops['++'],
-						inserter(index + 5),
-						A2(
-							_elm_lang$core$Basics_ops['++'],
-							inserter(index + 7),
-							A2(
-								_elm_lang$core$Basics_ops['++'],
-								inserter(index + 8),
-								inserter(index + 10))))))));
+		mapper(intervalListMinor));
 };
 var _user$project$Fretboard$noteFretPos = function (index) {
 	var num = A2(
@@ -20354,19 +20942,19 @@ var _user$project$Fretboard$noteStringPos = function (stringNo) {
 	var _p1 = num;
 	switch (_p1) {
 		case 6:
-			return -8;
+			return -8.0;
 		case 5:
-			return 22;
+			return 22.0;
 		case 4:
-			return 52;
+			return 52.0;
 		case 3:
-			return 82;
+			return 82.0;
 		case 2:
-			return 104;
+			return 104.0;
 		case 1:
-			return 136;
+			return 136.0;
 		default:
-			return 0;
+			return 0.0;
 	}
 };
 var _user$project$Fretboard$fretNotation = function (model) {
@@ -20471,7 +21059,7 @@ var _user$project$Fretboard$fretNotation = function (model) {
 												_elm_lang$html$Html$hr,
 												{
 													ctor: '::',
-													_0: A2(_user$project$Fretboard$hrLedgerStyleHi, model, 195),
+													_0: A2(_user$project$Fretboard$hrLedgerStyleHi, model.notePosition, 195.0),
 													_1: {ctor: '[]'}
 												},
 												{ctor: '[]'}),
@@ -20481,7 +21069,7 @@ var _user$project$Fretboard$fretNotation = function (model) {
 													_elm_lang$html$Html$hr,
 													{
 														ctor: '::',
-														_0: A2(_user$project$Fretboard$hrLedgerStyleHi, model, 175),
+														_0: A2(_user$project$Fretboard$hrLedgerStyleHi, model.notePosition, 175.0),
 														_1: {ctor: '[]'}
 													},
 													{ctor: '[]'}),
@@ -20491,7 +21079,7 @@ var _user$project$Fretboard$fretNotation = function (model) {
 														_elm_lang$html$Html$hr,
 														{
 															ctor: '::',
-															_0: A2(_user$project$Fretboard$hrLedgerStyleHi, model, 155),
+															_0: A2(_user$project$Fretboard$hrLedgerStyleHi, model.notePosition, 155.0),
 															_1: {ctor: '[]'}
 														},
 														{ctor: '[]'}),
@@ -20501,7 +21089,7 @@ var _user$project$Fretboard$fretNotation = function (model) {
 															_elm_lang$html$Html$hr,
 															{
 																ctor: '::',
-																_0: A2(_user$project$Fretboard$hrLedgerStyleLo, model, 30),
+																_0: A2(_user$project$Fretboard$hrLedgerStyleLo, model.notePosition, 30.0),
 																_1: {ctor: '[]'}
 															},
 															{ctor: '[]'}),
@@ -20511,7 +21099,7 @@ var _user$project$Fretboard$fretNotation = function (model) {
 																_elm_lang$html$Html$hr,
 																{
 																	ctor: '::',
-																	_0: A2(_user$project$Fretboard$hrLedgerStyleLo, model, 10),
+																	_0: A2(_user$project$Fretboard$hrLedgerStyleLo, model.notePosition, 10.0),
 																	_1: {ctor: '[]'}
 																},
 																{ctor: '[]'}),
@@ -20521,7 +21109,7 @@ var _user$project$Fretboard$fretNotation = function (model) {
 																	_elm_lang$html$Html$hr,
 																	{
 																		ctor: '::',
-																		_0: A2(_user$project$Fretboard$hrLedgerStyleLo, model, -10),
+																		_0: A2(_user$project$Fretboard$hrLedgerStyleLo, model.notePosition, -10.0),
 																		_1: {ctor: '[]'}
 																	},
 																	{ctor: '[]'}),
@@ -21163,7 +21751,41 @@ var _user$project$Fretboard$fretboardPage = function (model) {
 		});
 };
 
-var _user$project$Scales$scalesModalStyle = function (model) {
+var _user$project$Scales$closeModalIcon = _elm_lang$html$Html_Attributes$style(
+	{
+		ctor: '::',
+		_0: {ctor: '_Tuple2', _0: 'position', _1: 'absolute'},
+		_1: {
+			ctor: '::',
+			_0: {ctor: '_Tuple2', _0: 'top', _1: '5px'},
+			_1: {
+				ctor: '::',
+				_0: {ctor: '_Tuple2', _0: 'right', _1: '5px'},
+				_1: {
+					ctor: '::',
+					_0: {ctor: '_Tuple2', _0: 'width', _1: '50px'},
+					_1: {
+						ctor: '::',
+						_0: {ctor: '_Tuple2', _0: 'padding', _1: '2px'},
+						_1: {
+							ctor: '::',
+							_0: {ctor: '_Tuple2', _0: 'border', _1: '1px solid #E91750'},
+							_1: {
+								ctor: '::',
+								_0: {ctor: '_Tuple2', _0: 'cursor', _1: 'pointer'},
+								_1: {
+									ctor: '::',
+									_0: {ctor: '_Tuple2', _0: 'color', _1: '#E91750'},
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	});
+var _user$project$Scales$scaleModalStyle = function (isOpen) {
 	var baseStyles = function (display) {
 		return _elm_lang$html$Html_Attributes$style(
 			{
@@ -21186,8 +21808,28 @@ var _user$project$Scales$scalesModalStyle = function (model) {
 									_0: {ctor: '_Tuple2', _0: 'height', _1: '90vh'},
 									_1: {
 										ctor: '::',
-										_0: {ctor: '_Tuple2', _0: 'opacity', _1: '0.75'},
-										_1: {ctor: '[]'}
+										_0: {ctor: '_Tuple2', _0: 'border', _1: '1px solid #fff'},
+										_1: {
+											ctor: '::',
+											_0: {ctor: '_Tuple2', _0: 'backgroundColor', _1: '#000'},
+											_1: {
+												ctor: '::',
+												_0: {ctor: '_Tuple2', _0: 'opacity', _1: '0.9'},
+												_1: {
+													ctor: '::',
+													_0: {ctor: '_Tuple2', _0: 'zIndex', _1: '50'},
+													_1: {
+														ctor: '::',
+														_0: {ctor: '_Tuple2', _0: 'color', _1: '#fff'},
+														_1: {
+															ctor: '::',
+															_0: {ctor: '_Tuple2', _0: 'textAlign', _1: 'center'},
+															_1: {ctor: '[]'}
+														}
+													}
+												}
+											}
+										}
 									}
 								}
 							}
@@ -21196,7 +21838,7 @@ var _user$project$Scales$scalesModalStyle = function (model) {
 				}
 			});
 	};
-	var _p0 = model.modalOpen;
+	var _p0 = isOpen;
 	if (_p0 === true) {
 		return baseStyles('block');
 	} else {
@@ -21790,14 +22432,40 @@ var _user$project$Scales$scalesModal = function (model) {
 		_elm_lang$html$Html$div,
 		{
 			ctor: '::',
-			_0: _user$project$Scales$scalesModalStyle(model),
+			_0: _user$project$Scales$scaleModalStyle(model.modalOpen),
 			_1: {ctor: '[]'}
 		},
 		{
 			ctor: '::',
-			_0: _elm_lang$html$Html$text(
-				A2(_elm_lang$core$Basics_ops['++'], 'Scales Page. Instructions Coming Soon! Key: ', model.musKey)),
-			_1: {ctor: '[]'}
+			_0: A2(
+				_elm_lang$html$Html$div,
+				{
+					ctor: '::',
+					_0: _user$project$Scales$closeModalIcon,
+					_1: {
+						ctor: '::',
+						_0: _elm_lang$html$Html_Events$onClick(_user$project$Types$ShowModal),
+						_1: {ctor: '[]'}
+					}
+				},
+				{
+					ctor: '::',
+					_0: _elm_lang$html$Html$text('close'),
+					_1: {ctor: '[]'}
+				}),
+			_1: {
+				ctor: '::',
+				_0: A2(
+					_elm_lang$html$Html$div,
+					{ctor: '[]'},
+					{
+						ctor: '::',
+						_0: _elm_lang$html$Html$text(
+							A2(_elm_lang$core$Basics_ops['++'], 'Scale Page. Instructions Coming Soon! Key: ', model.musKey)),
+						_1: {ctor: '[]'}
+					}),
+				_1: {ctor: '[]'}
+			}
 		});
 };
 var _user$project$Scales$scaleNameMinor = F2(
@@ -23634,12 +24302,468 @@ var _user$project$Home$homePage = function (model) {
 		});
 };
 
+var _user$project$Strum$closeModalIcon = _elm_lang$html$Html_Attributes$style(
+	{
+		ctor: '::',
+		_0: {ctor: '_Tuple2', _0: 'position', _1: 'absolute'},
+		_1: {
+			ctor: '::',
+			_0: {ctor: '_Tuple2', _0: 'top', _1: '5px'},
+			_1: {
+				ctor: '::',
+				_0: {ctor: '_Tuple2', _0: 'right', _1: '5px'},
+				_1: {
+					ctor: '::',
+					_0: {ctor: '_Tuple2', _0: 'width', _1: '50px'},
+					_1: {
+						ctor: '::',
+						_0: {ctor: '_Tuple2', _0: 'padding', _1: '2px'},
+						_1: {
+							ctor: '::',
+							_0: {ctor: '_Tuple2', _0: 'border', _1: '1px solid #E91750'},
+							_1: {
+								ctor: '::',
+								_0: {ctor: '_Tuple2', _0: 'cursor', _1: 'pointer'},
+								_1: {
+									ctor: '::',
+									_0: {ctor: '_Tuple2', _0: 'color', _1: '#E91750'},
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	});
+var _user$project$Strum$strumModalStyle = function (model) {
+	var baseStyles = function (display) {
+		return _elm_lang$html$Html_Attributes$style(
+			{
+				ctor: '::',
+				_0: {ctor: '_Tuple2', _0: 'display', _1: display},
+				_1: {
+					ctor: '::',
+					_0: {ctor: '_Tuple2', _0: 'position', _1: 'absolute'},
+					_1: {
+						ctor: '::',
+						_0: {ctor: '_Tuple2', _0: 'top', _1: '50px'},
+						_1: {
+							ctor: '::',
+							_0: {ctor: '_Tuple2', _0: 'left', _1: '50px'},
+							_1: {
+								ctor: '::',
+								_0: {ctor: '_Tuple2', _0: 'width', _1: '90vw'},
+								_1: {
+									ctor: '::',
+									_0: {ctor: '_Tuple2', _0: 'height', _1: '90vh'},
+									_1: {
+										ctor: '::',
+										_0: {ctor: '_Tuple2', _0: 'border', _1: '1px solid #fff'},
+										_1: {
+											ctor: '::',
+											_0: {ctor: '_Tuple2', _0: 'backgroundColor', _1: '#000'},
+											_1: {
+												ctor: '::',
+												_0: {ctor: '_Tuple2', _0: 'opacity', _1: '0.9'},
+												_1: {
+													ctor: '::',
+													_0: {ctor: '_Tuple2', _0: 'zIndex', _1: '50'},
+													_1: {
+														ctor: '::',
+														_0: {ctor: '_Tuple2', _0: 'color', _1: '#fff'},
+														_1: {
+															ctor: '::',
+															_0: {ctor: '_Tuple2', _0: 'textAlign', _1: 'center'},
+															_1: {ctor: '[]'}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			});
+	};
+	var _p0 = model.modalOpen;
+	if (_p0 === true) {
+		return baseStyles('block');
+	} else {
+		return baseStyles('none');
+	}
+};
+var _user$project$Strum$buttonStyle = _elm_lang$html$Html_Attributes$style(
+	{
+		ctor: '::',
+		_0: {ctor: '_Tuple2', _0: 'background', _1: 'none'},
+		_1: {
+			ctor: '::',
+			_0: {ctor: '_Tuple2', _0: 'marginTop', _1: '50px'},
+			_1: {
+				ctor: '::',
+				_0: {ctor: '_Tuple2', _0: 'border', _1: '1px solid #333'},
+				_1: {
+					ctor: '::',
+					_0: {ctor: '_Tuple2', _0: 'color', _1: '#E8175D'},
+					_1: {ctor: '[]'}
+				}
+			}
+		}
+	});
+var _user$project$Strum$beatStyle = _elm_lang$html$Html_Attributes$style(
+	{
+		ctor: '::',
+		_0: {ctor: '_Tuple2', _0: 'position', _1: 'absolute'},
+		_1: {
+			ctor: '::',
+			_0: {ctor: '_Tuple2', _0: 'top', _1: '200px'},
+			_1: {
+				ctor: '::',
+				_0: {ctor: '_Tuple2', _0: 'left', _1: '0'},
+				_1: {
+					ctor: '::',
+					_0: {ctor: '_Tuple2', _0: 'paddingRight', _1: '200px'},
+					_1: {ctor: '[]'}
+				}
+			}
+		}
+	});
+var _user$project$Strum$strumArrowStyle = F2(
+	function (num, mover) {
+		var rotate = function () {
+			var _p1 = mover;
+			switch (_p1) {
+				case 1:
+					return '180deg';
+				case 2:
+					return '0';
+				default:
+					return '0';
+			}
+		}();
+		var display = function () {
+			var _p2 = num;
+			switch (_p2) {
+				case 1:
+					return 'visible';
+				case 2:
+					return 'hidden';
+				default:
+					return 'hidden';
+			}
+		}();
+		return _elm_lang$html$Html_Attributes$style(
+			{
+				ctor: '::',
+				_0: {ctor: '_Tuple2', _0: 'width', _1: '100px'},
+				_1: {
+					ctor: '::',
+					_0: {ctor: '_Tuple2', _0: 'height', _1: '200px'},
+					_1: {
+						ctor: '::',
+						_0: {ctor: '_Tuple2', _0: 'margin', _1: '10px'},
+						_1: {
+							ctor: '::',
+							_0: {ctor: '_Tuple2', _0: 'visibility', _1: display},
+							_1: {
+								ctor: '::',
+								_0: {ctor: '_Tuple2', _0: 'paddingTop', _1: '100px'},
+								_1: {
+									ctor: '::',
+									_0: {ctor: '_Tuple2', _0: 'display', _1: 'flex'},
+									_1: {
+										ctor: '::',
+										_0: {ctor: '_Tuple2', _0: 'justifyContent', _1: 'center'},
+										_1: {
+											ctor: '::',
+											_0: {
+												ctor: '_Tuple2',
+												_0: 'transform',
+												_1: A2(
+													_elm_lang$core$Basics_ops['++'],
+													'rotate(',
+													A2(_elm_lang$core$Basics_ops['++'], rotate, ') translateY(-40px)'))
+											},
+											_1: {ctor: '[]'}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			});
+	});
+var _user$project$Strum$strumPageStyle = _elm_lang$html$Html_Attributes$style(
+	{
+		ctor: '::',
+		_0: {ctor: '_Tuple2', _0: 'height', _1: '100vh'},
+		_1: {
+			ctor: '::',
+			_0: {ctor: '_Tuple2', _0: 'display', _1: 'flex'},
+			_1: {
+				ctor: '::',
+				_0: {ctor: '_Tuple2', _0: 'flexDirection', _1: 'column'},
+				_1: {
+					ctor: '::',
+					_0: {ctor: '_Tuple2', _0: 'paddingTop', _1: '150px'},
+					_1: {
+						ctor: '::',
+						_0: {ctor: '_Tuple2', _0: 'alignItems', _1: 'center'},
+						_1: {ctor: '[]'}
+					}
+				}
+			}
+		}
+	});
+var _user$project$Strum$strumModal = function (model) {
+	return A2(
+		_elm_lang$html$Html$div,
+		{
+			ctor: '::',
+			_0: _user$project$Strum$strumModalStyle(model),
+			_1: {ctor: '[]'}
+		},
+		{
+			ctor: '::',
+			_0: A2(
+				_elm_lang$html$Html$div,
+				{
+					ctor: '::',
+					_0: _user$project$Strum$closeModalIcon,
+					_1: {
+						ctor: '::',
+						_0: _elm_lang$html$Html_Events$onClick(_user$project$Types$ShowModal),
+						_1: {ctor: '[]'}
+					}
+				},
+				{
+					ctor: '::',
+					_0: _elm_lang$html$Html$text('close'),
+					_1: {ctor: '[]'}
+				}),
+			_1: {
+				ctor: '::',
+				_0: A2(
+					_elm_lang$html$Html$div,
+					{ctor: '[]'},
+					{
+						ctor: '::',
+						_0: _elm_lang$html$Html$text('Strum Page. Instructions Coming Soon!'),
+						_1: {ctor: '[]'}
+					}),
+				_1: {ctor: '[]'}
+			}
+		});
+};
+var _user$project$Strum$arrow = function () {
+	var baseStyles = F4(
+		function (height, width, x, y) {
+			return _elm_lang$html$Html_Attributes$style(
+				{
+					ctor: '::',
+					_0: {ctor: '_Tuple2', _0: 'transform', _1: 'rotate(45deg)'},
+					_1: {
+						ctor: '::',
+						_0: {ctor: '_Tuple2', _0: 'width', _1: width},
+						_1: {
+							ctor: '::',
+							_0: {ctor: '_Tuple2', _0: 'height', _1: height},
+							_1: {
+								ctor: '::',
+								_0: {ctor: '_Tuple2', _0: 'borderTop', _1: '9px solid #fff'},
+								_1: {
+									ctor: '::',
+									_0: {ctor: '_Tuple2', _0: 'borderLeft', _1: '9px solid #fff'},
+									_1: {
+										ctor: '::',
+										_0: {ctor: '_Tuple2', _0: 'marginTop', _1: '50px'},
+										_1: {
+											ctor: '::',
+											_0: {ctor: '_Tuple2', _0: 'marginLeft', _1: x},
+											_1: {
+												ctor: '::',
+												_0: {ctor: '_Tuple2', _0: 'marginTop', _1: y},
+												_1: {ctor: '[]'}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				});
+		});
+	return A2(
+		_elm_lang$html$Html$div,
+		{
+			ctor: '::',
+			_0: A4(baseStyles, '50px', '50px', '0', '0'),
+			_1: {ctor: '[]'}
+		},
+		{
+			ctor: '::',
+			_0: A2(
+				_elm_lang$html$Html$hr,
+				{
+					ctor: '::',
+					_0: A4(baseStyles, '1px', '100px', '-20px', '25px'),
+					_1: {ctor: '[]'}
+				},
+				{ctor: '[]'}),
+			_1: {ctor: '[]'}
+		});
+}();
+var _user$project$Strum$strumPage = function (model) {
+	var arrows = F2(
+		function (a, b) {
+			return A2(
+				_elm_lang$html$Html$div,
+				{
+					ctor: '::',
+					_0: A2(_user$project$Strum$strumArrowStyle, a, b),
+					_1: {ctor: '[]'}
+				},
+				{
+					ctor: '::',
+					_0: _user$project$Strum$arrow,
+					_1: {ctor: '[]'}
+				});
+		});
+	var beats = function (a) {
+		return A2(
+			_elm_lang$html$Html$div,
+			{
+				ctor: '::',
+				_0: _elm_lang$html$Html_Attributes$style(
+					{
+						ctor: '::',
+						_0: {ctor: '_Tuple2', _0: 'margin', _1: '0 55px'},
+						_1: {ctor: '[]'}
+					}),
+				_1: {ctor: '[]'}
+			},
+			{
+				ctor: '::',
+				_0: _elm_lang$html$Html$text(
+					_elm_lang$core$Basics$toString(a)),
+				_1: {ctor: '[]'}
+			});
+	};
+	return A2(
+		_elm_lang$html$Html$div,
+		{
+			ctor: '::',
+			_0: _user$project$Strum$strumPageStyle,
+			_1: {ctor: '[]'}
+		},
+		{
+			ctor: '::',
+			_0: A2(
+				_elm_lang$html$Html$div,
+				{
+					ctor: '::',
+					_0: _elm_lang$html$Html_Attributes$style(
+						{
+							ctor: '::',
+							_0: {ctor: '_Tuple2', _0: 'display', _1: 'flex'},
+							_1: {ctor: '[]'}
+						}),
+					_1: {ctor: '[]'}
+				},
+				A3(
+					_elm_lang$core$List$map2,
+					arrows,
+					model.strumArrow,
+					{
+						ctor: '::',
+						_0: 1,
+						_1: {
+							ctor: '::',
+							_0: 2,
+							_1: {
+								ctor: '::',
+								_0: 1,
+								_1: {
+									ctor: '::',
+									_0: 2,
+									_1: {
+										ctor: '::',
+										_0: 1,
+										_1: {
+											ctor: '::',
+											_0: 2,
+											_1: {
+												ctor: '::',
+												_0: 1,
+												_1: {
+													ctor: '::',
+													_0: 2,
+													_1: {ctor: '[]'}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					})),
+			_1: {
+				ctor: '::',
+				_0: A2(
+					_elm_lang$html$Html$div,
+					{
+						ctor: '::',
+						_0: _elm_lang$html$Html_Attributes$style(
+							{
+								ctor: '::',
+								_0: {ctor: '_Tuple2', _0: 'display', _1: 'flex'},
+								_1: {ctor: '[]'}
+							}),
+						_1: {ctor: '[]'}
+					},
+					A2(
+						_elm_lang$core$List$map,
+						beats,
+						A2(_elm_lang$core$List$range, 1, 8))),
+				_1: {
+					ctor: '::',
+					_0: A2(
+						_elm_lang$html$Html$button,
+						{
+							ctor: '::',
+							_0: _user$project$Strum$buttonStyle,
+							_1: {
+								ctor: '::',
+								_0: _elm_lang$html$Html_Events$onClick(_user$project$Types$Randomize),
+								_1: {ctor: '[]'}
+							}
+						},
+						{
+							ctor: '::',
+							_0: _elm_lang$html$Html$text('Randomize!'),
+							_1: {ctor: '[]'}
+						}),
+					_1: {
+						ctor: '::',
+						_0: _user$project$Strum$strumModal(model),
+						_1: {ctor: '[]'}
+					}
+				}
+			}
+		});
+};
+
 var _user$project$Main$highlight = {
 	ctor: '::',
 	_0: {ctor: '_Tuple2', _0: 'color', _1: '#aaa'},
 	_1: {
 		ctor: '::',
-		_0: {ctor: '_Tuple2', _0: 'backgroundColor', _1: '#5CE6CD'},
+		_0: {ctor: '_Tuple2', _0: 'backgroundColor', _1: '#E8175D'},
 		_1: {
 			ctor: '::',
 			_0: {ctor: '_Tuple2', _0: 'transition', _1: 'color 0.3s ease'},
@@ -23941,6 +25065,8 @@ var _user$project$Main$page = function (model) {
 			return _user$project$Scales$scalesPage(model);
 		case 'HomePage':
 			return _user$project$Home$homePage(model);
+		case 'StrumPage':
+			return _user$project$Strum$strumPage(model);
 		default:
 			return A2(
 				_elm_lang$html$Html$div,
@@ -24156,31 +25282,52 @@ var _user$project$Main$nav = function (model) {
 										}),
 									_1: {
 										ctor: '::',
-										_0: A2(
-											_elm_lang$html$Html$div,
+										_0: A4(
+											_jinjor$elm_inline_hover$InlineHover$hover,
+											_user$project$Main$highlight,
+											_elm_lang$html$Html$a,
 											{
 												ctor: '::',
-												_0: _elm_lang$html$Html_Attributes$style(
-													{
-														ctor: '::',
-														_0: {ctor: '_Tuple2', _0: 'marginTop', _1: '100px'},
-														_1: {
-															ctor: '::',
-															_0: {ctor: '_Tuple2', _0: 'color', _1: '#E91750'},
-															_1: {ctor: '[]'}
-														}
-													}),
-												_1: {ctor: '[]'}
+												_0: _elm_lang$html$Html_Attributes$href(_user$project$Routing$strumPath),
+												_1: {
+													ctor: '::',
+													_0: _user$project$Main$navItemStyle,
+													_1: {ctor: '[]'}
+												}
 											},
 											{
 												ctor: '::',
-												_0: _elm_lang$html$Html$text('SELECT KEY:'),
+												_0: _elm_lang$html$Html$text('STRUMMING'),
 												_1: {ctor: '[]'}
 											}),
 										_1: {
 											ctor: '::',
-											_0: _user$project$Main$keyListView(model),
-											_1: {ctor: '[]'}
+											_0: A2(
+												_elm_lang$html$Html$div,
+												{
+													ctor: '::',
+													_0: _elm_lang$html$Html_Attributes$style(
+														{
+															ctor: '::',
+															_0: {ctor: '_Tuple2', _0: 'marginTop', _1: '100px'},
+															_1: {
+																ctor: '::',
+																_0: {ctor: '_Tuple2', _0: 'color', _1: '#E91750'},
+																_1: {ctor: '[]'}
+															}
+														}),
+													_1: {ctor: '[]'}
+												},
+												{
+													ctor: '::',
+													_0: _elm_lang$html$Html$text('SELECT KEY:'),
+													_1: {ctor: '[]'}
+												}),
+											_1: {
+												ctor: '::',
+												_0: _user$project$Main$keyListView(model),
+												_1: {ctor: '[]'}
+											}
 										}
 									}
 								}
@@ -24191,7 +25338,7 @@ var _user$project$Main$nav = function (model) {
 			}
 		});
 };
-var _user$project$Main$view = function (model) {
+var _user$project$Main$mainView = function (model) {
 	return A2(
 		_elm_lang$html$Html$div,
 		{
@@ -24245,7 +25392,40 @@ var _user$project$Main$init = function (location) {
 			sliderValue: 1,
 			navMenuOpen: false,
 			pitchShift: 0,
-			modalOpen: false
+			modalOpen: false,
+			strumArrow: {
+				ctor: '::',
+				_0: 1,
+				_1: {
+					ctor: '::',
+					_0: 2,
+					_1: {
+						ctor: '::',
+						_0: 1,
+						_1: {
+							ctor: '::',
+							_0: 1,
+							_1: {
+								ctor: '::',
+								_0: 2,
+								_1: {
+									ctor: '::',
+									_0: 1,
+									_1: {
+										ctor: '::',
+										_0: 1,
+										_1: {
+											ctor: '::',
+											_0: 1,
+											_1: {ctor: '[]'}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
 		},
 		_1: _elm_lang$core$Platform_Cmd$none
 	};
@@ -24278,6 +25458,26 @@ var _user$project$Main$update = F2(
 					_0: _elm_lang$core$Native_Utils.update(
 						model,
 						{modalOpen: !model.modalOpen}),
+					_1: _elm_lang$core$Platform_Cmd$none
+				};
+			case 'Randomize':
+				return {
+					ctor: '_Tuple2',
+					_0: model,
+					_1: A2(
+						_elm_lang$core$Random$generate,
+						_user$project$Types$StrumArrowDirection,
+						A2(
+							_elm_lang$core$Random$list,
+							8,
+							A2(_elm_lang$core$Random$int, 1, 2)))
+				};
+			case 'StrumArrowDirection':
+				return {
+					ctor: '_Tuple2',
+					_0: _elm_lang$core$Native_Utils.update(
+						model,
+						{strumArrow: _p4._0}),
 					_1: _elm_lang$core$Platform_Cmd$none
 				};
 			case 'OnLocationChange':
@@ -24374,7 +25574,7 @@ var _user$project$Main$update = F2(
 var _user$project$Main$main = A2(
 	_elm_lang$navigation$Navigation$program,
 	_user$project$Types$OnLocationChange,
-	{init: _user$project$Main$init, update: _user$project$Main$update, view: _user$project$Main$view, subscriptions: _user$project$Main$subscriptions})();
+	{init: _user$project$Main$init, update: _user$project$Main$update, view: _user$project$Main$mainView, subscriptions: _user$project$Main$subscriptions})();
 
 var Elm = {};
 Elm['Main'] = Elm['Main'] || {};

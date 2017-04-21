@@ -4,12 +4,13 @@ import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Events exposing (onInput, onClick)
 import List exposing (map)
-import Types exposing (ScaleData, Msg(ChangeKey, Play), Model)
+import Types exposing (ScaleData, ScaleSchemaData, Msg(ChangeKey, Play, ShowModal), Model)
 import Chords exposing (keyList, playbackSpeedSlider)
 import List.Extra exposing (getAt, elemIndex)
 import Audio exposing (scales)
 
 
+scalesPage : Model -> Html Msg
 scalesPage model =
     div []
         [ playbackSpeedSlider "SCALE PLAYBACK SPEED" model
@@ -26,6 +27,7 @@ scalesPage model =
         ]
 
 
+ionianModeView : Model -> Html Msg
 ionianModeView model =
     let
         data accessor =
@@ -46,6 +48,7 @@ ionianModeView model =
             ]
 
 
+aeolianModeView : Model -> Html Msg
 aeolianModeView model =
     let
         computedOffset =
@@ -72,6 +75,7 @@ aeolianModeView model =
             ]
 
 
+majorPentatonicView : Model -> Html Msg
 majorPentatonicView model =
     let
         data accessor =
@@ -92,6 +96,7 @@ majorPentatonicView model =
             ]
 
 
+minorPentatonicView : Model -> Html Msg
 minorPentatonicView model =
     let
         computedOffset =
@@ -118,6 +123,7 @@ minorPentatonicView model =
             ]
 
 
+lydianModeView : Model -> Html Msg
 lydianModeView model =
     let
         data accessor =
@@ -138,6 +144,7 @@ lydianModeView model =
             ]
 
 
+mixolydianModeView : Model -> Html Msg
 mixolydianModeView model =
     let
         data accessor =
@@ -158,6 +165,7 @@ mixolydianModeView model =
             ]
 
 
+dorianModeView : Model -> Html Msg
 dorianModeView model =
     let
         data accessor =
@@ -178,6 +186,7 @@ dorianModeView model =
             ]
 
 
+stringView : Html Msg
 stringView =
     div [ stringContainerStyle ]
         [ div [ stringStyle ] []
@@ -191,6 +200,7 @@ stringView =
 
 {-| Basic layout for notes per string.
 -}
+scaleStringSchema : Int -> String -> ScaleData -> ScaleSchemaData
 scaleStringSchema offset key scale =
     let
         mapper =
@@ -331,14 +341,19 @@ scaleNameMinor model scaleName =
                 ]
 
 
+scalesModal : Model -> Html Msg
 scalesModal model =
-    div [ scalesModalStyle model ] [ text ("Scales Page. Instructions Coming Soon! Key: " ++ model.musKey) ]
+    div [ scaleModalStyle model.modalOpen ]
+        [ div [ closeModalIcon, onClick ShowModal ] [ text "close" ]
+        , div [] [ text ("Scale Page. Instructions Coming Soon! Key: " ++ model.musKey) ]
+        ]
 
 
 
 -- Layout of scales in frets per string.
 
 
+ionianMode : ScaleData
 ionianMode =
     { e = [ 7, 8, 10 ]
     , b = [ 8, 10 ]
@@ -349,6 +364,7 @@ ionianMode =
     }
 
 
+aeolianMode : ScaleData
 aeolianMode =
     { e = [ 8, 10, 11 ]
     , b = [ 8, 9, 11 ]
@@ -359,6 +375,7 @@ aeolianMode =
     }
 
 
+majorPentatonicMode : ScaleData
 majorPentatonicMode =
     { e = [ 8, 10 ]
     , b = [ 8, 10 ]
@@ -369,6 +386,7 @@ majorPentatonicMode =
     }
 
 
+minorPentatonicMode : ScaleData
 minorPentatonicMode =
     { e = [ 8, 11 ]
     , b = [ 8, 11 ]
@@ -379,6 +397,7 @@ minorPentatonicMode =
     }
 
 
+lydianMode : ScaleData
 lydianMode =
     { e = [ 7, 8, 10 ]
     , b = [ 7, 8, 10 ]
@@ -389,6 +408,7 @@ lydianMode =
     }
 
 
+mixolydianMode : ScaleData
 mixolydianMode =
     { e = [ 8, 10 ]
     , b = [ 8, 10, 11 ]
@@ -399,6 +419,7 @@ mixolydianMode =
     }
 
 
+dorianMode : ScaleData
 dorianMode =
     { e = [ 8, 10, 11 ]
     , b = [ 8, 10, 11 ]
@@ -413,6 +434,7 @@ dorianMode =
 -- STYLES
 
 
+scaleTitleStyle : Attribute msg
 scaleTitleStyle =
     style
         [ ( "position", "relative" )
@@ -420,6 +442,7 @@ scaleTitleStyle =
         ]
 
 
+scaleContainerStyle : Attribute msg
 scaleContainerStyle =
     style
         [ ( "position", "relative" )
@@ -429,6 +452,7 @@ scaleContainerStyle =
         ]
 
 
+stringStyle : Attribute msg
 stringStyle =
     style
         [ ( "width", "600px" )
@@ -438,6 +462,7 @@ stringStyle =
         ]
 
 
+stringContainerStyle : Attribute msg
 stringContainerStyle =
     style
         [ ( "position", "absolute" )
@@ -446,6 +471,7 @@ stringContainerStyle =
         ]
 
 
+fretNumberStyle : String -> Attribute msg
 fretNumberStyle margin =
     style
         [ ( "position", "relative" )
@@ -455,6 +481,7 @@ fretNumberStyle margin =
         ]
 
 
+scalePageStyle : Attribute msg
 scalePageStyle =
     style
         [ ( "display", "flex" )
@@ -464,7 +491,8 @@ scalePageStyle =
         ]
 
 
-scalesModalStyle model =
+scaleModalStyle : Bool -> Attribute msg
+scaleModalStyle isOpen =
     let
         baseStyles display =
             style
@@ -474,12 +502,31 @@ scalesModalStyle model =
                 , ( "left", "50px" )
                 , ( "width", "90vw" )
                 , ( "height", "90vh" )
-                , ( "opacity", "0.75" )
+                , ( "border", "1px solid #fff" )
+                , ( "backgroundColor", "#000" )
+                , ( "opacity", "0.9" )
+                , ( "zIndex", "50" )
+                , ( "color", "#fff" )
+                , ( "textAlign", "center" )
                 ]
     in
-        case model.modalOpen of
+        case isOpen of
             True ->
                 baseStyles "block"
 
             False ->
                 baseStyles "none"
+
+
+closeModalIcon : Attribute msg
+closeModalIcon =
+    style
+        [ ( "position", "absolute" )
+        , ( "top", "5px" )
+        , ( "right", "5px" )
+        , ( "width", "50px" )
+        , ( "padding", "2px" )
+        , ( "border", "1px solid #E91750" )
+        , ( "cursor", "pointer" )
+        , ( "color", "#E91750" )
+        ]

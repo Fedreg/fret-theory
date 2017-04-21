@@ -5,8 +5,10 @@ import Html.Attributes exposing (..)
 import Chords exposing (chordChartModel, chartContainerStyle)
 import Fretboard exposing (..)
 import Scales exposing (..)
+import Types exposing (Model, Msg(..))
 
 
+homePage : Model -> Html Msg
 homePage model =
     div [ homePageStyle ]
         [ div [ titleStyle "50px" "#fff" ] [ text "FRETBOARD THEORY" ]
@@ -31,6 +33,7 @@ homePage model =
 -- STYLES
 
 
+homePageStyle : Attribute msg
 homePageStyle =
     style
         [ ( "textAlign", "center" )
@@ -39,6 +42,7 @@ homePageStyle =
         ]
 
 
+titleStyle : String -> String -> Attribute msg
 titleStyle fontSize color =
     style
         [ ( "margin", "0 auto" )

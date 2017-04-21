@@ -11,18 +11,20 @@ import Home exposing (homePage)
 import Chords exposing (chordChartPage)
 import Scales exposing (scalesPage)
 import Fretboard exposing (..)
+import Strum exposing (..)
 import Navigation exposing (Location)
 import Time exposing (..)
 import Update.Extra.Infix exposing ((:>))
 import Json.Decode exposing (..)
 import InlineHover exposing (hover)
+import Random exposing (..)
 
 
 main =
     Navigation.program Types.OnLocationChange
         { init = init
         , update = update
-        , view = view
+        , view = mainView
         , subscriptions = subscriptions
         }
 
@@ -42,6 +44,7 @@ init location =
           , navMenuOpen = False
           , pitchShift = 0
           , modalOpen = False
+          , strumArrow = [ 1, 2, 1, 1, 2, 1, 1, 1 ]
           }
         , Cmd.none
         )
@@ -60,6 +63,12 @@ update msg model =
 
         ShowModal ->
             ( { model | modalOpen = not model.modalOpen }, Cmd.none )
+
+        Randomize ->
+            ( model, Random.generate StrumArrowDirection <| Random.list 8 (Random.int 1 2) )
+
+        StrumArrowDirection numList ->
+            ( { model | strumArrow = numList }, Cmd.none )
 
         OnLocationChange location ->
             let
@@ -129,8 +138,8 @@ subscriptions model =
             Sub.none
 
 
-view : Model -> Html Msg
-view model =
+mainView : Model -> Html Msg
+mainView model =
     div [ style [ ( "position", "relative" ), ( "overflow", "hidden" ) ] ]
         [ nav model
         , modalIcon model
@@ -147,6 +156,7 @@ nav model =
             , hover highlight a [ href (Routing.scalesPath model.musKey), navItemStyle ] [ text "SCALES" ]
             , hover highlight a [ href (Routing.chordsPath model.musKey), navItemStyle ] [ text "CHORDS" ]
             , hover highlight a [ href (Routing.fretboardPath model.musKey), navItemStyle ] [ text "FRETBOARD" ]
+            , hover highlight a [ href Routing.strumPath, navItemStyle ] [ text "STRUMMING" ]
             , div [ style [ ( "marginTop", "100px" ), ( "color", "#E91750" ) ] ] [ text "SELECT KEY:" ]
             , keyListView model
             ]
@@ -162,6 +172,7 @@ navIcon model =
         ]
 
 
+keyListView : Model -> Html Msg
 keyListView model =
     let
         keyOptions key =
@@ -188,28 +199,23 @@ page model =
         HomePage ->
             Home.homePage model
 
+        StrumPage ->
+            Strum.strumPage model
+
         NotFoundPage ->
             div [ style [ ( "margin", "100px auto" ), ( "color", "#E91750" ) ] ] [ text ("Page Not Found " ++ model.musKey) ]
 
 
+modalIcon : Model -> Html Msg
 modalIcon model =
     div [ modalIconStyle model, onClick ShowModal ] [ text "?" ]
 
 
 
---modal page =
---    case page of
---        "chords" ->
---            Chords.chordModal
---        "fretboard" ->
---            Fretboard.fretboardModal
---        "scales" ->
---            Scales.scaleModal
---        _ ->
---            noModal
 -- STYLES
 
 
+navMenuStyle : Model -> Attribute Msg
 navMenuStyle model =
     let
         baseStyles difference color =
@@ -236,6 +242,7 @@ navMenuStyle model =
                 baseStyles "translateX(250px)" "#000"
 
 
+navIconStyle : Model -> Attribute msg
 navIconStyle model =
     let
         baseStyles difference =
@@ -257,6 +264,7 @@ navIconStyle model =
                 baseStyles "none"
 
 
+navIconStyleHr : Attribute msg
 navIconStyleHr =
     style
         [ ( "borderTop", "1px solid #fff" )
@@ -281,6 +289,7 @@ navItemStyle =
         ]
 
 
+keyListStyle : Attribute msg
 keyListStyle =
     style
         [ ( "width", "50px" )
@@ -293,6 +302,7 @@ keyListStyle =
         ]
 
 
+keyListContainerStyle : Attribute msg
 keyListContainerStyle =
     style
         [ ( "width", "240px" )
@@ -302,6 +312,7 @@ keyListContainerStyle =
         ]
 
 
+textContainerStyle : Attribute msg
 textContainerStyle =
     style
         [ ( "display", "flex" )
@@ -309,6 +320,7 @@ textContainerStyle =
         ]
 
 
+modalIconStyle : Model -> Attribute msg
 modalIconStyle model =
     let
         baseStyles difference =
@@ -336,8 +348,9 @@ modalIconStyle model =
                 baseStyles "translateX(0)"
 
 
+highlight : List ( String, String )
 highlight =
     [ ( "color", "#aaa" )
-    , ( "backgroundColor", "#5CE6CD" )
+    , ( "backgroundColor", "#E8175D" )
     , ( "transition", "color 0.3s ease" )
     ]

@@ -426,10 +426,11 @@ stringToNote chord n =
             stringToNote chord (n + 1)
 
 
-scaleBuilder scale model n =
+scaleBuilder : List Float -> String -> Int -> List Float
+scaleBuilder scale key n =
     let
         baseHz =
-            frequencies model.musKey
+            frequencies key
 
         exponent =
             Maybe.withDefault 1 <| getAt n scale
@@ -443,7 +444,7 @@ scaleBuilder scale model n =
         if n < List.length scale then
             note :: scaleList
         else
-            scaleBuilder scale model (n + 1)
+            scaleBuilder scale key (n + 1)
 
 
 

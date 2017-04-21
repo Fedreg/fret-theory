@@ -14,6 +14,7 @@ type alias Model =
     , navMenuOpen : Bool
     , pitchShift : Int
     , modalOpen : Bool
+    , strumArrow : List Int
     }
 
 
@@ -58,6 +59,16 @@ type alias ScaleData =
     }
 
 
+type alias ScaleSchemaData =
+    { one : List Int
+    , two : List Int
+    , three : List Int
+    , four : List Int
+    , five : List Int
+    , six : List Int
+    }
+
+
 type alias Note =
     { frequency : Float
     , octave : Int
@@ -82,6 +93,8 @@ type Msg
     | NoOp
     | ShowNavMenu
     | ShowModal
+    | StrumArrowDirection (List Int)
+    | Randomize
 
 
 type Route
@@ -90,3 +103,4 @@ type Route
     | FretboardPage String
     | NotFoundPage
     | HomePage
+    | StrumPage
