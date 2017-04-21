@@ -4,24 +4,25 @@ import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Events exposing (onClick)
 import List.Extra exposing (getAt)
-import Routing
-import Types exposing (..)
-import Audio exposing (..)
-import Home exposing (homePage)
-import Chords exposing (chordChartPage)
-import Scales exposing (scalesPage)
-import Fretboard exposing (..)
-import Strum exposing (..)
+import Assets.Logic.Routing as Routing
+import Assets.Logic.Types exposing (Model, Msg(..), Route(..), PlayBundle)
+import Assets.Logic.Audio exposing (noteSorter)
+import Assets.Views.Home exposing (homePage)
+import Assets.Views.Chords exposing (chordChartPage, keyList)
+import Assets.Views.Scales exposing (scalesPage)
+import Assets.Views.Fretboard exposing (fretboardPage, noteStringPos, noteFretPos)
+import Assets.Views.Strum exposing (strumPage)
 import Navigation exposing (Location)
 import Time exposing (..)
 import Update.Extra.Infix exposing ((:>))
 import Json.Decode exposing (..)
 import InlineHover exposing (hover)
 import Random exposing (..)
+import Assets.Styles.MainStyles exposing (..)
 
 
 main =
-    Navigation.program Types.OnLocationChange
+    Navigation.program OnLocationChange
         { init = init
         , update = update
         , view = mainView
@@ -96,7 +97,7 @@ update msg model =
         SendNotes ->
             let
                 note =
-                    Audio.noteSorter <| Maybe.withDefault "e2w" <| getAt model.index model.currentChord
+                    noteSorter <| Maybe.withDefault "e2w" <| getAt model.index model.currentChord
 
                 shiftedNote =
                     { note | frequency = note.frequency * (1.059463 ^ (toFloat model.pitchShift)), sustain = note.sustain * (toFloat model.sliderValue / 2) }
@@ -180,7 +181,7 @@ keyListView model =
     in
         div [ keyListContainerStyle ]
             [ div [ textContainerStyle ]
-                (List.map keyOptions Chords.keyList)
+                (List.map keyOptions keyList)
             ]
 
 
@@ -188,19 +189,19 @@ page : Model -> Html Msg
 page model =
     case model.route of
         ChordChartPage key ->
-            Chords.chordChartPage model
+            chordChartPage model
 
         FretboardPage key ->
-            Fretboard.fretboardPage model
+            fretboardPage model
 
         ScalesPage key ->
-            Scales.scalesPage model
+            scalesPage model
 
         HomePage ->
-            Home.homePage model
+            homePage model
 
         StrumPage ->
-            Strum.strumPage model
+            strumPage model
 
         NotFoundPage ->
             div [ style [ ( "margin", "100px auto" ), ( "color", "#E91750" ) ] ] [ text ("Page Not Found " ++ model.musKey) ]
@@ -209,148 +210,3 @@ page model =
 modalIcon : Model -> Html Msg
 modalIcon model =
     div [ modalIconStyle model, onClick ShowModal ] [ text "?" ]
-
-
-
--- STYLES
-
-
-navMenuStyle : Model -> Attribute Msg
-navMenuStyle model =
-    let
-        baseStyles difference color =
-            style
-                [ ( "position", "absolute" )
-                , ( "top", "0" )
-                , ( "right", "0" )
-                , ( "transform", "translateX(0)" )
-                , ( "width", "250px" )
-                , ( "height", "100%" )
-                , ( "padding", "15px" )
-                , ( "backgroundColor", "#000" )
-                , ( "transition", "all 0.5s" )
-                , ( "zIndex", "10000" )
-                , ( "borderLeft", "1px solid " ++ color )
-                , ( "transform", difference )
-                ]
-    in
-        case model.navMenuOpen of
-            True ->
-                baseStyles "translateX(0)" "#aaa"
-
-            False ->
-                baseStyles "translateX(250px)" "#000"
-
-
-navIconStyle : Model -> Attribute msg
-navIconStyle model =
-    let
-        baseStyles difference =
-            style
-                [ ( "position", "fixed" )
-                , ( "top", "20px" )
-                , ( "left", "-40px" )
-                , ( "width", "25px" )
-                , ( "transition", "all 0.5s" )
-                , ( "cursor", "pointer" )
-                , ( "transform", difference )
-                ]
-    in
-        case model.navMenuOpen of
-            True ->
-                baseStyles "rotate(270deg)"
-
-            False ->
-                baseStyles "none"
-
-
-navIconStyleHr : Attribute msg
-navIconStyleHr =
-    style
-        [ ( "borderTop", "1px solid #fff" )
-        , ( "margin", "0 0 5px" )
-        ]
-
-
-navStyle : Attribute msg
-navStyle =
-    style
-        [ ( "textAlign", "center" ) ]
-
-
-navItemStyle : Attribute msg
-navItemStyle =
-    style
-        [ ( "display", "block" )
-        , ( "fontSize", "12px" )
-        , ( "margin", "0 0 8px" )
-        , ( "padding", "5px" )
-        , ( "color", "#fff" )
-        ]
-
-
-keyListStyle : Attribute msg
-keyListStyle =
-    style
-        [ ( "width", "50px" )
-        , ( "margin", "5px 5px 5px 0" )
-        , ( "borderRadius", "25px" )
-        , ( "cursor", "pointer" )
-        , ( "lineHeight", "50px" )
-        , ( "color", "#fff" )
-        , ( "backgroundColor", "#222" )
-        ]
-
-
-keyListContainerStyle : Attribute msg
-keyListContainerStyle =
-    style
-        [ ( "width", "240px" )
-        , ( "height", "400px" )
-        , ( "textAlign", "center" )
-        , ( "backgroundColor", "#000" )
-        ]
-
-
-textContainerStyle : Attribute msg
-textContainerStyle =
-    style
-        [ ( "display", "flex" )
-        , ( "flexFlow", "row wrap" )
-        ]
-
-
-modalIconStyle : Model -> Attribute msg
-modalIconStyle model =
-    let
-        baseStyles difference =
-            style
-                [ ( "position", "absolute" )
-                , ( "top", "17px" )
-                , ( "right", "50px" )
-                , ( "width", "20px" )
-                , ( "height", "20px" )
-                , ( "color", "fff" )
-                , ( "textAlign", "center" )
-                , ( "fontSize", "12px" )
-                , ( "cursor", "pointer" )
-                , ( "border", "1px solid #fff" )
-                , ( "borderRadius", "10px" )
-                , ( "transition", "translate 0.5s" )
-                , ( "transform", difference )
-                ]
-    in
-        case model.navMenuOpen of
-            True ->
-                baseStyles "translateX(-250px)"
-
-            False ->
-                baseStyles "translateX(0)"
-
-
-highlight : List ( String, String )
-highlight =
-    [ ( "color", "#aaa" )
-    , ( "backgroundColor", "#E8175D" )
-    , ( "transition", "color 0.3s ease" )
-    ]

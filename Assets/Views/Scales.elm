@@ -1,13 +1,14 @@
-module Scales exposing (..)
+module Assets.Views.Scales exposing (..)
 
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Events exposing (onInput, onClick)
 import List exposing (map)
-import Types exposing (ScaleData, ScaleSchemaData, Msg(ChangeKey, Play, ShowModal), Model)
-import Chords exposing (keyList, playbackSpeedSlider)
+import Assets.Logic.Types exposing (ScaleData, ScaleSchemaData, Msg(ChangeKey, Play, ShowModal), Model)
+import Assets.Views.Chords exposing (keyList, playbackSpeedSlider)
 import List.Extra exposing (getAt, elemIndex)
-import Audio exposing (scales)
+import Assets.Logic.Audio exposing (scales)
+import Assets.Styles.ScalesStyles exposing (..)
 
 
 scalesPage : Model -> Html Msg
@@ -36,7 +37,7 @@ ionianModeView model =
         markup a =
             span [ style [ ( "paddingRight", "10px" ), ( "fontSize", "18px" ) ] ] [ text (toString a) ]
     in
-        div [ scaleContainerStyle, onClick (Play (Audio.scales "major") (fretOffset model)) ]
+        div [ scaleContainerStyle, onClick (Play (scales "major") (fretOffset model)) ]
             [ div [ scaleTitleStyle ] [ scaleNameMajor model " MAJOR SCALE " "" ]
             , stringView
             , div [ fretNumberStyle "490px" ] (List.map markup <| data .one)
@@ -63,7 +64,7 @@ aeolianModeView model =
         markup a =
             span [ style [ ( "paddingRight", "10px" ), ( "fontSize", "18px" ) ] ] [ text (toString a) ]
     in
-        div [ scaleContainerStyle, onClick (Play (Audio.scales "minor") (fretOffset model)) ]
+        div [ scaleContainerStyle, onClick (Play (scales "minor") (fretOffset model)) ]
             [ div [ scaleTitleStyle ] [ scaleNameMinor model " MINOR SCALE " ]
             , stringView
             , div [ fretNumberStyle "460px" ] (List.map markup <| data .one)
@@ -84,7 +85,7 @@ majorPentatonicView model =
         markup a =
             span [ style [ ( "paddingRight", "10px" ), ( "fontSize", "18px" ) ] ] [ text (toString a) ]
     in
-        div [ scaleContainerStyle, onClick (Play (Audio.scales "majPentatonic") (fretOffset model)) ]
+        div [ scaleContainerStyle, onClick (Play (scales "majPentatonic") (fretOffset model)) ]
             [ div [ scaleTitleStyle ] [ scaleNameMajor model " MAJOR PENTATONIC SCALE " "" ]
             , stringView
             , div [ fretNumberStyle "450px" ] (List.map markup <| data .one)
@@ -111,7 +112,7 @@ minorPentatonicView model =
         markup a =
             span [ style [ ( "paddingRight", "10px" ), ( "fontSize", "18px" ) ] ] [ text (toString a) ]
     in
-        div [ scaleContainerStyle, onClick (Play (Audio.scales "minPentatonic") (fretOffset model)) ]
+        div [ scaleContainerStyle, onClick (Play (scales "minPentatonic") (fretOffset model)) ]
             [ div [ scaleTitleStyle ] [ scaleNameMinor model " MINOR PENTATONIC SCALE " ]
             , stringView
             , div [ fretNumberStyle "450px" ] (List.map markup <| data .one)
@@ -132,7 +133,7 @@ lydianModeView model =
         markup a =
             span [ style [ ( "paddingRight", "10px" ), ( "fontSize", "18px" ) ] ] [ text (toString a) ]
     in
-        div [ scaleContainerStyle, onClick (Play (Audio.scales "lydian") (fretOffset model)) ]
+        div [ scaleContainerStyle, onClick (Play (scales "lydian") (fretOffset model)) ]
             [ div [ scaleTitleStyle ] [ scaleNameMajor model " LYDIAN MODE " " ( #4 ) " ]
             , stringView
             , div [ fretNumberStyle "490px" ] (List.map markup <| data .one)
@@ -153,7 +154,7 @@ mixolydianModeView model =
         markup a =
             span [ style [ ( "paddingRight", "10px" ), ( "fontSize", "18px" ) ] ] [ text (toString a) ]
     in
-        div [ scaleContainerStyle, onClick (Play (Audio.scales "mixolydian") (fretOffset model)) ]
+        div [ scaleContainerStyle, onClick (Play (scales "mixolydian") (fretOffset model)) ]
             [ div [ scaleTitleStyle ] [ scaleNameMajor model " MIXOLYDIAN MODE " " ( b7 ) " ]
             , stringView
             , div [ fretNumberStyle "490px" ] (List.map markup <| data .one)
@@ -174,7 +175,7 @@ dorianModeView model =
         markup a =
             span [ style [ ( "paddingRight", "10px" ), ( "fontSize", "18px" ) ] ] [ text (toString a) ]
     in
-        div [ scaleContainerStyle, onClick (Play (Audio.scales "dorian") (fretOffset model)) ]
+        div [ scaleContainerStyle, onClick (Play (scales "dorian") (fretOffset model)) ]
             [ div [ scaleTitleStyle ] [ scaleNameMajor model " DORIAN MODE " " ( b3, b7 ) " ]
             , stringView
             , div [ fretNumberStyle "500px" ] (List.map markup <| data .one)
@@ -296,11 +297,11 @@ fretOffset model =
             0
 
 
-scaleNameMajor : Types.Model -> String -> String -> Html Msg
+scaleNameMajor : Model -> String -> String -> Html Msg
 scaleNameMajor model scaleName modifiedNotes =
     let
         index =
-            Maybe.withDefault 0 <| elemIndex model.musKey Chords.keyList
+            Maybe.withDefault 0 <| elemIndex model.musKey keyList
 
         slicer =
             String.slice 0 1
@@ -313,18 +314,18 @@ scaleNameMajor model scaleName modifiedNotes =
                 ]
         else
             div []
-                [ span [] [ text (Maybe.withDefault "C" <| getAt (index - 12) Chords.keyList) ]
+                [ span [] [ text (Maybe.withDefault "C" <| getAt (index - 12) keyList) ]
                 , span [ style [ ( "color", "#777" ) ] ] [ text scaleName ]
                 , span [ style [ ( "color", "#5CE6CD" ) ] ] [ text modifiedNotes ]
                 , span [ style [ ( "color", "#777" ) ] ] [ text (", relative major") ]
                 ]
 
 
-scaleNameMinor : Types.Model -> String -> Html Msg
+scaleNameMinor : Model -> String -> Html Msg
 scaleNameMinor model scaleName =
     let
         index =
-            Maybe.withDefault 0 <| elemIndex model.musKey Chords.keyList
+            Maybe.withDefault 0 <| elemIndex model.musKey keyList
 
         slicer =
             String.slice 0 1
@@ -336,7 +337,7 @@ scaleNameMinor model scaleName =
                 ]
         else
             div []
-                [ span [] [ text (String.toUpper (Maybe.withDefault "a" <| getAt (index + 12) Chords.keyList)) ]
+                [ span [] [ text (String.toUpper (Maybe.withDefault "a" <| getAt (index + 12) keyList)) ]
                 , span [ style [ ( "color", "#777" ) ] ] [ text (" " ++ scaleName ++ " , relative minor") ]
                 ]
 
@@ -428,105 +429,3 @@ dorianMode =
     , a = [ 8, 10 ]
     , e6 = [ 8, 10, 11 ]
     }
-
-
-
--- STYLES
-
-
-scaleTitleStyle : Attribute msg
-scaleTitleStyle =
-    style
-        [ ( "position", "relative" )
-        , ( "color", "#E91750" )
-        ]
-
-
-scaleContainerStyle : Attribute msg
-scaleContainerStyle =
-    style
-        [ ( "position", "relative" )
-        , ( "width", "650px" )
-        , ( "margin", "30px 0" )
-        , ( "cursor", "pointer" )
-        ]
-
-
-stringStyle : Attribute msg
-stringStyle =
-    style
-        [ ( "width", "600px" )
-        , ( "borderBottom", "1px solid #333" )
-        , ( "marginTop", "32px" )
-        , ( "zIndex", "0" )
-        ]
-
-
-stringContainerStyle : Attribute msg
-stringContainerStyle =
-    style
-        [ ( "position", "absolute" )
-        , ( "top", "12px" )
-        , ( "left", "0" )
-        ]
-
-
-fretNumberStyle : String -> Attribute msg
-fretNumberStyle margin =
-    style
-        [ ( "position", "relative" )
-        , ( "margin", "5px " ++ margin )
-        , ( "color", "#fff" )
-        , ( "zIndex", "1" )
-        ]
-
-
-scalePageStyle : Attribute msg
-scalePageStyle =
-    style
-        [ ( "display", "flex" )
-        , ( "flexDirection", "row" )
-        , ( "flexWrap", "wrap" )
-        , ( "justifyContent", "center" )
-        ]
-
-
-scaleModalStyle : Bool -> Attribute msg
-scaleModalStyle isOpen =
-    let
-        baseStyles display =
-            style
-                [ ( "display", display )
-                , ( "position", "absolute" )
-                , ( "top", "50px" )
-                , ( "left", "50px" )
-                , ( "width", "90vw" )
-                , ( "height", "90vh" )
-                , ( "border", "1px solid #fff" )
-                , ( "backgroundColor", "#000" )
-                , ( "opacity", "0.9" )
-                , ( "zIndex", "50" )
-                , ( "color", "#fff" )
-                , ( "textAlign", "center" )
-                ]
-    in
-        case isOpen of
-            True ->
-                baseStyles "block"
-
-            False ->
-                baseStyles "none"
-
-
-closeModalIcon : Attribute msg
-closeModalIcon =
-    style
-        [ ( "position", "absolute" )
-        , ( "top", "5px" )
-        , ( "right", "5px" )
-        , ( "width", "50px" )
-        , ( "padding", "2px" )
-        , ( "border", "1px solid #E91750" )
-        , ( "cursor", "pointer" )
-        , ( "color", "#E91750" )
-        ]
