@@ -1,15 +1,15 @@
-module Assets.Views.Fretboard exposing (fretboardPage, fretNotation, noteFretPos, noteStringPos)
+module Views.Fretboard exposing (fretboardPage, fretNotation, noteFretPos, noteStringPos)
 
 import Html exposing (..)
 import Html.Events exposing (onClick)
 import Html.Attributes exposing (style, src)
 import String exposing (split, toInt)
 import List exposing (map, range, member)
-import Assets.Logic.Types exposing (..)
+import Logic.Types exposing (..)
 import InlineHover exposing (hover)
 import Json.Encode as Encode
 import List.Extra exposing (getAt, elemIndex)
-import Assets.Styles.FretboardStyles exposing (..)
+import Styles.FretboardStyles exposing (..)
 
 
 fretboardPage : Model -> Html Msg

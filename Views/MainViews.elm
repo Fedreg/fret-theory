@@ -1,18 +1,18 @@
-module Assets.Views.MainViews exposing (mainView)
+module Views.MainViews exposing (mainView)
 
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Events exposing (onClick, onInput)
 import String exposing (..)
-import Assets.Logic.Routing as Routing
-import Assets.Logic.Types exposing (Model, Msg(..), Route(..), PlayBundle)
-import Assets.Logic.Audio exposing (noteSorter)
-import Assets.Views.Home exposing (homePage)
-import Assets.Views.Chords exposing (chordChartPage, keyList)
-import Assets.Views.Scales exposing (scalesPage)
-import Assets.Views.Fretboard exposing (fretboardPage, noteStringPos, noteFretPos)
-import Assets.Views.Strum exposing (strumPage)
-import Assets.Styles.MainStyles exposing (..)
+import Logic.Routing as Routing
+import Logic.Types exposing (Model, Msg(..), Route(..), PlayBundle)
+import Logic.Audio exposing (noteSorter)
+import Views.Home exposing (homePage)
+import Views.Chords exposing (chordChartPage, keyList)
+import Views.Scales exposing (scalesPage)
+import Views.Fretboard exposing (fretboardPage, noteStringPos, noteFretPos)
+import Views.Strum exposing (strumPage)
+import Styles.MainStyles exposing (..)
 import InlineHover exposing (hover)
 
 

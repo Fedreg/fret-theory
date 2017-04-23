@@ -1,8 +1,8 @@
-module Assets.Styles.StrumStyles exposing (..)
+module Styles.StrumStyles exposing (..)
 
 import Html exposing (..)
 import Html.Attributes exposing (..)
-import Assets.Logic.Types exposing (Model)
+import Logic.Types exposing (Model)
 
 
 strumPageStyle : Attribute msg
@@ -11,8 +11,15 @@ strumPageStyle =
         [ ( "height", "100vh" )
         , ( "display", "flex" )
         , ( "flexDirection", "column" )
-        , ( "paddingTop", "150px" )
+        , ( "paddingTop", "200px" )
         , ( "alignItems", "center" )
+        ]
+
+
+strumGroupStyle : String -> Attribute msg
+strumGroupStyle scale =
+    style
+        [ ( "transform", "scale(" ++ scale ++ ")" )
         ]
 
 
@@ -89,10 +96,11 @@ strumModalStyle model =
                 , ( "height", "90vh" )
                 , ( "border", "1px solid #fff" )
                 , ( "backgroundColor", "#000" )
-                , ( "opacity", "0.9" )
+                , ( "opacity", "0.95" )
                 , ( "zIndex", "50" )
                 , ( "color", "#fff" )
                 , ( "textAlign", "center" )
+                , ( "overflow", "scroll" )
                 ]
     in
         case model.modalOpen of
@@ -109,8 +117,10 @@ closeModalIcon =
         [ ( "position", "absolute" )
         , ( "top", "5px" )
         , ( "right", "5px" )
-        , ( "width", "50px" )
-        , ( "padding", "2px" )
+        , ( "width", "20px" )
+        , ( "height", "20px" )
+        , ( "lineHeight", "15px" )
+        , ( "paddingLeft", "5px" )
         , ( "border", "1px solid #E91750" )
         , ( "cursor", "pointer" )
         , ( "color", "#E91750" )

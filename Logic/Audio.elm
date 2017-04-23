@@ -1,7 +1,7 @@
-module Assets.Logic.Audio exposing (..)
+module Logic.Audio exposing (..)
 
 import String exposing (..)
-import Assets.Logic.Types exposing (..)
+import Logic.Types exposing (..)
 import List.Extra exposing (getAt)
 
 
@@ -12,41 +12,41 @@ notes key =
     case key of
         -- 12 Major Keys
         "C" ->
-            { i = [ "c3q", "e3q", "g3q", "c4q", "e4q", "c0s" ]
-            , ii = [ "d3q", "a3q", "d4q", "f4q", "c0s", "c0s" ]
+            { i = [ "c3q", "e3q", "g3q", "c4q", "e4q" ]
+            , ii = [ "d3q", "a3q", "d4q", "f4q" ]
             , iii = [ "e2q", "b2q", "e3q", "g3q", "b3q", "e4q" ]
-            , iv = [ "f3q", "a3q", "c4q", "e4q", "c0s", "c0s" ]
+            , iv = [ "f3q", "a3q", "c4q", "e4q" ]
             , v = [ "g2q", "b2q", "d3q", "g3q", "d4q", "g4q" ]
-            , vi = [ "a2q", "e3q", "a3q", "c4q", "e4q", "c0s" ]
-            , vii = [ "b2q", "f3q", "g#3q", "d4q", "c0s", "c0s" ]
+            , vi = [ "a2q", "e3q", "a3q", "c4q", "e4q" ]
+            , vii = [ "b2q", "f3q", "g#3q", "d4q" ]
             }
 
         "G" ->
             { i = [ "g2q", "b2q", "d3q", "g3q", "d4q", "g4q" ]
-            , ii = [ "a2q", "e3q", "a3q", "c4q", "e4q", "c0s" ]
-            , iii = [ "b2q", "d3q", "g3q", "d4q", "f#4q", "c0s" ]
-            , iv = [ "c3q", "e3q", "g3q", "d4q", "g4q", "c0s" ]
-            , v = [ "d3q", "a3q", "d4q", "f#4q", "c0s", "c0s" ]
+            , ii = [ "a2q", "e3q", "a3q", "c4q", "e4q" ]
+            , iii = [ "b2q", "d3q", "g3q", "d4q", "f#4q" ]
+            , iv = [ "c3q", "e3q", "g3q", "d4q", "g4q" ]
+            , v = [ "d3q", "a3q", "d4q", "f#4q" ]
             , vi = [ "e2q", "b2q", "e3q", "g3q", "b3q", "e4q" ]
             , vii = [ "f#2q", "c3q", "f#3q", "a3q", "d#4q", "f#4q" ]
             }
 
         "D" ->
-            { i = [ "d3q", "a3q", "d4q", "f#4q", "c0s", "c0s" ]
+            { i = [ "d3q", "a3q", "d4q", "f#4q" ]
             , ii = [ "e2q", "b2q", "e3q", "g3q", "b3q", "e4q" ]
             , iii = [ "f#2q", "a2q", "d3q", "a3q", "c#4q", "e4q" ]
             , iv = [ "g2q", "b2q", "d3q", "g3q", "d4q", "g4q" ]
-            , v = [ "a2q", "e3q", "a3q", "c#4q", "e4q", "c0s" ]
-            , vi = [ "b2q", "d3q", "g3q", "d4q", "f#4q", "c0s" ]
-            , vii = [ "c#3q", "f#3q", "b3q", "e4q", "e4q", "c0s" ]
+            , v = [ "a2q", "e3q", "a3q", "c#4q", "e4q" ]
+            , vi = [ "b2q", "d3q", "g3q", "d4q", "f#4q" ]
+            , vii = [ "c#3q", "f#3q", "b3q", "e4q", "e4q" ]
             }
 
         --
         "A" ->
-            { i = [ "a2q", "e3q", "a3q", "c#4q", "e4q", "c0s" ]
-            , ii = [ "b2q", "d3q", "g3q", "d4q", "f#4q", "c0s" ]
-            , iii = [ "g#3q", "c#4q", "e4q", "g#4q", "c0s", "c0s" ]
-            , iv = [ "d3q", "a3q", "d4q", "f#4q", "c0s", "c0s" ]
+            { i = [ "a2q", "e3q", "a3q", "c#4q", "e4q" ]
+            , ii = [ "b2q", "d3q", "g3q", "d4q", "f#4q" ]
+            , iii = [ "g#3q", "c#4q", "e4q", "g#4q" ]
+            , iv = [ "d3q", "a3q", "d4q", "f#4q" ]
             , v = [ "e2q", "b2q", "e3q", "g#3q", "b3q", "e4q" ]
             , vi = [ "f#2q", "a2q", "d3q", "a3q", "c#4q", "e4q" ]
             , vii = [ "g#2q", "d3q", "g#3q", "b3q", "f4q", "g#4q" ]
@@ -56,90 +56,90 @@ notes key =
             { i = [ "e2q", "b2q", "e3q", "g#3q", "b3q", "e4q" ]
             , ii = [ "f#2q", "a2q", "d3q", "a3q", "c#4q", "e4q" ]
             , iii = [ "g#2q", "d#3q", "g#3q", "b3q", "d#4q", "g#4q" ]
-            , iv = [ "a2q", "e3q", "a3q", "c#4q", "e4q", "c0s" ]
-            , v = [ "b2q", "d#3q", "a3q", "b3q", "f#4q", "c0s" ]
-            , vi = [ "g#3q", "c#4q", "e4q", "g#4q", "c0s", "c0s" ]
-            , vii = [ "d#3q", "a3q", "c4q", "f#4q", "c0s", "c0s" ]
+            , iv = [ "a2q", "e3q", "a3q", "c#4q", "e4q" ]
+            , v = [ "b2q", "d#3q", "a3q", "b3q", "f#4q" ]
+            , vi = [ "g#3q", "c#4q", "e4q", "g#4q" ]
+            , vii = [ "d#3q", "a3q", "c4q", "f#4q" ]
             }
 
         "B" ->
-            { i = [ "b2q", "f#3q", "b3q", "d#4q", "f#4q", "c0s" ]
-            , ii = [ "c#3q", "g#3q", "c#4q", "e4q", "g#4q", "c0s" ]
-            , iii = [ "d#3q", "a#3q", "d#4q", "f#4q", "a#4q", "c0s" ]
+            { i = [ "b2q", "f#3q", "b3q", "d#4q", "f#4q" ]
+            , ii = [ "c#3q", "g#3q", "c#4q", "e4q", "g#4q" ]
+            , iii = [ "d#3q", "a#3q", "d#4q", "f#4q", "a#4q" ]
             , iv = [ "e2q", "b2q", "e3q", "g#3q", "b3q", "e4q" ]
             , v = [ "f#2q", "c#3q", "f#3q", "a#3q", "c#4q", "f#4q" ]
             , vi = [ "g#2q", "d#3q", "g#3q", "b3q", "d#4q", "g#4q" ]
-            , vii = [ "a#2q", "e3q", "g3q", "c#4q", "e4q", "c0s" ]
+            , vii = [ "a#2q", "e3q", "g3q", "c#4q", "e4q" ]
             }
 
         "F#" ->
             { i = [ "f#2q", "c#3q", "f#3q", "a#3q", "c#4q", "f#4q" ]
             , ii = [ "g#2q", "d#3q", "g#3q", "b3q", "d#4q", "g#4q" ]
-            , iii = [ "a#2q", "f3q", "a#3q", "c#4q", "f4q", "c0s" ]
-            , iv = [ "b2q", "f#3q", "b3q", "d#4q", "f#4q", "c0s" ]
-            , v = [ "c#3q", "g#3q", "c#4q", "f4q", "g#4q", "c0s" ]
-            , vi = [ "d#3q", "a#3q", "d#4q", "f#4q", "a#4q", "c0s" ]
-            , vii = [ "f3q", "b3q", "d4q", "g#4q", "c0s", "c0s" ]
+            , iii = [ "a#2q", "f3q", "a#3q", "c#4q", "f4q" ]
+            , iv = [ "b2q", "f#3q", "b3q", "d#4q", "f#4q" ]
+            , v = [ "c#3q", "g#3q", "c#4q", "f4q", "g#4q" ]
+            , vi = [ "d#3q", "a#3q", "d#4q", "f#4q", "a#4q" ]
+            , vii = [ "f3q", "b3q", "d4q", "g#4q" ]
             }
 
         "Db" ->
-            { i = [ "c#3q", "g#3q", "c#4q", "f4q", "g#4q", "c0s" ]
-            , ii = [ "d#3q", "a#3q", "d#4q", "f#4q", "a#4q", "c0s" ]
+            { i = [ "c#3q", "g#3q", "c#4q", "f4q", "g#4q" ]
+            , ii = [ "d#3q", "a#3q", "d#4q", "f#4q", "a#4q" ]
             , iii = [ "f2q", "c3q", "f3q", "g#3q", "c4q", "f4q" ]
             , iv = [ "f#2q", "c#3q", "f#3q", "a#3q", "c#4q", "f#4q" ]
             , v = [ "g#3q", "d#3q", "g#4q", "b#3q", "d#4q", "g#4q" ]
-            , vi = [ "a#2q", "f3q", "a#3q", "c#4q", "f4q", "c0s" ]
-            , vii = [ "c3q", "f#3q", "a3q", "d#4q", "c0s", "c0s" ]
+            , vi = [ "a#2q", "f3q", "a#3q", "c#4q", "f4q" ]
+            , vii = [ "c3q", "f#3q", "a3q", "d#4q" ]
             }
 
         "Ab" ->
             { i = [ "g#2q", "d#3q", "g#3q", "c4q", "d#4q", "g#4q" ]
-            , ii = [ "a#2q", "f3q", "a#3q", "c#4q", "f4q", "c0s" ]
-            , iii = [ "c3q", "g3q", "c4q", "d#4q", "g4q", "c0s" ]
-            , iv = [ "c#3q", "g#3q", "c#4q", "f4q", "g#4q", "c0s" ]
-            , v = [ "d#3q", "a#3q", "d#4q", "g4q", "a#4q", "c0s" ]
+            , ii = [ "a#2q", "f3q", "a#3q", "c#4q", "f4q" ]
+            , iii = [ "c3q", "g3q", "c4q", "d#4q", "g4q" ]
+            , iv = [ "c#3q", "g#3q", "c#4q", "f4q", "g#4q" ]
+            , v = [ "d#3q", "a#3q", "d#4q", "g4q", "a#4q" ]
             , vi = [ "f2q", "c3q", "f3q", "g#3q", "c4q", "f4q" ]
-            , vii = [ "g3q", "c#4q", "e4q", "a#4q", "c0s", "c0s" ]
+            , vii = [ "g3q", "c#4q", "e4q", "a#4q" ]
             }
 
         "Eb" ->
-            { i = [ "d#3q", "a#3q", "d#4q", "g4q", "a#4q", "c0s" ]
+            { i = [ "d#3q", "a#3q", "d#4q", "g4q", "a#4q" ]
             , ii = [ "f2q", "c3q", "f3q", "g#3q", "c4q", "f4q" ]
             , iii = [ "g2q", "d2q", "g3q", "a#3q", "d4q", "g4q" ]
             , iv = [ "g#2q", "d#3q", "g#3q", "c4q", "d#4q", "g#4q" ]
             , v = [ "a#2q", "f3q", "a#3q", "d4q", "f4q", "a#4q" ]
-            , vi = [ "c3q", "g3q", "c4q", "d#4q", "g4q", "c0s" ]
-            , vii = [ "d3q", "g#3q", "b3q", "f4q", "c0s", "c0s" ]
+            , vi = [ "c3q", "g3q", "c4q", "d#4q", "g4q" ]
+            , vii = [ "d3q", "g#3q", "b3q", "f4q" ]
             }
 
         "Bb" ->
-            { i = [ "a#2q", "f3q", "a#3q", "d4q", "f4q", "c0s" ]
-            , ii = [ "c3q", "g3q", "c4q", "d#4q", "g4q", "c0s" ]
-            , iii = [ "d3q", "a3q", "d4q", "f4q", "a4q", "c0s" ]
-            , iv = [ "d#3q", "a#3q", "d#4q", "g4q", "a#4q", "c0s" ]
+            { i = [ "a#2q", "f3q", "a#3q", "d4q", "f4q" ]
+            , ii = [ "c3q", "g3q", "c4q", "d#4q", "g4q" ]
+            , iii = [ "d3q", "a3q", "d4q", "f4q", "a4q" ]
+            , iv = [ "d#3q", "a#3q", "d#4q", "g4q", "a#4q" ]
             , v = [ "f2q", "c3q", "f3q", "a3q", "c4q", "f4q" ]
             , vi = [ "g2q", "d3q", "g3q", "a#3q", "d4q", "g4q" ]
-            , vii = [ "d#3q", "a3q", "c4q", "f#4q", "c0s", "c0s" ]
+            , vii = [ "d#3q", "a3q", "c4q", "f#4q" ]
             }
 
         "F" ->
-            { i = [ "f3q", "a3q", "c4q", "e4q", "c0s", "c0s" ]
+            { i = [ "f3q", "a3q", "c4q", "e4q" ]
             , ii = [ "g2q", "d2q", "g3q", "a#3q", "d4q", "g4q" ]
-            , iii = [ "a2q", "e3q", "a3q", "c4q", "e4q", "c0s" ]
-            , iv = [ "a#2q", "f3q", "a#3q", "d4q", "f4q", "c0s" ]
-            , v = [ "c3q", "e3q", "g3q", "c4q", "e4q", "c0s" ]
-            , vi = [ "d3q", "a3q", "d4q", "f4q", "c0s", "c0s" ]
+            , iii = [ "a2q", "e3q", "a3q", "c4q", "e4q" ]
+            , iv = [ "a#2q", "f3q", "a#3q", "d4q", "f4q" ]
+            , v = [ "c3q", "e3q", "g3q", "c4q", "e4q" ]
+            , vi = [ "d3q", "a3q", "d4q", "f4q" ]
             , vii = [ "" ]
             }
 
         -- 12 Minor Keys.
         "a" ->
-            { i = [ "a2q", "e3q", "a3q", "c4q", "e4q", "c0s" ]
-            , ii = [ "b2q", "f3q", "g#3q", "d4q", "c0s", "c0s" ]
-            , iii = [ "c3q", "e3q", "g3q", "c4q", "e4q", "c0s" ]
-            , iv = [ "d3q", "a3q", "d4q", "f4q", "c0s", "c0s" ]
+            { i = [ "a2q", "e3q", "a3q", "c4q", "e4q" ]
+            , ii = [ "b2q", "f3q", "g#3q", "d4q" ]
+            , iii = [ "c3q", "e3q", "g3q", "c4q", "e4q" ]
+            , iv = [ "d3q", "a3q", "d4q", "f4q" ]
             , v = [ "e2q", "b2q", "e3q", "g3q", "b3q", "e4q" ]
-            , vi = [ "f3q", "a3q", "c4q", "e4q", "c0s", "c0s" ]
+            , vi = [ "f3q", "a3q", "c4q", "e4q" ]
             , vii = [ "g2q", "b2q", "d3q", "g3q", "d4q", "g4q" ]
             }
 
@@ -147,110 +147,110 @@ notes key =
             { i = [ "e2q", "b2q", "e3q", "g3q", "b3q", "e4q" ]
             , ii = [ "f#2", "c3q", "f#3q", "a3q", "d#4q", "f#4q" ]
             , iii = [ "g2q", "b2q", "d3q", "g3q", "d4q", "g4q" ]
-            , iv = [ "a2q", "e3q", "a3q", "c4q", "e4q", "c0s" ]
-            , v = [ "b2q", "d3q", "g3q", "d4q", "f#4q", "c0s" ]
-            , vi = [ "c3q", "e3q", "g3q", "c4q", "e4q", "c0s" ]
-            , vii = [ "d3q", "a3q", "d4q", "f#4q", "c0s", "c0s" ]
+            , iv = [ "a2q", "e3q", "a3q", "c4q", "e4q" ]
+            , v = [ "b2q", "d3q", "g3q", "d4q", "f#4q" ]
+            , vi = [ "c3q", "e3q", "g3q", "c4q", "e4q" ]
+            , vii = [ "d3q", "a3q", "d4q", "f#4q" ]
             }
 
         "b" ->
-            { i = [ "b2q", "d3q", "g3q", "d4q", "f#4q", "c0s" ]
-            , ii = [ "c#3q", "g3q", "a#3q", "e4q", "c0s", "c0s" ]
-            , iii = [ "d3q", "a3q", "d4q", "f#4q", "c0s", "c0s" ]
+            { i = [ "b2q", "d3q", "g3q", "d4q", "f#4q" ]
+            , ii = [ "c#3q", "g3q", "a#3q", "e4q" ]
+            , iii = [ "d3q", "a3q", "d4q", "f#4q" ]
             , iv = [ "e2q", "b2q", "e3q", "g3q", "b3q", "e4q" ]
             , v = [ "f#2q", "a2q", "d3q", "a3q", "c#4q", "e4q" ]
             , vi = [ "g2q", "b2q", "d3q", "g3q", "d4q", "g4q" ]
-            , vii = [ "a2q", "e3q", "a3q", "c#4q", "e4q", "c0s" ]
+            , vii = [ "a2q", "e3q", "a3q", "c#4q", "e4q" ]
             }
 
         "f#" ->
             { i = [ "f#2q", "a2q", "c#3q", "a3q", "c#4q", "f#4q" ]
             , ii = [ "g#2q", "d3q", "g#3q", "b3q", "f4q", "g#4q" ]
-            , iii = [ "a2q", "e3q", "a3q", "c#4q", "e4q", "c0s" ]
-            , iv = [ "b2q", "d3q", "f#3q", "d4q", "f#4q", "c0s" ]
-            , v = [ "c#q3", "g#3q", "c#4q", "e4q", "g#4q", "c0s" ]
-            , vi = [ "d3q", "a3q", "d4q", "f#4q", "c0s", "c0s" ]
+            , iii = [ "a2q", "e3q", "a3q", "c#4q", "e4q" ]
+            , iv = [ "b2q", "d3q", "f#3q", "d4q", "f#4q" ]
+            , v = [ "c#q3", "g#3q", "c#4q", "e4q", "g#4q" ]
+            , vi = [ "d3q", "a3q", "d4q", "f#4q" ]
             , vii = [ "e2q", "b2q", "e3q", "g#3q", "b3q", "e4q" ]
             }
 
         "c#" ->
-            { i = [ "c#3q", "g#3q", "c#4q", "e4q", "g#4q", "c0s" ]
-            , ii = [ "d#3q", "a3q", "c4q", "f#4q", "c0s", "c0s" ]
+            { i = [ "c#3q", "g#3q", "c#4q", "e4q", "g#4q" ]
+            , ii = [ "d#3q", "a3q", "c4q", "f#4q" ]
             , iii = [ "e2q", "b2q", "e3q", "g#3q", "b3q", "e4q" ]
             , iv = [ "f#2q", "c#3q", "f#3q", "a3q", "c#4q", "f#4q" ]
             , v = [ "g#2q", "d#3q", "g#3q", "b3q", "d#4q", "g#4q" ]
-            , vi = [ "a2q", "e3q", "a3q", "c#4q", "e4q", "c0s" ]
-            , vii = [ "b2q", "f#3q", "b3q", "d#4q", "f#4q", "c0s" ]
+            , vi = [ "a2q", "e3q", "a3q", "c#4q", "e4q" ]
+            , vii = [ "b2q", "f#3q", "b3q", "d#4q", "f#4q" ]
             }
 
         "g#" ->
             { i = [ "g#2q", "d#3q", "g#3q", "b3q", "d#4q", "g#4q" ]
-            , ii = [ "a#2q", "e3q", "g3q", "c#4q", "e4q", "c0s" ]
-            , iii = [ "c2q", "g3q", "c3q", "e4q", "g4q", "c0s" ]
-            , iv = [ "c#q3", "g#3q", "c#4q", "e4q", "g#4q", "c0s" ]
-            , v = [ "d#3q", "a#3q", "d#4q", "f#4q", "a#4q", "c0s" ]
+            , ii = [ "a#2q", "e3q", "g3q", "c#4q", "e4q" ]
+            , iii = [ "c2q", "g3q", "c3q", "e4q", "g4q" ]
+            , iv = [ "c#q3", "g#3q", "c#4q", "e4q", "g#4q" ]
+            , v = [ "d#3q", "a#3q", "d#4q", "f#4q", "a#4q" ]
             , vi = [ "e2q", "b2q", "e3q", "g#3q", "b3q", "e4q" ]
             , vii = [ "f#2q", "c#3q", "f#3q", "a#3q", "c#4q", "f#4q" ]
             }
 
         "d#" ->
-            { i = [ "d#3q", "a#3q", "d#4q", "f#4q", "a#4q", "c0s" ]
-            , ii = [ "f3q", "b3q", "d4q", "g#4q", "c0s", "c0s" ]
+            { i = [ "d#3q", "a#3q", "d#4q", "f#4q", "a#4q" ]
+            , ii = [ "f3q", "b3q", "d4q", "g#4q" ]
             , iii = [ "f#2q", "c#3q", "f#3q", "a#3q", "c#4q", "f#4q" ]
             , iv = [ "g#2q", "d#3q", "g#3q", "b3q", "d#4q", "g#4q" ]
             , v = [ "a#2q", "f3q", "a#3q", "c#4q", "f4q", "a#4q" ]
-            , vi = [ "b2q", "f#3q", "b3q", "d#4q", "f#4q", "c0s" ]
-            , vii = [ "c#3q", "g#3q", "c#4q", "f4q", "g#4q", "c0s" ]
+            , vi = [ "b2q", "f#3q", "b3q", "d#4q", "f#4q" ]
+            , vii = [ "c#3q", "g#3q", "c#4q", "f4q", "g#4q" ]
             }
 
         "bb" ->
             { i = [ "a#2q", "f3q", "a#3q", "c#4q", "f4q", "a#4q" ]
-            , ii = [ "c3q", "f#3q", "a3q", "d#4q", "c0s", "c0s" ]
-            , iii = [ "c#3q", "g#3q", "c#4q", "f4q", "g#4q", "c0s" ]
-            , iv = [ "d#3q", "a#3q", "d#4q", "f#4q", "a#4q", "c0s" ]
-            , v = [ "f3q", "c4q", "f4q", "g#4q", "c5q", "c0s" ]
+            , ii = [ "c3q", "f#3q", "a3q", "d#4q" ]
+            , iii = [ "c#3q", "g#3q", "c#4q", "f4q", "g#4q" ]
+            , iv = [ "d#3q", "a#3q", "d#4q", "f#4q", "a#4q" ]
+            , v = [ "f3q", "c4q", "f4q", "g#4q", "c5q" ]
             , vi = [ "f#2q", "c#3q", "f#3q", "a#3q", "c#4q", "f#4q" ]
             , vii = [ "g#2q", "d#3q", "g#3q", "c4q", "d#4q", "g#4q" ]
             }
 
         "f" ->
             { i = [ "f2q", "c3q", "f3q", "g#3q", "c4q", "f4q" ]
-            , ii = [ "g3q", "c#4q", "e4q", "a#5q", "c0s", "c0s" ]
+            , ii = [ "g3q", "c#4q", "e4q", "a#5q" ]
             , iii = [ "g#2q", "d#3q", "g#3q", "c4q", "d#4q", "g#4q" ]
-            , iv = [ "a#2q", "f3q", "a#3q", "c#4q", "f4q", "c0s" ]
-            , v = [ "c3q", "g3q", "c4q", "d#4q", "g4q", "c0s" ]
-            , vi = [ "c#3q", "g#3q", "c#4q", "f4q", "g#4q", "c0s" ]
-            , vii = [ "d#3q", "a#3q", "d#4q", "g4q", "a#4q", "c0s" ]
+            , iv = [ "a#2q", "f3q", "a#3q", "c#4q", "f4q" ]
+            , v = [ "c3q", "g3q", "c4q", "d#4q", "g4q" ]
+            , vi = [ "c#3q", "g#3q", "c#4q", "f4q", "g#4q" ]
+            , vii = [ "d#3q", "a#3q", "d#4q", "g4q", "a#4q" ]
             }
 
         "c" ->
-            { i = [ "c3q", "g3q", "c4q", "d#4q", "g4q", "c0s" ]
-            , ii = [ "d3q", "g#3q", "b3q", "f4q", "c0s", "c0s" ]
-            , iii = [ "d#3q", "a#3q", "d#4q", "g4q", "a#4q", "c0s" ]
+            { i = [ "c3q", "g3q", "c4q", "d#4q", "g4q" ]
+            , ii = [ "d3q", "g#3q", "b3q", "f4q" ]
+            , iii = [ "d#3q", "a#3q", "d#4q", "g4q", "a#4q" ]
             , iv = [ "f2q", "c3q", "f3q", "g#3q", "c4q", "f4q" ]
             , v = [ "g2q", "d3q", "g3q", "a#3q", "d4q", "g4q" ]
             , vi = [ "g#2q", "d#3q", "g#3q", "c4q", "d#4q", "g#4q" ]
-            , vii = [ "a#2q", "f3q", "a#3q", "d4q", "f4q", "c0s" ]
+            , vii = [ "a#2q", "f3q", "a#3q", "d4q", "f4q" ]
             }
 
         "g" ->
             { i = [ "g2q", "d3q", "g3q", "a#3q", "d4q", "g4q" ]
-            , ii = [ "d#3q", "a3q", "c4q", "f#4q", "c0s", "c0s" ]
-            , iii = [ "a#2q", "f3q", "a#3q", "d4q", "f4q", "c0s" ]
-            , iv = [ "c3q", "g3q", "c4q", "d#4q", "g4q", "c0s" ]
-            , v = [ "d3q", "a3q", "d4q", "f4q", "c0s", "c0s" ]
-            , vi = [ "d#3q", "a#3q", "d#4q", "g4q", "a#4q", "c0s" ]
-            , vii = [ "f3q", "a3q", "c4q", "e4q", "c0s", "c0s" ]
+            , ii = [ "d#3q", "a3q", "c4q", "f#4q" ]
+            , iii = [ "a#2q", "f3q", "a#3q", "d4q", "f4q" ]
+            , iv = [ "c3q", "g3q", "c4q", "d#4q", "g4q" ]
+            , v = [ "d3q", "a3q", "d4q", "f4q" ]
+            , vi = [ "d#3q", "a#3q", "d#4q", "g4q", "a#4q" ]
+            , vii = [ "f2q", "c3q", "f3q", "a3q", "c4q", "f4q" ]
             }
 
         "d" ->
-            { i = [ "d3q", "a3q", "d4q", "f4q", "c0s", "c0s" ]
-            , ii = [ "a#2q", "e3q", "g3q", "d4q", "e5q", "c0s" ]
-            , iii = [ "f3q", "a3q", "c4q", "e4q", "c0s", "c0s" ]
+            { i = [ "d3q", "a3q", "d4q", "f4q" ]
+            , ii = [ "a#2q", "e3q", "g3q", "d4q", "e5q" ]
+            , iii = [ "f3q", "a3q", "c4q", "e4q" ]
             , iv = [ "g2q", "d3q", "g3q", "a#3q", "d4q", "g4q" ]
-            , v = [ "a2q", "e3q", "a3q", "c4q", "e4q", "c0s" ]
-            , vi = [ "a#2q", "f3q", "a#3q", "d4q", "f4q", "c0s" ]
-            , vii = [ "c3q", "e3q", "g3q", "c4q", "e4q", "c0s" ]
+            , v = [ "a2q", "e3q", "a3q", "c4q", "e4q" ]
+            , vi = [ "a#2q", "f3q", "a#3q", "d4q", "f4q" ]
+            , vii = [ "c3q", "e3q", "g3q", "c4q", "e4q" ]
             }
 
         _ ->
@@ -270,25 +270,25 @@ scales : String -> List String
 scales scale =
     case scale of
         "major" ->
-            [ "c3s", "d3s", "e3s", "f3s", "g3s", "a3s", "b3s", "c4s", "d4s", "e4s", "f4s", "g4s", "a4s", "b4s", "c5s" ]
+            [ "c3s", "d3s", "e3s", "f3s", "g3s", "a3s", "b3s", "c4s", "d4s", "e4s", "f4s", "g4s", "a4s", "b4s", "c5s", "d5s" ]
 
         "minor" ->
-            [ "c3s", "d3s", "d#3s", "f3s", "g3s", "g#3s", "a#3s", "c4s", "d4s", "d#4s", "f4s", "g4s", "g#4s", "a#4s", "c5s" ]
+            [ "c3s", "d3s", "d#3s", "f3s", "g3s", "g#3s", "a#3s", "c4s", "d4s", "d#4s", "f4s", "g4s", "g#4s", "a#4s", "c5s", "d5s", "d#5s" ]
 
         "majPentatonic" ->
-            [ "c3s", "d3s", "e3s", "g3s", "a3s", "c4s", "d4s", "e4s", "g4s", "a4s", "c5s" ]
+            [ "c3s", "d3s", "e3s", "g3s", "a3s", "c4s", "d4s", "e4s", "g4s", "a4s", "c5s", "d5s" ]
 
         "minPentatonic" ->
-            [ "c3s", "d#3s", "f3s", "g3s", "a#3s", "c4s", "d#4s", "f4s", "g4s", "a#4s", "c5s" ]
+            [ "c3s", "d#3s", "f3s", "g3s", "a#3s", "c4s", "d#4s", "f4s", "g4s", "a#4s", "c5s", "d#5s" ]
 
         "lydian" ->
-            [ "c3s", "d3s", "e3s", "f#3s", "g3s", "a3s", "b3s", "c4s", "d4s", "e4s", "f#4s", "g4s", "a4s", "b4s", "c5s" ]
+            [ "c3s", "d3s", "e3s", "f#3s", "g3s", "a3s", "b3s", "c4s", "d4s", "e4s", "f#4s", "g4s", "a4s", "b4s", "c5s", "d5s" ]
 
         "mixolydian" ->
-            [ "c3s", "d3s", "e3s", "f3s", "g3s", "a3s", "a#3s", "c4s", "d4s", "e4s", "f4s", "g4s", "a4s", "a#4s", "c5s" ]
+            [ "c3s", "d3s", "e3s", "f3s", "g3s", "a3s", "a#3s", "c4s", "d4s", "e4s", "f4s", "g4s", "a4s", "a#4s", "c5s", "d5s" ]
 
         "dorian" ->
-            [ "c3s", "d3s", "d#3s", "f3s", "g3s", "a3s", "a#3s", "c4s", "d4s", "d#4s", "f4s", "g4s", "a4s", "a#4s", "c5s" ]
+            [ "c3s", "d3s", "d#3s", "f3s", "g3s", "a3s", "a#3s", "c4s", "d4s", "d#4s", "f4s", "g4s", "a4s", "a#4s", "c5s", "d5s", "d#5s" ]
 
         _ ->
             []
@@ -408,6 +408,10 @@ frequencies note =
             0.0
 
 
+
+{- Converts a List of Strings into a List of type Note for playing audio. -}
+
+
 stringToNote : List String -> Int -> List Note
 stringToNote chord n =
     let
@@ -426,6 +430,8 @@ stringToNote chord n =
             stringToNote chord (n + 1)
 
 
+{-| Takes in a base frequency by key and builds a corresponding scale from that pitch
+-}
 scaleBuilder : List Float -> String -> Int -> List Float
 scaleBuilder scale key n =
     let

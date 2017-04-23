@@ -1,14 +1,14 @@
-module Assets.Views.Chords exposing (chordChartPage, keyList, chordChartModel, playbackSpeedSlider)
+module Views.Chords exposing (chordChartPage, keyList, chordChartModel, playbackSpeedSlider)
 
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Events exposing (onClick, onInput)
 import String exposing (..)
 import List.Extra exposing (getAt)
-import Assets.Logic.Audio exposing (notes)
-import Assets.Logic.Types exposing (Model, ChordChartData, Msg(..), Dot)
-import Assets.Logic.Routing exposing (scalesPath)
-import Assets.Styles.ChordStyles exposing (..)
+import Logic.Audio exposing (notes)
+import Logic.Types exposing (Model, ChordChartData, Msg(..), Dot)
+import Logic.Routing exposing (scalesPath)
+import Styles.ChordStyles exposing (..)
 
 
 chordChartPage : Model -> Html Msg
@@ -239,7 +239,8 @@ chordModal model =
         ]
 
 
-{-| Defines dot placement of each chord.
+{-| Defines dot placement of each chord. Groupes as "FSfFSfFSf..." where
+F = Finger no (b for bar), S = String no, f = fret no.
 -}
 keys : String -> ChordChartData
 keys key =
@@ -516,9 +517,9 @@ keys key =
             , iv = "06xb52344434223112"
             , v = "06x05x040232423111"
             , vi = "06xb52244334424112"
-            , vii = "b62354444333122112"
-            , names = [ "Gm", "Adim7", "Bb", "Cm", "Dm", "Eb", "Ab", "3" ]
-            , bars = [ "3", "", "", "3", "", "6", "4" ]
+            , vii = "b61353443232121111"
+            , names = [ "Gm", "Adim7", "Bb", "Cm", "Dm", "Eb", "F", "3" ]
+            , bars = [ "3", "", "", "3", "", "6", "" ]
             }
 
         "d" ->

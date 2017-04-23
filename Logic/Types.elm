@@ -1,4 +1,4 @@
-module Assets.Logic.Types exposing (..)
+module Logic.Types exposing (..)
 
 import Navigation exposing (Location)
 

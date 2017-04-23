@@ -7,43 +7,82 @@
         <div id="main"></div>
         <script src="Main.js"></script>
         <script>
-            var app = Elm.Main.fullscreen();
+            const app = Elm.Main.fullscreen();
 
             app.ports.send.subscribe(play);
 
-            var ctx = new (window.webkitAudioContext || window.AudioContext);
+            const ctx = new (window.webkitAudioContext || window.AudioContext);
 
             function play(args) {
-                console.log(args);
-                var note = args.note;
-                var waveType = args.waveType;
-                var hz = note.frequency;
-                var octave = note.octave;
-                var sustain = note.sustain;
-
-                var osc = ctx.createOscillator();
-                var gainNode = ctx.createGain();
-
+                let note = args.note;
+                let waveType = args.waveType;
+                let hz = note.frequency;
+                let octave = note.octave;
+                let sustain = note.sustain;
+                let osc, osc2, osc3, osc4;
+                let gainNode, gainNode2, gainNode3, gainNode4;
+                
+                // Oscillator 1
+                osc = ctx.createOscillator();
+                gainNode = ctx.createGain();
                 osc.connect(gainNode);
                 gainNode.connect(ctx.destination);
-
                 gainNode.gain.value = 0.0;
-                gainNode.gain.setTargetAtTime(0.25, ctx.currentTime, 0.01);
+                gainNode.gain.setTargetAtTime(0.5, ctx.currentTime, 0.01);
                 gainNode.gain.setTargetAtTime(0.0, ctx.currentTime + sustain, 0.01);
                 osc.frequency.value = hz * octave / 4;
                 osc.type = waveType;
                 osc.start();
                 osc.stop(ctx.currentTime + sustain + 1);
+
+                // Oscillator 2 (Octave Higher)
+                osc2 = ctx.createOscillator();
+                gainNode2 = ctx.createGain();
+                osc2.connect(gainNode2);
+                gainNode2.connect(ctx.destination);
+                gainNode2.gain.value = 0.0;
+                gainNode2.gain.setTargetAtTime(0.15, ctx.currentTime, 0.01);
+                gainNode2.gain.setTargetAtTime(0.0, ctx.currentTime + sustain, 0.01);
+                osc2.frequency.value = hz * octave / 2;
+                osc2.type = waveType;
+                osc2.start();
+                osc2.stop(ctx.currentTime + sustain + 1);
+
+                // Oscillator 3 (2 Octaves Higher)
+                osc3 = ctx.createOscillator();
+                gainNode3 = ctx.createGain();
+                osc3.connect(gainNode3);
+                gainNode3.connect(ctx.destination);
+                gainNode3.gain.value = 0.0;
+                gainNode3.gain.setTargetAtTime(0.05, ctx.currentTime, 0.01);
+                gainNode3.gain.setTargetAtTime(0.0, ctx.currentTime + sustain, 0.01);
+                osc3.frequency.value = (hz *  octave  ) 
+                osc3.type = "sine";
+                osc3.start();
+                osc3.stop(ctx.currentTime + sustain + 1);
+
+                // // Oscillator 4 (2 Octaves + Fifth Higher)
+                osc4 = ctx.createOscillator();
+                gainNode4 = ctx.createGain();
+                osc4.connect(gainNode4);
+                gainNode4.connect(ctx.destination);
+                gainNode4.gain.value = 0.0;
+                gainNode4.gain.setTargetAtTime(0.01, ctx.currentTime, 0.01);
+                gainNode4.gain.setTargetAtTime(0.0, ctx.currentTime + sustain, 0.01);
+                osc4.frequency.value = (hz * 1.3334 * octave ) 
+                osc4.type = "sine";
+                osc4.start();
+                osc4.stop(ctx.currentTime + sustain + 1);
             }
         </script>
-        <script>
-          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-          })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+        <!-- <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-          ga('create', 'UA-39355315-6', 'auto');
-          ga('send', 'pageview');
-        </script>
+            ga('create', 'UA-39355315-6', 'auto');
+            ga('send', 'pageview');
+        </script> -->
     </body>
 </html>

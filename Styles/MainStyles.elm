@@ -1,8 +1,8 @@
-module Assets.Styles.MainStyles exposing (..)
+module Styles.MainStyles exposing (..)
 
 import Html exposing (..)
 import Html.Attributes exposing (..)
-import Assets.Logic.Types exposing (Model, Msg(..))
+import Logic.Types exposing (Model, Msg(..))
 
 
 navMenuStyle : Model -> Attribute Msg
@@ -126,7 +126,7 @@ modalIconStyle model =
                 , ( "cursor", "pointer" )
                 , ( "border", "1px solid #fff" )
                 , ( "borderRadius", "10px" )
-                , ( "transition", "translate 0.5s" )
+                , ( "transition", "all 0.5s" )
                 , ( "transform", difference )
                 ]
     in

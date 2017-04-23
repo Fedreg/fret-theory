@@ -1,14 +1,14 @@
-module Assets.Views.Scales exposing (..)
+module Views.Scales exposing (..)
 
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Events exposing (onInput, onClick)
 import List exposing (map)
-import Assets.Logic.Types exposing (ScaleData, ScaleSchemaData, Msg(ChangeKey, Play, ShowModal), Model)
-import Assets.Views.Chords exposing (keyList, playbackSpeedSlider)
+import Logic.Types exposing (ScaleData, ScaleSchemaData, Msg(ChangeKey, Play, ShowModal), Model)
+import Views.Chords exposing (keyList, playbackSpeedSlider)
 import List.Extra exposing (getAt, elemIndex)
-import Assets.Logic.Audio exposing (scales)
-import Assets.Styles.ScalesStyles exposing (..)
+import Logic.Audio exposing (scales)
+import Styles.ScalesStyles exposing (..)
 
 
 scalesPage : Model -> Html Msg
@@ -38,7 +38,7 @@ ionianModeView model =
             span [ style [ ( "paddingRight", "10px" ), ( "fontSize", "18px" ) ] ] [ text (toString a) ]
     in
         div [ scaleContainerStyle, onClick (Play (scales "major") (fretOffset model)) ]
-            [ div [ scaleTitleStyle ] [ scaleNameMajor model " MAJOR SCALE " "" ]
+            [ div [ scaleTitleStyle ] [ scaleNameMajor model " MAJOR SCALE " "" "" ]
             , stringView
             , div [ fretNumberStyle "490px" ] (List.map markup <| data .one)
             , div [ fretNumberStyle "420px" ] (List.map markup <| data .two)
@@ -86,7 +86,7 @@ majorPentatonicView model =
             span [ style [ ( "paddingRight", "10px" ), ( "fontSize", "18px" ) ] ] [ text (toString a) ]
     in
         div [ scaleContainerStyle, onClick (Play (scales "majPentatonic") (fretOffset model)) ]
-            [ div [ scaleTitleStyle ] [ scaleNameMajor model " MAJOR PENTATONIC SCALE " "" ]
+            [ div [ scaleTitleStyle ] [ scaleNameMajor model " MAJOR PENTATONIC SCALE " "" "" ]
             , stringView
             , div [ fretNumberStyle "450px" ] (List.map markup <| data .one)
             , div [ fretNumberStyle "370px" ] (List.map markup <| data .two)
@@ -134,7 +134,7 @@ lydianModeView model =
             span [ style [ ( "paddingRight", "10px" ), ( "fontSize", "18px" ) ] ] [ text (toString a) ]
     in
         div [ scaleContainerStyle, onClick (Play (scales "lydian") (fretOffset model)) ]
-            [ div [ scaleTitleStyle ] [ scaleNameMajor model " LYDIAN MODE " " ( #4 ) " ]
+            [ div [ scaleTitleStyle ] [ scaleNameMajor model " LYDIAN MODE " " ( #4 ) " "Maj7" ]
             , stringView
             , div [ fretNumberStyle "490px" ] (List.map markup <| data .one)
             , div [ fretNumberStyle "390px" ] (List.map markup <| data .two)
@@ -155,7 +155,7 @@ mixolydianModeView model =
             span [ style [ ( "paddingRight", "10px" ), ( "fontSize", "18px" ) ] ] [ text (toString a) ]
     in
         div [ scaleContainerStyle, onClick (Play (scales "mixolydian") (fretOffset model)) ]
-            [ div [ scaleTitleStyle ] [ scaleNameMajor model " MIXOLYDIAN MODE " " ( b7 ) " ]
+            [ div [ scaleTitleStyle ] [ scaleNameMajor model " MIXOLYDIAN MODE " " ( b7 ) " "7" ]
             , stringView
             , div [ fretNumberStyle "490px" ] (List.map markup <| data .one)
             , div [ fretNumberStyle "390px" ] (List.map markup <| data .two)
@@ -176,7 +176,7 @@ dorianModeView model =
             span [ style [ ( "paddingRight", "10px" ), ( "fontSize", "18px" ) ] ] [ text (toString a) ]
     in
         div [ scaleContainerStyle, onClick (Play (scales "dorian") (fretOffset model)) ]
-            [ div [ scaleTitleStyle ] [ scaleNameMajor model " DORIAN MODE " " ( b3, b7 ) " ]
+            [ div [ scaleTitleStyle ] [ scaleNameMajor model " DORIAN MODE " " ( b3, b7 ) " "min7" ]
             , stringView
             , div [ fretNumberStyle "500px" ] (List.map markup <| data .one)
             , div [ fretNumberStyle "410px" ] (List.map markup <| data .two)
@@ -297,20 +297,24 @@ fretOffset model =
             0
 
 
-scaleNameMajor : Model -> String -> String -> Html Msg
-scaleNameMajor model scaleName modifiedNotes =
+scaleNameMajor : Model -> String -> String -> String -> Html Msg
+scaleNameMajor model scaleName modifiedNotes matchingChord =
     let
         index =
             Maybe.withDefault 0 <| elemIndex model.musKey keyList
 
         slicer =
             String.slice 0 1
+
+        playOver =
+            " play over " ++ model.musKey ++ matchingChord
     in
         if slicer (String.toUpper model.musKey) == slicer model.musKey then
             div []
                 [ span [] [ text model.musKey ]
                 , span [ style [ ( "color", "#777" ) ] ] [ text scaleName ]
                 , span [ style [ ( "color", "#5CE6CD" ) ] ] [ text modifiedNotes ]
+                , span [ style [ ( "color", "#fff" ) ] ] [ text playOver ]
                 ]
         else
             div []
@@ -329,11 +333,15 @@ scaleNameMinor model scaleName =
 
         slicer =
             String.slice 0 1
+
+        playOver =
+            "play over " ++ (String.toUpper model.musKey) ++ "min"
     in
         if slicer (String.toLower model.musKey) == slicer model.musKey then
             div []
                 [ span [] [ text (String.toUpper (slicer model.musKey) ++ String.slice 1 2 model.musKey) ]
                 , span [ style [ ( "color", "#777" ) ] ] [ text (" " ++ scaleName) ]
+                , span [ style [ ( "color", "#fff" ) ] ] [ text playOver ]
                 ]
         else
             div []
@@ -350,10 +358,8 @@ scalesModal model =
         ]
 
 
-
--- Layout of scales in frets per string.
-
-
+{-| Layout of scales in frets per string.
+-}
 ionianMode : ScaleData
 ionianMode =
     { e = [ 7, 8, 10 ]

@@ -1,11 +1,11 @@
 port module Main exposing (..)
 
 import List.Extra exposing (getAt)
-import Assets.Logic.Routing as Routing
-import Assets.Logic.Types exposing (Model, Msg(..), Route(..), PlayBundle)
-import Assets.Logic.Audio exposing (noteSorter)
-import Assets.Views.Fretboard exposing (fretboardPage, noteStringPos, noteFretPos)
-import Assets.Views.MainViews exposing (mainView)
+import Logic.Routing as Routing
+import Logic.Types exposing (Model, Msg(..), Route(..), PlayBundle)
+import Logic.Audio exposing (noteSorter)
+import Views.Fretboard exposing (fretboardPage, noteStringPos, noteFretPos)
+import Views.MainViews exposing (mainView)
 import Navigation exposing (Location)
 import Time exposing (..)
 import Update.Extra.Infix exposing ((:>))

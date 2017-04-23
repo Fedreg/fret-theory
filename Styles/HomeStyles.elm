@@ -1,8 +1,8 @@
-module Assets.Styles.HomeStyles exposing (..)
+module Styles.HomeStyles exposing (..)
 
 import Html exposing (..)
 import Html.Attributes exposing (..)
-import Assets.Logic.Types exposing (Model)
+import Logic.Types exposing (Model)
 
 
 homePageStyle : Attribute msg
@@ -10,7 +10,7 @@ homePageStyle =
     style
         [ ( "textAlign", "center" )
         , ( "backgroundColor", "#000" )
-        , ( "paddingTop", "80px" )
+        , ( "paddingTop", "50px" )
         ]
 
 

@@ -1,8 +1,8 @@
-module Assets.Styles.ScalesStyles exposing (..)
+module Styles.ScalesStyles exposing (..)
 
 import Html exposing (..)
 import Html.Attributes exposing (..)
-import Assets.Logic.Types exposing (Model)
+import Logic.Types exposing (Model)
 
 
 scaleTitleStyle : Attribute msg

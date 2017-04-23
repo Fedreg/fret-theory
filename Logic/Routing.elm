@@ -1,7 +1,7 @@
-module Assets.Logic.Routing exposing (..)
+module Logic.Routing exposing (..)
 
 import Navigation exposing (Location)
-import Assets.Logic.Types exposing (Route(..), Model, Msg(NoOp))
+import Logic.Types exposing (Route(..), Model, Msg(NoOp))
 import UrlParser exposing (..)
 
 

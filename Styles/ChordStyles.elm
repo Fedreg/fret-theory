@@ -1,8 +1,8 @@
-module Assets.Styles.ChordStyles exposing (..)
+module Styles.ChordStyles exposing (..)
 
 import Html exposing (..)
 import Html.Attributes exposing (..)
-import Assets.Logic.Types exposing (..)
+import Logic.Types exposing (..)
 
 
 chordBarPosStyle : Attribute Msg
