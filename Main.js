@@ -23901,7 +23901,7 @@ var _user$project$Views_Home$homePage = function (model) {
 													_0: _elm_lang$html$Html_Attributes$style(
 														{
 															ctor: '::',
-															_0: {ctor: '_Tuple2', _0: 'border', _1: '1px solid #5CE6CD'},
+															_0: {ctor: '_Tuple2', _0: 'border', _1: '1px solid #E8175D'},
 															_1: {
 																ctor: '::',
 																_0: {ctor: '_Tuple2', _0: 'borderRadius', _1: '10px'},
@@ -23913,7 +23913,7 @@ var _user$project$Views_Home$homePage = function (model) {
 																		_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '14px'},
 																		_1: {
 																			ctor: '::',
-																			_0: {ctor: '_Tuple2', _0: 'color', _1: '#5CE6CD'},
+																			_0: {ctor: '_Tuple2', _0: 'color', _1: '#E8175D'},
 																			_1: {ctor: '[]'}
 																		}
 																	}
@@ -25126,7 +25126,7 @@ var _user$project$Styles_MainStyles$modalIconStyle = function (model) {
 								_0: {ctor: '_Tuple2', _0: 'height', _1: '20px'},
 								_1: {
 									ctor: '::',
-									_0: {ctor: '_Tuple2', _0: 'color', _1: '000'},
+									_0: {ctor: '_Tuple2', _0: 'color', _1: '#E8175D'},
 									_1: {
 										ctor: '::',
 										_0: {ctor: '_Tuple2', _0: 'textAlign', _1: 'center'},
@@ -25138,7 +25138,7 @@ var _user$project$Styles_MainStyles$modalIconStyle = function (model) {
 												_0: {ctor: '_Tuple2', _0: 'cursor', _1: 'pointer'},
 												_1: {
 													ctor: '::',
-													_0: {ctor: '_Tuple2', _0: 'border', _1: '1px solid #000'},
+													_0: {ctor: '_Tuple2', _0: 'border', _1: '1px solid #E8175D'},
 													_1: {
 														ctor: '::',
 														_0: {ctor: '_Tuple2', _0: 'borderRadius', _1: '10px'},
