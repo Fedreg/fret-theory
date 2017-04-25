@@ -1,8 +1,8 @@
 module Styles.ChordStyles exposing (..)
 
-import Html exposing (..)
-import Html.Attributes exposing (..)
-import Logic.Types exposing (..)
+import Html exposing (Attribute)
+import Html.Attributes exposing (style)
+import Logic.Types exposing (Model, Msg(..), Dot)
 
 
 chordBarPosStyle : Attribute Msg
@@ -22,7 +22,7 @@ chartStyle =
         [ ( "position", "relative" )
         , ( "width", "180px" )
         , ( "height", "153px" )
-        , ( "border", "1px solid #222" )
+        , ( "border", "1px solid #383F45" )
         , ( "borderTopLeftRadius", "20px" )
         , ( "borderBottom", "none" )
         ]
@@ -33,7 +33,7 @@ stringStyle =
     style
         [ ( "width", "180px" )
         , ( "height", "30px" )
-        , ( "borderBottom", "1px solid #222" )
+        , ( "borderBottom", "1px solid #383F45" )
         ]
 
 
@@ -42,8 +42,8 @@ nutStyle =
     style
         [ ( "width", "10px" )
         , ( "height", "153px" )
-        , ( "backgroundColor", "#222" )
-        , ( "borderBottom", "1px solid #222" )
+        , ( "backgroundColor", "#383F45" )
+        , ( "borderBottom", "1px solid #383F45" )
         ]
 
 
@@ -64,16 +64,16 @@ fretStyle fret =
     style
         [ ( "position", "absolute" )
         , ( "top", "0" )
-        , ( "right", (Basics.toString (43 * fret) ++ "px") )
+        , ( "right", Basics.toString (43 * fret) ++ "px" )
         , ( "height", "150px" )
-        , ( "borderRight", "1px solid #222" )
+        , ( "borderRight", "1px solid #383F45" )
         ]
 
 
 chordNameStyle : Attribute Msg
 chordNameStyle =
     style
-        [ ( "color", "#E8F1F2" )
+        [ ( "color", "#000``````" )
         , ( "fontSize", "25px" )
         , ( "marginLeft", "150px" )
         , ( "margin", "0 auto" )
@@ -83,7 +83,7 @@ chordNameStyle =
 chordFunctionStyle : Attribute Msg
 chordFunctionStyle =
     style
-        [ ( "color", "#34495E" )
+        [ ( "color", "#383F45" )
         , ( "fontSize", "20px" )
         , ( "marginLeft", "150px" )
         , ( "margin", "0 auto" )

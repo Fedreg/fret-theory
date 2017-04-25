@@ -1,7 +1,7 @@
 module Styles.MainStyles exposing (..)
 
-import Html exposing (..)
-import Html.Attributes exposing (..)
+import Html exposing (Attribute)
+import Html.Attributes exposing (style)
 import Logic.Types exposing (Model, Msg(..))
 
 
@@ -15,21 +15,22 @@ navMenuStyle model =
                 , ( "right", "0" )
                 , ( "transform", "translateX(0)" )
                 , ( "width", "250px" )
-                , ( "height", "100%" )
+                , ( "height", "100vh" )
                 , ( "padding", "15px" )
-                , ( "backgroundColor", "#000" )
+                , ( "backgroundColor", "#f8f8fa" )
                 , ( "transition", "all 0.5s" )
                 , ( "zIndex", "10000" )
                 , ( "borderLeft", "1px solid " ++ color )
+                , ( "borderBottom", "1px solid " ++ color )
                 , ( "transform", difference )
                 ]
     in
         case model.navMenuOpen of
             True ->
-                baseStyles "translateX(0)" "#aaa"
+                baseStyles "translateX(0)" "#777"
 
             False ->
-                baseStyles "translateX(250px)" "#000"
+                baseStyles "translateX(250px)" "#fff"
 
 
 navIconStyle : Model -> Attribute msg
@@ -57,7 +58,7 @@ navIconStyle model =
 navIconStyleHr : Attribute msg
 navIconStyleHr =
     style
-        [ ( "borderTop", "1px solid #fff" )
+        [ ( "borderTop", "1px solid #000" )
         , ( "margin", "0 0 5px" )
         ]
 
@@ -75,7 +76,7 @@ navItemStyle =
         , ( "fontSize", "12px" )
         , ( "margin", "0 0 8px" )
         , ( "padding", "5px" )
-        , ( "color", "#fff" )
+        , ( "color", "#000" )
         ]
 
 
@@ -87,8 +88,8 @@ keyListStyle =
         , ( "borderRadius", "25px" )
         , ( "cursor", "pointer" )
         , ( "lineHeight", "50px" )
-        , ( "color", "#fff" )
-        , ( "backgroundColor", "#222" )
+        , ( "backgroundColor", "#CAD1D9" )
+        , ( "color", "#000" )
         ]
 
 
@@ -98,7 +99,6 @@ keyListContainerStyle =
         [ ( "width", "240px" )
         , ( "height", "400px" )
         , ( "textAlign", "center" )
-        , ( "backgroundColor", "#000" )
         ]
 
 
@@ -120,11 +120,11 @@ modalIconStyle model =
                 , ( "right", "50px" )
                 , ( "width", "20px" )
                 , ( "height", "20px" )
-                , ( "color", "fff" )
+                , ( "color", "000" )
                 , ( "textAlign", "center" )
                 , ( "fontSize", "12px" )
                 , ( "cursor", "pointer" )
-                , ( "border", "1px solid #fff" )
+                , ( "border", "1px solid #000" )
                 , ( "borderRadius", "10px" )
                 , ( "transition", "all 0.5s" )
                 , ( "transform", difference )

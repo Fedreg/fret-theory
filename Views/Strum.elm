@@ -1,7 +1,7 @@
-module Views.Strum exposing (..)
+module Views.Strum exposing (strumPage)
 
-import Html exposing (..)
-import Html.Attributes exposing (..)
+import Html exposing (Html, div, button, text, span, hr, h3, h4, h5)
+import Html.Attributes exposing (style, attribute)
 import Html.Events exposing (onClick)
 import Logic.Types exposing (Model, Msg(Randomize, ShowModal))
 import Styles.StrumStyles exposing (..)
@@ -53,8 +53,8 @@ arrow =
                 [ ( "transform", "rotate(45deg)" )
                 , ( "width", width )
                 , ( "height", height )
-                , ( "borderTop", "9px solid #fff" )
-                , ( "borderLeft", "9px solid #fff" )
+                , ( "borderTop", "9px solid  #E8175D" )
+                , ( "borderLeft", "9px solid  #E8175D" )
                 , ( "marginLeft", x )
                 , ( "marginTop", y )
                 ]

@@ -1,7 +1,7 @@
 module Styles.StrumStyles exposing (..)
 
-import Html exposing (..)
-import Html.Attributes exposing (..)
+import Html exposing (Attribute)
+import Html.Attributes exposing (style)
 import Logic.Types exposing (Model)
 
 
@@ -94,11 +94,11 @@ strumModalStyle model =
                 , ( "left", "50px" )
                 , ( "width", "90vw" )
                 , ( "height", "90vh" )
-                , ( "border", "1px solid #fff" )
-                , ( "backgroundColor", "#000" )
+                , ( "border", "1px solid #000" )
+                , ( "backgroundColor", "#fff" )
                 , ( "opacity", "0.95" )
                 , ( "zIndex", "50" )
-                , ( "color", "#fff" )
+                , ( "color", "#000" )
                 , ( "textAlign", "center" )
                 , ( "overflow", "scroll" )
                 ]
