@@ -345,7 +345,8 @@ scaleNameMinor model scaleName =
         else
             div []
                 [ span [] [ text (String.toUpper (Maybe.withDefault "a" <| getAt (index + 12) keyList)) ]
-                , span [ style [ ( "color", "#000" ) ] ] [ text (" " ++ scaleName ++ " , relative minor") ]
+                , span [ style [ ( "color", "#777" ) ] ] [ text scaleName ]
+                , span [ style [ ( "color", "#000" ) ] ] [ text (" , relative minor") ]
                 ]
 
 

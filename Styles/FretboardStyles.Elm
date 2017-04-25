@@ -200,7 +200,7 @@ fretboardModalStyle model =
                 , ( "width", "90vw" )
                 , ( "height", "90vh" )
                 , ( "border", "1px solid #000" )
-                , ( "backgroundColor", "#fff" )
+                , ( "backgroundColor", "#CAD1D9" )
                 , ( "opacity", "0.9" )
                 , ( "zIndex", "50" )
                 , ( "color", "#000" )
