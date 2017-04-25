@@ -24433,7 +24433,11 @@ var _user$project$Views_Strum$calculateNotation = F3(
 				getter(0),
 				1) && _elm_lang$core$Native_Utils.eq(
 				getter(1),
-				1)) ? 1 : 0);
+				1)) ? 1 : ((_elm_lang$core$Native_Utils.eq(
+				getter(4),
+				1) && _elm_lang$core$Native_Utils.eq(
+				getter(7),
+				2)) ? 4 : 0));
 			if (_elm_lang$core$Native_Utils.cmp(
 				index,
 				_elm_lang$core$List$length(notes)) < 0) {

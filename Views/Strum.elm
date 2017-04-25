@@ -82,6 +82,9 @@ calculateNotation list index notes =
                     4
             else if getter 0 == 1 && getter 1 == 1 then
                 1
+            else if getter 4 == 1 && getter 7 == 2 then
+                -- Final half note.
+                4
             else
                 0
     in
