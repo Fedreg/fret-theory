@@ -1,16 +1,14 @@
 module Views.MainViews exposing (mainView)
 
-import Html exposing (..)
-import Html.Attributes exposing (..)
-import Html.Events exposing (onClick, onInput)
-import String exposing (..)
+import Html exposing (Html, div, span, hr, text, a)
+import Html.Attributes exposing (style, href)
+import Html.Events exposing (onClick)
 import Logic.Routing as Routing
 import Logic.Types exposing (Model, Msg(..), Route(..), PlayBundle)
-import Logic.Audio exposing (noteSorter)
 import Views.Home exposing (homePage)
 import Views.Chords exposing (chordChartPage, keyList)
 import Views.Scales exposing (scalesPage)
-import Views.Fretboard exposing (fretboardPage, noteStringPos, noteFretPos)
+import Views.Fretboard exposing (fretboardPage)
 import Views.Strum exposing (strumPage)
 import Styles.MainStyles exposing (..)
 import InlineHover exposing (hover)
@@ -70,13 +68,13 @@ modalIcon model =
 page : Model -> Html Msg
 page model =
     case model.route of
-        ChordChartPage key ->
+        ChordChartPage _ ->
             chordChartPage model
 
-        FretboardPage key ->
+        FretboardPage _ ->
             fretboardPage model
 
-        ScalesPage key ->
+        ScalesPage _ ->
             scalesPage model
 
         HomePage ->

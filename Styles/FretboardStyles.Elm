@@ -1,7 +1,7 @@
 module Styles.FretboardStyles exposing (..)
 
-import Html exposing (..)
-import Html.Attributes exposing (..)
+import Html exposing (Attribute)
+import Html.Attributes exposing (style)
 import Logic.Types exposing (Model)
 
 
@@ -11,7 +11,7 @@ fretboardTitleStyle =
         [ ( "fontSize", "14px" )
         , ( "textAlign", "center" )
         , ( "marginBottom", "30px" )
-        , ( "color", "#fff" )
+        , ( "color", "#000" )
         ]
 
 
@@ -38,10 +38,9 @@ fretNoteStyle color =
         , ( "color", color )
         , ( "fontSize", "12px" )
         , ( "textAlign", "center" )
-        , ( "borderBottom", "1px solid #222" )
+        , ( "borderBottom", "1px solid #aaa" )
         , ( "borderCollapse", "collapse" )
         , ( "transition", "all 0.4s ease" )
-        , ( "backgroundColor", "#000" )
         , ( "zIndex", "1" )
         ]
 
@@ -52,7 +51,6 @@ fretBlankStyle =
         [ ( "color", "rgba(0,0,0,0)" )
         , ( "width", "100px" )
         , ( "padding", "5px" )
-        , ( "backgroundColor", "#000" )
         ]
 
 
@@ -81,7 +79,6 @@ notationContainerStyle =
         [ ( "width", "350px" )
         , ( "padding", "50px 10px" )
         , ( "margin", "70px auto" )
-        , ( "backgroundColor", "#000" )
         , ( "position", "relative" )
         , ( "textAlign", "center" )
         ]
@@ -94,7 +91,6 @@ notationClefStyle =
         , ( "bottom", "50px" )
         , ( "left", "40px" )
         , ( "height", "100px" )
-        , ( "color", "#fff" )
         ]
 
 
@@ -136,6 +132,7 @@ hrStyle =
         [ ( "width", "280px" )
         , ( "margin", "0 auto" )
         , ( "padding", "10px" )
+        , ( "borderTop", "0.1rem solid #000" )
         ]
 
 
@@ -159,6 +156,7 @@ hrLedgerStyleHi notePosition offset =
             , ( "margin", "0 auto" )
             , ( "padding", "10px" )
             , ( "opacity", visibility )
+            , ( "borderTop", "0.1rem solid #000" )
             , ( "transition", "opacity 0.5s ease" )
             , ( "zIndex", "0" )
             ]
@@ -184,6 +182,7 @@ hrLedgerStyleLo notePosition offset =
             , ( "margin", "0 auto" )
             , ( "padding", "10px" )
             , ( "opacity", visibility )
+            , ( "borderTop", "0.1rem solid #000" )
             , ( "transition", "opacity 0.5s ease" )
             , ( "zIndex", "0" )
             ]
@@ -200,11 +199,11 @@ fretboardModalStyle model =
                 , ( "left", "50px" )
                 , ( "width", "90vw" )
                 , ( "height", "90vh" )
-                , ( "border", "1px solid #fff" )
-                , ( "backgroundColor", "#000" )
+                , ( "border", "1px solid #000" )
+                , ( "backgroundColor", "#CAD1D9" )
                 , ( "opacity", "0.9" )
                 , ( "zIndex", "50" )
-                , ( "color", "#fff" )
+                , ( "color", "#000" )
                 , ( "textAlign", "center" )
                 ]
     in

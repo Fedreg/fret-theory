@@ -1,8 +1,8 @@
-module Logic.Audio exposing (..)
+module Logic.Audio exposing (notes, scales, noteSorter)
 
-import String exposing (..)
-import Logic.Types exposing (..)
+import Logic.Types exposing (Model, Note, ChordAudioData)
 import List.Extra exposing (getAt)
+import String exposing (slice, toInt)
 
 
 {-| Defines audio Notes to be played for each string of every chord. "c0s" is default for no sound.
@@ -298,7 +298,7 @@ scales scale =
 -}
 noteSorter : String -> Note
 noteSorter string =
-    case (String.length string) of
+    case String.length string of
         3 ->
             Note (frequencies <| slice 0 1 string) (octave <| Result.withDefault 0 <| toInt <| slice 1 2 string) (sustain <| slice 2 3 string)
 
@@ -428,29 +428,6 @@ stringToNote chord n =
             computedNote :: chordList
         else
             stringToNote chord (n + 1)
-
-
-{-| Takes in a base frequency by key and builds a corresponding scale from that pitch
--}
-scaleBuilder : List Float -> String -> Int -> List Float
-scaleBuilder scale key n =
-    let
-        baseHz =
-            frequencies key
-
-        exponent =
-            Maybe.withDefault 1 <| getAt n scale
-
-        scaleList =
-            []
-
-        note =
-            baseHz * (1.059463 ^ exponent)
-    in
-        if n < List.length scale then
-            note :: scaleList
-        else
-            scaleBuilder scale key (n + 1)
 
 
 

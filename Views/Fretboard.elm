@@ -1,13 +1,10 @@
 module Views.Fretboard exposing (fretboardPage, fretNotation, noteFretPos, noteStringPos)
 
-import Html exposing (..)
+import Html exposing (Html, div, span, text, hr, img)
 import Html.Events exposing (onClick)
 import Html.Attributes exposing (style, src)
-import String exposing (split, toInt)
-import List exposing (map, range, member)
-import Logic.Types exposing (..)
+import Logic.Types exposing (Model, Msg(..))
 import InlineHover exposing (hover)
-import Json.Encode as Encode
 import List.Extra exposing (getAt, elemIndex)
 import Styles.FretboardStyles exposing (..)
 
@@ -48,9 +45,9 @@ fretboardPage model =
                             "0"
             in
                 if List.member note (notesInKey model.musKey) then
-                    hover highlight div [ fretNoteStyle "#fff", onClick (DrawNote index stringNo sharp) ] [ text note ]
-                else
                     hover highlight div [ fretNoteStyle "#222", onClick (DrawNote index stringNo sharp) ] [ text note ]
+                else
+                    hover highlight div [ fretNoteStyle "#bbb", onClick (DrawNote index stringNo sharp) ] [ text note ]
 
         fretNumberMarkers num =
             div [ fretNumberStyle ] [ text <| toString num ]
@@ -127,7 +124,7 @@ revealNotes =
 fretNotation : Model -> Html Msg
 fretNotation model =
     div [ notationContainerStyle ]
-        [ img [ notationClefStyle, src "Public/clef.png" ] []
+        [ img [ notationClefStyle, src "Public/clefDark.png" ] []
         , div [ notationNoteStyle model.notePosition ] []
         , div [ notationAccidentalStyle model.notePosition model.showAccidental ] [ text "#" ]
         , hr [ hrStyle ] []
@@ -231,9 +228,9 @@ notesInKey key =
     in
         -- Determines major or minor key and inserts into blank list.
         if String.toUpper key == key then
-            noteList ++ (mapper intervalListMajor)
+            noteList ++ mapper intervalListMajor
         else
-            noteList ++ (mapper intervalListMinor)
+            noteList ++ mapper intervalListMinor
 
 
 fretboardModal : Model -> Html Msg

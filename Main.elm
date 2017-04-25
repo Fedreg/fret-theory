@@ -1,15 +1,15 @@
-port module Main exposing (..)
+port module Main exposing (main, init, update, send, subscriptions)
 
 import List.Extra exposing (getAt)
 import Logic.Routing as Routing
 import Logic.Types exposing (Model, Msg(..), Route(..), PlayBundle)
 import Logic.Audio exposing (noteSorter)
-import Views.Fretboard exposing (fretboardPage, noteStringPos, noteFretPos)
+import Views.Fretboard exposing (noteStringPos, noteFretPos)
 import Views.MainViews exposing (mainView)
 import Navigation exposing (Location)
-import Time exposing (..)
+import Time
 import Update.Extra.Infix exposing ((:>))
-import Random exposing (..)
+import Random
 
 
 main =
@@ -90,7 +90,7 @@ update msg model =
                     noteSorter <| Maybe.withDefault "e2w" <| getAt model.index model.currentChord
 
                 shiftedNote =
-                    { note | frequency = note.frequency * (1.059463 ^ (toFloat model.pitchShift)), sustain = note.sustain * (toFloat model.sliderValue / 2) }
+                    { note | frequency = note.frequency * (1.059463 ^ toFloat model.pitchShift), sustain = note.sustain * (toFloat model.sliderValue / 2) }
             in
                 ( { model | index = model.index + 1 }
                 , send (PlayBundle shiftedNote "triangle")

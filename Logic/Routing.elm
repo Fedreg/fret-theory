@@ -1,7 +1,7 @@
 module Logic.Routing exposing (..)
 
 import Navigation exposing (Location)
-import Logic.Types exposing (Route(..), Model, Msg(NoOp))
+import Logic.Types exposing (Route(..), Model, Msg)
 import UrlParser exposing (..)
 
 
@@ -18,7 +18,7 @@ matchers =
 
 parseLocation : Location -> Route
 parseLocation location =
-    case (parseHash matchers location) of
+    case parseHash matchers location of
         Just route ->
             route
 
@@ -29,13 +29,13 @@ parseLocation location =
 modelUpdateOnHash : Model -> Location -> Maybe String
 modelUpdateOnHash model location =
     case model.route of
-        ChordChartPage key ->
+        ChordChartPage _ ->
             parseHash (s "chords" </> string) location
 
-        ScalesPage key ->
+        ScalesPage _ ->
             parseHash (s "scales" </> string) location
 
-        FretboardPage key ->
+        FretboardPage _ ->
             parseHash (s "fretboard" </> string) location
 
         StrumPage ->

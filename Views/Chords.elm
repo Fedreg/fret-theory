@@ -1,9 +1,8 @@
 module Views.Chords exposing (chordChartPage, keyList, chordChartModel, playbackSpeedSlider)
 
-import Html exposing (..)
-import Html.Attributes exposing (..)
+import Html exposing (Html, div, span, a, text, option, input)
+import Html.Attributes exposing (style, value, type_, href)
 import Html.Events exposing (onClick, onInput)
-import String exposing (..)
 import List.Extra exposing (getAt)
 import Logic.Audio exposing (notes)
 import Logic.Types exposing (Model, ChordChartData, Msg(..), Dot)
@@ -53,9 +52,9 @@ chordChartPage model =
 
 
 chordChartModel model index name accessor1 accessor2 =
-    div [ chartContainerStyle "column", onClick (Play ((notes model.musKey) |> accessor1) 0) ]
+    div [ chartContainerStyle "column", onClick (Play (notes model.musKey |> accessor1) 0) ]
         [ div [] [ chordBarPosition index model.musKey ]
-        , chordChart <| chordBuilder ((keys model.musKey) |> accessor2)
+        , chordChart <| chordBuilder (keys model.musKey |> accessor2)
         , div [ chordNameStyle ] [ chordFunction index model.musKey ]
         , div [ chordFunctionStyle ] [ text name ]
         ]

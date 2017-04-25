@@ -1,7 +1,7 @@
 module Styles.ScalesStyles exposing (..)
 
-import Html exposing (..)
-import Html.Attributes exposing (..)
+import Html exposing (Attribute)
+import Html.Attributes exposing (style)
 import Logic.Types exposing (Model)
 
 
@@ -27,7 +27,7 @@ stringStyle : Attribute msg
 stringStyle =
     style
         [ ( "width", "600px" )
-        , ( "borderBottom", "1px solid #333" )
+        , ( "borderBottom", "1px solid #aaa" )
         , ( "marginTop", "32px" )
         , ( "zIndex", "0" )
         ]
@@ -47,7 +47,7 @@ fretNumberStyle margin =
     style
         [ ( "position", "relative" )
         , ( "margin", "5px " ++ margin )
-        , ( "color", "#fff" )
+        , ( "color", "#000" )
         , ( "zIndex", "1" )
         ]
 
@@ -73,11 +73,11 @@ scaleModalStyle isOpen =
                 , ( "left", "50px" )
                 , ( "width", "90vw" )
                 , ( "height", "90vh" )
-                , ( "border", "1px solid #fff" )
-                , ( "backgroundColor", "#000" )
+                , ( "border", "1px solid #000" )
+                , ( "backgroundColor", "#CAD1D9" )
                 , ( "opacity", "0.9" )
                 , ( "zIndex", "50" )
-                , ( "color", "#fff" )
+                , ( "color", "#000" )
                 , ( "textAlign", "center" )
                 ]
     in
