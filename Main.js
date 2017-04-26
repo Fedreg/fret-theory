@@ -25890,7 +25890,11 @@ var _user$project$Views_MainViews$mainView = function (model) {
 					_1: {
 						ctor: '::',
 						_0: {ctor: '_Tuple2', _0: 'overflow', _1: 'hidden'},
-						_1: {ctor: '[]'}
+						_1: {
+							ctor: '::',
+							_0: {ctor: '_Tuple2', _0: 'padding', _1: '5px'},
+							_1: {ctor: '[]'}
+						}
 					}
 				}),
 			_1: {ctor: '[]'}

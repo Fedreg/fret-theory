@@ -16,7 +16,7 @@ import InlineHover exposing (hover)
 
 mainView : Model -> Html Msg
 mainView model =
-    div [ style [ ( "position", "relative" ), ( "overflow", "hidden" ) ] ]
+    div [ style [ ( "position", "relative" ), ( "overflow", "hidden" ), ( "padding", "5px" ) ] ]
         [ nav model
         , modalIcon model
         , page model
