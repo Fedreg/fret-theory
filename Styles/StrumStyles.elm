@@ -9,6 +9,7 @@ strumPageStyle : Attribute msg
 strumPageStyle =
     style
         [ ( "height", "100vh" )
+        , ( "width", "97vw" )
         , ( "display", "flex" )
         , ( "flexDirection", "column" )
         , ( "paddingTop", "175px" )

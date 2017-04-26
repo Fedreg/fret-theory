@@ -17964,7 +17964,7 @@ var _user$project$Styles_ChordStyles$fretMarkerStyle = function (dot) {
 				}
 			});
 	} else {
-		if (_elm_lang$core$Native_Utils.eq(dot.fretNo, '-40')) {
+		if (_elm_lang$core$Native_Utils.eq(dot.fretNo, '-30')) {
 			var textColor = '#777';
 			return _elm_lang$html$Html_Attributes$style(
 				{
@@ -20368,7 +20368,7 @@ var _user$project$Views_Chords$fretNo = function (fret) {
 	var _p1 = fret;
 	switch (_p1) {
 		case '0':
-			return '-40';
+			return '-30';
 		case '1':
 			return '15';
 		case '2':
@@ -20378,7 +20378,7 @@ var _user$project$Views_Chords$fretNo = function (fret) {
 		case '4':
 			return '145';
 		default:
-			return '-40';
+			return '-30';
 	}
 };
 var _user$project$Views_Chords$stringNo = function (string) {
@@ -20925,7 +20925,11 @@ var _user$project$Views_Chords$chordChartPage = function (model) {
 				{
 					ctor: '::',
 					_0: {ctor: '_Tuple2', _0: 'textAlign', _1: 'center'},
-					_1: {ctor: '[]'}
+					_1: {
+						ctor: '::',
+						_0: {ctor: '_Tuple2', _0: 'width', _1: '95vw'},
+						_1: {ctor: '[]'}
+					}
 				}),
 			_1: {ctor: '[]'}
 		},
@@ -24267,17 +24271,21 @@ var _user$project$Styles_StrumStyles$strumPageStyle = _elm_lang$html$Html_Attrib
 		_0: {ctor: '_Tuple2', _0: 'height', _1: '100vh'},
 		_1: {
 			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'display', _1: 'flex'},
+			_0: {ctor: '_Tuple2', _0: 'width', _1: '97vw'},
 			_1: {
 				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'flexDirection', _1: 'column'},
+				_0: {ctor: '_Tuple2', _0: 'display', _1: 'flex'},
 				_1: {
 					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'paddingTop', _1: '175px'},
+					_0: {ctor: '_Tuple2', _0: 'flexDirection', _1: 'column'},
 					_1: {
 						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'alignItems', _1: 'center'},
-						_1: {ctor: '[]'}
+						_0: {ctor: '_Tuple2', _0: 'paddingTop', _1: '175px'},
+						_1: {
+							ctor: '::',
+							_0: {ctor: '_Tuple2', _0: 'alignItems', _1: 'center'},
+							_1: {ctor: '[]'}
+						}
 					}
 				}
 			}
@@ -25207,7 +25215,7 @@ var _user$project$Styles_MainStyles$modalIconStyle = function (model) {
 					_0: {ctor: '_Tuple2', _0: 'top', _1: '45px'},
 					_1: {
 						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'right', _1: '8px'},
+						_0: {ctor: '_Tuple2', _0: 'right', _1: '10px'},
 						_1: {
 							ctor: '::',
 							_0: {ctor: '_Tuple2', _0: 'width', _1: '20px'},
@@ -25363,7 +25371,7 @@ var _user$project$Styles_MainStyles$keyListStyle = function (navOpen) {
 	if (_p3 === true) {
 		return A5(baseStyles, '50px', '5px 5px 5px 0', '50px', '25px', '16px');
 	} else {
-		return A5(baseStyles, '20px', '2px', '20px', '5px', '12px');
+		return A5(baseStyles, '20px', '2px', '20px', '3px', '12px');
 	}
 };
 var _user$project$Styles_MainStyles$navItemStyle = _elm_lang$html$Html_Attributes$style(
@@ -25372,7 +25380,7 @@ var _user$project$Styles_MainStyles$navItemStyle = _elm_lang$html$Html_Attribute
 		_0: {ctor: '_Tuple2', _0: 'display', _1: 'block'},
 		_1: {
 			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'margin', _1: '0 0 8px'},
+			_0: {ctor: '_Tuple2', _0: 'margin', _1: '0 0 8px 50px'},
 			_1: {
 				ctor: '::',
 				_0: {ctor: '_Tuple2', _0: 'padding', _1: '5px'},
@@ -25419,7 +25427,7 @@ var _user$project$Styles_MainStyles$navIconStyle = function (model) {
 					_0: {ctor: '_Tuple2', _0: 'top', _1: '20px'},
 					_1: {
 						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'left', _1: '10px'},
+						_0: {ctor: '_Tuple2', _0: 'left', _1: '7px'},
 						_1: {
 							ctor: '::',
 							_0: {ctor: '_Tuple2', _0: 'width', _1: '25px'},
@@ -25522,7 +25530,7 @@ var _user$project$Styles_MainStyles$navMenuStyle = function (model) {
 	if (_p5 === true) {
 		return A3(baseStyles, 'translateX(0)', '#999', '15px');
 	} else {
-		return A3(baseStyles, 'translateX(210px)', '#bbb', '15px 10px');
+		return A3(baseStyles, 'translateX(210px)', '#bbb', '15px 8px');
 	}
 };
 

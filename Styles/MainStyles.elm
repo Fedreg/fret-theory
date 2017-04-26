@@ -30,7 +30,7 @@ navMenuStyle model =
                 baseStyles "translateX(0)" "#999" "15px"
 
             False ->
-                baseStyles "translateX(210px)" "#bbb" "15px 10px"
+                baseStyles "translateX(210px)" "#bbb" "15px 8px"
 
 
 navIconStyle : Model -> Attribute msg
@@ -40,7 +40,7 @@ navIconStyle model =
             style
                 [ ( "position", "fixed" )
                 , ( "top", "20px" )
-                , ( "left", "10px" )
+                , ( "left", "7px" )
                 , ( "width", "25px" )
                 , ( "transition", "all 0.5s" )
                 , ( "cursor", "pointer" )
@@ -74,7 +74,7 @@ navItemStyle : Attribute msg
 navItemStyle =
     style
         [ ( "display", "block" )
-        , ( "margin", "0 0 8px" )
+        , ( "margin", "0 0 8px 50px" )
         , ( "padding", "5px" )
         , ( "fontSize", "12px" )
         , ( "textAlign", "right" )
@@ -103,7 +103,7 @@ keyListStyle navOpen =
                 baseStyles "50px" "5px 5px 5px 0" "50px" "25px" "16px"
 
             False ->
-                baseStyles "20px" "2px" "20px" "5px" "12px"
+                baseStyles "20px" "2px" "20px" "3px" "12px"
 
 
 keyListContainerStyle : Bool -> Attribute msg
@@ -150,7 +150,7 @@ modalIconStyle model =
             style
                 [ ( "position", "absolute" )
                 , ( "top", "45px" )
-                , ( "right", "8px" )
+                , ( "right", "10px" )
                 , ( "width", "20px" )
                 , ( "height", "20px" )
                 , ( "color", "#E8175D" )

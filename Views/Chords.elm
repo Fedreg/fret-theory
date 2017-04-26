@@ -22,7 +22,7 @@ chordChartPage model =
         keyOptions key =
             option [ value key ] [ text key ]
     in
-        div [ style [ ( "textAlign", "center" ) ] ]
+        div [ style [ ( "textAlign", "center" ), ( "width", "95vw" ) ] ]
             [ div [] [ fingerChart ]
             , playbackSpeedSlider "CHORD ARPEGGIO SPEED" model
             , div [ chartContainerStyle "row" ]
@@ -117,7 +117,7 @@ fretNo : String -> String
 fretNo fret =
     case fret of
         "0" ->
-            "-40"
+            "-30"
 
         "1" ->
             "15"
@@ -132,7 +132,7 @@ fretNo fret =
             "145"
 
         _ ->
-            "-40"
+            "-30"
 
 
 {-| Inserts chord name.

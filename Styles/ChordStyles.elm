@@ -125,7 +125,7 @@ fretMarkerStyle dot =
                 , ( "backgroundColor", "#636363" )
                 , ( "color", "rgba(0,0,0,0)" )
                 ]
-    else if dot.fretNo == "-40" then
+    else if dot.fretNo == "-30" then
         let
             textColor =
                 "#777"
