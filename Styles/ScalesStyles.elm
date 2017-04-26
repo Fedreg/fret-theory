@@ -73,11 +73,11 @@ scaleModalStyle isOpen =
                 , ( "left", "50px" )
                 , ( "width", "90vw" )
                 , ( "height", "90vh" )
-                , ( "border", "1px solid #000" )
-                , ( "backgroundColor", "#CAD1D9" )
+                , ( "border", "1px solid #333" )
+                , ( "backgroundColor", "#fff" )
                 , ( "opacity", "0.9" )
                 , ( "zIndex", "50" )
-                , ( "color", "#000" )
+                , ( "color", "#333" )
                 , ( "textAlign", "center" )
                 ]
     in

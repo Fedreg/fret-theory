@@ -21,10 +21,12 @@ chartStyle =
     style
         [ ( "position", "relative" )
         , ( "width", "180px" )
-        , ( "height", "153px" )
-        , ( "border", "1px solid #383F45" )
-        , ( "borderTopLeftRadius", "20px" )
-        , ( "borderBottom", "none" )
+        , ( "height", "151px" )
+        , ( "border", "1px solid #999" )
+        , ( "borderTopLeftRadius", "10px" )
+        , ( "borderBottomLeftRadius", "10px" )
+        , ( "backgroundColor", "#fff" )
+        , ( "boxShadow", "5px 5px 20px #bbb" )
         ]
 
 
@@ -33,7 +35,7 @@ stringStyle =
     style
         [ ( "width", "180px" )
         , ( "height", "30px" )
-        , ( "borderBottom", "1px solid #383F45" )
+        , ( "borderBottom", "1px solid #999" )
         ]
 
 
@@ -41,9 +43,9 @@ nutStyle : Attribute Msg
 nutStyle =
     style
         [ ( "width", "10px" )
-        , ( "height", "153px" )
-        , ( "backgroundColor", "#383F45" )
-        , ( "borderBottom", "1px solid #383F45" )
+        , ( "height", "151px" )
+        , ( "backgroundColor", "#999" )
+        , ( "borderBottom", "1px solid #999" )
         ]
 
 
@@ -66,7 +68,7 @@ fretStyle fret =
         , ( "top", "0" )
         , ( "right", Basics.toString (43 * fret) ++ "px" )
         , ( "height", "150px" )
-        , ( "borderRight", "1px solid #383F45" )
+        , ( "borderRight", "1px solid #999" )
         ]
 
 
@@ -83,7 +85,7 @@ chordNameStyle =
 chordFunctionStyle : Attribute Msg
 chordFunctionStyle =
     style
-        [ ( "color", "#383F45" )
+        [ ( "color", "#999" )
         , ( "fontSize", "20px" )
         , ( "marginLeft", "150px" )
         , ( "margin", "0 auto" )
@@ -166,11 +168,11 @@ chordModalStyle model =
                 , ( "left", "50px" )
                 , ( "width", "90vw" )
                 , ( "height", "90vh" )
-                , ( "border", "1px solid #fff" )
-                , ( "backgroundColor", "#000" )
+                , ( "border", "1px solid #333" )
+                , ( "backgroundColor", "#fff" )
                 , ( "opacity", "0.9" )
                 , ( "zIndex", "50" )
-                , ( "color", "#fff" )
+                , ( "color", "#333" )
                 , ( "textAlign", "center" )
                 ]
     in

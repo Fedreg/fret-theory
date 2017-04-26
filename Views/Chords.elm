@@ -184,7 +184,7 @@ chordChart chord =
             , div [ stringStyle ] []
             , div [ stringStyle ] []
             , div [ stringStyle ] []
-            , div [ stringStyle ] []
+              -- , div [ stringStyle ] []
             , div [ fretStyle 1 ] []
             , div [ fretStyle 2 ] []
             , div [ fretStyle 3 ] []

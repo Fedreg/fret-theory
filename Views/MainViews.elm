@@ -35,6 +35,7 @@ nav model =
             , hover highlight a [ href Routing.strumPath, navItemStyle ] [ text "STRUMMING" ]
             , div [ style [ ( "marginTop", "100px" ), ( "color", "#E91750" ) ] ] [ text "SELECT KEY:" ]
             , keyListView model
+            , signature
             ]
         ]
 
@@ -63,6 +64,12 @@ keyListView model =
 modalIcon : Model -> Html Msg
 modalIcon model =
     div [ modalIconStyle model, onClick ShowModal ] [ text "?" ]
+
+
+signature : Html Msg
+signature =
+    div [ signatureStyle ]
+        [ hover highlight a [ href "https://www.github.com/fedreg", style [ ( "color", "#000" ) ] ] [ text "Built 2017 by FedReg (v. 0.1)" ] ]
 
 
 page : Model -> Html Msg

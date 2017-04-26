@@ -16369,10 +16369,10 @@ var _user$project$Styles_FretboardStyles$fretboardModalStyle = function (model) 
 									_0: {ctor: '_Tuple2', _0: 'height', _1: '90vh'},
 									_1: {
 										ctor: '::',
-										_0: {ctor: '_Tuple2', _0: 'border', _1: '1px solid #000'},
+										_0: {ctor: '_Tuple2', _0: 'border', _1: '1px solid #333'},
 										_1: {
 											ctor: '::',
-											_0: {ctor: '_Tuple2', _0: 'backgroundColor', _1: '#CAD1D9'},
+											_0: {ctor: '_Tuple2', _0: 'backgroundColor', _1: '#fff'},
 											_1: {
 												ctor: '::',
 												_0: {ctor: '_Tuple2', _0: 'opacity', _1: '0.9'},
@@ -16381,7 +16381,7 @@ var _user$project$Styles_FretboardStyles$fretboardModalStyle = function (model) 
 													_0: {ctor: '_Tuple2', _0: 'zIndex', _1: '50'},
 													_1: {
 														ctor: '::',
-														_0: {ctor: '_Tuple2', _0: 'color', _1: '#000'},
+														_0: {ctor: '_Tuple2', _0: 'color', _1: '#333'},
 														_1: {
 															ctor: '::',
 															_0: {ctor: '_Tuple2', _0: 'textAlign', _1: 'center'},
@@ -16559,7 +16559,7 @@ var _user$project$Styles_FretboardStyles$notationAccidentalStyle = F2(
 								_0: {ctor: '_Tuple2', _0: 'left', _1: '44%'},
 								_1: {
 									ctor: '::',
-									_0: {ctor: '_Tuple2', _0: 'color', _1: '#5CE6CD'},
+									_0: {ctor: '_Tuple2', _0: 'color', _1: '#666'},
 									_1: {
 										ctor: '::',
 										_0: {ctor: '_Tuple2', _0: 'opacity', _1: visibility},
@@ -16615,8 +16615,12 @@ var _user$project$Styles_FretboardStyles$notationNoteStyle = function (offset) {
 										_0: {ctor: '_Tuple2', _0: 'transition', _1: 'all 0.5s ease'},
 										_1: {
 											ctor: '::',
-											_0: {ctor: '_Tuple2', _0: 'zIndex', _1: '1'},
-											_1: {ctor: '[]'}
+											_0: {ctor: '_Tuple2', _0: 'border', _1: '1px solid #666'},
+											_1: {
+												ctor: '::',
+												_0: {ctor: '_Tuple2', _0: 'zIndex', _1: '1'},
+												_1: {ctor: '[]'}
+											}
 										}
 									}
 								}
@@ -16733,7 +16737,7 @@ var _user$project$Styles_FretboardStyles$fretNoteStyle = function (color) {
 						_0: {ctor: '_Tuple2', _0: 'color', _1: color},
 						_1: {
 							ctor: '::',
-							_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '12px'},
+							_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '14px'},
 							_1: {
 								ctor: '::',
 								_0: {ctor: '_Tuple2', _0: 'textAlign', _1: 'center'},
@@ -17874,10 +17878,10 @@ var _user$project$Styles_ChordStyles$chordModalStyle = function (model) {
 									_0: {ctor: '_Tuple2', _0: 'height', _1: '90vh'},
 									_1: {
 										ctor: '::',
-										_0: {ctor: '_Tuple2', _0: 'border', _1: '1px solid #fff'},
+										_0: {ctor: '_Tuple2', _0: 'border', _1: '1px solid #333'},
 										_1: {
 											ctor: '::',
-											_0: {ctor: '_Tuple2', _0: 'backgroundColor', _1: '#000'},
+											_0: {ctor: '_Tuple2', _0: 'backgroundColor', _1: '#fff'},
 											_1: {
 												ctor: '::',
 												_0: {ctor: '_Tuple2', _0: 'opacity', _1: '0.9'},
@@ -17886,7 +17890,7 @@ var _user$project$Styles_ChordStyles$chordModalStyle = function (model) {
 													_0: {ctor: '_Tuple2', _0: 'zIndex', _1: '50'},
 													_1: {
 														ctor: '::',
-														_0: {ctor: '_Tuple2', _0: 'color', _1: '#fff'},
+														_0: {ctor: '_Tuple2', _0: 'color', _1: '#333'},
 														_1: {
 															ctor: '::',
 															_0: {ctor: '_Tuple2', _0: 'textAlign', _1: 'center'},
@@ -18071,7 +18075,7 @@ var _user$project$Styles_ChordStyles$fingerChartStyle = _elm_lang$html$Html_Attr
 var _user$project$Styles_ChordStyles$chordFunctionStyle = _elm_lang$html$Html_Attributes$style(
 	{
 		ctor: '::',
-		_0: {ctor: '_Tuple2', _0: 'color', _1: '#383F45'},
+		_0: {ctor: '_Tuple2', _0: 'color', _1: '#999'},
 		_1: {
 			ctor: '::',
 			_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '20px'},
@@ -18127,7 +18131,7 @@ var _user$project$Styles_ChordStyles$fretStyle = function (fret) {
 						_0: {ctor: '_Tuple2', _0: 'height', _1: '150px'},
 						_1: {
 							ctor: '::',
-							_0: {ctor: '_Tuple2', _0: 'borderRight', _1: '1px solid #383F45'},
+							_0: {ctor: '_Tuple2', _0: 'borderRight', _1: '1px solid #999'},
 							_1: {ctor: '[]'}
 						}
 					}
@@ -18169,13 +18173,13 @@ var _user$project$Styles_ChordStyles$nutStyle = _elm_lang$html$Html_Attributes$s
 		_0: {ctor: '_Tuple2', _0: 'width', _1: '10px'},
 		_1: {
 			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'height', _1: '153px'},
+			_0: {ctor: '_Tuple2', _0: 'height', _1: '151px'},
 			_1: {
 				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'backgroundColor', _1: '#383F45'},
+				_0: {ctor: '_Tuple2', _0: 'backgroundColor', _1: '#999'},
 				_1: {
 					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'borderBottom', _1: '1px solid #383F45'},
+					_0: {ctor: '_Tuple2', _0: 'borderBottom', _1: '1px solid #999'},
 					_1: {ctor: '[]'}
 				}
 			}
@@ -18190,7 +18194,7 @@ var _user$project$Styles_ChordStyles$stringStyle = _elm_lang$html$Html_Attribute
 			_0: {ctor: '_Tuple2', _0: 'height', _1: '30px'},
 			_1: {
 				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'borderBottom', _1: '1px solid #383F45'},
+				_0: {ctor: '_Tuple2', _0: 'borderBottom', _1: '1px solid #999'},
 				_1: {ctor: '[]'}
 			}
 		}
@@ -18204,17 +18208,25 @@ var _user$project$Styles_ChordStyles$chartStyle = _elm_lang$html$Html_Attributes
 			_0: {ctor: '_Tuple2', _0: 'width', _1: '180px'},
 			_1: {
 				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'height', _1: '153px'},
+				_0: {ctor: '_Tuple2', _0: 'height', _1: '151px'},
 				_1: {
 					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'border', _1: '1px solid #383F45'},
+					_0: {ctor: '_Tuple2', _0: 'border', _1: '1px solid #999'},
 					_1: {
 						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'borderTopLeftRadius', _1: '20px'},
+						_0: {ctor: '_Tuple2', _0: 'borderTopLeftRadius', _1: '10px'},
 						_1: {
 							ctor: '::',
-							_0: {ctor: '_Tuple2', _0: 'borderBottom', _1: 'none'},
-							_1: {ctor: '[]'}
+							_0: {ctor: '_Tuple2', _0: 'borderBottomLeftRadius', _1: '10px'},
+							_1: {
+								ctor: '::',
+								_0: {ctor: '_Tuple2', _0: 'backgroundColor', _1: '#fff'},
+								_1: {
+									ctor: '::',
+									_0: {ctor: '_Tuple2', _0: 'boxShadow', _1: '5px 5px 20px #bbb'},
+									_1: {ctor: '[]'}
+								}
+							}
 						}
 					}
 				}
@@ -20261,7 +20273,7 @@ var _user$project$Views_Chords$chordChart = function (chord) {
 										_elm_lang$html$Html$div,
 										{
 											ctor: '::',
-											_0: _user$project$Styles_ChordStyles$stringStyle,
+											_0: _user$project$Styles_ChordStyles$fretStyle(1),
 											_1: {ctor: '[]'}
 										},
 										{ctor: '[]'}),
@@ -20271,7 +20283,7 @@ var _user$project$Views_Chords$chordChart = function (chord) {
 											_elm_lang$html$Html$div,
 											{
 												ctor: '::',
-												_0: _user$project$Styles_ChordStyles$fretStyle(1),
+												_0: _user$project$Styles_ChordStyles$fretStyle(2),
 												_1: {ctor: '[]'}
 											},
 											{ctor: '[]'}),
@@ -20281,25 +20293,14 @@ var _user$project$Views_Chords$chordChart = function (chord) {
 												_elm_lang$html$Html$div,
 												{
 													ctor: '::',
-													_0: _user$project$Styles_ChordStyles$fretStyle(2),
+													_0: _user$project$Styles_ChordStyles$fretStyle(3),
 													_1: {ctor: '[]'}
 												},
 												{ctor: '[]'}),
 											_1: {
 												ctor: '::',
-												_0: A2(
-													_elm_lang$html$Html$div,
-													{
-														ctor: '::',
-														_0: _user$project$Styles_ChordStyles$fretStyle(3),
-														_1: {ctor: '[]'}
-													},
-													{ctor: '[]'}),
-												_1: {
-													ctor: '::',
-													_0: chord,
-													_1: {ctor: '[]'}
-												}
+												_0: chord,
+												_1: {ctor: '[]'}
 											}
 										}
 									}
@@ -21268,10 +21269,10 @@ var _user$project$Styles_ScalesStyles$scaleModalStyle = function (isOpen) {
 									_0: {ctor: '_Tuple2', _0: 'height', _1: '90vh'},
 									_1: {
 										ctor: '::',
-										_0: {ctor: '_Tuple2', _0: 'border', _1: '1px solid #000'},
+										_0: {ctor: '_Tuple2', _0: 'border', _1: '1px solid #333'},
 										_1: {
 											ctor: '::',
-											_0: {ctor: '_Tuple2', _0: 'backgroundColor', _1: '#CAD1D9'},
+											_0: {ctor: '_Tuple2', _0: 'backgroundColor', _1: '#fff'},
 											_1: {
 												ctor: '::',
 												_0: {ctor: '_Tuple2', _0: 'opacity', _1: '0.9'},
@@ -21280,7 +21281,7 @@ var _user$project$Styles_ScalesStyles$scaleModalStyle = function (isOpen) {
 													_0: {ctor: '_Tuple2', _0: 'zIndex', _1: '50'},
 													_1: {
 														ctor: '::',
-														_0: {ctor: '_Tuple2', _0: 'color', _1: '#000'},
+														_0: {ctor: '_Tuple2', _0: 'color', _1: '#333'},
 														_1: {
 															ctor: '::',
 															_0: {ctor: '_Tuple2', _0: 'textAlign', _1: 'center'},
@@ -23628,7 +23629,7 @@ var _user$project$Views_Scales$scalesPage = function (model) {
 		});
 };
 
-var _user$project$Styles_HomeStyles$titleStyle = F2(
+var _user$project$Styles_HomeStyles$secondaryTitleStyle = F2(
 	function (fontSize, color) {
 		return _elm_lang$html$Html_Attributes$style(
 			{
@@ -23649,13 +23650,42 @@ var _user$project$Styles_HomeStyles$titleStyle = F2(
 				}
 			});
 	});
+var _user$project$Styles_HomeStyles$titleStyle = F2(
+	function (fontSize, color) {
+		return _elm_lang$html$Html_Attributes$style(
+			{
+				ctor: '::',
+				_0: {ctor: '_Tuple2', _0: 'margin', _1: '50px auto'},
+				_1: {
+					ctor: '::',
+					_0: {ctor: '_Tuple2', _0: 'fontSize', _1: fontSize},
+					_1: {
+						ctor: '::',
+						_0: {ctor: '_Tuple2', _0: 'color', _1: color},
+						_1: {
+							ctor: '::',
+							_0: {ctor: '_Tuple2', _0: 'zIndex', _1: '50'},
+							_1: {
+								ctor: '::',
+								_0: {ctor: '_Tuple2', _0: 'boxShadow', _1: '5px 5px 20px #bbb'},
+								_1: {
+									ctor: '::',
+									_0: {ctor: '_Tuple2', _0: 'backgroundColor', _1: '#fff'},
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				}
+			});
+	});
 var _user$project$Styles_HomeStyles$homePageStyle = _elm_lang$html$Html_Attributes$style(
 	{
 		ctor: '::',
-		_0: {ctor: '_Tuple2', _0: 'textAlign', _1: 'center'},
+		_0: {ctor: '_Tuple2', _0: 'height', _1: '100vh'},
 		_1: {
 			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'paddingTop', _1: '50px'},
+			_0: {ctor: '_Tuple2', _0: 'textAlign', _1: 'center'},
 			_1: {ctor: '[]'}
 		}
 	});
@@ -23688,7 +23718,7 @@ var _user$project$Views_Home$homePage = function (model) {
 					_elm_lang$html$Html$div,
 					{
 						ctor: '::',
-						_0: A2(_user$project$Styles_HomeStyles$titleStyle, '20px', '#555'),
+						_0: A2(_user$project$Styles_HomeStyles$secondaryTitleStyle, '20px', '#888'),
 						_1: {ctor: '[]'}
 					},
 					{
@@ -23754,87 +23784,54 @@ var _user$project$Views_Home$homePage = function (model) {
 							_elm_lang$html$Html$div,
 							{
 								ctor: '::',
-								_0: A2(_user$project$Styles_HomeStyles$titleStyle, '20px', '#777'),
+								_0: A2(_user$project$Styles_HomeStyles$titleStyle, '', ''),
 								_1: {ctor: '[]'}
 							},
 							{
 								ctor: '::',
-								_0: _elm_lang$html$Html$text('This site provides an interactive experience to help guitarists get a basic understanding of important music theory concepts such as'),
-								_1: {ctor: '[]'}
-							}),
-						_1: {
-							ctor: '::',
-							_0: A2(
-								_elm_lang$html$Html$div,
-								{
-									ctor: '::',
-									_0: _elm_lang$html$Html_Attributes$style(
-										{
-											ctor: '::',
-											_0: {ctor: '_Tuple2', _0: 'color', _1: '#000'},
-											_1: {
-												ctor: '::',
-												_0: {ctor: '_Tuple2', _0: 'margin ', _1: '0 auto'},
-												_1: {
-													ctor: '::',
-													_0: {ctor: '_Tuple2', _0: 'textDecoration', _1: 'none'},
-													_1: {
-														ctor: '::',
-														_0: {ctor: '_Tuple2', _0: 'display', _1: 'flex'},
-														_1: {
-															ctor: '::',
-															_0: {ctor: '_Tuple2', _0: 'justifyContent', _1: 'center'},
-															_1: {
-																ctor: '::',
-																_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '25px'},
-																_1: {ctor: '[]'}
-															}
-														}
-													}
-												}
-											}
-										}),
-									_1: {ctor: '[]'}
-								},
-								{
+								_0: A2(
+									_elm_lang$html$Html$div,
+									{ctor: '[]'},
+									{
+										ctor: '::',
+										_0: _elm_lang$html$Html$text('This site provides an interactive experience to help guitarists get a basic understanding of important music theory concepts such as'),
+										_1: {ctor: '[]'}
+									}),
+								_1: {
 									ctor: '::',
 									_0: A2(
-										_elm_lang$html$Html$span,
+										_elm_lang$html$Html$div,
 										{
 											ctor: '::',
 											_0: _elm_lang$html$Html_Attributes$style(
 												{
 													ctor: '::',
-													_0: {ctor: '_Tuple2', _0: 'paddingRight', _1: '30px'},
-													_1: {ctor: '[]'}
+													_0: {ctor: '_Tuple2', _0: 'color', _1: '#000'},
+													_1: {
+														ctor: '::',
+														_0: {ctor: '_Tuple2', _0: 'margin ', _1: '0 auto'},
+														_1: {
+															ctor: '::',
+															_0: {ctor: '_Tuple2', _0: 'textDecoration', _1: 'none'},
+															_1: {
+																ctor: '::',
+																_0: {ctor: '_Tuple2', _0: 'display', _1: 'flex'},
+																_1: {
+																	ctor: '::',
+																	_0: {ctor: '_Tuple2', _0: 'justifyContent', _1: 'center'},
+																	_1: {
+																		ctor: '::',
+																		_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '25px'},
+																		_1: {ctor: '[]'}
+																	}
+																}
+															}
+														}
+													}
 												}),
 											_1: {ctor: '[]'}
 										},
 										{
-											ctor: '::',
-											_0: _elm_lang$html$Html$text('CHORDS'),
-											_1: {ctor: '[]'}
-										}),
-									_1: {
-										ctor: '::',
-										_0: A2(
-											_elm_lang$html$Html$span,
-											{
-												ctor: '::',
-												_0: _elm_lang$html$Html_Attributes$style(
-													{
-														ctor: '::',
-														_0: {ctor: '_Tuple2', _0: 'paddingRight', _1: '30px'},
-														_1: {ctor: '[]'}
-													}),
-												_1: {ctor: '[]'}
-											},
-											{
-												ctor: '::',
-												_0: _elm_lang$html$Html$text('SCALES'),
-												_1: {ctor: '[]'}
-											}),
-										_1: {
 											ctor: '::',
 											_0: A2(
 												_elm_lang$html$Html$span,
@@ -23850,7 +23847,7 @@ var _user$project$Views_Home$homePage = function (model) {
 												},
 												{
 													ctor: '::',
-													_0: _elm_lang$html$Html$text('NOTES OF THE FRETBOARD'),
+													_0: _elm_lang$html$Html$text('CHORDS'),
 													_1: {ctor: '[]'}
 												}),
 											_1: {
@@ -23869,101 +23866,141 @@ var _user$project$Views_Home$homePage = function (model) {
 													},
 													{
 														ctor: '::',
-														_0: _elm_lang$html$Html$text('RHYTHM & STRUMMING'),
+														_0: _elm_lang$html$Html$text('SCALES'),
 														_1: {ctor: '[]'}
 													}),
-												_1: {ctor: '[]'}
-											}
-										}
-									}
-								}),
-							_1: {
-								ctor: '::',
-								_0: A2(
-									_elm_lang$html$Html$div,
-									{ctor: '[]'},
-									{
-										ctor: '::',
-										_0: A2(
-											_elm_lang$html$Html$span,
-											{ctor: '[]'},
-											{
-												ctor: '::',
-												_0: _elm_lang$html$Html$text('Click the '),
-												_1: {ctor: '[]'}
-											}),
-										_1: {
-											ctor: '::',
-											_0: A2(
-												_elm_lang$html$Html$span,
-												{
+												_1: {
 													ctor: '::',
-													_0: _elm_lang$html$Html_Attributes$style(
+													_0: A2(
+														_elm_lang$html$Html$span,
 														{
 															ctor: '::',
-															_0: {ctor: '_Tuple2', _0: 'border', _1: '1px solid #E8175D'},
-															_1: {
-																ctor: '::',
-																_0: {ctor: '_Tuple2', _0: 'borderRadius', _1: '10px'},
-																_1: {
+															_0: _elm_lang$html$Html_Attributes$style(
+																{
 																	ctor: '::',
-																	_0: {ctor: '_Tuple2', _0: 'padding', _1: '0 5px'},
-																	_1: {
-																		ctor: '::',
-																		_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '14px'},
-																		_1: {
-																			ctor: '::',
-																			_0: {ctor: '_Tuple2', _0: 'color', _1: '#E8175D'},
-																			_1: {ctor: '[]'}
-																		}
-																	}
-																}
-															}
+																	_0: {ctor: '_Tuple2', _0: 'paddingRight', _1: '30px'},
+																	_1: {ctor: '[]'}
+																}),
+															_1: {ctor: '[]'}
+														},
+														{
+															ctor: '::',
+															_0: _elm_lang$html$Html$text('NOTES OF THE FRETBOARD'),
+															_1: {ctor: '[]'}
 														}),
-													_1: {ctor: '[]'}
-												},
-												{
-													ctor: '::',
-													_0: _elm_lang$html$Html$text('?'),
-													_1: {ctor: '[]'}
-												}),
-											_1: {
+													_1: {
+														ctor: '::',
+														_0: A2(
+															_elm_lang$html$Html$span,
+															{
+																ctor: '::',
+																_0: _elm_lang$html$Html_Attributes$style(
+																	{
+																		ctor: '::',
+																		_0: {ctor: '_Tuple2', _0: 'paddingRight', _1: '30px'},
+																		_1: {ctor: '[]'}
+																	}),
+																_1: {ctor: '[]'}
+															},
+															{
+																ctor: '::',
+																_0: _elm_lang$html$Html$text('RHYTHM & STRUMMING'),
+																_1: {ctor: '[]'}
+															}),
+														_1: {ctor: '[]'}
+													}
+												}
+											}
+										}),
+									_1: {
+										ctor: '::',
+										_0: A2(
+											_elm_lang$html$Html$div,
+											{ctor: '[]'},
+											{
 												ctor: '::',
 												_0: A2(
 													_elm_lang$html$Html$span,
 													{ctor: '[]'},
 													{
 														ctor: '::',
-														_0: _elm_lang$html$Html$text(' logo on each page to read important concepts. '),
+														_0: _elm_lang$html$Html$text('Click the '),
 														_1: {ctor: '[]'}
 													}),
-												_1: {ctor: '[]'}
-											}
-										}
-									}),
-								_1: {
-									ctor: '::',
-									_0: A2(
-										_elm_lang$html$Html$div,
-										{
+												_1: {
+													ctor: '::',
+													_0: A2(
+														_elm_lang$html$Html$span,
+														{
+															ctor: '::',
+															_0: _elm_lang$html$Html_Attributes$style(
+																{
+																	ctor: '::',
+																	_0: {ctor: '_Tuple2', _0: 'border', _1: '1px solid #E8175D'},
+																	_1: {
+																		ctor: '::',
+																		_0: {ctor: '_Tuple2', _0: 'borderRadius', _1: '10px'},
+																		_1: {
+																			ctor: '::',
+																			_0: {ctor: '_Tuple2', _0: 'padding', _1: '0 5px'},
+																			_1: {
+																				ctor: '::',
+																				_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '14px'},
+																				_1: {
+																					ctor: '::',
+																					_0: {ctor: '_Tuple2', _0: 'color', _1: '#E8175D'},
+																					_1: {ctor: '[]'}
+																				}
+																			}
+																		}
+																	}
+																}),
+															_1: {ctor: '[]'}
+														},
+														{
+															ctor: '::',
+															_0: _elm_lang$html$Html$text('?'),
+															_1: {ctor: '[]'}
+														}),
+													_1: {
+														ctor: '::',
+														_0: A2(
+															_elm_lang$html$Html$span,
+															{ctor: '[]'},
+															{
+																ctor: '::',
+																_0: _elm_lang$html$Html$text(' logo on each page to read important concepts. '),
+																_1: {ctor: '[]'}
+															}),
+														_1: {ctor: '[]'}
+													}
+												}
+											}),
+										_1: {
 											ctor: '::',
-											_0: _elm_lang$html$Html_Attributes$style(
+											_0: A2(
+												_elm_lang$html$Html$div,
 												{
 													ctor: '::',
-													_0: {ctor: '_Tuple2', _0: 'color', _1: ' #777'},
+													_0: _elm_lang$html$Html_Attributes$style(
+														{
+															ctor: '::',
+															_0: {ctor: '_Tuple2', _0: 'color', _1: ' #777'},
+															_1: {ctor: '[]'}
+														}),
+													_1: {ctor: '[]'}
+												},
+												{
+													ctor: '::',
+													_0: _elm_lang$html$Html$text('Use the menu on the right to select a topic or select a musical key.  Click on any chords or scales to hear how they sound.'),
 													_1: {ctor: '[]'}
 												}),
 											_1: {ctor: '[]'}
-										},
-										{
-											ctor: '::',
-											_0: _elm_lang$html$Html$text('Use the menu on the right to select a topic or select a musical key.  Click on any chords or scales to hear how they sound.'),
-											_1: {ctor: '[]'}
-										}),
-									_1: {ctor: '[]'}
+										}
+									}
 								}
-							}
-						}
+							}),
+						_1: {ctor: '[]'}
 					}
 				}
 			}
@@ -24035,10 +24072,10 @@ var _user$project$Styles_StrumStyles$strumModalStyle = function (model) {
 									_0: {ctor: '_Tuple2', _0: 'height', _1: '90vh'},
 									_1: {
 										ctor: '::',
-										_0: {ctor: '_Tuple2', _0: 'border', _1: '1px solid #000'},
+										_0: {ctor: '_Tuple2', _0: 'border', _1: '1px solid #333'},
 										_1: {
 											ctor: '::',
-											_0: {ctor: '_Tuple2', _0: 'backgroundColor', _1: '#CAD1D9'},
+											_0: {ctor: '_Tuple2', _0: 'backgroundColor', _1: '#fff'},
 											_1: {
 												ctor: '::',
 												_0: {ctor: '_Tuple2', _0: 'opacity', _1: '0.95'},
@@ -24047,7 +24084,7 @@ var _user$project$Styles_StrumStyles$strumModalStyle = function (model) {
 													_0: {ctor: '_Tuple2', _0: 'zIndex', _1: '50'},
 													_1: {
 														ctor: '::',
-														_0: {ctor: '_Tuple2', _0: 'color', _1: '#000'},
+														_0: {ctor: '_Tuple2', _0: 'color', _1: '#333'},
 														_1: {
 															ctor: '::',
 															_0: {ctor: '_Tuple2', _0: 'textAlign', _1: 'center'},
@@ -24100,7 +24137,7 @@ var _user$project$Styles_StrumStyles$beatStyle = _elm_lang$html$Html_Attributes$
 		_0: {ctor: '_Tuple2', _0: 'position', _1: 'absolute'},
 		_1: {
 			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'top', _1: '200px'},
+			_0: {ctor: '_Tuple2', _0: 'top', _1: '225px'},
 			_1: {
 				ctor: '::',
 				_0: {ctor: '_Tuple2', _0: 'left', _1: '0'},
@@ -24114,9 +24151,20 @@ var _user$project$Styles_StrumStyles$beatStyle = _elm_lang$html$Html_Attributes$
 	});
 var _user$project$Styles_StrumStyles$strumArrowStyle = F2(
 	function (num, mover) {
-		var rotate = function () {
+		var shadow = function () {
 			var _p1 = mover;
 			switch (_p1) {
+				case 1:
+					return '-5px -15px 20px -10px #bbb';
+				case 2:
+					return '5px 15px 20px -10px #bbb';
+				default:
+					return '0';
+			}
+		}();
+		var rotate = function () {
+			var _p2 = mover;
+			switch (_p2) {
 				case 1:
 					return '180deg';
 				case 2:
@@ -24126,8 +24174,8 @@ var _user$project$Styles_StrumStyles$strumArrowStyle = F2(
 			}
 		}();
 		var opacity = function () {
-			var _p2 = num;
-			switch (_p2) {
+			var _p3 = num;
+			switch (_p3) {
 				case 1:
 					return '1';
 				case 2:
@@ -24142,36 +24190,48 @@ var _user$project$Styles_StrumStyles$strumArrowStyle = F2(
 				_0: {ctor: '_Tuple2', _0: 'width', _1: '100px'},
 				_1: {
 					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'height', _1: '200px'},
+					_0: {ctor: '_Tuple2', _0: 'height', _1: '180px'},
 					_1: {
 						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'margin', _1: '10px'},
+						_0: {ctor: '_Tuple2', _0: 'margin', _1: '10px 10px 20px'},
 						_1: {
 							ctor: '::',
 							_0: {ctor: '_Tuple2', _0: 'opacity', _1: opacity},
 							_1: {
 								ctor: '::',
-								_0: {ctor: '_Tuple2', _0: 'paddingTop', _1: '100px'},
+								_0: {ctor: '_Tuple2', _0: 'paddingTop', _1: '50px'},
 								_1: {
 									ctor: '::',
 									_0: {ctor: '_Tuple2', _0: 'display', _1: 'flex'},
 									_1: {
 										ctor: '::',
-										_0: {ctor: '_Tuple2', _0: 'justifyContent', _1: 'center'},
+										_0: {ctor: '_Tuple2', _0: 'borderRadius', _1: '10px'},
 										_1: {
 											ctor: '::',
-											_0: {
-												ctor: '_Tuple2',
-												_0: 'transform',
-												_1: A2(
-													_elm_lang$core$Basics_ops['++'],
-													'rotate(',
-													A2(_elm_lang$core$Basics_ops['++'], rotate, ') translateY(-40px)'))
-											},
+											_0: {ctor: '_Tuple2', _0: 'justifyContent', _1: 'center'},
 											_1: {
 												ctor: '::',
-												_0: {ctor: '_Tuple2', _0: 'transition', _1: 'opacity 0.4s ease'},
-												_1: {ctor: '[]'}
+												_0: {
+													ctor: '_Tuple2',
+													_0: 'transform',
+													_1: A2(
+														_elm_lang$core$Basics_ops['++'],
+														'rotate(',
+														A2(_elm_lang$core$Basics_ops['++'], rotate, ')'))
+												},
+												_1: {
+													ctor: '::',
+													_0: {ctor: '_Tuple2', _0: 'transition', _1: 'all 0.4s ease'},
+													_1: {
+														ctor: '::',
+														_0: {ctor: '_Tuple2', _0: 'boxShadow', _1: shadow},
+														_1: {
+															ctor: '::',
+															_0: {ctor: '_Tuple2', _0: 'backgroundColor', _1: '#fff'},
+															_1: {ctor: '[]'}
+														}
+													}
+												}
 											}
 										}
 									}
@@ -24209,7 +24269,7 @@ var _user$project$Styles_StrumStyles$strumPageStyle = _elm_lang$html$Html_Attrib
 				_0: {ctor: '_Tuple2', _0: 'flexDirection', _1: 'column'},
 				_1: {
 					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'paddingTop', _1: '200px'},
+					_0: {ctor: '_Tuple2', _0: 'paddingTop', _1: '175px'},
 					_1: {
 						ctor: '::',
 						_0: {ctor: '_Tuple2', _0: 'alignItems', _1: 'center'},
@@ -25097,6 +25157,24 @@ var _user$project$Views_Strum$strumPage = function (model) {
 		});
 };
 
+var _user$project$Styles_MainStyles$signatureStyle = _elm_lang$html$Html_Attributes$style(
+	{
+		ctor: '::',
+		_0: {ctor: '_Tuple2', _0: 'position', _1: 'absolute'},
+		_1: {
+			ctor: '::',
+			_0: {ctor: '_Tuple2', _0: 'bottom', _1: '10px'},
+			_1: {
+				ctor: '::',
+				_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '12px'},
+				_1: {
+					ctor: '::',
+					_0: {ctor: '_Tuple2', _0: 'color', _1: '#000'},
+					_1: {ctor: '[]'}
+				}
+			}
+		}
+	});
 var _user$project$Styles_MainStyles$highlight = {
 	ctor: '::',
 	_0: {ctor: '_Tuple2', _0: 'color', _1: '#E9175D'},
@@ -25327,13 +25405,13 @@ var _user$project$Styles_MainStyles$navMenuStyle = function (model) {
 									_0: {ctor: '_Tuple2', _0: 'width', _1: '250px'},
 									_1: {
 										ctor: '::',
-										_0: {ctor: '_Tuple2', _0: 'height', _1: '100vh'},
+										_0: {ctor: '_Tuple2', _0: 'height', _1: '100%'},
 										_1: {
 											ctor: '::',
 											_0: {ctor: '_Tuple2', _0: 'padding', _1: '15px'},
 											_1: {
 												ctor: '::',
-												_0: {ctor: '_Tuple2', _0: 'backgroundColor', _1: '#f8f8fa'},
+												_0: {ctor: '_Tuple2', _0: 'backgroundColor', _1: '#fff'},
 												_1: {
 													ctor: '::',
 													_0: {ctor: '_Tuple2', _0: 'transition', _1: 'all 0.5s'},
@@ -25418,6 +25496,40 @@ var _user$project$Views_MainViews$page = function (model) {
 				});
 	}
 };
+var _user$project$Views_MainViews$signature = A2(
+	_elm_lang$html$Html$div,
+	{
+		ctor: '::',
+		_0: _user$project$Styles_MainStyles$signatureStyle,
+		_1: {ctor: '[]'}
+	},
+	{
+		ctor: '::',
+		_0: A4(
+			_jinjor$elm_inline_hover$InlineHover$hover,
+			_user$project$Styles_MainStyles$highlight,
+			_elm_lang$html$Html$a,
+			{
+				ctor: '::',
+				_0: _elm_lang$html$Html_Attributes$href('https://www.github.com/fedreg'),
+				_1: {
+					ctor: '::',
+					_0: _elm_lang$html$Html_Attributes$style(
+						{
+							ctor: '::',
+							_0: {ctor: '_Tuple2', _0: 'color', _1: '#000'},
+							_1: {ctor: '[]'}
+						}),
+					_1: {ctor: '[]'}
+				}
+			},
+			{
+				ctor: '::',
+				_0: _elm_lang$html$Html$text('Built 2017 by FedReg (v. 0.1)'),
+				_1: {ctor: '[]'}
+			}),
+		_1: {ctor: '[]'}
+	});
 var _user$project$Views_MainViews$modalIcon = function (model) {
 	return A2(
 		_elm_lang$html$Html$div,
@@ -25670,7 +25782,11 @@ var _user$project$Views_MainViews$nav = function (model) {
 											_1: {
 												ctor: '::',
 												_0: _user$project$Views_MainViews$keyListView(model),
-												_1: {ctor: '[]'}
+												_1: {
+													ctor: '::',
+													_0: _user$project$Views_MainViews$signature,
+													_1: {ctor: '[]'}
+												}
 											}
 										}
 									}

@@ -36,7 +36,7 @@ fretNoteStyle color =
         , ( "padding", "14px 5px" )
         , ( "textTransform", "uppercase" )
         , ( "color", color )
-        , ( "fontSize", "12px" )
+        , ( "fontSize", "14px" )
         , ( "textAlign", "center" )
         , ( "borderBottom", "1px solid #aaa" )
         , ( "borderCollapse", "collapse" )
@@ -107,6 +107,7 @@ notationNoteStyle offset =
         , ( "left", "50%" )
         , ( "backgroundColor", "#5CE6CD" )
         , ( "transition", "all 0.5s ease" )
+        , ( "border", "1px solid #666" )
         , ( "zIndex", "1" )
         ]
 
@@ -119,7 +120,7 @@ notationAccidentalStyle offset visibility =
         , ( "marginBottom", "-10px" )
         , ( "bottom", (toString offset) ++ "px" )
         , ( "left", "44%" )
-        , ( "color", "#5CE6CD" )
+        , ( "color", "#666" )
         , ( "opacity", visibility )
         , ( "transition", "all 0.5s ease" )
         , ( "zIndex", "1" )
@@ -199,11 +200,11 @@ fretboardModalStyle model =
                 , ( "left", "50px" )
                 , ( "width", "90vw" )
                 , ( "height", "90vh" )
-                , ( "border", "1px solid #000" )
-                , ( "backgroundColor", "#CAD1D9" )
+                , ( "border", "1px solid #333" )
+                , ( "backgroundColor", "#fff" )
                 , ( "opacity", "0.9" )
                 , ( "zIndex", "50" )
-                , ( "color", "#000" )
+                , ( "color", "#333" )
                 , ( "textAlign", "center" )
                 ]
     in

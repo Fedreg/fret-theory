@@ -15,9 +15,9 @@ navMenuStyle model =
                 , ( "right", "0" )
                 , ( "transform", "translateX(0)" )
                 , ( "width", "250px" )
-                , ( "height", "100vh" )
+                , ( "height", "100%" )
                 , ( "padding", "15px" )
-                , ( "backgroundColor", "#f8f8fa" )
+                , ( "backgroundColor", "#fff" )
                 , ( "transition", "all 0.5s" )
                 , ( "zIndex", "10000" )
                 , ( "borderLeft", "1px solid " ++ color )
@@ -144,3 +144,13 @@ highlight =
     , ( "backgroundColor", "#E9175D" )
     , ( "transition", "color 0.3s ease" )
     ]
+
+
+signatureStyle : Attribute msg
+signatureStyle =
+    style
+        [ ( "position", "absolute" )
+        , ( "bottom", "10px" )
+        , ( "fontSize", "12px" )
+        , ( "color", "#000" )
+        ]

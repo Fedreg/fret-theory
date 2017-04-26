@@ -11,7 +11,7 @@ strumPageStyle =
         [ ( "height", "100vh" )
         , ( "display", "flex" )
         , ( "flexDirection", "column" )
-        , ( "paddingTop", "200px" )
+        , ( "paddingTop", "175px" )
         , ( "alignItems", "center" )
         ]
 
@@ -49,17 +49,31 @@ strumArrowStyle num mover =
 
                 _ ->
                     "0"
+
+        shadow =
+            case mover of
+                1 ->
+                    "-5px -15px 20px -10px #bbb"
+
+                2 ->
+                    "5px 15px 20px -10px #bbb"
+
+                _ ->
+                    "0"
     in
         style
             [ ( "width", "100px" )
-            , ( "height", "200px" )
-            , ( "margin", "10px" )
+            , ( "height", "180px" )
+            , ( "margin", "10px 10px 20px" )
             , ( "opacity", opacity )
-            , ( "paddingTop", "100px" )
+            , ( "paddingTop", "50px" )
             , ( "display", "flex" )
+            , ( "borderRadius", "10px" )
             , ( "justifyContent", "center" )
-            , ( "transform", "rotate(" ++ rotate ++ ") translateY(-40px)" )
-            , ( "transition", "opacity 0.4s ease" )
+            , ( "transform", "rotate(" ++ rotate ++ ")" )
+            , ( "transition", "all 0.4s ease" )
+            , ( "boxShadow", shadow )
+            , ( "backgroundColor", "#fff" )
             ]
 
 
@@ -67,7 +81,7 @@ beatStyle : Attribute msg
 beatStyle =
     style
         [ ( "position", "absolute" )
-        , ( "top", "200px" )
+        , ( "top", "225px" )
         , ( "left", "0" )
         , ( "paddingRight", "200px" )
         ]
@@ -94,11 +108,11 @@ strumModalStyle model =
                 , ( "left", "50px" )
                 , ( "width", "90vw" )
                 , ( "height", "90vh" )
-                , ( "border", "1px solid #000" )
-                , ( "backgroundColor", "#CAD1D9" )
+                , ( "border", "1px solid #333" )
+                , ( "backgroundColor", "#fff" )
                 , ( "opacity", "0.95" )
                 , ( "zIndex", "50" )
-                , ( "color", "#000" )
+                , ( "color", "#333" )
                 , ( "textAlign", "center" )
                 , ( "overflow", "scroll" )
                 ]
