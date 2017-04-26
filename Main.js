@@ -23651,13 +23651,13 @@ var _user$project$Styles_HomeStyles$titleStyle = F2(
 		return _elm_lang$html$Html_Attributes$style(
 			{
 				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'margin', _1: '0 auto'},
+				_0: {ctor: '_Tuple2', _0: 'margin', _1: '0 auto 25px'},
 				_1: {
 					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'height', _1: '200px'},
+					_0: {ctor: '_Tuple2', _0: 'height', _1: '150px'},
 					_1: {
 						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'paddingTop', _1: '50px'},
+						_0: {ctor: '_Tuple2', _0: 'paddingTop', _1: '30px'},
 						_1: {
 							ctor: '::',
 							_0: {ctor: '_Tuple2', _0: 'fontSize', _1: fontSize},

@@ -15,9 +15,9 @@ homePageStyle =
 titleStyle : String -> String -> Attribute msg
 titleStyle fontSize color =
     style
-        [ ( "margin", "0 auto" )
-        , ( "height", "200px" )
-        , ("paddingTop", "50px")
+        [ ( "margin", "0 auto 25px" )
+        , ( "height", "150px" )
+        , ( "paddingTop", "30px" )
         , ( "fontSize", fontSize )
         , ( "color", color )
         , ( "zIndex", "50" )
