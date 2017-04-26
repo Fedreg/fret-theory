@@ -33,7 +33,7 @@ nav model =
             , hover highlight a [ href (Routing.chordsPath model.musKey), navItemStyle ] [ text "CHORDS" ]
             , hover highlight a [ href (Routing.fretboardPath model.musKey), navItemStyle ] [ text "FRETBOARD" ]
             , hover highlight a [ href Routing.strumPath, navItemStyle ] [ text "STRUMMING" ]
-            , div [ style [ ( "marginTop", "100px" ), ( "color", "#E91750" ) ] ] [ text "SELECT KEY:" ]
+            , div [ navItemStyle, style [ ( "marginTop", "100px" ), ( "color", "#E91750" ) ] ] [ text "SELECT KEY:" ]
             , keyListView model
             , signature
             ]
@@ -53,10 +53,10 @@ keyListView : Model -> Html Msg
 keyListView model =
     let
         keyOptions key =
-            hover highlight span [ keyListStyle, onClick <| ChangeKey key ] [ text key ]
+            hover highlight span [ keyListStyle model.navMenuOpen, onClick <| ChangeKey key ] [ text key ]
     in
-        div [ keyListContainerStyle ]
-            [ div [ textContainerStyle ]
+        div [ keyListContainerStyle model.navMenuOpen ]
+            [ div [ textContainerStyle model.navMenuOpen ]
                 (List.map keyOptions keyList)
             ]
 

@@ -102,12 +102,12 @@ printNotation notes =
         baseStyles fill =
             style
                 [ ( "position", "absolute" )
-                , ( "bottom", "-11px" )
+                , ( "bottom", "-10px" )
                 , ( "left", "-5px" )
-                , ( "width", "15px" )
+                , ( "width", "14px" )
                 , ( "height", "15px" )
                 , ( "transform", "skew(-20deg)" )
-                , ( "border", "2px solid #999" )
+                , ( "border", "2px solid #555" )
                 , ( "borderRadius", "10px" )
                 , ( "backgroundColor", fill )
                 ]
@@ -116,7 +116,7 @@ printNotation notes =
             style
                 [ ( "position", "relative" )
                 , ( "height", "35px" )
-                , ( "borderRight", "2px solid #999" )
+                , ( "borderRight", "2px solid #555" )
                 ]
 
         strumNotationFlagStyle flag =
@@ -129,7 +129,7 @@ printNotation notes =
                 , ( "transform", "skew(30deg)" )
                 , ( "visibility", flag )
                 , ( "fontSize", "20px" )
-                , ( "color", "#999" )
+                , ( "color", "#555" )
                 ]
 
         strumNotationDotStyle =
@@ -137,12 +137,8 @@ printNotation notes =
                 [ ( "position", "absolute" )
                 , ( "bottom", "-30px" )
                 , ( "right", "-15px" )
-                  --, ( "width", "15px" )
-                  --, ( "height", "15px" )
-                  --, ( "transform", "skew(30deg)" )
-                  --, ( "visibility", flag )
                 , ( "fontSize", "50px" )
-                , ( "color", "#999" )
+                , ( "color", "#555" )
                 ]
 
         markup fill dot flag =
@@ -157,13 +153,13 @@ printNotation notes =
                 div [] []
 
             1 ->
-                markup "#999" "" "visible"
+                markup "#555" "" "visible"
 
             2 ->
-                markup "#999" "" "hidden"
+                markup "#555" "" "hidden"
 
             3 ->
-                markup "#999" "." "hidden"
+                markup "#555" "." "hidden"
 
             4 ->
                 markup "none" "" "hidden"

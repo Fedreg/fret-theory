@@ -20,7 +20,7 @@ homePage model =
             , chordChartModel model 4 "V" .v .v
             , chordChartModel model 0 "I" .i .i
             ]
-        , div [ titleStyle "" "" ]
+        , div [ secondaryTitleStyle "" "" ]
             [ div [] [ text "This site provides an interactive experience to help guitarists get a basic understanding of important music theory concepts such as" ]
             , div [ style [ ( "color", "#000" ), ( "margin ", "0 auto" ), ( "textDecoration", "none" ), ( "display", "flex" ), ( "justifyContent", "center" ), ( "fontSize", "25px" ) ] ]
                 [ span [ style [ ( "paddingRight", "30px" ) ] ] [ text "CHORDS" ]

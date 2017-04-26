@@ -8,7 +8,7 @@ import Logic.Types exposing (Model, Msg(..))
 navMenuStyle : Model -> Attribute Msg
 navMenuStyle model =
     let
-        baseStyles difference color =
+        baseStyles difference color pad =
             style
                 [ ( "position", "absolute" )
                 , ( "top", "0" )
@@ -16,7 +16,7 @@ navMenuStyle model =
                 , ( "transform", "translateX(0)" )
                 , ( "width", "250px" )
                 , ( "height", "100%" )
-                , ( "padding", "15px" )
+                , ( "padding", pad )
                 , ( "backgroundColor", "#fff" )
                 , ( "transition", "all 0.5s" )
                 , ( "zIndex", "10000" )
@@ -27,10 +27,10 @@ navMenuStyle model =
     in
         case model.navMenuOpen of
             True ->
-                baseStyles "translateX(0)" "#777"
+                baseStyles "translateX(0)" "#999" "15px"
 
             False ->
-                baseStyles "translateX(250px)" "#fff"
+                baseStyles "translateX(210px)" "#bbb" "15px 10px"
 
 
 navIconStyle : Model -> Attribute msg
@@ -40,10 +40,11 @@ navIconStyle model =
             style
                 [ ( "position", "fixed" )
                 , ( "top", "20px" )
-                , ( "left", "-40px" )
+                , ( "left", "10px" )
                 , ( "width", "25px" )
                 , ( "transition", "all 0.5s" )
                 , ( "cursor", "pointer" )
+                , ( "zIndex", "10001" )
                 , ( "transform", difference )
                 ]
     in
@@ -73,41 +74,73 @@ navItemStyle : Attribute msg
 navItemStyle =
     style
         [ ( "display", "block" )
-        , ( "fontSize", "12px" )
         , ( "margin", "0 0 8px" )
         , ( "padding", "5px" )
+        , ( "fontSize", "12px" )
+        , ( "textAlign", "right" )
         , ( "color", "#000" )
         ]
 
 
-keyListStyle : Attribute msg
-keyListStyle =
-    style
-        [ ( "width", "50px" )
-        , ( "margin", "5px 5px 5px 0" )
-        , ( "borderRadius", "25px" )
-        , ( "cursor", "pointer" )
-        , ( "lineHeight", "50px" )
-        , ( "backgroundColor", "#CAD1D9" )
-        , ( "color", "#000" )
-        ]
+keyListStyle : Bool -> Attribute msg
+keyListStyle navOpen =
+    let
+        baseStyles width margin lh br font =
+            style
+                [ ( "width", width )
+                , ( "margin", margin )
+                , ( "borderRadius", br )
+                , ( "cursor", "pointer" )
+                , ( "lineHeight", lh )
+                , ( "backgroundColor", "#CAD1D9" )
+                , ( "color", "#000" )
+                , ( "fontSize", font )
+                , ( "transition", "all 0.4s ease" )
+                ]
+    in
+        case navOpen of
+            True ->
+                baseStyles "50px" "5px 5px 5px 0" "50px" "25px" "16px"
+
+            False ->
+                baseStyles "20px" "2px" "20px" "5px" "12px"
 
 
-keyListContainerStyle : Attribute msg
-keyListContainerStyle =
-    style
-        [ ( "width", "240px" )
-        , ( "height", "400px" )
-        , ( "textAlign", "center" )
-        ]
+keyListContainerStyle : Bool -> Attribute msg
+keyListContainerStyle navOpen =
+    let
+        baseStyles margin width height =
+            style
+                [ ( "marginTop", margin )
+                , ( "width", width )
+                , ( "height", height )
+                , ( "textAlign", "center" )
+                , ( "transition", "all 0.4s ease" )
+                ]
+    in
+        case navOpen of
+            True ->
+                baseStyles "0" "240px" "400px"
+
+            False ->
+                baseStyles "-225px" "50px" "600px"
 
 
-textContainerStyle : Attribute msg
-textContainerStyle =
-    style
-        [ ( "display", "flex" )
-        , ( "flexFlow", "row wrap" )
-        ]
+textContainerStyle : Bool -> Attribute msg
+textContainerStyle navOpen =
+    let
+        baseStyles flexDir =
+            style
+                [ ( "display", "flex" )
+                , ( "flexFlow", flexDir )
+                ]
+    in
+        case navOpen of
+            True ->
+                baseStyles "row wrap"
+
+            False ->
+                baseStyles "column nowrap"
 
 
 modalIconStyle : Model -> Attribute msg
@@ -116,8 +149,8 @@ modalIconStyle model =
         baseStyles difference =
             style
                 [ ( "position", "absolute" )
-                , ( "top", "17px" )
-                , ( "right", "50px" )
+                , ( "top", "45px" )
+                , ( "right", "8px" )
                 , ( "width", "20px" )
                 , ( "height", "20px" )
                 , ( "color", "#E8175D" )
@@ -128,14 +161,15 @@ modalIconStyle model =
                 , ( "borderRadius", "10px" )
                 , ( "transition", "all 0.5s" )
                 , ( "transform", difference )
+                , ( "zIndex", "10001" )
                 ]
     in
         case model.navMenuOpen of
             True ->
-                baseStyles "translateX(-250px)"
+                baseStyles "translateX(-210px) translateY(10px)"
 
             False ->
-                baseStyles "translateX(0)"
+                baseStyles "translateX(0) translateY(0)"
 
 
 highlight : List ( String, String )
@@ -151,6 +185,7 @@ signatureStyle =
     style
         [ ( "position", "absolute" )
         , ( "bottom", "10px" )
+        , ( "right", "10px" )
         , ( "fontSize", "12px" )
         , ( "color", "#000" )
         ]
