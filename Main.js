@@ -18220,12 +18220,8 @@ var _user$project$Styles_ChordStyles$chartStyle = _elm_lang$html$Html_Attributes
 							_0: {ctor: '_Tuple2', _0: 'borderBottomLeftRadius', _1: '10px'},
 							_1: {
 								ctor: '::',
-								_0: {ctor: '_Tuple2', _0: 'backgroundColor', _1: '#fff'},
-								_1: {
-									ctor: '::',
-									_0: {ctor: '_Tuple2', _0: 'boxShadow', _1: '5px 5px 20px #bbb'},
-									_1: {ctor: '[]'}
-								}
+								_0: {ctor: '_Tuple2', _0: 'boxShadow', _1: '5px 5px 20px #bbb'},
+								_1: {ctor: '[]'}
 							}
 						}
 					}
