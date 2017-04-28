@@ -63,6 +63,8 @@ arrow =
             [ hr [ baseStyles "1px" "100px" "-20px" "25px" ] [] ]
 
 
+{-| Determines the duration of the rhythm note below strum arrows.
+-}
 calculateNotation : List Int -> Int -> List Int -> List Int
 calculateNotation list index notes =
     let
@@ -184,9 +186,9 @@ strumModal model =
             , h5 [ style [ ( "color", "#E8175D" ) ] ] [ text "3.  Use the random strum generator to create a practice pattern choose from one of the patterns below." ]
             , h5 [ style [ ( "color", "#E8175D" ) ] ] [ text "Be sure that your hand is always moving in the correct direction (down of 1 3 5 7, up on 2 4 6 8)" ]
             , h4 [] [ text "COMMON STRUM PATTERNS:" ]
-            , strumGroup "0.5,0.5" [ 1, 2, 1, 1, 2, 1, 1, 1 ]
-            , strumGroup "0.5,0.5" [ 1, 1, 1, 2, 1, 1, 1, 2 ]
-            , strumGroup "0.5,0.5" [ 1, 1, 2, 1, 1, 2, 1, 1 ]
-            , strumGroup "0.5,0.5" [ 2, 1, 2, 1, 2, 1, 2, 1 ]
+            , strumGroup "0.75,0.75" [ 1, 2, 1, 1, 2, 1, 1, 1 ]
+            , strumGroup "0.75,0.75" [ 1, 1, 1, 2, 1, 1, 1, 2 ]
+            , strumGroup "0.75,0.75" [ 1, 1, 2, 1, 1, 2, 1, 1 ]
+            , strumGroup "0.75,0.75" [ 2, 1, 2, 1, 2, 1, 2, 1 ]
             ]
         ]

@@ -16318,26 +16318,38 @@ var _user$project$Styles_FretboardStyles$closeModalIcon = _elm_lang$html$Html_At
 		_0: {ctor: '_Tuple2', _0: 'position', _1: 'absolute'},
 		_1: {
 			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'top', _1: '5px'},
+			_0: {ctor: '_Tuple2', _0: 'top', _1: '15px'},
 			_1: {
 				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'right', _1: '5px'},
+				_0: {ctor: '_Tuple2', _0: 'right', _1: '15px'},
 				_1: {
 					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'width', _1: '50px'},
+					_0: {ctor: '_Tuple2', _0: 'width', _1: '20px'},
 					_1: {
 						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'padding', _1: '2px'},
+						_0: {ctor: '_Tuple2', _0: 'height', _1: '20px'},
 						_1: {
 							ctor: '::',
-							_0: {ctor: '_Tuple2', _0: 'border', _1: '1px solid #E91750'},
+							_0: {ctor: '_Tuple2', _0: 'lineHeight', _1: '15px'},
 							_1: {
 								ctor: '::',
-								_0: {ctor: '_Tuple2', _0: 'cursor', _1: 'pointer'},
+								_0: {ctor: '_Tuple2', _0: 'paddingLeft', _1: '5px'},
 								_1: {
 									ctor: '::',
-									_0: {ctor: '_Tuple2', _0: 'color', _1: '#E91750'},
-									_1: {ctor: '[]'}
+									_0: {ctor: '_Tuple2', _0: 'border', _1: '1px solid #E91750'},
+									_1: {
+										ctor: '::',
+										_0: {ctor: '_Tuple2', _0: 'borderRadius', _1: '10px'},
+										_1: {
+											ctor: '::',
+											_0: {ctor: '_Tuple2', _0: 'cursor', _1: 'pointer'},
+											_1: {
+												ctor: '::',
+												_0: {ctor: '_Tuple2', _0: 'color', _1: '#E91750'},
+												_1: {ctor: '[]'}
+											}
+										}
+									}
 								}
 							}
 						}
@@ -16357,10 +16369,10 @@ var _user$project$Styles_FretboardStyles$fretboardModalStyle = function (model) 
 					_0: {ctor: '_Tuple2', _0: 'position', _1: 'absolute'},
 					_1: {
 						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'top', _1: '50px'},
+						_0: {ctor: '_Tuple2', _0: 'top', _1: 'calc(10vh / 2)'},
 						_1: {
 							ctor: '::',
-							_0: {ctor: '_Tuple2', _0: 'left', _1: '50px'},
+							_0: {ctor: '_Tuple2', _0: 'left', _1: 'calc(10vw / 2)'},
 							_1: {
 								ctor: '::',
 								_0: {ctor: '_Tuple2', _0: 'width', _1: '90vw'},
@@ -16369,13 +16381,13 @@ var _user$project$Styles_FretboardStyles$fretboardModalStyle = function (model) 
 									_0: {ctor: '_Tuple2', _0: 'height', _1: '90vh'},
 									_1: {
 										ctor: '::',
-										_0: {ctor: '_Tuple2', _0: 'border', _1: '1px solid #333'},
+										_0: {ctor: '_Tuple2', _0: 'border', _1: '1px solid #999'},
 										_1: {
 											ctor: '::',
-											_0: {ctor: '_Tuple2', _0: 'backgroundColor', _1: '#fff'},
+											_0: {ctor: '_Tuple2', _0: 'borderRadius', _1: '20px'},
 											_1: {
 												ctor: '::',
-												_0: {ctor: '_Tuple2', _0: 'opacity', _1: '0.9'},
+												_0: {ctor: '_Tuple2', _0: 'backgroundColor', _1: '#fff'},
 												_1: {
 													ctor: '::',
 													_0: {ctor: '_Tuple2', _0: 'zIndex', _1: '50'},
@@ -16385,7 +16397,11 @@ var _user$project$Styles_FretboardStyles$fretboardModalStyle = function (model) 
 														_1: {
 															ctor: '::',
 															_0: {ctor: '_Tuple2', _0: 'textAlign', _1: 'center'},
-															_1: {ctor: '[]'}
+															_1: {
+																ctor: '::',
+																_0: {ctor: '_Tuple2', _0: 'overflow', _1: 'scroll'},
+																_1: {ctor: '[]'}
+															}
 														}
 													}
 												}
@@ -16827,7 +16843,7 @@ var _user$project$Views_Fretboard$fretboardModal = function (model) {
 				},
 				{
 					ctor: '::',
-					_0: _elm_lang$html$Html$text('close'),
+					_0: _elm_lang$html$Html$text('x'),
 					_1: {ctor: '[]'}
 				}),
 			_1: {
@@ -17630,7 +17646,7 @@ var _user$project$Views_Fretboard$fretboardPage = function (model) {
 			_elm_lang$html$Html$div,
 			{
 				ctor: '::',
-				_0: _user$project$Styles_FretboardStyles$fretNoteStyle('#ccc'),
+				_0: _user$project$Styles_FretboardStyles$fretNoteStyle('#eee'),
 				_1: {
 					ctor: '::',
 					_0: _elm_lang$html$Html_Events$onClick(
@@ -17827,26 +17843,38 @@ var _user$project$Styles_ChordStyles$closeModalIcon = _elm_lang$html$Html_Attrib
 		_0: {ctor: '_Tuple2', _0: 'position', _1: 'absolute'},
 		_1: {
 			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'top', _1: '5px'},
+			_0: {ctor: '_Tuple2', _0: 'top', _1: '15px'},
 			_1: {
 				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'right', _1: '5px'},
+				_0: {ctor: '_Tuple2', _0: 'right', _1: '15px'},
 				_1: {
 					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'width', _1: '50px'},
+					_0: {ctor: '_Tuple2', _0: 'width', _1: '20px'},
 					_1: {
 						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'padding', _1: '2px'},
+						_0: {ctor: '_Tuple2', _0: 'height', _1: '20px'},
 						_1: {
 							ctor: '::',
-							_0: {ctor: '_Tuple2', _0: 'border', _1: '1px solid #E91750'},
+							_0: {ctor: '_Tuple2', _0: 'lineHeight', _1: '15px'},
 							_1: {
 								ctor: '::',
-								_0: {ctor: '_Tuple2', _0: 'cursor', _1: 'pointer'},
+								_0: {ctor: '_Tuple2', _0: 'paddingLeft', _1: '5px'},
 								_1: {
 									ctor: '::',
-									_0: {ctor: '_Tuple2', _0: 'color', _1: '#E91750'},
-									_1: {ctor: '[]'}
+									_0: {ctor: '_Tuple2', _0: 'border', _1: '1px solid #E91750'},
+									_1: {
+										ctor: '::',
+										_0: {ctor: '_Tuple2', _0: 'borderRadius', _1: '10px'},
+										_1: {
+											ctor: '::',
+											_0: {ctor: '_Tuple2', _0: 'cursor', _1: 'pointer'},
+											_1: {
+												ctor: '::',
+												_0: {ctor: '_Tuple2', _0: 'color', _1: '#E91750'},
+												_1: {ctor: '[]'}
+											}
+										}
+									}
 								}
 							}
 						}
@@ -17866,10 +17894,10 @@ var _user$project$Styles_ChordStyles$chordModalStyle = function (model) {
 					_0: {ctor: '_Tuple2', _0: 'position', _1: 'absolute'},
 					_1: {
 						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'top', _1: '50px'},
+						_0: {ctor: '_Tuple2', _0: 'top', _1: 'calc(10vh / 2)'},
 						_1: {
 							ctor: '::',
-							_0: {ctor: '_Tuple2', _0: 'left', _1: '50px'},
+							_0: {ctor: '_Tuple2', _0: 'left', _1: 'calc(10vw / 2)'},
 							_1: {
 								ctor: '::',
 								_0: {ctor: '_Tuple2', _0: 'width', _1: '90vw'},
@@ -17878,13 +17906,13 @@ var _user$project$Styles_ChordStyles$chordModalStyle = function (model) {
 									_0: {ctor: '_Tuple2', _0: 'height', _1: '90vh'},
 									_1: {
 										ctor: '::',
-										_0: {ctor: '_Tuple2', _0: 'border', _1: '1px solid #333'},
+										_0: {ctor: '_Tuple2', _0: 'border', _1: '1px solid #999'},
 										_1: {
 											ctor: '::',
-											_0: {ctor: '_Tuple2', _0: 'backgroundColor', _1: '#fff'},
+											_0: {ctor: '_Tuple2', _0: 'borderRadius', _1: '20px'},
 											_1: {
 												ctor: '::',
-												_0: {ctor: '_Tuple2', _0: 'opacity', _1: '0.9'},
+												_0: {ctor: '_Tuple2', _0: 'backgroundColor', _1: '#fff'},
 												_1: {
 													ctor: '::',
 													_0: {ctor: '_Tuple2', _0: 'zIndex', _1: '50'},
@@ -17894,7 +17922,11 @@ var _user$project$Styles_ChordStyles$chordModalStyle = function (model) {
 														_1: {
 															ctor: '::',
 															_0: {ctor: '_Tuple2', _0: 'textAlign', _1: 'center'},
-															_1: {ctor: '[]'}
+															_1: {
+																ctor: '::',
+																_0: {ctor: '_Tuple2', _0: 'overflow', _1: 'scroll'},
+																_1: {ctor: '[]'}
+															}
 														}
 													}
 												}
@@ -20032,7 +20064,7 @@ var _user$project$Views_Chords$chordModal = function (model) {
 				},
 				{
 					ctor: '::',
-					_0: _elm_lang$html$Html$text('close'),
+					_0: _elm_lang$html$Html$text('x'),
 					_1: {ctor: '[]'}
 				}),
 			_1: {
@@ -21218,26 +21250,38 @@ var _user$project$Styles_ScalesStyles$closeModalIcon = _elm_lang$html$Html_Attri
 		_0: {ctor: '_Tuple2', _0: 'position', _1: 'absolute'},
 		_1: {
 			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'top', _1: '5px'},
+			_0: {ctor: '_Tuple2', _0: 'top', _1: '15px'},
 			_1: {
 				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'right', _1: '5px'},
+				_0: {ctor: '_Tuple2', _0: 'right', _1: '15px'},
 				_1: {
 					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'width', _1: '50px'},
+					_0: {ctor: '_Tuple2', _0: 'width', _1: '20px'},
 					_1: {
 						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'padding', _1: '2px'},
+						_0: {ctor: '_Tuple2', _0: 'height', _1: '20px'},
 						_1: {
 							ctor: '::',
-							_0: {ctor: '_Tuple2', _0: 'border', _1: '1px solid #E91750'},
+							_0: {ctor: '_Tuple2', _0: 'lineHeight', _1: '15px'},
 							_1: {
 								ctor: '::',
-								_0: {ctor: '_Tuple2', _0: 'cursor', _1: 'pointer'},
+								_0: {ctor: '_Tuple2', _0: 'paddingLeft', _1: '5px'},
 								_1: {
 									ctor: '::',
-									_0: {ctor: '_Tuple2', _0: 'color', _1: '#E91750'},
-									_1: {ctor: '[]'}
+									_0: {ctor: '_Tuple2', _0: 'border', _1: '1px solid #E91750'},
+									_1: {
+										ctor: '::',
+										_0: {ctor: '_Tuple2', _0: 'borderRadius', _1: '10px'},
+										_1: {
+											ctor: '::',
+											_0: {ctor: '_Tuple2', _0: 'cursor', _1: 'pointer'},
+											_1: {
+												ctor: '::',
+												_0: {ctor: '_Tuple2', _0: 'color', _1: '#E91750'},
+												_1: {ctor: '[]'}
+											}
+										}
+									}
 								}
 							}
 						}
@@ -21246,7 +21290,7 @@ var _user$project$Styles_ScalesStyles$closeModalIcon = _elm_lang$html$Html_Attri
 			}
 		}
 	});
-var _user$project$Styles_ScalesStyles$scaleModalStyle = function (isOpen) {
+var _user$project$Styles_ScalesStyles$scaleModalStyle = function (model) {
 	var baseStyles = function (display) {
 		return _elm_lang$html$Html_Attributes$style(
 			{
@@ -21257,10 +21301,10 @@ var _user$project$Styles_ScalesStyles$scaleModalStyle = function (isOpen) {
 					_0: {ctor: '_Tuple2', _0: 'position', _1: 'absolute'},
 					_1: {
 						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'top', _1: '50px'},
+						_0: {ctor: '_Tuple2', _0: 'top', _1: 'calc(10vh / 2)'},
 						_1: {
 							ctor: '::',
-							_0: {ctor: '_Tuple2', _0: 'left', _1: '50px'},
+							_0: {ctor: '_Tuple2', _0: 'left', _1: 'calc(10vw / 2)'},
 							_1: {
 								ctor: '::',
 								_0: {ctor: '_Tuple2', _0: 'width', _1: '90vw'},
@@ -21269,13 +21313,13 @@ var _user$project$Styles_ScalesStyles$scaleModalStyle = function (isOpen) {
 									_0: {ctor: '_Tuple2', _0: 'height', _1: '90vh'},
 									_1: {
 										ctor: '::',
-										_0: {ctor: '_Tuple2', _0: 'border', _1: '1px solid #333'},
+										_0: {ctor: '_Tuple2', _0: 'border', _1: '1px solid #999'},
 										_1: {
 											ctor: '::',
-											_0: {ctor: '_Tuple2', _0: 'backgroundColor', _1: '#fff'},
+											_0: {ctor: '_Tuple2', _0: 'borderRadius', _1: '20px'},
 											_1: {
 												ctor: '::',
-												_0: {ctor: '_Tuple2', _0: 'opacity', _1: '0.9'},
+												_0: {ctor: '_Tuple2', _0: 'backgroundColor', _1: '#fff'},
 												_1: {
 													ctor: '::',
 													_0: {ctor: '_Tuple2', _0: 'zIndex', _1: '50'},
@@ -21285,7 +21329,11 @@ var _user$project$Styles_ScalesStyles$scaleModalStyle = function (isOpen) {
 														_1: {
 															ctor: '::',
 															_0: {ctor: '_Tuple2', _0: 'textAlign', _1: 'center'},
-															_1: {ctor: '[]'}
+															_1: {
+																ctor: '::',
+																_0: {ctor: '_Tuple2', _0: 'overflow', _1: 'scroll'},
+																_1: {ctor: '[]'}
+															}
 														}
 													}
 												}
@@ -21299,7 +21347,7 @@ var _user$project$Styles_ScalesStyles$scaleModalStyle = function (isOpen) {
 				}
 			});
 	};
-	var _p0 = isOpen;
+	var _p0 = model.modalOpen;
 	if (_p0 === true) {
 		return baseStyles('block');
 	} else {
@@ -21770,15 +21818,11 @@ var _user$project$Views_Scales$aeolianMode = {
 	},
 	g: {
 		ctor: '::',
-		_0: 7,
+		_0: 8,
 		_1: {
 			ctor: '::',
-			_0: 8,
-			_1: {
-				ctor: '::',
-				_0: 10,
-				_1: {ctor: '[]'}
-			}
+			_0: 10,
+			_1: {ctor: '[]'}
 		}
 	},
 	d: {
@@ -21787,7 +21831,11 @@ var _user$project$Views_Scales$aeolianMode = {
 		_1: {
 			ctor: '::',
 			_0: 10,
-			_1: {ctor: '[]'}
+			_1: {
+				ctor: '::',
+				_0: 12,
+				_1: {ctor: '[]'}
+			}
 		}
 	},
 	a: {
@@ -21894,7 +21942,7 @@ var _user$project$Views_Scales$scalesModal = function (model) {
 		_elm_lang$html$Html$div,
 		{
 			ctor: '::',
-			_0: _user$project$Styles_ScalesStyles$scaleModalStyle(model.modalOpen),
+			_0: _user$project$Styles_ScalesStyles$scaleModalStyle(model),
 			_1: {ctor: '[]'}
 		},
 		{
@@ -21912,7 +21960,7 @@ var _user$project$Views_Scales$scalesModal = function (model) {
 				},
 				{
 					ctor: '::',
-					_0: _elm_lang$html$Html$text('close'),
+					_0: _elm_lang$html$Html$text('x'),
 					_1: {ctor: '[]'}
 				}),
 			_1: {
@@ -23336,7 +23384,7 @@ var _user$project$Views_Scales$aeolianModeView = function (model) {
 								_elm_lang$html$Html$div,
 								{
 									ctor: '::',
-									_0: _user$project$Styles_ScalesStyles$fretNumberStyle('300px'),
+									_0: _user$project$Styles_ScalesStyles$fretNumberStyle('320px'),
 									_1: {ctor: '[]'}
 								},
 								A2(
@@ -24021,10 +24069,10 @@ var _user$project$Styles_StrumStyles$closeModalIcon = _elm_lang$html$Html_Attrib
 		_0: {ctor: '_Tuple2', _0: 'position', _1: 'absolute'},
 		_1: {
 			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'top', _1: '5px'},
+			_0: {ctor: '_Tuple2', _0: 'top', _1: '15px'},
 			_1: {
 				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'right', _1: '5px'},
+				_0: {ctor: '_Tuple2', _0: 'right', _1: '15px'},
 				_1: {
 					ctor: '::',
 					_0: {ctor: '_Tuple2', _0: 'width', _1: '20px'},
@@ -24042,11 +24090,15 @@ var _user$project$Styles_StrumStyles$closeModalIcon = _elm_lang$html$Html_Attrib
 									_0: {ctor: '_Tuple2', _0: 'border', _1: '1px solid #E91750'},
 									_1: {
 										ctor: '::',
-										_0: {ctor: '_Tuple2', _0: 'cursor', _1: 'pointer'},
+										_0: {ctor: '_Tuple2', _0: 'borderRadius', _1: '10px'},
 										_1: {
 											ctor: '::',
-											_0: {ctor: '_Tuple2', _0: 'color', _1: '#E91750'},
-											_1: {ctor: '[]'}
+											_0: {ctor: '_Tuple2', _0: 'cursor', _1: 'pointer'},
+											_1: {
+												ctor: '::',
+												_0: {ctor: '_Tuple2', _0: 'color', _1: '#E91750'},
+												_1: {ctor: '[]'}
+											}
 										}
 									}
 								}
@@ -24068,10 +24120,10 @@ var _user$project$Styles_StrumStyles$strumModalStyle = function (model) {
 					_0: {ctor: '_Tuple2', _0: 'position', _1: 'absolute'},
 					_1: {
 						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'top', _1: '50px'},
+						_0: {ctor: '_Tuple2', _0: 'top', _1: 'calc(10vh / 2)'},
 						_1: {
 							ctor: '::',
-							_0: {ctor: '_Tuple2', _0: 'left', _1: '50px'},
+							_0: {ctor: '_Tuple2', _0: 'left', _1: 'calc(10vw / 2)'},
 							_1: {
 								ctor: '::',
 								_0: {ctor: '_Tuple2', _0: 'width', _1: '90vw'},
@@ -24080,13 +24132,13 @@ var _user$project$Styles_StrumStyles$strumModalStyle = function (model) {
 									_0: {ctor: '_Tuple2', _0: 'height', _1: '90vh'},
 									_1: {
 										ctor: '::',
-										_0: {ctor: '_Tuple2', _0: 'border', _1: '1px solid #333'},
+										_0: {ctor: '_Tuple2', _0: 'border', _1: '1px solid #999'},
 										_1: {
 											ctor: '::',
-											_0: {ctor: '_Tuple2', _0: 'backgroundColor', _1: '#fff'},
+											_0: {ctor: '_Tuple2', _0: 'borderRadius', _1: '20px'},
 											_1: {
 												ctor: '::',
-												_0: {ctor: '_Tuple2', _0: 'opacity', _1: '0.95'},
+												_0: {ctor: '_Tuple2', _0: 'backgroundColor', _1: '#fff'},
 												_1: {
 													ctor: '::',
 													_0: {ctor: '_Tuple2', _0: 'zIndex', _1: '50'},
@@ -24271,7 +24323,7 @@ var _user$project$Styles_StrumStyles$strumPageStyle = _elm_lang$html$Html_Attrib
 		_0: {ctor: '_Tuple2', _0: 'height', _1: '100vh'},
 		_1: {
 			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'width', _1: '97vw'},
+			_0: {ctor: '_Tuple2', _0: 'width', _1: '95vw'},
 			_1: {
 				ctor: '::',
 				_0: {ctor: '_Tuple2', _0: 'display', _1: 'flex'},
@@ -24963,7 +25015,7 @@ var _user$project$Views_Strum$strumModal = function (model) {
 																	ctor: '::',
 																	_0: A2(
 																		_user$project$Views_Strum$strumGroup,
-																		'0.5,0.5',
+																		'0.75,0.75',
 																		{
 																			ctor: '::',
 																			_0: 1,
@@ -25001,7 +25053,7 @@ var _user$project$Views_Strum$strumModal = function (model) {
 																		ctor: '::',
 																		_0: A2(
 																			_user$project$Views_Strum$strumGroup,
-																			'0.5,0.5',
+																			'0.75,0.75',
 																			{
 																				ctor: '::',
 																				_0: 1,
@@ -25039,7 +25091,7 @@ var _user$project$Views_Strum$strumModal = function (model) {
 																			ctor: '::',
 																			_0: A2(
 																				_user$project$Views_Strum$strumGroup,
-																				'0.5,0.5',
+																				'0.75,0.75',
 																				{
 																					ctor: '::',
 																					_0: 1,
@@ -25077,7 +25129,7 @@ var _user$project$Views_Strum$strumModal = function (model) {
 																				ctor: '::',
 																				_0: A2(
 																					_user$project$Views_Strum$strumGroup,
-																					'0.5,0.5',
+																					'0.75,0.75',
 																					{
 																						ctor: '::',
 																						_0: 2,

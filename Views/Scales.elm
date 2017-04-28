@@ -68,7 +68,7 @@ aeolianModeView model =
             , stringView
             , div [ fretNumberStyle "460px" ] (List.map markup <| data .one)
             , div [ fretNumberStyle "380px" ] (List.map markup <| data .two)
-            , div [ fretNumberStyle "300px" ] (List.map markup <| data .three)
+            , div [ fretNumberStyle "320px" ] (List.map markup <| data .three)
             , div [ fretNumberStyle "240px" ] (List.map markup <| data .four)
             , div [ fretNumberStyle "150px" ] (List.map markup <| data .five)
             , div [ fretNumberStyle "50px" ] (List.map markup <| data .six)
@@ -352,8 +352,8 @@ scaleNameMinor model scaleName =
 
 scalesModal : Model -> Html Msg
 scalesModal model =
-    div [ scaleModalStyle model.modalOpen ]
-        [ div [ closeModalIcon, onClick ShowModal ] [ text "close" ]
+    div [ scaleModalStyle model ]
+        [ div [ closeModalIcon, onClick ShowModal ] [ text "x" ]
         , div [] [ text ("Scale Page. Instructions Coming Soon! Key: " ++ model.musKey) ]
         ]
 
@@ -375,8 +375,8 @@ aeolianMode : ScaleData
 aeolianMode =
     { e = [ 8, 10, 11 ]
     , b = [ 8, 9, 11 ]
-    , g = [ 7, 8, 10 ]
-    , d = [ 8, 10 ]
+    , g = [ 8, 10 ]
+    , d = [ 8, 10, 12 ]
     , a = [ 8, 10, 11 ]
     , e6 = [ 8, 10, 11 ]
     }

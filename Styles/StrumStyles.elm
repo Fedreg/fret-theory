@@ -9,7 +9,7 @@ strumPageStyle : Attribute msg
 strumPageStyle =
     style
         [ ( "height", "100vh" )
-        , ( "width", "97vw" )
+        , ( "width", "95vw" )
         , ( "display", "flex" )
         , ( "flexDirection", "column" )
         , ( "paddingTop", "175px" )
@@ -105,13 +105,13 @@ strumModalStyle model =
             style
                 [ ( "display", display )
                 , ( "position", "absolute" )
-                , ( "top", "50px" )
-                , ( "left", "50px" )
+                , ( "top", "calc(10vh / 2)" )
+                , ( "left", "calc(10vw / 2)" )
                 , ( "width", "90vw" )
                 , ( "height", "90vh" )
-                , ( "border", "1px solid #333" )
+                , ( "border", "1px solid #999" )
+                , ( "borderRadius", "20px" )
                 , ( "backgroundColor", "#fff" )
-                , ( "opacity", "0.95" )
                 , ( "zIndex", "50" )
                 , ( "color", "#333" )
                 , ( "textAlign", "center" )
@@ -130,13 +130,14 @@ closeModalIcon : Attribute msg
 closeModalIcon =
     style
         [ ( "position", "absolute" )
-        , ( "top", "5px" )
-        , ( "right", "5px" )
+        , ( "top", "15px" )
+        , ( "right", "15px" )
         , ( "width", "20px" )
         , ( "height", "20px" )
         , ( "lineHeight", "15px" )
         , ( "paddingLeft", "5px" )
         , ( "border", "1px solid #E91750" )
+        , ( "borderRadius", "10px" )
         , ( "cursor", "pointer" )
         , ( "color", "#E91750" )
         ]

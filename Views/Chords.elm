@@ -233,7 +233,7 @@ playbackSpeedSlider message model =
 
 chordModal model =
     div [ chordModalStyle model ]
-        [ div [ closeModalIcon, onClick ShowModal ] [ text "close" ]
+        [ div [ closeModalIcon, onClick ShowModal ] [ text "x" ]
         , div [] [ text ("Chord Page. Instructions Coming Soon! Key: " ++ model.musKey) ]
         ]
 

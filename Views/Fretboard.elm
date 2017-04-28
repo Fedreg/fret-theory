@@ -47,7 +47,7 @@ fretboardPage model =
                 if List.member note (notesInKey model.musKey) then
                     hover highlight div [ fretNoteStyle "#222", onClick (DrawNote index stringNo sharp) ] [ text note ]
                 else
-                    hover highlight div [ fretNoteStyle "#ccc", onClick (DrawNote index stringNo sharp) ] [ text note ]
+                    hover highlight div [ fretNoteStyle "#eee", onClick (DrawNote index stringNo sharp) ] [ text note ]
 
         fretNumberMarkers num =
             div [ fretNumberStyle ] [ text <| toString num ]
@@ -86,6 +86,8 @@ fretNumbers =
     List.range 0 12
 
 
+{-| Data on how to display notes of the fretboard per string.  Each list entry contains STING_NO/FRET/NOTE_NAME: ex 5/0/a.
+-}
 stringE =
     [ "6/0/e", "6/1/f", "6/1/f#", "6/2/g", "6/2/g#", "6/3/a", "6/3/a#", "6/4/b", "6/5/c", "6/5/c#", "6/6/d", "6/6/d#", "6/7/e" ]
 
@@ -118,7 +120,7 @@ revealNotes =
     ]
 
 
-{-| Draws the musical staff and ledge lines.
+{-| Draws the musical staff and ledger lines.
 --
 -}
 fretNotation : Model -> Html Msg
@@ -236,6 +238,6 @@ notesInKey key =
 fretboardModal : Model -> Html Msg
 fretboardModal model =
     div [ fretboardModalStyle model ]
-        [ div [ closeModalIcon, onClick ShowModal ] [ text "close" ]
+        [ div [ closeModalIcon, onClick ShowModal ] [ text "x" ]
         , div [] [ text ("Fretboard Page. Instructions Coming Soon! Key: " ++ model.musKey) ]
         ]
