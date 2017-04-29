@@ -10,7 +10,7 @@ navMenuStyle model =
     let
         baseStyles difference color pad =
             style
-                [ ( "position", "absolute" )
+                [ ( "position", "fixed" )
                 , ( "top", "0" )
                 , ( "right", "0" )
                 , ( "transform", "translateX(0)" )
@@ -109,21 +109,20 @@ keyListStyle navOpen =
 keyListContainerStyle : Bool -> Attribute msg
 keyListContainerStyle navOpen =
     let
-        baseStyles margin width height =
+        baseStyles margin width =
             style
                 [ ( "marginTop", margin )
                 , ( "width", width )
-                , ( "height", height )
                 , ( "textAlign", "center" )
                 , ( "transition", "all 0.4s ease" )
                 ]
     in
         case navOpen of
             True ->
-                baseStyles "0" "240px" "400px"
+                baseStyles "0" "240px"
 
             False ->
-                baseStyles "-225px" "50px" "600px"
+                baseStyles "-250px" "50px"
 
 
 textContainerStyle : Bool -> Attribute msg
@@ -150,7 +149,7 @@ modalIconStyle model =
             style
                 [ ( "position", "absolute" )
                 , ( "top", "45px" )
-                , ( "right", "10px" )
+                , ( "rleft", "6px" )
                 , ( "width", "20px" )
                 , ( "height", "20px" )
                 , ( "color", "#E8175D" )
@@ -166,7 +165,7 @@ modalIconStyle model =
     in
         case model.navMenuOpen of
             True ->
-                baseStyles "translateX(-210px) translateY(10px)"
+                baseStyles "translateX(-7px) translateY(10px)"
 
             False ->
                 baseStyles "translateX(0) translateY(0)"

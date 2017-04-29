@@ -37,6 +37,7 @@ init location =
           , pitchShift = 0
           , modalOpen = False
           , strumArrow = [ 1, 2, 1, 1, 2, 1, 1, 1 ]
+          , fingerPickPattern = { a = [], b = [] }
           }
         , Cmd.none
         )
@@ -56,11 +57,44 @@ update msg model =
         ShowModal ->
             { model | modalOpen = not model.modalOpen } ! []
 
-        Randomize ->
-            ( model, Random.generate StrumArrowDirection <| Random.list 8 (Random.int 1 2) )
+        Randomize hi lo ->
+            case model.route of
+                StrumPage ->
+                    ( model, Random.generate StrumArrowDirection <| Random.list 8 (Random.int hi lo) )
+
+                FingerPickingPage ->
+                    ( model
+                    , Cmd.batch
+                        [ Random.generate FingerPickPatternBuilderA <| Random.list 8 (Random.int hi lo)
+                        , Random.generate FingerPickPatternBuilderB <| Random.list 8 (Random.int hi lo)
+                        ]
+                    )
+
+                _ ->
+                    (model ! [])
 
         StrumArrowDirection numList ->
             { model | strumArrow = numList } ! []
+
+        FingerPickPatternBuilderA numList ->
+            let
+                pattern =
+                    model.fingerPickPattern
+
+                newPattern =
+                    { pattern | a = numList }
+            in
+                { model | fingerPickPattern = newPattern } ! []
+
+        FingerPickPatternBuilderB numList ->
+            let
+                pattern =
+                    model.fingerPickPattern
+
+                newPattern =
+                    { pattern | b = numList }
+            in
+                { model | fingerPickPattern = newPattern } ! []
 
         OnLocationChange location ->
             let
