@@ -15,6 +15,7 @@ type alias Model =
     , pitchShift : Int
     , modalOpen : Bool
     , strumArrow : List Int
+    , fingerPickPattern : { a : List Int, b : List Int }
     }
 
 
@@ -94,7 +95,9 @@ type Msg
     | ShowNavMenu
     | ShowModal
     | StrumArrowDirection (List Int)
-    | Randomize
+    | FingerPickPatternBuilderA (List Int)
+    | FingerPickPatternBuilderB (List Int)
+    | Randomize Int Int
 
 
 type Route
@@ -104,3 +107,4 @@ type Route
     | NotFoundPage
     | HomePage
     | StrumPage
+    | FingerPickingPage

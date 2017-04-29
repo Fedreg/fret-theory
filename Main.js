@@ -11770,7 +11770,9 @@ var _user$project$Logic_Types$Model = function (a) {
 								return function (i) {
 									return function (j) {
 										return function (k) {
-											return {route: a, musKey: b, index: c, currentChord: d, notePosition: e, showAccidental: f, sliderValue: g, navMenuOpen: h, pitchShift: i, modalOpen: j, strumArrow: k};
+											return function (l) {
+												return {route: a, musKey: b, index: c, currentChord: d, notePosition: e, showAccidental: f, sliderValue: g, navMenuOpen: h, pitchShift: i, modalOpen: j, strumArrow: k, fingerPickPattern: l};
+											};
 										};
 									};
 								};
@@ -11810,7 +11812,16 @@ var _user$project$Logic_Types$PlayBundle = F2(
 	function (a, b) {
 		return {note: a, waveType: b};
 	});
-var _user$project$Logic_Types$Randomize = {ctor: 'Randomize'};
+var _user$project$Logic_Types$Randomize = F2(
+	function (a, b) {
+		return {ctor: 'Randomize', _0: a, _1: b};
+	});
+var _user$project$Logic_Types$FingerPickPatternBuilderB = function (a) {
+	return {ctor: 'FingerPickPatternBuilderB', _0: a};
+};
+var _user$project$Logic_Types$FingerPickPatternBuilderA = function (a) {
+	return {ctor: 'FingerPickPatternBuilderA', _0: a};
+};
 var _user$project$Logic_Types$StrumArrowDirection = function (a) {
 	return {ctor: 'StrumArrowDirection', _0: a};
 };
@@ -11836,6 +11847,7 @@ var _user$project$Logic_Types$SendNotes = {ctor: 'SendNotes'};
 var _user$project$Logic_Types$ChangeKey = function (a) {
 	return {ctor: 'ChangeKey', _0: a};
 };
+var _user$project$Logic_Types$FingerPickingPage = {ctor: 'FingerPickingPage'};
 var _user$project$Logic_Types$StrumPage = {ctor: 'StrumPage'};
 var _user$project$Logic_Types$HomePage = {ctor: 'HomePage'};
 var _user$project$Logic_Types$NotFoundPage = {ctor: 'NotFoundPage'};
@@ -16192,6 +16204,7 @@ var _user$project$Logic_Audio$notes = function (key) {
 	}
 };
 
+var _user$project$Logic_Routing$fingerPickingPath = '#fingerpicking/';
 var _user$project$Logic_Routing$homePath = '#home/';
 var _user$project$Logic_Routing$strumPath = '#strum/';
 var _user$project$Logic_Routing$fretboardPath = function (key) {
@@ -16237,6 +16250,14 @@ var _user$project$Logic_Routing$modelUpdateOnHash = F2(
 					A2(
 						_evancz$url_parser$UrlParser_ops['</>'],
 						_evancz$url_parser$UrlParser$s('strum'),
+						_evancz$url_parser$UrlParser$string),
+					location);
+			case 'FingerPickingPage':
+				return A2(
+					_evancz$url_parser$UrlParser$parseHash,
+					A2(
+						_evancz$url_parser$UrlParser_ops['</>'],
+						_evancz$url_parser$UrlParser$s('fingerpicking'),
 						_evancz$url_parser$UrlParser$string),
 					location);
 			case 'HomePage':
@@ -16297,7 +16318,14 @@ var _user$project$Logic_Routing$matchers = _evancz$url_parser$UrlParser$oneOf(
 							_evancz$url_parser$UrlParser$map,
 							_user$project$Logic_Types$StrumPage,
 							_evancz$url_parser$UrlParser$s('strum')),
-						_1: {ctor: '[]'}
+						_1: {
+							ctor: '::',
+							_0: A2(
+								_evancz$url_parser$UrlParser$map,
+								_user$project$Logic_Types$FingerPickingPage,
+								_evancz$url_parser$UrlParser$s('fingerpicking')),
+							_1: {ctor: '[]'}
+						}
 					}
 				}
 			}
@@ -21298,7 +21326,7 @@ var _user$project$Styles_ScalesStyles$scaleModalStyle = function (model) {
 				_0: {ctor: '_Tuple2', _0: 'display', _1: display},
 				_1: {
 					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'position', _1: 'absolute'},
+					_0: {ctor: '_Tuple2', _0: 'position', _1: 'fixed'},
 					_1: {
 						ctor: '::',
 						_0: {ctor: '_Tuple2', _0: 'top', _1: 'calc(10vh / 2)'},
@@ -25203,7 +25231,8 @@ var _user$project$Views_Strum$strumPage = function (model) {
 						_0: _user$project$Styles_StrumStyles$buttonStyle,
 						_1: {
 							ctor: '::',
-							_0: _elm_lang$html$Html_Events$onClick(_user$project$Logic_Types$Randomize),
+							_0: _elm_lang$html$Html_Events$onClick(
+								A2(_user$project$Logic_Types$Randomize, 1, 2)),
 							_1: {ctor: '[]'}
 						}
 					},
@@ -25214,7 +25243,923 @@ var _user$project$Views_Strum$strumPage = function (model) {
 					}),
 				_1: {
 					ctor: '::',
-					_0: _user$project$Views_Strum$strumModal(model),
+					_0: A2(
+						_elm_lang$html$Html$div,
+						{ctor: '[]'},
+						{
+							ctor: '::',
+							_0: _elm_lang$html$Html$text(
+								_elm_lang$core$Basics$toString(model.route)),
+							_1: {ctor: '[]'}
+						}),
+					_1: {
+						ctor: '::',
+						_0: _user$project$Views_Strum$strumModal(model),
+						_1: {ctor: '[]'}
+					}
+				}
+			}
+		});
+};
+
+var _user$project$Styles_FingerPickStyles$closeModalIcon = _elm_lang$html$Html_Attributes$style(
+	{
+		ctor: '::',
+		_0: {ctor: '_Tuple2', _0: 'position', _1: 'fixed'},
+		_1: {
+			ctor: '::',
+			_0: {ctor: '_Tuple2', _0: 'top', _1: '15px'},
+			_1: {
+				ctor: '::',
+				_0: {ctor: '_Tuple2', _0: 'right', _1: '15px'},
+				_1: {
+					ctor: '::',
+					_0: {ctor: '_Tuple2', _0: 'width', _1: '20px'},
+					_1: {
+						ctor: '::',
+						_0: {ctor: '_Tuple2', _0: 'height', _1: '20px'},
+						_1: {
+							ctor: '::',
+							_0: {ctor: '_Tuple2', _0: 'lineHeight', _1: '15px'},
+							_1: {
+								ctor: '::',
+								_0: {ctor: '_Tuple2', _0: 'paddingLeft', _1: '5px'},
+								_1: {
+									ctor: '::',
+									_0: {ctor: '_Tuple2', _0: 'border', _1: '1px solid #E91750'},
+									_1: {
+										ctor: '::',
+										_0: {ctor: '_Tuple2', _0: 'borderRadius', _1: '10px'},
+										_1: {
+											ctor: '::',
+											_0: {ctor: '_Tuple2', _0: 'cursor', _1: 'pointer'},
+											_1: {
+												ctor: '::',
+												_0: {ctor: '_Tuple2', _0: 'color', _1: '#E91750'},
+												_1: {ctor: '[]'}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	});
+var _user$project$Styles_FingerPickStyles$fingerPickModalStyle = function (model) {
+	var baseStyles = function (display) {
+		return _elm_lang$html$Html_Attributes$style(
+			{
+				ctor: '::',
+				_0: {ctor: '_Tuple2', _0: 'display', _1: display},
+				_1: {
+					ctor: '::',
+					_0: {ctor: '_Tuple2', _0: 'position', _1: 'absolute'},
+					_1: {
+						ctor: '::',
+						_0: {ctor: '_Tuple2', _0: 'top', _1: 'calc(10vh / 2)'},
+						_1: {
+							ctor: '::',
+							_0: {ctor: '_Tuple2', _0: 'left', _1: 'calc(10vw / 2)'},
+							_1: {
+								ctor: '::',
+								_0: {ctor: '_Tuple2', _0: 'width', _1: '90vw'},
+								_1: {
+									ctor: '::',
+									_0: {ctor: '_Tuple2', _0: 'height', _1: '90vh'},
+									_1: {
+										ctor: '::',
+										_0: {ctor: '_Tuple2', _0: 'border', _1: '1px solid #999'},
+										_1: {
+											ctor: '::',
+											_0: {ctor: '_Tuple2', _0: 'borderRadius', _1: '20px'},
+											_1: {
+												ctor: '::',
+												_0: {ctor: '_Tuple2', _0: 'backgroundColor', _1: '#fff'},
+												_1: {
+													ctor: '::',
+													_0: {ctor: '_Tuple2', _0: 'zIndex', _1: '50'},
+													_1: {
+														ctor: '::',
+														_0: {ctor: '_Tuple2', _0: 'color', _1: '#333'},
+														_1: {
+															ctor: '::',
+															_0: {ctor: '_Tuple2', _0: 'textAlign', _1: 'center'},
+															_1: {
+																ctor: '::',
+																_0: {ctor: '_Tuple2', _0: 'overflow', _1: 'scroll'},
+																_1: {ctor: '[]'}
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			});
+	};
+	var _p0 = model.modalOpen;
+	if (_p0 === true) {
+		return baseStyles('block');
+	} else {
+		return baseStyles('none');
+	}
+};
+var _user$project$Styles_FingerPickStyles$buttonStyle = _elm_lang$html$Html_Attributes$style(
+	{
+		ctor: '::',
+		_0: {ctor: '_Tuple2', _0: 'background', _1: 'none'},
+		_1: {
+			ctor: '::',
+			_0: {ctor: '_Tuple2', _0: 'marginTop', _1: '50px'},
+			_1: {
+				ctor: '::',
+				_0: {ctor: '_Tuple2', _0: 'border', _1: '1px solid #333'},
+				_1: {
+					ctor: '::',
+					_0: {ctor: '_Tuple2', _0: 'color', _1: '#E8175D'},
+					_1: {ctor: '[]'}
+				}
+			}
+		}
+	});
+var _user$project$Styles_FingerPickStyles$beatStyle = _elm_lang$html$Html_Attributes$style(
+	{
+		ctor: '::',
+		_0: {ctor: '_Tuple2', _0: 'position', _1: 'absolute'},
+		_1: {
+			ctor: '::',
+			_0: {ctor: '_Tuple2', _0: 'top', _1: '225px'},
+			_1: {
+				ctor: '::',
+				_0: {ctor: '_Tuple2', _0: 'left', _1: '0'},
+				_1: {
+					ctor: '::',
+					_0: {ctor: '_Tuple2', _0: 'paddingRight', _1: '200px'},
+					_1: {ctor: '[]'}
+				}
+			}
+		}
+	});
+var _user$project$Styles_FingerPickStyles$stringContainerStyle = _elm_lang$html$Html_Attributes$style(
+	{
+		ctor: '::',
+		_0: {ctor: '_Tuple2', _0: 'position', _1: 'absolute'},
+		_1: {
+			ctor: '::',
+			_0: {ctor: '_Tuple2', _0: 'top', _1: '0'},
+			_1: {
+				ctor: '::',
+				_0: {ctor: '_Tuple2', _0: 'left', _1: '0'},
+				_1: {ctor: '[]'}
+			}
+		}
+	});
+var _user$project$Styles_FingerPickStyles$stringStyle = _elm_lang$html$Html_Attributes$style(
+	{
+		ctor: '::',
+		_0: {ctor: '_Tuple2', _0: 'width', _1: '950px'},
+		_1: {
+			ctor: '::',
+			_0: {ctor: '_Tuple2', _0: 'borderBottom', _1: '1px solid #aaa'},
+			_1: {
+				ctor: '::',
+				_0: {ctor: '_Tuple2', _0: 'marginTop', _1: '32px'},
+				_1: {
+					ctor: '::',
+					_0: {ctor: '_Tuple2', _0: 'zIndex', _1: '-1'},
+					_1: {ctor: '[]'}
+				}
+			}
+		}
+	});
+var _user$project$Styles_FingerPickStyles$fretStyle = F2(
+	function (num, mover) {
+		var opacity = function () {
+			var _p1 = num;
+			switch (_p1) {
+				case 1:
+					return '1';
+				case 2:
+					return '0';
+				default:
+					return '0';
+			}
+		}();
+		return _elm_lang$html$Html_Attributes$style(
+			{
+				ctor: '::',
+				_0: {ctor: '_Tuple2', _0: 'width', _1: '100px'},
+				_1: {
+					ctor: '::',
+					_0: {ctor: '_Tuple2', _0: 'height', _1: '180px'},
+					_1: {
+						ctor: '::',
+						_0: {ctor: '_Tuple2', _0: 'margin', _1: '10px 10px 20px'},
+						_1: {
+							ctor: '::',
+							_0: {ctor: '_Tuple2', _0: 'opacity', _1: opacity},
+							_1: {
+								ctor: '::',
+								_0: {ctor: '_Tuple2', _0: 'paddingTop', _1: '50px'},
+								_1: {
+									ctor: '::',
+									_0: {ctor: '_Tuple2', _0: 'display', _1: 'flex'},
+									_1: {
+										ctor: '::',
+										_0: {ctor: '_Tuple2', _0: 'borderRadius', _1: '10px'},
+										_1: {
+											ctor: '::',
+											_0: {ctor: '_Tuple2', _0: 'justifyContent', _1: 'center'},
+											_1: {
+												ctor: '::',
+												_0: {ctor: '_Tuple2', _0: 'transition', _1: 'all 0.4s ease'},
+												_1: {
+													ctor: '::',
+													_0: {ctor: '_Tuple2', _0: 'backgroundColor', _1: '#fff'},
+													_1: {ctor: '[]'}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			});
+	});
+var _user$project$Styles_FingerPickStyles$fingerPickGroupStyle = function (scale) {
+	return _elm_lang$html$Html_Attributes$style(
+		{
+			ctor: '::',
+			_0: {
+				ctor: '_Tuple2',
+				_0: 'transform',
+				_1: A2(
+					_elm_lang$core$Basics_ops['++'],
+					'scale(',
+					A2(_elm_lang$core$Basics_ops['++'], scale, ')'))
+			},
+			_1: {
+				ctor: '::',
+				_0: {ctor: '_Tuple2', _0: 'position', _1: 'relative'},
+				_1: {
+					ctor: '::',
+					_0: {ctor: '_Tuple2', _0: 'margin', _1: '30px 0'},
+					_1: {
+						ctor: '::',
+						_0: {ctor: '_Tuple2', _0: 'cursor', _1: 'pointer'},
+						_1: {ctor: '[]'}
+					}
+				}
+			}
+		});
+};
+var _user$project$Styles_FingerPickStyles$fingerPickingPageStyle = _elm_lang$html$Html_Attributes$style(
+	{
+		ctor: '::',
+		_0: {ctor: '_Tuple2', _0: 'height', _1: '100vh'},
+		_1: {
+			ctor: '::',
+			_0: {ctor: '_Tuple2', _0: 'width', _1: '95vw'},
+			_1: {
+				ctor: '::',
+				_0: {ctor: '_Tuple2', _0: 'display', _1: 'flex'},
+				_1: {
+					ctor: '::',
+					_0: {ctor: '_Tuple2', _0: 'flexDirection', _1: 'column'},
+					_1: {
+						ctor: '::',
+						_0: {ctor: '_Tuple2', _0: 'paddingTop', _1: '175px'},
+						_1: {
+							ctor: '::',
+							_0: {ctor: '_Tuple2', _0: 'alignItems', _1: 'center'},
+							_1: {ctor: '[]'}
+						}
+					}
+				}
+			}
+		}
+	});
+
+var _user$project$Views_FingerPick$fingerPickModal = function (model) {
+	return A2(
+		_elm_lang$html$Html$div,
+		{
+			ctor: '::',
+			_0: _user$project$Styles_FingerPickStyles$fingerPickModalStyle(model),
+			_1: {ctor: '[]'}
+		},
+		{
+			ctor: '::',
+			_0: _elm_lang$html$Html$text('fingerpicking page, instruction coming soon!'),
+			_1: {ctor: '[]'}
+		});
+};
+var _user$project$Views_FingerPick$printNotation = function (notes) {
+	var strumNotationDotStyle = _elm_lang$html$Html_Attributes$style(
+		{
+			ctor: '::',
+			_0: {ctor: '_Tuple2', _0: 'position', _1: 'absolute'},
+			_1: {
+				ctor: '::',
+				_0: {ctor: '_Tuple2', _0: 'bottom', _1: '-30px'},
+				_1: {
+					ctor: '::',
+					_0: {ctor: '_Tuple2', _0: 'right', _1: '-15px'},
+					_1: {
+						ctor: '::',
+						_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '50px'},
+						_1: {
+							ctor: '::',
+							_0: {ctor: '_Tuple2', _0: 'color', _1: '#555'},
+							_1: {ctor: '[]'}
+						}
+					}
+				}
+			}
+		});
+	var strumNotationFlagStyle = function (flag) {
+		return _elm_lang$html$Html_Attributes$style(
+			{
+				ctor: '::',
+				_0: {ctor: '_Tuple2', _0: 'position', _1: 'absolute'},
+				_1: {
+					ctor: '::',
+					_0: {ctor: '_Tuple2', _0: 'top', _1: '-7px'},
+					_1: {
+						ctor: '::',
+						_0: {ctor: '_Tuple2', _0: 'right', _1: '-15px'},
+						_1: {
+							ctor: '::',
+							_0: {ctor: '_Tuple2', _0: 'width', _1: '15px'},
+							_1: {
+								ctor: '::',
+								_0: {ctor: '_Tuple2', _0: 'height', _1: '15px'},
+								_1: {
+									ctor: '::',
+									_0: {ctor: '_Tuple2', _0: 'transform', _1: 'skew(30deg)'},
+									_1: {
+										ctor: '::',
+										_0: {ctor: '_Tuple2', _0: 'visibility', _1: flag},
+										_1: {
+											ctor: '::',
+											_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '20px'},
+											_1: {
+												ctor: '::',
+												_0: {ctor: '_Tuple2', _0: 'color', _1: '#555'},
+												_1: {ctor: '[]'}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			});
+	};
+	var strumNotationContainerStyle = _elm_lang$html$Html_Attributes$style(
+		{
+			ctor: '::',
+			_0: {ctor: '_Tuple2', _0: 'position', _1: 'relative'},
+			_1: {
+				ctor: '::',
+				_0: {ctor: '_Tuple2', _0: 'height', _1: '35px'},
+				_1: {
+					ctor: '::',
+					_0: {ctor: '_Tuple2', _0: 'borderRight', _1: '2px solid #555'},
+					_1: {ctor: '[]'}
+				}
+			}
+		});
+	var baseStyles = function (fill) {
+		return _elm_lang$html$Html_Attributes$style(
+			{
+				ctor: '::',
+				_0: {ctor: '_Tuple2', _0: 'position', _1: 'absolute'},
+				_1: {
+					ctor: '::',
+					_0: {ctor: '_Tuple2', _0: 'bottom', _1: '-10px'},
+					_1: {
+						ctor: '::',
+						_0: {ctor: '_Tuple2', _0: 'left', _1: '-5px'},
+						_1: {
+							ctor: '::',
+							_0: {ctor: '_Tuple2', _0: 'width', _1: '14px'},
+							_1: {
+								ctor: '::',
+								_0: {ctor: '_Tuple2', _0: 'height', _1: '15px'},
+								_1: {
+									ctor: '::',
+									_0: {ctor: '_Tuple2', _0: 'transform', _1: 'skew(-20deg)'},
+									_1: {
+										ctor: '::',
+										_0: {ctor: '_Tuple2', _0: 'border', _1: '2px solid #555'},
+										_1: {
+											ctor: '::',
+											_0: {ctor: '_Tuple2', _0: 'borderRadius', _1: '10px'},
+											_1: {
+												ctor: '::',
+												_0: {ctor: '_Tuple2', _0: 'backgroundColor', _1: fill},
+												_1: {ctor: '[]'}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			});
+	};
+	var markup = F3(
+		function (fill, dot, flag) {
+			return A2(
+				_elm_lang$html$Html$div,
+				{
+					ctor: '::',
+					_0: strumNotationContainerStyle,
+					_1: {ctor: '[]'}
+				},
+				{
+					ctor: '::',
+					_0: A2(
+						_elm_lang$html$Html$div,
+						{
+							ctor: '::',
+							_0: baseStyles(fill),
+							_1: {ctor: '[]'}
+						},
+						{ctor: '[]'}),
+					_1: {
+						ctor: '::',
+						_0: A2(
+							_elm_lang$html$Html$div,
+							{
+								ctor: '::',
+								_0: strumNotationFlagStyle(flag),
+								_1: {ctor: '[]'}
+							},
+							{
+								ctor: '::',
+								_0: _elm_lang$html$Html$text(')'),
+								_1: {ctor: '[]'}
+							}),
+						_1: {
+							ctor: '::',
+							_0: A2(
+								_elm_lang$html$Html$div,
+								{
+									ctor: '::',
+									_0: strumNotationDotStyle,
+									_1: {ctor: '[]'}
+								},
+								{
+									ctor: '::',
+									_0: _elm_lang$html$Html$text(dot),
+									_1: {ctor: '[]'}
+								}),
+							_1: {ctor: '[]'}
+						}
+					}
+				});
+		});
+	var _p0 = notes;
+	switch (_p0) {
+		case 0:
+			return A2(
+				_elm_lang$html$Html$div,
+				{ctor: '[]'},
+				{ctor: '[]'});
+		case 1:
+			return A3(markup, '#555', '', 'visible');
+		case 2:
+			return A3(markup, '#555', '', 'hidden');
+		case 3:
+			return A3(markup, '#555', '.', 'hidden');
+		case 4:
+			return A3(markup, 'none', '', 'hidden');
+		default:
+			return A2(
+				_elm_lang$html$Html$div,
+				{ctor: '[]'},
+				{ctor: '[]'});
+	}
+};
+var _user$project$Views_FingerPick$calculateNotation = F4(
+	function (list, index, notes1, notes2) {
+		calculateNotation:
+		while (true) {
+			var getter2 = function (a) {
+				return A2(
+					_elm_lang$core$Maybe$withDefault,
+					1,
+					A2(_elm_community$list_extra$List_Extra$getAt, index + a, notes2));
+			};
+			var possibleNotes2 = function (a) {
+				return A2(
+					_elm_lang$core$List$member,
+					getter2(a),
+					A2(_elm_lang$core$List$range, 1, 5));
+			};
+			var getter1 = function (a) {
+				return A2(
+					_elm_lang$core$Maybe$withDefault,
+					1,
+					A2(_elm_community$list_extra$List_Extra$getAt, index + a, notes1));
+			};
+			var possibleNotes1 = function (a) {
+				return A2(
+					_elm_lang$core$List$member,
+					getter1(a),
+					A2(_elm_lang$core$List$range, 1, 5));
+			};
+			var possibleNotes = function (a) {
+				return possibleNotes1(a) || possibleNotes2(a);
+			};
+			var notation = (_elm_lang$core$Native_Utils.eq(
+				possibleNotes(0),
+				true) && _elm_lang$core$Native_Utils.eq(
+				possibleNotes(1),
+				false)) ? (_elm_lang$core$Native_Utils.eq(
+				possibleNotes(2),
+				true) ? 2 : (_elm_lang$core$Native_Utils.eq(
+				possibleNotes(3),
+				true) ? 3 : 4)) : ((_elm_lang$core$Native_Utils.eq(
+				possibleNotes(0),
+				true) && _elm_lang$core$Native_Utils.eq(
+				possibleNotes(1),
+				true)) ? 1 : ((_elm_lang$core$Native_Utils.eq(
+				possibleNotes(4),
+				true) && _elm_lang$core$Native_Utils.eq(
+				possibleNotes(7),
+				false)) ? 4 : 0));
+			if (_elm_lang$core$Native_Utils.cmp(
+				index,
+				_elm_lang$core$List$length(notes1)) < 0) {
+				var _v1 = {ctor: '::', _0: notation, _1: list},
+					_v2 = index + 1,
+					_v3 = notes1,
+					_v4 = notes2;
+				list = _v1;
+				index = _v2;
+				notes1 = _v3;
+				notes2 = _v4;
+				continue calculateNotation;
+			} else {
+				return _elm_lang$core$List$reverse(list);
+			}
+		}
+	});
+var _user$project$Views_FingerPick$stringView = A2(
+	_elm_lang$html$Html$div,
+	{ctor: '[]'},
+	{
+		ctor: '::',
+		_0: A2(
+			_elm_lang$html$Html$div,
+			{
+				ctor: '::',
+				_0: _user$project$Styles_FingerPickStyles$stringStyle,
+				_1: {ctor: '[]'}
+			},
+			{ctor: '[]'}),
+		_1: {
+			ctor: '::',
+			_0: A2(
+				_elm_lang$html$Html$div,
+				{
+					ctor: '::',
+					_0: _user$project$Styles_FingerPickStyles$stringStyle,
+					_1: {ctor: '[]'}
+				},
+				{ctor: '[]'}),
+			_1: {
+				ctor: '::',
+				_0: A2(
+					_elm_lang$html$Html$div,
+					{
+						ctor: '::',
+						_0: _user$project$Styles_FingerPickStyles$stringStyle,
+						_1: {ctor: '[]'}
+					},
+					{ctor: '[]'}),
+				_1: {
+					ctor: '::',
+					_0: A2(
+						_elm_lang$html$Html$div,
+						{
+							ctor: '::',
+							_0: _user$project$Styles_FingerPickStyles$stringStyle,
+							_1: {ctor: '[]'}
+						},
+						{ctor: '[]'}),
+					_1: {
+						ctor: '::',
+						_0: A2(
+							_elm_lang$html$Html$div,
+							{
+								ctor: '::',
+								_0: _user$project$Styles_FingerPickStyles$stringStyle,
+								_1: {ctor: '[]'}
+							},
+							{ctor: '[]'}),
+						_1: {
+							ctor: '::',
+							_0: A2(
+								_elm_lang$html$Html$div,
+								{
+									ctor: '::',
+									_0: _user$project$Styles_FingerPickStyles$stringStyle,
+									_1: {ctor: '[]'}
+								},
+								{ctor: '[]'}),
+							_1: {ctor: '[]'}
+						}
+					}
+				}
+			}
+		}
+	});
+var _user$project$Views_FingerPick$fret = function (num) {
+	var opacity = function () {
+		var _p1 = num;
+		if (_p1 === 0) {
+			return '0';
+		} else {
+			return '1';
+		}
+	}();
+	var height = function () {
+		var _p2 = num;
+		switch (_p2) {
+			case 1:
+				return '-182px';
+			case 2:
+				return '-148px';
+			case 3:
+				return '-115px';
+			case 4:
+				return '-83px';
+			case 5:
+				return '-50px';
+			default:
+				return '0';
+		}
+	}();
+	var baseStyles = _elm_lang$html$Html_Attributes$style(
+		{
+			ctor: '::',
+			_0: {ctor: '_Tuple2', _0: 'display', _1: 'flex'},
+			_1: {
+				ctor: '::',
+				_0: {ctor: '_Tuple2', _0: 'marginTop', _1: height},
+				_1: {
+					ctor: '::',
+					_0: {ctor: '_Tuple2', _0: 'width', _1: '120px'},
+					_1: {
+						ctor: '::',
+						_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '20px'},
+						_1: {
+							ctor: '::',
+							_0: {ctor: '_Tuple2', _0: 'color', _1: '#000'},
+							_1: {
+								ctor: '::',
+								_0: {ctor: '_Tuple2', _0: 'justifyContent', _1: 'center'},
+								_1: {
+									ctor: '::',
+									_0: {ctor: '_Tuple2', _0: 'opacity', _1: opacity},
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				}
+			}
+		});
+	var message = function () {
+		var _p3 = num;
+		switch (_p3) {
+			case 1:
+				return '0';
+			case 2:
+				return '1';
+			case 3:
+				return '2';
+			case 4:
+				return '2';
+			case 5:
+				return '0';
+			default:
+				return '';
+		}
+	}();
+	return A2(
+		_elm_lang$html$Html$div,
+		{
+			ctor: '::',
+			_0: baseStyles,
+			_1: {ctor: '[]'}
+		},
+		{
+			ctor: '::',
+			_0: _elm_lang$html$Html$text(message),
+			_1: {ctor: '[]'}
+		});
+};
+var _user$project$Views_FingerPick$fingerPickGroup = F3(
+	function (scale, notes1, notes2) {
+		var frets = function (a) {
+			return A2(
+				_elm_lang$html$Html$div,
+				{ctor: '[]'},
+				{
+					ctor: '::',
+					_0: _user$project$Views_FingerPick$fret(a),
+					_1: {ctor: '[]'}
+				});
+		};
+		var notation = function (a) {
+			return A2(
+				_elm_lang$html$Html$div,
+				{
+					ctor: '::',
+					_0: _elm_lang$html$Html_Attributes$style(
+						{
+							ctor: '::',
+							_0: {ctor: '_Tuple2', _0: 'width', _1: '10px'},
+							_1: {
+								ctor: '::',
+								_0: {ctor: '_Tuple2', _0: 'margin', _1: '20px 55px 0'},
+								_1: {ctor: '[]'}
+							}
+						}),
+					_1: {ctor: '[]'}
+				},
+				{
+					ctor: '::',
+					_0: _user$project$Views_FingerPick$printNotation(a),
+					_1: {ctor: '[]'}
+				});
+		};
+		var beats = function (a) {
+			return A2(
+				_elm_lang$html$Html$div,
+				{
+					ctor: '::',
+					_0: _elm_lang$html$Html_Attributes$style(
+						{
+							ctor: '::',
+							_0: {ctor: '_Tuple2', _0: 'width', _1: '10px'},
+							_1: {
+								ctor: '::',
+								_0: {ctor: '_Tuple2', _0: 'margin', _1: '0 55px 0'},
+								_1: {ctor: '[]'}
+							}
+						}),
+					_1: {ctor: '[]'}
+				},
+				{
+					ctor: '::',
+					_0: _elm_lang$html$Html$text(
+						_elm_lang$core$Basics$toString(a)),
+					_1: {ctor: '[]'}
+				});
+		};
+		return A2(
+			_elm_lang$html$Html$div,
+			{
+				ctor: '::',
+				_0: _user$project$Styles_FingerPickStyles$fingerPickGroupStyle(scale),
+				_1: {ctor: '[]'}
+			},
+			{
+				ctor: '::',
+				_0: _user$project$Views_FingerPick$stringView,
+				_1: {
+					ctor: '::',
+					_0: A2(
+						_elm_lang$html$Html$div,
+						{
+							ctor: '::',
+							_0: _elm_lang$html$Html_Attributes$style(
+								{
+									ctor: '::',
+									_0: {ctor: '_Tuple2', _0: 'display', _1: 'flex'},
+									_1: {ctor: '[]'}
+								}),
+							_1: {ctor: '[]'}
+						},
+						A2(_elm_lang$core$List$map, frets, notes1)),
+					_1: {
+						ctor: '::',
+						_0: A2(
+							_elm_lang$html$Html$div,
+							{
+								ctor: '::',
+								_0: _elm_lang$html$Html_Attributes$style(
+									{
+										ctor: '::',
+										_0: {ctor: '_Tuple2', _0: 'display', _1: 'flex'},
+										_1: {ctor: '[]'}
+									}),
+								_1: {ctor: '[]'}
+							},
+							A2(_elm_lang$core$List$map, frets, notes2)),
+						_1: {
+							ctor: '::',
+							_0: A2(
+								_elm_lang$html$Html$div,
+								{
+									ctor: '::',
+									_0: _elm_lang$html$Html_Attributes$style(
+										{
+											ctor: '::',
+											_0: {ctor: '_Tuple2', _0: 'display', _1: 'flex'},
+											_1: {
+												ctor: '::',
+												_0: {ctor: '_Tuple2', _0: 'color', _1: '#E8175D'},
+												_1: {ctor: '[]'}
+											}
+										}),
+									_1: {ctor: '[]'}
+								},
+								A2(
+									_elm_lang$core$List$map,
+									beats,
+									A2(_elm_lang$core$List$range, 1, 8))),
+							_1: {
+								ctor: '::',
+								_0: A2(
+									_elm_lang$html$Html$div,
+									{
+										ctor: '::',
+										_0: _elm_lang$html$Html_Attributes$style(
+											{
+												ctor: '::',
+												_0: {ctor: '_Tuple2', _0: 'display', _1: 'flex'},
+												_1: {ctor: '[]'}
+											}),
+										_1: {ctor: '[]'}
+									},
+									A2(
+										_elm_lang$core$List$map,
+										notation,
+										A4(
+											_user$project$Views_FingerPick$calculateNotation,
+											{ctor: '[]'},
+											0,
+											notes1,
+											notes2))),
+								_1: {ctor: '[]'}
+							}
+						}
+					}
+				}
+			});
+	});
+var _user$project$Views_FingerPick$fingerPickingPage = function (model) {
+	return A2(
+		_elm_lang$html$Html$div,
+		{
+			ctor: '::',
+			_0: _user$project$Styles_FingerPickStyles$fingerPickingPageStyle,
+			_1: {ctor: '[]'}
+		},
+		{
+			ctor: '::',
+			_0: A3(_user$project$Views_FingerPick$fingerPickGroup, '1,1', model.fingerPickPattern.a, model.fingerPickPattern.b),
+			_1: {
+				ctor: '::',
+				_0: A2(
+					_elm_lang$html$Html$button,
+					{
+						ctor: '::',
+						_0: _user$project$Styles_FingerPickStyles$buttonStyle,
+						_1: {
+							ctor: '::',
+							_0: _elm_lang$html$Html_Events$onClick(
+								A2(_user$project$Logic_Types$Randomize, 0, 8)),
+							_1: {ctor: '[]'}
+						}
+					},
+					{
+						ctor: '::',
+						_0: _elm_lang$html$Html$text('Generate Random Fingerpicking Pattern'),
+						_1: {ctor: '[]'}
+					}),
+				_1: {
+					ctor: '::',
+					_0: _user$project$Views_FingerPick$fingerPickModal(model),
 					_1: {ctor: '[]'}
 				}
 			}
@@ -25267,7 +26212,7 @@ var _user$project$Styles_MainStyles$modalIconStyle = function (model) {
 					_0: {ctor: '_Tuple2', _0: 'top', _1: '45px'},
 					_1: {
 						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'right', _1: '10px'},
+						_0: {ctor: '_Tuple2', _0: 'rleft', _1: '6px'},
 						_1: {
 							ctor: '::',
 							_0: {ctor: '_Tuple2', _0: 'width', _1: '20px'},
@@ -25319,7 +26264,7 @@ var _user$project$Styles_MainStyles$modalIconStyle = function (model) {
 	};
 	var _p0 = model.navMenuOpen;
 	if (_p0 === true) {
-		return baseStyles('translateX(-210px) translateY(10px)');
+		return baseStyles('translateX(-7px) translateY(10px)');
 	} else {
 		return baseStyles('translateX(0) translateY(0)');
 	}
@@ -25345,8 +26290,8 @@ var _user$project$Styles_MainStyles$textContainerStyle = function (navOpen) {
 	}
 };
 var _user$project$Styles_MainStyles$keyListContainerStyle = function (navOpen) {
-	var baseStyles = F3(
-		function (margin, width, height) {
+	var baseStyles = F2(
+		function (margin, width) {
 			return _elm_lang$html$Html_Attributes$style(
 				{
 					ctor: '::',
@@ -25356,15 +26301,11 @@ var _user$project$Styles_MainStyles$keyListContainerStyle = function (navOpen) {
 						_0: {ctor: '_Tuple2', _0: 'width', _1: width},
 						_1: {
 							ctor: '::',
-							_0: {ctor: '_Tuple2', _0: 'height', _1: height},
+							_0: {ctor: '_Tuple2', _0: 'textAlign', _1: 'center'},
 							_1: {
 								ctor: '::',
-								_0: {ctor: '_Tuple2', _0: 'textAlign', _1: 'center'},
-								_1: {
-									ctor: '::',
-									_0: {ctor: '_Tuple2', _0: 'transition', _1: 'all 0.4s ease'},
-									_1: {ctor: '[]'}
-								}
+								_0: {ctor: '_Tuple2', _0: 'transition', _1: 'all 0.4s ease'},
+								_1: {ctor: '[]'}
 							}
 						}
 					}
@@ -25372,9 +26313,9 @@ var _user$project$Styles_MainStyles$keyListContainerStyle = function (navOpen) {
 		});
 	var _p2 = navOpen;
 	if (_p2 === true) {
-		return A3(baseStyles, '0', '240px', '400px');
+		return A2(baseStyles, '0', '240px');
 	} else {
-		return A3(baseStyles, '-225px', '50px', '600px');
+		return A2(baseStyles, '-250px', '50px');
 	}
 };
 var _user$project$Styles_MainStyles$keyListStyle = function (navOpen) {
@@ -25518,7 +26459,7 @@ var _user$project$Styles_MainStyles$navMenuStyle = function (model) {
 			return _elm_lang$html$Html_Attributes$style(
 				{
 					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'position', _1: 'absolute'},
+					_0: {ctor: '_Tuple2', _0: 'position', _1: 'fixed'},
 					_1: {
 						ctor: '::',
 						_0: {ctor: '_Tuple2', _0: 'top', _1: '0'},
@@ -25599,6 +26540,8 @@ var _user$project$Views_MainViews$page = function (model) {
 			return _user$project$Views_Home$homePage(model);
 		case 'StrumPage':
 			return _user$project$Views_Strum$strumPage(model);
+		case 'FingerPickingPage':
+			return _user$project$Views_FingerPick$fingerPickingPage(model);
 		default:
 			return A2(
 				_elm_lang$html$Html$div,
@@ -25778,30 +26721,13 @@ var _user$project$Views_MainViews$nav = function (model) {
 			_0: _user$project$Views_MainViews$navIcon(model),
 			_1: {
 				ctor: '::',
-				_0: A2(
-					_elm_lang$html$Html$div,
-					{ctor: '[]'},
-					{
-						ctor: '::',
-						_0: A4(
-							_jinjor$elm_inline_hover$InlineHover$hover,
-							_user$project$Styles_MainStyles$highlight,
-							_elm_lang$html$Html$a,
-							{
-								ctor: '::',
-								_0: _elm_lang$html$Html_Attributes$href(_user$project$Logic_Routing$homePath),
-								_1: {
-									ctor: '::',
-									_0: _user$project$Styles_MainStyles$navItemStyle,
-									_1: {ctor: '[]'}
-								}
-							},
-							{
-								ctor: '::',
-								_0: _elm_lang$html$Html$text('HOME'),
-								_1: {ctor: '[]'}
-							}),
-						_1: {
+				_0: _user$project$Views_MainViews$modalIcon(model),
+				_1: {
+					ctor: '::',
+					_0: A2(
+						_elm_lang$html$Html$div,
+						{ctor: '[]'},
+						{
 							ctor: '::',
 							_0: A4(
 								_jinjor$elm_inline_hover$InlineHover$hover,
@@ -25809,8 +26735,7 @@ var _user$project$Views_MainViews$nav = function (model) {
 								_elm_lang$html$Html$a,
 								{
 									ctor: '::',
-									_0: _elm_lang$html$Html_Attributes$href(
-										_user$project$Logic_Routing$scalesPath(model.musKey)),
+									_0: _elm_lang$html$Html_Attributes$href(_user$project$Logic_Routing$homePath),
 									_1: {
 										ctor: '::',
 										_0: _user$project$Styles_MainStyles$navItemStyle,
@@ -25819,7 +26744,7 @@ var _user$project$Views_MainViews$nav = function (model) {
 								},
 								{
 									ctor: '::',
-									_0: _elm_lang$html$Html$text('SCALES'),
+									_0: _elm_lang$html$Html$text('HOME'),
 									_1: {ctor: '[]'}
 								}),
 							_1: {
@@ -25831,7 +26756,7 @@ var _user$project$Views_MainViews$nav = function (model) {
 									{
 										ctor: '::',
 										_0: _elm_lang$html$Html_Attributes$href(
-											_user$project$Logic_Routing$chordsPath(model.musKey)),
+											_user$project$Logic_Routing$scalesPath(model.musKey)),
 										_1: {
 											ctor: '::',
 											_0: _user$project$Styles_MainStyles$navItemStyle,
@@ -25840,7 +26765,7 @@ var _user$project$Views_MainViews$nav = function (model) {
 									},
 									{
 										ctor: '::',
-										_0: _elm_lang$html$Html$text('CHORDS'),
+										_0: _elm_lang$html$Html$text('SCALES'),
 										_1: {ctor: '[]'}
 									}),
 								_1: {
@@ -25852,7 +26777,7 @@ var _user$project$Views_MainViews$nav = function (model) {
 										{
 											ctor: '::',
 											_0: _elm_lang$html$Html_Attributes$href(
-												_user$project$Logic_Routing$fretboardPath(model.musKey)),
+												_user$project$Logic_Routing$chordsPath(model.musKey)),
 											_1: {
 												ctor: '::',
 												_0: _user$project$Styles_MainStyles$navItemStyle,
@@ -25861,7 +26786,7 @@ var _user$project$Views_MainViews$nav = function (model) {
 										},
 										{
 											ctor: '::',
-											_0: _elm_lang$html$Html$text('FRETBOARD'),
+											_0: _elm_lang$html$Html$text('CHORDS'),
 											_1: {ctor: '[]'}
 										}),
 									_1: {
@@ -25872,7 +26797,8 @@ var _user$project$Views_MainViews$nav = function (model) {
 											_elm_lang$html$Html$a,
 											{
 												ctor: '::',
-												_0: _elm_lang$html$Html_Attributes$href(_user$project$Logic_Routing$strumPath),
+												_0: _elm_lang$html$Html_Attributes$href(
+													_user$project$Logic_Routing$fretboardPath(model.musKey)),
 												_1: {
 													ctor: '::',
 													_0: _user$project$Styles_MainStyles$navItemStyle,
@@ -25881,52 +26807,110 @@ var _user$project$Views_MainViews$nav = function (model) {
 											},
 											{
 												ctor: '::',
-												_0: _elm_lang$html$Html$text('STRUMMING'),
+												_0: _elm_lang$html$Html$text('FRETBOARD'),
 												_1: {ctor: '[]'}
 											}),
 										_1: {
 											ctor: '::',
-											_0: A2(
-												_elm_lang$html$Html$div,
+											_0: A4(
+												_jinjor$elm_inline_hover$InlineHover$hover,
+												_user$project$Styles_MainStyles$highlight,
+												_elm_lang$html$Html$a,
 												{
 													ctor: '::',
-													_0: _user$project$Styles_MainStyles$navItemStyle,
+													_0: _elm_lang$html$Html_Attributes$href(_user$project$Logic_Routing$strumPath),
 													_1: {
 														ctor: '::',
-														_0: _elm_lang$html$Html_Attributes$style(
-															{
-																ctor: '::',
-																_0: {ctor: '_Tuple2', _0: 'marginTop', _1: '100px'},
-																_1: {
-																	ctor: '::',
-																	_0: {ctor: '_Tuple2', _0: 'color', _1: '#E91750'},
-																	_1: {ctor: '[]'}
-																}
-															}),
+														_0: _user$project$Styles_MainStyles$navItemStyle,
 														_1: {ctor: '[]'}
 													}
 												},
 												{
 													ctor: '::',
-													_0: _elm_lang$html$Html$text('SELECT KEY:'),
+													_0: _elm_lang$html$Html$text('STRUMMING'),
 													_1: {ctor: '[]'}
 												}),
 											_1: {
 												ctor: '::',
-												_0: _user$project$Views_MainViews$keyListView(model),
+												_0: A4(
+													_jinjor$elm_inline_hover$InlineHover$hover,
+													_user$project$Styles_MainStyles$highlight,
+													_elm_lang$html$Html$a,
+													{
+														ctor: '::',
+														_0: _elm_lang$html$Html_Attributes$href(_user$project$Logic_Routing$fingerPickingPath),
+														_1: {
+															ctor: '::',
+															_0: _user$project$Styles_MainStyles$navItemStyle,
+															_1: {ctor: '[]'}
+														}
+													},
+													{
+														ctor: '::',
+														_0: _elm_lang$html$Html$text('FINGERPICKING'),
+														_1: {ctor: '[]'}
+													}),
 												_1: {
 													ctor: '::',
-													_0: _user$project$Views_MainViews$signature,
-													_1: {ctor: '[]'}
+													_0: A2(
+														_elm_lang$html$Html$div,
+														{
+															ctor: '::',
+															_0: _user$project$Styles_MainStyles$navItemStyle,
+															_1: {
+																ctor: '::',
+																_0: _elm_lang$html$Html_Attributes$style(
+																	{
+																		ctor: '::',
+																		_0: {ctor: '_Tuple2', _0: 'marginTop', _1: '100px'},
+																		_1: {
+																			ctor: '::',
+																			_0: {ctor: '_Tuple2', _0: 'color', _1: '#E91750'},
+																			_1: {ctor: '[]'}
+																		}
+																	}),
+																_1: {ctor: '[]'}
+															}
+														},
+														{
+															ctor: '::',
+															_0: _elm_lang$html$Html$text('SELECT KEY:'),
+															_1: {ctor: '[]'}
+														}),
+													_1: {
+														ctor: '::',
+														_0: A2(
+															_elm_lang$html$Html$div,
+															{
+																ctor: '::',
+																_0: _elm_lang$html$Html_Attributes$style(
+																	{
+																		ctor: '::',
+																		_0: {ctor: '_Tuple2', _0: 'position', _1: 'relative'},
+																		_1: {ctor: '[]'}
+																	}),
+																_1: {ctor: '[]'}
+															},
+															{
+																ctor: '::',
+																_0: _user$project$Views_MainViews$keyListView(model),
+																_1: {ctor: '[]'}
+															}),
+														_1: {
+															ctor: '::',
+															_0: _user$project$Views_MainViews$signature,
+															_1: {ctor: '[]'}
+														}
+													}
 												}
 											}
 										}
 									}
 								}
 							}
-						}
-					}),
-				_1: {ctor: '[]'}
+						}),
+					_1: {ctor: '[]'}
+				}
 			}
 		});
 };
@@ -25956,12 +26940,8 @@ var _user$project$Views_MainViews$mainView = function (model) {
 			_0: _user$project$Views_MainViews$nav(model),
 			_1: {
 				ctor: '::',
-				_0: _user$project$Views_MainViews$modalIcon(model),
-				_1: {
-					ctor: '::',
-					_0: _user$project$Views_MainViews$page(model),
-					_1: {ctor: '[]'}
-				}
+				_0: _user$project$Views_MainViews$page(model),
+				_1: {ctor: '[]'}
 			}
 		});
 };
@@ -26022,6 +27002,10 @@ var _user$project$Main$init = function (location) {
 						}
 					}
 				}
+			},
+			fingerPickPattern: {
+				a: {ctor: '[]'},
+				b: {ctor: '[]'}
 			}
 		},
 		_1: _elm_lang$core$Platform_Cmd$none
@@ -26059,17 +27043,55 @@ var _user$project$Main$update = F2(
 						{modalOpen: !model.modalOpen}),
 					{ctor: '[]'});
 			case 'Randomize':
-				return {
-					ctor: '_Tuple2',
-					_0: model,
-					_1: A2(
-						_elm_lang$core$Random$generate,
-						_user$project$Logic_Types$StrumArrowDirection,
-						A2(
-							_elm_lang$core$Random$list,
-							8,
-							A2(_elm_lang$core$Random$int, 1, 2)))
-				};
+				var _p3 = _p0._1;
+				var _p2 = _p0._0;
+				var _p1 = model.route;
+				switch (_p1.ctor) {
+					case 'StrumPage':
+						return {
+							ctor: '_Tuple2',
+							_0: model,
+							_1: A2(
+								_elm_lang$core$Random$generate,
+								_user$project$Logic_Types$StrumArrowDirection,
+								A2(
+									_elm_lang$core$Random$list,
+									8,
+									A2(_elm_lang$core$Random$int, _p2, _p3)))
+						};
+					case 'FingerPickingPage':
+						return {
+							ctor: '_Tuple2',
+							_0: model,
+							_1: _elm_lang$core$Platform_Cmd$batch(
+								{
+									ctor: '::',
+									_0: A2(
+										_elm_lang$core$Random$generate,
+										_user$project$Logic_Types$FingerPickPatternBuilderA,
+										A2(
+											_elm_lang$core$Random$list,
+											8,
+											A2(_elm_lang$core$Random$int, _p2, _p3))),
+									_1: {
+										ctor: '::',
+										_0: A2(
+											_elm_lang$core$Random$generate,
+											_user$project$Logic_Types$FingerPickPatternBuilderB,
+											A2(
+												_elm_lang$core$Random$list,
+												8,
+												A2(_elm_lang$core$Random$int, _p2, _p3))),
+										_1: {ctor: '[]'}
+									}
+								})
+						};
+					default:
+						return A2(
+							_elm_lang$core$Platform_Cmd_ops['!'],
+							model,
+							{ctor: '[]'});
+				}
 			case 'StrumArrowDirection':
 				return A2(
 					_elm_lang$core$Platform_Cmd_ops['!'],
@@ -26077,13 +27099,35 @@ var _user$project$Main$update = F2(
 						model,
 						{strumArrow: _p0._0}),
 					{ctor: '[]'});
+			case 'FingerPickPatternBuilderA':
+				var pattern = model.fingerPickPattern;
+				var newPattern = _elm_lang$core$Native_Utils.update(
+					pattern,
+					{a: _p0._0});
+				return A2(
+					_elm_lang$core$Platform_Cmd_ops['!'],
+					_elm_lang$core$Native_Utils.update(
+						model,
+						{fingerPickPattern: newPattern}),
+					{ctor: '[]'});
+			case 'FingerPickPatternBuilderB':
+				var pattern = model.fingerPickPattern;
+				var newPattern = _elm_lang$core$Native_Utils.update(
+					pattern,
+					{b: _p0._0});
+				return A2(
+					_elm_lang$core$Platform_Cmd_ops['!'],
+					_elm_lang$core$Native_Utils.update(
+						model,
+						{fingerPickPattern: newPattern}),
+					{ctor: '[]'});
 			case 'OnLocationChange':
-				var _p1 = _p0._0;
+				var _p4 = _p0._0;
 				var newKey = A2(
 					_elm_lang$core$Maybe$withDefault,
 					'C',
-					A2(_user$project$Logic_Routing$modelUpdateOnHash, model, _p1));
-				var newRoute = _user$project$Logic_Routing$parseLocation(_p1);
+					A2(_user$project$Logic_Routing$modelUpdateOnHash, model, _p4));
+				var newRoute = _user$project$Logic_Routing$parseLocation(_p4);
 				return A2(
 					_elm_lang$core$Platform_Cmd_ops['!'],
 					_elm_lang$core$Native_Utils.update(

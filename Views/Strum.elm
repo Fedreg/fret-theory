@@ -3,7 +3,7 @@ module Views.Strum exposing (strumPage)
 import Html exposing (Html, div, button, text, span, hr, h3, h4, h5)
 import Html.Attributes exposing (style, attribute)
 import Html.Events exposing (onClick)
-import Logic.Types exposing (Model, Msg(Randomize, ShowModal))
+import Logic.Types exposing (Model, Msg(Randomize, ShowModal, StrumArrowDirection))
 import Styles.StrumStyles exposing (..)
 import List.Extra exposing (getAt)
 
@@ -12,7 +12,7 @@ strumPage : Model -> Html Msg
 strumPage model =
     div [ strumPageStyle ]
         [ strumGroup "1,1" model.strumArrow
-        , button [ buttonStyle, onClick Randomize ] [ text "Generate Random Strum Pattern" ]
+        , button [ buttonStyle, onClick (Randomize 1 2) ] [ text "Generate Random Strum Pattern" ]
         , strumModal model
         ]
 

@@ -10,6 +10,7 @@ import Views.Chords exposing (chordChartPage, keyList)
 import Views.Scales exposing (scalesPage)
 import Views.Fretboard exposing (fretboardPage)
 import Views.Strum exposing (strumPage)
+import Views.FingerPick exposing (fingerPickingPage)
 import Styles.MainStyles exposing (..)
 import InlineHover exposing (hover)
 
@@ -18,7 +19,6 @@ mainView : Model -> Html Msg
 mainView model =
     div [ style [ ( "position", "relative" ), ( "overflow", "hidden" ), ( "padding", "5px" ) ] ]
         [ nav model
-        , modalIcon model
         , page model
         ]
 
@@ -27,14 +27,16 @@ nav : Model -> Html Msg
 nav model =
     div [ navMenuStyle model ]
         [ navIcon model
+        , modalIcon model
         , div []
             [ hover highlight a [ href Routing.homePath, navItemStyle ] [ text "HOME" ]
             , hover highlight a [ href (Routing.scalesPath model.musKey), navItemStyle ] [ text "SCALES" ]
             , hover highlight a [ href (Routing.chordsPath model.musKey), navItemStyle ] [ text "CHORDS" ]
             , hover highlight a [ href (Routing.fretboardPath model.musKey), navItemStyle ] [ text "FRETBOARD" ]
             , hover highlight a [ href Routing.strumPath, navItemStyle ] [ text "STRUMMING" ]
+            , hover highlight a [ href Routing.fingerPickingPath, navItemStyle ] [ text "FINGERPICKING" ]
             , div [ navItemStyle, style [ ( "marginTop", "100px" ), ( "color", "#E91750" ) ] ] [ text "SELECT KEY:" ]
-            , keyListView model
+            , div [ style [ ( "position", "relative" ) ] ] [ keyListView model ]
             , signature
             ]
         ]
@@ -89,6 +91,9 @@ page model =
 
         StrumPage ->
             strumPage model
+
+        FingerPickingPage ->
+            fingerPickingPage model
 
         NotFoundPage ->
             div [ style [ ( "margin", "100px auto" ), ( "color", "#E91750" ) ] ] [ text ("Page Not Found " ++ model.musKey) ]
