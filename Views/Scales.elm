@@ -312,14 +312,14 @@ scaleNameMajor model scaleName modifiedNotes matchingChord =
             div []
                 [ span [] [ text model.musKey ]
                 , span [ style [ ( "color", "#777" ) ] ] [ text scaleName ]
-                , span [ style [ ( "color", "#5CE6CD" ) ] ] [ text modifiedNotes ]
+                , span [ style [ ( "color", "#17c6e8" ) ] ] [ text modifiedNotes ]
                 , span [ style [ ( "color", "#000" ) ] ] [ text playOver ]
                 ]
         else
             div []
                 [ span [] [ text (Maybe.withDefault "C" <| getAt (index - 12) keyList) ]
                 , span [ style [ ( "color", "#777" ) ] ] [ text scaleName ]
-                , span [ style [ ( "color", "#5CE6CD" ) ] ] [ text modifiedNotes ]
+                , span [ style [ ( "color", "#17c6e8" ) ] ] [ text modifiedNotes ]
                 , span [ style [ ( "color", "#000" ) ] ] [ text ", relative major" ]
                 ]
 

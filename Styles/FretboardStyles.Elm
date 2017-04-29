@@ -105,7 +105,7 @@ notationNoteStyle offset =
         , ( "position", "absolute" )
         , ( "bottom", (toString offset) ++ "px" )
         , ( "left", "50%" )
-        , ( "backgroundColor", "#5CE6CD" )
+        , ( "backgroundColor", "#17c6e8" )
         , ( "transition", "all 0.5s ease" )
         , ( "border", "1px solid #666" )
         , ( "zIndex", "1" )
@@ -232,4 +232,3 @@ closeModalIcon =
         , ( "cursor", "pointer" )
         , ( "color", "#E91750" )
         ]
-

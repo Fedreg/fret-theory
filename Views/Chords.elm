@@ -75,7 +75,7 @@ fingerNo finger =
             "#E8175D"
 
         "3" ->
-            "#5CE6CD"
+            "#17c6e8"
 
         "4" ->
             "#A8A7A7"

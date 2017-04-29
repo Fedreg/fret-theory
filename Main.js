@@ -16653,7 +16653,7 @@ var _user$project$Styles_FretboardStyles$notationNoteStyle = function (offset) {
 								_0: {ctor: '_Tuple2', _0: 'left', _1: '50%'},
 								_1: {
 									ctor: '::',
-									_0: {ctor: '_Tuple2', _0: 'backgroundColor', _1: '#5CE6CD'},
+									_0: {ctor: '_Tuple2', _0: 'backgroundColor', _1: '#17c6e8'},
 									_1: {
 										ctor: '::',
 										_0: {ctor: '_Tuple2', _0: 'transition', _1: 'all 0.5s ease'},
@@ -20470,7 +20470,7 @@ var _user$project$Views_Chords$fingerNo = function (finger) {
 		case '2':
 			return '#E8175D';
 		case '3':
-			return '#5CE6CD';
+			return '#17c6e8';
 		case '4':
 			return '#A8A7A7';
 		default:
@@ -22199,7 +22199,7 @@ var _user$project$Views_Scales$scaleNameMajor = F4(
 								_0: _elm_lang$html$Html_Attributes$style(
 									{
 										ctor: '::',
-										_0: {ctor: '_Tuple2', _0: 'color', _1: '#5CE6CD'},
+										_0: {ctor: '_Tuple2', _0: 'color', _1: '#17c6e8'},
 										_1: {ctor: '[]'}
 									}),
 								_1: {ctor: '[]'}
@@ -22277,7 +22277,7 @@ var _user$project$Views_Scales$scaleNameMajor = F4(
 								_0: _elm_lang$html$Html_Attributes$style(
 									{
 										ctor: '::',
-										_0: {ctor: '_Tuple2', _0: 'color', _1: '#5CE6CD'},
+										_0: {ctor: '_Tuple2', _0: 'color', _1: '#17c6e8'},
 										_1: {ctor: '[]'}
 									}),
 								_1: {ctor: '[]'}
