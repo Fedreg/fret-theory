@@ -37,7 +37,7 @@ init location =
           , pitchShift = 0
           , modalOpen = False
           , strumArrow = [ 1, 2, 1, 1, 2, 1, 1, 1 ]
-          , fingerPickPattern = { a = [], b = [] }
+          , fingerPickPattern = { a = [ 2, 0, 0, 3, 0, 1, 0, 2 ], b = [ 5, 0, 4, 0, 5, 0, 5, 0 ] }
           }
         , Cmd.none
         )
