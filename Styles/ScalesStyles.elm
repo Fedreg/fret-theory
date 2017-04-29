@@ -68,7 +68,7 @@ scaleModalStyle model =
         baseStyles display =
             style
                 [ ( "display", display )
-                , ( "position", "absolute" )
+                , ( "position", "fixed" )
                 , ( "top", "calc(10vh / 2)" )
                 , ( "left", "calc(10vw / 2)" )
                 , ( "width", "90vw" )

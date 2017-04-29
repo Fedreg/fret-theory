@@ -13,6 +13,7 @@ matchers =
         , map ScalesPage (s "scales" </> string)
         , map FretboardPage (s "fretboard" </> string)
         , map StrumPage (s "strum")
+        , map FingerPickingPage (s "fingerpicking")
         ]
 
 
@@ -40,6 +41,9 @@ modelUpdateOnHash model location =
 
         StrumPage ->
             parseHash (s "strum" </> string) location
+
+        FingerPickingPage ->
+            parseHash (s "fingerpicking" </> string) location
 
         HomePage ->
             parseHash (s "home" </> string) location
@@ -71,3 +75,8 @@ strumPath =
 homePath : String
 homePath =
     "#home/"
+
+
+fingerPickingPath : String
+fingerPickingPath =
+    "#fingerpicking/"
