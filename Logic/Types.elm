@@ -34,6 +34,10 @@ type alias ChordChartData =
     , v : String
     , vi : String
     , vii : String
+    , i7 : String
+    , iv7 : String
+    , v7 : String
+    , vi7 : String
     , bars : List String
     , names : List String
     }

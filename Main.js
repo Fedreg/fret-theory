@@ -11788,10 +11788,33 @@ var _user$project$Logic_Types$Dot = F3(
 	function (a, b, c) {
 		return {tint: a, stringNo: b, fretNo: c};
 	});
-var _user$project$Logic_Types$ChordChartData = F9(
-	function (a, b, c, d, e, f, g, h, i) {
-		return {i: a, ii: b, iii: c, iv: d, v: e, vi: f, vii: g, bars: h, names: i};
-	});
+var _user$project$Logic_Types$ChordChartData = function (a) {
+	return function (b) {
+		return function (c) {
+			return function (d) {
+				return function (e) {
+					return function (f) {
+						return function (g) {
+							return function (h) {
+								return function (i) {
+									return function (j) {
+										return function (k) {
+											return function (l) {
+												return function (m) {
+													return {i: a, ii: b, iii: c, iv: d, v: e, vi: f, vii: g, i7: h, iv7: i, v7: j, vi7: k, bars: l, names: m};
+												};
+											};
+										};
+									};
+								};
+							};
+						};
+					};
+				};
+			};
+		};
+	};
+};
 var _user$project$Logic_Types$ChordAudioData = F7(
 	function (a, b, c, d, e, f, g) {
 		return {i: a, ii: b, iii: c, iv: d, v: e, vi: f, vii: g};
@@ -18324,6 +18347,10 @@ var _user$project$Views_Chords$keys = function (key) {
 				v: '263152040030323413',
 				vi: '06x050242332121010',
 				vii: '06x15224343432301x',
+				i7: '06x353242433121010',
+				iv7: '06x05x142334223414',
+				v7: '363252040030020111',
+				vi7: '06x050242030121010',
 				names: {
 					ctor: '::',
 					_0: 'C',
@@ -18347,80 +18374,24 @@ var _user$project$Views_Chords$keys = function (key) {
 											_0: 'Bdim7',
 											_1: {
 												ctor: '::',
-												_0: '5',
-												_1: {ctor: '[]'}
-											}
-										}
-									}
-								}
-							}
-						}
-					}
-				},
-				bars: {
-					ctor: '::',
-					_0: '',
-					_1: {
-						ctor: '::',
-						_0: '',
-						_1: {
-							ctor: '::',
-							_0: '',
-							_1: {
-								ctor: '::',
-								_0: '',
-								_1: {
-									ctor: '::',
-									_0: '',
-									_1: {
-										ctor: '::',
-										_0: '',
-										_1: {
-											ctor: '::',
-											_0: '',
-											_1: {ctor: '[]'}
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-			};
-		case 'G':
-			return {
-				i: '263152040030323413',
-				ii: '06x050242332121010',
-				iii: '06x152040030323212',
-				iv: '06x253142030323413',
-				v: '06x05x040132323212',
-				vi: '060152242030020010',
-				vii: 'b62253344132424112',
-				names: {
-					ctor: '::',
-					_0: 'G',
-					_1: {
-						ctor: '::',
-						_0: 'Am',
-						_1: {
-							ctor: '::',
-							_0: 'Bm',
-							_1: {
-								ctor: '::',
-								_0: 'C9',
-								_1: {
-									ctor: '::',
-									_0: 'D',
-									_1: {
-										ctor: '::',
-										_0: 'Em',
-										_1: {
-											ctor: '::',
-											_0: 'F#dim7',
-											_1: {
-												ctor: '::',
-												_0: '0',
-												_1: {ctor: '[]'}
+												_0: 'CM7',
+												_1: {
+													ctor: '::',
+													_0: 'FM7',
+													_1: {
+														ctor: '::',
+														_0: 'G7',
+														_1: {
+															ctor: '::',
+															_0: 'Am7',
+															_1: {
+																ctor: '::',
+																_0: '5',
+																_1: {ctor: '[]'}
+															}
+														}
+													}
+												}
 											}
 										}
 									}
@@ -18453,7 +18424,135 @@ var _user$project$Views_Chords$keys = function (key) {
 											_1: {
 												ctor: '::',
 												_0: '',
-												_1: {ctor: '[]'}
+												_1: {
+													ctor: '::',
+													_0: '3',
+													_1: {
+														ctor: '::',
+														_0: '',
+														_1: {
+															ctor: '::',
+															_0: '',
+															_1: {
+																ctor: '::',
+																_0: '',
+																_1: {ctor: '[]'}
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			};
+		case 'G':
+			return {
+				i: '263152040030323413',
+				ii: '06x050242332121010',
+				iii: '06x152040030323212',
+				iv: '06x253142030323413',
+				v: '06x05x040132323212',
+				vi: '060152242030020010',
+				vii: 'b62253344132424112',
+				i7: '363252040030020112',
+				iv7: '06x353242030020010',
+				v7: '06x05x040232121312',
+				vi7: '060152040030323010',
+				names: {
+					ctor: '::',
+					_0: 'G',
+					_1: {
+						ctor: '::',
+						_0: 'Am',
+						_1: {
+							ctor: '::',
+							_0: 'Bm',
+							_1: {
+								ctor: '::',
+								_0: 'C9',
+								_1: {
+									ctor: '::',
+									_0: 'D',
+									_1: {
+										ctor: '::',
+										_0: 'Em',
+										_1: {
+											ctor: '::',
+											_0: 'F#dim7',
+											_1: {
+												ctor: '::',
+												_0: 'GM7',
+												_1: {
+													ctor: '::',
+													_0: 'CM7',
+													_1: {
+														ctor: '::',
+														_0: 'D7',
+														_1: {
+															ctor: '::',
+															_0: 'Em7',
+															_1: {
+																ctor: '::',
+																_0: '0',
+																_1: {ctor: '[]'}
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				bars: {
+					ctor: '::',
+					_0: '',
+					_1: {
+						ctor: '::',
+						_0: '',
+						_1: {
+							ctor: '::',
+							_0: '',
+							_1: {
+								ctor: '::',
+								_0: '',
+								_1: {
+									ctor: '::',
+									_0: '',
+									_1: {
+										ctor: '::',
+										_0: '',
+										_1: {
+											ctor: '::',
+											_0: '',
+											_1: {
+												ctor: '::',
+												_0: '',
+												_1: {
+													ctor: '::',
+													_0: '',
+													_1: {
+														ctor: '::',
+														_0: '',
+														_1: {
+															ctor: '::',
+															_0: '',
+															_1: {
+																ctor: '::',
+																_0: '',
+																_1: {ctor: '[]'}
+															}
+														}
+													}
+												}
 											}
 										}
 									}
@@ -18472,6 +18571,10 @@ var _user$project$Views_Chords$keys = function (key) {
 				v: '06x050142232322010',
 				vi: '06x152040030323212',
 				vii: '06x152243434323010',
+				i7: '06x05x040132222312',
+				iv7: '363252040030020112',
+				v7: '06x050142030322010',
+				vi7: '06xb52344132223112',
 				names: {
 					ctor: '::',
 					_0: 'D',
@@ -18495,8 +18598,24 @@ var _user$project$Views_Chords$keys = function (key) {
 											_0: 'C#dim7',
 											_1: {
 												ctor: '::',
-												_0: '7',
-												_1: {ctor: '[]'}
+												_0: 'DM7',
+												_1: {
+													ctor: '::',
+													_0: 'GM7',
+													_1: {
+														ctor: '::',
+														_0: 'A7',
+														_1: {
+															ctor: '::',
+															_0: 'Bm7',
+															_1: {
+																ctor: '::',
+																_0: '7',
+																_1: {ctor: '[]'}
+															}
+														}
+													}
+												}
 											}
 										}
 									}
@@ -18526,7 +18645,23 @@ var _user$project$Views_Chords$keys = function (key) {
 										_1: {
 											ctor: '::',
 											_0: '4',
-											_1: {ctor: '[]'}
+											_1: {
+												ctor: '::',
+												_0: '',
+												_1: {
+													ctor: '::',
+													_0: '',
+													_1: {
+														ctor: '::',
+														_0: '',
+														_1: {
+															ctor: '::',
+															_0: '',
+															_1: {ctor: '[]'}
+														}
+													}
+												}
+											}
 										}
 									}
 								}
@@ -18544,6 +18679,10 @@ var _user$project$Views_Chords$keys = function (key) {
 				v: '060252342131020010',
 				vi: '162050040232322010',
 				vii: 'b62253344132424112',
+				i7: '',
+				iv7: '',
+				v7: '',
+				vi7: '',
 				names: {
 					ctor: '::',
 					_0: 'A',
@@ -18616,6 +18755,10 @@ var _user$project$Views_Chords$keys = function (key) {
 				v: '060252141332020412',
 				vi: '06x05x344434223112',
 				vii: '06x05x141332221412',
+				i7: '',
+				iv7: '',
+				v7: '',
+				vi7: '',
 				names: {
 					ctor: '::',
 					_0: 'E',
@@ -18688,6 +18831,10 @@ var _user$project$Views_Chords$keys = function (key) {
 				v: 'b62354444233122112',
 				vi: 'b62354444132122112',
 				vii: '06x151242030322010',
+				i7: '',
+				iv7: '',
+				v7: '',
+				vi7: '',
 				names: {
 					ctor: '::',
 					_0: 'B',
@@ -18760,6 +18907,10 @@ var _user$project$Views_Chords$keys = function (key) {
 				v: '06xb52244334424112',
 				vi: '06xb52344434223112',
 				vii: '06x05x143334223414',
+				i7: '',
+				iv7: '',
+				v7: '',
+				vi7: '',
 				names: {
 					ctor: '::',
 					_0: 'F#',
@@ -18832,6 +18983,10 @@ var _user$project$Views_Chords$keys = function (key) {
 				v: 'b62354444233122112',
 				vi: 'b62354444132122112',
 				vii: '06x2533441324240x0',
+				i7: '',
+				iv7: '',
+				v7: '',
+				vi7: '',
 				names: {
 					ctor: '::',
 					_0: 'Db',
@@ -18904,6 +19059,10 @@ var _user$project$Views_Chords$keys = function (key) {
 				v: '06xb52244334424112',
 				vi: 'b61353443131121111',
 				vii: '06x05x142333222413',
+				i7: '',
+				iv7: '',
+				v7: '',
+				vi7: '',
 				names: {
 					ctor: '::',
 					_0: 'Ab',
@@ -18976,6 +19135,10 @@ var _user$project$Views_Chords$keys = function (key) {
 				v: 'b62354444233122112',
 				vi: '06xb52344434223112',
 				vii: '06x2533441324240x0',
+				i7: '',
+				iv7: '',
+				v7: '',
+				vi7: '',
 				names: {
 					ctor: '::',
 					_0: 'Eb',
@@ -19048,6 +19211,10 @@ var _user$project$Views_Chords$keys = function (key) {
 				v: 'b61353443232121111',
 				vi: 'b62354444132122112',
 				vii: '06x05x141332221412',
+				i7: '',
+				iv7: '',
+				v7: '',
+				vi7: '',
 				names: {
 					ctor: '::',
 					_0: 'Bb',
@@ -19120,6 +19287,10 @@ var _user$project$Views_Chords$keys = function (key) {
 				v: '06x353242030121010',
 				vi: '06x05x040232423111',
 				vii: '060151242030423010',
+				i7: '',
+				iv7: '',
+				v7: '',
+				vi7: '',
 				names: {
 					ctor: '::',
 					_0: 'F',
@@ -19192,6 +19363,10 @@ var _user$project$Views_Chords$keys = function (key) {
 				v: '060152242030020010',
 				vi: '06x05x343232121010',
 				vii: '263152040030323413',
+				i7: '',
+				iv7: '',
+				v7: '',
+				vi7: '',
 				names: {
 					ctor: '::',
 					_0: 'Am',
@@ -19264,6 +19439,10 @@ var _user$project$Views_Chords$keys = function (key) {
 				v: '06x152040030323212',
 				vi: '06x353242030121010',
 				vii: '06x05x040132323212',
+				i7: '',
+				iv7: '',
+				v7: '',
+				vi7: '',
 				names: {
 					ctor: '::',
 					_0: 'Em',
@@ -19336,6 +19515,10 @@ var _user$project$Views_Chords$keys = function (key) {
 				v: '162050040232322010',
 				vi: '263152040030323413',
 				vii: '06x050142232322010',
+				i7: '',
+				iv7: '',
+				v7: '',
+				vi7: '',
 				names: {
 					ctor: '::',
 					_0: 'Bm',
@@ -19408,6 +19591,10 @@ var _user$project$Views_Chords$keys = function (key) {
 				v: '06xb52344434223112',
 				vi: '06x05x040132323212',
 				vii: '060252342131020010',
+				i7: '',
+				iv7: '',
+				v7: '',
+				vi7: '',
 				names: {
 					ctor: '::',
 					_0: 'F#m',
@@ -19480,6 +19667,10 @@ var _user$project$Views_Chords$keys = function (key) {
 				v: 'b62354444132122112',
 				vi: '06x050142232322010',
 				vii: '06xb52244334424112',
+				i7: '',
+				iv7: '',
+				v7: '',
+				vi7: '',
 				names: {
 					ctor: '::',
 					_0: 'C#m',
@@ -19552,6 +19743,10 @@ var _user$project$Views_Chords$keys = function (key) {
 				v: '06xb52344434223112',
 				vi: '060252342131020010',
 				vii: 'b62354444233122112',
+				i7: '',
+				iv7: '',
+				v7: '',
+				vi7: '',
 				names: {
 					ctor: '::',
 					_0: 'G#m',
@@ -19624,6 +19819,10 @@ var _user$project$Views_Chords$keys = function (key) {
 				v: 'b62354444132122112',
 				vi: '06xb52244334424112',
 				vii: '06xb52244334424112',
+				i7: '',
+				iv7: '',
+				v7: '',
+				vi7: '',
 				names: {
 					ctor: '::',
 					_0: 'D#m',
@@ -19696,6 +19895,10 @@ var _user$project$Views_Chords$keys = function (key) {
 				v: '06xb52344434223112',
 				vi: 'b62354444233122112',
 				vii: 'b62354444233122112',
+				i7: '',
+				iv7: '',
+				v7: '',
+				vi7: '',
 				names: {
 					ctor: '::',
 					_0: 'Bbm',
@@ -19768,6 +19971,10 @@ var _user$project$Views_Chords$keys = function (key) {
 				v: '06xb52344434223112',
 				vi: '06xb52244334424112',
 				vii: '06xb52244334424112',
+				i7: '',
+				iv7: '',
+				v7: '',
+				vi7: '',
 				names: {
 					ctor: '::',
 					_0: 'Fm',
@@ -19840,6 +20047,10 @@ var _user$project$Views_Chords$keys = function (key) {
 				v: 'b62354444132122112',
 				vi: 'b62354444233122112',
 				vii: '06xb51243333423111',
+				i7: '',
+				iv7: '',
+				v7: '',
+				vi7: '',
 				names: {
 					ctor: '::',
 					_0: 'Cm',
@@ -19912,6 +20123,10 @@ var _user$project$Views_Chords$keys = function (key) {
 				v: '06x05x040232423111',
 				vi: '06xb52244334424112',
 				vii: 'b61353443232121111',
+				i7: '',
+				iv7: '',
+				v7: '',
+				vi7: '',
 				names: {
 					ctor: '::',
 					_0: 'Gm',
@@ -19984,6 +20199,10 @@ var _user$project$Views_Chords$keys = function (key) {
 				v: '06x050242332121010',
 				vi: '06xb51243333423111',
 				vii: '06x353242030121010',
+				i7: '',
+				iv7: '',
+				v7: '',
+				vi7: '',
 				names: {
 					ctor: '::',
 					_0: 'Dm',
@@ -20056,6 +20275,10 @@ var _user$project$Views_Chords$keys = function (key) {
 				v: '',
 				vi: '',
 				vii: '',
+				i7: '',
+				iv7: '',
+				v7: '',
+				vi7: '',
 				names: {
 					ctor: '::',
 					_0: '',
@@ -20967,7 +21190,7 @@ var _user$project$Views_Chords$chordChartPage = function (model) {
 		'0',
 		A2(
 			_elm_community$list_extra$List_Extra$getAt,
-			7,
+			11,
 			_user$project$Views_Chords$keys(model.musKey).names));
 	var soloFretMaj = _elm_lang$core$Basics$toString(
 		A2(
@@ -21130,140 +21353,207 @@ var _user$project$Views_Chords$chordChartPage = function (model) {
 								_elm_lang$html$Html$div,
 								{
 									ctor: '::',
-									_0: _elm_lang$html$Html_Attributes$style(
-										{
-											ctor: '::',
-											_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '18px'},
-											_1: {
-												ctor: '::',
-												_0: {ctor: '_Tuple2', _0: 'paddingBottom', _1: '50px'},
-												_1: {
-													ctor: '::',
-													_0: {ctor: '_Tuple2', _0: 'color', _1: '#A8A7A7'},
-													_1: {
-														ctor: '::',
-														_0: {ctor: '_Tuple2', _0: 'textDecoration', _1: 'inherit'},
-														_1: {ctor: '[]'}
-													}
-												}
-											}
-										}),
+									_0: _user$project$Styles_ChordStyles$chartContainerStyle('row'),
 									_1: {ctor: '[]'}
 								},
 								{
 									ctor: '::',
-									_0: A2(
-										_elm_lang$html$Html$span,
-										{ctor: '[]'},
-										{
-											ctor: '::',
-											_0: _elm_lang$html$Html$text('SOLO ON FRET: '),
-											_1: {ctor: '[]'}
+									_0: A5(
+										_user$project$Views_Chords$chordChartModel,
+										model,
+										7,
+										'I7',
+										function (_) {
+											return _.i;
+										},
+										function (_) {
+											return _.i7;
 										}),
 									_1: {
 										ctor: '::',
-										_0: A2(
-											_elm_lang$html$Html$span,
-											{
-												ctor: '::',
-												_0: _elm_lang$html$Html_Attributes$style(
-													{
-														ctor: '::',
-														_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '25px'},
-														_1: {
-															ctor: '::',
-															_0: {ctor: '_Tuple2', _0: 'color', _1: '#E84A5F'},
-															_1: {ctor: '[]'}
-														}
-													}),
-												_1: {ctor: '[]'}
+										_0: A5(
+											_user$project$Views_Chords$chordChartModel,
+											model,
+											8,
+											'IV7',
+											function (_) {
+												return _.iv;
 											},
-											{
-												ctor: '::',
-												_0: _elm_lang$html$Html$text(soloFretMin),
-												_1: {ctor: '[]'}
+											function (_) {
+												return _.iv7;
 											}),
 										_1: {
 											ctor: '::',
-											_0: A2(
-												_elm_lang$html$Html$a,
-												{
-													ctor: '::',
-													_0: _elm_lang$html$Html_Attributes$style(
-														{
-															ctor: '::',
-															_0: {ctor: '_Tuple2', _0: 'color', _1: '#aaa'},
-															_1: {ctor: '[]'}
-														}),
-													_1: {
-														ctor: '::',
-														_0: _elm_lang$html$Html_Attributes$href(
-															_user$project$Logic_Routing$scalesPath(model.musKey)),
-														_1: {ctor: '[]'}
-													}
+											_0: A5(
+												_user$project$Views_Chords$chordChartModel,
+												model,
+												9,
+												'V7',
+												function (_) {
+													return _.v;
 												},
-												{
-													ctor: '::',
-													_0: _elm_lang$html$Html$text(' (MINOR SCALE), OR FRET: '),
-													_1: {ctor: '[]'}
+												function (_) {
+													return _.v7;
 												}),
 											_1: {
 												ctor: '::',
-												_0: A2(
-													_elm_lang$html$Html$span,
-													{
-														ctor: '::',
-														_0: _elm_lang$html$Html_Attributes$style(
-															{
-																ctor: '::',
-																_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '25px'},
-																_1: {
-																	ctor: '::',
-																	_0: {ctor: '_Tuple2', _0: 'color', _1: '#E84A5F'},
-																	_1: {ctor: '[]'}
-																}
-															}),
-														_1: {ctor: '[]'}
+												_0: A5(
+													_user$project$Views_Chords$chordChartModel,
+													model,
+													10,
+													'VI7',
+													function (_) {
+														return _.vi;
 													},
-													{
-														ctor: '::',
-														_0: _elm_lang$html$Html$text(soloFretMaj),
-														_1: {ctor: '[]'}
+													function (_) {
+														return _.vi7;
 													}),
-												_1: {
-													ctor: '::',
-													_0: A2(
-														_elm_lang$html$Html$a,
-														{
-															ctor: '::',
-															_0: _elm_lang$html$Html_Attributes$style(
-																{
-																	ctor: '::',
-																	_0: {ctor: '_Tuple2', _0: 'color', _1: '#aaa'},
-																	_1: {ctor: '[]'}
-																}),
-															_1: {
-																ctor: '::',
-																_0: _elm_lang$html$Html_Attributes$href(
-																	_user$project$Logic_Routing$scalesPath(model.musKey)),
-																_1: {ctor: '[]'}
-															}
-														},
-														{
-															ctor: '::',
-															_0: _elm_lang$html$Html$text(' (MAJOR SCALE)'),
-															_1: {ctor: '[]'}
-														}),
-													_1: {ctor: '[]'}
-												}
+												_1: {ctor: '[]'}
 											}
 										}
 									}
 								}),
 							_1: {
 								ctor: '::',
-								_0: _user$project$Views_Chords$chordModal(model),
-								_1: {ctor: '[]'}
+								_0: A2(
+									_elm_lang$html$Html$div,
+									{
+										ctor: '::',
+										_0: _elm_lang$html$Html_Attributes$style(
+											{
+												ctor: '::',
+												_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '18px'},
+												_1: {
+													ctor: '::',
+													_0: {ctor: '_Tuple2', _0: 'paddingBottom', _1: '50px'},
+													_1: {
+														ctor: '::',
+														_0: {ctor: '_Tuple2', _0: 'color', _1: '#A8A7A7'},
+														_1: {
+															ctor: '::',
+															_0: {ctor: '_Tuple2', _0: 'textDecoration', _1: 'inherit'},
+															_1: {ctor: '[]'}
+														}
+													}
+												}
+											}),
+										_1: {ctor: '[]'}
+									},
+									{
+										ctor: '::',
+										_0: A2(
+											_elm_lang$html$Html$span,
+											{ctor: '[]'},
+											{
+												ctor: '::',
+												_0: _elm_lang$html$Html$text('SOLO ON FRET: '),
+												_1: {ctor: '[]'}
+											}),
+										_1: {
+											ctor: '::',
+											_0: A2(
+												_elm_lang$html$Html$span,
+												{
+													ctor: '::',
+													_0: _elm_lang$html$Html_Attributes$style(
+														{
+															ctor: '::',
+															_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '25px'},
+															_1: {
+																ctor: '::',
+																_0: {ctor: '_Tuple2', _0: 'color', _1: '#E84A5F'},
+																_1: {ctor: '[]'}
+															}
+														}),
+													_1: {ctor: '[]'}
+												},
+												{
+													ctor: '::',
+													_0: _elm_lang$html$Html$text(soloFretMin),
+													_1: {ctor: '[]'}
+												}),
+											_1: {
+												ctor: '::',
+												_0: A2(
+													_elm_lang$html$Html$a,
+													{
+														ctor: '::',
+														_0: _elm_lang$html$Html_Attributes$style(
+															{
+																ctor: '::',
+																_0: {ctor: '_Tuple2', _0: 'color', _1: '#aaa'},
+																_1: {ctor: '[]'}
+															}),
+														_1: {
+															ctor: '::',
+															_0: _elm_lang$html$Html_Attributes$href(
+																_user$project$Logic_Routing$scalesPath(model.musKey)),
+															_1: {ctor: '[]'}
+														}
+													},
+													{
+														ctor: '::',
+														_0: _elm_lang$html$Html$text(' (MINOR SCALE), OR FRET: '),
+														_1: {ctor: '[]'}
+													}),
+												_1: {
+													ctor: '::',
+													_0: A2(
+														_elm_lang$html$Html$span,
+														{
+															ctor: '::',
+															_0: _elm_lang$html$Html_Attributes$style(
+																{
+																	ctor: '::',
+																	_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '25px'},
+																	_1: {
+																		ctor: '::',
+																		_0: {ctor: '_Tuple2', _0: 'color', _1: '#E84A5F'},
+																		_1: {ctor: '[]'}
+																	}
+																}),
+															_1: {ctor: '[]'}
+														},
+														{
+															ctor: '::',
+															_0: _elm_lang$html$Html$text(soloFretMaj),
+															_1: {ctor: '[]'}
+														}),
+													_1: {
+														ctor: '::',
+														_0: A2(
+															_elm_lang$html$Html$a,
+															{
+																ctor: '::',
+																_0: _elm_lang$html$Html_Attributes$style(
+																	{
+																		ctor: '::',
+																		_0: {ctor: '_Tuple2', _0: 'color', _1: '#aaa'},
+																		_1: {ctor: '[]'}
+																	}),
+																_1: {
+																	ctor: '::',
+																	_0: _elm_lang$html$Html_Attributes$href(
+																		_user$project$Logic_Routing$scalesPath(model.musKey)),
+																	_1: {ctor: '[]'}
+																}
+															},
+															{
+																ctor: '::',
+																_0: _elm_lang$html$Html$text(' (MAJOR SCALE)'),
+																_1: {ctor: '[]'}
+															}),
+														_1: {ctor: '[]'}
+													}
+												}
+											}
+										}
+									}),
+								_1: {
+									ctor: '::',
+									_0: _user$project$Views_Chords$chordModal(model),
+									_1: {ctor: '[]'}
+								}
 							}
 						}
 					}
