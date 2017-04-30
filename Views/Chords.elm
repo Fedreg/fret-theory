@@ -36,6 +36,7 @@ chordChartPage model =
                 , chordChartModel model 2 "III" .iii .iii
                 , chordChartModel model 6 "VII" .vii .vii
                 ]
+            , div [] [ text "7th CHORDS" ]
             , div [ chartContainerStyle "row" ]
                 [ chordChartModel model 7 "I7" .i .i7
                 , chordChartModel model 8 "IV7" .iv .iv7

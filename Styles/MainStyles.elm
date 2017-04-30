@@ -85,14 +85,13 @@ navItemStyle =
 keyListStyle : Bool -> Attribute msg
 keyListStyle navOpen =
     let
-        baseStyles width margin lh br font =
+        baseStyles width margin lh font =
             style
                 [ ( "width", width )
                 , ( "margin", margin )
-                , ( "borderRadius", br )
                 , ( "cursor", "pointer" )
                 , ( "lineHeight", lh )
-                , ( "backgroundColor", "#CAD1D9" )
+                , ( "backgroundColor", "#eee" )
                 , ( "color", "#000" )
                 , ( "fontSize", font )
                 , ( "transition", "all 0.4s ease" )
@@ -100,10 +99,10 @@ keyListStyle navOpen =
     in
         case navOpen of
             True ->
-                baseStyles "50px" "5px 5px 5px 0" "50px" "25px" "16px"
+                baseStyles "50px" "5px 5px 0 0" "50px" "16px"
 
             False ->
-                baseStyles "20px" "2px" "20px" "3px" "12px"
+                baseStyles "20px" "2px" "20px" "12px"
 
 
 keyListContainerStyle : Bool -> Attribute msg
@@ -175,7 +174,7 @@ highlight : List ( String, String )
 highlight =
     [ ( "color", "#E9175D" )
     , ( "backgroundColor", "#E9175D" )
-    , ( "transition", "color 0.3s ease" )
+      -- , ( "transition", "color 0.3s ease" )
     ]
 
 

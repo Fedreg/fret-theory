@@ -22043,67 +22043,11 @@ var _user$project$Views_Chords$chordChartPage = function (model) {
 							ctor: '::',
 							_0: A2(
 								_elm_lang$html$Html$div,
+								{ctor: '[]'},
 								{
 									ctor: '::',
-									_0: _user$project$Styles_ChordStyles$chartContainerStyle('row'),
+									_0: _elm_lang$html$Html$text('7th CHORDS'),
 									_1: {ctor: '[]'}
-								},
-								{
-									ctor: '::',
-									_0: A5(
-										_user$project$Views_Chords$chordChartModel,
-										model,
-										7,
-										'I7',
-										function (_) {
-											return _.i;
-										},
-										function (_) {
-											return _.i7;
-										}),
-									_1: {
-										ctor: '::',
-										_0: A5(
-											_user$project$Views_Chords$chordChartModel,
-											model,
-											8,
-											'IV7',
-											function (_) {
-												return _.iv;
-											},
-											function (_) {
-												return _.iv7;
-											}),
-										_1: {
-											ctor: '::',
-											_0: A5(
-												_user$project$Views_Chords$chordChartModel,
-												model,
-												9,
-												'V7',
-												function (_) {
-													return _.v;
-												},
-												function (_) {
-													return _.v7;
-												}),
-											_1: {
-												ctor: '::',
-												_0: A5(
-													_user$project$Views_Chords$chordChartModel,
-													model,
-													10,
-													'VI7',
-													function (_) {
-														return _.vi;
-													},
-													function (_) {
-														return _.vi7;
-													}),
-												_1: {ctor: '[]'}
-											}
-										}
-									}
 								}),
 							_1: {
 								ctor: '::',
@@ -22111,140 +22055,207 @@ var _user$project$Views_Chords$chordChartPage = function (model) {
 									_elm_lang$html$Html$div,
 									{
 										ctor: '::',
-										_0: _elm_lang$html$Html_Attributes$style(
-											{
-												ctor: '::',
-												_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '18px'},
-												_1: {
-													ctor: '::',
-													_0: {ctor: '_Tuple2', _0: 'paddingBottom', _1: '50px'},
-													_1: {
-														ctor: '::',
-														_0: {ctor: '_Tuple2', _0: 'color', _1: '#A8A7A7'},
-														_1: {
-															ctor: '::',
-															_0: {ctor: '_Tuple2', _0: 'textDecoration', _1: 'inherit'},
-															_1: {ctor: '[]'}
-														}
-													}
-												}
-											}),
+										_0: _user$project$Styles_ChordStyles$chartContainerStyle('row'),
 										_1: {ctor: '[]'}
 									},
 									{
 										ctor: '::',
-										_0: A2(
-											_elm_lang$html$Html$span,
-											{ctor: '[]'},
-											{
-												ctor: '::',
-												_0: _elm_lang$html$Html$text('SOLO ON FRET: '),
-												_1: {ctor: '[]'}
+										_0: A5(
+											_user$project$Views_Chords$chordChartModel,
+											model,
+											7,
+											'I7',
+											function (_) {
+												return _.i;
+											},
+											function (_) {
+												return _.i7;
 											}),
 										_1: {
 											ctor: '::',
-											_0: A2(
-												_elm_lang$html$Html$span,
-												{
-													ctor: '::',
-													_0: _elm_lang$html$Html_Attributes$style(
-														{
-															ctor: '::',
-															_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '25px'},
-															_1: {
-																ctor: '::',
-																_0: {ctor: '_Tuple2', _0: 'color', _1: '#E84A5F'},
-																_1: {ctor: '[]'}
-															}
-														}),
-													_1: {ctor: '[]'}
+											_0: A5(
+												_user$project$Views_Chords$chordChartModel,
+												model,
+												8,
+												'IV7',
+												function (_) {
+													return _.iv;
 												},
-												{
-													ctor: '::',
-													_0: _elm_lang$html$Html$text(soloFretMin),
-													_1: {ctor: '[]'}
+												function (_) {
+													return _.iv7;
 												}),
 											_1: {
 												ctor: '::',
-												_0: A2(
-													_elm_lang$html$Html$a,
-													{
-														ctor: '::',
-														_0: _elm_lang$html$Html_Attributes$style(
-															{
-																ctor: '::',
-																_0: {ctor: '_Tuple2', _0: 'color', _1: '#aaa'},
-																_1: {ctor: '[]'}
-															}),
-														_1: {
-															ctor: '::',
-															_0: _elm_lang$html$Html_Attributes$href(
-																_user$project$Logic_Routing$scalesPath(model.musKey)),
-															_1: {ctor: '[]'}
-														}
+												_0: A5(
+													_user$project$Views_Chords$chordChartModel,
+													model,
+													9,
+													'V7',
+													function (_) {
+														return _.v;
 													},
-													{
-														ctor: '::',
-														_0: _elm_lang$html$Html$text(' (MINOR SCALE), OR FRET: '),
-														_1: {ctor: '[]'}
+													function (_) {
+														return _.v7;
 													}),
 												_1: {
 													ctor: '::',
-													_0: A2(
-														_elm_lang$html$Html$span,
-														{
-															ctor: '::',
-															_0: _elm_lang$html$Html_Attributes$style(
-																{
-																	ctor: '::',
-																	_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '25px'},
-																	_1: {
-																		ctor: '::',
-																		_0: {ctor: '_Tuple2', _0: 'color', _1: '#E84A5F'},
-																		_1: {ctor: '[]'}
-																	}
-																}),
-															_1: {ctor: '[]'}
+													_0: A5(
+														_user$project$Views_Chords$chordChartModel,
+														model,
+														10,
+														'VI7',
+														function (_) {
+															return _.vi;
 														},
-														{
-															ctor: '::',
-															_0: _elm_lang$html$Html$text(soloFretMaj),
-															_1: {ctor: '[]'}
+														function (_) {
+															return _.vi7;
 														}),
-													_1: {
-														ctor: '::',
-														_0: A2(
-															_elm_lang$html$Html$a,
-															{
-																ctor: '::',
-																_0: _elm_lang$html$Html_Attributes$style(
-																	{
-																		ctor: '::',
-																		_0: {ctor: '_Tuple2', _0: 'color', _1: '#aaa'},
-																		_1: {ctor: '[]'}
-																	}),
-																_1: {
-																	ctor: '::',
-																	_0: _elm_lang$html$Html_Attributes$href(
-																		_user$project$Logic_Routing$scalesPath(model.musKey)),
-																	_1: {ctor: '[]'}
-																}
-															},
-															{
-																ctor: '::',
-																_0: _elm_lang$html$Html$text(' (MAJOR SCALE)'),
-																_1: {ctor: '[]'}
-															}),
-														_1: {ctor: '[]'}
-													}
+													_1: {ctor: '[]'}
 												}
 											}
 										}
 									}),
 								_1: {
 									ctor: '::',
-									_0: _user$project$Views_Chords$chordModal(model),
-									_1: {ctor: '[]'}
+									_0: A2(
+										_elm_lang$html$Html$div,
+										{
+											ctor: '::',
+											_0: _elm_lang$html$Html_Attributes$style(
+												{
+													ctor: '::',
+													_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '18px'},
+													_1: {
+														ctor: '::',
+														_0: {ctor: '_Tuple2', _0: 'paddingBottom', _1: '50px'},
+														_1: {
+															ctor: '::',
+															_0: {ctor: '_Tuple2', _0: 'color', _1: '#A8A7A7'},
+															_1: {
+																ctor: '::',
+																_0: {ctor: '_Tuple2', _0: 'textDecoration', _1: 'inherit'},
+																_1: {ctor: '[]'}
+															}
+														}
+													}
+												}),
+											_1: {ctor: '[]'}
+										},
+										{
+											ctor: '::',
+											_0: A2(
+												_elm_lang$html$Html$span,
+												{ctor: '[]'},
+												{
+													ctor: '::',
+													_0: _elm_lang$html$Html$text('SOLO ON FRET: '),
+													_1: {ctor: '[]'}
+												}),
+											_1: {
+												ctor: '::',
+												_0: A2(
+													_elm_lang$html$Html$span,
+													{
+														ctor: '::',
+														_0: _elm_lang$html$Html_Attributes$style(
+															{
+																ctor: '::',
+																_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '25px'},
+																_1: {
+																	ctor: '::',
+																	_0: {ctor: '_Tuple2', _0: 'color', _1: '#E84A5F'},
+																	_1: {ctor: '[]'}
+																}
+															}),
+														_1: {ctor: '[]'}
+													},
+													{
+														ctor: '::',
+														_0: _elm_lang$html$Html$text(soloFretMin),
+														_1: {ctor: '[]'}
+													}),
+												_1: {
+													ctor: '::',
+													_0: A2(
+														_elm_lang$html$Html$a,
+														{
+															ctor: '::',
+															_0: _elm_lang$html$Html_Attributes$style(
+																{
+																	ctor: '::',
+																	_0: {ctor: '_Tuple2', _0: 'color', _1: '#aaa'},
+																	_1: {ctor: '[]'}
+																}),
+															_1: {
+																ctor: '::',
+																_0: _elm_lang$html$Html_Attributes$href(
+																	_user$project$Logic_Routing$scalesPath(model.musKey)),
+																_1: {ctor: '[]'}
+															}
+														},
+														{
+															ctor: '::',
+															_0: _elm_lang$html$Html$text(' (MINOR SCALE), OR FRET: '),
+															_1: {ctor: '[]'}
+														}),
+													_1: {
+														ctor: '::',
+														_0: A2(
+															_elm_lang$html$Html$span,
+															{
+																ctor: '::',
+																_0: _elm_lang$html$Html_Attributes$style(
+																	{
+																		ctor: '::',
+																		_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '25px'},
+																		_1: {
+																			ctor: '::',
+																			_0: {ctor: '_Tuple2', _0: 'color', _1: '#E84A5F'},
+																			_1: {ctor: '[]'}
+																		}
+																	}),
+																_1: {ctor: '[]'}
+															},
+															{
+																ctor: '::',
+																_0: _elm_lang$html$Html$text(soloFretMaj),
+																_1: {ctor: '[]'}
+															}),
+														_1: {
+															ctor: '::',
+															_0: A2(
+																_elm_lang$html$Html$a,
+																{
+																	ctor: '::',
+																	_0: _elm_lang$html$Html_Attributes$style(
+																		{
+																			ctor: '::',
+																			_0: {ctor: '_Tuple2', _0: 'color', _1: '#aaa'},
+																			_1: {ctor: '[]'}
+																		}),
+																	_1: {
+																		ctor: '::',
+																		_0: _elm_lang$html$Html_Attributes$href(
+																			_user$project$Logic_Routing$scalesPath(model.musKey)),
+																		_1: {ctor: '[]'}
+																	}
+																},
+																{
+																	ctor: '::',
+																	_0: _elm_lang$html$Html$text(' (MAJOR SCALE)'),
+																	_1: {ctor: '[]'}
+																}),
+															_1: {ctor: '[]'}
+														}
+													}
+												}
+											}
+										}),
+									_1: {
+										ctor: '::',
+										_0: _user$project$Views_Chords$chordModal(model),
+										_1: {ctor: '[]'}
+									}
 								}
 							}
 						}
@@ -27164,11 +27175,7 @@ var _user$project$Styles_MainStyles$highlight = {
 	_1: {
 		ctor: '::',
 		_0: {ctor: '_Tuple2', _0: 'backgroundColor', _1: '#E9175D'},
-		_1: {
-			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'transition', _1: 'color 0.3s ease'},
-			_1: {ctor: '[]'}
-		}
+		_1: {ctor: '[]'}
 	}
 };
 var _user$project$Styles_MainStyles$modalIconStyle = function (model) {
@@ -27289,8 +27296,8 @@ var _user$project$Styles_MainStyles$keyListContainerStyle = function (navOpen) {
 	}
 };
 var _user$project$Styles_MainStyles$keyListStyle = function (navOpen) {
-	var baseStyles = F5(
-		function (width, margin, lh, br, font) {
+	var baseStyles = F4(
+		function (width, margin, lh, font) {
 			return _elm_lang$html$Html_Attributes$style(
 				{
 					ctor: '::',
@@ -27300,27 +27307,23 @@ var _user$project$Styles_MainStyles$keyListStyle = function (navOpen) {
 						_0: {ctor: '_Tuple2', _0: 'margin', _1: margin},
 						_1: {
 							ctor: '::',
-							_0: {ctor: '_Tuple2', _0: 'borderRadius', _1: br},
+							_0: {ctor: '_Tuple2', _0: 'cursor', _1: 'pointer'},
 							_1: {
 								ctor: '::',
-								_0: {ctor: '_Tuple2', _0: 'cursor', _1: 'pointer'},
+								_0: {ctor: '_Tuple2', _0: 'lineHeight', _1: lh},
 								_1: {
 									ctor: '::',
-									_0: {ctor: '_Tuple2', _0: 'lineHeight', _1: lh},
+									_0: {ctor: '_Tuple2', _0: 'backgroundColor', _1: '#eee'},
 									_1: {
 										ctor: '::',
-										_0: {ctor: '_Tuple2', _0: 'backgroundColor', _1: '#CAD1D9'},
+										_0: {ctor: '_Tuple2', _0: 'color', _1: '#000'},
 										_1: {
 											ctor: '::',
-											_0: {ctor: '_Tuple2', _0: 'color', _1: '#000'},
+											_0: {ctor: '_Tuple2', _0: 'fontSize', _1: font},
 											_1: {
 												ctor: '::',
-												_0: {ctor: '_Tuple2', _0: 'fontSize', _1: font},
-												_1: {
-													ctor: '::',
-													_0: {ctor: '_Tuple2', _0: 'transition', _1: 'all 0.4s ease'},
-													_1: {ctor: '[]'}
-												}
+												_0: {ctor: '_Tuple2', _0: 'transition', _1: 'all 0.4s ease'},
+												_1: {ctor: '[]'}
 											}
 										}
 									}
@@ -27332,9 +27335,9 @@ var _user$project$Styles_MainStyles$keyListStyle = function (navOpen) {
 		});
 	var _p3 = navOpen;
 	if (_p3 === true) {
-		return A5(baseStyles, '50px', '5px 5px 5px 0', '50px', '25px', '16px');
+		return A4(baseStyles, '50px', '5px 5px 0 0', '50px', '16px');
 	} else {
-		return A5(baseStyles, '20px', '2px', '20px', '3px', '12px');
+		return A4(baseStyles, '20px', '2px', '20px', '12px');
 	}
 };
 var _user$project$Styles_MainStyles$navItemStyle = _elm_lang$html$Html_Attributes$style(
