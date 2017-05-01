@@ -50,7 +50,6 @@ chordChartPage model =
                 , span [ style [ ( "fontSize", "25px" ), ( "color", "#E84A5F" ) ] ] [ text soloFretMaj ]
                 , a [ style [ ( "color", "#aaa" ) ], href (scalesPath model.musKey) ] [ text " (MAJOR SCALE)" ]
                 ]
-            , chordModal model
             ]
 
 
@@ -82,10 +81,10 @@ fingerNo finger =
             "#E8175D"
 
         "3" ->
-            "#17c6e8"
+            "#355c7d"
 
         "4" ->
-            "#A8A7A7"
+            "#B8A7A7"
 
         _ ->
             "none"
@@ -235,13 +234,6 @@ playbackSpeedSlider message model =
             , onInput ChangeSliderValue
             ]
             []
-        ]
-
-
-chordModal model =
-    div [ chordModalStyle model ]
-        [ div [ closeModalIcon, onClick ShowModal ] [ text "x" ]
-        , div [] [ text ("Chord Page. Instructions Coming Soon! Key: " ++ model.musKey) ]
         ]
 
 

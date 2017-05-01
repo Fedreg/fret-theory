@@ -77,7 +77,6 @@ fretboardPage model =
                     (List.map fretNumberMarkers <| List.reverse fretNumbers)
                 ]
             , fretNotation model
-            , fretboardModal model
             ]
 
 
@@ -234,10 +233,3 @@ notesInKey key =
         else
             noteList ++ mapper intervalListMinor
 
-
-fretboardModal : Model -> Html Msg
-fretboardModal model =
-    div [ fretboardModalStyle model ]
-        [ div [ closeModalIcon, onClick ShowModal ] [ text "x" ]
-        , div [] [ text ("Fretboard Page. Instructions Coming Soon! Key: " ++ model.musKey) ]
-        ]

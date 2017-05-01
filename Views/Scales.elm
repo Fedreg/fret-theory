@@ -22,7 +22,6 @@ scalesPage model =
             , lydianModeView model
             , mixolydianModeView model
             , dorianModeView model
-            , scalesModal model
             ]
         ]
 
@@ -312,14 +311,14 @@ scaleNameMajor model scaleName modifiedNotes matchingChord =
             div []
                 [ span [] [ text model.musKey ]
                 , span [ style [ ( "color", "#777" ) ] ] [ text scaleName ]
-                , span [ style [ ( "color", "#17c6e8" ) ] ] [ text modifiedNotes ]
+                , span [ style [ ( "color", "#355c7d" ) ] ] [ text modifiedNotes ]
                 , span [ style [ ( "color", "#000" ) ] ] [ text playOver ]
                 ]
         else
             div []
                 [ span [] [ text (Maybe.withDefault "C" <| getAt (index - 12) keyList) ]
                 , span [ style [ ( "color", "#777" ) ] ] [ text scaleName ]
-                , span [ style [ ( "color", "#17c6e8" ) ] ] [ text modifiedNotes ]
+                , span [ style [ ( "color", "#355c7d" ) ] ] [ text modifiedNotes ]
                 , span [ style [ ( "color", "#000" ) ] ] [ text ", relative major" ]
                 ]
 
@@ -348,14 +347,6 @@ scaleNameMinor model scaleName =
                 , span [ style [ ( "color", "#777" ) ] ] [ text scaleName ]
                 , span [ style [ ( "color", "#000" ) ] ] [ text (" , relative minor") ]
                 ]
-
-
-scalesModal : Model -> Html Msg
-scalesModal model =
-    div [ scaleModalStyle model ]
-        [ div [ closeModalIcon, onClick ShowModal ] [ text "x" ]
-        , div [] [ text ("Scale Page. Instructions Coming Soon! Key: " ++ model.musKey) ]
-        ]
 
 
 {-| Layout of scales in frets per string.

@@ -105,7 +105,7 @@ notationNoteStyle offset =
         , ( "position", "absolute" )
         , ( "bottom", (toString offset) ++ "px" )
         , ( "left", "50%" )
-        , ( "backgroundColor", "#17c6e8" )
+        , ( "backgroundColor", "#355c7d" )
         , ( "transition", "all 0.5s ease" )
         , ( "border", "1px solid #666" )
         , ( "zIndex", "1" )
@@ -187,48 +187,3 @@ hrLedgerStyleLo notePosition offset =
             , ( "transition", "opacity 0.5s ease" )
             , ( "zIndex", "0" )
             ]
-
-
-fretboardModalStyle : Model -> Attribute msg
-fretboardModalStyle model =
-    let
-        baseStyles display =
-            style
-                [ ( "display", display )
-                , ( "position", "absolute" )
-                , ( "top", "calc(10vh / 2)" )
-                , ( "left", "calc(10vw / 2)" )
-                , ( "width", "90vw" )
-                , ( "height", "90vh" )
-                , ( "border", "1px solid #999" )
-                , ( "borderRadius", "20px" )
-                , ( "backgroundColor", "#fff" )
-                , ( "zIndex", "50" )
-                , ( "color", "#333" )
-                , ( "textAlign", "center" )
-                , ( "overflow", "scroll" )
-                ]
-    in
-        case model.modalOpen of
-            True ->
-                baseStyles "block"
-
-            False ->
-                baseStyles "none"
-
-
-closeModalIcon : Attribute msg
-closeModalIcon =
-    style
-        [ ( "position", "absolute" )
-        , ( "top", "15px" )
-        , ( "right", "15px" )
-        , ( "width", "20px" )
-        , ( "height", "20px" )
-        , ( "lineHeight", "15px" )
-        , ( "paddingLeft", "5px" )
-        , ( "border", "1px solid #E91750" )
-        , ( "borderRadius", "10px" )
-        , ( "cursor", "pointer" )
-        , ( "color", "#E91750" )
-        ]

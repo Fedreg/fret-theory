@@ -13,7 +13,6 @@ fingerPickingPage model =
     div [ fingerPickingPageStyle ]
         [ fingerPickGroup "1,1" model.fingerPickPattern.a model.fingerPickPattern.b
         , button [ buttonStyle, onClick (Randomize 0 8) ] [ text "Generate Random Fingerpicking Pattern" ]
-        , fingerPickModal model
         ]
 
 
@@ -249,9 +248,6 @@ printNotation notes =
                 div [] []
 
 
-fingerPickModal : Model -> Html Msg
-fingerPickModal model =
-    div [ fingerPickModalStyle model ] [ text "fingerpicking page, instruction coming soon!" ]
 
 
 

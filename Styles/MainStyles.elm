@@ -141,33 +141,6 @@ textContainerStyle navOpen =
                 baseStyles "column nowrap"
 
 
-modalIconStyle : Model -> Attribute msg
-modalIconStyle model =
-    let
-        baseStyles difference =
-            style
-                [ ( "position", "absolute" )
-                , ( "top", "45px" )
-                , ( "rleft", "6px" )
-                , ( "width", "20px" )
-                , ( "height", "20px" )
-                , ( "color", "#E8175D" )
-                , ( "textAlign", "center" )
-                , ( "fontSize", "12px" )
-                , ( "cursor", "pointer" )
-                , ( "border", "1px solid #E8175D" )
-                , ( "borderRadius", "10px" )
-                , ( "transition", "all 0.5s" )
-                , ( "transform", difference )
-                , ( "zIndex", "10001" )
-                ]
-    in
-        case model.navMenuOpen of
-            True ->
-                baseStyles "translateX(-7px) translateY(10px)"
-
-            False ->
-                baseStyles "translateX(0) translateY(0)"
 
 
 highlight : List ( String, String )

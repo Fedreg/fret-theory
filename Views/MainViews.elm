@@ -11,6 +11,7 @@ import Views.Scales exposing (scalesPage)
 import Views.Fretboard exposing (fretboardPage)
 import Views.Strum exposing (strumPage)
 import Views.FingerPick exposing (fingerPickingPage)
+import Views.Modal exposing (..)
 import Styles.MainStyles exposing (..)
 import InlineHover exposing (hover)
 
@@ -20,6 +21,7 @@ mainView model =
     div [ style [ ( "position", "relative" ), ( "overflow", "hidden" ), ( "padding", "5px" ) ] ]
         [ nav model
         , page model
+        , modal model
         ]
 
 
@@ -30,8 +32,8 @@ nav model =
         , modalIcon model
         , div []
             [ hover highlight a [ href Routing.homePath, navItemStyle ] [ text "HOME" ]
-            , hover highlight a [ href (Routing.scalesPath model.musKey), navItemStyle ] [ text "SCALES" ]
             , hover highlight a [ href (Routing.chordsPath model.musKey), navItemStyle ] [ text "CHORDS" ]
+            , hover highlight a [ href (Routing.scalesPath model.musKey), navItemStyle ] [ text "SCALES" ]
             , hover highlight a [ href (Routing.fretboardPath model.musKey), navItemStyle ] [ text "FRETBOARD" ]
             , hover highlight a [ href Routing.strumPath, navItemStyle ] [ text "STRUMMING" ]
             , hover highlight a [ href Routing.fingerPickingPath, navItemStyle ] [ text "FINGERPICKING" ]
@@ -61,11 +63,6 @@ keyListView model =
             [ div [ textContainerStyle model.navMenuOpen ]
                 (List.map keyOptions keyList)
             ]
-
-
-modalIcon : Model -> Html Msg
-modalIcon model =
-    div [ modalIconStyle model, onClick ShowModal ] [ text "?" ]
 
 
 signature : Html Msg
