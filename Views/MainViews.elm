@@ -1,8 +1,8 @@
 module Views.MainViews exposing (mainView)
 
-import Html exposing (Html, div, span, hr, text, a)
-import Html.Attributes exposing (style, href)
-import Html.Events exposing (onClick)
+import Html exposing (Html, div, span, hr, text, a, input)
+import Html.Attributes exposing (style, href, value, type_, href)
+import Html.Events exposing (onClick, onInput)
 import Logic.Routing as Routing
 import Logic.Types exposing (Model, Msg(..), Route(..), PlayBundle)
 import Views.Home exposing (homePage)
@@ -37,7 +37,8 @@ nav model =
             , hover highlight a [ href (Routing.fretboardPath model.musKey), navItemStyle ] [ text "FRETBOARD" ]
             , hover highlight a [ href Routing.strumPath, navItemStyle ] [ text "STRUMMING" ]
             , hover highlight a [ href Routing.fingerPickingPath, navItemStyle ] [ text "FINGERPICKING" ]
-            , div [ navItemStyle, style [ ( "marginTop", "100px" ), ( "color", "#E91750" ) ] ] [ text "SELECT KEY:" ]
+            , playbackSpeedSlider model.sliderValue
+            , div [ navItemStyle, style [ ( "color", "#E91750" ) ] ] [ text "SELECT KEY:" ]
             , div [ style [ ( "position", "relative" ) ] ] [ keyListView model ]
             , signature
             ]
@@ -94,3 +95,18 @@ page model =
 
         NotFoundPage ->
             div [ style [ ( "margin", "100px auto" ), ( "color", "#E91750" ) ] ] [ text ("Page Not Found " ++ model.musKey) ]
+
+
+playbackSpeedSlider : Int -> Html Msg
+playbackSpeedSlider val =
+    div [ navItemStyle, style [ ( "marginTop", "25px" ) ] ]
+        [ div [] [ text ("+ " ++ "AUDIO SPEED" ++ " -") ]
+        , input
+            [ type_ "range"
+            , Html.Attributes.min "1"
+            , Html.Attributes.max "10"
+            , value <| toString val
+            , onInput ChangeSliderValue
+            ]
+            []
+        ]

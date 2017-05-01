@@ -1,6 +1,6 @@
 module Views.Modal exposing (modal, modalIcon)
 
-import Html exposing (Html, div, span, a, text, h3, h4, h5)
+import Html exposing (Html, div, span, a, text, h3, h4, h2)
 import Html.Attributes exposing (style, class)
 import Html.Events exposing (onClick)
 import Logic.Types exposing (Model, Msg(ShowModal), Route(..))
@@ -48,6 +48,7 @@ homeModal model =
     div [ modalStyle model ]
         [ div [ modalContentStyle ]
             [ div [ closeModalIcon, onClick ShowModal ] [ text "x" ]
+            , h2 [ modalHeaderStyle ] [ text "GUIDE" ]
             , toHtml [] homeModalContent
             ]
         ]
@@ -78,6 +79,7 @@ chordModal model =
     div [ modalStyle model ]
         [ div [ modalContentStyle ]
             [ div [ closeModalIcon, onClick ShowModal ] [ text "x" ]
+            , h2 [ modalHeaderStyle ] [ text "CHORDS" ]
             , toHtml [] chordModalContent
             ]
         ]
@@ -113,9 +115,9 @@ first pitch of the scale. The `Dm` chord, has the function `ii` because it is bu
 You should begin by learning the `I`, `IV`,`V`, & `vi` chords of any given key as those are by far the most commonly played chords.
 ***
 ##### How To Learn
-* Begin by learning the I`, `IV`,`V`, & `vi` chords in the keys **C, G, D** & **Am**.
+* Begin by learning the `I`, `IV`,`V`, & `vi` chords in the keys **C, G, D** & **Am**.
 * Once those are comfortable start looking at some of the bar chords in other keys.
-* _NOTE: In some of the "easier" keys, we have modified chords that would normally require bar chords to make them more accessible.
+* _NOTE: In some of the "easier" keys, we have modified chords that would normally require bar chords to make them more accessible._
 * Once you feel comfortable with basic chords, start looking at 7th chords.
 * A great way to improve your mastery of chords is to memorize the "shape" of the chord away from the guitar.
 In other words, practice the shape of the chord without placing it on the fretboard.  This will accelerate your muscle memory patterning and increase your
@@ -125,15 +127,33 @@ ability to quickly move your fingers into that chord position.
 
 fingerPickModal : Model -> Html Msg
 fingerPickModal model =
-    div [ modalStyle model ] [ text "fingerpicking page, instruction coming soon!" ]
+    div [ modalStyle model ]
+        [ div [ modalContentStyle ]
+            [ div [ closeModalIcon, onClick ShowModal ] [ text "x" ]
+            , h2 [ modalHeaderStyle ] [ text "FINGERPICKING" ]
+            , toHtml [] fingerPickModalContent
+            ]
+        ]
+
+
+fingerPickModalContent =
+    ""
 
 
 fretboardModal : Model -> Html Msg
 fretboardModal model =
     div [ modalStyle model ]
-        [ div [ closeModalIcon, onClick ShowModal ] [ text "x" ]
-        , div [] [ text ("Fretboard Page. Instructions Coming Soon! Key: " ++ model.musKey) ]
+        [ div [ modalContentStyle ]
+            [ div [ closeModalIcon, onClick ShowModal ] [ text "x" ]
+            , h2 [ modalHeaderStyle ] [ text "FRETBOARD" ]
+            , toHtml [] fretboardModalContent
+            ]
         ]
+
+
+fretboardModalContent : String
+fretboardModalContent =
+    ""
 
 
 scalesModal : Model -> Html Msg
@@ -141,6 +161,7 @@ scalesModal model =
     div [ modalStyle model ]
         [ div [ modalContentStyle ]
             [ div [ closeModalIcon, onClick ShowModal ] [ text "x" ]
+            , h2 [ modalHeaderStyle ] [ text "SCALES" ]
             , toHtml [] scalesModalContent
             ]
         ]
@@ -149,8 +170,6 @@ scalesModal model =
 scalesModalContent : String
 scalesModalContent =
     """
-#### SCALES PAGE
-***
 Scales are usually defined as a collection of 8 notes grouped together by a specific formula of whole `W` and half `H` steps and spanning one musical octve `C2 to C3, for example`. You can think of a half step as moving up or down one fret and a whole step as moving up or down 2 frets.
 `ASCENDING` Scales are played from the lowest pitch note to the highest; `DESCENDING` from the highest pitch to lowest.
 ##### Scale Formulas
@@ -174,6 +193,7 @@ strumModal model =
     div [ modalStyle model ]
         [ div [ modalContentStyle ]
             [ div [ closeModalIcon, onClick ShowModal ] [ text "x" ]
+            , h2 [ modalHeaderStyle ] [ text "STRUMMING" ]
             , toHtml [] strumModalContent
             , strumGroup "0.75,0.75" [ 1, 2, 1, 1, 2, 1, 1, 1 ]
             , strumGroup "0.75,0.75" [ 1, 1, 1, 2, 1, 1, 1, 2 ]
@@ -186,8 +206,6 @@ strumModal model =
 strumModalContent : String
 strumModalContent =
     """
-#### STRUMMING PAGE
-***
 When it comes to strumming it is easiest to think of a repeating 8 beat pattern
 ##### **COUNT: 1 2 3 4 5 6 7 8 - 1 2 3 4 5 6 7 8 - 1 2 3 4 5 6 7 8**
 * With your hand strumming down on any ODD beat and up on any EVEN beat.

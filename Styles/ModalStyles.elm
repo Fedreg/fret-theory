@@ -8,10 +8,9 @@ import Logic.Types exposing (Model, Msg(..), Dot)
 modalStyle : Model -> Attribute msg
 modalStyle model =
     let
-        baseStyles display trans posX posY =
+        baseStyles trans posX posY =
             style
-                [ ( "opacity", display )
-                , ( "position", "fixed" )
+                [ ( "position", "fixed" )
                 , ( "top", posX )
                 , ( "left", posY )
                 , ( "width", "90vw" )
@@ -24,15 +23,15 @@ modalStyle model =
                 , ( "textAlign", "center" )
                 , ( "overflow", "scroll" )
                 , ( "transform", trans )
-                , ( "transition", "all 0.4s ease" )
+                , ( "transition", "all 0.4s" )
                 ]
     in
         case model.modalOpen of
             True ->
-                baseStyles "1" "scale(1, 1)" "calc(10vh / 2)" "calc(10vw / 2)"
+                baseStyles "scale(1, 1)" "calc(5vh)" "calc(5vw)"
 
             False ->
-                baseStyles "1" "scale(0.1, 0.1)" "5px" "105vw"
+                baseStyles "scale(0.1, 0.1)" "-250px" "105vw"
 
 
 modalIconStyle : Model -> Attribute msg
@@ -67,12 +66,12 @@ modalIconStyle model =
 closeModalIcon : Attribute msg
 closeModalIcon =
     style
-        [ ( "position", "absolute" )
+        [ ( "position", "fixed" )
         , ( "top", "0" )
         , ( "right", "10px" )
         , ( "fontSize", "20px" )
         , ( "cursor", "pointer" )
-        , ( "color", "#E91750" )
+        , ( "color", "#fff" )
         ]
 
 
@@ -82,4 +81,18 @@ modalContentStyle =
         [ ( "position", "relative" )
         , ( "textAlign", "left" )
         , ( "padding", "25px" )
+        ]
+
+
+modalHeaderStyle : Attribute msg
+modalHeaderStyle =
+    style
+        [ ( "backgroundColor", "#355c7d" )
+        , ( "borderTopRightRadius", "10px" )
+        , ( "borderTopLeftRadius", "10px" )
+        , ( "margin", "-25px 0 25px -25px" )
+        , ( "padding", "25px" )
+        , ( "width", "95vw" )
+        , ( "height", "100px" )
+        , ( "color", "#fff" )
         ]

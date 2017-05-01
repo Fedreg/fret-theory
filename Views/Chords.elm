@@ -1,8 +1,8 @@
-module Views.Chords exposing (chordChartPage, keyList, chordChartModel, playbackSpeedSlider)
+module Views.Chords exposing (chordChartPage, keyList, chordChartModel)
 
-import Html exposing (Html, div, span, a, text, option, input)
-import Html.Attributes exposing (style, value, type_, href)
-import Html.Events exposing (onClick, onInput)
+import Html exposing (Html, div, span, a, text, option, h4)
+import Html.Attributes exposing (style, value, href)
+import Html.Events exposing (onClick)
 import List.Extra exposing (getAt)
 import Logic.Audio exposing (notes)
 import Logic.Types exposing (Model, ChordChartData, Msg(..), Dot)
@@ -22,9 +22,8 @@ chordChartPage model =
         keyOptions key =
             option [ value key ] [ text key ]
     in
-        div [ style [ ( "textAlign", "center" ), ( "width", "95vw" ) ] ]
+        div [ style [ ( "textAlign", "center" ), ( "width", "95vw" ), ( "paddingTop", "50px" ) ] ]
             [ div [] [ fingerChart ]
-            , playbackSpeedSlider "CHORD ARPEGGIO SPEED" model
             , div [ chartContainerStyle "row" ]
                 [ chordChartModel model 0 "I" .i .i
                 , chordChartModel model 3 "IV" .iv .iv
@@ -36,7 +35,7 @@ chordChartPage model =
                 , chordChartModel model 2 "III" .iii .iii
                 , chordChartModel model 6 "VII" .vii .vii
                 ]
-            , div [] [ text "7th CHORDS" ]
+            , h4 [] [ text "7th CHORDS" ]
             , div [ chartContainerStyle "row" ]
                 [ chordChartModel model 7 "I7" .i .i7
                 , chordChartModel model 8 "IV7" .iv .iv7
@@ -221,20 +220,6 @@ fingerChart =
 keyList : List String
 keyList =
     [ "C", "G", "D", "A", "E", "B", "F#", "Db", "Ab", "Eb", "Bb", "F", "a", "e", "b", "f#", "c#", "g#", "d#", "bb", "f", "c", "g", "d" ]
-
-
-playbackSpeedSlider message model =
-    div [ style [ ( "marginTop", "10px" ) ] ]
-        [ div [] [ text ("+ " ++ message ++ " -") ]
-        , input
-            [ type_ "range"
-            , Html.Attributes.min "1"
-            , Html.Attributes.max "10"
-            , value <| toString model.sliderValue
-            , onInput ChangeSliderValue
-            ]
-            []
-        ]
 
 
 {-| Defines dot placement of each chord. Groupes as "FSfFSfFSf..." where

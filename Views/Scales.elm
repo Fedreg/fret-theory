@@ -4,7 +4,7 @@ import Html exposing (Html, div, span, text)
 import Html.Attributes exposing (style)
 import Html.Events exposing (onClick)
 import Logic.Types exposing (ScaleData, ScaleSchemaData, Msg(Play, ShowModal), Model)
-import Views.Chords exposing (keyList, playbackSpeedSlider)
+import Views.Chords exposing (keyList)
 import List.Extra exposing (getAt, elemIndex)
 import Logic.Audio exposing (scales)
 import Styles.ScalesStyles exposing (..)
@@ -12,9 +12,8 @@ import Styles.ScalesStyles exposing (..)
 
 scalesPage : Model -> Html Msg
 scalesPage model =
-    div []
-        [ playbackSpeedSlider "SCALE PLAYBACK SPEED" model
-        , div [ scalePageStyle ]
+    div [ style [ ( "paddingTop", "50px" ) ] ]
+        [ div [ scalePageStyle ]
             [ ionianModeView model
             , aeolianModeView model
             , majorPentatonicView model
