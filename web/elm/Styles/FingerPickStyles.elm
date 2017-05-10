@@ -94,3 +94,10 @@ buttonStyle =
         , ( "border", "1px solid #333" )
         , ( "color", "#E8175D" )
         ]
+<<<<<<< HEAD:web/elm/Styles/FingerPickStyles.elm
+=======
+
+
+
+
+>>>>>>> master:Styles/FingerPickStyles.elm

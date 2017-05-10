@@ -92,7 +92,6 @@ keyListStyle navOpen =
                 , ( "cursor", "pointer" )
                 , ( "lineHeight", lh )
                 , ( "backgroundColor", color )
-                  -- , ( "color", "#fff" )
                 , ( "fontSize", font )
                 , ( "transition", "all 0.4s ease" )
                 ]
@@ -145,7 +144,6 @@ highlight : List ( String, String )
 highlight =
     [ ( "color", "#E9175D" )
     , ( "backgroundColor", "#E9175D" )
-      -- , ( "transition", "color 0.3s ease" )
     ]
 
 

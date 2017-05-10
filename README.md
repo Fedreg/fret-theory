@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # MtApi
 
 To start your Phoenix app:
@@ -18,3 +19,9 @@ Ready to run in production? Please [check our deployment guides](http://www.phoe
   * Docs: https://hexdocs.pm/phoenix
   * Mailing list: http://groups.google.com/group/phoenix-talk
   * Source: https://github.com/phoenixframework/phoenix
+=======
+# NOTE: This repository contains only client code.  Full site with client/Phoenix API is in repo -> [mt-api](https://github.com/Fedreg/mt-api)
+
+# music-theory
+Music theory basics for guitarists with audio, graphics, and animations.  Built with Elm! WIP
+>>>>>>> master

@@ -246,25 +246,3 @@ printNotation notes =
 
             _ ->
                 div [] []
-
-
-
--- [ div [ style [ ( "position", "relative" ), ( "textAlign", "left" ), ( "padding", "25px" ) ] ]
---     [ div [ closeModalIcon, onClick ShowModal ] [ text "x" ]
---     , h3 [ style [ ( "textDecoration", "underline" ) ] ] [ text "STRUMMING THE GUITAR" ]
---     , div [] [ text "When it comes to strumming it is easiest to think of a repeating 8 beat pattern." ]
---     , h4 [ style [ ( "color", "#E8175D" ) ] ] [ text "COUNT: 1 2 3 4 5 6 7 8 - 1 2 3 4 5 6 7 8 - 1 2 3 4 5 6 7 8" ]
---     , div [] [ text "With your hand strumming down on any ODD beat and up on any EVEN beat." ]
---     , div [] [ text "Thus your down strums would fall on every 1 3 5 or 7 and your up strums on 2 4 6 or 8" ]
---     , div [] [ text "Your strumming hand should always be following this up down pattern, hovering over the strings even if they do not strum the string" ]
---     , h5 [ style [ ( "color", "#E8175D" ) ] ] [ text "1.  Practice strumming down on all counts 1 3 5 7" ]
---     , h5 [ style [ ( "color", "#E8175D" ) ] ] [ text "2.  Practice strumming up on all counts 2 4 6 8" ]
---     , h5 [ style [ ( "color", "#E8175D" ) ] ] [ text "3.  Use the random strum generator to create a practice pattern choose from one of the patterns below." ]
---     , h5 [ style [ ( "color", "#E8175D" ) ] ] [ text "Be sure that your hand is always moving in the correct direction (down of 1 3 5 7, up on 2 4 6 8)" ]
---     , h4 [] [ text "COMMON STRUM PATTERNS:" ]
---     , fingerPickGroup "0.75,0.75" [ 1, 2, 1, 1, 2, 1, 1, 1 ]
---     , fingerPickGroup "0.75,0.75" [ 1, 1, 1, 2, 1, 1, 1, 2 ]
---     , fingerPickGroup "0.75,0.75" [ 1, 1, 2, 1, 1, 2, 1, 1 ]
---     , fingerPickGroup "0.75,0.75" [ 2, 1, 2, 1, 2, 1, 2, 1 ]
---     ]
--- ]

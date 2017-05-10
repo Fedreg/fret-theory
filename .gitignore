@@ -1,5 +1,8 @@
 # App artifacts
 /_build
+elm-stuff
+main.js
+.vscode
 /db
 /deps
 /*.ez

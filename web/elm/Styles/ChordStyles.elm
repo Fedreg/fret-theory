@@ -54,7 +54,7 @@ chartContainerStyle direction =
     style
         [ ( "position", "relative" )
         , ( "display", "flex" )
-        , ( "margin", "25px auto" )
+        , ( "margin", "15px auto" )
         , ( "flexDirection", direction )
         , ( "transition", "all 0.3s ease" )
         , ( "cursor", "pointer" )

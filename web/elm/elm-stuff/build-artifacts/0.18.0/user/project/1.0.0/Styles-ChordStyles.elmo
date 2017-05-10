@@ -255,7 +255,7 @@ var _user$project$Styles_ChordStyles$chartContainerStyle = function (direction) 
 				_0: {ctor: '_Tuple2', _0: 'display', _1: 'flex'},
 				_1: {
 					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'margin', _1: '25px auto'},
+					_0: {ctor: '_Tuple2', _0: 'margin', _1: '15px auto'},
 					_1: {
 						ctor: '::',
 						_0: {ctor: '_Tuple2', _0: 'flexDirection', _1: direction},
