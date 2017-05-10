@@ -10,8 +10,9 @@ erl_crash.dump
 
 # Static artifacts
 /node_modules
-web/elm/elm_stuff
+web/elm/elm-stuff/
 web/static/js/main.js
+/elm-stuff/
 
 # Since we are building assets from web/static,
 # we ignore priv/static. You may want to comment
