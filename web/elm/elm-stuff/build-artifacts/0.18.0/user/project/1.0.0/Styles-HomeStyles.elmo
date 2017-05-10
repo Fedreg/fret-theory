@@ -1,0 +1,68 @@
+var _user$project$Styles_HomeStyles$secondaryTitleStyle = F2(
+	function (fontSize, color) {
+		return _elm_lang$html$Html_Attributes$style(
+			{
+				ctor: '::',
+				_0: {ctor: '_Tuple2', _0: 'margin', _1: '0 auto'},
+				_1: {
+					ctor: '::',
+					_0: {ctor: '_Tuple2', _0: 'fontSize', _1: fontSize},
+					_1: {
+						ctor: '::',
+						_0: {ctor: '_Tuple2', _0: 'color', _1: color},
+						_1: {
+							ctor: '::',
+							_0: {ctor: '_Tuple2', _0: 'zIndex', _1: '50'},
+							_1: {ctor: '[]'}
+						}
+					}
+				}
+			});
+	});
+var _user$project$Styles_HomeStyles$titleStyle = F2(
+	function (fontSize, color) {
+		return _elm_lang$html$Html_Attributes$style(
+			{
+				ctor: '::',
+				_0: {ctor: '_Tuple2', _0: 'margin', _1: '0 auto 25px'},
+				_1: {
+					ctor: '::',
+					_0: {ctor: '_Tuple2', _0: 'height', _1: '150px'},
+					_1: {
+						ctor: '::',
+						_0: {ctor: '_Tuple2', _0: 'paddingTop', _1: '30px'},
+						_1: {
+							ctor: '::',
+							_0: {ctor: '_Tuple2', _0: 'fontSize', _1: fontSize},
+							_1: {
+								ctor: '::',
+								_0: {ctor: '_Tuple2', _0: 'color', _1: color},
+								_1: {
+									ctor: '::',
+									_0: {ctor: '_Tuple2', _0: 'zIndex', _1: '50'},
+									_1: {
+										ctor: '::',
+										_0: {ctor: '_Tuple2', _0: 'boxShadow', _1: '5px 5px 20px rgba(0,0,0,1)'},
+										_1: {
+											ctor: '::',
+											_0: {ctor: '_Tuple2', _0: 'backgroundColor', _1: '#111'},
+											_1: {ctor: '[]'}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			});
+	});
+var _user$project$Styles_HomeStyles$homePageStyle = _elm_lang$html$Html_Attributes$style(
+	{
+		ctor: '::',
+		_0: {ctor: '_Tuple2', _0: 'height', _1: '100vh'},
+		_1: {
+			ctor: '::',
+			_0: {ctor: '_Tuple2', _0: 'textAlign', _1: 'center'},
+			_1: {ctor: '[]'}
+		}
+	});
