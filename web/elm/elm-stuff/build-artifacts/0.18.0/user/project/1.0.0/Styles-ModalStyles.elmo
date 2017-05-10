@@ -1,0 +1,211 @@
+var _user$project$Styles_ModalStyles$modalHeaderStyle = _elm_lang$html$Html_Attributes$style(
+	{
+		ctor: '::',
+		_0: {ctor: '_Tuple2', _0: 'backgroundColor', _1: '#355c7d'},
+		_1: {
+			ctor: '::',
+			_0: {ctor: '_Tuple2', _0: 'borderTopRightRadius', _1: '10px'},
+			_1: {
+				ctor: '::',
+				_0: {ctor: '_Tuple2', _0: 'borderTopLeftRadius', _1: '10px'},
+				_1: {
+					ctor: '::',
+					_0: {ctor: '_Tuple2', _0: 'margin', _1: '-25px 0 25px -25px'},
+					_1: {
+						ctor: '::',
+						_0: {ctor: '_Tuple2', _0: 'padding', _1: '25px'},
+						_1: {
+							ctor: '::',
+							_0: {ctor: '_Tuple2', _0: 'width', _1: '95vw'},
+							_1: {
+								ctor: '::',
+								_0: {ctor: '_Tuple2', _0: 'height', _1: '100px'},
+								_1: {
+									ctor: '::',
+									_0: {ctor: '_Tuple2', _0: 'color', _1: '#fff'},
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	});
+var _user$project$Styles_ModalStyles$modalContentStyle = _elm_lang$html$Html_Attributes$style(
+	{
+		ctor: '::',
+		_0: {ctor: '_Tuple2', _0: 'position', _1: 'relative'},
+		_1: {
+			ctor: '::',
+			_0: {ctor: '_Tuple2', _0: 'textAlign', _1: 'left'},
+			_1: {
+				ctor: '::',
+				_0: {ctor: '_Tuple2', _0: 'padding', _1: '25px'},
+				_1: {ctor: '[]'}
+			}
+		}
+	});
+var _user$project$Styles_ModalStyles$closeModalIcon = _elm_lang$html$Html_Attributes$style(
+	{
+		ctor: '::',
+		_0: {ctor: '_Tuple2', _0: 'position', _1: 'fixed'},
+		_1: {
+			ctor: '::',
+			_0: {ctor: '_Tuple2', _0: 'top', _1: '0'},
+			_1: {
+				ctor: '::',
+				_0: {ctor: '_Tuple2', _0: 'right', _1: '10px'},
+				_1: {
+					ctor: '::',
+					_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '20px'},
+					_1: {
+						ctor: '::',
+						_0: {ctor: '_Tuple2', _0: 'cursor', _1: 'pointer'},
+						_1: {
+							ctor: '::',
+							_0: {ctor: '_Tuple2', _0: 'color', _1: '#fff'},
+							_1: {ctor: '[]'}
+						}
+					}
+				}
+			}
+		}
+	});
+var _user$project$Styles_ModalStyles$modalIconStyle = function (model) {
+	var baseStyles = function (difference) {
+		return _elm_lang$html$Html_Attributes$style(
+			{
+				ctor: '::',
+				_0: {ctor: '_Tuple2', _0: 'position', _1: 'absolute'},
+				_1: {
+					ctor: '::',
+					_0: {ctor: '_Tuple2', _0: 'top', _1: '45px'},
+					_1: {
+						ctor: '::',
+						_0: {ctor: '_Tuple2', _0: 'left', _1: '8px'},
+						_1: {
+							ctor: '::',
+							_0: {ctor: '_Tuple2', _0: 'width', _1: '20px'},
+							_1: {
+								ctor: '::',
+								_0: {ctor: '_Tuple2', _0: 'height', _1: '20px'},
+								_1: {
+									ctor: '::',
+									_0: {ctor: '_Tuple2', _0: 'color', _1: '#E8175D'},
+									_1: {
+										ctor: '::',
+										_0: {ctor: '_Tuple2', _0: 'textAlign', _1: 'center'},
+										_1: {
+											ctor: '::',
+											_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '12px'},
+											_1: {
+												ctor: '::',
+												_0: {ctor: '_Tuple2', _0: 'cursor', _1: 'pointer'},
+												_1: {
+													ctor: '::',
+													_0: {ctor: '_Tuple2', _0: 'border', _1: '1px solid #E8175D'},
+													_1: {
+														ctor: '::',
+														_0: {ctor: '_Tuple2', _0: 'borderRadius', _1: '10px'},
+														_1: {
+															ctor: '::',
+															_0: {ctor: '_Tuple2', _0: 'transition', _1: 'all 0.5s'},
+															_1: {
+																ctor: '::',
+																_0: {ctor: '_Tuple2', _0: 'transform', _1: difference},
+																_1: {
+																	ctor: '::',
+																	_0: {ctor: '_Tuple2', _0: 'zIndex', _1: '10001'},
+																	_1: {ctor: '[]'}
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			});
+	};
+	var _p0 = model.navMenuOpen;
+	if (_p0 === true) {
+		return baseStyles('translateY(10px)');
+	} else {
+		return baseStyles('translateY(0)');
+	}
+};
+var _user$project$Styles_ModalStyles$modalStyle = function (model) {
+	var baseStyles = F3(
+		function (trans, posX, posY) {
+			return _elm_lang$html$Html_Attributes$style(
+				{
+					ctor: '::',
+					_0: {ctor: '_Tuple2', _0: 'position', _1: 'fixed'},
+					_1: {
+						ctor: '::',
+						_0: {ctor: '_Tuple2', _0: 'top', _1: posX},
+						_1: {
+							ctor: '::',
+							_0: {ctor: '_Tuple2', _0: 'left', _1: posY},
+							_1: {
+								ctor: '::',
+								_0: {ctor: '_Tuple2', _0: 'width', _1: '90vw'},
+								_1: {
+									ctor: '::',
+									_0: {ctor: '_Tuple2', _0: 'height', _1: '90vh'},
+									_1: {
+										ctor: '::',
+										_0: {ctor: '_Tuple2', _0: 'border', _1: '1px solid #355c7d'},
+										_1: {
+											ctor: '::',
+											_0: {ctor: '_Tuple2', _0: 'borderRadius', _1: '10px'},
+											_1: {
+												ctor: '::',
+												_0: {ctor: '_Tuple2', _0: 'backgroundColor', _1: '#111'},
+												_1: {
+													ctor: '::',
+													_0: {ctor: '_Tuple2', _0: 'zIndex', _1: '50'},
+													_1: {
+														ctor: '::',
+														_0: {ctor: '_Tuple2', _0: 'color', _1: '#ccc'},
+														_1: {
+															ctor: '::',
+															_0: {ctor: '_Tuple2', _0: 'textAlign', _1: 'center'},
+															_1: {
+																ctor: '::',
+																_0: {ctor: '_Tuple2', _0: 'overflow', _1: 'scroll'},
+																_1: {
+																	ctor: '::',
+																	_0: {ctor: '_Tuple2', _0: 'transform', _1: trans},
+																	_1: {
+																		ctor: '::',
+																		_0: {ctor: '_Tuple2', _0: 'transition', _1: 'all 0.4s linear'},
+																		_1: {ctor: '[]'}
+																	}
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				});
+		});
+	var _p1 = model.modalOpen;
+	if (_p1 === true) {
+		return A3(baseStyles, 'scale(1, 1)', 'calc(5vh)', 'calc(5vw)');
+	} else {
+		return A3(baseStyles, 'scale(0.1, 0.1)', '-250px', '105vw');
+	}
+};
