@@ -1,0 +1,4342 @@
+var _user$project$Logic_Audio$frequencies = function (note) {
+	var _p0 = note;
+	switch (_p0) {
+		case 'c':
+			return 130.81;
+		case 'c#':
+			return 139.0;
+		case 'd':
+			return 146.83;
+		case 'd#':
+			return 156.0;
+		case 'e':
+			return 164.81;
+		case 'f':
+			return 174.61;
+		case 'f#':
+			return 185.0;
+		case 'g':
+			return 196.0;
+		case 'g#':
+			return 208.0;
+		case 'a':
+			return 220.0;
+		case 'a#':
+			return 233.0;
+		case 'b':
+			return 246.94;
+		case 'r':
+			return 0.0;
+		default:
+			return 0.0;
+	}
+};
+var _user$project$Logic_Audio$octave = function (num) {
+	var _p1 = num;
+	if (_p1 === 1) {
+		return 1;
+	} else {
+		return Math.pow(2, num - 1);
+	}
+};
+var _user$project$Logic_Audio$sustain = function (duration) {
+	var _p2 = duration;
+	switch (_p2) {
+		case 'w':
+			return 4.0;
+		case 'h':
+			return 2.0;
+		case 'q':
+			return 1.0;
+		case 'e':
+			return 0.5;
+		case 's':
+			return 0.25;
+		case 'w.':
+			return 6.0;
+		case 'h.':
+			return 3.0;
+		case 'q.':
+			return 1.5;
+		case 'e.':
+			return 0.75;
+		case 's.':
+			return 0.375;
+		default:
+			return 0.0;
+	}
+};
+var _user$project$Logic_Audio$noteSorter = function (string) {
+	var _p3 = _elm_lang$core$String$length(string);
+	switch (_p3) {
+		case 3:
+			return A3(
+				_user$project$Logic_Types$Note,
+				_user$project$Logic_Audio$frequencies(
+					A3(_elm_lang$core$String$slice, 0, 1, string)),
+				_user$project$Logic_Audio$octave(
+					A2(
+						_elm_lang$core$Result$withDefault,
+						0,
+						_elm_lang$core$String$toInt(
+							A3(_elm_lang$core$String$slice, 1, 2, string)))),
+				_user$project$Logic_Audio$sustain(
+					A3(_elm_lang$core$String$slice, 2, 3, string)));
+		case 4:
+			return _elm_lang$core$Native_Utils.eq(
+				A3(_elm_lang$core$String$slice, 1, 2, string),
+				'#') ? A3(
+				_user$project$Logic_Types$Note,
+				_user$project$Logic_Audio$frequencies(
+					A3(_elm_lang$core$String$slice, 0, 2, string)),
+				_user$project$Logic_Audio$octave(
+					A2(
+						_elm_lang$core$Result$withDefault,
+						0,
+						_elm_lang$core$String$toInt(
+							A3(_elm_lang$core$String$slice, 2, 3, string)))),
+				_user$project$Logic_Audio$sustain(
+					A3(_elm_lang$core$String$slice, 3, 4, string))) : A3(
+				_user$project$Logic_Types$Note,
+				_user$project$Logic_Audio$frequencies(
+					A3(_elm_lang$core$String$slice, 0, 1, string)),
+				_user$project$Logic_Audio$octave(
+					A2(
+						_elm_lang$core$Result$withDefault,
+						0,
+						_elm_lang$core$String$toInt(
+							A3(_elm_lang$core$String$slice, 1, 2, string)))),
+				_user$project$Logic_Audio$sustain(
+					A3(_elm_lang$core$String$slice, 2, 4, string)));
+		case 5:
+			return A3(
+				_user$project$Logic_Types$Note,
+				_user$project$Logic_Audio$frequencies(
+					A3(_elm_lang$core$String$slice, 0, 2, string)),
+				_user$project$Logic_Audio$octave(
+					A2(
+						_elm_lang$core$Result$withDefault,
+						0,
+						_elm_lang$core$String$toInt(
+							A3(_elm_lang$core$String$slice, 2, 3, string)))),
+				_user$project$Logic_Audio$sustain(
+					A3(_elm_lang$core$String$slice, 3, 5, string)));
+		default:
+			return A3(_user$project$Logic_Types$Note, 0.0, 0, 0.0);
+	}
+};
+var _user$project$Logic_Audio$stringToNote = F2(
+	function (chord, n) {
+		stringToNote:
+		while (true) {
+			var note = A2(
+				_elm_lang$core$Maybe$withDefault,
+				'c0s',
+				A2(_elm_community$list_extra$List_Extra$getAt, n, chord));
+			var computedNote = _user$project$Logic_Audio$noteSorter(note);
+			var chordList = {ctor: '[]'};
+			if (_elm_lang$core$Native_Utils.cmp(
+				n,
+				_elm_lang$core$List$length(chord)) < 0) {
+				return {ctor: '::', _0: computedNote, _1: chordList};
+			} else {
+				var _v4 = chord,
+					_v5 = n + 1;
+				chord = _v4;
+				n = _v5;
+				continue stringToNote;
+			}
+		}
+	});
+var _user$project$Logic_Audio$scales = function (scale) {
+	var _p4 = scale;
+	switch (_p4) {
+		case 'major':
+			return {
+				ctor: '::',
+				_0: 'c3s',
+				_1: {
+					ctor: '::',
+					_0: 'd3s',
+					_1: {
+						ctor: '::',
+						_0: 'e3s',
+						_1: {
+							ctor: '::',
+							_0: 'f3s',
+							_1: {
+								ctor: '::',
+								_0: 'g3s',
+								_1: {
+									ctor: '::',
+									_0: 'a3s',
+									_1: {
+										ctor: '::',
+										_0: 'b3s',
+										_1: {
+											ctor: '::',
+											_0: 'c4s',
+											_1: {
+												ctor: '::',
+												_0: 'd4s',
+												_1: {
+													ctor: '::',
+													_0: 'e4s',
+													_1: {
+														ctor: '::',
+														_0: 'f4s',
+														_1: {
+															ctor: '::',
+															_0: 'g4s',
+															_1: {
+																ctor: '::',
+																_0: 'a4s',
+																_1: {
+																	ctor: '::',
+																	_0: 'b4s',
+																	_1: {
+																		ctor: '::',
+																		_0: 'c5s',
+																		_1: {
+																			ctor: '::',
+																			_0: 'd5s',
+																			_1: {ctor: '[]'}
+																		}
+																	}
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			};
+		case 'minor':
+			return {
+				ctor: '::',
+				_0: 'c3s',
+				_1: {
+					ctor: '::',
+					_0: 'd3s',
+					_1: {
+						ctor: '::',
+						_0: 'd#3s',
+						_1: {
+							ctor: '::',
+							_0: 'f3s',
+							_1: {
+								ctor: '::',
+								_0: 'g3s',
+								_1: {
+									ctor: '::',
+									_0: 'g#3s',
+									_1: {
+										ctor: '::',
+										_0: 'a#3s',
+										_1: {
+											ctor: '::',
+											_0: 'c4s',
+											_1: {
+												ctor: '::',
+												_0: 'd4s',
+												_1: {
+													ctor: '::',
+													_0: 'd#4s',
+													_1: {
+														ctor: '::',
+														_0: 'f4s',
+														_1: {
+															ctor: '::',
+															_0: 'g4s',
+															_1: {
+																ctor: '::',
+																_0: 'g#4s',
+																_1: {
+																	ctor: '::',
+																	_0: 'a#4s',
+																	_1: {
+																		ctor: '::',
+																		_0: 'c5s',
+																		_1: {
+																			ctor: '::',
+																			_0: 'd5s',
+																			_1: {
+																				ctor: '::',
+																				_0: 'd#5s',
+																				_1: {ctor: '[]'}
+																			}
+																		}
+																	}
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			};
+		case 'majPentatonic':
+			return {
+				ctor: '::',
+				_0: 'c3s',
+				_1: {
+					ctor: '::',
+					_0: 'd3s',
+					_1: {
+						ctor: '::',
+						_0: 'e3s',
+						_1: {
+							ctor: '::',
+							_0: 'g3s',
+							_1: {
+								ctor: '::',
+								_0: 'a3s',
+								_1: {
+									ctor: '::',
+									_0: 'c4s',
+									_1: {
+										ctor: '::',
+										_0: 'd4s',
+										_1: {
+											ctor: '::',
+											_0: 'e4s',
+											_1: {
+												ctor: '::',
+												_0: 'g4s',
+												_1: {
+													ctor: '::',
+													_0: 'a4s',
+													_1: {
+														ctor: '::',
+														_0: 'c5s',
+														_1: {
+															ctor: '::',
+															_0: 'd5s',
+															_1: {ctor: '[]'}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			};
+		case 'minPentatonic':
+			return {
+				ctor: '::',
+				_0: 'c3s',
+				_1: {
+					ctor: '::',
+					_0: 'd#3s',
+					_1: {
+						ctor: '::',
+						_0: 'f3s',
+						_1: {
+							ctor: '::',
+							_0: 'g3s',
+							_1: {
+								ctor: '::',
+								_0: 'a#3s',
+								_1: {
+									ctor: '::',
+									_0: 'c4s',
+									_1: {
+										ctor: '::',
+										_0: 'd#4s',
+										_1: {
+											ctor: '::',
+											_0: 'f4s',
+											_1: {
+												ctor: '::',
+												_0: 'g4s',
+												_1: {
+													ctor: '::',
+													_0: 'a#4s',
+													_1: {
+														ctor: '::',
+														_0: 'c5s',
+														_1: {
+															ctor: '::',
+															_0: 'd#5s',
+															_1: {ctor: '[]'}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			};
+		case 'lydian':
+			return {
+				ctor: '::',
+				_0: 'c3s',
+				_1: {
+					ctor: '::',
+					_0: 'd3s',
+					_1: {
+						ctor: '::',
+						_0: 'e3s',
+						_1: {
+							ctor: '::',
+							_0: 'f#3s',
+							_1: {
+								ctor: '::',
+								_0: 'g3s',
+								_1: {
+									ctor: '::',
+									_0: 'a3s',
+									_1: {
+										ctor: '::',
+										_0: 'b3s',
+										_1: {
+											ctor: '::',
+											_0: 'c4s',
+											_1: {
+												ctor: '::',
+												_0: 'd4s',
+												_1: {
+													ctor: '::',
+													_0: 'e4s',
+													_1: {
+														ctor: '::',
+														_0: 'f#4s',
+														_1: {
+															ctor: '::',
+															_0: 'g4s',
+															_1: {
+																ctor: '::',
+																_0: 'a4s',
+																_1: {
+																	ctor: '::',
+																	_0: 'b4s',
+																	_1: {
+																		ctor: '::',
+																		_0: 'c5s',
+																		_1: {
+																			ctor: '::',
+																			_0: 'd5s',
+																			_1: {ctor: '[]'}
+																		}
+																	}
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			};
+		case 'mixolydian':
+			return {
+				ctor: '::',
+				_0: 'c3s',
+				_1: {
+					ctor: '::',
+					_0: 'd3s',
+					_1: {
+						ctor: '::',
+						_0: 'e3s',
+						_1: {
+							ctor: '::',
+							_0: 'f3s',
+							_1: {
+								ctor: '::',
+								_0: 'g3s',
+								_1: {
+									ctor: '::',
+									_0: 'a3s',
+									_1: {
+										ctor: '::',
+										_0: 'a#3s',
+										_1: {
+											ctor: '::',
+											_0: 'c4s',
+											_1: {
+												ctor: '::',
+												_0: 'd4s',
+												_1: {
+													ctor: '::',
+													_0: 'e4s',
+													_1: {
+														ctor: '::',
+														_0: 'f4s',
+														_1: {
+															ctor: '::',
+															_0: 'g4s',
+															_1: {
+																ctor: '::',
+																_0: 'a4s',
+																_1: {
+																	ctor: '::',
+																	_0: 'a#4s',
+																	_1: {
+																		ctor: '::',
+																		_0: 'c5s',
+																		_1: {
+																			ctor: '::',
+																			_0: 'd5s',
+																			_1: {ctor: '[]'}
+																		}
+																	}
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			};
+		case 'dorian':
+			return {
+				ctor: '::',
+				_0: 'c3s',
+				_1: {
+					ctor: '::',
+					_0: 'd3s',
+					_1: {
+						ctor: '::',
+						_0: 'd#3s',
+						_1: {
+							ctor: '::',
+							_0: 'f3s',
+							_1: {
+								ctor: '::',
+								_0: 'g3s',
+								_1: {
+									ctor: '::',
+									_0: 'a3s',
+									_1: {
+										ctor: '::',
+										_0: 'a#3s',
+										_1: {
+											ctor: '::',
+											_0: 'c4s',
+											_1: {
+												ctor: '::',
+												_0: 'd4s',
+												_1: {
+													ctor: '::',
+													_0: 'd#4s',
+													_1: {
+														ctor: '::',
+														_0: 'f4s',
+														_1: {
+															ctor: '::',
+															_0: 'g4s',
+															_1: {
+																ctor: '::',
+																_0: 'a4s',
+																_1: {
+																	ctor: '::',
+																	_0: 'a#4s',
+																	_1: {
+																		ctor: '::',
+																		_0: 'c5s',
+																		_1: {
+																			ctor: '::',
+																			_0: 'd5s',
+																			_1: {
+																				ctor: '::',
+																				_0: 'd#5s',
+																				_1: {ctor: '[]'}
+																			}
+																		}
+																	}
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			};
+		default:
+			return {ctor: '[]'};
+	}
+};
+var _user$project$Logic_Audio$notes = function (key) {
+	var _p5 = key;
+	switch (_p5) {
+		case 'C':
+			return {
+				i: {
+					ctor: '::',
+					_0: 'c3q',
+					_1: {
+						ctor: '::',
+						_0: 'e3q',
+						_1: {
+							ctor: '::',
+							_0: 'g3q',
+							_1: {
+								ctor: '::',
+								_0: 'c4q',
+								_1: {
+									ctor: '::',
+									_0: 'e4q',
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				},
+				ii: {
+					ctor: '::',
+					_0: 'd3q',
+					_1: {
+						ctor: '::',
+						_0: 'a3q',
+						_1: {
+							ctor: '::',
+							_0: 'd4q',
+							_1: {
+								ctor: '::',
+								_0: 'f4q',
+								_1: {ctor: '[]'}
+							}
+						}
+					}
+				},
+				iii: {
+					ctor: '::',
+					_0: 'e2q',
+					_1: {
+						ctor: '::',
+						_0: 'b2q',
+						_1: {
+							ctor: '::',
+							_0: 'e3q',
+							_1: {
+								ctor: '::',
+								_0: 'g3q',
+								_1: {
+									ctor: '::',
+									_0: 'b3q',
+									_1: {
+										ctor: '::',
+										_0: 'e4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				iv: {
+					ctor: '::',
+					_0: 'f3q',
+					_1: {
+						ctor: '::',
+						_0: 'a3q',
+						_1: {
+							ctor: '::',
+							_0: 'c4q',
+							_1: {
+								ctor: '::',
+								_0: 'e4q',
+								_1: {ctor: '[]'}
+							}
+						}
+					}
+				},
+				v: {
+					ctor: '::',
+					_0: 'g2q',
+					_1: {
+						ctor: '::',
+						_0: 'b2q',
+						_1: {
+							ctor: '::',
+							_0: 'd3q',
+							_1: {
+								ctor: '::',
+								_0: 'g3q',
+								_1: {
+									ctor: '::',
+									_0: 'd4q',
+									_1: {
+										ctor: '::',
+										_0: 'g4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				vi: {
+					ctor: '::',
+					_0: 'a2q',
+					_1: {
+						ctor: '::',
+						_0: 'e3q',
+						_1: {
+							ctor: '::',
+							_0: 'a3q',
+							_1: {
+								ctor: '::',
+								_0: 'c4q',
+								_1: {
+									ctor: '::',
+									_0: 'e4q',
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				},
+				vii: {
+					ctor: '::',
+					_0: 'b2q',
+					_1: {
+						ctor: '::',
+						_0: 'f3q',
+						_1: {
+							ctor: '::',
+							_0: 'g#3q',
+							_1: {
+								ctor: '::',
+								_0: 'd4q',
+								_1: {ctor: '[]'}
+							}
+						}
+					}
+				}
+			};
+		case 'G':
+			return {
+				i: {
+					ctor: '::',
+					_0: 'g2q',
+					_1: {
+						ctor: '::',
+						_0: 'b2q',
+						_1: {
+							ctor: '::',
+							_0: 'd3q',
+							_1: {
+								ctor: '::',
+								_0: 'g3q',
+								_1: {
+									ctor: '::',
+									_0: 'd4q',
+									_1: {
+										ctor: '::',
+										_0: 'g4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				ii: {
+					ctor: '::',
+					_0: 'a2q',
+					_1: {
+						ctor: '::',
+						_0: 'e3q',
+						_1: {
+							ctor: '::',
+							_0: 'a3q',
+							_1: {
+								ctor: '::',
+								_0: 'c4q',
+								_1: {
+									ctor: '::',
+									_0: 'e4q',
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				},
+				iii: {
+					ctor: '::',
+					_0: 'b2q',
+					_1: {
+						ctor: '::',
+						_0: 'd3q',
+						_1: {
+							ctor: '::',
+							_0: 'g3q',
+							_1: {
+								ctor: '::',
+								_0: 'd4q',
+								_1: {
+									ctor: '::',
+									_0: 'f#4q',
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				},
+				iv: {
+					ctor: '::',
+					_0: 'c3q',
+					_1: {
+						ctor: '::',
+						_0: 'e3q',
+						_1: {
+							ctor: '::',
+							_0: 'g3q',
+							_1: {
+								ctor: '::',
+								_0: 'd4q',
+								_1: {
+									ctor: '::',
+									_0: 'g4q',
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				},
+				v: {
+					ctor: '::',
+					_0: 'd3q',
+					_1: {
+						ctor: '::',
+						_0: 'a3q',
+						_1: {
+							ctor: '::',
+							_0: 'd4q',
+							_1: {
+								ctor: '::',
+								_0: 'f#4q',
+								_1: {ctor: '[]'}
+							}
+						}
+					}
+				},
+				vi: {
+					ctor: '::',
+					_0: 'e2q',
+					_1: {
+						ctor: '::',
+						_0: 'b2q',
+						_1: {
+							ctor: '::',
+							_0: 'e3q',
+							_1: {
+								ctor: '::',
+								_0: 'g3q',
+								_1: {
+									ctor: '::',
+									_0: 'b3q',
+									_1: {
+										ctor: '::',
+										_0: 'e4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				vii: {
+					ctor: '::',
+					_0: 'f#2q',
+					_1: {
+						ctor: '::',
+						_0: 'c3q',
+						_1: {
+							ctor: '::',
+							_0: 'f#3q',
+							_1: {
+								ctor: '::',
+								_0: 'a3q',
+								_1: {
+									ctor: '::',
+									_0: 'd#4q',
+									_1: {
+										ctor: '::',
+										_0: 'f#4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				}
+			};
+		case 'D':
+			return {
+				i: {
+					ctor: '::',
+					_0: 'd3q',
+					_1: {
+						ctor: '::',
+						_0: 'a3q',
+						_1: {
+							ctor: '::',
+							_0: 'd4q',
+							_1: {
+								ctor: '::',
+								_0: 'f#4q',
+								_1: {ctor: '[]'}
+							}
+						}
+					}
+				},
+				ii: {
+					ctor: '::',
+					_0: 'e2q',
+					_1: {
+						ctor: '::',
+						_0: 'b2q',
+						_1: {
+							ctor: '::',
+							_0: 'e3q',
+							_1: {
+								ctor: '::',
+								_0: 'g3q',
+								_1: {
+									ctor: '::',
+									_0: 'b3q',
+									_1: {
+										ctor: '::',
+										_0: 'e4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				iii: {
+					ctor: '::',
+					_0: 'f#2q',
+					_1: {
+						ctor: '::',
+						_0: 'a2q',
+						_1: {
+							ctor: '::',
+							_0: 'd3q',
+							_1: {
+								ctor: '::',
+								_0: 'a3q',
+								_1: {
+									ctor: '::',
+									_0: 'c#4q',
+									_1: {
+										ctor: '::',
+										_0: 'e4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				iv: {
+					ctor: '::',
+					_0: 'g2q',
+					_1: {
+						ctor: '::',
+						_0: 'b2q',
+						_1: {
+							ctor: '::',
+							_0: 'd3q',
+							_1: {
+								ctor: '::',
+								_0: 'g3q',
+								_1: {
+									ctor: '::',
+									_0: 'd4q',
+									_1: {
+										ctor: '::',
+										_0: 'g4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				v: {
+					ctor: '::',
+					_0: 'a2q',
+					_1: {
+						ctor: '::',
+						_0: 'e3q',
+						_1: {
+							ctor: '::',
+							_0: 'a3q',
+							_1: {
+								ctor: '::',
+								_0: 'c#4q',
+								_1: {
+									ctor: '::',
+									_0: 'e4q',
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				},
+				vi: {
+					ctor: '::',
+					_0: 'b2q',
+					_1: {
+						ctor: '::',
+						_0: 'd3q',
+						_1: {
+							ctor: '::',
+							_0: 'g3q',
+							_1: {
+								ctor: '::',
+								_0: 'd4q',
+								_1: {
+									ctor: '::',
+									_0: 'f#4q',
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				},
+				vii: {
+					ctor: '::',
+					_0: 'c#3q',
+					_1: {
+						ctor: '::',
+						_0: 'f#3q',
+						_1: {
+							ctor: '::',
+							_0: 'b3q',
+							_1: {
+								ctor: '::',
+								_0: 'e4q',
+								_1: {
+									ctor: '::',
+									_0: 'e4q',
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				}
+			};
+		case 'A':
+			return {
+				i: {
+					ctor: '::',
+					_0: 'a2q',
+					_1: {
+						ctor: '::',
+						_0: 'e3q',
+						_1: {
+							ctor: '::',
+							_0: 'a3q',
+							_1: {
+								ctor: '::',
+								_0: 'c#4q',
+								_1: {
+									ctor: '::',
+									_0: 'e4q',
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				},
+				ii: {
+					ctor: '::',
+					_0: 'b2q',
+					_1: {
+						ctor: '::',
+						_0: 'd3q',
+						_1: {
+							ctor: '::',
+							_0: 'g3q',
+							_1: {
+								ctor: '::',
+								_0: 'd4q',
+								_1: {
+									ctor: '::',
+									_0: 'f#4q',
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				},
+				iii: {
+					ctor: '::',
+					_0: 'g#3q',
+					_1: {
+						ctor: '::',
+						_0: 'c#4q',
+						_1: {
+							ctor: '::',
+							_0: 'e4q',
+							_1: {
+								ctor: '::',
+								_0: 'g#4q',
+								_1: {ctor: '[]'}
+							}
+						}
+					}
+				},
+				iv: {
+					ctor: '::',
+					_0: 'd3q',
+					_1: {
+						ctor: '::',
+						_0: 'a3q',
+						_1: {
+							ctor: '::',
+							_0: 'd4q',
+							_1: {
+								ctor: '::',
+								_0: 'f#4q',
+								_1: {ctor: '[]'}
+							}
+						}
+					}
+				},
+				v: {
+					ctor: '::',
+					_0: 'e2q',
+					_1: {
+						ctor: '::',
+						_0: 'b2q',
+						_1: {
+							ctor: '::',
+							_0: 'e3q',
+							_1: {
+								ctor: '::',
+								_0: 'g#3q',
+								_1: {
+									ctor: '::',
+									_0: 'b3q',
+									_1: {
+										ctor: '::',
+										_0: 'e4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				vi: {
+					ctor: '::',
+					_0: 'f#2q',
+					_1: {
+						ctor: '::',
+						_0: 'a2q',
+						_1: {
+							ctor: '::',
+							_0: 'd3q',
+							_1: {
+								ctor: '::',
+								_0: 'a3q',
+								_1: {
+									ctor: '::',
+									_0: 'c#4q',
+									_1: {
+										ctor: '::',
+										_0: 'e4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				vii: {
+					ctor: '::',
+					_0: 'g#2q',
+					_1: {
+						ctor: '::',
+						_0: 'd3q',
+						_1: {
+							ctor: '::',
+							_0: 'g#3q',
+							_1: {
+								ctor: '::',
+								_0: 'b3q',
+								_1: {
+									ctor: '::',
+									_0: 'f4q',
+									_1: {
+										ctor: '::',
+										_0: 'g#4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				}
+			};
+		case 'E':
+			return {
+				i: {
+					ctor: '::',
+					_0: 'e2q',
+					_1: {
+						ctor: '::',
+						_0: 'b2q',
+						_1: {
+							ctor: '::',
+							_0: 'e3q',
+							_1: {
+								ctor: '::',
+								_0: 'g#3q',
+								_1: {
+									ctor: '::',
+									_0: 'b3q',
+									_1: {
+										ctor: '::',
+										_0: 'e4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				ii: {
+					ctor: '::',
+					_0: 'f#2q',
+					_1: {
+						ctor: '::',
+						_0: 'a2q',
+						_1: {
+							ctor: '::',
+							_0: 'd3q',
+							_1: {
+								ctor: '::',
+								_0: 'a3q',
+								_1: {
+									ctor: '::',
+									_0: 'c#4q',
+									_1: {
+										ctor: '::',
+										_0: 'e4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				iii: {
+					ctor: '::',
+					_0: 'g#2q',
+					_1: {
+						ctor: '::',
+						_0: 'd#3q',
+						_1: {
+							ctor: '::',
+							_0: 'g#3q',
+							_1: {
+								ctor: '::',
+								_0: 'b3q',
+								_1: {
+									ctor: '::',
+									_0: 'd#4q',
+									_1: {
+										ctor: '::',
+										_0: 'g#4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				iv: {
+					ctor: '::',
+					_0: 'a2q',
+					_1: {
+						ctor: '::',
+						_0: 'e3q',
+						_1: {
+							ctor: '::',
+							_0: 'a3q',
+							_1: {
+								ctor: '::',
+								_0: 'c#4q',
+								_1: {
+									ctor: '::',
+									_0: 'e4q',
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				},
+				v: {
+					ctor: '::',
+					_0: 'b2q',
+					_1: {
+						ctor: '::',
+						_0: 'd#3q',
+						_1: {
+							ctor: '::',
+							_0: 'a3q',
+							_1: {
+								ctor: '::',
+								_0: 'b3q',
+								_1: {
+									ctor: '::',
+									_0: 'f#4q',
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				},
+				vi: {
+					ctor: '::',
+					_0: 'g#3q',
+					_1: {
+						ctor: '::',
+						_0: 'c#4q',
+						_1: {
+							ctor: '::',
+							_0: 'e4q',
+							_1: {
+								ctor: '::',
+								_0: 'g#4q',
+								_1: {ctor: '[]'}
+							}
+						}
+					}
+				},
+				vii: {
+					ctor: '::',
+					_0: 'd#3q',
+					_1: {
+						ctor: '::',
+						_0: 'a3q',
+						_1: {
+							ctor: '::',
+							_0: 'c4q',
+							_1: {
+								ctor: '::',
+								_0: 'f#4q',
+								_1: {ctor: '[]'}
+							}
+						}
+					}
+				}
+			};
+		case 'B':
+			return {
+				i: {
+					ctor: '::',
+					_0: 'b2q',
+					_1: {
+						ctor: '::',
+						_0: 'f#3q',
+						_1: {
+							ctor: '::',
+							_0: 'b3q',
+							_1: {
+								ctor: '::',
+								_0: 'd#4q',
+								_1: {
+									ctor: '::',
+									_0: 'f#4q',
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				},
+				ii: {
+					ctor: '::',
+					_0: 'c#3q',
+					_1: {
+						ctor: '::',
+						_0: 'g#3q',
+						_1: {
+							ctor: '::',
+							_0: 'c#4q',
+							_1: {
+								ctor: '::',
+								_0: 'e4q',
+								_1: {
+									ctor: '::',
+									_0: 'g#4q',
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				},
+				iii: {
+					ctor: '::',
+					_0: 'd#3q',
+					_1: {
+						ctor: '::',
+						_0: 'a#3q',
+						_1: {
+							ctor: '::',
+							_0: 'd#4q',
+							_1: {
+								ctor: '::',
+								_0: 'f#4q',
+								_1: {
+									ctor: '::',
+									_0: 'a#4q',
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				},
+				iv: {
+					ctor: '::',
+					_0: 'e2q',
+					_1: {
+						ctor: '::',
+						_0: 'b2q',
+						_1: {
+							ctor: '::',
+							_0: 'e3q',
+							_1: {
+								ctor: '::',
+								_0: 'g#3q',
+								_1: {
+									ctor: '::',
+									_0: 'b3q',
+									_1: {
+										ctor: '::',
+										_0: 'e4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				v: {
+					ctor: '::',
+					_0: 'f#2q',
+					_1: {
+						ctor: '::',
+						_0: 'c#3q',
+						_1: {
+							ctor: '::',
+							_0: 'f#3q',
+							_1: {
+								ctor: '::',
+								_0: 'a#3q',
+								_1: {
+									ctor: '::',
+									_0: 'c#4q',
+									_1: {
+										ctor: '::',
+										_0: 'f#4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				vi: {
+					ctor: '::',
+					_0: 'g#2q',
+					_1: {
+						ctor: '::',
+						_0: 'd#3q',
+						_1: {
+							ctor: '::',
+							_0: 'g#3q',
+							_1: {
+								ctor: '::',
+								_0: 'b3q',
+								_1: {
+									ctor: '::',
+									_0: 'd#4q',
+									_1: {
+										ctor: '::',
+										_0: 'g#4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				vii: {
+					ctor: '::',
+					_0: 'a#2q',
+					_1: {
+						ctor: '::',
+						_0: 'e3q',
+						_1: {
+							ctor: '::',
+							_0: 'g3q',
+							_1: {
+								ctor: '::',
+								_0: 'c#4q',
+								_1: {
+									ctor: '::',
+									_0: 'e4q',
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				}
+			};
+		case 'F#':
+			return {
+				i: {
+					ctor: '::',
+					_0: 'f#2q',
+					_1: {
+						ctor: '::',
+						_0: 'c#3q',
+						_1: {
+							ctor: '::',
+							_0: 'f#3q',
+							_1: {
+								ctor: '::',
+								_0: 'a#3q',
+								_1: {
+									ctor: '::',
+									_0: 'c#4q',
+									_1: {
+										ctor: '::',
+										_0: 'f#4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				ii: {
+					ctor: '::',
+					_0: 'g#2q',
+					_1: {
+						ctor: '::',
+						_0: 'd#3q',
+						_1: {
+							ctor: '::',
+							_0: 'g#3q',
+							_1: {
+								ctor: '::',
+								_0: 'b3q',
+								_1: {
+									ctor: '::',
+									_0: 'd#4q',
+									_1: {
+										ctor: '::',
+										_0: 'g#4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				iii: {
+					ctor: '::',
+					_0: 'a#2q',
+					_1: {
+						ctor: '::',
+						_0: 'f3q',
+						_1: {
+							ctor: '::',
+							_0: 'a#3q',
+							_1: {
+								ctor: '::',
+								_0: 'c#4q',
+								_1: {
+									ctor: '::',
+									_0: 'f4q',
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				},
+				iv: {
+					ctor: '::',
+					_0: 'b2q',
+					_1: {
+						ctor: '::',
+						_0: 'f#3q',
+						_1: {
+							ctor: '::',
+							_0: 'b3q',
+							_1: {
+								ctor: '::',
+								_0: 'd#4q',
+								_1: {
+									ctor: '::',
+									_0: 'f#4q',
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				},
+				v: {
+					ctor: '::',
+					_0: 'c#3q',
+					_1: {
+						ctor: '::',
+						_0: 'g#3q',
+						_1: {
+							ctor: '::',
+							_0: 'c#4q',
+							_1: {
+								ctor: '::',
+								_0: 'f4q',
+								_1: {
+									ctor: '::',
+									_0: 'g#4q',
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				},
+				vi: {
+					ctor: '::',
+					_0: 'd#3q',
+					_1: {
+						ctor: '::',
+						_0: 'a#3q',
+						_1: {
+							ctor: '::',
+							_0: 'd#4q',
+							_1: {
+								ctor: '::',
+								_0: 'f#4q',
+								_1: {
+									ctor: '::',
+									_0: 'a#4q',
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				},
+				vii: {
+					ctor: '::',
+					_0: 'f3q',
+					_1: {
+						ctor: '::',
+						_0: 'b3q',
+						_1: {
+							ctor: '::',
+							_0: 'd4q',
+							_1: {
+								ctor: '::',
+								_0: 'g#4q',
+								_1: {ctor: '[]'}
+							}
+						}
+					}
+				}
+			};
+		case 'Db':
+			return {
+				i: {
+					ctor: '::',
+					_0: 'c#3q',
+					_1: {
+						ctor: '::',
+						_0: 'g#3q',
+						_1: {
+							ctor: '::',
+							_0: 'c#4q',
+							_1: {
+								ctor: '::',
+								_0: 'f4q',
+								_1: {
+									ctor: '::',
+									_0: 'g#4q',
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				},
+				ii: {
+					ctor: '::',
+					_0: 'd#3q',
+					_1: {
+						ctor: '::',
+						_0: 'a#3q',
+						_1: {
+							ctor: '::',
+							_0: 'd#4q',
+							_1: {
+								ctor: '::',
+								_0: 'f#4q',
+								_1: {
+									ctor: '::',
+									_0: 'a#4q',
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				},
+				iii: {
+					ctor: '::',
+					_0: 'f2q',
+					_1: {
+						ctor: '::',
+						_0: 'c3q',
+						_1: {
+							ctor: '::',
+							_0: 'f3q',
+							_1: {
+								ctor: '::',
+								_0: 'g#3q',
+								_1: {
+									ctor: '::',
+									_0: 'c4q',
+									_1: {
+										ctor: '::',
+										_0: 'f4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				iv: {
+					ctor: '::',
+					_0: 'f#2q',
+					_1: {
+						ctor: '::',
+						_0: 'c#3q',
+						_1: {
+							ctor: '::',
+							_0: 'f#3q',
+							_1: {
+								ctor: '::',
+								_0: 'a#3q',
+								_1: {
+									ctor: '::',
+									_0: 'c#4q',
+									_1: {
+										ctor: '::',
+										_0: 'f#4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				v: {
+					ctor: '::',
+					_0: 'g#3q',
+					_1: {
+						ctor: '::',
+						_0: 'd#3q',
+						_1: {
+							ctor: '::',
+							_0: 'g#4q',
+							_1: {
+								ctor: '::',
+								_0: 'b#3q',
+								_1: {
+									ctor: '::',
+									_0: 'd#4q',
+									_1: {
+										ctor: '::',
+										_0: 'g#4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				vi: {
+					ctor: '::',
+					_0: 'a#2q',
+					_1: {
+						ctor: '::',
+						_0: 'f3q',
+						_1: {
+							ctor: '::',
+							_0: 'a#3q',
+							_1: {
+								ctor: '::',
+								_0: 'c#4q',
+								_1: {
+									ctor: '::',
+									_0: 'f4q',
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				},
+				vii: {
+					ctor: '::',
+					_0: 'c3q',
+					_1: {
+						ctor: '::',
+						_0: 'f#3q',
+						_1: {
+							ctor: '::',
+							_0: 'a3q',
+							_1: {
+								ctor: '::',
+								_0: 'd#4q',
+								_1: {ctor: '[]'}
+							}
+						}
+					}
+				}
+			};
+		case 'Ab':
+			return {
+				i: {
+					ctor: '::',
+					_0: 'g#2q',
+					_1: {
+						ctor: '::',
+						_0: 'd#3q',
+						_1: {
+							ctor: '::',
+							_0: 'g#3q',
+							_1: {
+								ctor: '::',
+								_0: 'c4q',
+								_1: {
+									ctor: '::',
+									_0: 'd#4q',
+									_1: {
+										ctor: '::',
+										_0: 'g#4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				ii: {
+					ctor: '::',
+					_0: 'a#2q',
+					_1: {
+						ctor: '::',
+						_0: 'f3q',
+						_1: {
+							ctor: '::',
+							_0: 'a#3q',
+							_1: {
+								ctor: '::',
+								_0: 'c#4q',
+								_1: {
+									ctor: '::',
+									_0: 'f4q',
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				},
+				iii: {
+					ctor: '::',
+					_0: 'c3q',
+					_1: {
+						ctor: '::',
+						_0: 'g3q',
+						_1: {
+							ctor: '::',
+							_0: 'c4q',
+							_1: {
+								ctor: '::',
+								_0: 'd#4q',
+								_1: {
+									ctor: '::',
+									_0: 'g4q',
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				},
+				iv: {
+					ctor: '::',
+					_0: 'c#3q',
+					_1: {
+						ctor: '::',
+						_0: 'g#3q',
+						_1: {
+							ctor: '::',
+							_0: 'c#4q',
+							_1: {
+								ctor: '::',
+								_0: 'f4q',
+								_1: {
+									ctor: '::',
+									_0: 'g#4q',
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				},
+				v: {
+					ctor: '::',
+					_0: 'd#3q',
+					_1: {
+						ctor: '::',
+						_0: 'a#3q',
+						_1: {
+							ctor: '::',
+							_0: 'd#4q',
+							_1: {
+								ctor: '::',
+								_0: 'g4q',
+								_1: {
+									ctor: '::',
+									_0: 'a#4q',
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				},
+				vi: {
+					ctor: '::',
+					_0: 'f2q',
+					_1: {
+						ctor: '::',
+						_0: 'c3q',
+						_1: {
+							ctor: '::',
+							_0: 'f3q',
+							_1: {
+								ctor: '::',
+								_0: 'g#3q',
+								_1: {
+									ctor: '::',
+									_0: 'c4q',
+									_1: {
+										ctor: '::',
+										_0: 'f4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				vii: {
+					ctor: '::',
+					_0: 'g3q',
+					_1: {
+						ctor: '::',
+						_0: 'c#4q',
+						_1: {
+							ctor: '::',
+							_0: 'e4q',
+							_1: {
+								ctor: '::',
+								_0: 'a#4q',
+								_1: {ctor: '[]'}
+							}
+						}
+					}
+				}
+			};
+		case 'Eb':
+			return {
+				i: {
+					ctor: '::',
+					_0: 'd#3q',
+					_1: {
+						ctor: '::',
+						_0: 'a#3q',
+						_1: {
+							ctor: '::',
+							_0: 'd#4q',
+							_1: {
+								ctor: '::',
+								_0: 'g4q',
+								_1: {
+									ctor: '::',
+									_0: 'a#4q',
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				},
+				ii: {
+					ctor: '::',
+					_0: 'f2q',
+					_1: {
+						ctor: '::',
+						_0: 'c3q',
+						_1: {
+							ctor: '::',
+							_0: 'f3q',
+							_1: {
+								ctor: '::',
+								_0: 'g#3q',
+								_1: {
+									ctor: '::',
+									_0: 'c4q',
+									_1: {
+										ctor: '::',
+										_0: 'f4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				iii: {
+					ctor: '::',
+					_0: 'g2q',
+					_1: {
+						ctor: '::',
+						_0: 'd2q',
+						_1: {
+							ctor: '::',
+							_0: 'g3q',
+							_1: {
+								ctor: '::',
+								_0: 'a#3q',
+								_1: {
+									ctor: '::',
+									_0: 'd4q',
+									_1: {
+										ctor: '::',
+										_0: 'g4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				iv: {
+					ctor: '::',
+					_0: 'g#2q',
+					_1: {
+						ctor: '::',
+						_0: 'd#3q',
+						_1: {
+							ctor: '::',
+							_0: 'g#3q',
+							_1: {
+								ctor: '::',
+								_0: 'c4q',
+								_1: {
+									ctor: '::',
+									_0: 'd#4q',
+									_1: {
+										ctor: '::',
+										_0: 'g#4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				v: {
+					ctor: '::',
+					_0: 'a#2q',
+					_1: {
+						ctor: '::',
+						_0: 'f3q',
+						_1: {
+							ctor: '::',
+							_0: 'a#3q',
+							_1: {
+								ctor: '::',
+								_0: 'd4q',
+								_1: {
+									ctor: '::',
+									_0: 'f4q',
+									_1: {
+										ctor: '::',
+										_0: 'a#4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				vi: {
+					ctor: '::',
+					_0: 'c3q',
+					_1: {
+						ctor: '::',
+						_0: 'g3q',
+						_1: {
+							ctor: '::',
+							_0: 'c4q',
+							_1: {
+								ctor: '::',
+								_0: 'd#4q',
+								_1: {
+									ctor: '::',
+									_0: 'g4q',
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				},
+				vii: {
+					ctor: '::',
+					_0: 'd3q',
+					_1: {
+						ctor: '::',
+						_0: 'g#3q',
+						_1: {
+							ctor: '::',
+							_0: 'b3q',
+							_1: {
+								ctor: '::',
+								_0: 'f4q',
+								_1: {ctor: '[]'}
+							}
+						}
+					}
+				}
+			};
+		case 'Bb':
+			return {
+				i: {
+					ctor: '::',
+					_0: 'a#2q',
+					_1: {
+						ctor: '::',
+						_0: 'f3q',
+						_1: {
+							ctor: '::',
+							_0: 'a#3q',
+							_1: {
+								ctor: '::',
+								_0: 'd4q',
+								_1: {
+									ctor: '::',
+									_0: 'f4q',
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				},
+				ii: {
+					ctor: '::',
+					_0: 'c3q',
+					_1: {
+						ctor: '::',
+						_0: 'g3q',
+						_1: {
+							ctor: '::',
+							_0: 'c4q',
+							_1: {
+								ctor: '::',
+								_0: 'd#4q',
+								_1: {
+									ctor: '::',
+									_0: 'g4q',
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				},
+				iii: {
+					ctor: '::',
+					_0: 'd3q',
+					_1: {
+						ctor: '::',
+						_0: 'a3q',
+						_1: {
+							ctor: '::',
+							_0: 'd4q',
+							_1: {
+								ctor: '::',
+								_0: 'f4q',
+								_1: {
+									ctor: '::',
+									_0: 'a4q',
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				},
+				iv: {
+					ctor: '::',
+					_0: 'd#3q',
+					_1: {
+						ctor: '::',
+						_0: 'a#3q',
+						_1: {
+							ctor: '::',
+							_0: 'd#4q',
+							_1: {
+								ctor: '::',
+								_0: 'g4q',
+								_1: {
+									ctor: '::',
+									_0: 'a#4q',
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				},
+				v: {
+					ctor: '::',
+					_0: 'f2q',
+					_1: {
+						ctor: '::',
+						_0: 'c3q',
+						_1: {
+							ctor: '::',
+							_0: 'f3q',
+							_1: {
+								ctor: '::',
+								_0: 'a3q',
+								_1: {
+									ctor: '::',
+									_0: 'c4q',
+									_1: {
+										ctor: '::',
+										_0: 'f4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				vi: {
+					ctor: '::',
+					_0: 'g2q',
+					_1: {
+						ctor: '::',
+						_0: 'd3q',
+						_1: {
+							ctor: '::',
+							_0: 'g3q',
+							_1: {
+								ctor: '::',
+								_0: 'a#3q',
+								_1: {
+									ctor: '::',
+									_0: 'd4q',
+									_1: {
+										ctor: '::',
+										_0: 'g4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				vii: {
+					ctor: '::',
+					_0: 'd#3q',
+					_1: {
+						ctor: '::',
+						_0: 'a3q',
+						_1: {
+							ctor: '::',
+							_0: 'c4q',
+							_1: {
+								ctor: '::',
+								_0: 'f#4q',
+								_1: {ctor: '[]'}
+							}
+						}
+					}
+				}
+			};
+		case 'F':
+			return {
+				i: {
+					ctor: '::',
+					_0: 'f3q',
+					_1: {
+						ctor: '::',
+						_0: 'a3q',
+						_1: {
+							ctor: '::',
+							_0: 'c4q',
+							_1: {
+								ctor: '::',
+								_0: 'e4q',
+								_1: {ctor: '[]'}
+							}
+						}
+					}
+				},
+				ii: {
+					ctor: '::',
+					_0: 'g2q',
+					_1: {
+						ctor: '::',
+						_0: 'd2q',
+						_1: {
+							ctor: '::',
+							_0: 'g3q',
+							_1: {
+								ctor: '::',
+								_0: 'a#3q',
+								_1: {
+									ctor: '::',
+									_0: 'd4q',
+									_1: {
+										ctor: '::',
+										_0: 'g4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				iii: {
+					ctor: '::',
+					_0: 'a2q',
+					_1: {
+						ctor: '::',
+						_0: 'e3q',
+						_1: {
+							ctor: '::',
+							_0: 'a3q',
+							_1: {
+								ctor: '::',
+								_0: 'c4q',
+								_1: {
+									ctor: '::',
+									_0: 'e4q',
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				},
+				iv: {
+					ctor: '::',
+					_0: 'a#2q',
+					_1: {
+						ctor: '::',
+						_0: 'f3q',
+						_1: {
+							ctor: '::',
+							_0: 'a#3q',
+							_1: {
+								ctor: '::',
+								_0: 'd4q',
+								_1: {
+									ctor: '::',
+									_0: 'f4q',
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				},
+				v: {
+					ctor: '::',
+					_0: 'c3q',
+					_1: {
+						ctor: '::',
+						_0: 'e3q',
+						_1: {
+							ctor: '::',
+							_0: 'g3q',
+							_1: {
+								ctor: '::',
+								_0: 'c4q',
+								_1: {
+									ctor: '::',
+									_0: 'e4q',
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				},
+				vi: {
+					ctor: '::',
+					_0: 'd3q',
+					_1: {
+						ctor: '::',
+						_0: 'a3q',
+						_1: {
+							ctor: '::',
+							_0: 'd4q',
+							_1: {
+								ctor: '::',
+								_0: 'f4q',
+								_1: {ctor: '[]'}
+							}
+						}
+					}
+				},
+				vii: {
+					ctor: '::',
+					_0: '',
+					_1: {ctor: '[]'}
+				}
+			};
+		case 'a':
+			return {
+				i: {
+					ctor: '::',
+					_0: 'a2q',
+					_1: {
+						ctor: '::',
+						_0: 'e3q',
+						_1: {
+							ctor: '::',
+							_0: 'a3q',
+							_1: {
+								ctor: '::',
+								_0: 'c4q',
+								_1: {
+									ctor: '::',
+									_0: 'e4q',
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				},
+				ii: {
+					ctor: '::',
+					_0: 'b2q',
+					_1: {
+						ctor: '::',
+						_0: 'f3q',
+						_1: {
+							ctor: '::',
+							_0: 'g#3q',
+							_1: {
+								ctor: '::',
+								_0: 'd4q',
+								_1: {ctor: '[]'}
+							}
+						}
+					}
+				},
+				iii: {
+					ctor: '::',
+					_0: 'c3q',
+					_1: {
+						ctor: '::',
+						_0: 'e3q',
+						_1: {
+							ctor: '::',
+							_0: 'g3q',
+							_1: {
+								ctor: '::',
+								_0: 'c4q',
+								_1: {
+									ctor: '::',
+									_0: 'e4q',
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				},
+				iv: {
+					ctor: '::',
+					_0: 'd3q',
+					_1: {
+						ctor: '::',
+						_0: 'a3q',
+						_1: {
+							ctor: '::',
+							_0: 'd4q',
+							_1: {
+								ctor: '::',
+								_0: 'f4q',
+								_1: {ctor: '[]'}
+							}
+						}
+					}
+				},
+				v: {
+					ctor: '::',
+					_0: 'e2q',
+					_1: {
+						ctor: '::',
+						_0: 'b2q',
+						_1: {
+							ctor: '::',
+							_0: 'e3q',
+							_1: {
+								ctor: '::',
+								_0: 'g3q',
+								_1: {
+									ctor: '::',
+									_0: 'b3q',
+									_1: {
+										ctor: '::',
+										_0: 'e4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				vi: {
+					ctor: '::',
+					_0: 'f3q',
+					_1: {
+						ctor: '::',
+						_0: 'a3q',
+						_1: {
+							ctor: '::',
+							_0: 'c4q',
+							_1: {
+								ctor: '::',
+								_0: 'e4q',
+								_1: {ctor: '[]'}
+							}
+						}
+					}
+				},
+				vii: {
+					ctor: '::',
+					_0: 'g2q',
+					_1: {
+						ctor: '::',
+						_0: 'b2q',
+						_1: {
+							ctor: '::',
+							_0: 'd3q',
+							_1: {
+								ctor: '::',
+								_0: 'g3q',
+								_1: {
+									ctor: '::',
+									_0: 'd4q',
+									_1: {
+										ctor: '::',
+										_0: 'g4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				}
+			};
+		case 'e':
+			return {
+				i: {
+					ctor: '::',
+					_0: 'e2q',
+					_1: {
+						ctor: '::',
+						_0: 'b2q',
+						_1: {
+							ctor: '::',
+							_0: 'e3q',
+							_1: {
+								ctor: '::',
+								_0: 'g3q',
+								_1: {
+									ctor: '::',
+									_0: 'b3q',
+									_1: {
+										ctor: '::',
+										_0: 'e4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				ii: {
+					ctor: '::',
+					_0: 'f#2',
+					_1: {
+						ctor: '::',
+						_0: 'c3q',
+						_1: {
+							ctor: '::',
+							_0: 'f#3q',
+							_1: {
+								ctor: '::',
+								_0: 'a3q',
+								_1: {
+									ctor: '::',
+									_0: 'd#4q',
+									_1: {
+										ctor: '::',
+										_0: 'f#4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				iii: {
+					ctor: '::',
+					_0: 'g2q',
+					_1: {
+						ctor: '::',
+						_0: 'b2q',
+						_1: {
+							ctor: '::',
+							_0: 'd3q',
+							_1: {
+								ctor: '::',
+								_0: 'g3q',
+								_1: {
+									ctor: '::',
+									_0: 'd4q',
+									_1: {
+										ctor: '::',
+										_0: 'g4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				iv: {
+					ctor: '::',
+					_0: 'a2q',
+					_1: {
+						ctor: '::',
+						_0: 'e3q',
+						_1: {
+							ctor: '::',
+							_0: 'a3q',
+							_1: {
+								ctor: '::',
+								_0: 'c4q',
+								_1: {
+									ctor: '::',
+									_0: 'e4q',
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				},
+				v: {
+					ctor: '::',
+					_0: 'b2q',
+					_1: {
+						ctor: '::',
+						_0: 'd3q',
+						_1: {
+							ctor: '::',
+							_0: 'g3q',
+							_1: {
+								ctor: '::',
+								_0: 'd4q',
+								_1: {
+									ctor: '::',
+									_0: 'f#4q',
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				},
+				vi: {
+					ctor: '::',
+					_0: 'c3q',
+					_1: {
+						ctor: '::',
+						_0: 'e3q',
+						_1: {
+							ctor: '::',
+							_0: 'g3q',
+							_1: {
+								ctor: '::',
+								_0: 'c4q',
+								_1: {
+									ctor: '::',
+									_0: 'e4q',
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				},
+				vii: {
+					ctor: '::',
+					_0: 'd3q',
+					_1: {
+						ctor: '::',
+						_0: 'a3q',
+						_1: {
+							ctor: '::',
+							_0: 'd4q',
+							_1: {
+								ctor: '::',
+								_0: 'f#4q',
+								_1: {ctor: '[]'}
+							}
+						}
+					}
+				}
+			};
+		case 'b':
+			return {
+				i: {
+					ctor: '::',
+					_0: 'b2q',
+					_1: {
+						ctor: '::',
+						_0: 'd3q',
+						_1: {
+							ctor: '::',
+							_0: 'g3q',
+							_1: {
+								ctor: '::',
+								_0: 'd4q',
+								_1: {
+									ctor: '::',
+									_0: 'f#4q',
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				},
+				ii: {
+					ctor: '::',
+					_0: 'c#3q',
+					_1: {
+						ctor: '::',
+						_0: 'g3q',
+						_1: {
+							ctor: '::',
+							_0: 'a#3q',
+							_1: {
+								ctor: '::',
+								_0: 'e4q',
+								_1: {ctor: '[]'}
+							}
+						}
+					}
+				},
+				iii: {
+					ctor: '::',
+					_0: 'd3q',
+					_1: {
+						ctor: '::',
+						_0: 'a3q',
+						_1: {
+							ctor: '::',
+							_0: 'd4q',
+							_1: {
+								ctor: '::',
+								_0: 'f#4q',
+								_1: {ctor: '[]'}
+							}
+						}
+					}
+				},
+				iv: {
+					ctor: '::',
+					_0: 'e2q',
+					_1: {
+						ctor: '::',
+						_0: 'b2q',
+						_1: {
+							ctor: '::',
+							_0: 'e3q',
+							_1: {
+								ctor: '::',
+								_0: 'g3q',
+								_1: {
+									ctor: '::',
+									_0: 'b3q',
+									_1: {
+										ctor: '::',
+										_0: 'e4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				v: {
+					ctor: '::',
+					_0: 'f#2q',
+					_1: {
+						ctor: '::',
+						_0: 'a2q',
+						_1: {
+							ctor: '::',
+							_0: 'd3q',
+							_1: {
+								ctor: '::',
+								_0: 'a3q',
+								_1: {
+									ctor: '::',
+									_0: 'c#4q',
+									_1: {
+										ctor: '::',
+										_0: 'e4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				vi: {
+					ctor: '::',
+					_0: 'g2q',
+					_1: {
+						ctor: '::',
+						_0: 'b2q',
+						_1: {
+							ctor: '::',
+							_0: 'd3q',
+							_1: {
+								ctor: '::',
+								_0: 'g3q',
+								_1: {
+									ctor: '::',
+									_0: 'd4q',
+									_1: {
+										ctor: '::',
+										_0: 'g4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				vii: {
+					ctor: '::',
+					_0: 'a2q',
+					_1: {
+						ctor: '::',
+						_0: 'e3q',
+						_1: {
+							ctor: '::',
+							_0: 'a3q',
+							_1: {
+								ctor: '::',
+								_0: 'c#4q',
+								_1: {
+									ctor: '::',
+									_0: 'e4q',
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				}
+			};
+		case 'f#':
+			return {
+				i: {
+					ctor: '::',
+					_0: 'f#2q',
+					_1: {
+						ctor: '::',
+						_0: 'a2q',
+						_1: {
+							ctor: '::',
+							_0: 'c#3q',
+							_1: {
+								ctor: '::',
+								_0: 'a3q',
+								_1: {
+									ctor: '::',
+									_0: 'c#4q',
+									_1: {
+										ctor: '::',
+										_0: 'f#4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				ii: {
+					ctor: '::',
+					_0: 'g#2q',
+					_1: {
+						ctor: '::',
+						_0: 'd3q',
+						_1: {
+							ctor: '::',
+							_0: 'g#3q',
+							_1: {
+								ctor: '::',
+								_0: 'b3q',
+								_1: {
+									ctor: '::',
+									_0: 'f4q',
+									_1: {
+										ctor: '::',
+										_0: 'g#4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				iii: {
+					ctor: '::',
+					_0: 'a2q',
+					_1: {
+						ctor: '::',
+						_0: 'e3q',
+						_1: {
+							ctor: '::',
+							_0: 'a3q',
+							_1: {
+								ctor: '::',
+								_0: 'c#4q',
+								_1: {
+									ctor: '::',
+									_0: 'e4q',
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				},
+				iv: {
+					ctor: '::',
+					_0: 'b2q',
+					_1: {
+						ctor: '::',
+						_0: 'd3q',
+						_1: {
+							ctor: '::',
+							_0: 'f#3q',
+							_1: {
+								ctor: '::',
+								_0: 'd4q',
+								_1: {
+									ctor: '::',
+									_0: 'f#4q',
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				},
+				v: {
+					ctor: '::',
+					_0: 'c#q3',
+					_1: {
+						ctor: '::',
+						_0: 'g#3q',
+						_1: {
+							ctor: '::',
+							_0: 'c#4q',
+							_1: {
+								ctor: '::',
+								_0: 'e4q',
+								_1: {
+									ctor: '::',
+									_0: 'g#4q',
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				},
+				vi: {
+					ctor: '::',
+					_0: 'd3q',
+					_1: {
+						ctor: '::',
+						_0: 'a3q',
+						_1: {
+							ctor: '::',
+							_0: 'd4q',
+							_1: {
+								ctor: '::',
+								_0: 'f#4q',
+								_1: {ctor: '[]'}
+							}
+						}
+					}
+				},
+				vii: {
+					ctor: '::',
+					_0: 'e2q',
+					_1: {
+						ctor: '::',
+						_0: 'b2q',
+						_1: {
+							ctor: '::',
+							_0: 'e3q',
+							_1: {
+								ctor: '::',
+								_0: 'g#3q',
+								_1: {
+									ctor: '::',
+									_0: 'b3q',
+									_1: {
+										ctor: '::',
+										_0: 'e4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				}
+			};
+		case 'c#':
+			return {
+				i: {
+					ctor: '::',
+					_0: 'c#3q',
+					_1: {
+						ctor: '::',
+						_0: 'g#3q',
+						_1: {
+							ctor: '::',
+							_0: 'c#4q',
+							_1: {
+								ctor: '::',
+								_0: 'e4q',
+								_1: {
+									ctor: '::',
+									_0: 'g#4q',
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				},
+				ii: {
+					ctor: '::',
+					_0: 'd#3q',
+					_1: {
+						ctor: '::',
+						_0: 'a3q',
+						_1: {
+							ctor: '::',
+							_0: 'c4q',
+							_1: {
+								ctor: '::',
+								_0: 'f#4q',
+								_1: {ctor: '[]'}
+							}
+						}
+					}
+				},
+				iii: {
+					ctor: '::',
+					_0: 'e2q',
+					_1: {
+						ctor: '::',
+						_0: 'b2q',
+						_1: {
+							ctor: '::',
+							_0: 'e3q',
+							_1: {
+								ctor: '::',
+								_0: 'g#3q',
+								_1: {
+									ctor: '::',
+									_0: 'b3q',
+									_1: {
+										ctor: '::',
+										_0: 'e4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				iv: {
+					ctor: '::',
+					_0: 'f#2q',
+					_1: {
+						ctor: '::',
+						_0: 'c#3q',
+						_1: {
+							ctor: '::',
+							_0: 'f#3q',
+							_1: {
+								ctor: '::',
+								_0: 'a3q',
+								_1: {
+									ctor: '::',
+									_0: 'c#4q',
+									_1: {
+										ctor: '::',
+										_0: 'f#4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				v: {
+					ctor: '::',
+					_0: 'g#2q',
+					_1: {
+						ctor: '::',
+						_0: 'd#3q',
+						_1: {
+							ctor: '::',
+							_0: 'g#3q',
+							_1: {
+								ctor: '::',
+								_0: 'b3q',
+								_1: {
+									ctor: '::',
+									_0: 'd#4q',
+									_1: {
+										ctor: '::',
+										_0: 'g#4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				vi: {
+					ctor: '::',
+					_0: 'a2q',
+					_1: {
+						ctor: '::',
+						_0: 'e3q',
+						_1: {
+							ctor: '::',
+							_0: 'a3q',
+							_1: {
+								ctor: '::',
+								_0: 'c#4q',
+								_1: {
+									ctor: '::',
+									_0: 'e4q',
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				},
+				vii: {
+					ctor: '::',
+					_0: 'b2q',
+					_1: {
+						ctor: '::',
+						_0: 'f#3q',
+						_1: {
+							ctor: '::',
+							_0: 'b3q',
+							_1: {
+								ctor: '::',
+								_0: 'd#4q',
+								_1: {
+									ctor: '::',
+									_0: 'f#4q',
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				}
+			};
+		case 'g#':
+			return {
+				i: {
+					ctor: '::',
+					_0: 'g#2q',
+					_1: {
+						ctor: '::',
+						_0: 'd#3q',
+						_1: {
+							ctor: '::',
+							_0: 'g#3q',
+							_1: {
+								ctor: '::',
+								_0: 'b3q',
+								_1: {
+									ctor: '::',
+									_0: 'd#4q',
+									_1: {
+										ctor: '::',
+										_0: 'g#4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				ii: {
+					ctor: '::',
+					_0: 'a#2q',
+					_1: {
+						ctor: '::',
+						_0: 'e3q',
+						_1: {
+							ctor: '::',
+							_0: 'g3q',
+							_1: {
+								ctor: '::',
+								_0: 'c#4q',
+								_1: {
+									ctor: '::',
+									_0: 'e4q',
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				},
+				iii: {
+					ctor: '::',
+					_0: 'c2q',
+					_1: {
+						ctor: '::',
+						_0: 'g3q',
+						_1: {
+							ctor: '::',
+							_0: 'c3q',
+							_1: {
+								ctor: '::',
+								_0: 'e4q',
+								_1: {
+									ctor: '::',
+									_0: 'g4q',
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				},
+				iv: {
+					ctor: '::',
+					_0: 'c#q3',
+					_1: {
+						ctor: '::',
+						_0: 'g#3q',
+						_1: {
+							ctor: '::',
+							_0: 'c#4q',
+							_1: {
+								ctor: '::',
+								_0: 'e4q',
+								_1: {
+									ctor: '::',
+									_0: 'g#4q',
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				},
+				v: {
+					ctor: '::',
+					_0: 'd#3q',
+					_1: {
+						ctor: '::',
+						_0: 'a#3q',
+						_1: {
+							ctor: '::',
+							_0: 'd#4q',
+							_1: {
+								ctor: '::',
+								_0: 'f#4q',
+								_1: {
+									ctor: '::',
+									_0: 'a#4q',
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				},
+				vi: {
+					ctor: '::',
+					_0: 'e2q',
+					_1: {
+						ctor: '::',
+						_0: 'b2q',
+						_1: {
+							ctor: '::',
+							_0: 'e3q',
+							_1: {
+								ctor: '::',
+								_0: 'g#3q',
+								_1: {
+									ctor: '::',
+									_0: 'b3q',
+									_1: {
+										ctor: '::',
+										_0: 'e4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				vii: {
+					ctor: '::',
+					_0: 'f#2q',
+					_1: {
+						ctor: '::',
+						_0: 'c#3q',
+						_1: {
+							ctor: '::',
+							_0: 'f#3q',
+							_1: {
+								ctor: '::',
+								_0: 'a#3q',
+								_1: {
+									ctor: '::',
+									_0: 'c#4q',
+									_1: {
+										ctor: '::',
+										_0: 'f#4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				}
+			};
+		case 'd#':
+			return {
+				i: {
+					ctor: '::',
+					_0: 'd#3q',
+					_1: {
+						ctor: '::',
+						_0: 'a#3q',
+						_1: {
+							ctor: '::',
+							_0: 'd#4q',
+							_1: {
+								ctor: '::',
+								_0: 'f#4q',
+								_1: {
+									ctor: '::',
+									_0: 'a#4q',
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				},
+				ii: {
+					ctor: '::',
+					_0: 'f3q',
+					_1: {
+						ctor: '::',
+						_0: 'b3q',
+						_1: {
+							ctor: '::',
+							_0: 'd4q',
+							_1: {
+								ctor: '::',
+								_0: 'g#4q',
+								_1: {ctor: '[]'}
+							}
+						}
+					}
+				},
+				iii: {
+					ctor: '::',
+					_0: 'f#2q',
+					_1: {
+						ctor: '::',
+						_0: 'c#3q',
+						_1: {
+							ctor: '::',
+							_0: 'f#3q',
+							_1: {
+								ctor: '::',
+								_0: 'a#3q',
+								_1: {
+									ctor: '::',
+									_0: 'c#4q',
+									_1: {
+										ctor: '::',
+										_0: 'f#4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				iv: {
+					ctor: '::',
+					_0: 'g#2q',
+					_1: {
+						ctor: '::',
+						_0: 'd#3q',
+						_1: {
+							ctor: '::',
+							_0: 'g#3q',
+							_1: {
+								ctor: '::',
+								_0: 'b3q',
+								_1: {
+									ctor: '::',
+									_0: 'd#4q',
+									_1: {
+										ctor: '::',
+										_0: 'g#4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				v: {
+					ctor: '::',
+					_0: 'a#2q',
+					_1: {
+						ctor: '::',
+						_0: 'f3q',
+						_1: {
+							ctor: '::',
+							_0: 'a#3q',
+							_1: {
+								ctor: '::',
+								_0: 'c#4q',
+								_1: {
+									ctor: '::',
+									_0: 'f4q',
+									_1: {
+										ctor: '::',
+										_0: 'a#4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				vi: {
+					ctor: '::',
+					_0: 'b2q',
+					_1: {
+						ctor: '::',
+						_0: 'f#3q',
+						_1: {
+							ctor: '::',
+							_0: 'b3q',
+							_1: {
+								ctor: '::',
+								_0: 'd#4q',
+								_1: {
+									ctor: '::',
+									_0: 'f#4q',
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				},
+				vii: {
+					ctor: '::',
+					_0: 'c#3q',
+					_1: {
+						ctor: '::',
+						_0: 'g#3q',
+						_1: {
+							ctor: '::',
+							_0: 'c#4q',
+							_1: {
+								ctor: '::',
+								_0: 'f4q',
+								_1: {
+									ctor: '::',
+									_0: 'g#4q',
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				}
+			};
+		case 'bb':
+			return {
+				i: {
+					ctor: '::',
+					_0: 'a#2q',
+					_1: {
+						ctor: '::',
+						_0: 'f3q',
+						_1: {
+							ctor: '::',
+							_0: 'a#3q',
+							_1: {
+								ctor: '::',
+								_0: 'c#4q',
+								_1: {
+									ctor: '::',
+									_0: 'f4q',
+									_1: {
+										ctor: '::',
+										_0: 'a#4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				ii: {
+					ctor: '::',
+					_0: 'c3q',
+					_1: {
+						ctor: '::',
+						_0: 'f#3q',
+						_1: {
+							ctor: '::',
+							_0: 'a3q',
+							_1: {
+								ctor: '::',
+								_0: 'd#4q',
+								_1: {ctor: '[]'}
+							}
+						}
+					}
+				},
+				iii: {
+					ctor: '::',
+					_0: 'c#3q',
+					_1: {
+						ctor: '::',
+						_0: 'g#3q',
+						_1: {
+							ctor: '::',
+							_0: 'c#4q',
+							_1: {
+								ctor: '::',
+								_0: 'f4q',
+								_1: {
+									ctor: '::',
+									_0: 'g#4q',
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				},
+				iv: {
+					ctor: '::',
+					_0: 'd#3q',
+					_1: {
+						ctor: '::',
+						_0: 'a#3q',
+						_1: {
+							ctor: '::',
+							_0: 'd#4q',
+							_1: {
+								ctor: '::',
+								_0: 'f#4q',
+								_1: {
+									ctor: '::',
+									_0: 'a#4q',
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				},
+				v: {
+					ctor: '::',
+					_0: 'f3q',
+					_1: {
+						ctor: '::',
+						_0: 'c4q',
+						_1: {
+							ctor: '::',
+							_0: 'f4q',
+							_1: {
+								ctor: '::',
+								_0: 'g#4q',
+								_1: {
+									ctor: '::',
+									_0: 'c5q',
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				},
+				vi: {
+					ctor: '::',
+					_0: 'f#2q',
+					_1: {
+						ctor: '::',
+						_0: 'c#3q',
+						_1: {
+							ctor: '::',
+							_0: 'f#3q',
+							_1: {
+								ctor: '::',
+								_0: 'a#3q',
+								_1: {
+									ctor: '::',
+									_0: 'c#4q',
+									_1: {
+										ctor: '::',
+										_0: 'f#4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				vii: {
+					ctor: '::',
+					_0: 'g#2q',
+					_1: {
+						ctor: '::',
+						_0: 'd#3q',
+						_1: {
+							ctor: '::',
+							_0: 'g#3q',
+							_1: {
+								ctor: '::',
+								_0: 'c4q',
+								_1: {
+									ctor: '::',
+									_0: 'd#4q',
+									_1: {
+										ctor: '::',
+										_0: 'g#4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				}
+			};
+		case 'f':
+			return {
+				i: {
+					ctor: '::',
+					_0: 'f2q',
+					_1: {
+						ctor: '::',
+						_0: 'c3q',
+						_1: {
+							ctor: '::',
+							_0: 'f3q',
+							_1: {
+								ctor: '::',
+								_0: 'g#3q',
+								_1: {
+									ctor: '::',
+									_0: 'c4q',
+									_1: {
+										ctor: '::',
+										_0: 'f4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				ii: {
+					ctor: '::',
+					_0: 'g3q',
+					_1: {
+						ctor: '::',
+						_0: 'c#4q',
+						_1: {
+							ctor: '::',
+							_0: 'e4q',
+							_1: {
+								ctor: '::',
+								_0: 'a#5q',
+								_1: {ctor: '[]'}
+							}
+						}
+					}
+				},
+				iii: {
+					ctor: '::',
+					_0: 'g#2q',
+					_1: {
+						ctor: '::',
+						_0: 'd#3q',
+						_1: {
+							ctor: '::',
+							_0: 'g#3q',
+							_1: {
+								ctor: '::',
+								_0: 'c4q',
+								_1: {
+									ctor: '::',
+									_0: 'd#4q',
+									_1: {
+										ctor: '::',
+										_0: 'g#4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				iv: {
+					ctor: '::',
+					_0: 'a#2q',
+					_1: {
+						ctor: '::',
+						_0: 'f3q',
+						_1: {
+							ctor: '::',
+							_0: 'a#3q',
+							_1: {
+								ctor: '::',
+								_0: 'c#4q',
+								_1: {
+									ctor: '::',
+									_0: 'f4q',
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				},
+				v: {
+					ctor: '::',
+					_0: 'c3q',
+					_1: {
+						ctor: '::',
+						_0: 'g3q',
+						_1: {
+							ctor: '::',
+							_0: 'c4q',
+							_1: {
+								ctor: '::',
+								_0: 'd#4q',
+								_1: {
+									ctor: '::',
+									_0: 'g4q',
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				},
+				vi: {
+					ctor: '::',
+					_0: 'c#3q',
+					_1: {
+						ctor: '::',
+						_0: 'g#3q',
+						_1: {
+							ctor: '::',
+							_0: 'c#4q',
+							_1: {
+								ctor: '::',
+								_0: 'f4q',
+								_1: {
+									ctor: '::',
+									_0: 'g#4q',
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				},
+				vii: {
+					ctor: '::',
+					_0: 'd#3q',
+					_1: {
+						ctor: '::',
+						_0: 'a#3q',
+						_1: {
+							ctor: '::',
+							_0: 'd#4q',
+							_1: {
+								ctor: '::',
+								_0: 'g4q',
+								_1: {
+									ctor: '::',
+									_0: 'a#4q',
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				}
+			};
+		case 'c':
+			return {
+				i: {
+					ctor: '::',
+					_0: 'c3q',
+					_1: {
+						ctor: '::',
+						_0: 'g3q',
+						_1: {
+							ctor: '::',
+							_0: 'c4q',
+							_1: {
+								ctor: '::',
+								_0: 'd#4q',
+								_1: {
+									ctor: '::',
+									_0: 'g4q',
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				},
+				ii: {
+					ctor: '::',
+					_0: 'd3q',
+					_1: {
+						ctor: '::',
+						_0: 'g#3q',
+						_1: {
+							ctor: '::',
+							_0: 'b3q',
+							_1: {
+								ctor: '::',
+								_0: 'f4q',
+								_1: {ctor: '[]'}
+							}
+						}
+					}
+				},
+				iii: {
+					ctor: '::',
+					_0: 'd#3q',
+					_1: {
+						ctor: '::',
+						_0: 'a#3q',
+						_1: {
+							ctor: '::',
+							_0: 'd#4q',
+							_1: {
+								ctor: '::',
+								_0: 'g4q',
+								_1: {
+									ctor: '::',
+									_0: 'a#4q',
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				},
+				iv: {
+					ctor: '::',
+					_0: 'f2q',
+					_1: {
+						ctor: '::',
+						_0: 'c3q',
+						_1: {
+							ctor: '::',
+							_0: 'f3q',
+							_1: {
+								ctor: '::',
+								_0: 'g#3q',
+								_1: {
+									ctor: '::',
+									_0: 'c4q',
+									_1: {
+										ctor: '::',
+										_0: 'f4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				v: {
+					ctor: '::',
+					_0: 'g2q',
+					_1: {
+						ctor: '::',
+						_0: 'd3q',
+						_1: {
+							ctor: '::',
+							_0: 'g3q',
+							_1: {
+								ctor: '::',
+								_0: 'a#3q',
+								_1: {
+									ctor: '::',
+									_0: 'd4q',
+									_1: {
+										ctor: '::',
+										_0: 'g4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				vi: {
+					ctor: '::',
+					_0: 'g#2q',
+					_1: {
+						ctor: '::',
+						_0: 'd#3q',
+						_1: {
+							ctor: '::',
+							_0: 'g#3q',
+							_1: {
+								ctor: '::',
+								_0: 'c4q',
+								_1: {
+									ctor: '::',
+									_0: 'd#4q',
+									_1: {
+										ctor: '::',
+										_0: 'g#4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				vii: {
+					ctor: '::',
+					_0: 'a#2q',
+					_1: {
+						ctor: '::',
+						_0: 'f3q',
+						_1: {
+							ctor: '::',
+							_0: 'a#3q',
+							_1: {
+								ctor: '::',
+								_0: 'd4q',
+								_1: {
+									ctor: '::',
+									_0: 'f4q',
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				}
+			};
+		case 'g':
+			return {
+				i: {
+					ctor: '::',
+					_0: 'g2q',
+					_1: {
+						ctor: '::',
+						_0: 'd3q',
+						_1: {
+							ctor: '::',
+							_0: 'g3q',
+							_1: {
+								ctor: '::',
+								_0: 'a#3q',
+								_1: {
+									ctor: '::',
+									_0: 'd4q',
+									_1: {
+										ctor: '::',
+										_0: 'g4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				ii: {
+					ctor: '::',
+					_0: 'd#3q',
+					_1: {
+						ctor: '::',
+						_0: 'a3q',
+						_1: {
+							ctor: '::',
+							_0: 'c4q',
+							_1: {
+								ctor: '::',
+								_0: 'f#4q',
+								_1: {ctor: '[]'}
+							}
+						}
+					}
+				},
+				iii: {
+					ctor: '::',
+					_0: 'a#2q',
+					_1: {
+						ctor: '::',
+						_0: 'f3q',
+						_1: {
+							ctor: '::',
+							_0: 'a#3q',
+							_1: {
+								ctor: '::',
+								_0: 'd4q',
+								_1: {
+									ctor: '::',
+									_0: 'f4q',
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				},
+				iv: {
+					ctor: '::',
+					_0: 'c3q',
+					_1: {
+						ctor: '::',
+						_0: 'g3q',
+						_1: {
+							ctor: '::',
+							_0: 'c4q',
+							_1: {
+								ctor: '::',
+								_0: 'd#4q',
+								_1: {
+									ctor: '::',
+									_0: 'g4q',
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				},
+				v: {
+					ctor: '::',
+					_0: 'd3q',
+					_1: {
+						ctor: '::',
+						_0: 'a3q',
+						_1: {
+							ctor: '::',
+							_0: 'd4q',
+							_1: {
+								ctor: '::',
+								_0: 'f4q',
+								_1: {ctor: '[]'}
+							}
+						}
+					}
+				},
+				vi: {
+					ctor: '::',
+					_0: 'd#3q',
+					_1: {
+						ctor: '::',
+						_0: 'a#3q',
+						_1: {
+							ctor: '::',
+							_0: 'd#4q',
+							_1: {
+								ctor: '::',
+								_0: 'g4q',
+								_1: {
+									ctor: '::',
+									_0: 'a#4q',
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				},
+				vii: {
+					ctor: '::',
+					_0: 'f2q',
+					_1: {
+						ctor: '::',
+						_0: 'c3q',
+						_1: {
+							ctor: '::',
+							_0: 'f3q',
+							_1: {
+								ctor: '::',
+								_0: 'a3q',
+								_1: {
+									ctor: '::',
+									_0: 'c4q',
+									_1: {
+										ctor: '::',
+										_0: 'f4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				}
+			};
+		case 'd':
+			return {
+				i: {
+					ctor: '::',
+					_0: 'd3q',
+					_1: {
+						ctor: '::',
+						_0: 'a3q',
+						_1: {
+							ctor: '::',
+							_0: 'd4q',
+							_1: {
+								ctor: '::',
+								_0: 'f4q',
+								_1: {ctor: '[]'}
+							}
+						}
+					}
+				},
+				ii: {
+					ctor: '::',
+					_0: 'a#2q',
+					_1: {
+						ctor: '::',
+						_0: 'e3q',
+						_1: {
+							ctor: '::',
+							_0: 'g3q',
+							_1: {
+								ctor: '::',
+								_0: 'd4q',
+								_1: {
+									ctor: '::',
+									_0: 'e5q',
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				},
+				iii: {
+					ctor: '::',
+					_0: 'f3q',
+					_1: {
+						ctor: '::',
+						_0: 'a3q',
+						_1: {
+							ctor: '::',
+							_0: 'c4q',
+							_1: {
+								ctor: '::',
+								_0: 'e4q',
+								_1: {ctor: '[]'}
+							}
+						}
+					}
+				},
+				iv: {
+					ctor: '::',
+					_0: 'g2q',
+					_1: {
+						ctor: '::',
+						_0: 'd3q',
+						_1: {
+							ctor: '::',
+							_0: 'g3q',
+							_1: {
+								ctor: '::',
+								_0: 'a#3q',
+								_1: {
+									ctor: '::',
+									_0: 'd4q',
+									_1: {
+										ctor: '::',
+										_0: 'g4q',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				v: {
+					ctor: '::',
+					_0: 'a2q',
+					_1: {
+						ctor: '::',
+						_0: 'e3q',
+						_1: {
+							ctor: '::',
+							_0: 'a3q',
+							_1: {
+								ctor: '::',
+								_0: 'c4q',
+								_1: {
+									ctor: '::',
+									_0: 'e4q',
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				},
+				vi: {
+					ctor: '::',
+					_0: 'a#2q',
+					_1: {
+						ctor: '::',
+						_0: 'f3q',
+						_1: {
+							ctor: '::',
+							_0: 'a#3q',
+							_1: {
+								ctor: '::',
+								_0: 'd4q',
+								_1: {
+									ctor: '::',
+									_0: 'f4q',
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				},
+				vii: {
+					ctor: '::',
+					_0: 'c3q',
+					_1: {
+						ctor: '::',
+						_0: 'e3q',
+						_1: {
+							ctor: '::',
+							_0: 'g3q',
+							_1: {
+								ctor: '::',
+								_0: 'c4q',
+								_1: {
+									ctor: '::',
+									_0: 'e4q',
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				}
+			};
+		default:
+			return {
+				i: {
+					ctor: '::',
+					_0: '',
+					_1: {ctor: '[]'}
+				},
+				ii: {
+					ctor: '::',
+					_0: '',
+					_1: {ctor: '[]'}
+				},
+				iii: {
+					ctor: '::',
+					_0: '',
+					_1: {ctor: '[]'}
+				},
+				iv: {
+					ctor: '::',
+					_0: '',
+					_1: {ctor: '[]'}
+				},
+				v: {
+					ctor: '::',
+					_0: '',
+					_1: {ctor: '[]'}
+				},
+				vi: {
+					ctor: '::',
+					_0: '',
+					_1: {ctor: '[]'}
+				},
+				vii: {
+					ctor: '::',
+					_0: '',
+					_1: {ctor: '[]'}
+				}
+			};
+	}
+};
