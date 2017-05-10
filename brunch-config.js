@@ -61,14 +61,14 @@ exports.config = {
       mainModules: ['Main.elm'],
       outputFolder: '../static/js',
     }, 
-    uglify: {
-      mangle: false,
-      compress: {
-        global_defs: {
-          DEBUG: false
-        }
-      }
-    }
+    // uglify: {
+    //   mangle: false,
+    //   compress: {
+    //     global_defs: {
+    //       DEBUG: false
+    //     }
+    //   }
+    // }
   },
 
   modules: {
