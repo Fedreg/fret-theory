@@ -87,12 +87,12 @@ modalContentStyle =
 modalHeaderStyle : Attribute msg
 modalHeaderStyle =
     style
-        [ ( "backgroundColor", "#252839" )
+        [ ( "backgroundColor", "#333" )
         , ( "borderTopRightRadius", "10px" )
         , ( "borderTopLeftRadius", "10px" )
         , ( "margin", "-25px 0 25px -25px" )
         , ( "padding", "25px" )
         , ( "width", "95vw" )
         , ( "height", "100px" )
-        , ( "color", "#f2b632" )
+        , ( "color", "#E8175D" )
         ]

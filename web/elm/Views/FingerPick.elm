@@ -39,7 +39,7 @@ fingerPickGroup scale notes1 notes2 =
                 (List.map frets notes1)
             , div [ style [ ( "display", "flex" ) ] ]
                 (List.map frets notes2)
-            , div [ style [ ( "display", "flex" ), ( "color", "#F2B632" ) ] ]
+            , div [ style [ ( "display", "flex" ), ( "color", "#E8175D" ), ( "margin", "25px 0" ) ] ]
                 (List.map beats <| List.range 1 8)
             , div [ style [ ( "display", "flex" ) ] ]
                 (List.map notation <| calculateNotation [] 0 notes1 notes2)

@@ -8,7 +8,7 @@ import Logic.Types exposing (Model, Msg(..))
 navMenuStyle : Model -> Attribute Msg
 navMenuStyle model =
     let
-        baseStyles difference color color2 pad =
+        baseStyles difference color pad =
             style
                 [ ( "position", "fixed" )
                 , ( "top", "0" )
@@ -20,17 +20,17 @@ navMenuStyle model =
                 , ( "backgroundColor", color )
                 , ( "transition", "all 0.3s ease" )
                 , ( "zIndex", "10000" )
-                , ( "borderLeft", "1px solid " ++ color2 )
-                , ( "borderBottom", "1px solid " ++ color2 )
+                , ( "borderLeft", "1px solid #222" )
+                , ( "borderBottom", "1px solid #222" )
                 , ( "transform", difference )
                 ]
     in
         case model.navMenuOpen of
             True ->
-                baseStyles "translateX(0)" "#252839" "#f2b632" "15px"
+                baseStyles "translateX(0)" "#E8175D" "15px"
 
             False ->
-                baseStyles "translateX(210px)" "#222" "#222" "15px 8px"
+                baseStyles "translateX(210px)" "#222" "15px 8px"
 
 
 navIconStyle : Model -> Attribute msg
@@ -74,9 +74,9 @@ navItemStyle : Attribute msg
 navItemStyle =
     style
         [ ( "display", "block" )
-        , ( "margin", "0 0 8px 50px" )
+        , ( "margin", "0 0 7px 50px" )
         , ( "padding", "5px" )
-        , ( "fontSize", "12px" )
+        , ( "fontSize", "16px" )
         , ( "textAlign", "right" )
         , ( "color", "#fff" )
         ]
@@ -143,8 +143,8 @@ textContainerStyle navOpen =
 
 highlight : List ( String, String )
 highlight =
-    [ ( "color", "#E9175D" )
-    , ( "backgroundColor", "#E9175D" )
+    [ ( "color", "#000" )
+      -- , ( "backgroundColor", "#E9175D" )
       -- , ( "transition", "color 0.3s ease" )
     ]
 
