@@ -12,7 +12,7 @@ fingerPickingPageStyle =
         , ( "width", "95vw" )
         , ( "display", "flex" )
         , ( "flexDirection", "column" )
-        , ( "paddingTop", "175px" )
+        , ( "paddingTop", "150px" )
         , ( "alignItems", "center" )
         ]
 

@@ -19556,7 +19556,7 @@ var _user$project$Styles_ChordStyles$chartStyle = _elm_lang$html$Html_Attributes
 								_0: {ctor: '_Tuple2', _0: 'boxShadow', _1: '0 10px 20px rgba(0,0,0,1)'},
 								_1: {
 									ctor: '::',
-									_0: {ctor: '_Tuple2', _0: 'backgroundColor', _1: '#252839'},
+									_0: {ctor: '_Tuple2', _0: 'backgroundColor', _1: '#555'},
 									_1: {ctor: '[]'}
 								}
 							}
@@ -23625,7 +23625,7 @@ var _user$project$Styles_StrumStyles$strumArrowStyle = F2(
 									_0: {ctor: '_Tuple2', _0: 'display', _1: 'flex'},
 									_1: {
 										ctor: '::',
-										_0: {ctor: '_Tuple2', _0: 'border', _1: '1px solid #F2B632'},
+										_0: {ctor: '_Tuple2', _0: 'border', _1: '1px solid #333'},
 										_1: {
 											ctor: '::',
 											_0: {ctor: '_Tuple2', _0: 'borderRadius', _1: '10px'},
@@ -24363,7 +24363,7 @@ var _user$project$Styles_FingerPickStyles$fingerPickingPageStyle = _elm_lang$htm
 					_0: {ctor: '_Tuple2', _0: 'flexDirection', _1: 'column'},
 					_1: {
 						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'paddingTop', _1: '175px'},
+						_0: {ctor: '_Tuple2', _0: 'paddingTop', _1: '150px'},
 						_1: {
 							ctor: '::',
 							_0: {ctor: '_Tuple2', _0: 'alignItems', _1: 'center'},
@@ -24898,8 +24898,12 @@ var _user$project$Views_FingerPick$fingerPickGroup = F3(
 											_0: {ctor: '_Tuple2', _0: 'display', _1: 'flex'},
 											_1: {
 												ctor: '::',
-												_0: {ctor: '_Tuple2', _0: 'color', _1: '#F2B632'},
-												_1: {ctor: '[]'}
+												_0: {ctor: '_Tuple2', _0: 'color', _1: '#E8175D'},
+												_1: {
+													ctor: '::',
+													_0: {ctor: '_Tuple2', _0: 'margin', _1: '25px 0'},
+													_1: {ctor: '[]'}
+												}
 											}
 										}),
 									_1: {ctor: '[]'}
@@ -24976,7 +24980,7 @@ var _user$project$Views_FingerPick$fingerPickingPage = function (model) {
 var _user$project$Styles_ModalStyles$modalHeaderStyle = _elm_lang$html$Html_Attributes$style(
 	{
 		ctor: '::',
-		_0: {ctor: '_Tuple2', _0: 'backgroundColor', _1: '#252839'},
+		_0: {ctor: '_Tuple2', _0: 'backgroundColor', _1: '#333'},
 		_1: {
 			ctor: '::',
 			_0: {ctor: '_Tuple2', _0: 'borderTopRightRadius', _1: '10px'},
@@ -24997,7 +25001,7 @@ var _user$project$Styles_ModalStyles$modalHeaderStyle = _elm_lang$html$Html_Attr
 								_0: {ctor: '_Tuple2', _0: 'height', _1: '100px'},
 								_1: {
 									ctor: '::',
-									_0: {ctor: '_Tuple2', _0: 'color', _1: '#f2b632'},
+									_0: {ctor: '_Tuple2', _0: 'color', _1: '#E8175D'},
 									_1: {ctor: '[]'}
 								}
 							}
@@ -25785,12 +25789,8 @@ var _user$project$Styles_MainStyles$signatureStyle = _elm_lang$html$Html_Attribu
 	});
 var _user$project$Styles_MainStyles$highlight = {
 	ctor: '::',
-	_0: {ctor: '_Tuple2', _0: 'color', _1: '#E9175D'},
-	_1: {
-		ctor: '::',
-		_0: {ctor: '_Tuple2', _0: 'backgroundColor', _1: '#E9175D'},
-		_1: {ctor: '[]'}
-	}
+	_0: {ctor: '_Tuple2', _0: 'color', _1: '#000'},
+	_1: {ctor: '[]'}
 };
 var _user$project$Styles_MainStyles$textContainerStyle = function (navOpen) {
 	var baseStyles = function (flexDir) {
@@ -25888,13 +25888,13 @@ var _user$project$Styles_MainStyles$navItemStyle = _elm_lang$html$Html_Attribute
 		_0: {ctor: '_Tuple2', _0: 'display', _1: 'block'},
 		_1: {
 			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'margin', _1: '0 0 8px 50px'},
+			_0: {ctor: '_Tuple2', _0: 'margin', _1: '0 0 7px 50px'},
 			_1: {
 				ctor: '::',
 				_0: {ctor: '_Tuple2', _0: 'padding', _1: '5px'},
 				_1: {
 					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '12px'},
+					_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '16px'},
 					_1: {
 						ctor: '::',
 						_0: {ctor: '_Tuple2', _0: 'textAlign', _1: 'right'},
@@ -25969,8 +25969,8 @@ var _user$project$Styles_MainStyles$navIconStyle = function (model) {
 	}
 };
 var _user$project$Styles_MainStyles$navMenuStyle = function (model) {
-	var baseStyles = F4(
-		function (difference, color, color2, pad) {
+	var baseStyles = F3(
+		function (difference, color, pad) {
 			return _elm_lang$html$Html_Attributes$style(
 				{
 					ctor: '::',
@@ -26004,18 +26004,10 @@ var _user$project$Styles_MainStyles$navMenuStyle = function (model) {
 														_0: {ctor: '_Tuple2', _0: 'zIndex', _1: '10000'},
 														_1: {
 															ctor: '::',
-															_0: {
-																ctor: '_Tuple2',
-																_0: 'borderLeft',
-																_1: A2(_elm_lang$core$Basics_ops['++'], '1px solid ', color2)
-															},
+															_0: {ctor: '_Tuple2', _0: 'borderLeft', _1: '1px solid #222'},
 															_1: {
 																ctor: '::',
-																_0: {
-																	ctor: '_Tuple2',
-																	_0: 'borderBottom',
-																	_1: A2(_elm_lang$core$Basics_ops['++'], '1px solid ', color2)
-																},
+																_0: {ctor: '_Tuple2', _0: 'borderBottom', _1: '1px solid #222'},
 																_1: {
 																	ctor: '::',
 																	_0: {ctor: '_Tuple2', _0: 'transform', _1: difference},
@@ -26036,9 +26028,9 @@ var _user$project$Styles_MainStyles$navMenuStyle = function (model) {
 		});
 	var _p4 = model.navMenuOpen;
 	if (_p4 === true) {
-		return A4(baseStyles, 'translateX(0)', '#252839', '#f2b632', '15px');
+		return A3(baseStyles, 'translateX(0)', '#E8175D', '15px');
 	} else {
-		return A4(baseStyles, 'translateX(210px)', '#222', '#222', '15px 8px');
+		return A3(baseStyles, 'translateX(210px)', '#222', '15px 8px');
 	}
 };
 
@@ -26462,7 +26454,7 @@ var _user$project$Views_MainViews$nav = function (model) {
 																	_0: _elm_lang$html$Html_Attributes$style(
 																		{
 																			ctor: '::',
-																			_0: {ctor: '_Tuple2', _0: 'color', _1: '#E91750'},
+																			_0: {ctor: '_Tuple2', _0: 'color', _1: '#000'},
 																			_1: {ctor: '[]'}
 																		}),
 																	_1: {ctor: '[]'}
