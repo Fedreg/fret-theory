@@ -38,7 +38,7 @@ nav model =
             , hover highlight a [ onClick <| NewUrl Routing.strumPath, navItemStyle ] [ text "STRUMMING" ]
             , hover highlight a [ onClick <| NewUrl Routing.fingerPickingPath, navItemStyle ] [ text "FINGERPICKING" ]
             , playbackSpeedSlider model.sliderValue
-            , div [ navItemStyle, style [ ( "color", "#E91750" ) ] ] [ text "SELECT KEY:" ]
+            , div [ navItemStyle, style [ ( "color", "#000" ) ] ] [ text "SELECT KEY:" ]
             , div [ style [ ( "position", "relative" ) ] ] [ keyListView model ]
             , signature
             ]

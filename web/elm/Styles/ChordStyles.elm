@@ -26,7 +26,8 @@ chartStyle =
         , ( "borderTopLeftRadius", "10px" )
         , ( "borderBottomLeftRadius", "10px" )
         , ( "boxShadow", "0 10px 20px rgba(0,0,0,1)" )
-        , ( "backgroundColor", "#252839" )
+          -- , ( "backgroundColor", "#252839" )
+        , ( "backgroundColor", "#555" )
         ]
 
 

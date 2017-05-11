@@ -69,7 +69,7 @@ strumArrowStyle num mover =
             , ( "opacity", opacity )
             , ( "paddingTop", "50px" )
             , ( "display", "flex" )
-            , ( "border", "1px solid #F2B632" )
+            , ( "border", "1px solid #333" )
             , ( "borderRadius", "10px" )
             , ( "justifyContent", "center" )
             , ( "transform", "rotate(" ++ rotate ++ ")" )
