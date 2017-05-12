@@ -19556,7 +19556,7 @@ var _user$project$Styles_ChordStyles$chartStyle = _elm_lang$html$Html_Attributes
 								_0: {ctor: '_Tuple2', _0: 'boxShadow', _1: '0 10px 20px rgba(0,0,0,1)'},
 								_1: {
 									ctor: '::',
-									_0: {ctor: '_Tuple2', _0: 'backgroundColor', _1: '#555'},
+									_0: {ctor: '_Tuple2', _0: 'backgroundColor', _1: '#333'},
 									_1: {ctor: '[]'}
 								}
 							}
@@ -26953,13 +26953,16 @@ var _user$project$Main$update = F2(
 				return A2(
 					_ccapndave$elm_update_extra$Update_Extra_Infix_ops[':>'],
 					A2(
-						_elm_lang$core$Platform_Cmd_ops['!'],
-						_elm_lang$core$Native_Utils.update(
-							model,
-							{musKey: _p13, navMenuOpen: false}),
-						{ctor: '[]'}),
-					_user$project$Main$update(
-						_user$project$Logic_Types$SendMessage(_p13)));
+						_ccapndave$elm_update_extra$Update_Extra_Infix_ops[':>'],
+						A2(
+							_elm_lang$core$Platform_Cmd_ops['!'],
+							_elm_lang$core$Native_Utils.update(
+								model,
+								{musKey: _p13, navMenuOpen: false}),
+							{ctor: '[]'}),
+						_user$project$Main$update(
+							_user$project$Logic_Types$SendMessage(_p13))),
+					_user$project$Main$update(_user$project$Logic_Types$JoinChannel));
 			case 'Play':
 				return A2(
 					_ccapndave$elm_update_extra$Update_Extra_Infix_ops[':>'],

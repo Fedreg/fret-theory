@@ -199,6 +199,7 @@ update msg model =
             { model | musKey = key, navMenuOpen = False }
                 ! []
                 :> update (SendMessage key)
+                :> update JoinChannel
 
         Play chord hzShift ->
             { model | currentChord = chord, pitchShift = hzShift }
