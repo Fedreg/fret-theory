@@ -11,7 +11,7 @@ chordBarPosStyle =
         [ ( "position", "absolute" )
         , ( "top", "-15px" )
         , ( "right", "30%" )
-        , ( "color", "#E8175D" )
+        , ( "color", "#03a9f4" )
         , ( "transition", "all 0.3s ease" )
         ]
 
@@ -22,12 +22,12 @@ chartStyle =
         [ ( "position", "relative" )
         , ( "width", "180px" )
         , ( "height", "151px" )
-        , ( "border", "1px solid #111" )
+        , ( "border", "1px solid #607d8b" )
         , ( "borderTopLeftRadius", "10px" )
         , ( "borderBottomLeftRadius", "10px" )
         , ( "boxShadow", "0 10px 20px rgba(0,0,0,1)" )
           -- , ( "backgroundColor", "#252839" )
-        , ( "backgroundColor", "#555" )
+          -- , ( "backgroundColor", "#333" )
         ]
 
 
@@ -36,7 +36,7 @@ stringStyle =
     style
         [ ( "width", "180px" )
         , ( "height", "30px" )
-        , ( "borderBottom", "1px solid #111" )
+        , ( "borderBottom", "1px solid #607d8b" )
         ]
 
 
@@ -70,7 +70,7 @@ fretStyle fret =
         , ( "top", "0" )
         , ( "right", Basics.toString (43 * fret) ++ "px" )
         , ( "height", "150px" )
-        , ( "borderRight", "1px solid #111" )
+        , ( "borderRight", "1px solid #607d8b" )
         ]
 
 

@@ -27,7 +27,7 @@ navMenuStyle model =
     in
         case model.navMenuOpen of
             True ->
-                baseStyles "translateX(0)" "#E8175D" "15px"
+                baseStyles "translateX(0)" "#aaa" "15px"
 
             False ->
                 baseStyles "translateX(210px)" "#222" "15px 8px"
@@ -56,12 +56,21 @@ navIconStyle model =
                 baseStyles "none"
 
 
-navIconStyleHr : Attribute msg
-navIconStyleHr =
-    style
-        [ ( "borderTop", "1px solid #fff" )
-        , ( "margin", "0 0 5px" )
-        ]
+navIconStyleHr : Bool -> Attribute msg
+navIconStyleHr bool =
+    let
+        baseStyles color =
+            style
+                [ ( "borderTop", "1px solid " ++ color )
+                , ( "margin", "0 0 5px" )
+                ]
+    in
+        case bool of
+            True ->
+                baseStyles "#000"
+
+            False ->
+                baseStyles "#fff"
 
 
 navStyle : Attribute msg
@@ -70,16 +79,25 @@ navStyle =
         [ ( "textAlign", "center" ) ]
 
 
-navItemStyle : Attribute msg
-navItemStyle =
-    style
-        [ ( "display", "block" )
-        , ( "margin", "0 0 7px 50px" )
-        , ( "padding", "5px" )
-        , ( "fontSize", "16px" )
-        , ( "textAlign", "right" )
-        , ( "color", "#fff" )
-        ]
+navItemStyle : Bool -> Attribute msg
+navItemStyle bool =
+    let
+        baseStyles iconColor =
+            style
+                [ ( "display", "block" )
+                , ( "margin", "0 0 7px 50px" )
+                , ( "padding", "5px" )
+                , ( "fontSize", "16px" )
+                , ( "textAlign", "right" )
+                , ( "color", iconColor )
+                ]
+    in
+        case bool of
+            True ->
+                baseStyles "#000"
+
+            False ->
+                baseStyles "#fff"
 
 
 keyListStyle : Bool -> Attribute msg
@@ -143,9 +161,7 @@ textContainerStyle navOpen =
 
 highlight : List ( String, String )
 highlight =
-    [ ( "color", "#000" )
-      -- , ( "backgroundColor", "#E9175D" )
-      -- , ( "transition", "color 0.3s ease" )
+    [ ( "color", "#03a9f4" )
     ]
 
 

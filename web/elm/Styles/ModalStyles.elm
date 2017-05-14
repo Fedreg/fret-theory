@@ -44,11 +44,11 @@ modalIconStyle model =
                 , ( "left", "8px" )
                 , ( "width", "20px" )
                 , ( "height", "20px" )
-                , ( "color", "#F2B632" )
+                , ( "color", "#FFF" )
                 , ( "textAlign", "center" )
                 , ( "fontSize", "12px" )
                 , ( "cursor", "pointer" )
-                , ( "border", "1px solid #E8175D" )
+                , ( "border", "1px solid #03a9f4" )
                 , ( "borderRadius", "10px" )
                 , ( "transition", "all 0.5s" )
                 , ( "transform", difference )
@@ -71,7 +71,7 @@ closeModalIcon =
         , ( "right", "10px" )
         , ( "fontSize", "20px" )
         , ( "cursor", "pointer" )
-        , ( "color", "#fff" )
+        , ( "color", "#03a9f4" )
         ]
 
 
@@ -94,5 +94,5 @@ modalHeaderStyle =
         , ( "padding", "25px" )
         , ( "width", "95vw" )
         , ( "height", "100px" )
-        , ( "color", "#E8175D" )
+        , ( "color", "#03a9f4" )
         ]
