@@ -13,7 +13,7 @@ fretboardPage : Model -> Html Msg
 fretboardPage model =
     let
         highlight =
-            [ ( "background-color", "#E91750" )
+            [ ( "background-color", "#03a9f4" )
             , ( "transform", "scale(1.5, 1.5)" )
             , ( "color", "#fff" )
             , ( "z-index", "2" )

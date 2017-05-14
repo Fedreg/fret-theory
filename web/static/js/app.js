@@ -38,8 +38,7 @@ function play(args) {
     let octave = note.octave / 4;
     let sustain = note.sustain;
     let osc, osc2, osc3, osc4;
-    let gainNode, gainNode2, gainNode3, gainNode4;
-    // console.log(sustain, octave, hz);
+    let gainNode, gainNode2;
     
     // Oscillator 1
     osc = ctx.createOscillator();
@@ -48,7 +47,7 @@ function play(args) {
     gainNode.connect(ctx.destination);
     gainNode.gain.value = 0.0;
     gainNode.gain.setTargetAtTime(0.25, ctx.currentTime, 0.01);
-    gainNode.gain.setTargetAtTime(0.00, ctx.currentTime + sustain, 0.01);
+    gainNode.gain.setTargetAtTime(0.0, ctx.currentTime + sustain, 0.001);
     osc.frequency.value = hz * octave;
     osc.type = waveType;
     osc.start();
@@ -61,22 +60,9 @@ function play(args) {
     gainNode2.connect(ctx.destination);
     gainNode2.gain.value = 0.0;
     gainNode2.gain.setTargetAtTime(0.15, ctx.currentTime, 0.01);
-    gainNode2.gain.setTargetAtTime(0.0, ctx.currentTime + sustain, 0.01);
+    gainNode2.gain.setTargetAtTime(0.0, ctx.currentTime + sustain, 0.001);
     osc2.frequency.value = hz * octave * 2;
     osc2.type = waveType;
     osc2.start();
     osc2.stop(ctx.currentTime + sustain + 0.01);
-
-    // // Oscillator 3 (2 Octaves Higher)
-    osc3 = ctx.createOscillator();
-    gainNode3 = ctx.createGain();
-    osc3.connect(gainNode3);
-    gainNode3.connect(ctx.destination);
-    gainNode3.gain.value = 0.0;
-    gainNode3.gain.setTargetAtTime(0.05, ctx.currentTime, 0.01);
-    gainNode3.gain.setTargetAtTime(0.0, ctx.currentTime + sustain, 0.01);
-    osc3.frequency.value = (hz * octave * 3 + 1) 
-    osc3.type ="sine";
-    osc3.start();
-    osc3.stop(ctx.currentTime + sustain + 0.1);
 }

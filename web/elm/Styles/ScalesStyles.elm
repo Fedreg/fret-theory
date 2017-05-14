@@ -9,7 +9,7 @@ scaleTitleStyle : Attribute msg
 scaleTitleStyle =
     style
         [ ( "position", "relative" )
-        , ( "color", "#E91750" )
+        , ( "color", "#03a9f4" )
         ]
 
 

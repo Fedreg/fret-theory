@@ -61,7 +61,7 @@ fretNumberStyle =
         , ( "marginBottom", "-70px" )
         , ( "padding", "5px" )
         , ( "textTransform", "uppercase" )
-        , ( "color", "#E91750" )
+        , ( "color", "#03a9f4" )
         , ( "fontSize", "20px" )
         , ( "textAlign", "center" )
         ]
@@ -105,7 +105,7 @@ notationNoteStyle offset =
         , ( "position", "absolute" )
         , ( "bottom", (toString offset) ++ "px" )
         , ( "left", "50%" )
-        , ( "backgroundColor", "#f2b632" )
+        , ( "backgroundColor", "#03a9f4" )
         , ( "transition", "all 0.5s ease" )
         , ( "zIndex", "1" )
         ]
@@ -119,7 +119,7 @@ notationAccidentalStyle offset visibility =
         , ( "marginBottom", "-10px" )
         , ( "bottom", (toString <| offset - 3) ++ "px" )
         , ( "left", "44%" )
-        , ( "color", "#f2b632" )
+        , ( "color", "#03a9f4" )
         , ( "opacity", visibility )
         , ( "transition", "all 0.5s ease" )
         , ( "zIndex", "1" )

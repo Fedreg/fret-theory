@@ -1,8 +1,9 @@
 module Views.FingerPick exposing (fingerPickingPage)
 
-import Html exposing (Html, div, button, text, span, hr, h3, h4, h5)
+import Html exposing (Html, div, button, text, span, hr, h1, h3, h4, h5)
 import Html.Attributes exposing (style, attribute)
 import Html.Events exposing (onClick)
+import Views.Chords exposing (chordChartModel)
 import Logic.Types exposing (Model, Msg(Randomize, ShowModal))
 import Styles.FingerPickStyles exposing (..)
 import List.Extra exposing (getAt)
@@ -11,27 +12,27 @@ import List.Extra exposing (getAt)
 fingerPickingPage : Model -> Html Msg
 fingerPickingPage model =
     div [ fingerPickingPageStyle ]
-        [ fingerPickGroup "1,1" model.fingerPickPattern.a model.fingerPickPattern.b
+        [ h1 [ fingerPickChordTitleStyle ] [ chordChartModel model 0 "" .i .i ]
+        , fingerPickGroup "1,1" model.fingerPickPattern.a model.fingerPickPattern.b model
         , button [ buttonStyle, onClick (Randomize 0 8) ] [ text "Generate Random Fingerpicking Pattern" ]
         ]
 
 
 {-| Draws the frets on each string
 -}
-fingerPickGroup : String -> List Int -> List Int -> Html Msg
-fingerPickGroup scale notes1 notes2 =
+fingerPickGroup : String -> List Int -> List Int -> Model -> Html Msg
+fingerPickGroup scale notes1 notes2 model =
     let
         beats a =
             -- Draws the beat number.
-            div [ style [ ( "width", "10px" ), ( "margin", "0 55px 0" ) ] ] [ text <| toString a ]
+            div [ style [ ( "width", "10px" ), ( "margin", "25px 55px 10px" ) ] ] [ text <| toString a ]
 
         notation a =
             -- Draws the rhythm notation.
-            div [ style [ ( "width", "10px" ), ( "margin", "20px 55px 0" ) ] ] [ printNotation a ]
+            div [ style [ ( "width", "10px" ), ( "margin", "25px 55px 0" ) ] ] [ printNotation a ]
 
         frets a =
-            -- a = The notes from model.fingerPickPattern, b = model.strumArrow for opacity, c = the fret number.
-            div [] [ fret a ]
+            div [] [ fret a model ]
     in
         div [ fingerPickGroupStyle scale ]
             [ stringView
@@ -39,7 +40,7 @@ fingerPickGroup scale notes1 notes2 =
                 (List.map frets notes1)
             , div [ style [ ( "display", "flex" ) ] ]
                 (List.map frets notes2)
-            , div [ style [ ( "display", "flex" ), ( "color", "#E8175D" ), ( "margin", "25px 0" ) ] ]
+            , div [ beatStyle ]
                 (List.map beats <| List.range 1 8)
             , div [ style [ ( "display", "flex" ) ] ]
                 (List.map notation <| calculateNotation [] 0 notes1 notes2)
@@ -50,25 +51,31 @@ fingerPickGroup scale notes1 notes2 =
 
 {-| The up / down arrow itself.  Made up of a rotated div and a hr.
 -}
-fret : Int -> Html Msg
-fret num =
+fret : Int -> Model -> Html Msg
+fret num model =
     let
+        getter a =
+            Maybe.withDefault "" <| getAt a (chordNotes model)
+
         message =
             case num of
                 1 ->
-                    "0"
+                    getter 0
 
                 2 ->
-                    "1"
+                    getter 1
 
                 3 ->
-                    "2"
+                    getter 2
 
                 4 ->
-                    "2"
+                    getter 3
 
                 5 ->
-                    "0"
+                    getter 4
+
+                6 ->
+                    getter 5
 
                 _ ->
                     ""
@@ -76,19 +83,22 @@ fret num =
         height =
             case num of
                 1 ->
-                    "-182px"
+                    "-202px"
 
                 2 ->
-                    "-148px"
+                    "-168px"
 
                 3 ->
-                    "-115px"
+                    "-135px"
 
                 4 ->
-                    "-83px"
+                    "-103px"
 
                 5 ->
-                    "-50px"
+                    "-70px"
+
+                6 ->
+                    "-37px"
 
                 _ ->
                     "0"
@@ -98,8 +108,6 @@ fret num =
                 0 ->
                     "0"
 
-                -- 6 ->
-                --     "0"
                 _ ->
                     "1"
 
@@ -119,7 +127,7 @@ fret num =
 
 stringView : Html Msg
 stringView =
-    div []
+    div [ style [ ( "marginBottom", "20px" ) ] ]
         [ div [ stringStyle ] []
         , div [ stringStyle ] []
         , div [ stringStyle ] []
@@ -127,6 +135,70 @@ stringView =
         , div [ stringStyle ] []
         , div [ stringStyle ] []
         ]
+
+
+{-| Determines the "Frets" to be displayed on the strings based on the current Model.
+-}
+chordNotes model =
+    let
+        chord =
+            model.displayedChords |> .i
+
+        _ =
+            Debug.log "Bar" bar
+
+        bar =
+            -- Adds any frets where the "bar n" marker would appear on the chord chart.
+            model.displayedChords
+                |> .bars
+                |> getAt 0
+                |> Maybe.withDefault ""
+
+        slicer a b =
+            String.slice a b chord
+
+        adder a =
+            if bar == "" then
+                a
+            else if a == "" then
+                a
+            else
+                Result.map2 (+) (String.toInt a) (String.toInt bar)
+                    |> Result.withDefault 0
+                    |> (-) 2
+                    |> negate
+                    |> toString
+
+        finalChord =
+            []
+    in
+        if slicer 2 3 == "x" && slicer 5 6 == "x" then
+            ""
+                :: finalChord
+                |> (++) ("" :: finalChord)
+                |> (++) (slicer 8 9 :: finalChord)
+                |> (++) (slicer 11 12 :: finalChord)
+                |> (++) (slicer 14 15 :: finalChord)
+                |> (++) (slicer 17 18 :: finalChord)
+                |> List.map adder
+        else if slicer 2 3 == "x" then
+            ""
+                :: finalChord
+                |> (++) (slicer 5 6 :: finalChord)
+                |> (++) (slicer 8 9 :: finalChord)
+                |> (++) (slicer 11 12 :: finalChord)
+                |> (++) (slicer 14 15 :: finalChord)
+                |> (++) (slicer 17 18 :: finalChord)
+                |> List.map adder
+        else
+            slicer 2 3
+                :: finalChord
+                |> (++) (slicer 5 6 :: finalChord)
+                |> (++) (slicer 8 9 :: finalChord)
+                |> (++) (slicer 11 12 :: finalChord)
+                |> (++) (slicer 14 15 :: finalChord)
+                |> (++) (slicer 17 18 :: finalChord)
+                |> List.map adder
 
 
 {-| Determines the duration of the rhythm note below strum arrows.
