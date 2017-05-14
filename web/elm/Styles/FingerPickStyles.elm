@@ -71,7 +71,7 @@ beatStyle : Attribute msg
 beatStyle =
     style
         [ ( "display", "flex" )
-        , ( "color", "#E8175D" )
+        , ( "color", "#03a9f4" )
         , ( "paddingRight", "200px" )
         ]
 
@@ -95,5 +95,5 @@ buttonStyle =
         [ ( "background", "none" )
         , ( "marginTop", "50px" )
         , ( "border", "1px solid #333" )
-        , ( "color", "#E8175D" )
+        , ( "color", "#03a9f4" )
         ]

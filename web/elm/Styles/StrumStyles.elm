@@ -95,5 +95,5 @@ buttonStyle =
         [ ( "background", "none" )
         , ( "marginTop", "50px" )
         , ( "border", "1px solid #333" )
-        , ( "color", "#E8175D" )
+        , ( "color", "#03a9f4" )
         ]

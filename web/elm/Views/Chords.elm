@@ -44,9 +44,9 @@ chordChartPage model =
                 ]
             , div [ style [ ( "fontSize", "18px" ), ( "paddingBottom", "50px" ), ( "color", "#A8A7A7" ), ( "textDecoration", "inherit" ) ] ]
                 [ span [] [ text "SOLO ON FRET: " ]
-                , span [ style [ ( "fontSize", "25px" ), ( "color", "#E84A5F" ) ] ] [ text soloFretMin ]
+                , span [ style [ ( "fontSize", "25px" ), ( "color", "#03a9f4" ) ] ] [ text soloFretMin ]
                 , a [ style [ ( "color", "#aaa" ) ], href (scalesPath model.musKey) ] [ text " (MINOR SCALE), OR FRET: " ]
-                , span [ style [ ( "fontSize", "25px" ), ( "color", "#E84A5F" ) ] ] [ text soloFretMaj ]
+                , span [ style [ ( "fontSize", "25px" ), ( "color", "#03a9f4" ) ] ] [ text soloFretMaj ]
                 , a [ style [ ( "color", "#aaa" ) ], href (scalesPath model.musKey) ] [ text " (MAJOR SCALE)" ]
                 ]
             ]
@@ -74,13 +74,16 @@ fingerNo finger =
             "#677077"
 
         "2" ->
-            "#E8175D"
+            -- "#E8175D"
+            "#FFF"
 
         "3" ->
-            "#F25F2E"
+            -- "#F25F2E"
+            "#333"
 
         "4" ->
-            "#F2B632"
+            -- "#F2B632"
+            "#03a9f4"
 
         _ ->
             "none"

@@ -30,7 +30,7 @@ homePage model =
                 ]
             , div []
                 [ span [] [ text "Click the " ]
-                , span [ style [ ( "border", "1px solid #E8175D" ), ( "borderRadius", "10px" ), ( "padding", "0 5px" ), ( "fontSize", "14px" ), ( "color", "#F2B632" ) ] ] [ text "?" ]
+                , span [ style [ ( "border", "1px solid #E8175D" ), ( "borderRadius", "10px" ), ( "padding", "0 5px" ), ( "fontSize", "14px" ), ( "color", "#FFF" ) ] ] [ text "?" ]
                 , span [] [ text " logo on the upper right to get started. " ]
                 ]
             , div [ style [ ( "color", " #777" ) ] ] [ text "Use the menu on the right to select a topic or select a musical key.  Click on any chords or scales to hear how they sound." ]

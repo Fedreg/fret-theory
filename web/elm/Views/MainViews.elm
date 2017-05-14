@@ -31,14 +31,14 @@ nav model =
         [ navIcon model
         , modalIcon model
         , div []
-            [ hover highlight a [ onClick <| NewUrl Routing.homePath, navItemStyle ] [ text "HOME" ]
-            , hover highlight a [ onClick <| NewUrl (Routing.chordsPath model.musKey), navItemStyle ] [ text "CHORDS" ]
-            , hover highlight a [ onClick <| NewUrl (Routing.scalesPath model.musKey), navItemStyle ] [ text "SCALES" ]
-            , hover highlight a [ onClick <| NewUrl (Routing.fretboardPath model.musKey), navItemStyle ] [ text "FRETBOARD" ]
-            , hover highlight a [ onClick <| NewUrl Routing.strumPath, navItemStyle ] [ text "STRUMMING" ]
-            , hover highlight a [ onClick <| NewUrl Routing.fingerPickingPath, navItemStyle ] [ text "FINGERPICKING" ]
-            , playbackSpeedSlider model.sliderValue
-            , div [ navItemStyle, style [ ( "color", "#000" ) ] ] [ text "SELECT KEY:" ]
+            [ hover highlight a [ onClick <| NewUrl Routing.homePath, navItemStyle model.navMenuOpen ] [ text "HOME" ]
+            , hover highlight a [ onClick <| NewUrl (Routing.chordsPath model.musKey), navItemStyle model.navMenuOpen ] [ text "CHORDS" ]
+            , hover highlight a [ onClick <| NewUrl (Routing.scalesPath model.musKey), navItemStyle model.navMenuOpen ] [ text "SCALES" ]
+            , hover highlight a [ onClick <| NewUrl (Routing.fretboardPath model.musKey), navItemStyle model.navMenuOpen ] [ text "FRETBOARD" ]
+            , hover highlight a [ onClick <| NewUrl Routing.strumPath, navItemStyle model.navMenuOpen ] [ text "STRUMMING" ]
+            , hover highlight a [ onClick <| NewUrl Routing.fingerPickingPath, navItemStyle model.navMenuOpen ] [ text "FINGERPICKING" ]
+            , playbackSpeedSlider model
+            , div [ navItemStyle model.navMenuOpen, style [ ( "color", "#000" ) ] ] [ text "SELECT KEY:" ]
             , div [ style [ ( "position", "relative" ) ] ] [ keyListView model ]
             , signature
             ]
@@ -48,9 +48,9 @@ nav model =
 navIcon : Model -> Html Msg
 navIcon model =
     div [ navIconStyle model, onClick ShowNavMenu ]
-        [ hr [ navIconStyleHr ] []
-        , hr [ navIconStyleHr ] []
-        , hr [ navIconStyleHr ] []
+        [ hr [ navIconStyleHr model.navMenuOpen ] []
+        , hr [ navIconStyleHr model.navMenuOpen ] []
+        , hr [ navIconStyleHr model.navMenuOpen ] []
         ]
 
 
@@ -59,7 +59,7 @@ keyListView model =
     let
         keyOptions key =
             if key == model.musKey then
-                span [ keyListStyle model.navMenuOpen, onClick <| ChangeKey key, style [ ( "color", "#E9175D" ) ] ] [ text key ]
+                span [ keyListStyle model.navMenuOpen, onClick <| ChangeKey key, style [ ( "color", "#03a9f4" ) ] ] [ text key ]
             else
                 span [ keyListStyle model.navMenuOpen, onClick <| ChangeKey key, style [ ( "color", "#fff" ) ] ] [ text key ]
     in
@@ -97,18 +97,18 @@ page model =
             fingerPickingPage model
 
         NotFoundPage ->
-            div [ style [ ( "margin", "100px auto" ), ( "color", "#E91750" ) ] ] [ text ("Page Not Found " ++ model.musKey) ]
+            div [ style [ ( "margin", "100px auto" ), ( "color", "#03a9f4" ) ] ] [ text ("Page Not Found " ++ model.musKey) ]
 
 
-playbackSpeedSlider : Int -> Html Msg
-playbackSpeedSlider val =
-    div [ navItemStyle, style [ ( "marginTop", "25px" ) ] ]
+playbackSpeedSlider : Model -> Html Msg
+playbackSpeedSlider model =
+    div [ navItemStyle model.navMenuOpen, style [ ( "marginTop", "25px" ) ] ]
         [ div [] [ text ("+ " ++ "AUDIO SPEED" ++ " -") ]
         , input
             [ type_ "range"
             , Html.Attributes.min "1"
             , Html.Attributes.max "10"
-            , value <| toString val
+            , value <| toString model.sliderValue
             , onInput ChangeSliderValue
             ]
             []
