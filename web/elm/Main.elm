@@ -66,10 +66,9 @@ joinChannel =
 
 
 initPhoenixSocket =
-    Phoenix.Socket.init "wss://damp-wave-74595.herokuapp.com/socket/websocket"
-        -- Phoenix.Socket.init "ws:localhost:4000/socket/websocket"
-        |>
-            Phoenix.Socket.withDebug
+    -- Phoenix.Socket.init "wss://damp-wave-74595.herokuapp.com/socket/websocket"
+    Phoenix.Socket.init "ws:localhost:4000/socket/websocket"
+        |> Phoenix.Socket.withDebug
         |> Phoenix.Socket.on "chord_select"
             "chordChannel:chords"
             ReceiveMessage
@@ -196,11 +195,12 @@ update msg model =
             ( model, Navigation.newUrl url )
 
         ChangeKey key ->
-            { model | musKey = key, navMenuOpen = False }
-                ! []
+            ( { model | musKey = key, navMenuOpen = False }
+            , joinChannel
+            )
                 :> update (SendMessage key)
-                :> update JoinChannel
 
+        -- :> update JoinChannel
         Play chord hzShift ->
             { model | currentChord = chord, pitchShift = hzShift }
                 ! []

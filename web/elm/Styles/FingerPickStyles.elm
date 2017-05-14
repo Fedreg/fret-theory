@@ -22,7 +22,7 @@ fingerPickGroupStyle scale =
     style
         [ ( "transform", "scale(" ++ scale ++ ")" )
         , ( "position", "relative" )
-        , ( "margin", "30px 0" )
+        , ( "margin", "30px 0 0 200px" )
         , ( "cursor", "pointer" )
         ]
 
@@ -67,22 +67,25 @@ stringStyle =
         ]
 
 
-stringContainerStyle : Attribute msg
-stringContainerStyle =
-    style
-        [ ( "position", "absolute" )
-        , ( "top", "0" )
-        , ( "left", "0" )
-        ]
-
-
 beatStyle : Attribute msg
 beatStyle =
     style
-        [ ( "position", "absolute" )
-        , ( "top", "350px" )
-        , ( "left", "0" )
+        [ ( "display", "flex" )
+        , ( "color", "#E8175D" )
         , ( "paddingRight", "200px" )
+        ]
+
+
+fingerPickChordTitleStyle : Attribute msg
+fingerPickChordTitleStyle =
+    style
+        [ ( "position", "fixed" )
+        , ( "top", "-30px" )
+        , ( "left", "30px" )
+        , ( "color", "#fff" )
+        , ( "transform", "scale(0.6, 0.6)" )
+        , ( "fontSize", "20px" )
+        , ( "textAlign", "center" )
         ]
 
 
