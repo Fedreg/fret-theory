@@ -13,22 +13,20 @@ modalStyle model =
                 [ ( "position", "fixed" )
                 , ( "top", posX )
                 , ( "left", posY )
-                , ( "width", "90vw" )
+                , ( "width", "100vw" )
                 , ( "height", "90vh" )
-                , ( "border", "1px solid #252839" )
-                , ( "borderRadius", "10px" )
-                , ( "backgroundColor", "#111" )
+                , ( "backgroundColor", "rgba(0,0,0,1)" )
                 , ( "zIndex", "50" )
                 , ( "color", "#ccc" )
                 , ( "textAlign", "center" )
                 , ( "overflow", "scroll" )
                 , ( "transform", trans )
-                , ( "transition", "all 0.4s linear" )
+                , ( "transition", "all 0.3s linear" )
                 ]
     in
         case model.modalOpen of
             True ->
-                baseStyles "scale(1, 1)" "calc(5vh)" "calc(5vw)"
+                baseStyles "scale(1, 1)" "75px" "0"
 
             False ->
                 baseStyles "scale(0.1, 0.1)" "-250px" "105vw"
@@ -37,38 +35,33 @@ modalStyle model =
 modalIconStyle : Model -> Attribute msg
 modalIconStyle model =
     let
-        baseStyles difference =
+        baseStyles color =
             style
                 [ ( "position", "absolute" )
-                , ( "top", "45px" )
-                , ( "left", "8px" )
-                , ( "width", "20px" )
-                , ( "height", "20px" )
-                , ( "color", "#FFF" )
+                , ( "top", "3px" )
+                , ( "right", "60px" )
+                , ( "color", color )
                 , ( "textAlign", "center" )
-                , ( "fontSize", "12px" )
+                , ( "fontSize", "40px" )
+                , ( "fontWeight", "700" )
                 , ( "cursor", "pointer" )
-                , ( "border", "1px solid #03a9f4" )
-                , ( "borderRadius", "10px" )
-                , ( "transition", "all 0.5s" )
-                , ( "transform", difference )
                 , ( "zIndex", "10001" )
                 ]
     in
         case model.navMenuOpen of
             True ->
-                baseStyles "translateY(10px)"
+                baseStyles "#FFF"
 
             False ->
-                baseStyles "translateY(0)"
+                baseStyles "#03a9f4"
 
 
 closeModalIcon : Attribute msg
 closeModalIcon =
     style
         [ ( "position", "fixed" )
-        , ( "top", "0" )
-        , ( "right", "10px" )
+        , ( "top", "5px" )
+        , ( "right", "20px" )
         , ( "fontSize", "20px" )
         , ( "cursor", "pointer" )
         , ( "color", "#03a9f4" )
@@ -88,11 +81,9 @@ modalHeaderStyle : Attribute msg
 modalHeaderStyle =
     style
         [ ( "backgroundColor", "#333" )
-        , ( "borderTopRightRadius", "10px" )
-        , ( "borderTopLeftRadius", "10px" )
         , ( "margin", "-25px 0 25px -25px" )
         , ( "padding", "25px" )
-        , ( "width", "95vw" )
+        , ( "width", "100vw" )
         , ( "height", "100px" )
         , ( "color", "#03a9f4" )
         ]

@@ -8,10 +8,10 @@ import Logic.Types exposing (Model)
 fretboardTitleStyle : Attribute msg
 fretboardTitleStyle =
     style
-        [ ( "fontSize", "16px" )
-        , ( "textAlign", "center" )
-        , ( "marginBottom", "30px" )
-        , ( "color", "#fff" )
+        [ ( "fontSize", "18px" )
+        , ( "textAlign", "left" )
+        , ( "margin", "100px 0 30px" )
+        , ( "color", "#666" )
         ]
 
 
@@ -36,9 +36,9 @@ fretNoteStyle color =
         , ( "padding", "14px 5px" )
         , ( "textTransform", "uppercase" )
         , ( "color", color )
-        , ( "fontSize", "14px" )
+        , ( "fontSize", "18px" )
         , ( "textAlign", "center" )
-        , ( "borderBottom", "1px solid #444" )
+        , ( "borderBottom", "1px solid #aaa" )
         , ( "borderCollapse", "collapse" )
         , ( "transition", "all 0.4s ease" )
         , ( "zIndex", "1" )

@@ -9,6 +9,7 @@ scaleTitleStyle : Attribute msg
 scaleTitleStyle =
     style
         [ ( "position", "relative" )
+        , ( "marginLeft", "25px" )
         , ( "color", "#03a9f4" )
         ]
 
@@ -27,7 +28,7 @@ stringStyle : Attribute msg
 stringStyle =
     style
         [ ( "width", "600px" )
-        , ( "borderBottom", "1px solid #444" )
+        , ( "borderBottom", "1px solid #ccc" )
         , ( "marginTop", "32px" )
         , ( "zIndex", "0" )
         ]
@@ -38,7 +39,7 @@ stringContainerStyle =
     style
         [ ( "position", "absolute" )
         , ( "top", "12px" )
-        , ( "left", "0" )
+        , ( "left", "25px" )
         ]
 
 
@@ -47,7 +48,7 @@ fretNumberStyle margin =
     style
         [ ( "position", "relative" )
         , ( "margin", "5px " ++ margin )
-        , ( "color", "#fff" )
+        , ( "color", "#000" )
         , ( "zIndex", "1" )
         ]
 
