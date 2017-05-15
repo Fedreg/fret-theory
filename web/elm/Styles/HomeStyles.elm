@@ -15,21 +15,16 @@ homePageStyle =
 titleStyle : String -> String -> Attribute msg
 titleStyle fontSize color =
     style
-        [ ( "margin", "0 auto 25px" )
-        , ( "height", "150px" )
-        , ( "paddingTop", "30px" )
+        [ ( "margin", "125px auto 25px" )
         , ( "fontSize", fontSize )
         , ( "color", color )
-        , ( "zIndex", "50" )
-        , ( "boxShadow", "5px 5px 20px rgba(0,0,0,1)" )
-        , ( "backgroundColor", "#111" )
         ]
 
 
 secondaryTitleStyle : String -> String -> Attribute msg
 secondaryTitleStyle fontSize color =
     style
-        [ ( "margin", "0 auto" )
+        [ ( "margin", "0 20px 30px" )
         , ( "fontSize", fontSize )
         , ( "color", color )
         , ( "zIndex", "50" )

@@ -12,13 +12,13 @@ import List.Extra exposing (getAt)
 strumPage : Model -> Html Msg
 strumPage model =
     div [ strumPageStyle ]
-        [ strumGroup "1,1" model.strumArrow
+        [ strumGroup "1,1" model.strumArrow "#ccc" "#000"
         , button [ buttonStyle, onClick (Randomize 1 2) ] [ text "Generate Random Strum Pattern" ]
         ]
 
 
-strumGroup : String -> List Int -> Html Msg
-strumGroup scale notes =
+strumGroup : String -> List Int -> String -> String ->  Html Msg
+strumGroup scale notes borderCol arrowCol =
     let
         beats a =
             div [ style [ ( "width", "10px" ), ( "margin", "0 55px 0" ) ] ] [ text <| toString a ]
@@ -27,7 +27,7 @@ strumGroup scale notes =
             div [ style [ ( "width", "10px" ), ( "margin", "20px 55px 0" ) ] ] [ printNotation a ]
 
         arrows a b =
-            div [ strumArrowStyle a b ] [ arrow ]
+            div [ strumArrowStyle a b borderCol ] [ arrow arrowCol]
     in
         div [ strumGroupStyle scale ]
             [ div [ style [ ( "display", "flex" ) ] ]
@@ -41,16 +41,16 @@ strumGroup scale notes =
 
 {-| The up / down arrow itself.  Made up of a rotated div and a hr.
 -}
-arrow : Html Msg
-arrow =
+arrow : String -> Html Msg
+arrow col =
     let
         baseStyles height width x y =
             style
                 [ ( "transform", "rotate(45deg)" )
                 , ( "width", width )
                 , ( "height", height )
-                , ( "borderTop", "9px solid  #fff" )
-                , ( "borderLeft", "9px solid  #fff" )
+                , ( "borderTop", "9px solid " ++ col )
+                , ( "borderLeft", "9px solid " ++ col )
                 , ( "marginLeft", x )
                 , ( "marginTop", y )
                 ]

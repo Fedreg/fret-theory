@@ -46,9 +46,9 @@ fretboardPage model =
                             "0"
             in
                 if List.member note (notesInKey model.musKey) then
-                    hover highlight div [ fretNoteStyle "#eee", onClick (DrawNote index stringNo sharp) ] [ text note ]
+                    hover highlight div [ fretNoteStyle "#000", onClick (DrawNote index stringNo sharp) ] [ text note ]
                 else
-                    hover highlight div [ fretNoteStyle "#222", onClick (DrawNote index stringNo sharp) ] [ text note ]
+                    hover highlight div [ fretNoteStyle "#f5f6f5", onClick (DrawNote index stringNo sharp) ] [ text note ]
 
         fretNumberMarkers num =
             div [ fretNumberStyle ] [ text <| toString num ]
@@ -58,8 +58,7 @@ fretboardPage model =
     in
         div [ style [ ( "position", "relative" ) ] ]
             [ div [ fretboardContainerStyle ]
-                [ div [ fretboardTitleStyle ] [ text "Click On The Fret To See A Musical Note" ]
-                , div [ fretboardTitleStyle ] [ text ("KEY OF " ++ model.musKey) ]
+                [ div [ fretboardTitleStyle ] [ text ("KEY OF " ++ model.musKey) ]
                 , div [ fretboardStringStyle ]
                     (List.map frets <| List.reverse stringE)
                 , div [ fretboardStringStyle ]

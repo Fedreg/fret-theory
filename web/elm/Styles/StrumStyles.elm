@@ -9,7 +9,7 @@ strumPageStyle : Attribute msg
 strumPageStyle =
     style
         [ ( "height", "100vh" )
-        , ( "width", "95vw" )
+        , ( "width", "100vw" )
         , ( "display", "flex" )
         , ( "flexDirection", "column" )
         , ( "paddingTop", "175px" )
@@ -26,8 +26,8 @@ strumGroupStyle scale =
 
 {-| Determines if arrow is displayed and if it points up or down.
 -}
-strumArrowStyle : Int -> Int -> Attribute msg
-strumArrowStyle num mover =
+strumArrowStyle : Int -> Int -> String -> Attribute msg
+strumArrowStyle num mover borderCol =
     let
         opacity =
             case num of
@@ -54,10 +54,10 @@ strumArrowStyle num mover =
         shadow =
             case mover of
                 1 ->
-                    "-5px -15px 20px -10px rgba(0,0,0,1)"
+                    "-5px -15px 20px -10px rgba(0,0,0,0.5)"
 
                 2 ->
-                    "5px 15px 20px -10px rgba(0,0,0,1)"
+                    "5px 15px 20px -10px rgba(0,0,0,0.5)"
 
                 _ ->
                     "0"
@@ -69,7 +69,7 @@ strumArrowStyle num mover =
             , ( "opacity", opacity )
             , ( "paddingTop", "50px" )
             , ( "display", "flex" )
-            , ( "border", "1px solid #333" )
+            , ( "border", "1px solid " ++ borderCol )
             , ( "borderRadius", "10px" )
             , ( "justifyContent", "center" )
             , ( "transform", "rotate(" ++ rotate ++ ")" )
