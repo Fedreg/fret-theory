@@ -25,11 +25,11 @@ fingerPickGroup scale notes1 notes2 model =
     let
         beats a =
             -- Draws the beat number.
-            div [ style [ ( "width", "10px" ), ( "margin", "25px 55px 10px" ) ] ] [ text <| toString a ]
+            div [ style [ ( "width", "10px" ), ( "margin", "5px 55px 10px" ) ] ] [ text <| toString a ]
 
         notation a =
             -- Draws the rhythm notation.
-            div [ style [ ( "width", "10px" ), ( "margin", "25px 55px 0" ) ] ] [ printNotation a ]
+            div [ style [ ( "width", "10px" ), ( "margin", "5px 55px 0" ) ] ] [ printNotation a ]
 
         frets a =
             div [] [ fret a model ]
@@ -117,7 +117,7 @@ fret num model =
                 , ( "marginTop", height )
                 , ( "width", "120px" )
                 , ( "fontSize", "20px" )
-                , ( "color", "#fff" )
+                , ( "color", "#000" )
                 , ( "justifyContent", "center" )
                 , ( "opacity", opacity )
                 ]

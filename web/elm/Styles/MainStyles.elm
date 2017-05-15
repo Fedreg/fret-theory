@@ -8,29 +8,27 @@ import Logic.Types exposing (Model, Msg(..))
 navMenuStyle : Model -> Attribute Msg
 navMenuStyle model =
     let
-        baseStyles difference color pad =
+        baseStyles h color pad =
             style
                 [ ( "position", "fixed" )
                 , ( "top", "0" )
                 , ( "right", "0" )
                 , ( "transform", "translateX(0)" )
-                , ( "width", "250px" )
-                , ( "height", "100%" )
-                , ( "padding", pad )
+                , ( "width", "100vw" )
+                , ( "height", h )
+                , ( "paddingTop", pad )
                 , ( "backgroundColor", color )
                 , ( "transition", "all 0.3s ease" )
                 , ( "zIndex", "10000" )
-                , ( "borderLeft", "1px solid #222" )
-                , ( "borderBottom", "1px solid #222" )
-                , ( "transform", difference )
+                , ( "borderBottom", "1px solid #ccc" )
                 ]
     in
         case model.navMenuOpen of
             True ->
-                baseStyles "translateX(0)" "#aaa" "15px"
+                baseStyles "100vh" "rgba(0,0,0,0.9)" "100px"
 
             False ->
-                baseStyles "translateX(210px)" "#222" "15px 8px"
+                baseStyles "75px" "#FFF" "15px"
 
 
 navIconStyle : Model -> Attribute msg
@@ -40,7 +38,7 @@ navIconStyle model =
             style
                 [ ( "position", "fixed" )
                 , ( "top", "20px" )
-                , ( "left", "7px" )
+                , ( "right", "20px" )
                 , ( "width", "25px" )
                 , ( "transition", "all 0.5s" )
                 , ( "cursor", "pointer" )
@@ -61,16 +59,16 @@ navIconStyleHr bool =
     let
         baseStyles color =
             style
-                [ ( "borderTop", "1px solid " ++ color )
+                [ ( "borderTop", "5px solid " ++ color )
                 , ( "margin", "0 0 5px" )
                 ]
     in
         case bool of
             True ->
-                baseStyles "#000"
+                baseStyles "#FFF"
 
             False ->
-                baseStyles "#fff"
+                baseStyles "#000"
 
 
 navStyle : Attribute msg
@@ -82,81 +80,93 @@ navStyle =
 navItemStyle : Bool -> Attribute msg
 navItemStyle bool =
     let
-        baseStyles iconColor =
+        baseStyles iconColor display =
             style
-                [ ( "display", "block" )
-                , ( "margin", "0 0 7px 50px" )
+                [ ( "display", display )
+                , ( "margin", "0 0 5px 50px" )
                 , ( "padding", "5px" )
-                , ( "fontSize", "16px" )
-                , ( "textAlign", "right" )
+                , ( "fontSize", "24px" )
+                , ( "textAlign", "left" )
                 , ( "color", iconColor )
                 ]
     in
         case bool of
             True ->
-                baseStyles "#000"
+                baseStyles "#FFF" "block"
 
             False ->
-                baseStyles "#fff"
+                baseStyles "#000" "none"
 
 
-keyListStyle : Bool -> Attribute msg
-keyListStyle navOpen =
-    let
-        baseStyles width margin lh font color =
-            style
-                [ ( "width", width )
-                , ( "margin", margin )
-                , ( "cursor", "pointer" )
-                , ( "lineHeight", lh )
-                , ( "backgroundColor", color )
-                  -- , ( "color", "#fff" )
-                , ( "fontSize", font )
-                , ( "transition", "all 0.4s ease" )
-                ]
-    in
-        case navOpen of
-            True ->
-                baseStyles "50px" "5px 5px 0 0" "50px" "16px" "#111"
+navTitleStyle : Attribute msg
+navTitleStyle =
+    style
+        [ ( "position", "fixed" )
+        , ( "top", "10px" )
+        , ( "left", "20px" )
+        , ( "color", "#000" )
+        , ( "fontSize", "30px" )
+        , ( "fontWeight", "700" )
+        ]
 
-            False ->
-                baseStyles "20px" "2px" "20px" "12px" "rgba(0,0,0,0)"
+
+keyListStyle : Attribute msg
+keyListStyle =
+    style
+        [ ( "width", "60px" )
+        , ( "margin", "10px 10px 0 0 " )
+        , ( "cursor", "pointer" )
+        , ( "lineHeight", "60px" )
+        , ( "border", "1px solid #333" )
+        , ( "fontSize", "16px" )
+        , ( "transition", "all 0.4s ease" )
+        ]
+
+
+keyListKeyTitleStyle : Attribute msg
+keyListKeyTitleStyle =
+    style
+        [ ( "position", "fixed" )
+        , ( "top", "-30px" )
+        , ( "right", "50px" )
+        , ( "width", "450px" )
+        , ( "textAlign", "right" )
+        , ( "color", "#FFF" )
+        , ( "fontSize", "16px" )
+        , ( "textTransform", "underline" )
+        ]
 
 
 keyListContainerStyle : Bool -> Attribute msg
 keyListContainerStyle navOpen =
     let
-        baseStyles margin width =
+        baseStyles display shift =
             style
-                [ ( "marginTop", margin )
-                , ( "width", width )
+                [ ( "display", "flex" )
+                , ( "opacity", display )
+                , ( "position", "fixed" )
+                , ( "top", "200px" )
+                , ( "right", "50px" )
+                , ( "width", "500px" )
                 , ( "textAlign", "center" )
+                , ( "transform", shift )
                 , ( "transition", "all 0.4s ease" )
                 ]
     in
         case navOpen of
             True ->
-                baseStyles "0" "240px"
+                baseStyles "1" "translateY(0)"
 
             False ->
-                baseStyles "-250px" "50px"
+                baseStyles "0" "translateY(-400px)"
 
 
-textContainerStyle : Bool -> Attribute msg
-textContainerStyle navOpen =
-    let
-        baseStyles flexDir =
-            style
-                [ ( "display", "flex" )
-                , ( "flexFlow", flexDir )
-                ]
-    in
-        case navOpen of
-            True ->
-                baseStyles "row wrap"
-
-            False ->
-                baseStyles "column nowrap"
+textContainerStyle : Attribute msg
+textContainerStyle =
+    style
+        [ ( "display", "flex" )
+        , ( "flexFlow", "row wrap " )
+        ]
 
 
 highlight : List ( String, String )
@@ -172,5 +182,6 @@ signatureStyle =
         , ( "bottom", "10px" )
         , ( "right", "10px" )
         , ( "fontSize", "12px" )
-        , ( "color", "#fff" )
+        , ( "color", "#FFF" )
+        , ( "textDecoration", "none" )
         ]

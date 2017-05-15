@@ -1,12 +1,12 @@
 module Views.MainViews exposing (mainView)
 
-import Html exposing (Html, div, span, hr, text, a, input)
+import Html exposing (Html, div, span, hr, text, a, input, h3)
 import Html.Attributes exposing (style, href, value, type_, href)
 import Html.Events exposing (onClick, onInput)
 import Logic.Routing as Routing
 import Logic.Types exposing (Model, Msg(..), Route(..), PlayBundle)
 import Views.Home exposing (homePage)
-import Views.Chords exposing (chordChartPage, keyList)
+import Views.Chords exposing (chordChartPage, keyListMajor, keyListMinor)
 import Views.Scales exposing (scalesPage)
 import Views.Fretboard exposing (fretboardPage)
 import Views.Strum exposing (strumPage)
@@ -28,7 +28,8 @@ mainView model =
 nav : Model -> Html Msg
 nav model =
     div [ navMenuStyle model ]
-        [ navIcon model
+        [ div [ navTitleStyle ] [ text "Fret Theory" ]
+        , navIcon model
         , modalIcon model
         , div []
             [ hover highlight a [ onClick <| NewUrl Routing.homePath, navItemStyle model.navMenuOpen ] [ text "HOME" ]
@@ -38,9 +39,8 @@ nav model =
             , hover highlight a [ onClick <| NewUrl Routing.strumPath, navItemStyle model.navMenuOpen ] [ text "STRUMMING" ]
             , hover highlight a [ onClick <| NewUrl Routing.fingerPickingPath, navItemStyle model.navMenuOpen ] [ text "FINGERPICKING" ]
             , playbackSpeedSlider model
-            , div [ navItemStyle model.navMenuOpen, style [ ( "color", "#000" ) ] ] [ text "SELECT KEY:" ]
             , div [ style [ ( "position", "relative" ) ] ] [ keyListView model ]
-            , signature
+            , signature model.navMenuOpen
             ]
         ]
 
@@ -59,20 +59,23 @@ keyListView model =
     let
         keyOptions key =
             if key == model.musKey then
-                span [ keyListStyle model.navMenuOpen, onClick <| ChangeKey key, style [ ( "color", "#03a9f4" ) ] ] [ text key ]
+                hover highlight span [ keyListStyle, onClick <| ChangeKey key, style [ ( "color", "#03a9f4" ) ] ] [ text key ]
             else
-                span [ keyListStyle model.navMenuOpen, onClick <| ChangeKey key, style [ ( "color", "#fff" ) ] ] [ text key ]
+                hover highlight span [ keyListStyle, onClick <| ChangeKey key, style [ ( "color", "#fff" ) ] ] [ text key ]
     in
         div [ keyListContainerStyle model.navMenuOpen ]
-            [ div [ textContainerStyle model.navMenuOpen ]
-                (List.map keyOptions keyList)
+            [ h3 [ keyListKeyTitleStyle ] [ text "SELECT KEY" ]
+            , div [ textContainerStyle ]
+                (List.map keyOptions keyListMajor)
+            , div [ textContainerStyle ]
+                (List.map keyOptions keyListMinor)
             ]
 
 
-signature : Html Msg
-signature =
-    div [ signatureStyle ]
-        [ hover highlight a [ href "https://www.github.com/fedreg", style [ ( "color", "#000" ) ] ] [ text "Built 2017 by FedReg (v. 0.1)" ] ]
+signature : Bool -> Html Msg
+signature bool =
+    div [ navItemStyle bool, signatureStyle ]
+        [ hover highlight a [ href "https://www.github.com/fedreg", style [ ( "color", "#666" ) ] ] [ text "c. 2017 FedReg (v. 0.1)" ] ]
 
 
 page : Model -> Html Msg
@@ -102,7 +105,7 @@ page model =
 
 playbackSpeedSlider : Model -> Html Msg
 playbackSpeedSlider model =
-    div [ navItemStyle model.navMenuOpen, style [ ( "marginTop", "25px" ) ] ]
+    div [ navItemStyle model.navMenuOpen, style [ ( "marginTop", "100px" ) ] ]
         [ div [] [ text ("+ " ++ "AUDIO SPEED" ++ " -") ]
         , input
             [ type_ "range"

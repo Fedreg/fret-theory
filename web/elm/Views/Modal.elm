@@ -40,7 +40,7 @@ modal model =
 
 modalIcon : Model -> Html Msg
 modalIcon model =
-    div [ modalIconStyle model, onClick ShowModal ] [ text "?" ]
+    div [ modalIconStyle model, onClick ShowModal ] [ text "i" ]
 
 
 homeModal : Model -> Html Msg
@@ -195,10 +195,10 @@ strumModal model =
             [ div [ closeModalIcon, onClick ShowModal ] [ text "x" ]
             , h2 [ modalHeaderStyle ] [ text "STRUMMING" ]
             , toHtml [] strumModalContent
-            , strumGroup "0.75,0.75" [ 1, 2, 1, 1, 2, 1, 1, 1 ]
-            , strumGroup "0.75,0.75" [ 1, 1, 1, 2, 1, 1, 1, 2 ]
-            , strumGroup "0.75,0.75" [ 1, 1, 2, 1, 1, 2, 1, 1 ]
-            , strumGroup "0.75,0.75" [ 2, 1, 2, 1, 2, 1, 2, 1 ]
+            , strumGroup "0.75,0.75" [ 1, 2, 1, 1, 2, 1, 1, 1 ] "#444" "#FFF"
+            , strumGroup "0.75,0.75" [ 1, 1, 1, 2, 1, 1, 1, 2 ] "#444" "#FFF"
+            , strumGroup "0.75,0.75" [ 1, 1, 2, 1, 1, 2, 1, 1 ] "#444" "#FFF"
+            , strumGroup "0.75,0.75" [ 2, 1, 2, 1, 2, 1, 2, 1 ] "#444" "#FFF"
             ]
         ]
 

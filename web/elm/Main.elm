@@ -103,12 +103,6 @@ update msg model =
 
         SendMessage key ->
             let
-                _ =
-                    Debug.log "OutMessage Key" key
-
-                _ =
-                    Debug.log "OutMessage Pay" payload
-
                 payload =
                     (JE.object
                         [ ( "key", JE.string key )
@@ -127,9 +121,6 @@ update msg model =
 
         ReceiveMessage message ->
             let
-                _ =
-                    Debug.log "InMessage" message
-
                 updatedChords =
                     JE.encode 0 message
                         |> JD.decodeString chordDecoder
@@ -190,7 +181,7 @@ update msg model =
                 newKey =
                     Maybe.withDefault "C" <| Routing.modelUpdateOnHash model location
             in
-                { model | route = newRoute, musKey = newKey, modalOpen = False } ! []
+                { model | route = newRoute, musKey = newKey, modalOpen = False, navMenuOpen = False } ! []
 
         NewUrl url ->
             ( model, Navigation.newUrl url )
