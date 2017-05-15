@@ -44,11 +44,17 @@ fretboardPage model =
 
                         _ ->
                             "0"
+
+                fretColor =
+                    if note == (Maybe.withDefault "c" <| getAt 0 (notesInKey model.musKey)) then
+                        "#ddd"
+                    else
+                        ""
             in
                 if List.member note (notesInKey model.musKey) then
-                    hover highlight div [ fretNoteStyle "#000", onClick (DrawNote index stringNo sharp) ] [ text note ]
+                    hover highlight div [ fretNoteStyle "#000" fretColor, onClick (DrawNote index stringNo sharp) ] [ text note ]
                 else
-                    hover highlight div [ fretNoteStyle "#f5f6f5", onClick (DrawNote index stringNo sharp) ] [ text note ]
+                    hover highlight div [ fretNoteStyle "#f5f6f5" fretColor, onClick (DrawNote index stringNo sharp) ] [ text note ]
 
         fretNumberMarkers num =
             div [ fretNumberStyle ] [ text <| toString num ]
@@ -189,6 +195,11 @@ chromaticNotesList =
     [ "c", "c#", "d", "d#", "e", "f", "f#", "g", "g#", "a", "a#", "b" ]
 
 
+chromaticNotesListFlat : List String
+chromaticNotesListFlat =
+    [ "c", "db", "d", "eb", "e", "f", "gb", "g", "ab", "a", "bb", "b" ]
+
+
 {-| Determines which notes are in key to highlight them on the fretboard page
 -}
 notesInKey : String -> List String
@@ -201,7 +212,7 @@ notesInKey key =
                     newIndex =
                         String.toLower <| String.slice 0 1 key
                 in
-                    (Maybe.withDefault 0 <| elemIndex newIndex chromaticNotesList) - 1
+                    (Maybe.withDefault 0 <| elemIndex newIndex chromaticNotesListFlat) - 1
             else
                 Maybe.withDefault 0 <| elemIndex (String.toLower key) chromaticNotesList
 

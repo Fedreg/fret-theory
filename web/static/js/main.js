@@ -18161,39 +18161,45 @@ var _user$project$Styles_FretboardStyles$fretBlankStyle = _elm_lang$html$Html_At
 			}
 		}
 	});
-var _user$project$Styles_FretboardStyles$fretNoteStyle = function (color) {
-	return _elm_lang$html$Html_Attributes$style(
-		{
-			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'width', _1: '100px'},
-			_1: {
+var _user$project$Styles_FretboardStyles$fretNoteStyle = F2(
+	function (color, bgCol) {
+		return _elm_lang$html$Html_Attributes$style(
+			{
 				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'padding', _1: '14px 5px'},
+				_0: {ctor: '_Tuple2', _0: 'width', _1: '100px'},
 				_1: {
 					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'textTransform', _1: 'uppercase'},
+					_0: {ctor: '_Tuple2', _0: 'padding', _1: '14px 5px'},
 					_1: {
 						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'color', _1: color},
+						_0: {ctor: '_Tuple2', _0: 'textTransform', _1: 'uppercase'},
 						_1: {
 							ctor: '::',
-							_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '18px'},
+							_0: {ctor: '_Tuple2', _0: 'color', _1: color},
 							_1: {
 								ctor: '::',
-								_0: {ctor: '_Tuple2', _0: 'textAlign', _1: 'center'},
+								_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '18px'},
 								_1: {
 									ctor: '::',
-									_0: {ctor: '_Tuple2', _0: 'borderBottom', _1: '1px solid #aaa'},
+									_0: {ctor: '_Tuple2', _0: 'textAlign', _1: 'center'},
 									_1: {
 										ctor: '::',
-										_0: {ctor: '_Tuple2', _0: 'borderCollapse', _1: 'collapse'},
+										_0: {ctor: '_Tuple2', _0: 'borderBottom', _1: '1px solid #aaa'},
 										_1: {
 											ctor: '::',
-											_0: {ctor: '_Tuple2', _0: 'transition', _1: 'all 0.4s ease'},
+											_0: {ctor: '_Tuple2', _0: 'borderCollapse', _1: 'collapse'},
 											_1: {
 												ctor: '::',
-												_0: {ctor: '_Tuple2', _0: 'zIndex', _1: '1'},
-												_1: {ctor: '[]'}
+												_0: {ctor: '_Tuple2', _0: 'transition', _1: 'all 0.4s ease'},
+												_1: {
+													ctor: '::',
+													_0: {ctor: '_Tuple2', _0: 'backgroundColor', _1: bgCol},
+													_1: {
+														ctor: '::',
+														_0: {ctor: '_Tuple2', _0: 'zIndex', _1: '1'},
+														_1: {ctor: '[]'}
+													}
+												}
 											}
 										}
 									}
@@ -18202,9 +18208,8 @@ var _user$project$Styles_FretboardStyles$fretNoteStyle = function (color) {
 						}
 					}
 				}
-			}
-		});
-};
+			});
+	});
 var _user$project$Styles_FretboardStyles$fretboardStringStyle = _elm_lang$html$Html_Attributes$style(
 	{
 		ctor: '::',
@@ -18244,6 +18249,55 @@ var _user$project$Styles_FretboardStyles$fretboardTitleStyle = _elm_lang$html$Ht
 		}
 	});
 
+var _user$project$Views_Fretboard$chromaticNotesListFlat = {
+	ctor: '::',
+	_0: 'c',
+	_1: {
+		ctor: '::',
+		_0: 'db',
+		_1: {
+			ctor: '::',
+			_0: 'd',
+			_1: {
+				ctor: '::',
+				_0: 'eb',
+				_1: {
+					ctor: '::',
+					_0: 'e',
+					_1: {
+						ctor: '::',
+						_0: 'f',
+						_1: {
+							ctor: '::',
+							_0: 'gb',
+							_1: {
+								ctor: '::',
+								_0: 'g',
+								_1: {
+									ctor: '::',
+									_0: 'ab',
+									_1: {
+										ctor: '::',
+										_0: 'a',
+										_1: {
+											ctor: '::',
+											_0: 'bb',
+											_1: {
+												ctor: '::',
+												_0: 'b',
+												_1: {ctor: '[]'}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+};
 var _user$project$Views_Fretboard$chromaticNotesList = {
 	ctor: '::',
 	_0: 'c',
@@ -18371,7 +18425,7 @@ var _user$project$Views_Fretboard$notesInKey = function (key) {
 			return A2(
 				_elm_lang$core$Maybe$withDefault,
 				0,
-				A2(_elm_community$list_extra$List_Extra$elemIndex, newIndex, _user$project$Views_Fretboard$chromaticNotesList)) - 1;
+				A2(_elm_community$list_extra$List_Extra$elemIndex, newIndex, _user$project$Views_Fretboard$chromaticNotesListFlat)) - 1;
 		} else {
 			return A2(
 				_elm_lang$core$Maybe$withDefault,
@@ -18991,6 +19045,15 @@ var _user$project$Views_Fretboard$fretboardPage = function (model) {
 					return '0';
 			}
 		}();
+		var fretColor = _elm_lang$core$Native_Utils.eq(
+			note,
+			A2(
+				_elm_lang$core$Maybe$withDefault,
+				'c',
+				A2(
+					_elm_community$list_extra$List_Extra$getAt,
+					0,
+					_user$project$Views_Fretboard$notesInKey(model.musKey)))) ? '#ddd' : '';
 		return A2(
 			_elm_lang$core$List$member,
 			note,
@@ -19000,7 +19063,7 @@ var _user$project$Views_Fretboard$fretboardPage = function (model) {
 			_elm_lang$html$Html$div,
 			{
 				ctor: '::',
-				_0: _user$project$Styles_FretboardStyles$fretNoteStyle('#000'),
+				_0: A2(_user$project$Styles_FretboardStyles$fretNoteStyle, '#000', fretColor),
 				_1: {
 					ctor: '::',
 					_0: _elm_lang$html$Html_Events$onClick(
@@ -19018,7 +19081,7 @@ var _user$project$Views_Fretboard$fretboardPage = function (model) {
 			_elm_lang$html$Html$div,
 			{
 				ctor: '::',
-				_0: _user$project$Styles_FretboardStyles$fretNoteStyle('#f5f6f5'),
+				_0: A2(_user$project$Styles_FretboardStyles$fretNoteStyle, '#f5f6f5', fretColor),
 				_1: {
 					ctor: '::',
 					_0: _elm_lang$html$Html_Events$onClick(

@@ -29,8 +29,8 @@ fretboardStringStyle =
     style [ ( "display", "flex" ) ]
 
 
-fretNoteStyle : String -> Attribute msg
-fretNoteStyle color =
+fretNoteStyle : String -> String -> Attribute msg
+fretNoteStyle color bgCol =
     style
         [ ( "width", "100px" )
         , ( "padding", "14px 5px" )
@@ -41,6 +41,7 @@ fretNoteStyle color =
         , ( "borderBottom", "1px solid #aaa" )
         , ( "borderCollapse", "collapse" )
         , ( "transition", "all 0.4s ease" )
+        , ( "backgroundColor", bgCol )
         , ( "zIndex", "1" )
         ]
 
