@@ -1,4 +1,4 @@
-module Views.Strum exposing (strumPage, strumGroup)
+module Views.Strum exposing (strummingPage, strumGroup)
 
 import Html exposing (Html, div, button, text, span, hr, h3, h4, h5)
 import Html.Attributes exposing (style, attribute)
@@ -9,16 +9,16 @@ import Styles.StrumStyles exposing (..)
 import List.Extra exposing (getAt)
 
 
-strumPage : Model -> Html Msg
-strumPage model =
+strummingPage : Model -> Html Msg
+strummingPage model =
     div [ strumPageStyle ]
-        [ strumGroup "1,1" model.strumArrow
+        [ strumGroup "1,1" model.strumArrow "#CCC" "#000" "#FFF"
         , button [ buttonStyle, onClick (Randomize 1 2) ] [ text "Generate Random Strum Pattern" ]
         ]
 
 
-strumGroup : String -> List Int -> Html Msg
-strumGroup scale notes =
+strumGroup : String -> List Int -> String -> String -> String -> Html Msg
+strumGroup scale notes borderCol arrowCol background =
     let
         beats a =
             div [ style [ ( "width", "10px" ), ( "margin", "0 55px 0" ) ] ] [ text <| toString a ]
@@ -27,7 +27,7 @@ strumGroup scale notes =
             div [ style [ ( "width", "10px" ), ( "margin", "20px 55px 0" ) ] ] [ printNotation a ]
 
         arrows a b =
-            div [ strumArrowStyle a b ] [ arrow ]
+            div [ strumArrowStyle a b borderCol background ] [ arrow arrowCol ]
     in
         div [ strumGroupStyle scale ]
             [ div [ style [ ( "display", "flex" ) ] ]
@@ -41,16 +41,16 @@ strumGroup scale notes =
 
 {-| The up / down arrow itself.  Made up of a rotated div and a hr.
 -}
-arrow : Html Msg
-arrow =
+arrow : String -> Html Msg
+arrow col =
     let
         baseStyles height width x y =
             style
                 [ ( "transform", "rotate(45deg)" )
                 , ( "width", width )
                 , ( "height", height )
-                , ( "borderTop", "9px solid  #fff" )
-                , ( "borderLeft", "9px solid  #fff" )
+                , ( "borderTop", "9px solid " ++ col )
+                , ( "borderLeft", "9px solid " ++ col )
                 , ( "marginLeft", x )
                 , ( "marginTop", y )
                 ]

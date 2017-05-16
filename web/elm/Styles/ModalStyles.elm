@@ -8,70 +8,67 @@ import Logic.Types exposing (Model, Msg(..), Dot)
 modalStyle : Model -> Attribute msg
 modalStyle model =
     let
-        baseStyles trans posX posY =
+        baseStyles trans opacity =
             style
                 [ ( "position", "fixed" )
-                , ( "top", posX )
-                , ( "left", posY )
-                , ( "width", "90vw" )
+                , ( "top", "75px" )
+                , ( "left", "0" )
+                , ( "width", "100vw" )
                 , ( "height", "90vh" )
-                , ( "border", "1px solid #252839" )
-                , ( "borderRadius", "10px" )
-                , ( "backgroundColor", "#111" )
+                , ( "backgroundColor", "rgba(0,0,0,1)" )
                 , ( "zIndex", "50" )
                 , ( "color", "#ccc" )
                 , ( "textAlign", "center" )
                 , ( "overflow", "scroll" )
+                , ( "opacity", opacity )
                 , ( "transform", trans )
-                , ( "transition", "all 0.4s linear" )
+                , ( "transition", "all 0.3s linear" )
                 ]
     in
         case model.modalOpen of
             True ->
-                baseStyles "scale(1, 1)" "calc(5vh)" "calc(5vw)"
+                baseStyles "translateX(0)" "1"
+
 
             False ->
-                baseStyles "scale(0.1, 0.1)" "-250px" "105vw"
+                baseStyles "translateX(101vw)" "0"
 
 
 modalIconStyle : Model -> Attribute msg
 modalIconStyle model =
     let
-        baseStyles difference =
+        baseStyles color offset =
             style
                 [ ( "position", "absolute" )
-                , ( "top", "45px" )
-                , ( "left", "8px" )
-                , ( "width", "20px" )
-                , ( "height", "20px" )
-                , ( "color", "#FFF" )
+                , ( "top", offset )
+
+                , ( "right", "60px" )
+                , ( "color", color )
                 , ( "textAlign", "center" )
-                , ( "fontSize", "12px" )
+                , ( "fontSize", "40px" )
+                , ( "fontWeight", "700" )
                 , ( "cursor", "pointer" )
-                , ( "border", "1px solid #03a9f4" )
-                , ( "borderRadius", "10px" )
-                , ( "transition", "all 0.5s" )
-                , ( "transform", difference )
                 , ( "zIndex", "10001" )
                 ]
     in
-        case model.navMenuOpen of
-            True ->
-                baseStyles "translateY(10px)"
+        if model.navMenuOpen == True then
+            baseStyles "#FFF" "2px"
+        else if model.modalOpen == True then
+            baseStyles "#f40331" "2px"
+        else
+            baseStyles "#03a9f4" "0"
 
-            False ->
-                baseStyles "translateY(0)"
 
 
 closeModalIcon : Attribute msg
 closeModalIcon =
     style
         [ ( "position", "fixed" )
-        , ( "top", "0" )
-        , ( "right", "10px" )
+        , ( "top", "20px" )
+        , ( "right", "20px" )
         , ( "fontSize", "20px" )
         , ( "cursor", "pointer" )
-        , ( "color", "#03a9f4" )
+        , ( "color", "#f40331" )
         ]
 
 
@@ -88,11 +85,9 @@ modalHeaderStyle : Attribute msg
 modalHeaderStyle =
     style
         [ ( "backgroundColor", "#333" )
-        , ( "borderTopRightRadius", "10px" )
-        , ( "borderTopLeftRadius", "10px" )
         , ( "margin", "-25px 0 25px -25px" )
-        , ( "padding", "25px" )
-        , ( "width", "95vw" )
-        , ( "height", "100px" )
-        , ( "color", "#03a9f4" )
+        , ( "padding", "20px 25px" )
+        , ( "width", "100vw" )
+        , ( "height", "75px" )
+        , ( "color", "#f40331" )
         ]
