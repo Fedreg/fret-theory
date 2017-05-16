@@ -35785,8 +35785,8 @@ exports.default = socket;
 });
 
 ;require.alias("process/browser.js", "process");
-require.alias("phoenix/priv/static/phoenix.js", "phoenix");
-require.alias("phoenix_html/priv/static/phoenix_html.js", "phoenix_html");process = require('process');require.register("___globals___", function(exports, require, module) {
+require.alias("phoenix_html/priv/static/phoenix_html.js", "phoenix_html");
+require.alias("phoenix/priv/static/phoenix.js", "phoenix");process = require('process');require.register("___globals___", function(exports, require, module) {
   
 });})();require('___globals___');
 
