@@ -9,7 +9,7 @@ fingerPickingPageStyle : Attribute msg
 fingerPickingPageStyle =
     style
         [ ( "height", "100vh" )
-        , ( "width", "100vw" )
+        , ( "width", "95vw" )
         , ( "display", "flex" )
         , ( "flexDirection", "column" )
         , ( "paddingTop", "150px" )
@@ -22,7 +22,7 @@ fingerPickGroupStyle scale =
     style
         [ ( "transform", "scale(" ++ scale ++ ")" )
         , ( "position", "relative" )
-        , ( "margin", "125px 0 0 200px" )
+        , ( "margin", "30px 0 0 200px" )
         , ( "cursor", "pointer" )
         ]
 
@@ -53,7 +53,7 @@ fretStyle num mover =
             , ( "borderRadius", "10px" )
             , ( "justifyContent", "center" )
             , ( "transition", "all 0.4s ease" )
-            , ( "color", "#000" )
+            , ( "color", "#fff" )
             ]
 
 
@@ -61,7 +61,7 @@ stringStyle : Attribute msg
 stringStyle =
     style
         [ ( "width", "950px" )
-        , ( "borderBottom", "1px solid #aaa" )
+        , ( "borderBottom", "1px solid #444" )
         , ( "marginTop", "32px" )
         , ( "zIndex", "-1" )
         ]
@@ -80,10 +80,10 @@ fingerPickChordTitleStyle : Attribute msg
 fingerPickChordTitleStyle =
     style
         [ ( "position", "fixed" )
-        , ( "top", "50px" )
+        , ( "top", "-30px" )
         , ( "left", "30px" )
-        , ( "color", "#000" )
-        , ( "transform", "scale(0.8, 0.8)" )
+        , ( "color", "#fff" )
+        , ( "transform", "scale(0.6, 0.6)" )
         , ( "fontSize", "20px" )
         , ( "textAlign", "center" )
         ]
