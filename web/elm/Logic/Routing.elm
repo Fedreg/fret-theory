@@ -9,10 +9,10 @@ matchers : Parser (Route -> a) a
 matchers =
     oneOf
         [ map HomePage (s "home")
-        , map ChordsPage (s "chords" </> string)
+        , map ChordChartPage (s "chords" </> string)
         , map ScalesPage (s "scales" </> string)
         , map FretboardPage (s "fretboard" </> string)
-        , map StrummingPage (s "strumming")
+        , map StrumPage (s "strum")
         , map FingerPickingPage (s "fingerpicking")
         ]
 
@@ -30,7 +30,7 @@ parseLocation location =
 modelUpdateOnHash : Model -> Location -> Maybe String
 modelUpdateOnHash model location =
     case model.route of
-        ChordsPage _ ->
+        ChordChartPage _ ->
             parseHash (s "chords" </> string) location
 
         ScalesPage _ ->
@@ -39,7 +39,7 @@ modelUpdateOnHash model location =
         FretboardPage _ ->
             parseHash (s "fretboard" </> string) location
 
-        StrummingPage ->
+        StrumPage ->
             parseHash (s "strum" </> string) location
 
         FingerPickingPage ->
@@ -67,9 +67,9 @@ fretboardPath key =
     "#fretboard/" ++ key
 
 
-strummingPath : String
-strummingPath =
-    "#strumming/"
+strumPath : String
+strumPath =
+    "#strum/"
 
 
 homePath : String

@@ -25,7 +25,7 @@ chartStyle =
         , ( "border", "1px solid #607d8b" )
         , ( "borderTopLeftRadius", "10px" )
         , ( "borderBottomLeftRadius", "10px" )
-        , ( "boxShadow", "0 10px 20px rgba(0,0,0,0.25)" )
+        , ( "boxShadow", "0 10px 20px rgba(0,0,0,1)" )
           -- , ( "backgroundColor", "#252839" )
           -- , ( "backgroundColor", "#333" )
         ]
@@ -47,7 +47,7 @@ nutStyle =
         , ( "height", "151px" )
         , ( "backgroundColor", "#333" )
         , ( "borderBottom", "1px solid #333" )
-        , ( "boxShadow", "5px 10px 20px  rgba(0,0,0,0.25)" )
+        , ( "boxShadow", "5px 10px 20px  rgba(0,0,0,1)" )
         ]
 
 
@@ -77,7 +77,7 @@ fretStyle fret =
 chordNameStyle : Attribute Msg
 chordNameStyle =
     style
-        [ ( "color", "#000" )
+        [ ( "color", "#fff" )
         , ( "fontSize", "25px" )
         , ( "marginLeft", "150px" )
         , ( "margin", "0 auto" )
@@ -100,7 +100,7 @@ fingerChartStyle =
         [ ( "display", "flex" )
         , ( "flexDirection", "column" )
         , ( "position", "absolute" )
-        , ( "top", "100px" )
+        , ( "top", "20px" )
         , ( "left", "20px" )
         ]
 
@@ -128,7 +128,7 @@ fretMarkerStyle dot =
                 , ( "backgroundColor", "#677077" )
                 , ( "color", "rgba(0,0,0,0)" )
                 , ( "zIndex", "10" )
-                , ( "boxShadow", "5px 5px 10px rgba(0,0,0,0.25)" )
+                , ( "boxShadow", "5px 5px 10px rgba(0,0,0,0.5)" )
                 ]
     else if dot.fretNo == "-30" then
         style
@@ -153,7 +153,7 @@ fretMarkerStyle dot =
             , ( "height", "25px" )
             , ( "borderRadius", "7px" )
             , ( "backgroundColor", dot.tint )
-            , ( "boxShadow", "5px 5px 10px rgba(0,0,0,0.25)" )
+            , ( "boxShadow", "5px 5px 10px rgba(0,0,0,0.5)" )
             , ( "color", "rgba(0,0,0,0)" )
             , ( "zIndex", "5" )
             ]
