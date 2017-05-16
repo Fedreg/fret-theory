@@ -30,7 +30,6 @@ modalStyle model =
             True ->
                 baseStyles "scale(1, 1)" "calc(5vh)" "calc(5vw)"
 
-
             False ->
                 baseStyles "scale(0.1, 0.1)" "-250px" "105vw"
 
@@ -41,18 +40,11 @@ modalIconStyle model =
         baseStyles difference =
             style
                 [ ( "position", "absolute" )
-<<<<<<< HEAD
-                , ( "top", offset )
-
-                , ( "right", "60px" )
-                , ( "color", color )
-=======
                 , ( "top", "45px" )
                 , ( "left", "8px" )
                 , ( "width", "20px" )
                 , ( "height", "20px" )
                 , ( "color", "#FFF" )
->>>>>>> 1cffaf25857487d2b610339caafae94eb2f62a7b
                 , ( "textAlign", "center" )
                 , ( "fontSize", "12px" )
                 , ( "cursor", "pointer" )
@@ -69,7 +61,6 @@ modalIconStyle model =
 
             False ->
                 baseStyles "translateY(0)"
-
 
 
 closeModalIcon : Attribute msg
