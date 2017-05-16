@@ -1,0 +1,348 @@
+var _user$project$Styles_MainStyles$signatureStyle = _elm_lang$html$Html_Attributes$style(
+	{
+		ctor: '::',
+		_0: {ctor: '_Tuple2', _0: 'position', _1: 'absolute'},
+		_1: {
+			ctor: '::',
+			_0: {ctor: '_Tuple2', _0: 'bottom', _1: '10px'},
+			_1: {
+				ctor: '::',
+				_0: {ctor: '_Tuple2', _0: 'right', _1: '10px'},
+				_1: {
+					ctor: '::',
+					_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '12px'},
+					_1: {
+						ctor: '::',
+						_0: {ctor: '_Tuple2', _0: 'color', _1: '#FFF'},
+						_1: {
+							ctor: '::',
+							_0: {ctor: '_Tuple2', _0: 'textDecoration', _1: 'none'},
+							_1: {ctor: '[]'}
+						}
+					}
+				}
+			}
+		}
+	});
+var _user$project$Styles_MainStyles$highlight = {
+	ctor: '::',
+	_0: {ctor: '_Tuple2', _0: 'color', _1: '#03a9f4'},
+	_1: {ctor: '[]'}
+};
+var _user$project$Styles_MainStyles$textContainerStyle = _elm_lang$html$Html_Attributes$style(
+	{
+		ctor: '::',
+		_0: {ctor: '_Tuple2', _0: 'display', _1: 'flex'},
+		_1: {
+			ctor: '::',
+			_0: {ctor: '_Tuple2', _0: 'flexFlow', _1: 'row wrap '},
+			_1: {ctor: '[]'}
+		}
+	});
+var _user$project$Styles_MainStyles$keyListContainerStyle = function (navOpen) {
+	var baseStyles = F2(
+		function (display, shift) {
+			return _elm_lang$html$Html_Attributes$style(
+				{
+					ctor: '::',
+					_0: {ctor: '_Tuple2', _0: 'display', _1: 'flex'},
+					_1: {
+						ctor: '::',
+						_0: {ctor: '_Tuple2', _0: 'opacity', _1: display},
+						_1: {
+							ctor: '::',
+							_0: {ctor: '_Tuple2', _0: 'position', _1: 'fixed'},
+							_1: {
+								ctor: '::',
+								_0: {ctor: '_Tuple2', _0: 'top', _1: '200px'},
+								_1: {
+									ctor: '::',
+									_0: {ctor: '_Tuple2', _0: 'right', _1: '50px'},
+									_1: {
+										ctor: '::',
+										_0: {ctor: '_Tuple2', _0: 'width', _1: '500px'},
+										_1: {
+											ctor: '::',
+											_0: {ctor: '_Tuple2', _0: 'textAlign', _1: 'center'},
+											_1: {
+												ctor: '::',
+												_0: {ctor: '_Tuple2', _0: 'transform', _1: shift},
+												_1: {
+													ctor: '::',
+													_0: {ctor: '_Tuple2', _0: 'transition', _1: 'all 0.4s ease'},
+													_1: {ctor: '[]'}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				});
+		});
+	var _p0 = navOpen;
+	if (_p0 === true) {
+		return A2(baseStyles, '1', 'translateY(0)');
+	} else {
+		return A2(baseStyles, '0', 'translateY(-600px)');
+	}
+};
+var _user$project$Styles_MainStyles$keyListKeyTitleStyle = _elm_lang$html$Html_Attributes$style(
+	{
+		ctor: '::',
+		_0: {ctor: '_Tuple2', _0: 'position', _1: 'fixed'},
+		_1: {
+			ctor: '::',
+			_0: {ctor: '_Tuple2', _0: 'top', _1: '-30px'},
+			_1: {
+				ctor: '::',
+				_0: {ctor: '_Tuple2', _0: 'right', _1: '50px'},
+				_1: {
+					ctor: '::',
+					_0: {ctor: '_Tuple2', _0: 'width', _1: '450px'},
+					_1: {
+						ctor: '::',
+						_0: {ctor: '_Tuple2', _0: 'textAlign', _1: 'right'},
+						_1: {
+							ctor: '::',
+							_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '16px'},
+							_1: {
+								ctor: '::',
+								_0: {ctor: '_Tuple2', _0: 'textTransform', _1: 'underline'},
+								_1: {ctor: '[]'}
+							}
+						}
+					}
+				}
+			}
+		}
+	});
+var _user$project$Styles_MainStyles$keyListStyle = _elm_lang$html$Html_Attributes$style(
+	{
+		ctor: '::',
+		_0: {ctor: '_Tuple2', _0: 'width', _1: '60px'},
+		_1: {
+			ctor: '::',
+			_0: {ctor: '_Tuple2', _0: 'margin', _1: '10px 10px 0 0 '},
+			_1: {
+				ctor: '::',
+				_0: {ctor: '_Tuple2', _0: 'cursor', _1: 'pointer'},
+				_1: {
+					ctor: '::',
+					_0: {ctor: '_Tuple2', _0: 'lineHeight', _1: '60px'},
+					_1: {
+						ctor: '::',
+						_0: {ctor: '_Tuple2', _0: 'border', _1: '1px solid #333'},
+						_1: {
+							ctor: '::',
+							_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '16px'},
+							_1: {
+								ctor: '::',
+								_0: {ctor: '_Tuple2', _0: 'transition', _1: 'all 0.4s ease'},
+								_1: {
+									ctor: '::',
+									_0: {ctor: '_Tuple2', _0: 'color', _1: '#fff'},
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	});
+var _user$project$Styles_MainStyles$navTitleStyle = _elm_lang$html$Html_Attributes$style(
+	{
+		ctor: '::',
+		_0: {ctor: '_Tuple2', _0: 'position', _1: 'fixed'},
+		_1: {
+			ctor: '::',
+			_0: {ctor: '_Tuple2', _0: 'top', _1: '10px'},
+			_1: {
+				ctor: '::',
+				_0: {ctor: '_Tuple2', _0: 'left', _1: '20px'},
+				_1: {
+					ctor: '::',
+					_0: {ctor: '_Tuple2', _0: 'color', _1: '#000'},
+					_1: {
+						ctor: '::',
+						_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '30px'},
+						_1: {
+							ctor: '::',
+							_0: {ctor: '_Tuple2', _0: 'fontWeight', _1: '700'},
+							_1: {ctor: '[]'}
+						}
+					}
+				}
+			}
+		}
+	});
+var _user$project$Styles_MainStyles$navItemStyle = function (bool) {
+	var baseStyles = F2(
+		function (iconColor, display) {
+			return _elm_lang$html$Html_Attributes$style(
+				{
+					ctor: '::',
+					_0: {ctor: '_Tuple2', _0: 'display', _1: display},
+					_1: {
+						ctor: '::',
+						_0: {ctor: '_Tuple2', _0: 'margin', _1: '0 0 5px 50px'},
+						_1: {
+							ctor: '::',
+							_0: {ctor: '_Tuple2', _0: 'padding', _1: '5px'},
+							_1: {
+								ctor: '::',
+								_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '24px'},
+								_1: {
+									ctor: '::',
+									_0: {ctor: '_Tuple2', _0: 'textAlign', _1: 'left'},
+									_1: {
+										ctor: '::',
+										_0: {ctor: '_Tuple2', _0: 'color', _1: iconColor},
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				});
+		});
+	var _p1 = bool;
+	if (_p1 === true) {
+		return A2(baseStyles, '#FFF', 'block');
+	} else {
+		return A2(baseStyles, '#000', 'none');
+	}
+};
+var _user$project$Styles_MainStyles$navStyle = _elm_lang$html$Html_Attributes$style(
+	{
+		ctor: '::',
+		_0: {ctor: '_Tuple2', _0: 'textAlign', _1: 'center'},
+		_1: {ctor: '[]'}
+	});
+var _user$project$Styles_MainStyles$navIconStyleHr = function (bool) {
+	var baseStyles = function (color) {
+		return _elm_lang$html$Html_Attributes$style(
+			{
+				ctor: '::',
+				_0: {
+					ctor: '_Tuple2',
+					_0: 'borderTop',
+					_1: A2(_elm_lang$core$Basics_ops['++'], '5px solid ', color)
+				},
+				_1: {
+					ctor: '::',
+					_0: {ctor: '_Tuple2', _0: 'margin', _1: '0 0 5px'},
+					_1: {ctor: '[]'}
+				}
+			});
+	};
+	var _p2 = bool;
+	if (_p2 === true) {
+		return baseStyles('#FFF');
+	} else {
+		return baseStyles('#000');
+	}
+};
+var _user$project$Styles_MainStyles$navIconStyle = function (model) {
+	var baseStyles = function (difference) {
+		return _elm_lang$html$Html_Attributes$style(
+			{
+				ctor: '::',
+				_0: {ctor: '_Tuple2', _0: 'position', _1: 'fixed'},
+				_1: {
+					ctor: '::',
+					_0: {ctor: '_Tuple2', _0: 'top', _1: '20px'},
+					_1: {
+						ctor: '::',
+						_0: {ctor: '_Tuple2', _0: 'right', _1: '20px'},
+						_1: {
+							ctor: '::',
+							_0: {ctor: '_Tuple2', _0: 'width', _1: '25px'},
+							_1: {
+								ctor: '::',
+								_0: {ctor: '_Tuple2', _0: 'transition', _1: 'all 0.5s'},
+								_1: {
+									ctor: '::',
+									_0: {ctor: '_Tuple2', _0: 'cursor', _1: 'pointer'},
+									_1: {
+										ctor: '::',
+										_0: {ctor: '_Tuple2', _0: 'zIndex', _1: '10001'},
+										_1: {
+											ctor: '::',
+											_0: {ctor: '_Tuple2', _0: 'transform', _1: difference},
+											_1: {ctor: '[]'}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			});
+	};
+	var _p3 = model.navMenuOpen;
+	if (_p3 === true) {
+		return baseStyles('rotate(270deg)');
+	} else {
+		return baseStyles('none');
+	}
+};
+var _user$project$Styles_MainStyles$navMenuStyle = function (model) {
+	var baseStyles = F3(
+		function (h, color, pad) {
+			return _elm_lang$html$Html_Attributes$style(
+				{
+					ctor: '::',
+					_0: {ctor: '_Tuple2', _0: 'position', _1: 'fixed'},
+					_1: {
+						ctor: '::',
+						_0: {ctor: '_Tuple2', _0: 'top', _1: '0'},
+						_1: {
+							ctor: '::',
+							_0: {ctor: '_Tuple2', _0: 'right', _1: '0'},
+							_1: {
+								ctor: '::',
+								_0: {ctor: '_Tuple2', _0: 'transform', _1: 'translateX(0)'},
+								_1: {
+									ctor: '::',
+									_0: {ctor: '_Tuple2', _0: 'width', _1: '100vw'},
+									_1: {
+										ctor: '::',
+										_0: {ctor: '_Tuple2', _0: 'height', _1: h},
+										_1: {
+											ctor: '::',
+											_0: {ctor: '_Tuple2', _0: 'paddingTop', _1: pad},
+											_1: {
+												ctor: '::',
+												_0: {ctor: '_Tuple2', _0: 'backgroundColor', _1: color},
+												_1: {
+													ctor: '::',
+													_0: {ctor: '_Tuple2', _0: 'transition', _1: 'all 0.3s ease'},
+													_1: {
+														ctor: '::',
+														_0: {ctor: '_Tuple2', _0: 'zIndex', _1: '10000'},
+														_1: {
+															ctor: '::',
+															_0: {ctor: '_Tuple2', _0: 'borderBottom', _1: '1px solid #ccc'},
+															_1: {ctor: '[]'}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				});
+		});
+	var _p4 = model.navMenuOpen;
+	if (_p4 === true) {
+		return A3(baseStyles, '100vh', 'rgba(0,0,0,0.9)', '100px');
+	} else {
+		return A3(baseStyles, '75px', '#FFF', '15px');
+	}
+};
