@@ -19062,7 +19062,7 @@ var _user$project$Views_Fretboard$fretboardPage = function (model) {
 				_elm_lang$core$Maybe$withDefault,
 				'0',
 				A2(_elm_community$list_extra$List_Extra$getAt, 3, stringData)),
-			'1') ? '#EEE' : '')
+			'1') ? '#EEE' : '');
 		return A2(
 			_elm_lang$core$List$member,
 			note,
@@ -25474,7 +25474,7 @@ var _user$project$Styles_ModalStyles$modalIconStyle = function (model) {
 					}
 				});
 		});
-	return _elm_lang$core$Native_Utils.eq(model.navMenuOpen, true) ? A2(baseStyles, '#FFF', '2px') : (_elm_lang$core$Native_Utils.eq(model.modalOpen, true) ? A2(baseStyles, '#f40331', '2px') : A2(baseStyles, '#03a9f4', '0')
+	return _elm_lang$core$Native_Utils.eq(model.navMenuOpen, true) ? A2(baseStyles, '#FFF', '2px') : (_elm_lang$core$Native_Utils.eq(model.modalOpen, true) ? A2(baseStyles, '#f40331', '2px') : A2(baseStyles, '#03a9f4', '0'));
 };
 var _user$project$Styles_ModalStyles$modalStyle = function (model) {
 	var baseStyles = F2(
@@ -25723,7 +25723,8 @@ var _user$project$Views_Modal$strummingModal = function (model) {
 											'none'),
 										_1: {
 											ctor: '::',
-											_0: A5(_user$project$Views_Strum$strumGroup,
+											_0: A5(
+												_user$project$Views_Strum$strumGroup,
 												'0.75,0.75',
 												{
 													ctor: '::',
@@ -26337,7 +26338,6 @@ var _user$project$Styles_MainStyles$navItemStyle = function (bool) {
 							}
 						}
 					}
-
 				});
 		});
 	var _p1 = bool;
@@ -26622,9 +26622,7 @@ var _user$project$Views_MainViews$signature = function (bool) {
 };
 var _user$project$Views_MainViews$keyListView = function (model) {
 	var keyOptions = function (key) {
-		return _elm_lang$core$Native_Utils.eq(key, model.musKey) ? A4(
-			_jinjor$elm_inline_hover$InlineHover$hover,
-			_user$project$Styles_MainStyles$highlight,
+		return _elm_lang$core$Native_Utils.eq(key, model.musKey) ? A2(
 			_elm_lang$html$Html$span,
 			{
 				ctor: '::',
@@ -26653,9 +26651,7 @@ var _user$project$Views_MainViews$keyListView = function (model) {
 				ctor: '::',
 				_0: _elm_lang$html$Html$text(key),
 				_1: {ctor: '[]'}
-			}) : A4(
-			_jinjor$elm_inline_hover$InlineHover$hover,
-			_user$project$Styles_MainStyles$highlight,
+			}) : A2(
 			_elm_lang$html$Html$span,
 			{
 				ctor: '::',
