@@ -1,4 +1,4 @@
-module Views.Strum exposing (strumPage, strumGroup)
+module Views.Strum exposing (strummingPage, strumGroup)
 
 import Html exposing (Html, div, button, text, span, hr, h3, h4, h5)
 import Html.Attributes exposing (style, attribute)
@@ -9,16 +9,16 @@ import Styles.StrumStyles exposing (..)
 import List.Extra exposing (getAt)
 
 
-strumPage : Model -> Html Msg
-strumPage model =
+strummingPage : Model -> Html Msg
+strummingPage model =
     div [ strumPageStyle ]
-        [ strumGroup "1,1" model.strumArrow "#ccc" "#000"
+        [ strumGroup "1,1" model.strumArrow "#CCC" "#000" "#FFF"
         , button [ buttonStyle, onClick (Randomize 1 2) ] [ text "Generate Random Strum Pattern" ]
         ]
 
 
-strumGroup : String -> List Int -> String -> String ->  Html Msg
-strumGroup scale notes borderCol arrowCol =
+strumGroup : String -> List Int -> String -> String -> String -> Html Msg
+strumGroup scale notes borderCol arrowCol background =
     let
         beats a =
             div [ style [ ( "width", "10px" ), ( "margin", "0 55px 0" ) ] ] [ text <| toString a ]
@@ -27,7 +27,7 @@ strumGroup scale notes borderCol arrowCol =
             div [ style [ ( "width", "10px" ), ( "margin", "20px 55px 0" ) ] ] [ printNotation a ]
 
         arrows a b =
-            div [ strumArrowStyle a b borderCol ] [ arrow arrowCol]
+            div [ strumArrowStyle a b borderCol background ] [ arrow arrowCol ]
     in
         div [ strumGroupStyle scale ]
             [ div [ style [ ( "display", "flex" ) ] ]

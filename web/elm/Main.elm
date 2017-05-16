@@ -136,7 +136,7 @@ update msg model =
 
         Randomize hi lo ->
             case model.route of
-                StrumPage ->
+                StrummingPage ->
                     ( model, Random.generate StrumArrowDirection <| Random.list 8 (Random.int hi lo) )
 
                 FingerPickingPage ->
