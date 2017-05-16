@@ -109,6 +109,7 @@ notationNoteStyle offset =
         , ( "backgroundColor", "#03a9f4" )
         , ( "transition", "all 0.5s ease" )
         , ( "zIndex", "1" )
+        , ( "boxShadow", "3px 3px 15px rgba*0,0,0,0.9)" )
         ]
 
 

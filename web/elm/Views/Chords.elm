@@ -1,4 +1,4 @@
-module Views.Chords exposing (chordChartPage, keyList, chordChartModel, startKey, keyListMajor, keyListMinor)
+module Views.Chords exposing (chordsPage, keyList, chordChartModel, startKey, keyListMajor, keyListMinor)
 
 import Html exposing (Html, div, span, a, text, option, h4)
 import Html.Attributes exposing (style, value, href)
@@ -10,8 +10,8 @@ import Logic.Routing exposing (scalesPath)
 import Styles.ChordStyles exposing (..)
 
 
-chordChartPage : Model -> Html Msg
-chordChartPage model =
+chordsPage : Model -> Html Msg
+chordsPage model =
     let
         soloFretMin =
             Maybe.withDefault "0" (getAt 11 <| (model.displayedChords).names)

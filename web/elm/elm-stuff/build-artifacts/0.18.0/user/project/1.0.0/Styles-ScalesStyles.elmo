@@ -1,0 +1,106 @@
+var _user$project$Styles_ScalesStyles$scalePageStyle = _elm_lang$html$Html_Attributes$style(
+	{
+		ctor: '::',
+		_0: {ctor: '_Tuple2', _0: 'display', _1: 'flex'},
+		_1: {
+			ctor: '::',
+			_0: {ctor: '_Tuple2', _0: 'flexDirection', _1: 'row'},
+			_1: {
+				ctor: '::',
+				_0: {ctor: '_Tuple2', _0: 'flexWrap', _1: 'wrap'},
+				_1: {
+					ctor: '::',
+					_0: {ctor: '_Tuple2', _0: 'justifyContent', _1: 'center'},
+					_1: {ctor: '[]'}
+				}
+			}
+		}
+	});
+var _user$project$Styles_ScalesStyles$fretNumberStyle = function (margin) {
+	return _elm_lang$html$Html_Attributes$style(
+		{
+			ctor: '::',
+			_0: {ctor: '_Tuple2', _0: 'position', _1: 'relative'},
+			_1: {
+				ctor: '::',
+				_0: {
+					ctor: '_Tuple2',
+					_0: 'margin',
+					_1: A2(_elm_lang$core$Basics_ops['++'], '5px ', margin)
+				},
+				_1: {
+					ctor: '::',
+					_0: {ctor: '_Tuple2', _0: 'color', _1: '#000'},
+					_1: {
+						ctor: '::',
+						_0: {ctor: '_Tuple2', _0: 'zIndex', _1: '1'},
+						_1: {ctor: '[]'}
+					}
+				}
+			}
+		});
+};
+var _user$project$Styles_ScalesStyles$stringContainerStyle = _elm_lang$html$Html_Attributes$style(
+	{
+		ctor: '::',
+		_0: {ctor: '_Tuple2', _0: 'position', _1: 'absolute'},
+		_1: {
+			ctor: '::',
+			_0: {ctor: '_Tuple2', _0: 'top', _1: '12px'},
+			_1: {
+				ctor: '::',
+				_0: {ctor: '_Tuple2', _0: 'left', _1: '25px'},
+				_1: {ctor: '[]'}
+			}
+		}
+	});
+var _user$project$Styles_ScalesStyles$stringStyle = _elm_lang$html$Html_Attributes$style(
+	{
+		ctor: '::',
+		_0: {ctor: '_Tuple2', _0: 'width', _1: '600px'},
+		_1: {
+			ctor: '::',
+			_0: {ctor: '_Tuple2', _0: 'borderBottom', _1: '1px solid #ccc'},
+			_1: {
+				ctor: '::',
+				_0: {ctor: '_Tuple2', _0: 'marginTop', _1: '32px'},
+				_1: {
+					ctor: '::',
+					_0: {ctor: '_Tuple2', _0: 'zIndex', _1: '0'},
+					_1: {ctor: '[]'}
+				}
+			}
+		}
+	});
+var _user$project$Styles_ScalesStyles$scaleContainerStyle = _elm_lang$html$Html_Attributes$style(
+	{
+		ctor: '::',
+		_0: {ctor: '_Tuple2', _0: 'position', _1: 'relative'},
+		_1: {
+			ctor: '::',
+			_0: {ctor: '_Tuple2', _0: 'width', _1: '650px'},
+			_1: {
+				ctor: '::',
+				_0: {ctor: '_Tuple2', _0: 'margin', _1: '30px 0'},
+				_1: {
+					ctor: '::',
+					_0: {ctor: '_Tuple2', _0: 'cursor', _1: 'pointer'},
+					_1: {ctor: '[]'}
+				}
+			}
+		}
+	});
+var _user$project$Styles_ScalesStyles$scaleTitleStyle = _elm_lang$html$Html_Attributes$style(
+	{
+		ctor: '::',
+		_0: {ctor: '_Tuple2', _0: 'position', _1: 'relative'},
+		_1: {
+			ctor: '::',
+			_0: {ctor: '_Tuple2', _0: 'marginLeft', _1: '25px'},
+			_1: {
+				ctor: '::',
+				_0: {ctor: '_Tuple2', _0: 'color', _1: '#03a9f4'},
+				_1: {ctor: '[]'}
+			}
+		}
+	});

@@ -115,10 +115,10 @@ type Msg
 
 
 type Route
-    = ChordChartPage String
+    = ChordsPage String
     | ScalesPage String
     | FretboardPage String
     | NotFoundPage
     | HomePage
-    | StrumPage
+    | StrummingPage
     | FingerPickingPage

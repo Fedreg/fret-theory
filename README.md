@@ -1,5 +1,4 @@
-# Fretboard Theory
-### Elm Client with Elixir/Phoenix Channels API
+# MtApi
 
 To start your Phoenix app:
 

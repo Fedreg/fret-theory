@@ -1,6 +1,6 @@
 module Views.Modal exposing (modal, modalIcon)
 
-import Html exposing (Html, div, span, a, text, h3, h4, h2)
+import Html exposing (Html, div, span, a, text, h3, h4)
 import Html.Attributes exposing (style, class)
 import Html.Events exposing (onClick)
 import Logic.Types exposing (Model, Msg(ShowModal), Route(..))
@@ -16,7 +16,7 @@ modal model =
             model.musKey
     in
         case model.route of
-            ChordChartPage key ->
+            ChordsPage key ->
                 chordModal model
 
             ScalesPage key ->
@@ -31,8 +31,8 @@ modal model =
             HomePage ->
                 homeModal model
 
-            StrumPage ->
-                strumModal model
+            StrummingPage ->
+                strummingModal model
 
             FingerPickingPage ->
                 fingerPickModal model
@@ -48,7 +48,7 @@ homeModal model =
     div [ modalStyle model ]
         [ div [ modalContentStyle ]
             [ div [ closeModalIcon, onClick ShowModal ] [ text "x" ]
-            , h2 [ modalHeaderStyle ] [ text "GUIDE" ]
+            , h3 [ modalHeaderStyle ] [ text "Guide" ]
             , toHtml [] homeModalContent
             ]
         ]
@@ -79,7 +79,7 @@ chordModal model =
     div [ modalStyle model ]
         [ div [ modalContentStyle ]
             [ div [ closeModalIcon, onClick ShowModal ] [ text "x" ]
-            , h2 [ modalHeaderStyle ] [ text "CHORDS" ]
+            , h3 [ modalHeaderStyle ] [ text "Chords" ]
             , toHtml [] chordModalContent
             ]
         ]
@@ -88,8 +88,6 @@ chordModal model =
 chordModalContent : String
 chordModalContent =
     """
-#### CHORDS PAGE
-***
 Chords are defined as two or more harmonic pitches that are sounded simultaneously.  Most chords played on the guitar consist of 3 notes but many contain 4 or more pitches.
 Chords are comprised of the **1st**, **3rd**, & **5th** notes of their corresponding scales.  For example:
 * a C MAJOR **SCALE** contains the notes **C D E F G A B C**
@@ -130,7 +128,7 @@ fingerPickModal model =
     div [ modalStyle model ]
         [ div [ modalContentStyle ]
             [ div [ closeModalIcon, onClick ShowModal ] [ text "x" ]
-            , h2 [ modalHeaderStyle ] [ text "FINGERPICKING" ]
+            , h3 [ modalHeaderStyle ] [ text "FingerPicking" ]
             , toHtml [] fingerPickModalContent
             ]
         ]
@@ -145,7 +143,7 @@ fretboardModal model =
     div [ modalStyle model ]
         [ div [ modalContentStyle ]
             [ div [ closeModalIcon, onClick ShowModal ] [ text "x" ]
-            , h2 [ modalHeaderStyle ] [ text "FRETBOARD" ]
+            , h3 [ modalHeaderStyle ] [ text "FretBoard" ]
             , toHtml [] fretboardModalContent
             ]
         ]
@@ -161,7 +159,7 @@ scalesModal model =
     div [ modalStyle model ]
         [ div [ modalContentStyle ]
             [ div [ closeModalIcon, onClick ShowModal ] [ text "x" ]
-            , h2 [ modalHeaderStyle ] [ text "SCALES" ]
+            , h3 [ modalHeaderStyle ] [ text "Scales" ]
             , toHtml [] scalesModalContent
             ]
         ]
@@ -188,17 +186,17 @@ Scales are usually defined as a collection of 8 notes grouped together by a spec
 """
 
 
-strumModal : Model -> Html Msg
-strumModal model =
+strummingModal : Model -> Html Msg
+strummingModal model =
     div [ modalStyle model ]
         [ div [ modalContentStyle ]
             [ div [ closeModalIcon, onClick ShowModal ] [ text "x" ]
-            , h2 [ modalHeaderStyle ] [ text "STRUMMING" ]
+            , h3 [ modalHeaderStyle ] [ text "Strumming" ]
             , toHtml [] strumModalContent
-            , strumGroup "0.75,0.75" [ 1, 2, 1, 1, 2, 1, 1, 1 ] "#444" "#FFF"
-            , strumGroup "0.75,0.75" [ 1, 1, 1, 2, 1, 1, 1, 2 ] "#444" "#FFF"
-            , strumGroup "0.75,0.75" [ 1, 1, 2, 1, 1, 2, 1, 1 ] "#444" "#FFF"
-            , strumGroup "0.75,0.75" [ 2, 1, 2, 1, 2, 1, 2, 1 ] "#444" "#FFF"
+            , strumGroup "0.75,0.75" [ 1, 2, 1, 1, 2, 1, 1, 1 ] "#444" "#FFF" "none"
+            , strumGroup "0.75,0.75" [ 1, 1, 1, 2, 1, 1, 1, 2 ] "#444" "#FFF" "none"
+            , strumGroup "0.75,0.75" [ 1, 1, 2, 1, 1, 2, 1, 1 ] "#444" "#FFF" "none"
+            , strumGroup "0.75,0.75" [ 2, 1, 2, 1, 2, 1, 2, 1 ] "#444" "#FFF" "none"
             ]
         ]
 

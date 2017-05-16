@@ -8,11 +8,11 @@ import Logic.Types exposing (Model, Msg(..), Dot)
 modalStyle : Model -> Attribute msg
 modalStyle model =
     let
-        baseStyles trans posX posY =
+        baseStyles trans opacity =
             style
                 [ ( "position", "fixed" )
-                , ( "top", posX )
-                , ( "left", posY )
+                , ( "top", "75px" )
+                , ( "left", "0" )
                 , ( "width", "100vw" )
                 , ( "height", "90vh" )
                 , ( "backgroundColor", "rgba(0,0,0,1)" )
@@ -20,25 +20,28 @@ modalStyle model =
                 , ( "color", "#ccc" )
                 , ( "textAlign", "center" )
                 , ( "overflow", "scroll" )
+                , ( "opacity", opacity )
                 , ( "transform", trans )
                 , ( "transition", "all 0.3s linear" )
                 ]
     in
         case model.modalOpen of
             True ->
-                baseStyles "scale(1, 1)" "75px" "0"
+                baseStyles "translateX(0)" "1"
+
 
             False ->
-                baseStyles "scale(0.1, 0.1)" "-250px" "105vw"
+                baseStyles "translateX(101vw)" "0"
 
 
 modalIconStyle : Model -> Attribute msg
 modalIconStyle model =
     let
-        baseStyles color =
+        baseStyles color offset =
             style
                 [ ( "position", "absolute" )
-                , ( "top", "3px" )
+                , ( "top", offset )
+
                 , ( "right", "60px" )
                 , ( "color", color )
                 , ( "textAlign", "center" )
@@ -48,23 +51,24 @@ modalIconStyle model =
                 , ( "zIndex", "10001" )
                 ]
     in
-        case model.navMenuOpen of
-            True ->
-                baseStyles "#FFF"
+        if model.navMenuOpen == True then
+            baseStyles "#FFF" "2px"
+        else if model.modalOpen == True then
+            baseStyles "#f40331" "2px"
+        else
+            baseStyles "#03a9f4" "0"
 
-            False ->
-                baseStyles "#03a9f4"
 
 
 closeModalIcon : Attribute msg
 closeModalIcon =
     style
         [ ( "position", "fixed" )
-        , ( "top", "5px" )
+        , ( "top", "20px" )
         , ( "right", "20px" )
         , ( "fontSize", "20px" )
         , ( "cursor", "pointer" )
-        , ( "color", "#03a9f4" )
+        , ( "color", "#f40331" )
         ]
 
 
@@ -82,8 +86,8 @@ modalHeaderStyle =
     style
         [ ( "backgroundColor", "#333" )
         , ( "margin", "-25px 0 25px -25px" )
-        , ( "padding", "25px" )
+        , ( "padding", "20px 25px" )
         , ( "width", "100vw" )
-        , ( "height", "100px" )
-        , ( "color", "#03a9f4" )
+        , ( "height", "75px" )
+        , ( "color", "#f40331" )
         ]
