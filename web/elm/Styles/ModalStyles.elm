@@ -29,6 +29,7 @@ modalStyle model =
             True ->
                 baseStyles "translateX(0)" "1"
 
+
             False ->
                 baseStyles "translateX(101vw)" "0"
 
@@ -40,6 +41,7 @@ modalIconStyle model =
             style
                 [ ( "position", "absolute" )
                 , ( "top", offset )
+
                 , ( "right", "60px" )
                 , ( "color", color )
                 , ( "textAlign", "center" )
@@ -55,6 +57,7 @@ modalIconStyle model =
             baseStyles "#f40331" "2px"
         else
             baseStyles "#03a9f4" "0"
+
 
 
 closeModalIcon : Attribute msg

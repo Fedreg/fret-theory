@@ -1,6 +1,7 @@
 module Views.MainViews exposing (mainView)
 
 import Html exposing (Html, div, span, hr, text, a, input, h3, h1)
+import Html exposing (Html, div, span, hr, text, a, input, h3)
 import Html.Attributes exposing (style, href, value, type_, href)
 import Html.Events exposing (onClick, onInput)
 import Logic.Routing as Routing
