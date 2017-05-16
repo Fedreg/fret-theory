@@ -1,15 +1,16 @@
 module Views.MainViews exposing (mainView)
 
+import Html exposing (Html, div, span, hr, text, a, input, h3, h1)
 import Html exposing (Html, div, span, hr, text, a, input, h3)
 import Html.Attributes exposing (style, href, value, type_, href)
 import Html.Events exposing (onClick, onInput)
 import Logic.Routing as Routing
 import Logic.Types exposing (Model, Msg(..), Route(..), PlayBundle)
 import Views.Home exposing (homePage)
-import Views.Chords exposing (chordChartPage, keyListMajor, keyListMinor)
+import Views.Chords exposing (chordsPage, keyListMajor, keyListMinor)
 import Views.Scales exposing (scalesPage)
 import Views.Fretboard exposing (fretboardPage)
-import Views.Strum exposing (strumPage)
+import Views.Strum exposing (strummingPage)
 import Views.FingerPick exposing (fingerPickingPage)
 import Views.Modal exposing (..)
 import Styles.MainStyles exposing (..)
@@ -27,22 +28,45 @@ mainView model =
 
 nav : Model -> Html Msg
 nav model =
-    div [ navMenuStyle model ]
-        [ div [ navTitleStyle ] [ text "Fret Theory" ]
-        , navIcon model
-        , modalIcon model
-        , div []
-            [ hover highlight a [ onClick <| NewUrl Routing.homePath, navItemStyle model.navMenuOpen ] [ text "HOME" ]
-            , hover highlight a [ onClick <| NewUrl (Routing.chordsPath model.musKey), navItemStyle model.navMenuOpen ] [ text "CHORDS" ]
-            , hover highlight a [ onClick <| NewUrl (Routing.scalesPath model.musKey), navItemStyle model.navMenuOpen ] [ text "SCALES" ]
-            , hover highlight a [ onClick <| NewUrl (Routing.fretboardPath model.musKey), navItemStyle model.navMenuOpen ] [ text "FRETBOARD" ]
-            , hover highlight a [ onClick <| NewUrl Routing.strumPath, navItemStyle model.navMenuOpen ] [ text "STRUMMING" ]
-            , hover highlight a [ onClick <| NewUrl Routing.fingerPickingPath, navItemStyle model.navMenuOpen ] [ text "FINGERPICKING" ]
+    let
+        navItem rte page =
+            if String.startsWith page (String.toUpper <| toString model.route) == True then
+                a [ onClick <| NewUrl rte, navItemStyle model.navMenuOpen, style [ ( "color", "#03a9f4" ) ] ] [ text page ]
+            else
+                a [ onClick <| NewUrl rte, navItemStyle model.navMenuOpen ] [ text page ]
+    in
+        div [ navMenuStyle model ]
+            [ div [ navTitleStyle ] [ text "Fret Theory" ]
+            , navIcon model
+            , modalIcon model
+            , div []
+                (List.map2 navItem (pathList model) pageList)
             , playbackSpeedSlider model
             , div [ style [ ( "position", "relative" ) ] ] [ keyListView model ]
             , signature model.navMenuOpen
             ]
-        ]
+
+
+pageList : List String
+pageList =
+    [ "HOME"
+    , "CHORDS"
+    , "SCALES"
+    , "FRETBOARD"
+    , "STRUMMING"
+    , "FINGERPICKING"
+    ]
+
+
+pathList : Model -> List String
+pathList model =
+    [ Routing.homePath
+    , Routing.chordsPath model.musKey
+    , Routing.scalesPath model.musKey
+    , Routing.fretboardPath model.musKey
+    , Routing.strummingPath
+    , Routing.fingerPickingPath
+    ]
 
 
 navIcon : Model -> Html Msg
@@ -59,9 +83,9 @@ keyListView model =
     let
         keyOptions key =
             if key == model.musKey then
-                hover highlight span [ keyListStyle, onClick <| ChangeKey key, style [ ( "color", "#03a9f4" ) ] ] [ text key ]
+                span [ keyListStyle, onClick <| ChangeKey key, style [ ( "border", "1px solid #03a9f4" ), ("color", "#03a9f4" ) ] ] [ text key ]
             else
-                hover highlight span [ keyListStyle, onClick <| ChangeKey key, style [ ( "color", "#fff" ) ] ] [ text key ]
+                span [ keyListStyle, onClick <| ChangeKey key, style [ ( "border", "1px solid #333" ), ("color", "#fff") ] ] [ text key ]
     in
         div [ keyListContainerStyle model.navMenuOpen ]
             [ h3 [ keyListKeyTitleStyle ] [ text "SELECT KEY" ]
@@ -81,8 +105,8 @@ signature bool =
 page : Model -> Html Msg
 page model =
     case model.route of
-        ChordChartPage _ ->
-            chordChartPage model
+        ChordsPage _ ->
+            chordsPage model
 
         FretboardPage _ ->
             fretboardPage model
@@ -93,14 +117,14 @@ page model =
         HomePage ->
             homePage model
 
-        StrumPage ->
-            strumPage model
+        StrummingPage ->
+            strummingPage model
 
         FingerPickingPage ->
             fingerPickingPage model
 
         NotFoundPage ->
-            div [ style [ ( "margin", "100px auto" ), ( "color", "#03a9f4" ) ] ] [ text ("Page Not Found " ++ model.musKey) ]
+            h1 [ style [ ( "margin", "100px 300px" ), ( "color", "#03a9f4" ) ] ] [ text ("Page Not Found! ") ]
 
 
 playbackSpeedSlider : Model -> Html Msg
