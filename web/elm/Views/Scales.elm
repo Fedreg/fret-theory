@@ -309,16 +309,16 @@ scaleNameMajor model scaleName modifiedNotes matchingChord =
         if slicer (String.toUpper model.musKey) == slicer model.musKey then
             div []
                 [ span [] [ text model.musKey ]
-                , span [ style [ ( "color", "#444" ) ] ] [ text scaleName ]
+                , span [ style [ ( "color", "#777" ) ] ] [ text scaleName ]
                 , span [ style [ ( "color", "#03a9f4" ) ] ] [ text modifiedNotes ]
-                , span [ style [ ( "color", "#aaa" ) ] ] [ text playOver ]
+                , span [ style [ ( "color", "#fff" ) ] ] [ text playOver ]
                 ]
         else
             div []
                 [ span [] [ text (Maybe.withDefault "C" <| getAt (index - 12) keyList) ]
-                , span [ style [ ( "color", "#444" ) ] ] [ text scaleName ]
+                , span [ style [ ( "color", "#777" ) ] ] [ text scaleName ]
                 , span [ style [ ( "color", "#03a9f4" ) ] ] [ text modifiedNotes ]
-                , span [ style [ ( "color", "#aaa" ) ] ] [ text ", relative major" ]
+                , span [ style [ ( "color", "#fff" ) ] ] [ text ", relative major" ]
                 ]
 
 
@@ -337,14 +337,14 @@ scaleNameMinor model scaleName =
         if slicer (String.toLower model.musKey) == slicer model.musKey then
             div []
                 [ span [] [ text (String.toUpper (slicer model.musKey) ++ String.slice 1 2 model.musKey) ]
-                , span [ style [ ( "color", "#444" ) ] ] [ text (" " ++ scaleName) ]
-                , span [ style [ ( "color", "#aaa" ) ] ] [ text playOver ]
+                , span [ style [ ( "color", "#777" ) ] ] [ text (" " ++ scaleName) ]
+                , span [ style [ ( "color", "#fff" ) ] ] [ text playOver ]
                 ]
         else
             div []
                 [ span [] [ text (String.toUpper (Maybe.withDefault "a" <| getAt (index + 12) keyList)) ]
-                , span [ style [ ( "color", "#444" ) ] ] [ text scaleName ]
-                , span [ style [ ( "color", "#aaa" ) ] ] [ text (" , relative minor") ]
+                , span [ style [ ( "color", "#777" ) ] ] [ text scaleName ]
+                , span [ style [ ( "color", "#fff" ) ] ] [ text (" , relative minor") ]
                 ]
 
 
