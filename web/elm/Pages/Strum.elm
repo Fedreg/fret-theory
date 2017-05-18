@@ -1,16 +1,54 @@
-module Views.Strum exposing (strummingPage, strumGroup)
+module Pages.Strum exposing (view, strumGroup, Model)
 
 import Html exposing (Html, div, button, text, span, hr, h3, h4, h5, select, option)
 import Html.Attributes exposing (style, attribute, value)
 import Html.Events exposing (onClick, onInput)
-import Logic.Types exposing (Model, Msg(Randomize, ShowModal, StrumArrowDirection, Play, ChangeStrumGroupNumber))
-import Logic.Audio exposing (notes)
+-- import Logic.Types exposing (Model)
+-- import Logic.Audio exposing (notes)
 import Styles.StrumStyles exposing (..)
 import List.Extra exposing (getAt)
 
 
-strummingPage : Model -> Html Msg
-strummingPage model =
+type alias Model =
+    { strumArrow : List (List Int)
+    , strumGroupNumber : String
+    }
+
+
+init =
+    { strumArrow =
+        [ [ 1, 2, 1, 1, 2, 1, 1, 1 ]
+        , [ 1, 2, 1, 1, 2, 1, 1, 1 ]
+        , [ 1, 2, 1, 1, 2, 1, 1, 1 ]
+        , [ 1, 2, 1, 1, 2, 1, 1, 1 ]
+        ]
+    , strumGroupNumber = "1"
+    }
+
+type Msg 
+    = Randomize Int Int
+    | StrumArrowDirection (List (List Int))
+    | ChangeStrumGroupNumber String
+
+update msg model = 
+    Randomize hi lo ->
+        case model.route of
+            StrummingRoute ->
+                ( model, Random.generate StrumArrowDirection <| Random.list 4 <| Random.list 8 (Random.int hi lo) )
+
+         StrumArrowDirection numList ->
+            let
+                _ =
+                    Debug.log "numList" numList
+            in
+                { model | strumArrow = numList } ! []
+
+        ChangeStrumGroupNumber text ->
+            { model | strumGroupNumber = text } ! []
+
+
+view : Model -> Html Msg
+view model =
     div [ strumPageStyle model.strumGroupNumber ]
         [ strumGroupNumberSelector
         , strumGroupMatrix model

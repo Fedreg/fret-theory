@@ -2,7 +2,6 @@ module Styles.StrumStyles exposing (..)
 
 import Html exposing (Attribute)
 import Html.Attributes exposing (style)
-import Logic.Types exposing (Model)
 
 
 strumPageStyle : String -> Attribute msg

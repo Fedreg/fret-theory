@@ -1,16 +1,72 @@
-module Views.FingerPick exposing (fingerPickingPage)
+module Pages.FingerPick exposing (view, Model)
 
 import Html exposing (Html, div, button, text, span, hr, h1, h3, h4, h5)
 import Html.Attributes exposing (style, attribute)
 import Html.Events exposing (onClick)
-import Views.Chords exposing (chordChartModel)
-import Logic.Types exposing (Model, Msg(Randomize, ShowModal))
+import Pages.Chords exposing (chordChartModel, startKey)
+
+
+-- import Logic.Types exposing (Msg(Randomize, ShowModal))
+
 import Styles.FingerPickStyles exposing (..)
 import List.Extra exposing (getAt)
 
 
-fingerPickingPage : Model -> Html Msg
-fingerPickingPage model =
+type alias Model =
+    { fingerPickPatternA : List Int
+    , fingerPickPatternB : List Int
+    , displayedChords : ChordChartData
+    , musKey : String
+    }
+
+
+init =
+    { fingerPickPatternA = [ 2, 0, 0, 3, 0, 1, 0, 2 ]
+    , fingerPickPatternB = [ 5, 0, 4, 0, 5, 0, 5, 0 ]
+    , displayedChords = startKey
+    , musKey = "C"
+    }
+
+
+type Msg
+    = Randomize Int Int
+    | FingerPickPatternBuilderA (List Int)
+    | FingerPickPatternBuilderB (List Int)
+
+
+update msg model =
+    case msg of
+        Randomize hi lo ->
+            ( model
+            , Cmd.batch
+                [ Random.generate FingerPickPatternBuilderA <| Random.list 8 (Random.int hi lo)
+                , Random.generate FingerPickPatternBuilderB <| Random.list 8 (Random.int hi lo)
+                ]
+            )
+
+        FingerPickPatternBuilderA numList ->
+            let
+                pattern =
+                    model.fingerPickPModel
+
+                newPattern =
+                    { pattern | fingerPickPatternA = numList }
+            in
+                { model | fingerPickModel = newPattern } ! []
+
+        FingerPickPatternBuilderB numList ->
+            let
+                pattern =
+                    model.fingerPickModel
+
+                newPattern =
+                    { pattern | fingerPickPatternB = numList }
+            in
+                { model | fingerPickModel = newPattern } ! []
+
+
+view : Model -> Html Msg
+view model =
     div [ fingerPickingPageStyle ]
         [ h1 [ fingerPickChordTitleStyle ] [ chordChartModel model 0 "" .i .i ]
         , fingerPickGroup "1,1" model.fingerPickPattern.a model.fingerPickPattern.b model

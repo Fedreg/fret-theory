@@ -1,4 +1,4 @@
-module Views.MainViews exposing (mainView)
+module Pages.MainViews exposing (mainView)
 
 import Html exposing (Html, div, span, hr, text, a, input, h3, h1)
 import Html exposing (Html, div, span, hr, text, a, input, h3)
@@ -6,13 +6,13 @@ import Html.Attributes exposing (style, href, value, type_, href)
 import Html.Events exposing (onClick, onInput)
 import Logic.Routing as Routing
 import Logic.Types exposing (Model, Msg(..), Route(..), PlayBundle)
-import Views.Home exposing (homePage)
-import Views.Chords exposing (chordsPage, keyListMajor, keyListMinor)
-import Views.Scales exposing (scalesPage)
-import Views.Fretboard exposing (fretboardPage)
-import Views.Strum exposing (strummingPage)
-import Views.FingerPick exposing (fingerPickingPage)
-import Views.Modal exposing (..)
+import Pages.Home exposing (homePage)
+import Pages.Chords exposing (chordsPage, keyListMajor, keyListMinor)
+import Pages.Scales exposing (scalesPage)
+import Pages.Fretboard exposing (fretboardPage)
+import Pages.Strum exposing (view, model)
+import Pages.FingerPick exposing (view, model)
+import Pages.Modal exposing (..)
 import Styles.MainStyles exposing (..)
 import InlineHover exposing (hover)
 
@@ -105,25 +105,25 @@ signature bool =
 page : Model -> Html Msg
 page model =
     case model.route of
-        ChordsPage _ ->
-            chordsPage model
+        ChordsRoute _ ->
+            Pages.Chords.view Pages.Chords.model
 
-        FretboardPage _ ->
+        FretboardRoute _ ->
             fretboardPage model
 
-        ScalesPage _ ->
+        ScalesRoute _ ->
             scalesPage model
 
-        HomePage ->
+        HomeRoute ->
             homePage model
 
-        StrummingPage ->
-            strummingPage model
+        StrummingRoute ->
+            Pages.Strum.view Pages.Strum.model
 
-        FingerPickingPage ->
-            fingerPickingPage model
+        FingerPickingRoute ->
+            Pages.FingerPick.view Pages.FingerPick.model
 
-        NotFoundPage ->
+        NotFoundRoute ->
             notFoundPage
 
 

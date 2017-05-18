@@ -133,16 +133,22 @@ var _user$project$Logic_Types$SendNotes = {ctor: 'SendNotes'};
 var _user$project$Logic_Types$ChangeKey = function (a) {
 	return {ctor: 'ChangeKey', _0: a};
 };
-var _user$project$Logic_Types$FingerPickingPage = {ctor: 'FingerPickingPage'};
-var _user$project$Logic_Types$StrummingPage = {ctor: 'StrummingPage'};
+var _user$project$Logic_Types$FingerPickingRoute = {ctor: 'FingerPickingRoute'};
+var _user$project$Logic_Types$StrummingRoute = {ctor: 'StrummingRoute'};
+var _user$project$Logic_Types$HomeRoute = {ctor: 'HomeRoute'};
+var _user$project$Logic_Types$NotFoundRoute = {ctor: 'NotFoundRoute'};
+var _user$project$Logic_Types$FretboardRoute = function (a) {
+	return {ctor: 'FretboardRoute', _0: a};
+};
+var _user$project$Logic_Types$ScalesRoute = function (a) {
+	return {ctor: 'ScalesRoute', _0: a};
+};
+var _user$project$Logic_Types$ChordsRoute = function (a) {
+	return {ctor: 'ChordsRoute', _0: a};
+};
+var _user$project$Logic_Types$StrumPage = {ctor: 'StrumPage'};
+var _user$project$Logic_Types$ScalesPage = {ctor: 'ScalesPage'};
 var _user$project$Logic_Types$HomePage = {ctor: 'HomePage'};
-var _user$project$Logic_Types$NotFoundPage = {ctor: 'NotFoundPage'};
-var _user$project$Logic_Types$FretboardPage = function (a) {
-	return {ctor: 'FretboardPage', _0: a};
-};
-var _user$project$Logic_Types$ScalesPage = function (a) {
-	return {ctor: 'ScalesPage', _0: a};
-};
-var _user$project$Logic_Types$ChordsPage = function (a) {
-	return {ctor: 'ChordsPage', _0: a};
-};
+var _user$project$Logic_Types$FretboardPage = {ctor: 'FretboardPage'};
+var _user$project$Logic_Types$FingerPickingPage = {ctor: 'FingerPickingPage'};
+var _user$project$Logic_Types$ChordsPage = {ctor: 'ChordsPage'};

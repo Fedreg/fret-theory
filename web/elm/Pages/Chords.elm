@@ -1,17 +1,63 @@
-module Views.Chords exposing (chordsPage, keyList, chordChartModel, startKey, keyListMajor, keyListMinor)
+module Pages.Chords exposing (view, init, keyList, chordChartModel, startKey, keyListMajor, keyListMinor)
 
 import Html exposing (Html, div, span, a, text, option, h4)
 import Html.Attributes exposing (style, value, href)
 import Html.Events exposing (onClick)
 import List.Extra exposing (getAt)
 import Logic.Audio exposing (notes)
-import Logic.Types exposing (Model, ChordChartData, Msg(..), Dot)
+import Logic.Types exposing (Dot)
 import Logic.Routing exposing (scalesPath)
 import Styles.ChordStyles exposing (..)
 
 
-chordsPage : Model -> Html Msg
-chordsPage model =
+type alias Model =
+    { currentChord : List String
+    , displayedChords : ChordChartData
+    , musKey : String
+    , sliderValue : Int
+    }
+
+
+init =
+    { currentChord = []
+    , displayedChords = startKey
+    , musKey = "C"
+    , sliderValue = 1
+    }
+
+
+type Msg
+    = Play (List String) Int
+    | ResetIndex
+    | SendNotes
+
+
+update msg model =
+    case msg of
+        Play chord hzShift ->
+            { model | currentChord = chord, pitchShift = hzShift }
+                ! []
+                :> update ResetIndex
+                :> update SendNotes
+
+        ResetIndex ->
+            { model | index = 0 } ! []
+
+        SendNotes ->
+            let
+                note =
+                    noteSorter <| Maybe.withDefault "e2w" <| getAt model.index model.currentChord
+
+                shiftedNote =
+                    { note | frequency = note.frequency * (1.059463 ^ toFloat model.pitchShift), sustain = note.sustain * (toFloat model.sliderValue / 2) }
+            in
+                ( { model | index = model.index + 1 }
+                , send (PlayBundle shiftedNote "triangle")
+                )
+
+
+view : Model -> Html Msg
+view model =
     let
         soloFretMin =
             Maybe.withDefault "0" (getAt 11 <| (model.displayedChords).names)

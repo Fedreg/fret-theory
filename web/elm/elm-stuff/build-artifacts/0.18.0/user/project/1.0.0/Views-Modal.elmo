@@ -570,20 +570,20 @@ var _user$project$Views_Modal$modal = function (model) {
 	var key = model.musKey;
 	var _p0 = model.route;
 	switch (_p0.ctor) {
-		case 'ChordsPage':
+		case 'ChordsRoute':
 			return _user$project$Views_Modal$chordModal(model);
-		case 'ScalesPage':
+		case 'ScalesRoute':
 			return _user$project$Views_Modal$scalesModal(model);
-		case 'FretboardPage':
+		case 'FretboardRoute':
 			return _user$project$Views_Modal$fretboardModal(model);
-		case 'NotFoundPage':
+		case 'NotFoundRoute':
 			return A2(
 				_elm_lang$html$Html$div,
 				{ctor: '[]'},
 				{ctor: '[]'});
-		case 'HomePage':
+		case 'HomeRoute':
 			return _user$project$Views_Modal$homeModal(model);
-		case 'StrummingPage':
+		case 'StrummingRoute':
 			return _user$project$Views_Modal$strummingModal(model);
 		default:
 			return _user$project$Views_Modal$fingerPickModal(model);

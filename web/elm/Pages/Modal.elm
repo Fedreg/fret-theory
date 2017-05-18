@@ -1,11 +1,11 @@
-module Views.Modal exposing (modal, modalIcon)
+module Pages.Modal exposing (modal, modalIcon)
 
 import Html exposing (Html, div, span, a, text, h3, h4)
 import Html.Attributes exposing (style, class)
 import Html.Events exposing (onClick)
 import Logic.Types exposing (Model, Msg(ShowModal), Route(..))
 import Styles.ModalStyles exposing (..)
-import Views.Strum exposing (strumGroup)
+import Pages.Strum exposing (strumGroup)
 import Markdown exposing (toHtml)
 
 
@@ -16,25 +16,25 @@ modal model =
             model.musKey
     in
         case model.route of
-            ChordsPage key ->
+            ChordsRoute key ->
                 chordModal model
 
-            ScalesPage key ->
+            ScalesRoute key ->
                 scalesModal model
 
-            FretboardPage key ->
+            FretboardRoute key ->
                 fretboardModal model
 
-            NotFoundPage ->
+            NotFoundRoute ->
                 div [] []
 
-            HomePage ->
+            HomeRoute ->
                 homeModal model
 
-            StrummingPage ->
+            StrummingRoute ->
                 strummingModal model
 
-            FingerPickingPage ->
+            FingerPickingRoute ->
                 fingerPickModal model
 
 

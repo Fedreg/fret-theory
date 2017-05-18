@@ -1,4 +1,4 @@
-module Views.Fretboard exposing (fretboardPage, fretNotation, noteFretPos, noteStringPos)
+module Pages.Fretboard exposing (fretboardPage, fretNotation, noteFretPos, noteStringPos)
 
 import Html exposing (Html, div, span, text, hr, img)
 import Html.Events exposing (onClick)

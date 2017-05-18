@@ -2,7 +2,6 @@ module Styles.FingerPickStyles exposing (..)
 
 import Html exposing (Attribute)
 import Html.Attributes exposing (style)
-import Logic.Types exposing (Model)
 
 
 fingerPickingPageStyle : Attribute msg

@@ -2,7 +2,7 @@ module Styles.ChordStyles exposing (..)
 
 import Html exposing (Attribute)
 import Html.Attributes exposing (style)
-import Logic.Types exposing (Model, Msg(..), Dot)
+import Logic.Types exposing (Dot)
 
 
 chordsPageStyle : Attribute Msg

@@ -13362,19 +13362,25 @@ var _user$project$Logic_Types$SendNotes = {ctor: 'SendNotes'};
 var _user$project$Logic_Types$ChangeKey = function (a) {
 	return {ctor: 'ChangeKey', _0: a};
 };
-var _user$project$Logic_Types$FingerPickingPage = {ctor: 'FingerPickingPage'};
-var _user$project$Logic_Types$StrummingPage = {ctor: 'StrummingPage'};
+var _user$project$Logic_Types$FingerPickingRoute = {ctor: 'FingerPickingRoute'};
+var _user$project$Logic_Types$StrummingRoute = {ctor: 'StrummingRoute'};
+var _user$project$Logic_Types$HomeRoute = {ctor: 'HomeRoute'};
+var _user$project$Logic_Types$NotFoundRoute = {ctor: 'NotFoundRoute'};
+var _user$project$Logic_Types$FretboardRoute = function (a) {
+	return {ctor: 'FretboardRoute', _0: a};
+};
+var _user$project$Logic_Types$ScalesRoute = function (a) {
+	return {ctor: 'ScalesRoute', _0: a};
+};
+var _user$project$Logic_Types$ChordsRoute = function (a) {
+	return {ctor: 'ChordsRoute', _0: a};
+};
+var _user$project$Logic_Types$StrumPage = {ctor: 'StrumPage'};
+var _user$project$Logic_Types$ScalesPage = {ctor: 'ScalesPage'};
 var _user$project$Logic_Types$HomePage = {ctor: 'HomePage'};
-var _user$project$Logic_Types$NotFoundPage = {ctor: 'NotFoundPage'};
-var _user$project$Logic_Types$FretboardPage = function (a) {
-	return {ctor: 'FretboardPage', _0: a};
-};
-var _user$project$Logic_Types$ScalesPage = function (a) {
-	return {ctor: 'ScalesPage', _0: a};
-};
-var _user$project$Logic_Types$ChordsPage = function (a) {
-	return {ctor: 'ChordsPage', _0: a};
-};
+var _user$project$Logic_Types$FretboardPage = {ctor: 'FretboardPage'};
+var _user$project$Logic_Types$FingerPickingPage = {ctor: 'FingerPickingPage'};
+var _user$project$Logic_Types$ChordsPage = {ctor: 'ChordsPage'};
 
 var _user$project$Logic_Audio$frequencies = function (note) {
 	var _p0 = note;
@@ -17735,7 +17741,7 @@ var _user$project$Logic_Routing$modelUpdateOnHash = F2(
 	function (model, location) {
 		var _p0 = model.route;
 		switch (_p0.ctor) {
-			case 'ChordsPage':
+			case 'ChordsRoute':
 				return A2(
 					_evancz$url_parser$UrlParser$parseHash,
 					A2(
@@ -17743,7 +17749,7 @@ var _user$project$Logic_Routing$modelUpdateOnHash = F2(
 						_evancz$url_parser$UrlParser$s('chords'),
 						_evancz$url_parser$UrlParser$string),
 					location);
-			case 'ScalesPage':
+			case 'ScalesRoute':
 				return A2(
 					_evancz$url_parser$UrlParser$parseHash,
 					A2(
@@ -17751,7 +17757,7 @@ var _user$project$Logic_Routing$modelUpdateOnHash = F2(
 						_evancz$url_parser$UrlParser$s('scales'),
 						_evancz$url_parser$UrlParser$string),
 					location);
-			case 'FretboardPage':
+			case 'FretboardRoute':
 				return A2(
 					_evancz$url_parser$UrlParser$parseHash,
 					A2(
@@ -17759,7 +17765,7 @@ var _user$project$Logic_Routing$modelUpdateOnHash = F2(
 						_evancz$url_parser$UrlParser$s('fretboard'),
 						_evancz$url_parser$UrlParser$string),
 					location);
-			case 'StrummingPage':
+			case 'StrummingRoute':
 				return A2(
 					_evancz$url_parser$UrlParser$parseHash,
 					A2(
@@ -17767,7 +17773,7 @@ var _user$project$Logic_Routing$modelUpdateOnHash = F2(
 						_evancz$url_parser$UrlParser$s('strum'),
 						_evancz$url_parser$UrlParser$string),
 					location);
-			case 'FingerPickingPage':
+			case 'FingerPickingRoute':
 				return A2(
 					_evancz$url_parser$UrlParser$parseHash,
 					A2(
@@ -17775,7 +17781,7 @@ var _user$project$Logic_Routing$modelUpdateOnHash = F2(
 						_evancz$url_parser$UrlParser$s('fingerpicking'),
 						_evancz$url_parser$UrlParser$string),
 					location);
-			case 'HomePage':
+			case 'HomeRoute':
 				return A2(
 					_evancz$url_parser$UrlParser$parseHash,
 					A2(
@@ -17798,13 +17804,13 @@ var _user$project$Logic_Routing$matchers = _evancz$url_parser$UrlParser$oneOf(
 		ctor: '::',
 		_0: A2(
 			_evancz$url_parser$UrlParser$map,
-			_user$project$Logic_Types$HomePage,
+			_user$project$Logic_Types$HomeRoute,
 			_evancz$url_parser$UrlParser$s('home')),
 		_1: {
 			ctor: '::',
 			_0: A2(
 				_evancz$url_parser$UrlParser$map,
-				_user$project$Logic_Types$ChordsPage,
+				_user$project$Logic_Types$ChordsRoute,
 				A2(
 					_evancz$url_parser$UrlParser_ops['</>'],
 					_evancz$url_parser$UrlParser$s('chords'),
@@ -17813,7 +17819,7 @@ var _user$project$Logic_Routing$matchers = _evancz$url_parser$UrlParser$oneOf(
 				ctor: '::',
 				_0: A2(
 					_evancz$url_parser$UrlParser$map,
-					_user$project$Logic_Types$ScalesPage,
+					_user$project$Logic_Types$ScalesRoute,
 					A2(
 						_evancz$url_parser$UrlParser_ops['</>'],
 						_evancz$url_parser$UrlParser$s('scales'),
@@ -17822,7 +17828,7 @@ var _user$project$Logic_Routing$matchers = _evancz$url_parser$UrlParser$oneOf(
 					ctor: '::',
 					_0: A2(
 						_evancz$url_parser$UrlParser$map,
-						_user$project$Logic_Types$FretboardPage,
+						_user$project$Logic_Types$FretboardRoute,
 						A2(
 							_evancz$url_parser$UrlParser_ops['</>'],
 							_evancz$url_parser$UrlParser$s('fretboard'),
@@ -17831,13 +17837,13 @@ var _user$project$Logic_Routing$matchers = _evancz$url_parser$UrlParser$oneOf(
 						ctor: '::',
 						_0: A2(
 							_evancz$url_parser$UrlParser$map,
-							_user$project$Logic_Types$StrummingPage,
+							_user$project$Logic_Types$StrummingRoute,
 							_evancz$url_parser$UrlParser$s('strumming')),
 						_1: {
 							ctor: '::',
 							_0: A2(
 								_evancz$url_parser$UrlParser$map,
-								_user$project$Logic_Types$FingerPickingPage,
+								_user$project$Logic_Types$FingerPickingRoute,
 								_evancz$url_parser$UrlParser$s('fingerpicking')),
 							_1: {ctor: '[]'}
 						}
@@ -17851,7 +17857,7 @@ var _user$project$Logic_Routing$parseLocation = function (location) {
 	if (_p1.ctor === 'Just') {
 		return _p1._0;
 	} else {
-		return _user$project$Logic_Types$NotFoundPage;
+		return _user$project$Logic_Types$NotFoundRoute;
 	}
 };
 
@@ -26185,20 +26191,20 @@ var _user$project$Views_Modal$modal = function (model) {
 	var key = model.musKey;
 	var _p0 = model.route;
 	switch (_p0.ctor) {
-		case 'ChordsPage':
+		case 'ChordsRoute':
 			return _user$project$Views_Modal$chordModal(model);
-		case 'ScalesPage':
+		case 'ScalesRoute':
 			return _user$project$Views_Modal$scalesModal(model);
-		case 'FretboardPage':
+		case 'FretboardRoute':
 			return _user$project$Views_Modal$fretboardModal(model);
-		case 'NotFoundPage':
+		case 'NotFoundRoute':
 			return A2(
 				_elm_lang$html$Html$div,
 				{ctor: '[]'},
 				{ctor: '[]'});
-		case 'HomePage':
+		case 'HomeRoute':
 			return _user$project$Views_Modal$homeModal(model);
-		case 'StrummingPage':
+		case 'StrummingRoute':
 			return _user$project$Views_Modal$strummingModal(model);
 		default:
 			return _user$project$Views_Modal$fingerPickModal(model);
@@ -26640,17 +26646,17 @@ var _user$project$Views_MainViews$notFoundPage = A2(
 var _user$project$Views_MainViews$page = function (model) {
 	var _p0 = model.route;
 	switch (_p0.ctor) {
-		case 'ChordsPage':
+		case 'ChordsRoute':
 			return _user$project$Views_Chords$chordsPage(model);
-		case 'FretboardPage':
+		case 'FretboardRoute':
 			return _user$project$Views_Fretboard$fretboardPage(model);
-		case 'ScalesPage':
+		case 'ScalesRoute':
 			return _user$project$Views_Scales$scalesPage(model);
-		case 'HomePage':
+		case 'HomeRoute':
 			return _user$project$Views_Home$homePage(model);
-		case 'StrummingPage':
+		case 'StrummingRoute':
 			return _user$project$Views_Strum$strummingPage(model);
-		case 'FingerPickingPage':
+		case 'FingerPickingRoute':
 			return _user$project$Views_FingerPick$fingerPickingPage(model);
 		default:
 			return _user$project$Views_MainViews$notFoundPage;
@@ -27486,7 +27492,7 @@ var _user$project$Main$update = F2(
 				var _p5 = _p0._0;
 				var _p4 = model.route;
 				switch (_p4.ctor) {
-					case 'StrummingPage':
+					case 'StrummingRoute':
 						return {
 							ctor: '_Tuple2',
 							_0: model,
@@ -27501,7 +27507,7 @@ var _user$project$Main$update = F2(
 										8,
 										A2(_elm_lang$core$Random$int, _p5, _p6))))
 						};
-					case 'FingerPickingPage':
+					case 'FingerPickingRoute':
 						return {
 							ctor: '_Tuple2',
 							_0: model,

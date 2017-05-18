@@ -84,17 +84,17 @@ var _user$project$Views_MainViews$notFoundPage = A2(
 var _user$project$Views_MainViews$page = function (model) {
 	var _p0 = model.route;
 	switch (_p0.ctor) {
-		case 'ChordsPage':
+		case 'ChordsRoute':
 			return _user$project$Views_Chords$chordsPage(model);
-		case 'FretboardPage':
+		case 'FretboardRoute':
 			return _user$project$Views_Fretboard$fretboardPage(model);
-		case 'ScalesPage':
+		case 'ScalesRoute':
 			return _user$project$Views_Scales$scalesPage(model);
-		case 'HomePage':
+		case 'HomeRoute':
 			return _user$project$Views_Home$homePage(model);
-		case 'StrummingPage':
+		case 'StrummingRoute':
 			return _user$project$Views_Strum$strummingPage(model);
-		case 'FingerPickingPage':
+		case 'FingerPickingRoute':
 			return _user$project$Views_FingerPick$fingerPickingPage(model);
 		default:
 			return _user$project$Views_MainViews$notFoundPage;

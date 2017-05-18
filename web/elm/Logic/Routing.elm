@@ -8,12 +8,12 @@ import UrlParser exposing (..)
 matchers : Parser (Route -> a) a
 matchers =
     oneOf
-        [ map HomePage (s "home")
-        , map ChordsPage (s "chords" </> string)
-        , map ScalesPage (s "scales" </> string)
-        , map FretboardPage (s "fretboard" </> string)
-        , map StrummingPage (s "strumming")
-        , map FingerPickingPage (s "fingerpicking")
+        [ map HomeRoute (s "home")
+        , map ChordsRoute (s "chords" </> string)
+        , map ScalesRoute (s "scales" </> string)
+        , map FretboardRoute (s "fretboard" </> string)
+        , map StrummingRoute (s "strumming")
+        , map FingerPickingRoute (s "fingerpicking")
         ]
 
 
@@ -24,31 +24,31 @@ parseLocation location =
             route
 
         Nothing ->
-            NotFoundPage
+            NotFoundRoute
 
 
 modelUpdateOnHash : Model -> Location -> Maybe String
 modelUpdateOnHash model location =
     case model.route of
-        ChordsPage _ ->
+        ChordsRoute _ ->
             parseHash (s "chords" </> string) location
 
-        ScalesPage _ ->
+        ScalesRoute _ ->
             parseHash (s "scales" </> string) location
 
-        FretboardPage _ ->
+        FretboardRoute _ ->
             parseHash (s "fretboard" </> string) location
 
-        StrummingPage ->
+        StrummingRoute ->
             parseHash (s "strum" </> string) location
 
-        FingerPickingPage ->
+        FingerPickingRoute ->
             parseHash (s "fingerpicking" </> string) location
 
-        HomePage ->
+        HomeRoute ->
             parseHash (s "home" </> string) location
 
-        NotFoundPage ->
+        NotFoundRoute ->
             parseHash (s "" </> string) location
 
 

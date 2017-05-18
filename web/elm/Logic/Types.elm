@@ -5,21 +5,40 @@ import Phoenix.Socket
 import Json.Encode
 
 
+-- import Pages.Chords exposing (Model)
+
+import Pages.Fretboard exposing (Model)
+import Pages.FingerPick exposing (Model)
+import Pages.Chords exposing (Model)
+
+
+-- import Pages.Home exposing (Model)
+-- import Pages.Scales exposing (Model)
+
+import Pages.Strum exposing (Model)
+
+
 type alias Model =
     { route : Route
-    , musKey : String
+    , currentPage : Page
+    , fingerPickModel : Pages.FingerPick.Model
+    , strumModel : Pages.Strum.Model
+    , chordsModel : Pages.Chords.Model
+    -- , musKey : String
     , index : Int
-    , currentChord : List String
-    , displayedChords : ChordChartData
+    -- , currentChord : List String
+    -- , displayedChords : ChordChartData
     , notePosition : Float
     , showAccidental : String
-    , sliderValue : Int
+    -- , sliderValue : Int
     , navMenuOpen : Bool
     , pitchShift : Int
-    , modalOpen : Bool
-    , strumArrow : List (List Int)
-    , strumGroupNumber : String
-    , fingerPickPattern : { a : List Int, b : List Int }
+    , modalOpen :
+        Bool
+            -- , strumArrow : List (List Int)
+            -- , strumGroupNumber :
+            String
+        -- , fingerPickPattern : { a : List Int, b : List Int }
     , phxSocket : Phoenix.Socket.Socket Msg
     }
 
@@ -105,11 +124,11 @@ type Msg
     | NoOp
     | ShowNavMenu
     | ShowModal
-    | ChangeStrumGroupNumber String
-    | StrumArrowDirection (List (List Int))
-    | FingerPickPatternBuilderA (List Int)
-    | FingerPickPatternBuilderB (List Int)
-    | Randomize Int Int
+      -- | ChangeStrumGroupNumber String
+      -- | StrumArrowDirection (List (List Int))
+      -- | FingerPickPatternBuilderA (List Int)
+      -- | FingerPickPatternBuilderB (List Int)
+      -- | Randomize Int Int
     | JoinChannel
     | SendMessage String
     | ReceiveMessage Json.Encode.Value
@@ -117,10 +136,19 @@ type Msg
 
 
 type Route
-    = ChordsPage String
-    | ScalesPage String
-    | FretboardPage String
-    | NotFoundPage
-    | HomePage
-    | StrummingPage
-    | FingerPickingPage
+    = ChordsRoute String
+    | ScalesRoute String
+    | FretboardRoute String
+    | NotFoundRoute
+    | HomeRoute
+    | StrummingRoute
+    | FingerPickingRoute
+
+
+type Page
+    = Chords
+    | FingerPick
+    | Fretboard
+    | Home
+    | Scales
+    | Strum

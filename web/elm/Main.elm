@@ -4,9 +4,11 @@ import List.Extra exposing (getAt)
 import Logic.Routing as Routing
 import Logic.Types exposing (Model, Msg(..), Route(..), PlayBundle, ChordChartData)
 import Logic.Audio exposing (noteSorter)
-import Views.Fretboard exposing (noteStringPos, noteFretPos)
-import Views.MainViews exposing (mainView)
-import Views.Chords exposing (startKey)
+import Pages.Fretboard exposing (noteStringPos, noteFretPos)
+import Pages.MainViews exposing (mainView)
+import Pages.Chords exposing (startKey)
+import Pages.FingerPick exposing (init)
+import Pages.Strum exposing (init)
 import Navigation exposing (Location, newUrl)
 import Time
 import Update.Extra.Infix exposing ((:>))
@@ -37,20 +39,27 @@ init location =
         ( { route = currentRoute
           , musKey = "C"
           , index = 6
-          , currentChord = []
-          , displayedChords = startKey
+          , fingerPickModel = Pages.FingerPick.init
+          , strumModel = Pages.Strum.init
+          , chordsModel =
+                Pages.Chords.init
+                --   , currentChord = []
+                --   , displayedChords = startKey
           , notePosition = 80.0
-          , showAccidental = "0"
-          , sliderValue = 1
+          , showAccidental =
+                "0"
+                --   , sliderValue = 1
           , navMenuOpen = False
           , pitchShift = 0
-          , modalOpen = False
-          , strumGroupNumber = "1"
-          , strumArrow = [ [ 1, 2, 1, 1, 2, 1, 1, 1 ], [ 1, 2, 1, 1, 2, 1, 1, 1 ],[ 1, 2, 1, 1, 2, 1, 1, 1 ], [ 1, 2, 1, 1, 2, 1, 1, 1 ] ]
-          , fingerPickPattern =
-                { a = [ 2, 0, 0, 3, 0, 1, 0, 2 ]
-                , b = [ 5, 0, 4, 0, 5, 0, 5, 0 ]
-                }
+          , modalOpen =
+                False
+                --   , strumGroupNumber = "1"
+                --   , strumArrow =
+                --         [ [ 1, 2, 1, 1, 2, 1, 1, 1 ], [ 1, 2, 1, 1, 2, 1, 1, 1 ], [ 1, 2, 1, 1, 2, 1, 1, 1 ], [ 1, 2, 1, 1, 2, 1, 1, 1 ] ]
+                --   , fingerPickPattern =
+                --         { a = [ 2, 0, 0, 3, 0, 1, 0, 2 ]
+                --         , b = [ 5, 0, 4, 0, 5, 0, 5, 0 ]
+                --         }
           , phxSocket = initPhoenixSocket
           }
         , joinChannel
@@ -135,52 +144,45 @@ update msg model =
         ShowModal ->
             { model | modalOpen = not model.modalOpen } ! []
 
-        Randomize hi lo ->
-            case model.route of
-                StrummingPage ->
-                    ( model, Random.generate StrumArrowDirection <| Random.list 4 <| Random.list 8 (Random.int hi lo) )
+        -- Randomize hi lo ->
+        --     case model.route of
+        --         StrummingRoute ->
+        --             ( model, Random.generate StrumArrowDirection <| Random.list 4 <| Random.list 8 (Random.int hi lo) )
 
-                FingerPickingPage ->
-                    ( model
-                    , Cmd.batch
-                        [ Random.generate FingerPickPatternBuilderA <| Random.list 8 (Random.int hi lo)
-                        , Random.generate FingerPickPatternBuilderB <| Random.list 8 (Random.int hi lo)
-                        ]
-                    )
+                -- FingerPickingRoute ->
+                --     ( model
+                --     , Cmd.batch
+                --         [ Random.generate FingerPickPatternBuilderA <| Random.list 8 (Random.int hi lo)
+                --         , Random.generate FingerPickPatternBuilderB <| Random.list 8 (Random.int hi lo)
+                --         ]
+                --     )
+                -- _ ->
+                --     (model ! [])
 
-                _ ->
-                    (model ! [])
-
-        StrumArrowDirection numList ->
-            let
-                _ =
-                    Debug.log "numList" numList
-            in
-                { model | strumArrow = numList } ! []
-
-        ChangeStrumGroupNumber text ->
-            { model | strumGroupNumber = text } ! []
-
-        FingerPickPatternBuilderA numList ->
-            let
-                pattern =
-                    model.fingerPickPattern
-
-                newPattern =
-                    { pattern | a = numList }
-            in
-                { model | fingerPickPattern = newPattern } ! []
-
-        FingerPickPatternBuilderB numList ->
-            let
-                pattern =
-                    model.fingerPickPattern
-
-                newPattern =
-                    { pattern | b = numList }
-            in
-                { model | fingerPickPattern = newPattern } ! []
-
+        -- StrumArrowDirection numList ->
+        --     let
+        --         _ =
+        --             Debug.log "numList" numList
+        --     in
+        --         { model | strumArrow = numList } ! []
+        -- ChangeStrumGroupNumber text ->
+        --     { model | strumGroupNumber = text } ! []
+        -- FingerPickPatternBuilderA numList ->
+        --     let
+        --         pattern =
+        --             model.fingerPickPModel
+        --         newPattern =
+        --             { pattern | fingerPickPatternA = numList }
+        --     in
+        --         { model | fingerPickModel = newPattern } ! []
+        -- FingerPickPatternBuilderB numList ->
+        --     let
+        --         pattern =
+        --             model.fingerPickModel
+        --         newPattern =
+        --             { pattern | fingerPickPatternB = numList }
+        --     in
+        --         { model | fingerPickModel = newPattern } ! []
         OnLocationChange location ->
             let
                 newRoute =

@@ -422,7 +422,7 @@ var _user$project$Main$update = F2(
 				var _p5 = _p0._0;
 				var _p4 = model.route;
 				switch (_p4.ctor) {
-					case 'StrummingPage':
+					case 'StrummingRoute':
 						return {
 							ctor: '_Tuple2',
 							_0: model,
@@ -437,7 +437,7 @@ var _user$project$Main$update = F2(
 										8,
 										A2(_elm_lang$core$Random$int, _p5, _p6))))
 						};
-					case 'FingerPickingPage':
+					case 'FingerPickingRoute':
 						return {
 							ctor: '_Tuple2',
 							_0: model,
