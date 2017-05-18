@@ -17,7 +17,8 @@ type alias Model =
     , navMenuOpen : Bool
     , pitchShift : Int
     , modalOpen : Bool
-    , strumArrow : List Int
+    , strumArrow : List (List Int)
+    , strumGroupNumber : String
     , fingerPickPattern : { a : List Int, b : List Int }
     , phxSocket : Phoenix.Socket.Socket Msg
     }
@@ -104,7 +105,8 @@ type Msg
     | NoOp
     | ShowNavMenu
     | ShowModal
-    | StrumArrowDirection (List Int)
+    | ChangeStrumGroupNumber String
+    | StrumArrowDirection (List (List Int))
     | FingerPickPatternBuilderA (List Int)
     | FingerPickPatternBuilderB (List Int)
     | Randomize Int Int

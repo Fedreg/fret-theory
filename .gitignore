@@ -1,3 +1,4 @@
+
 # App artifacts
 /_build
 /db
@@ -9,7 +10,7 @@
 erl_crash.dump
 
 # Static artifacts
-/node_modules
+/node_modulesg
 web/elm/elm-stuff
 /elm-stuff
 
@@ -25,3 +26,4 @@ web/elm/elm-stuff
 # secrets file as long as you replace its contents by environment
 # variables.
 /config/prod.secret.exs
+

@@ -1,24 +1,57 @@
 module Views.Strum exposing (strumPage, strumGroup)
 
-import Html exposing (Html, div, button, text, span, hr, h3, h4, h5)
-import Html.Attributes exposing (style, attribute)
-import Html.Events exposing (onClick)
-import Logic.Types exposing (Model, Msg(Randomize, ShowModal, StrumArrowDirection, Play))
+import Html exposing (Html, div, button, text, span, hr, h3, h4, h5, select, option)
+import Html.Attributes exposing (style, attribute, value)
+import Html.Events exposing (onClick, onInput)
+import Logic.Types exposing (Model, Msg(Randomize, ShowModal, StrumArrowDirection, Play, ChangeStrumGroupNumber))
 import Logic.Audio exposing (notes)
 import Styles.StrumStyles exposing (..)
 import List.Extra exposing (getAt)
 
 
-strumPage : Model -> Html Msg
-strumPage model =
-    div [ strumPageStyle ]
-        [ strumGroup "1,1" model.strumArrow
+strummingPage : Model -> Html Msg
+strummingPage model =
+    div [ strumPageStyle model.strumGroupNumber ]
+        [ strumGroupNumberSelector
+        , strumGroupMatrix model
         , button [ buttonStyle, onClick (Randomize 1 2) ] [ text "Generate Random Strum Pattern" ]
         ]
 
 
-strumGroup : String -> List Int -> Html Msg
-strumGroup scale notes =
+strumGroupMatrix : Model -> Html Msg
+strumGroupMatrix model =
+    let
+        strumPattern n =
+            Maybe.withDefault [] <| getAt n model.strumArrow
+    in
+        case model.strumGroupNumber of
+            "1" ->
+                div [] [ strumGroup "1,1" (strumPattern 0) "#CCC" "#000" "#FFF" "0" ]
+
+            "2" ->
+                div []
+                    [ strumGroup "0.8,0.8" (strumPattern 0) "#CCC" "#000" "#FFF" "-20px -175px"
+                    , strumGroup "0.8,0.8" (strumPattern 1) "#CCC" "#000" "#03a9f4" "-30px -175px"
+                    ]
+
+            "4" ->
+                div []
+                    [ div [ strumGroupMatrixStyle ]
+                        [ strumGroup "0.6,0.6" (strumPattern 0) "#CCC" "#000" "#FFF" "-25px -175px"
+                        , strumGroup "0.6,0.6" (strumPattern 1) "#CCC" "#000" "#03a9f4" "-25px -175px"
+                        ]
+                    , div [ strumGroupMatrixStyle ]
+                        [ strumGroup "0.6,0.6" (strumPattern 2) "#CCC" "#000" "#FFF" "-25px -175px"
+                        , strumGroup "0.6,0.6" (strumPattern 3) "#CCC" "#000" "#03a9f4" "-25px -175px"
+                        ]
+                    ]
+
+            _ ->
+                div [ strumGroupMatrixStyle ] [ strumGroup "0.5,0.5" (strumPattern 0) "#CCC" "#000" "#FFF" "0" ]
+
+
+strumGroup : String -> List Int -> String -> String -> String -> String -> Html Msg
+strumGroup scale notes borderCol arrowCol background margin =
     let
         beats a =
             div [ style [ ( "width", "10px" ), ( "margin", "0 55px 0" ) ] ] [ text <| toString a ]
@@ -29,7 +62,7 @@ strumGroup scale notes =
         arrows a b =
             div [ strumArrowStyle a b ] [ arrow ]
     in
-        div [ strumGroupStyle scale ]
+        div [ strumGroupStyle scale margin ]
             [ div [ style [ ( "display", "flex" ) ] ]
                 (List.map2 arrows notes [ 1, 2, 1, 2, 1, 2, 1, 2 ])
             , div [ style [ ( "display", "flex" ) ] ]
@@ -37,6 +70,19 @@ strumGroup scale notes =
             , div [ style [ ( "display", "flex" ) ] ]
                 (List.map notation <| calculateNotation [] 0 notes)
             ]
+
+
+strumGroupNumberSelector : Html Msg
+strumGroupNumberSelector =
+    select
+        [ onInput ChangeStrumGroupNumber
+        , style
+            [ ( "width", "200px" ) ]
+        ]
+        [ option [ value "1" ] [ text "NUMBER OF MEASURES: 1" ]
+        , option [ value "2" ] [ text "NUMBER OF MEASURES: 2" ]
+        , option [ value "4" ] [ text "NUMBER OF MEASURES: 4" ]
+        ]
 
 
 {-| The up / down arrow itself.  Made up of a rotated div and a hr.

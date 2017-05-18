@@ -5,22 +5,44 @@ import Html.Attributes exposing (style)
 import Logic.Types exposing (Model)
 
 
-strumPageStyle : Attribute msg
-strumPageStyle =
+strumPageStyle : String -> Attribute msg
+strumPageStyle size =
+    let
+        pad =
+            case size of
+                "4" ->
+                    "100px"
+
+                "2" ->
+                    "100px"
+
+                _ ->
+                    "175px"
+    in
+        style
+            [ ( "display", "flex" )
+            , ( "flexDirection", "column" )
+            , ( "paddingTop", pad )
+            , ( "alignItems", "center" )
+            , ( "transition", "all 0.3s" )
+            ]
+
+
+strumGroupStyle : String -> String -> Attribute msg
+strumGroupStyle scale margin =
     style
-        [ ( "height", "100vh" )
-        , ( "width", "95vw" )
-        , ( "display", "flex" )
-        , ( "flexDirection", "column" )
-        , ( "paddingTop", "175px" )
-        , ( "alignItems", "center" )
+        [ ( "transform", "scale(" ++ scale ++ ")" )
+        , ( "width", "950px" )
+        , ( "margin", margin )
         ]
 
 
-strumGroupStyle : String -> Attribute msg
-strumGroupStyle scale =
+strumGroupMatrixStyle : Attribute msg
+strumGroupMatrixStyle =
     style
-        [ ( "transform", "scale(" ++ scale ++ ")" )
+        [ ( "display", "flex" )
+        , ( "flexWrap", "wrap" )
+        , ( "justifyContent", "center" )
         ]
 
 
@@ -85,7 +107,7 @@ beatStyle =
         [ ( "position", "absolute" )
         , ( "top", "225px" )
         , ( "left", "0" )
-        , ( "paddingRight", "200px" )
+        , ( "paddingRight", "20px" )
         ]
 
 
