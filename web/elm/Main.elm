@@ -45,7 +45,8 @@ init location =
           , navMenuOpen = False
           , pitchShift = 0
           , modalOpen = False
-          , strumArrow = [ 1, 2, 1, 1, 2, 1, 1, 1 ]
+          , strumGroupNumber = "1"
+          , strumArrow = [ [ 1, 2, 1, 1, 2, 1, 1, 1 ], [ 1, 2, 1, 1, 2, 1, 1, 1 ],[ 1, 2, 1, 1, 2, 1, 1, 1 ], [ 1, 2, 1, 1, 2, 1, 1, 1 ] ]
           , fingerPickPattern =
                 { a = [ 2, 0, 0, 3, 0, 1, 0, 2 ]
                 , b = [ 5, 0, 4, 0, 5, 0, 5, 0 ]
@@ -137,7 +138,7 @@ update msg model =
         Randomize hi lo ->
             case model.route of
                 StrummingPage ->
-                    ( model, Random.generate StrumArrowDirection <| Random.list 8 (Random.int hi lo) )
+                    ( model, Random.generate StrumArrowDirection <| Random.list 4 <| Random.list 8 (Random.int hi lo) )
 
                 FingerPickingPage ->
                     ( model
@@ -151,7 +152,14 @@ update msg model =
                     (model ! [])
 
         StrumArrowDirection numList ->
-            { model | strumArrow = numList } ! []
+            let
+                _ =
+                    Debug.log "numList" numList
+            in
+                { model | strumArrow = numList } ! []
+
+        ChangeStrumGroupNumber text ->
+            { model | strumGroupNumber = text } ! []
 
         FingerPickPatternBuilderA numList ->
             let

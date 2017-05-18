@@ -56,7 +56,7 @@ var _user$project$Views_Modal$strummingModal = function (model) {
 								_user$project$Views_Modal$strumModalContent),
 							_1: {
 								ctor: '::',
-								_0: A5(
+								_0: A6(
 									_user$project$Views_Strum$strumGroup,
 									'0.75,0.75',
 									{
@@ -94,10 +94,11 @@ var _user$project$Views_Modal$strummingModal = function (model) {
 									},
 									'#444',
 									'#FFF',
-									'none'),
+									'none',
+									'0'),
 								_1: {
 									ctor: '::',
-									_0: A5(
+									_0: A6(
 										_user$project$Views_Strum$strumGroup,
 										'0.75,0.75',
 										{
@@ -135,10 +136,11 @@ var _user$project$Views_Modal$strummingModal = function (model) {
 										},
 										'#444',
 										'#FFF',
-										'none'),
+										'none',
+										'0'),
 									_1: {
 										ctor: '::',
-										_0: A5(
+										_0: A6(
 											_user$project$Views_Strum$strumGroup,
 											'0.75,0.75',
 											{
@@ -176,10 +178,11 @@ var _user$project$Views_Modal$strummingModal = function (model) {
 											},
 											'#444',
 											'#FFF',
-											'none'),
+											'none',
+											'0'),
 										_1: {
 											ctor: '::',
-											_0: A5(
+											_0: A6(
 												_user$project$Views_Strum$strumGroup,
 												'0.75,0.75',
 												{
@@ -217,7 +220,8 @@ var _user$project$Views_Modal$strummingModal = function (model) {
 												},
 												'#444',
 												'#FFF',
-												'none'),
+												'none',
+												'0'),
 											_1: {ctor: '[]'}
 										}
 									}

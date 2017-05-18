@@ -102,16 +102,80 @@ var _user$project$Main$init = function (location) {
 			navMenuOpen: false,
 			pitchShift: 0,
 			modalOpen: false,
+			strumGroupNumber: '1',
 			strumArrow: {
 				ctor: '::',
-				_0: 1,
+				_0: {
+					ctor: '::',
+					_0: 1,
+					_1: {
+						ctor: '::',
+						_0: 2,
+						_1: {
+							ctor: '::',
+							_0: 1,
+							_1: {
+								ctor: '::',
+								_0: 1,
+								_1: {
+									ctor: '::',
+									_0: 2,
+									_1: {
+										ctor: '::',
+										_0: 1,
+										_1: {
+											ctor: '::',
+											_0: 1,
+											_1: {
+												ctor: '::',
+												_0: 1,
+												_1: {ctor: '[]'}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
 				_1: {
 					ctor: '::',
-					_0: 2,
-					_1: {
+					_0: {
 						ctor: '::',
 						_0: 1,
 						_1: {
+							ctor: '::',
+							_0: 2,
+							_1: {
+								ctor: '::',
+								_0: 1,
+								_1: {
+									ctor: '::',
+									_0: 1,
+									_1: {
+										ctor: '::',
+										_0: 2,
+										_1: {
+											ctor: '::',
+											_0: 1,
+											_1: {
+												ctor: '::',
+												_0: 1,
+												_1: {
+													ctor: '::',
+													_0: 1,
+													_1: {ctor: '[]'}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					},
+					_1: {
+						ctor: '::',
+						_0: {
 							ctor: '::',
 							_0: 1,
 							_1: {
@@ -125,12 +189,61 @@ var _user$project$Main$init = function (location) {
 										_0: 1,
 										_1: {
 											ctor: '::',
-											_0: 1,
-											_1: {ctor: '[]'}
+											_0: 2,
+											_1: {
+												ctor: '::',
+												_0: 1,
+												_1: {
+													ctor: '::',
+													_0: 1,
+													_1: {
+														ctor: '::',
+														_0: 1,
+														_1: {ctor: '[]'}
+													}
+												}
+											}
 										}
 									}
 								}
 							}
+						},
+						_1: {
+							ctor: '::',
+							_0: {
+								ctor: '::',
+								_0: 1,
+								_1: {
+									ctor: '::',
+									_0: 2,
+									_1: {
+										ctor: '::',
+										_0: 1,
+										_1: {
+											ctor: '::',
+											_0: 1,
+											_1: {
+												ctor: '::',
+												_0: 2,
+												_1: {
+													ctor: '::',
+													_0: 1,
+													_1: {
+														ctor: '::',
+														_0: 1,
+														_1: {
+															ctor: '::',
+															_0: 1,
+															_1: {ctor: '[]'}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							},
+							_1: {ctor: '[]'}
 						}
 					}
 				}
@@ -318,8 +431,11 @@ var _user$project$Main$update = F2(
 								_user$project$Logic_Types$StrumArrowDirection,
 								A2(
 									_elm_lang$core$Random$list,
-									8,
-									A2(_elm_lang$core$Random$int, _p5, _p6)))
+									4,
+									A2(
+										_elm_lang$core$Random$list,
+										8,
+										A2(_elm_lang$core$Random$int, _p5, _p6))))
 						};
 					case 'FingerPickingPage':
 						return {
@@ -355,11 +471,20 @@ var _user$project$Main$update = F2(
 							{ctor: '[]'});
 				}
 			case 'StrumArrowDirection':
+				var _p8 = _p0._0;
+				var _p7 = A2(_elm_lang$core$Debug$log, 'numList', _p8);
 				return A2(
 					_elm_lang$core$Platform_Cmd_ops['!'],
 					_elm_lang$core$Native_Utils.update(
 						model,
-						{strumArrow: _p0._0}),
+						{strumArrow: _p8}),
+					{ctor: '[]'});
+			case 'ChangeStrumGroupNumber':
+				return A2(
+					_elm_lang$core$Platform_Cmd_ops['!'],
+					_elm_lang$core$Native_Utils.update(
+						model,
+						{strumGroupNumber: _p0._0}),
 					{ctor: '[]'});
 			case 'FingerPickPatternBuilderA':
 				var pattern = model.fingerPickPattern;
@@ -384,12 +509,12 @@ var _user$project$Main$update = F2(
 						{fingerPickPattern: newPattern}),
 					{ctor: '[]'});
 			case 'OnLocationChange':
-				var _p7 = _p0._0;
+				var _p9 = _p0._0;
 				var newKey = A2(
 					_elm_lang$core$Maybe$withDefault,
 					'C',
-					A2(_user$project$Logic_Routing$modelUpdateOnHash, model, _p7));
-				var newRoute = _user$project$Logic_Routing$parseLocation(_p7);
+					A2(_user$project$Logic_Routing$modelUpdateOnHash, model, _p9));
+				var newRoute = _user$project$Logic_Routing$parseLocation(_p9);
 				return A2(
 					_elm_lang$core$Platform_Cmd_ops['!'],
 					_elm_lang$core$Native_Utils.update(
@@ -403,18 +528,18 @@ var _user$project$Main$update = F2(
 					_1: _elm_lang$navigation$Navigation$newUrl(_p0._0)
 				};
 			case 'ChangeKey':
-				var _p8 = _p0._0;
+				var _p10 = _p0._0;
 				return A2(
 					_ccapndave$elm_update_extra$Update_Extra_Infix_ops[':>'],
 					{
 						ctor: '_Tuple2',
 						_0: _elm_lang$core$Native_Utils.update(
 							model,
-							{musKey: _p8, navMenuOpen: false}),
+							{musKey: _p10, navMenuOpen: false}),
 						_1: _user$project$Main$joinChannel
 					},
 					_user$project$Main$update(
-						_user$project$Logic_Types$SendMessage(_p8)));
+						_user$project$Logic_Types$SendMessage(_p10)));
 			case 'Play':
 				return A2(
 					_ccapndave$elm_update_extra$Update_Extra_Infix_ops[':>'],
