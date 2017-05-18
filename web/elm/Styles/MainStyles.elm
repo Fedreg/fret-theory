@@ -120,6 +120,7 @@ keyListStyle =
         , ( "border", "1px solid #333" )
         , ( "fontSize", "16px" )
         , ( "transition", "all 0.4s ease" )
+        , ( "color", "#fff" )
         ]
 
 
@@ -131,7 +132,6 @@ keyListKeyTitleStyle =
         , ( "right", "50px" )
         , ( "width", "450px" )
         , ( "textAlign", "right" )
-        , ( "color", "#FFF" )
         , ( "fontSize", "16px" )
         , ( "textTransform", "underline" )
         ]
@@ -158,7 +158,7 @@ keyListContainerStyle navOpen =
                 baseStyles "1" "translateY(0)"
 
             False ->
-                baseStyles "0" "translateY(-400px)"
+                baseStyles "0" "translateY(-600px)"
 
 
 textContainerStyle : Attribute msg
