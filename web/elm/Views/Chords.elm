@@ -1,4 +1,4 @@
-module Views.Chords exposing (chordsPage, keyList, chordChartModel, startKey, keyListMajor, keyListMinor)
+module Views.Chords exposing (chordChartPage, keyList, chordChartModel, startKey)
 
 import Html exposing (Html, div, span, a, text, option, h4)
 import Html.Attributes exposing (style, value, href)
@@ -10,8 +10,8 @@ import Logic.Routing exposing (scalesPath)
 import Styles.ChordStyles exposing (..)
 
 
-chordsPage : Model -> Html Msg
-chordsPage model =
+chordChartPage : Model -> Html Msg
+chordChartPage model =
     let
         soloFretMin =
             Maybe.withDefault "0" (getAt 11 <| (model.displayedChords).names)
@@ -22,7 +22,7 @@ chordsPage model =
         keyOptions key =
             option [ value key ] [ text key ]
     in
-        div [ style [ ( "textAlign", "center" ), ( "width", "95vw" ), ( "paddingTop", "125px" ) ] ]
+        div [ style [ ( "textAlign", "center" ), ( "width", "95vw" ), ( "paddingTop", "50px" ) ] ]
             [ div [] [ fingerChart ]
             , div [ chartContainerStyle "row" ]
                 [ chordChartModel model 0 "I" .i .i
@@ -75,7 +75,7 @@ fingerNo finger =
 
         "2" ->
             -- "#E8175D"
-            "#B5B5B6"
+            "#FFF"
 
         "3" ->
             -- "#F25F2E"
@@ -215,16 +215,6 @@ fingerChart =
             , div [ style [ ( "padding", "15px" ), ( "lineHeight", "9px" ) ] ] [ text "Pinky" ]
             ]
         ]
-
-
-keyListMajor : List String
-keyListMajor =
-    [ "C", "G", "D", "A", "E", "B", "F#", "Db", "Ab", "Eb", "Bb", "F" ]
-
-
-keyListMinor : List String
-keyListMinor =
-    [ "a", "e", "b", "f#", "c#", "g#", "d#", "bb", "f", "c", "g", "d" ]
 
 
 keyList : List String

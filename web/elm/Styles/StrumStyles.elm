@@ -48,8 +48,8 @@ strumGroupMatrixStyle =
 
 {-| Determines if arrow is displayed and if it points up or down.
 -}
-strumArrowStyle : Int -> Int -> String -> String -> Attribute msg
-strumArrowStyle num mover borderCol background =
+strumArrowStyle : Int -> Int -> Attribute msg
+strumArrowStyle num mover =
     let
         opacity =
             case num of
@@ -76,10 +76,10 @@ strumArrowStyle num mover borderCol background =
         shadow =
             case mover of
                 1 ->
-                    "-5px -15px 20px -10px rgba(0,0,0,0.5)"
+                    "-5px -15px 20px -10px rgba(0,0,0,1)"
 
                 2 ->
-                    "5px 15px 20px -10px rgba(0,0,0,0.5)"
+                    "5px 15px 20px -10px rgba(0,0,0,1)"
 
                 _ ->
                     "0"
@@ -91,13 +91,13 @@ strumArrowStyle num mover borderCol background =
             , ( "opacity", opacity )
             , ( "paddingTop", "50px" )
             , ( "display", "flex" )
-            , ( "border", "1px solid " ++ borderCol )
+            , ( "border", "1px solid #333" )
             , ( "borderRadius", "10px" )
             , ( "justifyContent", "center" )
             , ( "transform", "rotate(" ++ rotate ++ ")" )
             , ( "transition", "all 0.4s ease" )
             , ( "boxShadow", shadow )
-            , ( "backgroundColor", background )
+            , ( "backgroundColor", "none" )
             ]
 
 

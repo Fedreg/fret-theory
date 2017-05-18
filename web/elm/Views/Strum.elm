@@ -1,4 +1,4 @@
-module Views.Strum exposing (strummingPage, strumGroup)
+module Views.Strum exposing (strumPage, strumGroup)
 
 import Html exposing (Html, div, button, text, span, hr, h3, h4, h5, select, option)
 import Html.Attributes exposing (style, attribute, value)
@@ -60,7 +60,7 @@ strumGroup scale notes borderCol arrowCol background margin =
             div [ style [ ( "width", "10px" ), ( "margin", "20px 55px 0" ) ] ] [ printNotation a ]
 
         arrows a b =
-            div [ strumArrowStyle a b borderCol background ] [ arrow arrowCol ]
+            div [ strumArrowStyle a b ] [ arrow ]
     in
         div [ strumGroupStyle scale margin ]
             [ div [ style [ ( "display", "flex" ) ] ]
@@ -87,16 +87,16 @@ strumGroupNumberSelector =
 
 {-| The up / down arrow itself.  Made up of a rotated div and a hr.
 -}
-arrow : String -> Html Msg
-arrow col =
+arrow : Html Msg
+arrow =
     let
         baseStyles height width x y =
             style
                 [ ( "transform", "rotate(45deg)" )
                 , ( "width", width )
                 , ( "height", height )
-                , ( "borderTop", "9px solid " ++ col )
-                , ( "borderLeft", "9px solid " ++ col )
+                , ( "borderTop", "9px solid  #fff" )
+                , ( "borderLeft", "9px solid  #fff" )
                 , ( "marginLeft", x )
                 , ( "marginTop", y )
                 ]
