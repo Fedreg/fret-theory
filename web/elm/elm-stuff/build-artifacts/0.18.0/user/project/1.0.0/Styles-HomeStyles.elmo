@@ -36,6 +36,44 @@ var _user$project$Styles_HomeStyles$titleStyle = F2(
 				}
 			});
 	});
+var _user$project$Styles_HomeStyles$homePageModalIconStyle = _elm_lang$html$Html_Attributes$style(
+	{
+		ctor: '::',
+		_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '20px'},
+		_1: {
+			ctor: '::',
+			_0: {ctor: '_Tuple2', _0: 'fontWeight', _1: '700'},
+			_1: {
+				ctor: '::',
+				_0: {ctor: '_Tuple2', _0: 'color', _1: '#03a9f4'},
+				_1: {ctor: '[]'}
+			}
+		}
+	});
+var _user$project$Styles_HomeStyles$homePageTextListItemStyle = _elm_lang$html$Html_Attributes$style(
+	{
+		ctor: '::',
+		_0: {ctor: '_Tuple2', _0: 'paddingRight', _1: '30px'},
+		_1: {ctor: '[]'}
+	});
+var _user$project$Styles_HomeStyles$homePageTextListStyle = _elm_lang$html$Html_Attributes$style(
+	{
+		ctor: '::',
+		_0: {ctor: '_Tuple2', _0: 'color', _1: '#444'},
+		_1: {
+			ctor: '::',
+			_0: {ctor: '_Tuple2', _0: 'margin ', _1: '0 auto'},
+			_1: {
+				ctor: '::',
+				_0: {ctor: '_Tuple2', _0: 'textDecoration', _1: 'none'},
+				_1: {
+					ctor: '::',
+					_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '24px'},
+					_1: {ctor: '[]'}
+				}
+			}
+		}
+	});
 var _user$project$Styles_HomeStyles$homePageStyle = _elm_lang$html$Html_Attributes$style(
 	{
 		ctor: '::',

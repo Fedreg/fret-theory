@@ -687,28 +687,8 @@ var _user$project$Views_Chords$fingerChart = A2(
 					_elm_lang$html$Html$div,
 					{
 						ctor: '::',
-						_0: _elm_lang$html$Html_Attributes$style(
-							{
-								ctor: '::',
-								_0: {ctor: '_Tuple2', _0: 'width', _1: '15px'},
-								_1: {
-									ctor: '::',
-									_0: {ctor: '_Tuple2', _0: 'height', _1: '25px'},
-									_1: {
-										ctor: '::',
-										_0: {ctor: '_Tuple2', _0: 'borderRadius', _1: '7px'},
-										_1: {
-											ctor: '::',
-											_0: {
-												ctor: '_Tuple2',
-												_0: 'backgroundColor',
-												_1: _user$project$Views_Chords$fingerNo('1')
-											},
-											_1: {ctor: '[]'}
-										}
-									}
-								}
-							}),
+						_0: _user$project$Styles_ChordStyles$fingerChartDotStyle(
+							_user$project$Views_Chords$fingerNo('1')),
 						_1: {ctor: '[]'}
 					},
 					{ctor: '[]'}),
@@ -718,16 +698,7 @@ var _user$project$Views_Chords$fingerChart = A2(
 						_elm_lang$html$Html$div,
 						{
 							ctor: '::',
-							_0: _elm_lang$html$Html_Attributes$style(
-								{
-									ctor: '::',
-									_0: {ctor: '_Tuple2', _0: 'padding', _1: '15px'},
-									_1: {
-										ctor: '::',
-										_0: {ctor: '_Tuple2', _0: 'lineHeight', _1: '9px'},
-										_1: {ctor: '[]'}
-									}
-								}),
+							_0: _user$project$Styles_ChordStyles$fingerChartTextStyle,
 							_1: {ctor: '[]'}
 						},
 						{
@@ -741,28 +712,8 @@ var _user$project$Views_Chords$fingerChart = A2(
 							_elm_lang$html$Html$div,
 							{
 								ctor: '::',
-								_0: _elm_lang$html$Html_Attributes$style(
-									{
-										ctor: '::',
-										_0: {ctor: '_Tuple2', _0: 'width', _1: '15px'},
-										_1: {
-											ctor: '::',
-											_0: {ctor: '_Tuple2', _0: 'height', _1: '25px'},
-											_1: {
-												ctor: '::',
-												_0: {ctor: '_Tuple2', _0: 'borderRadius', _1: '7px'},
-												_1: {
-													ctor: '::',
-													_0: {
-														ctor: '_Tuple2',
-														_0: 'backgroundColor',
-														_1: _user$project$Views_Chords$fingerNo('2')
-													},
-													_1: {ctor: '[]'}
-												}
-											}
-										}
-									}),
+								_0: _user$project$Styles_ChordStyles$fingerChartDotStyle(
+									_user$project$Views_Chords$fingerNo('2')),
 								_1: {ctor: '[]'}
 							},
 							{ctor: '[]'}),
@@ -772,16 +723,7 @@ var _user$project$Views_Chords$fingerChart = A2(
 								_elm_lang$html$Html$div,
 								{
 									ctor: '::',
-									_0: _elm_lang$html$Html_Attributes$style(
-										{
-											ctor: '::',
-											_0: {ctor: '_Tuple2', _0: 'padding', _1: '15px'},
-											_1: {
-												ctor: '::',
-												_0: {ctor: '_Tuple2', _0: 'lineHeight', _1: '9px'},
-												_1: {ctor: '[]'}
-											}
-										}),
+									_0: _user$project$Styles_ChordStyles$fingerChartTextStyle,
 									_1: {ctor: '[]'}
 								},
 								{
@@ -795,28 +737,8 @@ var _user$project$Views_Chords$fingerChart = A2(
 									_elm_lang$html$Html$div,
 									{
 										ctor: '::',
-										_0: _elm_lang$html$Html_Attributes$style(
-											{
-												ctor: '::',
-												_0: {ctor: '_Tuple2', _0: 'width', _1: '15px'},
-												_1: {
-													ctor: '::',
-													_0: {ctor: '_Tuple2', _0: 'height', _1: '25px'},
-													_1: {
-														ctor: '::',
-														_0: {ctor: '_Tuple2', _0: 'borderRadius', _1: '7px'},
-														_1: {
-															ctor: '::',
-															_0: {
-																ctor: '_Tuple2',
-																_0: 'backgroundColor',
-																_1: _user$project$Views_Chords$fingerNo('3')
-															},
-															_1: {ctor: '[]'}
-														}
-													}
-												}
-											}),
+										_0: _user$project$Styles_ChordStyles$fingerChartDotStyle(
+											_user$project$Views_Chords$fingerNo('3')),
 										_1: {ctor: '[]'}
 									},
 									{ctor: '[]'}),
@@ -826,16 +748,7 @@ var _user$project$Views_Chords$fingerChart = A2(
 										_elm_lang$html$Html$div,
 										{
 											ctor: '::',
-											_0: _elm_lang$html$Html_Attributes$style(
-												{
-													ctor: '::',
-													_0: {ctor: '_Tuple2', _0: 'padding', _1: '15px'},
-													_1: {
-														ctor: '::',
-														_0: {ctor: '_Tuple2', _0: 'lineHeight', _1: '9px'},
-														_1: {ctor: '[]'}
-													}
-												}),
+											_0: _user$project$Styles_ChordStyles$fingerChartTextStyle,
 											_1: {ctor: '[]'}
 										},
 										{
@@ -849,28 +762,8 @@ var _user$project$Views_Chords$fingerChart = A2(
 											_elm_lang$html$Html$div,
 											{
 												ctor: '::',
-												_0: _elm_lang$html$Html_Attributes$style(
-													{
-														ctor: '::',
-														_0: {ctor: '_Tuple2', _0: 'width', _1: '15px'},
-														_1: {
-															ctor: '::',
-															_0: {ctor: '_Tuple2', _0: 'height', _1: '25px'},
-															_1: {
-																ctor: '::',
-																_0: {ctor: '_Tuple2', _0: 'borderRadius', _1: '7px'},
-																_1: {
-																	ctor: '::',
-																	_0: {
-																		ctor: '_Tuple2',
-																		_0: 'backgroundColor',
-																		_1: _user$project$Views_Chords$fingerNo('4')
-																	},
-																	_1: {ctor: '[]'}
-																}
-															}
-														}
-													}),
+												_0: _user$project$Styles_ChordStyles$fingerChartDotStyle(
+													_user$project$Views_Chords$fingerNo('4')),
 												_1: {ctor: '[]'}
 											},
 											{ctor: '[]'}),
@@ -880,16 +773,7 @@ var _user$project$Views_Chords$fingerChart = A2(
 												_elm_lang$html$Html$div,
 												{
 													ctor: '::',
-													_0: _elm_lang$html$Html_Attributes$style(
-														{
-															ctor: '::',
-															_0: {ctor: '_Tuple2', _0: 'padding', _1: '15px'},
-															_1: {
-																ctor: '::',
-																_0: {ctor: '_Tuple2', _0: 'lineHeight', _1: '9px'},
-																_1: {ctor: '[]'}
-															}
-														}),
+													_0: _user$project$Styles_ChordStyles$fingerChartTextStyle,
 													_1: {ctor: '[]'}
 												},
 												{
@@ -1006,20 +890,7 @@ var _user$project$Views_Chords$chordsPage = function (model) {
 		_elm_lang$html$Html$div,
 		{
 			ctor: '::',
-			_0: _elm_lang$html$Html_Attributes$style(
-				{
-					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'textAlign', _1: 'center'},
-					_1: {
-						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'width', _1: '95vw'},
-						_1: {
-							ctor: '::',
-							_0: {ctor: '_Tuple2', _0: 'paddingTop', _1: '125px'},
-							_1: {ctor: '[]'}
-						}
-					}
-				}),
+			_0: _user$project$Styles_ChordStyles$chordsPageStyle,
 			_1: {ctor: '[]'}
 		},
 		{
@@ -1232,24 +1103,7 @@ var _user$project$Views_Chords$chordsPage = function (model) {
 									_elm_lang$html$Html$div,
 									{
 										ctor: '::',
-										_0: _elm_lang$html$Html_Attributes$style(
-											{
-												ctor: '::',
-												_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '18px'},
-												_1: {
-													ctor: '::',
-													_0: {ctor: '_Tuple2', _0: 'paddingBottom', _1: '50px'},
-													_1: {
-														ctor: '::',
-														_0: {ctor: '_Tuple2', _0: 'color', _1: '#A8A7A7'},
-														_1: {
-															ctor: '::',
-															_0: {ctor: '_Tuple2', _0: 'textDecoration', _1: 'inherit'},
-															_1: {ctor: '[]'}
-														}
-													}
-												}
-											}),
+										_0: _user$project$Styles_ChordStyles$soloOnTextStyle,
 										_1: {ctor: '[]'}
 									},
 									{
@@ -1268,16 +1122,7 @@ var _user$project$Views_Chords$chordsPage = function (model) {
 												_elm_lang$html$Html$span,
 												{
 													ctor: '::',
-													_0: _elm_lang$html$Html_Attributes$style(
-														{
-															ctor: '::',
-															_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '25px'},
-															_1: {
-																ctor: '::',
-																_0: {ctor: '_Tuple2', _0: 'color', _1: '#03a9f4'},
-																_1: {ctor: '[]'}
-															}
-														}),
+													_0: _user$project$Styles_ChordStyles$soloOnNumberStyle,
 													_1: {ctor: '[]'}
 												},
 												{
@@ -1291,12 +1136,7 @@ var _user$project$Views_Chords$chordsPage = function (model) {
 													_elm_lang$html$Html$a,
 													{
 														ctor: '::',
-														_0: _elm_lang$html$Html_Attributes$style(
-															{
-																ctor: '::',
-																_0: {ctor: '_Tuple2', _0: 'color', _1: '#aaa'},
-																_1: {ctor: '[]'}
-															}),
+														_0: _user$project$Styles_ChordStyles$soloOnLinkStyle,
 														_1: {
 															ctor: '::',
 															_0: _elm_lang$html$Html_Attributes$href(
@@ -1315,16 +1155,7 @@ var _user$project$Views_Chords$chordsPage = function (model) {
 														_elm_lang$html$Html$span,
 														{
 															ctor: '::',
-															_0: _elm_lang$html$Html_Attributes$style(
-																{
-																	ctor: '::',
-																	_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '25px'},
-																	_1: {
-																		ctor: '::',
-																		_0: {ctor: '_Tuple2', _0: 'color', _1: '#03a9f4'},
-																		_1: {ctor: '[]'}
-																	}
-																}),
+															_0: _user$project$Styles_ChordStyles$soloOnNumberStyle,
 															_1: {ctor: '[]'}
 														},
 														{
@@ -1338,12 +1169,7 @@ var _user$project$Views_Chords$chordsPage = function (model) {
 															_elm_lang$html$Html$a,
 															{
 																ctor: '::',
-																_0: _elm_lang$html$Html_Attributes$style(
-																	{
-																		ctor: '::',
-																		_0: {ctor: '_Tuple2', _0: 'color', _1: '#aaa'},
-																		_1: {ctor: '[]'}
-																	}),
+																_0: _user$project$Styles_ChordStyles$soloOnLinkStyle,
 																_1: {
 																	ctor: '::',
 																	_0: _elm_lang$html$Html_Attributes$href(

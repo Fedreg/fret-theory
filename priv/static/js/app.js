@@ -26845,19 +26845,6 @@ var _user$project$Views_Fretboard$fretNotation = function (model) {
 			}
 		});
 };
-var _user$project$Views_Fretboard$revealNotes = {
-	ctor: '::',
-	_0: {ctor: '_Tuple2', _0: 'opacity', _1: '1'},
-	_1: {
-		ctor: '::',
-		_0: {ctor: '_Tuple2', _0: 'z-index', _1: '500'},
-		_1: {
-			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'transform', _1: 'scale(3,3)'},
-			_1: {ctor: '[]'}
-		}
-	}
-};
 var _user$project$Views_Fretboard$stringe = {
 	ctor: '::',
 	_0: '1/0/e/1',
@@ -27466,6 +27453,40 @@ var _user$project$Views_Fretboard$fretboardPage = function (model) {
 		});
 };
 
+var _user$project$Styles_ChordStyles$soloOnLinkStyle = _elm_lang$html$Html_Attributes$style(
+	{
+		ctor: '::',
+		_0: {ctor: '_Tuple2', _0: 'color', _1: '#aaa'},
+		_1: {ctor: '[]'}
+	});
+var _user$project$Styles_ChordStyles$soloOnTextStyle = _elm_lang$html$Html_Attributes$style(
+	{
+		ctor: '::',
+		_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '18px'},
+		_1: {
+			ctor: '::',
+			_0: {ctor: '_Tuple2', _0: 'paddingBottom', _1: '50px'},
+			_1: {
+				ctor: '::',
+				_0: {ctor: '_Tuple2', _0: 'color', _1: '#A8A7A7'},
+				_1: {
+					ctor: '::',
+					_0: {ctor: '_Tuple2', _0: 'textDecoration', _1: 'inherit'},
+					_1: {ctor: '[]'}
+				}
+			}
+		}
+	});
+var _user$project$Styles_ChordStyles$soloOnNumberStyle = _elm_lang$html$Html_Attributes$style(
+	{
+		ctor: '::',
+		_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '25px'},
+		_1: {
+			ctor: '::',
+			_0: {ctor: '_Tuple2', _0: 'color', _1: '#03a9f4'},
+			_1: {ctor: '[]'}
+		}
+	});
 var _user$project$Styles_ChordStyles$fretMarkerStyle = function (dot) {
 	if (_elm_lang$core$Native_Utils.eq(dot.tint, 'bar')) {
 		var stringHeight = A2(
@@ -27639,6 +27660,36 @@ var _user$project$Styles_ChordStyles$fretMarkerStyle = function (dot) {
 				});
 		}
 	}
+};
+var _user$project$Styles_ChordStyles$fingerChartTextStyle = _elm_lang$html$Html_Attributes$style(
+	{
+		ctor: '::',
+		_0: {ctor: '_Tuple2', _0: 'padding', _1: '15px'},
+		_1: {
+			ctor: '::',
+			_0: {ctor: '_Tuple2', _0: 'lineHeight', _1: '9px'},
+			_1: {ctor: '[]'}
+		}
+	});
+var _user$project$Styles_ChordStyles$fingerChartDotStyle = function (col) {
+	return _elm_lang$html$Html_Attributes$style(
+		{
+			ctor: '::',
+			_0: {ctor: '_Tuple2', _0: 'width', _1: '15px'},
+			_1: {
+				ctor: '::',
+				_0: {ctor: '_Tuple2', _0: 'height', _1: '25px'},
+				_1: {
+					ctor: '::',
+					_0: {ctor: '_Tuple2', _0: 'borderRadius', _1: '7px'},
+					_1: {
+						ctor: '::',
+						_0: {ctor: '_Tuple2', _0: 'backgroundColor', _1: col},
+						_1: {ctor: '[]'}
+					}
+				}
+			}
+		});
 };
 var _user$project$Styles_ChordStyles$fingerChartStyle = _elm_lang$html$Html_Attributes$style(
 	{
@@ -27842,6 +27893,20 @@ var _user$project$Styles_ChordStyles$chordBarPosStyle = _elm_lang$html$Html_Attr
 						_1: {ctor: '[]'}
 					}
 				}
+			}
+		}
+	});
+var _user$project$Styles_ChordStyles$chordsPageStyle = _elm_lang$html$Html_Attributes$style(
+	{
+		ctor: '::',
+		_0: {ctor: '_Tuple2', _0: 'textAlign', _1: 'center'},
+		_1: {
+			ctor: '::',
+			_0: {ctor: '_Tuple2', _0: 'width', _1: '95vw'},
+			_1: {
+				ctor: '::',
+				_0: {ctor: '_Tuple2', _0: 'paddingTop', _1: '125px'},
+				_1: {ctor: '[]'}
 			}
 		}
 	});
@@ -28535,28 +28600,8 @@ var _user$project$Views_Chords$fingerChart = A2(
 					_elm_lang$html$Html$div,
 					{
 						ctor: '::',
-						_0: _elm_lang$html$Html_Attributes$style(
-							{
-								ctor: '::',
-								_0: {ctor: '_Tuple2', _0: 'width', _1: '15px'},
-								_1: {
-									ctor: '::',
-									_0: {ctor: '_Tuple2', _0: 'height', _1: '25px'},
-									_1: {
-										ctor: '::',
-										_0: {ctor: '_Tuple2', _0: 'borderRadius', _1: '7px'},
-										_1: {
-											ctor: '::',
-											_0: {
-												ctor: '_Tuple2',
-												_0: 'backgroundColor',
-												_1: _user$project$Views_Chords$fingerNo('1')
-											},
-											_1: {ctor: '[]'}
-										}
-									}
-								}
-							}),
+						_0: _user$project$Styles_ChordStyles$fingerChartDotStyle(
+							_user$project$Views_Chords$fingerNo('1')),
 						_1: {ctor: '[]'}
 					},
 					{ctor: '[]'}),
@@ -28566,16 +28611,7 @@ var _user$project$Views_Chords$fingerChart = A2(
 						_elm_lang$html$Html$div,
 						{
 							ctor: '::',
-							_0: _elm_lang$html$Html_Attributes$style(
-								{
-									ctor: '::',
-									_0: {ctor: '_Tuple2', _0: 'padding', _1: '15px'},
-									_1: {
-										ctor: '::',
-										_0: {ctor: '_Tuple2', _0: 'lineHeight', _1: '9px'},
-										_1: {ctor: '[]'}
-									}
-								}),
+							_0: _user$project$Styles_ChordStyles$fingerChartTextStyle,
 							_1: {ctor: '[]'}
 						},
 						{
@@ -28589,28 +28625,8 @@ var _user$project$Views_Chords$fingerChart = A2(
 							_elm_lang$html$Html$div,
 							{
 								ctor: '::',
-								_0: _elm_lang$html$Html_Attributes$style(
-									{
-										ctor: '::',
-										_0: {ctor: '_Tuple2', _0: 'width', _1: '15px'},
-										_1: {
-											ctor: '::',
-											_0: {ctor: '_Tuple2', _0: 'height', _1: '25px'},
-											_1: {
-												ctor: '::',
-												_0: {ctor: '_Tuple2', _0: 'borderRadius', _1: '7px'},
-												_1: {
-													ctor: '::',
-													_0: {
-														ctor: '_Tuple2',
-														_0: 'backgroundColor',
-														_1: _user$project$Views_Chords$fingerNo('2')
-													},
-													_1: {ctor: '[]'}
-												}
-											}
-										}
-									}),
+								_0: _user$project$Styles_ChordStyles$fingerChartDotStyle(
+									_user$project$Views_Chords$fingerNo('2')),
 								_1: {ctor: '[]'}
 							},
 							{ctor: '[]'}),
@@ -28620,16 +28636,7 @@ var _user$project$Views_Chords$fingerChart = A2(
 								_elm_lang$html$Html$div,
 								{
 									ctor: '::',
-									_0: _elm_lang$html$Html_Attributes$style(
-										{
-											ctor: '::',
-											_0: {ctor: '_Tuple2', _0: 'padding', _1: '15px'},
-											_1: {
-												ctor: '::',
-												_0: {ctor: '_Tuple2', _0: 'lineHeight', _1: '9px'},
-												_1: {ctor: '[]'}
-											}
-										}),
+									_0: _user$project$Styles_ChordStyles$fingerChartTextStyle,
 									_1: {ctor: '[]'}
 								},
 								{
@@ -28643,28 +28650,8 @@ var _user$project$Views_Chords$fingerChart = A2(
 									_elm_lang$html$Html$div,
 									{
 										ctor: '::',
-										_0: _elm_lang$html$Html_Attributes$style(
-											{
-												ctor: '::',
-												_0: {ctor: '_Tuple2', _0: 'width', _1: '15px'},
-												_1: {
-													ctor: '::',
-													_0: {ctor: '_Tuple2', _0: 'height', _1: '25px'},
-													_1: {
-														ctor: '::',
-														_0: {ctor: '_Tuple2', _0: 'borderRadius', _1: '7px'},
-														_1: {
-															ctor: '::',
-															_0: {
-																ctor: '_Tuple2',
-																_0: 'backgroundColor',
-																_1: _user$project$Views_Chords$fingerNo('3')
-															},
-															_1: {ctor: '[]'}
-														}
-													}
-												}
-											}),
+										_0: _user$project$Styles_ChordStyles$fingerChartDotStyle(
+											_user$project$Views_Chords$fingerNo('3')),
 										_1: {ctor: '[]'}
 									},
 									{ctor: '[]'}),
@@ -28674,16 +28661,7 @@ var _user$project$Views_Chords$fingerChart = A2(
 										_elm_lang$html$Html$div,
 										{
 											ctor: '::',
-											_0: _elm_lang$html$Html_Attributes$style(
-												{
-													ctor: '::',
-													_0: {ctor: '_Tuple2', _0: 'padding', _1: '15px'},
-													_1: {
-														ctor: '::',
-														_0: {ctor: '_Tuple2', _0: 'lineHeight', _1: '9px'},
-														_1: {ctor: '[]'}
-													}
-												}),
+											_0: _user$project$Styles_ChordStyles$fingerChartTextStyle,
 											_1: {ctor: '[]'}
 										},
 										{
@@ -28697,28 +28675,8 @@ var _user$project$Views_Chords$fingerChart = A2(
 											_elm_lang$html$Html$div,
 											{
 												ctor: '::',
-												_0: _elm_lang$html$Html_Attributes$style(
-													{
-														ctor: '::',
-														_0: {ctor: '_Tuple2', _0: 'width', _1: '15px'},
-														_1: {
-															ctor: '::',
-															_0: {ctor: '_Tuple2', _0: 'height', _1: '25px'},
-															_1: {
-																ctor: '::',
-																_0: {ctor: '_Tuple2', _0: 'borderRadius', _1: '7px'},
-																_1: {
-																	ctor: '::',
-																	_0: {
-																		ctor: '_Tuple2',
-																		_0: 'backgroundColor',
-																		_1: _user$project$Views_Chords$fingerNo('4')
-																	},
-																	_1: {ctor: '[]'}
-																}
-															}
-														}
-													}),
+												_0: _user$project$Styles_ChordStyles$fingerChartDotStyle(
+													_user$project$Views_Chords$fingerNo('4')),
 												_1: {ctor: '[]'}
 											},
 											{ctor: '[]'}),
@@ -28728,16 +28686,7 @@ var _user$project$Views_Chords$fingerChart = A2(
 												_elm_lang$html$Html$div,
 												{
 													ctor: '::',
-													_0: _elm_lang$html$Html_Attributes$style(
-														{
-															ctor: '::',
-															_0: {ctor: '_Tuple2', _0: 'padding', _1: '15px'},
-															_1: {
-																ctor: '::',
-																_0: {ctor: '_Tuple2', _0: 'lineHeight', _1: '9px'},
-																_1: {ctor: '[]'}
-															}
-														}),
+													_0: _user$project$Styles_ChordStyles$fingerChartTextStyle,
 													_1: {ctor: '[]'}
 												},
 												{
@@ -28854,20 +28803,7 @@ var _user$project$Views_Chords$chordsPage = function (model) {
 		_elm_lang$html$Html$div,
 		{
 			ctor: '::',
-			_0: _elm_lang$html$Html_Attributes$style(
-				{
-					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'textAlign', _1: 'center'},
-					_1: {
-						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'width', _1: '95vw'},
-						_1: {
-							ctor: '::',
-							_0: {ctor: '_Tuple2', _0: 'paddingTop', _1: '125px'},
-							_1: {ctor: '[]'}
-						}
-					}
-				}),
+			_0: _user$project$Styles_ChordStyles$chordsPageStyle,
 			_1: {ctor: '[]'}
 		},
 		{
@@ -29080,24 +29016,7 @@ var _user$project$Views_Chords$chordsPage = function (model) {
 									_elm_lang$html$Html$div,
 									{
 										ctor: '::',
-										_0: _elm_lang$html$Html_Attributes$style(
-											{
-												ctor: '::',
-												_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '18px'},
-												_1: {
-													ctor: '::',
-													_0: {ctor: '_Tuple2', _0: 'paddingBottom', _1: '50px'},
-													_1: {
-														ctor: '::',
-														_0: {ctor: '_Tuple2', _0: 'color', _1: '#A8A7A7'},
-														_1: {
-															ctor: '::',
-															_0: {ctor: '_Tuple2', _0: 'textDecoration', _1: 'inherit'},
-															_1: {ctor: '[]'}
-														}
-													}
-												}
-											}),
+										_0: _user$project$Styles_ChordStyles$soloOnTextStyle,
 										_1: {ctor: '[]'}
 									},
 									{
@@ -29116,16 +29035,7 @@ var _user$project$Views_Chords$chordsPage = function (model) {
 												_elm_lang$html$Html$span,
 												{
 													ctor: '::',
-													_0: _elm_lang$html$Html_Attributes$style(
-														{
-															ctor: '::',
-															_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '25px'},
-															_1: {
-																ctor: '::',
-																_0: {ctor: '_Tuple2', _0: 'color', _1: '#03a9f4'},
-																_1: {ctor: '[]'}
-															}
-														}),
+													_0: _user$project$Styles_ChordStyles$soloOnNumberStyle,
 													_1: {ctor: '[]'}
 												},
 												{
@@ -29139,12 +29049,7 @@ var _user$project$Views_Chords$chordsPage = function (model) {
 													_elm_lang$html$Html$a,
 													{
 														ctor: '::',
-														_0: _elm_lang$html$Html_Attributes$style(
-															{
-																ctor: '::',
-																_0: {ctor: '_Tuple2', _0: 'color', _1: '#aaa'},
-																_1: {ctor: '[]'}
-															}),
+														_0: _user$project$Styles_ChordStyles$soloOnLinkStyle,
 														_1: {
 															ctor: '::',
 															_0: _elm_lang$html$Html_Attributes$href(
@@ -29163,16 +29068,7 @@ var _user$project$Views_Chords$chordsPage = function (model) {
 														_elm_lang$html$Html$span,
 														{
 															ctor: '::',
-															_0: _elm_lang$html$Html_Attributes$style(
-																{
-																	ctor: '::',
-																	_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '25px'},
-																	_1: {
-																		ctor: '::',
-																		_0: {ctor: '_Tuple2', _0: 'color', _1: '#03a9f4'},
-																		_1: {ctor: '[]'}
-																	}
-																}),
+															_0: _user$project$Styles_ChordStyles$soloOnNumberStyle,
 															_1: {ctor: '[]'}
 														},
 														{
@@ -29186,12 +29082,7 @@ var _user$project$Views_Chords$chordsPage = function (model) {
 															_elm_lang$html$Html$a,
 															{
 																ctor: '::',
-																_0: _elm_lang$html$Html_Attributes$style(
-																	{
-																		ctor: '::',
-																		_0: {ctor: '_Tuple2', _0: 'color', _1: '#aaa'},
-																		_1: {ctor: '[]'}
-																	}),
+																_0: _user$project$Styles_ChordStyles$soloOnLinkStyle,
 																_1: {
 																	ctor: '::',
 																	_0: _elm_lang$html$Html_Attributes$href(
@@ -29235,6 +29126,16 @@ var _user$project$Styles_ScalesStyles$scalePageStyle = _elm_lang$html$Html_Attri
 					_1: {ctor: '[]'}
 				}
 			}
+		}
+	});
+var _user$project$Styles_ScalesStyles$fretNumberGroupStyle = _elm_lang$html$Html_Attributes$style(
+	{
+		ctor: '::',
+		_0: {ctor: '_Tuple2', _0: 'paddingRight', _1: '10px'},
+		_1: {
+			ctor: '::',
+			_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '18px'},
+			_1: {ctor: '[]'}
 		}
 	});
 var _user$project$Styles_ScalesStyles$fretNumberStyle = function (margin) {
@@ -30262,16 +30163,7 @@ var _user$project$Views_Scales$dorianModeView = function (model) {
 			_elm_lang$html$Html$span,
 			{
 				ctor: '::',
-				_0: _elm_lang$html$Html_Attributes$style(
-					{
-						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'paddingRight', _1: '10px'},
-						_1: {
-							ctor: '::',
-							_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '18px'},
-							_1: {ctor: '[]'}
-						}
-					}),
+				_0: _user$project$Styles_ScalesStyles$fretNumberGroupStyle,
 				_1: {ctor: '[]'}
 			},
 			{
@@ -30433,16 +30325,7 @@ var _user$project$Views_Scales$mixolydianModeView = function (model) {
 			_elm_lang$html$Html$span,
 			{
 				ctor: '::',
-				_0: _elm_lang$html$Html_Attributes$style(
-					{
-						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'paddingRight', _1: '10px'},
-						_1: {
-							ctor: '::',
-							_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '18px'},
-							_1: {ctor: '[]'}
-						}
-					}),
+				_0: _user$project$Styles_ScalesStyles$fretNumberGroupStyle,
 				_1: {ctor: '[]'}
 			},
 			{
@@ -30604,16 +30487,7 @@ var _user$project$Views_Scales$lydianModeView = function (model) {
 			_elm_lang$html$Html$span,
 			{
 				ctor: '::',
-				_0: _elm_lang$html$Html_Attributes$style(
-					{
-						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'paddingRight', _1: '10px'},
-						_1: {
-							ctor: '::',
-							_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '18px'},
-							_1: {ctor: '[]'}
-						}
-					}),
+				_0: _user$project$Styles_ScalesStyles$fretNumberGroupStyle,
 				_1: {ctor: '[]'}
 			},
 			{
@@ -30775,16 +30649,7 @@ var _user$project$Views_Scales$minorPentatonicView = function (model) {
 			_elm_lang$html$Html$span,
 			{
 				ctor: '::',
-				_0: _elm_lang$html$Html_Attributes$style(
-					{
-						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'paddingRight', _1: '10px'},
-						_1: {
-							ctor: '::',
-							_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '18px'},
-							_1: {ctor: '[]'}
-						}
-					}),
+				_0: _user$project$Styles_ScalesStyles$fretNumberGroupStyle,
 				_1: {ctor: '[]'}
 			},
 			{
@@ -30945,16 +30810,7 @@ var _user$project$Views_Scales$majorPentatonicView = function (model) {
 			_elm_lang$html$Html$span,
 			{
 				ctor: '::',
-				_0: _elm_lang$html$Html_Attributes$style(
-					{
-						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'paddingRight', _1: '10px'},
-						_1: {
-							ctor: '::',
-							_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '18px'},
-							_1: {ctor: '[]'}
-						}
-					}),
+				_0: _user$project$Styles_ScalesStyles$fretNumberGroupStyle,
 				_1: {ctor: '[]'}
 			},
 			{
@@ -31116,16 +30972,7 @@ var _user$project$Views_Scales$aeolianModeView = function (model) {
 			_elm_lang$html$Html$span,
 			{
 				ctor: '::',
-				_0: _elm_lang$html$Html_Attributes$style(
-					{
-						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'paddingRight', _1: '10px'},
-						_1: {
-							ctor: '::',
-							_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '18px'},
-							_1: {ctor: '[]'}
-						}
-					}),
+				_0: _user$project$Styles_ScalesStyles$fretNumberGroupStyle,
 				_1: {ctor: '[]'}
 			},
 			{
@@ -31286,16 +31133,7 @@ var _user$project$Views_Scales$ionianModeView = function (model) {
 			_elm_lang$html$Html$span,
 			{
 				ctor: '::',
-				_0: _elm_lang$html$Html_Attributes$style(
-					{
-						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'paddingRight', _1: '10px'},
-						_1: {
-							ctor: '::',
-							_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '18px'},
-							_1: {ctor: '[]'}
-						}
-					}),
+				_0: _user$project$Styles_ScalesStyles$fretNumberGroupStyle,
 				_1: {ctor: '[]'}
 			},
 			{
@@ -31544,6 +31382,44 @@ var _user$project$Styles_HomeStyles$titleStyle = F2(
 				}
 			});
 	});
+var _user$project$Styles_HomeStyles$homePageModalIconStyle = _elm_lang$html$Html_Attributes$style(
+	{
+		ctor: '::',
+		_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '20px'},
+		_1: {
+			ctor: '::',
+			_0: {ctor: '_Tuple2', _0: 'fontWeight', _1: '700'},
+			_1: {
+				ctor: '::',
+				_0: {ctor: '_Tuple2', _0: 'color', _1: '#03a9f4'},
+				_1: {ctor: '[]'}
+			}
+		}
+	});
+var _user$project$Styles_HomeStyles$homePageTextListItemStyle = _elm_lang$html$Html_Attributes$style(
+	{
+		ctor: '::',
+		_0: {ctor: '_Tuple2', _0: 'paddingRight', _1: '30px'},
+		_1: {ctor: '[]'}
+	});
+var _user$project$Styles_HomeStyles$homePageTextListStyle = _elm_lang$html$Html_Attributes$style(
+	{
+		ctor: '::',
+		_0: {ctor: '_Tuple2', _0: 'color', _1: '#444'},
+		_1: {
+			ctor: '::',
+			_0: {ctor: '_Tuple2', _0: 'margin ', _1: '0 auto'},
+			_1: {
+				ctor: '::',
+				_0: {ctor: '_Tuple2', _0: 'textDecoration', _1: 'none'},
+				_1: {
+					ctor: '::',
+					_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '24px'},
+					_1: {ctor: '[]'}
+				}
+			}
+		}
+	});
 var _user$project$Styles_HomeStyles$homePageStyle = _elm_lang$html$Html_Attributes$style(
 	{
 		ctor: '::',
@@ -31654,24 +31530,7 @@ var _user$project$Views_Home$homePage = function (model) {
 									_elm_lang$html$Html$div,
 									{
 										ctor: '::',
-										_0: _elm_lang$html$Html_Attributes$style(
-											{
-												ctor: '::',
-												_0: {ctor: '_Tuple2', _0: 'color', _1: '#444'},
-												_1: {
-													ctor: '::',
-													_0: {ctor: '_Tuple2', _0: 'margin ', _1: '0 auto'},
-													_1: {
-														ctor: '::',
-														_0: {ctor: '_Tuple2', _0: 'textDecoration', _1: 'none'},
-														_1: {
-															ctor: '::',
-															_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '24px'},
-															_1: {ctor: '[]'}
-														}
-													}
-												}
-											}),
+										_0: _user$project$Styles_HomeStyles$homePageTextListStyle,
 										_1: {ctor: '[]'}
 									},
 									{
@@ -31680,12 +31539,7 @@ var _user$project$Views_Home$homePage = function (model) {
 											_elm_lang$html$Html$span,
 											{
 												ctor: '::',
-												_0: _elm_lang$html$Html_Attributes$style(
-													{
-														ctor: '::',
-														_0: {ctor: '_Tuple2', _0: 'paddingRight', _1: '30px'},
-														_1: {ctor: '[]'}
-													}),
+												_0: _user$project$Styles_HomeStyles$homePageTextListItemStyle,
 												_1: {ctor: '[]'}
 											},
 											{
@@ -31699,12 +31553,7 @@ var _user$project$Views_Home$homePage = function (model) {
 												_elm_lang$html$Html$span,
 												{
 													ctor: '::',
-													_0: _elm_lang$html$Html_Attributes$style(
-														{
-															ctor: '::',
-															_0: {ctor: '_Tuple2', _0: 'paddingRight', _1: '30px'},
-															_1: {ctor: '[]'}
-														}),
+													_0: _user$project$Styles_HomeStyles$homePageTextListItemStyle,
 													_1: {ctor: '[]'}
 												},
 												{
@@ -31718,12 +31567,7 @@ var _user$project$Views_Home$homePage = function (model) {
 													_elm_lang$html$Html$span,
 													{
 														ctor: '::',
-														_0: _elm_lang$html$Html_Attributes$style(
-															{
-																ctor: '::',
-																_0: {ctor: '_Tuple2', _0: 'paddingRight', _1: '30px'},
-																_1: {ctor: '[]'}
-															}),
+														_0: _user$project$Styles_HomeStyles$homePageTextListItemStyle,
 														_1: {ctor: '[]'}
 													},
 													{
@@ -31737,12 +31581,7 @@ var _user$project$Views_Home$homePage = function (model) {
 														_elm_lang$html$Html$span,
 														{
 															ctor: '::',
-															_0: _elm_lang$html$Html_Attributes$style(
-																{
-																	ctor: '::',
-																	_0: {ctor: '_Tuple2', _0: 'paddingRight', _1: '30px'},
-																	_1: {ctor: '[]'}
-																}),
+															_0: _user$project$Styles_HomeStyles$homePageTextListItemStyle,
 															_1: {ctor: '[]'}
 														},
 														{
@@ -31756,12 +31595,7 @@ var _user$project$Views_Home$homePage = function (model) {
 															_elm_lang$html$Html$span,
 															{
 																ctor: '::',
-																_0: _elm_lang$html$Html_Attributes$style(
-																	{
-																		ctor: '::',
-																		_0: {ctor: '_Tuple2', _0: 'paddingRight', _1: '30px'},
-																		_1: {ctor: '[]'}
-																	}),
+																_0: _user$project$Styles_HomeStyles$homePageTextListItemStyle,
 																_1: {ctor: '[]'}
 															},
 															{
@@ -31796,20 +31630,7 @@ var _user$project$Views_Home$homePage = function (model) {
 													_elm_lang$html$Html$span,
 													{
 														ctor: '::',
-														_0: _elm_lang$html$Html_Attributes$style(
-															{
-																ctor: '::',
-																_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '20px'},
-																_1: {
-																	ctor: '::',
-																	_0: {ctor: '_Tuple2', _0: 'fontWeight', _1: '700'},
-																	_1: {
-																		ctor: '::',
-																		_0: {ctor: '_Tuple2', _0: 'color', _1: '#03a9f4'},
-																		_1: {ctor: '[]'}
-																	}
-																}
-															}),
+														_0: _user$project$Styles_HomeStyles$homePageModalIconStyle,
 														_1: {ctor: '[]'}
 													},
 													{
@@ -32780,6 +32601,122 @@ var _user$project$Views_Strum$strummingPage = function (model) {
 		});
 };
 
+var _user$project$Styles_FingerPickStyles$fingerPickNotationDotStyle = _elm_lang$html$Html_Attributes$style(
+	{
+		ctor: '::',
+		_0: {ctor: '_Tuple2', _0: 'position', _1: 'absolute'},
+		_1: {
+			ctor: '::',
+			_0: {ctor: '_Tuple2', _0: 'bottom', _1: '-30px'},
+			_1: {
+				ctor: '::',
+				_0: {ctor: '_Tuple2', _0: 'right', _1: '-15px'},
+				_1: {
+					ctor: '::',
+					_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '50px'},
+					_1: {
+						ctor: '::',
+						_0: {ctor: '_Tuple2', _0: 'color', _1: '#555'},
+						_1: {ctor: '[]'}
+					}
+				}
+			}
+		}
+	});
+var _user$project$Styles_FingerPickStyles$fingerPickNotationFlagStyle = function (flag) {
+	return _elm_lang$html$Html_Attributes$style(
+		{
+			ctor: '::',
+			_0: {ctor: '_Tuple2', _0: 'position', _1: 'absolute'},
+			_1: {
+				ctor: '::',
+				_0: {ctor: '_Tuple2', _0: 'top', _1: '-7px'},
+				_1: {
+					ctor: '::',
+					_0: {ctor: '_Tuple2', _0: 'right', _1: '-15px'},
+					_1: {
+						ctor: '::',
+						_0: {ctor: '_Tuple2', _0: 'width', _1: '15px'},
+						_1: {
+							ctor: '::',
+							_0: {ctor: '_Tuple2', _0: 'height', _1: '15px'},
+							_1: {
+								ctor: '::',
+								_0: {ctor: '_Tuple2', _0: 'transform', _1: 'skew(30deg)'},
+								_1: {
+									ctor: '::',
+									_0: {ctor: '_Tuple2', _0: 'visibility', _1: flag},
+									_1: {
+										ctor: '::',
+										_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '20px'},
+										_1: {
+											ctor: '::',
+											_0: {ctor: '_Tuple2', _0: 'color', _1: '#555'},
+											_1: {ctor: '[]'}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		});
+};
+var _user$project$Styles_FingerPickStyles$fingerPickNotationContainerStyle = _elm_lang$html$Html_Attributes$style(
+	{
+		ctor: '::',
+		_0: {ctor: '_Tuple2', _0: 'position', _1: 'relative'},
+		_1: {
+			ctor: '::',
+			_0: {ctor: '_Tuple2', _0: 'height', _1: '35px'},
+			_1: {
+				ctor: '::',
+				_0: {ctor: '_Tuple2', _0: 'borderRight', _1: '2px solid #555'},
+				_1: {ctor: '[]'}
+			}
+		}
+	});
+var _user$project$Styles_FingerPickStyles$fingerPickNotationBaseStyles = function (fill) {
+	return _elm_lang$html$Html_Attributes$style(
+		{
+			ctor: '::',
+			_0: {ctor: '_Tuple2', _0: 'position', _1: 'absolute'},
+			_1: {
+				ctor: '::',
+				_0: {ctor: '_Tuple2', _0: 'bottom', _1: '-10px'},
+				_1: {
+					ctor: '::',
+					_0: {ctor: '_Tuple2', _0: 'left', _1: '-5px'},
+					_1: {
+						ctor: '::',
+						_0: {ctor: '_Tuple2', _0: 'width', _1: '14px'},
+						_1: {
+							ctor: '::',
+							_0: {ctor: '_Tuple2', _0: 'height', _1: '15px'},
+							_1: {
+								ctor: '::',
+								_0: {ctor: '_Tuple2', _0: 'transform', _1: 'skew(-20deg)'},
+								_1: {
+									ctor: '::',
+									_0: {ctor: '_Tuple2', _0: 'border', _1: '2px solid #555'},
+									_1: {
+										ctor: '::',
+										_0: {ctor: '_Tuple2', _0: 'borderRadius', _1: '10px'},
+										_1: {
+											ctor: '::',
+											_0: {ctor: '_Tuple2', _0: 'backgroundColor', _1: fill},
+											_1: {ctor: '[]'}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		});
+};
 var _user$project$Styles_FingerPickStyles$buttonStyle = _elm_lang$html$Html_Attributes$style(
 	{
 		ctor: '::',
@@ -32916,6 +32853,26 @@ var _user$project$Styles_FingerPickStyles$fretStyle = F2(
 				}
 			});
 	});
+var _user$project$Styles_FingerPickStyles$fingerPickGroupNotationStyle = _elm_lang$html$Html_Attributes$style(
+	{
+		ctor: '::',
+		_0: {ctor: '_Tuple2', _0: 'width', _1: '10px'},
+		_1: {
+			ctor: '::',
+			_0: {ctor: '_Tuple2', _0: 'margin', _1: '5px 55px 0'},
+			_1: {ctor: '[]'}
+		}
+	});
+var _user$project$Styles_FingerPickStyles$fingerPickGroupBeatStyle = _elm_lang$html$Html_Attributes$style(
+	{
+		ctor: '::',
+		_0: {ctor: '_Tuple2', _0: 'width', _1: '10px'},
+		_1: {
+			ctor: '::',
+			_0: {ctor: '_Tuple2', _0: 'margin', _1: '5px 55px 10px'},
+			_1: {ctor: '[]'}
+		}
+	});
 var _user$project$Styles_FingerPickStyles$fingerPickGroupStyle = function (scale) {
 	return _elm_lang$html$Html_Attributes$style(
 		{
@@ -32971,129 +32928,13 @@ var _user$project$Styles_FingerPickStyles$fingerPickingPageStyle = _elm_lang$htm
 	});
 
 var _user$project$Views_FingerPick$printNotation = function (notes) {
-	var strumNotationDotStyle = _elm_lang$html$Html_Attributes$style(
-		{
-			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'position', _1: 'absolute'},
-			_1: {
-				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'bottom', _1: '-30px'},
-				_1: {
-					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'right', _1: '-15px'},
-					_1: {
-						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '50px'},
-						_1: {
-							ctor: '::',
-							_0: {ctor: '_Tuple2', _0: 'color', _1: '#555'},
-							_1: {ctor: '[]'}
-						}
-					}
-				}
-			}
-		});
-	var strumNotationFlagStyle = function (flag) {
-		return _elm_lang$html$Html_Attributes$style(
-			{
-				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'position', _1: 'absolute'},
-				_1: {
-					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'top', _1: '-7px'},
-					_1: {
-						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'right', _1: '-15px'},
-						_1: {
-							ctor: '::',
-							_0: {ctor: '_Tuple2', _0: 'width', _1: '15px'},
-							_1: {
-								ctor: '::',
-								_0: {ctor: '_Tuple2', _0: 'height', _1: '15px'},
-								_1: {
-									ctor: '::',
-									_0: {ctor: '_Tuple2', _0: 'transform', _1: 'skew(30deg)'},
-									_1: {
-										ctor: '::',
-										_0: {ctor: '_Tuple2', _0: 'visibility', _1: flag},
-										_1: {
-											ctor: '::',
-											_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '20px'},
-											_1: {
-												ctor: '::',
-												_0: {ctor: '_Tuple2', _0: 'color', _1: '#555'},
-												_1: {ctor: '[]'}
-											}
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-			});
-	};
-	var strumNotationContainerStyle = _elm_lang$html$Html_Attributes$style(
-		{
-			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'position', _1: 'relative'},
-			_1: {
-				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'height', _1: '35px'},
-				_1: {
-					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'borderRight', _1: '2px solid #555'},
-					_1: {ctor: '[]'}
-				}
-			}
-		});
-	var baseStyles = function (fill) {
-		return _elm_lang$html$Html_Attributes$style(
-			{
-				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'position', _1: 'absolute'},
-				_1: {
-					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'bottom', _1: '-10px'},
-					_1: {
-						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'left', _1: '-5px'},
-						_1: {
-							ctor: '::',
-							_0: {ctor: '_Tuple2', _0: 'width', _1: '14px'},
-							_1: {
-								ctor: '::',
-								_0: {ctor: '_Tuple2', _0: 'height', _1: '15px'},
-								_1: {
-									ctor: '::',
-									_0: {ctor: '_Tuple2', _0: 'transform', _1: 'skew(-20deg)'},
-									_1: {
-										ctor: '::',
-										_0: {ctor: '_Tuple2', _0: 'border', _1: '2px solid #555'},
-										_1: {
-											ctor: '::',
-											_0: {ctor: '_Tuple2', _0: 'borderRadius', _1: '10px'},
-											_1: {
-												ctor: '::',
-												_0: {ctor: '_Tuple2', _0: 'backgroundColor', _1: fill},
-												_1: {ctor: '[]'}
-											}
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-			});
-	};
 	var markup = F3(
 		function (fill, dot, flag) {
 			return A2(
 				_elm_lang$html$Html$div,
 				{
 					ctor: '::',
-					_0: strumNotationContainerStyle,
+					_0: _user$project$Styles_FingerPickStyles$fingerPickNotationContainerStyle,
 					_1: {ctor: '[]'}
 				},
 				{
@@ -33102,7 +32943,7 @@ var _user$project$Views_FingerPick$printNotation = function (notes) {
 						_elm_lang$html$Html$div,
 						{
 							ctor: '::',
-							_0: baseStyles(fill),
+							_0: _user$project$Styles_FingerPickStyles$fingerPickNotationBaseStyles(fill),
 							_1: {ctor: '[]'}
 						},
 						{ctor: '[]'}),
@@ -33112,7 +32953,7 @@ var _user$project$Views_FingerPick$printNotation = function (notes) {
 							_elm_lang$html$Html$div,
 							{
 								ctor: '::',
-								_0: strumNotationFlagStyle(flag),
+								_0: _user$project$Styles_FingerPickStyles$fingerPickNotationFlagStyle(flag),
 								_1: {ctor: '[]'}
 							},
 							{
@@ -33126,7 +32967,7 @@ var _user$project$Views_FingerPick$printNotation = function (notes) {
 								_elm_lang$html$Html$div,
 								{
 									ctor: '::',
-									_0: strumNotationDotStyle,
+									_0: _user$project$Styles_FingerPickStyles$fingerPickNotationDotStyle,
 									_1: {ctor: '[]'}
 								},
 								{
@@ -33628,16 +33469,7 @@ var _user$project$Views_FingerPick$fingerPickGroup = F4(
 				_elm_lang$html$Html$div,
 				{
 					ctor: '::',
-					_0: _elm_lang$html$Html_Attributes$style(
-						{
-							ctor: '::',
-							_0: {ctor: '_Tuple2', _0: 'width', _1: '10px'},
-							_1: {
-								ctor: '::',
-								_0: {ctor: '_Tuple2', _0: 'margin', _1: '5px 55px 0'},
-								_1: {ctor: '[]'}
-							}
-						}),
+					_0: _user$project$Styles_FingerPickStyles$fingerPickGroupNotationStyle,
 					_1: {ctor: '[]'}
 				},
 				{
@@ -33651,16 +33483,7 @@ var _user$project$Views_FingerPick$fingerPickGroup = F4(
 				_elm_lang$html$Html$div,
 				{
 					ctor: '::',
-					_0: _elm_lang$html$Html_Attributes$style(
-						{
-							ctor: '::',
-							_0: {ctor: '_Tuple2', _0: 'width', _1: '10px'},
-							_1: {
-								ctor: '::',
-								_0: {ctor: '_Tuple2', _0: 'margin', _1: '5px 55px 10px'},
-								_1: {ctor: '[]'}
-							}
-						}),
+					_0: _user$project$Styles_FingerPickStyles$fingerPickGroupBeatStyle,
 					_1: {ctor: '[]'}
 				},
 				{
@@ -34992,6 +34815,27 @@ var _user$project$Views_MainViews$playbackSpeedSlider = function (model) {
 			}
 		});
 };
+var _user$project$Views_MainViews$notFoundPage = A2(
+	_elm_lang$html$Html$h1,
+	{
+		ctor: '::',
+		_0: _elm_lang$html$Html_Attributes$style(
+			{
+				ctor: '::',
+				_0: {ctor: '_Tuple2', _0: 'margin', _1: '100px 300px'},
+				_1: {
+					ctor: '::',
+					_0: {ctor: '_Tuple2', _0: 'color', _1: '#03a9f4'},
+					_1: {ctor: '[]'}
+				}
+			}),
+		_1: {ctor: '[]'}
+	},
+	{
+		ctor: '::',
+		_0: _elm_lang$html$Html$text('Page Not Found! '),
+		_1: {ctor: '[]'}
+	});
 var _user$project$Views_MainViews$page = function (model) {
 	var _p0 = model.route;
 	switch (_p0.ctor) {
@@ -35008,27 +34852,7 @@ var _user$project$Views_MainViews$page = function (model) {
 		case 'FingerPickingPage':
 			return _user$project$Views_FingerPick$fingerPickingPage(model);
 		default:
-			return A2(
-				_elm_lang$html$Html$h1,
-				{
-					ctor: '::',
-					_0: _elm_lang$html$Html_Attributes$style(
-						{
-							ctor: '::',
-							_0: {ctor: '_Tuple2', _0: 'margin', _1: '100px 300px'},
-							_1: {
-								ctor: '::',
-								_0: {ctor: '_Tuple2', _0: 'color', _1: '#03a9f4'},
-								_1: {ctor: '[]'}
-							}
-						}),
-					_1: {ctor: '[]'}
-				},
-				{
-					ctor: '::',
-					_0: _elm_lang$html$Html$text('Page Not Found! '),
-					_1: {ctor: '[]'}
-				});
+			return _user$project$Views_MainViews$notFoundPage;
 	}
 };
 var _user$project$Views_MainViews$signature = function (bool) {
@@ -36162,8 +35986,8 @@ exports.default = socket;
 });
 
 ;require.alias("process/browser.js", "process");
-require.alias("phoenix_html/priv/static/phoenix_html.js", "phoenix_html");
-require.alias("phoenix/priv/static/phoenix.js", "phoenix");process = require('process');require.register("___globals___", function(exports, require, module) {
+require.alias("phoenix/priv/static/phoenix.js", "phoenix");
+require.alias("phoenix_html/priv/static/phoenix_html.js", "phoenix_html");process = require('process');require.register("___globals___", function(exports, require, module) {
   
 });})();require('___globals___');
 

@@ -32,7 +32,7 @@ ionianModeView model =
             scaleStringSchema (fretOffset model) model.musKey ionianMode |> accessor
 
         markup a =
-            span [ style [ ( "paddingRight", "10px" ), ( "fontSize", "18px" ) ] ] [ text (toString a) ]
+            span [ fretNumberGroupStyle ] [ text (toString a) ]
     in
         div [ scaleContainerStyle, onClick (Play (scales "major") (fretOffset model)) ]
             [ div [ scaleTitleStyle ] [ scaleNameMajor model " MAJOR SCALE " "" "" ]
@@ -59,7 +59,7 @@ aeolianModeView model =
             scaleStringSchema computedOffset model.musKey aeolianMode |> accessor
 
         markup a =
-            span [ style [ ( "paddingRight", "10px" ), ( "fontSize", "18px" ) ] ] [ text (toString a) ]
+            span [ fretNumberGroupStyle ] [ text (toString a) ]
     in
         div [ scaleContainerStyle, onClick (Play (scales "minor") (fretOffset model)) ]
             [ div [ scaleTitleStyle ] [ scaleNameMinor model " MINOR SCALE " ]
@@ -80,7 +80,7 @@ majorPentatonicView model =
             scaleStringSchema (fretOffset model) model.musKey majorPentatonicMode |> accessor
 
         markup a =
-            span [ style [ ( "paddingRight", "10px" ), ( "fontSize", "18px" ) ] ] [ text (toString a) ]
+            span [ fretNumberGroupStyle ] [ text (toString a) ]
     in
         div [ scaleContainerStyle, onClick (Play (scales "majPentatonic") (fretOffset model)) ]
             [ div [ scaleTitleStyle ] [ scaleNameMajor model " MAJOR PENTATONIC SCALE " "" "" ]
@@ -107,7 +107,7 @@ minorPentatonicView model =
             scaleStringSchema computedOffset model.musKey minorPentatonicMode |> accessor
 
         markup a =
-            span [ style [ ( "paddingRight", "10px" ), ( "fontSize", "18px" ) ] ] [ text (toString a) ]
+            span [ fretNumberGroupStyle ] [ text (toString a) ]
     in
         div [ scaleContainerStyle, onClick (Play (scales "minPentatonic") (fretOffset model)) ]
             [ div [ scaleTitleStyle ] [ scaleNameMinor model " MINOR PENTATONIC SCALE " ]
@@ -128,7 +128,7 @@ lydianModeView model =
             scaleStringSchema (fretOffset model) model.musKey lydianMode |> accessor
 
         markup a =
-            span [ style [ ( "paddingRight", "10px" ), ( "fontSize", "18px" ) ] ] [ text (toString a) ]
+            span [ fretNumberGroupStyle ] [ text (toString a) ]
     in
         div [ scaleContainerStyle, onClick (Play (scales "lydian") (fretOffset model)) ]
             [ div [ scaleTitleStyle ] [ scaleNameMajor model " LYDIAN MODE " " ( #4 ) " "Maj7" ]
@@ -149,7 +149,7 @@ mixolydianModeView model =
             scaleStringSchema (fretOffset model) model.musKey mixolydianMode |> accessor
 
         markup a =
-            span [ style [ ( "paddingRight", "10px" ), ( "fontSize", "18px" ) ] ] [ text (toString a) ]
+            span [ fretNumberGroupStyle ] [ text (toString a) ]
     in
         div [ scaleContainerStyle, onClick (Play (scales "mixolydian") (fretOffset model)) ]
             [ div [ scaleTitleStyle ] [ scaleNameMajor model " MIXOLYDIAN MODE " " ( b7 ) " "7" ]
@@ -170,7 +170,7 @@ dorianModeView model =
             scaleStringSchema (fretOffset model) model.musKey dorianMode |> accessor
 
         markup a =
-            span [ style [ ( "paddingRight", "10px" ), ( "fontSize", "18px" ) ] ] [ text (toString a) ]
+            span [ fretNumberGroupStyle ] [ text (toString a) ]
     in
         div [ scaleContainerStyle, onClick (Play (scales "dorian") (fretOffset model)) ]
             [ div [ scaleTitleStyle ] [ scaleNameMajor model " DORIAN MODE " " ( b3, b7 ) " "min7" ]

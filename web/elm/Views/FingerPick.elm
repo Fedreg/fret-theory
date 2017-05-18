@@ -25,11 +25,11 @@ fingerPickGroup scale notes1 notes2 model =
     let
         beats a =
             -- Draws the beat number.
-            div [ style [ ( "width", "10px" ), ( "margin", "5px 55px 10px" ) ] ] [ text <| toString a ]
+            div [ fingerPickGroupBeatStyle ] [ text <| toString a ]
 
         notation a =
             -- Draws the rhythm notation.
-            div [ style [ ( "width", "10px" ), ( "margin", "5px 55px 0" ) ] ] [ printNotation a ]
+            div [ fingerPickGroupNotationStyle ] [ printNotation a ]
 
         frets a =
             div [] [ fret a model ]
@@ -44,8 +44,6 @@ fingerPickGroup scale notes1 notes2 model =
                 (List.map beats <| List.range 1 8)
             , div [ style [ ( "display", "flex" ) ] ]
                 (List.map notation <| calculateNotation [] 0 notes1 notes2)
-              -- , div [ style [ ( "display", "flex" ) ] ]
-              --     (List.map notation <| calculateNotation [] 0 notes2)
             ]
 
 
@@ -198,7 +196,7 @@ chordNotes model =
                 |> List.map adder
 
 
-{-| Determines the duration of the rhythm note below strum arrows.
+{-| Determines the duration of the rhythm note below fingerPick arrows.
 -}
 calculateNotation : List Int -> Int -> List Int -> List Int -> List Int
 calculateNotation list index notes1 notes2 =
@@ -248,53 +246,11 @@ calculateNotation list index notes1 notes2 =
 printNotation : Int -> Html msg
 printNotation notes =
     let
-        baseStyles fill =
-            style
-                [ ( "position", "absolute" )
-                , ( "bottom", "-10px" )
-                , ( "left", "-5px" )
-                , ( "width", "14px" )
-                , ( "height", "15px" )
-                , ( "transform", "skew(-20deg)" )
-                , ( "border", "2px solid #555" )
-                , ( "borderRadius", "10px" )
-                , ( "backgroundColor", fill )
-                ]
-
-        strumNotationContainerStyle =
-            style
-                [ ( "position", "relative" )
-                , ( "height", "35px" )
-                , ( "borderRight", "2px solid #555" )
-                ]
-
-        strumNotationFlagStyle flag =
-            style
-                [ ( "position", "absolute" )
-                , ( "top", "-7px" )
-                , ( "right", "-15px" )
-                , ( "width", "15px" )
-                , ( "height", "15px" )
-                , ( "transform", "skew(30deg)" )
-                , ( "visibility", flag )
-                , ( "fontSize", "20px" )
-                , ( "color", "#555" )
-                ]
-
-        strumNotationDotStyle =
-            style
-                [ ( "position", "absolute" )
-                , ( "bottom", "-30px" )
-                , ( "right", "-15px" )
-                , ( "fontSize", "50px" )
-                , ( "color", "#555" )
-                ]
-
         markup fill dot flag =
-            div [ strumNotationContainerStyle ]
-                [ div [ baseStyles fill ] []
-                , div [ strumNotationFlagStyle flag ] [ text ")" ]
-                , div [ strumNotationDotStyle ] [ text dot ]
+            div [ fingerPickNotationContainerStyle ]
+                [ div [ fingerPickNotationBaseStyles fill ] []
+                , div [ fingerPickNotationFlagStyle flag ] [ text ")" ]
+                , div [ fingerPickNotationDotStyle ] [ text dot ]
                 ]
     in
         case notes of

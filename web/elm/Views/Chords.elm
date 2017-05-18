@@ -22,7 +22,7 @@ chordsPage model =
         keyOptions key =
             option [ value key ] [ text key ]
     in
-        div [ style [ ( "textAlign", "center" ), ( "width", "95vw" ), ( "paddingTop", "125px" ) ] ]
+        div [ chordsPageStyle ]
             [ div [] [ fingerChart ]
             , div [ chartContainerStyle "row" ]
                 [ chordChartModel model 0 "I" .i .i
@@ -42,12 +42,12 @@ chordsPage model =
                 , chordChartModel model 9 "V7" .v .v7
                 , chordChartModel model 10 "VI7" .vi .vi7
                 ]
-            , div [ style [ ( "fontSize", "18px" ), ( "paddingBottom", "50px" ), ( "color", "#A8A7A7" ), ( "textDecoration", "inherit" ) ] ]
+            , div [ soloOnTextStyle ]
                 [ span [] [ text "SOLO ON FRET: " ]
-                , span [ style [ ( "fontSize", "25px" ), ( "color", "#03a9f4" ) ] ] [ text soloFretMin ]
-                , a [ style [ ( "color", "#aaa" ) ], href (scalesPath model.musKey) ] [ text " (MINOR SCALE), OR FRET: " ]
-                , span [ style [ ( "fontSize", "25px" ), ( "color", "#03a9f4" ) ] ] [ text soloFretMaj ]
-                , a [ style [ ( "color", "#aaa" ) ], href (scalesPath model.musKey) ] [ text " (MAJOR SCALE)" ]
+                , span [ soloOnNumberStyle ] [ text soloFretMin ]
+                , a [ soloOnLinkStyle, href (scalesPath model.musKey) ] [ text " (MINOR SCALE), OR FRET: " ]
+                , span [ soloOnNumberStyle ] [ text soloFretMaj ]
+                , a [ soloOnLinkStyle, href (scalesPath model.musKey) ] [ text " (MAJOR SCALE)" ]
                 ]
             ]
 
@@ -205,14 +205,14 @@ fingerChart : Html Msg
 fingerChart =
     div [ fingerChartStyle ]
         [ div [ style [ ( "display", "flex" ) ] ]
-            [ div [ style [ ( "width", "15px" ), ( "height", "25px" ), ( "borderRadius", "7px" ), ( "backgroundColor", fingerNo "1" ) ] ] []
-            , div [ style [ ( "padding", "15px" ), ( "lineHeight", "9px" ) ] ] [ text "Pointer" ]
-            , div [ style [ ( "width", "15px" ), ( "height", "25px" ), ( "borderRadius", "7px" ), ( "backgroundColor", fingerNo "2" ) ] ] []
-            , div [ style [ ( "padding", "15px" ), ( "lineHeight", "9px" ) ] ] [ text "Middle" ]
-            , div [ style [ ( "width", "15px" ), ( "height", "25px" ), ( "borderRadius", "7px" ), ( "backgroundColor", fingerNo "3" ) ] ] []
-            , div [ style [ ( "padding", "15px" ), ( "lineHeight", "9px" ) ] ] [ text "Ring" ]
-            , div [ style [ ( "width", "15px" ), ( "height", "25px" ), ( "borderRadius", "7px" ), ( "backgroundColor", fingerNo "4" ) ] ] []
-            , div [ style [ ( "padding", "15px" ), ( "lineHeight", "9px" ) ] ] [ text "Pinky" ]
+            [ div [ fingerChartDotStyle <| fingerNo "1" ] []
+            , div [ fingerChartTextStyle ] [ text "Pointer" ]
+            , div [ fingerChartDotStyle <| fingerNo "2" ] []
+            , div [ fingerChartTextStyle ] [ text "Middle" ]
+            , div [ fingerChartDotStyle <| fingerNo "3" ] []
+            , div [ fingerChartTextStyle ] [ text "Ring" ]
+            , div [ fingerChartDotStyle <| fingerNo "4" ] []
+            , div [ fingerChartTextStyle ] [ text "Pinky" ]
             ]
         ]
 

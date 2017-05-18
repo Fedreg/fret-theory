@@ -12,6 +12,27 @@ homePageStyle =
         ]
 
 
+homePageTextListStyle =
+    style
+        [ ( "color", "#444" )
+        , ( "margin ", "0 auto" )
+        , ( "textDecoration", "none" )
+        , ( "fontSize", "24px" )
+        ]
+
+
+homePageTextListItemStyle =
+    style [ ( "paddingRight", "30px" ) ]
+
+
+homePageModalIconStyle =
+    style
+        [ ( "fontSize", "20px" )
+        , ( "fontWeight", "700" )
+        , ( "color", "#03a9f4" )
+        ]
+
+
 titleStyle : String -> String -> Attribute msg
 titleStyle fontSize color =
     style

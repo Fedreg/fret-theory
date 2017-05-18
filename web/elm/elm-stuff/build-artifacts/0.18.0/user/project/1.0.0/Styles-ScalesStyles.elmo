@@ -16,6 +16,16 @@ var _user$project$Styles_ScalesStyles$scalePageStyle = _elm_lang$html$Html_Attri
 			}
 		}
 	});
+var _user$project$Styles_ScalesStyles$fretNumberGroupStyle = _elm_lang$html$Html_Attributes$style(
+	{
+		ctor: '::',
+		_0: {ctor: '_Tuple2', _0: 'paddingRight', _1: '10px'},
+		_1: {
+			ctor: '::',
+			_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '18px'},
+			_1: {ctor: '[]'}
+		}
+	});
 var _user$project$Styles_ScalesStyles$fretNumberStyle = function (margin) {
 	return _elm_lang$html$Html_Attributes$style(
 		{

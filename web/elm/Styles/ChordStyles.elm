@@ -5,6 +5,15 @@ import Html.Attributes exposing (style)
 import Logic.Types exposing (Model, Msg(..), Dot)
 
 
+chordsPageStyle : Attribute Msg
+chordsPageStyle =
+    style
+        [ ( "textAlign", "center" )
+        , ( "width", "95vw" )
+        , ( "paddingTop", "125px" )
+        ]
+
+
 chordBarPosStyle : Attribute Msg
 chordBarPosStyle =
     style
@@ -105,6 +114,24 @@ fingerChartStyle =
         ]
 
 
+fingerChartDotStyle : String -> Attribute Msg
+fingerChartDotStyle col =
+    style
+        [ ( "width", "15px" )
+        , ( "height", "25px" )
+        , ( "borderRadius", "7px" )
+        , ( "backgroundColor", col )
+        ]
+
+
+fingerChartTextStyle : Attribute Msg
+fingerChartTextStyle =
+    style
+        [ ( "padding", "15px" )
+        , ( "lineHeight", "9px" )
+        ]
+
+
 {-| Determines if fret marker dot is a bar, a dot, or a 'X', or 'O'.
 -}
 fretMarkerStyle : Dot -> Attribute Msg
@@ -157,3 +184,26 @@ fretMarkerStyle dot =
             , ( "color", "rgba(0,0,0,0)" )
             , ( "zIndex", "5" )
             ]
+
+
+soloOnNumberStyle : Attribute Msg
+soloOnNumberStyle =
+    style
+        [ ( "fontSize", "25px" )
+        , ( "color", "#03a9f4" )
+        ]
+
+
+soloOnTextStyle : Attribute Msg
+soloOnTextStyle =
+    style
+        [ ( "fontSize", "18px" )
+        , ( "paddingBottom", "50px" )
+        , ( "color", "#A8A7A7" )
+        , ( "textDecoration", "inherit" )
+        ]
+
+
+soloOnLinkStyle : Attribute Msg
+soloOnLinkStyle =
+    style [ ( "color", "#aaa" ) ]

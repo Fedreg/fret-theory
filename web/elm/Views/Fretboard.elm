@@ -119,14 +119,6 @@ stringe =
     [ "1/0/e/1", "1/1/f", "1/1/f#", "1/2/g", "1/2/g#", "1/3/a", "1/3/a#", "1/4/b/1", "1/5/c", "1/5/c#", "1/6/d", "1/6/d#", "1/7/e" ]
 
 
-revealNotes : List ( String, String )
-revealNotes =
-    [ ( "opacity", "1" )
-    , ( "z-index", "500" )
-    , ( "transform", "scale(3,3)" )
-    ]
-
-
 {-| Draws the musical staff and ledger lines.
 --
 -}

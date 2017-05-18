@@ -60,6 +60,27 @@ var _user$project$Views_MainViews$playbackSpeedSlider = function (model) {
 			}
 		});
 };
+var _user$project$Views_MainViews$notFoundPage = A2(
+	_elm_lang$html$Html$h1,
+	{
+		ctor: '::',
+		_0: _elm_lang$html$Html_Attributes$style(
+			{
+				ctor: '::',
+				_0: {ctor: '_Tuple2', _0: 'margin', _1: '100px 300px'},
+				_1: {
+					ctor: '::',
+					_0: {ctor: '_Tuple2', _0: 'color', _1: '#03a9f4'},
+					_1: {ctor: '[]'}
+				}
+			}),
+		_1: {ctor: '[]'}
+	},
+	{
+		ctor: '::',
+		_0: _elm_lang$html$Html$text('Page Not Found! '),
+		_1: {ctor: '[]'}
+	});
 var _user$project$Views_MainViews$page = function (model) {
 	var _p0 = model.route;
 	switch (_p0.ctor) {
@@ -76,27 +97,7 @@ var _user$project$Views_MainViews$page = function (model) {
 		case 'FingerPickingPage':
 			return _user$project$Views_FingerPick$fingerPickingPage(model);
 		default:
-			return A2(
-				_elm_lang$html$Html$h1,
-				{
-					ctor: '::',
-					_0: _elm_lang$html$Html_Attributes$style(
-						{
-							ctor: '::',
-							_0: {ctor: '_Tuple2', _0: 'margin', _1: '100px 300px'},
-							_1: {
-								ctor: '::',
-								_0: {ctor: '_Tuple2', _0: 'color', _1: '#03a9f4'},
-								_1: {ctor: '[]'}
-							}
-						}),
-					_1: {ctor: '[]'}
-				},
-				{
-					ctor: '::',
-					_0: _elm_lang$html$Html$text('Page Not Found! '),
-					_1: {ctor: '[]'}
-				});
+			return _user$project$Views_MainViews$notFoundPage;
 	}
 };
 var _user$project$Views_MainViews$signature = function (bool) {

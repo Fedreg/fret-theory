@@ -27,6 +27,20 @@ fingerPickGroupStyle scale =
         ]
 
 
+fingerPickGroupBeatStyle =
+    style
+        [ ( "width", "10px" )
+        , ( "margin", "5px 55px 10px" )
+        ]
+
+
+fingerPickGroupNotationStyle =
+    style
+        [ ( "width", "10px" )
+        , ( "margin", "5px 55px 0" )
+        ]
+
+
 {-| Determines if arrow is displayed and if it points up or down.
 -}
 fretStyle : Int -> Int -> Attribute msg
@@ -96,4 +110,50 @@ buttonStyle =
         , ( "marginTop", "50px" )
         , ( "border", "1px solid #333" )
         , ( "color", "#03a9f4" )
+        ]
+
+
+fingerPickNotationBaseStyles fill =
+    style
+        [ ( "position", "absolute" )
+        , ( "bottom", "-10px" )
+        , ( "left", "-5px" )
+        , ( "width", "14px" )
+        , ( "height", "15px" )
+        , ( "transform", "skew(-20deg)" )
+        , ( "border", "2px solid #555" )
+        , ( "borderRadius", "10px" )
+        , ( "backgroundColor", fill )
+        ]
+
+
+fingerPickNotationContainerStyle =
+    style
+        [ ( "position", "relative" )
+        , ( "height", "35px" )
+        , ( "borderRight", "2px solid #555" )
+        ]
+
+
+fingerPickNotationFlagStyle flag =
+    style
+        [ ( "position", "absolute" )
+        , ( "top", "-7px" )
+        , ( "right", "-15px" )
+        , ( "width", "15px" )
+        , ( "height", "15px" )
+        , ( "transform", "skew(30deg)" )
+        , ( "visibility", flag )
+        , ( "fontSize", "20px" )
+        , ( "color", "#555" )
+        ]
+
+
+fingerPickNotationDotStyle =
+    style
+        [ ( "position", "absolute" )
+        , ( "bottom", "-30px" )
+        , ( "right", "-15px" )
+        , ( "fontSize", "50px" )
+        , ( "color", "#555" )
         ]

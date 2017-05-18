@@ -934,16 +934,7 @@ var _user$project$Views_Scales$dorianModeView = function (model) {
 			_elm_lang$html$Html$span,
 			{
 				ctor: '::',
-				_0: _elm_lang$html$Html_Attributes$style(
-					{
-						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'paddingRight', _1: '10px'},
-						_1: {
-							ctor: '::',
-							_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '18px'},
-							_1: {ctor: '[]'}
-						}
-					}),
+				_0: _user$project$Styles_ScalesStyles$fretNumberGroupStyle,
 				_1: {ctor: '[]'}
 			},
 			{
@@ -1105,16 +1096,7 @@ var _user$project$Views_Scales$mixolydianModeView = function (model) {
 			_elm_lang$html$Html$span,
 			{
 				ctor: '::',
-				_0: _elm_lang$html$Html_Attributes$style(
-					{
-						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'paddingRight', _1: '10px'},
-						_1: {
-							ctor: '::',
-							_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '18px'},
-							_1: {ctor: '[]'}
-						}
-					}),
+				_0: _user$project$Styles_ScalesStyles$fretNumberGroupStyle,
 				_1: {ctor: '[]'}
 			},
 			{
@@ -1276,16 +1258,7 @@ var _user$project$Views_Scales$lydianModeView = function (model) {
 			_elm_lang$html$Html$span,
 			{
 				ctor: '::',
-				_0: _elm_lang$html$Html_Attributes$style(
-					{
-						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'paddingRight', _1: '10px'},
-						_1: {
-							ctor: '::',
-							_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '18px'},
-							_1: {ctor: '[]'}
-						}
-					}),
+				_0: _user$project$Styles_ScalesStyles$fretNumberGroupStyle,
 				_1: {ctor: '[]'}
 			},
 			{
@@ -1447,16 +1420,7 @@ var _user$project$Views_Scales$minorPentatonicView = function (model) {
 			_elm_lang$html$Html$span,
 			{
 				ctor: '::',
-				_0: _elm_lang$html$Html_Attributes$style(
-					{
-						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'paddingRight', _1: '10px'},
-						_1: {
-							ctor: '::',
-							_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '18px'},
-							_1: {ctor: '[]'}
-						}
-					}),
+				_0: _user$project$Styles_ScalesStyles$fretNumberGroupStyle,
 				_1: {ctor: '[]'}
 			},
 			{
@@ -1617,16 +1581,7 @@ var _user$project$Views_Scales$majorPentatonicView = function (model) {
 			_elm_lang$html$Html$span,
 			{
 				ctor: '::',
-				_0: _elm_lang$html$Html_Attributes$style(
-					{
-						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'paddingRight', _1: '10px'},
-						_1: {
-							ctor: '::',
-							_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '18px'},
-							_1: {ctor: '[]'}
-						}
-					}),
+				_0: _user$project$Styles_ScalesStyles$fretNumberGroupStyle,
 				_1: {ctor: '[]'}
 			},
 			{
@@ -1788,16 +1743,7 @@ var _user$project$Views_Scales$aeolianModeView = function (model) {
 			_elm_lang$html$Html$span,
 			{
 				ctor: '::',
-				_0: _elm_lang$html$Html_Attributes$style(
-					{
-						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'paddingRight', _1: '10px'},
-						_1: {
-							ctor: '::',
-							_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '18px'},
-							_1: {ctor: '[]'}
-						}
-					}),
+				_0: _user$project$Styles_ScalesStyles$fretNumberGroupStyle,
 				_1: {ctor: '[]'}
 			},
 			{
@@ -1958,16 +1904,7 @@ var _user$project$Views_Scales$ionianModeView = function (model) {
 			_elm_lang$html$Html$span,
 			{
 				ctor: '::',
-				_0: _elm_lang$html$Html_Attributes$style(
-					{
-						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'paddingRight', _1: '10px'},
-						_1: {
-							ctor: '::',
-							_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '18px'},
-							_1: {ctor: '[]'}
-						}
-					}),
+				_0: _user$project$Styles_ScalesStyles$fretNumberGroupStyle,
 				_1: {ctor: '[]'}
 			},
 			{

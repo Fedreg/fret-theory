@@ -83,9 +83,9 @@ keyListView model =
     let
         keyOptions key =
             if key == model.musKey then
-                span [ keyListStyle, onClick <| ChangeKey key, style [ ( "border", "1px solid #03a9f4" ), ("color", "#03a9f4" ) ] ] [ text key ]
+                span [ keyListStyle, onClick <| ChangeKey key, style [ ( "border", "1px solid #03a9f4" ), ( "color", "#03a9f4" ) ] ] [ text key ]
             else
-                span [ keyListStyle, onClick <| ChangeKey key, style [ ( "border", "1px solid #333" ), ("color", "#fff") ] ] [ text key ]
+                span [ keyListStyle, onClick <| ChangeKey key, style [ ( "border", "1px solid #333" ), ( "color", "#fff" ) ] ] [ text key ]
     in
         div [ keyListContainerStyle model.navMenuOpen ]
             [ h3 [ keyListKeyTitleStyle ] [ text "SELECT KEY" ]
@@ -124,7 +124,11 @@ page model =
             fingerPickingPage model
 
         NotFoundPage ->
-            h1 [ style [ ( "margin", "100px 300px" ), ( "color", "#03a9f4" ) ] ] [ text ("Page Not Found! ") ]
+            notFoundPage
+
+
+notFoundPage =
+    h1 [ style [ ( "margin", "100px 300px" ), ( "color", "#03a9f4" ) ] ] [ text ("Page Not Found! ") ]
 
 
 playbackSpeedSlider : Model -> Html Msg

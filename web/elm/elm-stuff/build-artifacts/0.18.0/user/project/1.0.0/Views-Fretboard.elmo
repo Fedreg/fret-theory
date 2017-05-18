@@ -386,19 +386,6 @@ var _user$project$Views_Fretboard$fretNotation = function (model) {
 			}
 		});
 };
-var _user$project$Views_Fretboard$revealNotes = {
-	ctor: '::',
-	_0: {ctor: '_Tuple2', _0: 'opacity', _1: '1'},
-	_1: {
-		ctor: '::',
-		_0: {ctor: '_Tuple2', _0: 'z-index', _1: '500'},
-		_1: {
-			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'transform', _1: 'scale(3,3)'},
-			_1: {ctor: '[]'}
-		}
-	}
-};
 var _user$project$Views_Fretboard$stringe = {
 	ctor: '::',
 	_0: '1/0/e/1',

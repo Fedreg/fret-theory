@@ -53,6 +53,13 @@ fretNumberStyle margin =
         ]
 
 
+fretNumberGroupStyle =
+    style
+        [ ( "paddingRight", "10px" )
+        , ( "fontSize", "18px" )
+        ]
+
+
 scalePageStyle : Attribute msg
 scalePageStyle =
     style
