@@ -13241,7 +13241,9 @@ var _user$project$Logic_Types$Model = function (a) {
 											return function (l) {
 												return function (m) {
 													return function (n) {
-														return {route: a, musKey: b, index: c, currentChord: d, displayedChords: e, notePosition: f, showAccidental: g, sliderValue: h, navMenuOpen: i, pitchShift: j, modalOpen: k, strumArrow: l, fingerPickPattern: m, phxSocket: n};
+														return function (o) {
+															return {route: a, musKey: b, index: c, currentChord: d, displayedChords: e, notePosition: f, showAccidental: g, sliderValue: h, navMenuOpen: i, pitchShift: j, modalOpen: k, strumArrow: l, strumGroupNumber: m, fingerPickPattern: n, phxSocket: o};
+														};
 													};
 												};
 											};
@@ -13331,6 +13333,9 @@ var _user$project$Logic_Types$FingerPickPatternBuilderA = function (a) {
 };
 var _user$project$Logic_Types$StrumArrowDirection = function (a) {
 	return {ctor: 'StrumArrowDirection', _0: a};
+};
+var _user$project$Logic_Types$ChangeStrumGroupNumber = function (a) {
+	return {ctor: 'ChangeStrumGroupNumber', _0: a};
 };
 var _user$project$Logic_Types$ShowModal = {ctor: 'ShowModal'};
 var _user$project$Logic_Types$ShowNavMenu = {ctor: 'ShowNavMenu'};
@@ -23687,7 +23692,7 @@ var _user$project$Styles_StrumStyles$beatStyle = _elm_lang$html$Html_Attributes$
 				_0: {ctor: '_Tuple2', _0: 'left', _1: '0'},
 				_1: {
 					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'paddingRight', _1: '200px'},
+					_0: {ctor: '_Tuple2', _0: 'paddingRight', _1: '20px'},
 					_1: {ctor: '[]'}
 				}
 			}
@@ -23794,47 +23799,79 @@ var _user$project$Styles_StrumStyles$strumArrowStyle = F4(
 				}
 			});
 	});
-var _user$project$Styles_StrumStyles$strumGroupStyle = function (scale) {
+var _user$project$Styles_StrumStyles$strumGroupMatrixStyle = _elm_lang$html$Html_Attributes$style(
+	{
+		ctor: '::',
+		_0: {ctor: '_Tuple2', _0: 'display', _1: 'flex'},
+		_1: {
+			ctor: '::',
+			_0: {ctor: '_Tuple2', _0: 'flexWrap', _1: 'wrap'},
+			_1: {
+				ctor: '::',
+				_0: {ctor: '_Tuple2', _0: 'justifyContent', _1: 'center'},
+				_1: {ctor: '[]'}
+			}
+		}
+	});
+var _user$project$Styles_StrumStyles$strumGroupStyle = F2(
+	function (scale, margin) {
+		return _elm_lang$html$Html_Attributes$style(
+			{
+				ctor: '::',
+				_0: {
+					ctor: '_Tuple2',
+					_0: 'transform',
+					_1: A2(
+						_elm_lang$core$Basics_ops['++'],
+						'scale(',
+						A2(_elm_lang$core$Basics_ops['++'], scale, ')'))
+				},
+				_1: {
+					ctor: '::',
+					_0: {ctor: '_Tuple2', _0: 'width', _1: '950px'},
+					_1: {
+						ctor: '::',
+						_0: {ctor: '_Tuple2', _0: 'margin', _1: margin},
+						_1: {ctor: '[]'}
+					}
+				}
+			});
+	});
+var _user$project$Styles_StrumStyles$strumPageStyle = function (size) {
+	var pad = function () {
+		var _p3 = size;
+		switch (_p3) {
+			case '4':
+				return '100px';
+			case '2':
+				return '100px';
+			default:
+				return '175px';
+		}
+	}();
 	return _elm_lang$html$Html_Attributes$style(
 		{
 			ctor: '::',
-			_0: {
-				ctor: '_Tuple2',
-				_0: 'transform',
-				_1: A2(
-					_elm_lang$core$Basics_ops['++'],
-					'scale(',
-					A2(_elm_lang$core$Basics_ops['++'], scale, ')'))
-			},
-			_1: {ctor: '[]'}
-		});
-};
-var _user$project$Styles_StrumStyles$strumPageStyle = _elm_lang$html$Html_Attributes$style(
-	{
-		ctor: '::',
-		_0: {ctor: '_Tuple2', _0: 'height', _1: '100vh'},
-		_1: {
-			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'width', _1: '100vw'},
+			_0: {ctor: '_Tuple2', _0: 'display', _1: 'flex'},
 			_1: {
 				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'display', _1: 'flex'},
+				_0: {ctor: '_Tuple2', _0: 'flexDirection', _1: 'column'},
 				_1: {
 					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'flexDirection', _1: 'column'},
+					_0: {ctor: '_Tuple2', _0: 'paddingTop', _1: pad},
 					_1: {
 						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'paddingTop', _1: '225px'},
+						_0: {ctor: '_Tuple2', _0: 'alignItems', _1: 'center'},
 						_1: {
 							ctor: '::',
-							_0: {ctor: '_Tuple2', _0: 'alignItems', _1: 'center'},
+							_0: {ctor: '_Tuple2', _0: 'transition', _1: 'all 0.3s'},
 							_1: {ctor: '[]'}
 						}
 					}
 				}
 			}
-		}
-	});
+		});
+};
 
 var _user$project$Views_Strum$printNotation = function (notes) {
 	var strumNotationDotStyle = _elm_lang$html$Html_Attributes$style(
@@ -24131,8 +24168,70 @@ var _user$project$Views_Strum$arrow = function (col) {
 			_1: {ctor: '[]'}
 		});
 };
-var _user$project$Views_Strum$strumGroup = F5(
-	function (scale, notes, borderCol, arrowCol, background) {
+var _user$project$Views_Strum$strumGroupNumberSelector = A2(
+	_elm_lang$html$Html$select,
+	{
+		ctor: '::',
+		_0: _elm_lang$html$Html_Events$onInput(_user$project$Logic_Types$ChangeStrumGroupNumber),
+		_1: {
+			ctor: '::',
+			_0: _elm_lang$html$Html_Attributes$style(
+				{
+					ctor: '::',
+					_0: {ctor: '_Tuple2', _0: 'width', _1: '200px'},
+					_1: {ctor: '[]'}
+				}),
+			_1: {ctor: '[]'}
+		}
+	},
+	{
+		ctor: '::',
+		_0: A2(
+			_elm_lang$html$Html$option,
+			{
+				ctor: '::',
+				_0: _elm_lang$html$Html_Attributes$value('1'),
+				_1: {ctor: '[]'}
+			},
+			{
+				ctor: '::',
+				_0: _elm_lang$html$Html$text('NUMBER OF MEASURES: 1'),
+				_1: {ctor: '[]'}
+			}),
+		_1: {
+			ctor: '::',
+			_0: A2(
+				_elm_lang$html$Html$option,
+				{
+					ctor: '::',
+					_0: _elm_lang$html$Html_Attributes$value('2'),
+					_1: {ctor: '[]'}
+				},
+				{
+					ctor: '::',
+					_0: _elm_lang$html$Html$text('NUMBER OF MEASURES: 2'),
+					_1: {ctor: '[]'}
+				}),
+			_1: {
+				ctor: '::',
+				_0: A2(
+					_elm_lang$html$Html$option,
+					{
+						ctor: '::',
+						_0: _elm_lang$html$Html_Attributes$value('4'),
+						_1: {ctor: '[]'}
+					},
+					{
+						ctor: '::',
+						_0: _elm_lang$html$Html$text('NUMBER OF MEASURES: 4'),
+						_1: {ctor: '[]'}
+					}),
+				_1: {ctor: '[]'}
+			}
+		}
+	});
+var _user$project$Views_Strum$strumGroup = F6(
+	function (scale, notes, borderCol, arrowCol, background, margin) {
 		var arrows = F2(
 			function (a, b) {
 				return A2(
@@ -24199,7 +24298,7 @@ var _user$project$Views_Strum$strumGroup = F5(
 			_elm_lang$html$Html$div,
 			{
 				ctor: '::',
-				_0: _user$project$Styles_StrumStyles$strumGroupStyle(scale),
+				_0: A2(_user$project$Styles_StrumStyles$strumGroupStyle, scale, margin),
 				_1: {ctor: '[]'}
 			},
 			{
@@ -24298,37 +24397,186 @@ var _user$project$Views_Strum$strumGroup = F5(
 				}
 			});
 	});
+var _user$project$Views_Strum$strumGroupMatrix = function (model) {
+	var strumPattern = function (n) {
+		return A2(
+			_elm_lang$core$Maybe$withDefault,
+			{ctor: '[]'},
+			A2(_elm_community$list_extra$List_Extra$getAt, n, model.strumArrow));
+	};
+	var _p1 = model.strumGroupNumber;
+	switch (_p1) {
+		case '1':
+			return A2(
+				_elm_lang$html$Html$div,
+				{ctor: '[]'},
+				{
+					ctor: '::',
+					_0: A6(
+						_user$project$Views_Strum$strumGroup,
+						'1,1',
+						strumPattern(0),
+						'#CCC',
+						'#000',
+						'#FFF',
+						'0'),
+					_1: {ctor: '[]'}
+				});
+		case '2':
+			return A2(
+				_elm_lang$html$Html$div,
+				{ctor: '[]'},
+				{
+					ctor: '::',
+					_0: A6(
+						_user$project$Views_Strum$strumGroup,
+						'0.8,0.8',
+						strumPattern(0),
+						'#CCC',
+						'#000',
+						'#FFF',
+						'-20px -175px'),
+					_1: {
+						ctor: '::',
+						_0: A6(
+							_user$project$Views_Strum$strumGroup,
+							'0.8,0.8',
+							strumPattern(1),
+							'#CCC',
+							'#000',
+							'#03a9f4',
+							'-30px -175px'),
+						_1: {ctor: '[]'}
+					}
+				});
+		case '4':
+			return A2(
+				_elm_lang$html$Html$div,
+				{ctor: '[]'},
+				{
+					ctor: '::',
+					_0: A2(
+						_elm_lang$html$Html$div,
+						{
+							ctor: '::',
+							_0: _user$project$Styles_StrumStyles$strumGroupMatrixStyle,
+							_1: {ctor: '[]'}
+						},
+						{
+							ctor: '::',
+							_0: A6(
+								_user$project$Views_Strum$strumGroup,
+								'0.6,0.6',
+								strumPattern(0),
+								'#CCC',
+								'#000',
+								'#FFF',
+								'-25px -175px'),
+							_1: {
+								ctor: '::',
+								_0: A6(
+									_user$project$Views_Strum$strumGroup,
+									'0.6,0.6',
+									strumPattern(1),
+									'#CCC',
+									'#000',
+									'#03a9f4',
+									'-25px -175px'),
+								_1: {ctor: '[]'}
+							}
+						}),
+					_1: {
+						ctor: '::',
+						_0: A2(
+							_elm_lang$html$Html$div,
+							{
+								ctor: '::',
+								_0: _user$project$Styles_StrumStyles$strumGroupMatrixStyle,
+								_1: {ctor: '[]'}
+							},
+							{
+								ctor: '::',
+								_0: A6(
+									_user$project$Views_Strum$strumGroup,
+									'0.6,0.6',
+									strumPattern(2),
+									'#CCC',
+									'#000',
+									'#FFF',
+									'-25px -175px'),
+								_1: {
+									ctor: '::',
+									_0: A6(
+										_user$project$Views_Strum$strumGroup,
+										'0.6,0.6',
+										strumPattern(3),
+										'#CCC',
+										'#000',
+										'#03a9f4',
+										'-25px -175px'),
+									_1: {ctor: '[]'}
+								}
+							}),
+						_1: {ctor: '[]'}
+					}
+				});
+		default:
+			return A2(
+				_elm_lang$html$Html$div,
+				{
+					ctor: '::',
+					_0: _user$project$Styles_StrumStyles$strumGroupMatrixStyle,
+					_1: {ctor: '[]'}
+				},
+				{
+					ctor: '::',
+					_0: A6(
+						_user$project$Views_Strum$strumGroup,
+						'0.5,0.5',
+						strumPattern(0),
+						'#CCC',
+						'#000',
+						'#FFF',
+						'0'),
+					_1: {ctor: '[]'}
+				});
+	}
+};
 var _user$project$Views_Strum$strummingPage = function (model) {
 	return A2(
 		_elm_lang$html$Html$div,
 		{
 			ctor: '::',
-			_0: _user$project$Styles_StrumStyles$strumPageStyle,
+			_0: _user$project$Styles_StrumStyles$strumPageStyle(model.strumGroupNumber),
 			_1: {ctor: '[]'}
 		},
 		{
 			ctor: '::',
-			_0: A5(_user$project$Views_Strum$strumGroup, '1,1', model.strumArrow, '#CCC', '#000', '#FFF'),
+			_0: _user$project$Views_Strum$strumGroupNumberSelector,
 			_1: {
 				ctor: '::',
-				_0: A2(
-					_elm_lang$html$Html$button,
-					{
-						ctor: '::',
-						_0: _user$project$Styles_StrumStyles$buttonStyle,
-						_1: {
+				_0: _user$project$Views_Strum$strumGroupMatrix(model),
+				_1: {
+					ctor: '::',
+					_0: A2(
+						_elm_lang$html$Html$button,
+						{
 							ctor: '::',
-							_0: _elm_lang$html$Html_Events$onClick(
-								A2(_user$project$Logic_Types$Randomize, 1, 2)),
+							_0: _user$project$Styles_StrumStyles$buttonStyle,
+							_1: {
+								ctor: '::',
+								_0: _elm_lang$html$Html_Events$onClick(
+									A2(_user$project$Logic_Types$Randomize, 1, 2)),
+								_1: {ctor: '[]'}
+							}
+						},
+						{
+							ctor: '::',
+							_0: _elm_lang$html$Html$text('Generate Random Strum Pattern'),
 							_1: {ctor: '[]'}
-						}
-					},
-					{
-						ctor: '::',
-						_0: _elm_lang$html$Html$text('Generate Random Strum Pattern'),
-						_1: {ctor: '[]'}
-					}),
-				_1: {ctor: '[]'}
+						}),
+					_1: {ctor: '[]'}
+				}
 			}
 		});
 };
@@ -25600,7 +25848,7 @@ var _user$project$Views_Modal$strummingModal = function (model) {
 								_user$project$Views_Modal$strumModalContent),
 							_1: {
 								ctor: '::',
-								_0: A5(
+								_0: A6(
 									_user$project$Views_Strum$strumGroup,
 									'0.75,0.75',
 									{
@@ -25638,10 +25886,11 @@ var _user$project$Views_Modal$strummingModal = function (model) {
 									},
 									'#444',
 									'#FFF',
-									'none'),
+									'none',
+									'0'),
 								_1: {
 									ctor: '::',
-									_0: A5(
+									_0: A6(
 										_user$project$Views_Strum$strumGroup,
 										'0.75,0.75',
 										{
@@ -25679,10 +25928,11 @@ var _user$project$Views_Modal$strummingModal = function (model) {
 										},
 										'#444',
 										'#FFF',
-										'none'),
+										'none',
+										'0'),
 									_1: {
 										ctor: '::',
-										_0: A5(
+										_0: A6(
 											_user$project$Views_Strum$strumGroup,
 											'0.75,0.75',
 											{
@@ -25720,10 +25970,11 @@ var _user$project$Views_Modal$strummingModal = function (model) {
 											},
 											'#444',
 											'#FFF',
-											'none'),
+											'none',
+											'0'),
 										_1: {
 											ctor: '::',
-											_0: A5(
+											_0: A6(
 												_user$project$Views_Strum$strumGroup,
 												'0.75,0.75',
 												{
@@ -25761,7 +26012,8 @@ var _user$project$Views_Modal$strummingModal = function (model) {
 												},
 												'#444',
 												'#FFF',
-												'none'),
+												'none',
+												'0'),
 											_1: {ctor: '[]'}
 										}
 									}
@@ -27090,16 +27342,80 @@ var _user$project$Main$init = function (location) {
 			navMenuOpen: false,
 			pitchShift: 0,
 			modalOpen: false,
+			strumGroupNumber: '1',
 			strumArrow: {
 				ctor: '::',
-				_0: 1,
+				_0: {
+					ctor: '::',
+					_0: 1,
+					_1: {
+						ctor: '::',
+						_0: 2,
+						_1: {
+							ctor: '::',
+							_0: 1,
+							_1: {
+								ctor: '::',
+								_0: 1,
+								_1: {
+									ctor: '::',
+									_0: 2,
+									_1: {
+										ctor: '::',
+										_0: 1,
+										_1: {
+											ctor: '::',
+											_0: 1,
+											_1: {
+												ctor: '::',
+												_0: 1,
+												_1: {ctor: '[]'}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
 				_1: {
 					ctor: '::',
-					_0: 2,
-					_1: {
+					_0: {
 						ctor: '::',
 						_0: 1,
 						_1: {
+							ctor: '::',
+							_0: 2,
+							_1: {
+								ctor: '::',
+								_0: 1,
+								_1: {
+									ctor: '::',
+									_0: 1,
+									_1: {
+										ctor: '::',
+										_0: 2,
+										_1: {
+											ctor: '::',
+											_0: 1,
+											_1: {
+												ctor: '::',
+												_0: 1,
+												_1: {
+													ctor: '::',
+													_0: 1,
+													_1: {ctor: '[]'}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					},
+					_1: {
+						ctor: '::',
+						_0: {
 							ctor: '::',
 							_0: 1,
 							_1: {
@@ -27113,12 +27429,61 @@ var _user$project$Main$init = function (location) {
 										_0: 1,
 										_1: {
 											ctor: '::',
-											_0: 1,
-											_1: {ctor: '[]'}
+											_0: 2,
+											_1: {
+												ctor: '::',
+												_0: 1,
+												_1: {
+													ctor: '::',
+													_0: 1,
+													_1: {
+														ctor: '::',
+														_0: 1,
+														_1: {ctor: '[]'}
+													}
+												}
+											}
 										}
 									}
 								}
 							}
+						},
+						_1: {
+							ctor: '::',
+							_0: {
+								ctor: '::',
+								_0: 1,
+								_1: {
+									ctor: '::',
+									_0: 2,
+									_1: {
+										ctor: '::',
+										_0: 1,
+										_1: {
+											ctor: '::',
+											_0: 1,
+											_1: {
+												ctor: '::',
+												_0: 2,
+												_1: {
+													ctor: '::',
+													_0: 1,
+													_1: {
+														ctor: '::',
+														_0: 1,
+														_1: {
+															ctor: '::',
+															_0: 1,
+															_1: {ctor: '[]'}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							},
+							_1: {ctor: '[]'}
 						}
 					}
 				}
@@ -27306,8 +27671,11 @@ var _user$project$Main$update = F2(
 								_user$project$Logic_Types$StrumArrowDirection,
 								A2(
 									_elm_lang$core$Random$list,
-									8,
-									A2(_elm_lang$core$Random$int, _p5, _p6)))
+									4,
+									A2(
+										_elm_lang$core$Random$list,
+										8,
+										A2(_elm_lang$core$Random$int, _p5, _p6))))
 						};
 					case 'FingerPickingPage':
 						return {
@@ -27343,11 +27711,20 @@ var _user$project$Main$update = F2(
 							{ctor: '[]'});
 				}
 			case 'StrumArrowDirection':
+				var _p8 = _p0._0;
+				var _p7 = A2(_elm_lang$core$Debug$log, 'numList', _p8);
 				return A2(
 					_elm_lang$core$Platform_Cmd_ops['!'],
 					_elm_lang$core$Native_Utils.update(
 						model,
-						{strumArrow: _p0._0}),
+						{strumArrow: _p8}),
+					{ctor: '[]'});
+			case 'ChangeStrumGroupNumber':
+				return A2(
+					_elm_lang$core$Platform_Cmd_ops['!'],
+					_elm_lang$core$Native_Utils.update(
+						model,
+						{strumGroupNumber: _p0._0}),
 					{ctor: '[]'});
 			case 'FingerPickPatternBuilderA':
 				var pattern = model.fingerPickPattern;
@@ -27372,12 +27749,12 @@ var _user$project$Main$update = F2(
 						{fingerPickPattern: newPattern}),
 					{ctor: '[]'});
 			case 'OnLocationChange':
-				var _p7 = _p0._0;
+				var _p9 = _p0._0;
 				var newKey = A2(
 					_elm_lang$core$Maybe$withDefault,
 					'C',
-					A2(_user$project$Logic_Routing$modelUpdateOnHash, model, _p7));
-				var newRoute = _user$project$Logic_Routing$parseLocation(_p7);
+					A2(_user$project$Logic_Routing$modelUpdateOnHash, model, _p9));
+				var newRoute = _user$project$Logic_Routing$parseLocation(_p9);
 				return A2(
 					_elm_lang$core$Platform_Cmd_ops['!'],
 					_elm_lang$core$Native_Utils.update(
@@ -27391,18 +27768,18 @@ var _user$project$Main$update = F2(
 					_1: _elm_lang$navigation$Navigation$newUrl(_p0._0)
 				};
 			case 'ChangeKey':
-				var _p8 = _p0._0;
+				var _p10 = _p0._0;
 				return A2(
 					_ccapndave$elm_update_extra$Update_Extra_Infix_ops[':>'],
 					{
 						ctor: '_Tuple2',
 						_0: _elm_lang$core$Native_Utils.update(
 							model,
-							{musKey: _p8, navMenuOpen: false}),
+							{musKey: _p10, navMenuOpen: false}),
 						_1: _user$project$Main$joinChannel
 					},
 					_user$project$Main$update(
-						_user$project$Logic_Types$SendMessage(_p8)));
+						_user$project$Logic_Types$SendMessage(_p10)));
 			case 'Play':
 				return A2(
 					_ccapndave$elm_update_extra$Update_Extra_Infix_ops[':>'],

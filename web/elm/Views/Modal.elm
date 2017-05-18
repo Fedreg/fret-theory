@@ -193,10 +193,10 @@ strummingModal model =
             [ div [ closeModalIcon, onClick ShowModal ] [ text "x" ]
             , h3 [ modalHeaderStyle ] [ text "Strumming" ]
             , toHtml [] strumModalContent
-            , strumGroup "0.75,0.75" [ 1, 2, 1, 1, 2, 1, 1, 1 ] "#444" "#FFF" "none"
-            , strumGroup "0.75,0.75" [ 1, 1, 1, 2, 1, 1, 1, 2 ] "#444" "#FFF" "none"
-            , strumGroup "0.75,0.75" [ 1, 1, 2, 1, 1, 2, 1, 1 ] "#444" "#FFF" "none"
-            , strumGroup "0.75,0.75" [ 2, 1, 2, 1, 2, 1, 2, 1 ] "#444" "#FFF" "none"
+            , strumGroup "0.75,0.75" [ 1, 2, 1, 1, 2, 1, 1, 1 ] "#444" "#FFF" "none" "0"
+            , strumGroup "0.75,0.75" [ 1, 1, 1, 2, 1, 1, 1, 2 ] "#444" "#FFF" "none" "0"
+            , strumGroup "0.75,0.75" [ 1, 1, 2, 1, 1, 2, 1, 1 ] "#444" "#FFF" "none" "0"
+            , strumGroup "0.75,0.75" [ 2, 1, 2, 1, 2, 1, 2, 1 ] "#444" "#FFF" "none" "0"
             ]
         ]
 

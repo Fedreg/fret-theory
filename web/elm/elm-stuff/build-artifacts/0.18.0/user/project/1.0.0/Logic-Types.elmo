@@ -12,7 +12,9 @@ var _user$project$Logic_Types$Model = function (a) {
 											return function (l) {
 												return function (m) {
 													return function (n) {
-														return {route: a, musKey: b, index: c, currentChord: d, displayedChords: e, notePosition: f, showAccidental: g, sliderValue: h, navMenuOpen: i, pitchShift: j, modalOpen: k, strumArrow: l, fingerPickPattern: m, phxSocket: n};
+														return function (o) {
+															return {route: a, musKey: b, index: c, currentChord: d, displayedChords: e, notePosition: f, showAccidental: g, sliderValue: h, navMenuOpen: i, pitchShift: j, modalOpen: k, strumArrow: l, strumGroupNumber: m, fingerPickPattern: n, phxSocket: o};
+														};
 													};
 												};
 											};
@@ -102,6 +104,9 @@ var _user$project$Logic_Types$FingerPickPatternBuilderA = function (a) {
 };
 var _user$project$Logic_Types$StrumArrowDirection = function (a) {
 	return {ctor: 'StrumArrowDirection', _0: a};
+};
+var _user$project$Logic_Types$ChangeStrumGroupNumber = function (a) {
+	return {ctor: 'ChangeStrumGroupNumber', _0: a};
 };
 var _user$project$Logic_Types$ShowModal = {ctor: 'ShowModal'};
 var _user$project$Logic_Types$ShowNavMenu = {ctor: 'ShowNavMenu'};
