@@ -7,17 +7,18 @@ import Logic.Types exposing (Model, Msg(..))
 import InlineHover exposing (hover)
 import List.Extra exposing (getAt, elemIndex)
 import Styles.FretboardStyles exposing (..)
+import Logic.Utils exposing ((=>))
 
 
 fretboardPage : Model -> Html Msg
 fretboardPage model =
     let
         highlight =
-            [ ( "background-color", "#03a9f4" )
-            , ( "transform", "scale(1.5, 1.5)" )
-            , ( "color", "#fff" )
-            , ( "z-index", "2" )
-            , ( "borderRadius", "50px" )
+            [ "background-color" => "#03a9f4"
+            , "transform" => "scale(1.5, 1.5)"
+            , "color" => "#fff"
+            , "z-index" => "2"
+            , "borderRadius" => "50px"
             ]
 
         frets info =
@@ -64,7 +65,7 @@ fretboardPage model =
         blank note =
             div [ fretBlankStyle ] [ text note ]
     in
-        div [ style [ ( "position", "relative" ) ] ]
+        div [ style [ "position" => "relative" ] ]
             [ div [ fretboardContainerStyle ]
                 [ div [ fretboardTitleStyle ] [ text ("KEY OF " ++ model.musKey) ]
                 , div [ fretboardStringStyle ]
@@ -79,8 +80,8 @@ fretboardPage model =
                     (List.map frets <| List.reverse stringB)
                 , div [ fretboardStringStyle ]
                     (List.map frets <| List.reverse stringe)
-                , div [ fretboardStringStyle ]
-                    (List.map blank <| List.reverse stringe)
+                  , div [ fretboardStringStyle ]
+                      (List.map blank <| List.reverse stringe)
                 , div [ fretboardStringStyle ]
                     (List.map fretNumberMarkers <| List.reverse fretNumbers)
                 ]

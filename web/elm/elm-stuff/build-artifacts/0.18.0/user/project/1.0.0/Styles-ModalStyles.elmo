@@ -1,22 +1,22 @@
 var _user$project$Styles_ModalStyles$modalHeaderStyle = _elm_lang$html$Html_Attributes$style(
 	{
 		ctor: '::',
-		_0: {ctor: '_Tuple2', _0: 'backgroundColor', _1: '#333'},
+		_0: A2(_user$project$Logic_Utils_ops['=>'], 'backgroundColor', '#333'),
 		_1: {
 			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'margin', _1: '-25px 0 25px -25px'},
+			_0: A2(_user$project$Logic_Utils_ops['=>'], 'margin', '-25px 0 25px -25px'),
 			_1: {
 				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'padding', _1: '20px 25px'},
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'padding', '20px 25px'),
 				_1: {
 					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'width', _1: '100vw'},
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'width', '100vw'),
 					_1: {
 						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'height', _1: '75px'},
+						_0: A2(_user$project$Logic_Utils_ops['=>'], 'height', '75px'),
 						_1: {
 							ctor: '::',
-							_0: {ctor: '_Tuple2', _0: 'color', _1: '#f40331'},
+							_0: A2(_user$project$Logic_Utils_ops['=>'], 'color', '#f40331'),
 							_1: {ctor: '[]'}
 						}
 					}
@@ -27,13 +27,13 @@ var _user$project$Styles_ModalStyles$modalHeaderStyle = _elm_lang$html$Html_Attr
 var _user$project$Styles_ModalStyles$modalContentStyle = _elm_lang$html$Html_Attributes$style(
 	{
 		ctor: '::',
-		_0: {ctor: '_Tuple2', _0: 'position', _1: 'relative'},
+		_0: A2(_user$project$Logic_Utils_ops['=>'], 'position', 'relative'),
 		_1: {
 			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'textAlign', _1: 'left'},
+			_0: A2(_user$project$Logic_Utils_ops['=>'], 'textAlign', 'left'),
 			_1: {
 				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'padding', _1: '25px'},
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'padding', '25px'),
 				_1: {ctor: '[]'}
 			}
 		}
@@ -41,22 +41,22 @@ var _user$project$Styles_ModalStyles$modalContentStyle = _elm_lang$html$Html_Att
 var _user$project$Styles_ModalStyles$closeModalIcon = _elm_lang$html$Html_Attributes$style(
 	{
 		ctor: '::',
-		_0: {ctor: '_Tuple2', _0: 'position', _1: 'fixed'},
+		_0: A2(_user$project$Logic_Utils_ops['=>'], 'position', 'fixed'),
 		_1: {
 			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'top', _1: '20px'},
+			_0: A2(_user$project$Logic_Utils_ops['=>'], 'top', '20px'),
 			_1: {
 				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'right', _1: '20px'},
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'right', '20px'),
 				_1: {
 					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '20px'},
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'fontSize', '20px'),
 					_1: {
 						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'cursor', _1: 'pointer'},
+						_0: A2(_user$project$Logic_Utils_ops['=>'], 'cursor', 'pointer'),
 						_1: {
 							ctor: '::',
-							_0: {ctor: '_Tuple2', _0: 'color', _1: '#f40331'},
+							_0: A2(_user$project$Logic_Utils_ops['=>'], 'color', '#f40331'),
 							_1: {ctor: '[]'}
 						}
 					}
@@ -70,31 +70,31 @@ var _user$project$Styles_ModalStyles$modalIconStyle = function (model) {
 			return _elm_lang$html$Html_Attributes$style(
 				{
 					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'position', _1: 'absolute'},
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'position', 'absolute'),
 					_1: {
 						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'top', _1: offset},
+						_0: A2(_user$project$Logic_Utils_ops['=>'], 'top', offset),
 						_1: {
 							ctor: '::',
-							_0: {ctor: '_Tuple2', _0: 'right', _1: '60px'},
+							_0: A2(_user$project$Logic_Utils_ops['=>'], 'right', '60px'),
 							_1: {
 								ctor: '::',
-								_0: {ctor: '_Tuple2', _0: 'color', _1: color},
+								_0: A2(_user$project$Logic_Utils_ops['=>'], 'color', color),
 								_1: {
 									ctor: '::',
-									_0: {ctor: '_Tuple2', _0: 'textAlign', _1: 'center'},
+									_0: A2(_user$project$Logic_Utils_ops['=>'], 'textAlign', 'center'),
 									_1: {
 										ctor: '::',
-										_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '40px'},
+										_0: A2(_user$project$Logic_Utils_ops['=>'], 'fontSize', '40px'),
 										_1: {
 											ctor: '::',
-											_0: {ctor: '_Tuple2', _0: 'fontWeight', _1: '700'},
+											_0: A2(_user$project$Logic_Utils_ops['=>'], 'fontWeight', '700'),
 											_1: {
 												ctor: '::',
-												_0: {ctor: '_Tuple2', _0: 'cursor', _1: 'pointer'},
+												_0: A2(_user$project$Logic_Utils_ops['=>'], 'cursor', 'pointer'),
 												_1: {
 													ctor: '::',
-													_0: {ctor: '_Tuple2', _0: 'zIndex', _1: '10001'},
+													_0: A2(_user$project$Logic_Utils_ops['=>'], 'zIndex', '10001'),
 													_1: {ctor: '[]'}
 												}
 											}
@@ -114,43 +114,43 @@ var _user$project$Styles_ModalStyles$modalStyle = function (model) {
 			return _elm_lang$html$Html_Attributes$style(
 				{
 					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'position', _1: 'fixed'},
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'position', 'fixed'),
 					_1: {
 						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'top', _1: '75px'},
+						_0: A2(_user$project$Logic_Utils_ops['=>'], 'top', '75px'),
 						_1: {
 							ctor: '::',
-							_0: {ctor: '_Tuple2', _0: 'left', _1: '0'},
+							_0: A2(_user$project$Logic_Utils_ops['=>'], 'left', '0'),
 							_1: {
 								ctor: '::',
-								_0: {ctor: '_Tuple2', _0: 'width', _1: '100vw'},
+								_0: A2(_user$project$Logic_Utils_ops['=>'], 'width', '100vw'),
 								_1: {
 									ctor: '::',
-									_0: {ctor: '_Tuple2', _0: 'height', _1: '90vh'},
+									_0: A2(_user$project$Logic_Utils_ops['=>'], 'height', '90vh'),
 									_1: {
 										ctor: '::',
-										_0: {ctor: '_Tuple2', _0: 'backgroundColor', _1: 'rgba(0,0,0,1)'},
+										_0: A2(_user$project$Logic_Utils_ops['=>'], 'backgroundColor', 'rgba(0,0,0,1)'),
 										_1: {
 											ctor: '::',
-											_0: {ctor: '_Tuple2', _0: 'zIndex', _1: '50'},
+											_0: A2(_user$project$Logic_Utils_ops['=>'], 'zIndex', '50'),
 											_1: {
 												ctor: '::',
-												_0: {ctor: '_Tuple2', _0: 'color', _1: '#ccc'},
+												_0: A2(_user$project$Logic_Utils_ops['=>'], 'color', '#ccc'),
 												_1: {
 													ctor: '::',
-													_0: {ctor: '_Tuple2', _0: 'textAlign', _1: 'center'},
+													_0: A2(_user$project$Logic_Utils_ops['=>'], 'textAlign', 'center'),
 													_1: {
 														ctor: '::',
-														_0: {ctor: '_Tuple2', _0: 'overflow', _1: 'scroll'},
+														_0: A2(_user$project$Logic_Utils_ops['=>'], 'overflow', 'scroll'),
 														_1: {
 															ctor: '::',
-															_0: {ctor: '_Tuple2', _0: 'opacity', _1: opacity},
+															_0: A2(_user$project$Logic_Utils_ops['=>'], 'opacity', opacity),
 															_1: {
 																ctor: '::',
-																_0: {ctor: '_Tuple2', _0: 'transform', _1: trans},
+																_0: A2(_user$project$Logic_Utils_ops['=>'], 'transform', trans),
 																_1: {
 																	ctor: '::',
-																	_0: {ctor: '_Tuple2', _0: 'transition', _1: 'all 0.3s linear'},
+																	_0: A2(_user$project$Logic_Utils_ops['=>'], 'transition', 'all 0.3s linear'),
 																	_1: {ctor: '[]'}
 																}
 															}

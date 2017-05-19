@@ -351,7 +351,7 @@ var _user$project$Views_FingerPick$stringView = A2(
 		_0: _elm_lang$html$Html_Attributes$style(
 			{
 				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'marginBottom', _1: '20px'},
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'marginBottom', '20px'),
 				_1: {ctor: '[]'}
 			}),
 		_1: {ctor: '[]'}
@@ -455,25 +455,25 @@ var _user$project$Views_FingerPick$fret = F2(
 		var baseStyles = _elm_lang$html$Html_Attributes$style(
 			{
 				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'display', _1: 'flex'},
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'display', 'flex'),
 				_1: {
 					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'marginTop', _1: height},
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'marginTop', height),
 					_1: {
 						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'width', _1: '120px'},
+						_0: A2(_user$project$Logic_Utils_ops['=>'], 'width', '120px'),
 						_1: {
 							ctor: '::',
-							_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '20px'},
+							_0: A2(_user$project$Logic_Utils_ops['=>'], 'fontSize', '20px'),
 							_1: {
 								ctor: '::',
-								_0: {ctor: '_Tuple2', _0: 'color', _1: '#000'},
+								_0: A2(_user$project$Logic_Utils_ops['=>'], 'color', '#000'),
 								_1: {
 									ctor: '::',
-									_0: {ctor: '_Tuple2', _0: 'justifyContent', _1: 'center'},
+									_0: A2(_user$project$Logic_Utils_ops['=>'], 'justifyContent', 'center'),
 									_1: {
 										ctor: '::',
-										_0: {ctor: '_Tuple2', _0: 'opacity', _1: opacity},
+										_0: A2(_user$project$Logic_Utils_ops['=>'], 'opacity', opacity),
 										_1: {ctor: '[]'}
 									}
 								}
@@ -583,7 +583,7 @@ var _user$project$Views_FingerPick$fingerPickGroup = F4(
 							_0: _elm_lang$html$Html_Attributes$style(
 								{
 									ctor: '::',
-									_0: {ctor: '_Tuple2', _0: 'display', _1: 'flex'},
+									_0: A2(_user$project$Logic_Utils_ops['=>'], 'display', 'flex'),
 									_1: {ctor: '[]'}
 								}),
 							_1: {ctor: '[]'}
@@ -598,7 +598,7 @@ var _user$project$Views_FingerPick$fingerPickGroup = F4(
 								_0: _elm_lang$html$Html_Attributes$style(
 									{
 										ctor: '::',
-										_0: {ctor: '_Tuple2', _0: 'display', _1: 'flex'},
+										_0: A2(_user$project$Logic_Utils_ops['=>'], 'display', 'flex'),
 										_1: {ctor: '[]'}
 									}),
 								_1: {ctor: '[]'}
@@ -626,7 +626,7 @@ var _user$project$Views_FingerPick$fingerPickGroup = F4(
 										_0: _elm_lang$html$Html_Attributes$style(
 											{
 												ctor: '::',
-												_0: {ctor: '_Tuple2', _0: 'display', _1: 'flex'},
+												_0: A2(_user$project$Logic_Utils_ops['=>'], 'display', 'flex'),
 												_1: {ctor: '[]'}
 											}),
 										_1: {ctor: '[]'}

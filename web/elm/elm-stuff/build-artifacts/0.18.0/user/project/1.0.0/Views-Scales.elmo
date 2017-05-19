@@ -522,7 +522,7 @@ var _user$project$Views_Scales$scaleNameMinor = F2(
 							_0: _elm_lang$html$Html_Attributes$style(
 								{
 									ctor: '::',
-									_0: {ctor: '_Tuple2', _0: 'color', _1: '#444'},
+									_0: A2(_user$project$Logic_Utils_ops['=>'], 'color', '#444'),
 									_1: {ctor: '[]'}
 								}),
 							_1: {ctor: '[]'}
@@ -542,7 +542,7 @@ var _user$project$Views_Scales$scaleNameMinor = F2(
 								_0: _elm_lang$html$Html_Attributes$style(
 									{
 										ctor: '::',
-										_0: {ctor: '_Tuple2', _0: 'color', _1: '#aaa'},
+										_0: A2(_user$project$Logic_Utils_ops['=>'], 'color', '#aaa'),
 										_1: {ctor: '[]'}
 									}),
 								_1: {ctor: '[]'}
@@ -582,7 +582,7 @@ var _user$project$Views_Scales$scaleNameMinor = F2(
 							_0: _elm_lang$html$Html_Attributes$style(
 								{
 									ctor: '::',
-									_0: {ctor: '_Tuple2', _0: 'color', _1: '#444'},
+									_0: A2(_user$project$Logic_Utils_ops['=>'], 'color', '#444'),
 									_1: {ctor: '[]'}
 								}),
 							_1: {ctor: '[]'}
@@ -601,7 +601,7 @@ var _user$project$Views_Scales$scaleNameMinor = F2(
 								_0: _elm_lang$html$Html_Attributes$style(
 									{
 										ctor: '::',
-										_0: {ctor: '_Tuple2', _0: 'color', _1: '#aaa'},
+										_0: A2(_user$project$Logic_Utils_ops['=>'], 'color', '#aaa'),
 										_1: {ctor: '[]'}
 									}),
 								_1: {ctor: '[]'}
@@ -652,7 +652,7 @@ var _user$project$Views_Scales$scaleNameMajor = F4(
 							_0: _elm_lang$html$Html_Attributes$style(
 								{
 									ctor: '::',
-									_0: {ctor: '_Tuple2', _0: 'color', _1: '#444'},
+									_0: A2(_user$project$Logic_Utils_ops['=>'], 'color', '#444'),
 									_1: {ctor: '[]'}
 								}),
 							_1: {ctor: '[]'}
@@ -671,7 +671,7 @@ var _user$project$Views_Scales$scaleNameMajor = F4(
 								_0: _elm_lang$html$Html_Attributes$style(
 									{
 										ctor: '::',
-										_0: {ctor: '_Tuple2', _0: 'color', _1: '#03a9f4'},
+										_0: A2(_user$project$Logic_Utils_ops['=>'], 'color', '#03a9f4'),
 										_1: {ctor: '[]'}
 									}),
 								_1: {ctor: '[]'}
@@ -690,7 +690,7 @@ var _user$project$Views_Scales$scaleNameMajor = F4(
 									_0: _elm_lang$html$Html_Attributes$style(
 										{
 											ctor: '::',
-											_0: {ctor: '_Tuple2', _0: 'color', _1: '#aaa'},
+											_0: A2(_user$project$Logic_Utils_ops['=>'], 'color', '#aaa'),
 											_1: {ctor: '[]'}
 										}),
 									_1: {ctor: '[]'}
@@ -730,7 +730,7 @@ var _user$project$Views_Scales$scaleNameMajor = F4(
 							_0: _elm_lang$html$Html_Attributes$style(
 								{
 									ctor: '::',
-									_0: {ctor: '_Tuple2', _0: 'color', _1: '#444'},
+									_0: A2(_user$project$Logic_Utils_ops['=>'], 'color', '#444'),
 									_1: {ctor: '[]'}
 								}),
 							_1: {ctor: '[]'}
@@ -749,7 +749,7 @@ var _user$project$Views_Scales$scaleNameMajor = F4(
 								_0: _elm_lang$html$Html_Attributes$style(
 									{
 										ctor: '::',
-										_0: {ctor: '_Tuple2', _0: 'color', _1: '#03a9f4'},
+										_0: A2(_user$project$Logic_Utils_ops['=>'], 'color', '#03a9f4'),
 										_1: {ctor: '[]'}
 									}),
 								_1: {ctor: '[]'}
@@ -768,14 +768,14 @@ var _user$project$Views_Scales$scaleNameMajor = F4(
 									_0: _elm_lang$html$Html_Attributes$style(
 										{
 											ctor: '::',
-											_0: {ctor: '_Tuple2', _0: 'color', _1: '#aaa'},
+											_0: A2(_user$project$Logic_Utils_ops['=>'], 'color', '#aaa'),
 											_1: {ctor: '[]'}
 										}),
 									_1: {ctor: '[]'}
 								},
 								{
 									ctor: '::',
-									_0: _elm_lang$html$Html$text(', relative major'),
+									_0: _elm_lang$html$Html$text(' => relative major'),
 									_1: {ctor: '[]'}
 								}),
 							_1: {ctor: '[]'}
@@ -978,7 +978,7 @@ var _user$project$Views_Scales$dorianModeView = function (model) {
 				},
 				{
 					ctor: '::',
-					_0: A4(_user$project$Views_Scales$scaleNameMajor, model, ' DORIAN MODE ', ' ( b3, b7 ) ', 'min7'),
+					_0: A4(_user$project$Views_Scales$scaleNameMajor, model, ' DORIAN MODE ', ' b3, b7 ', 'min7'),
 					_1: {ctor: '[]'}
 				}),
 			_1: {
@@ -1140,7 +1140,7 @@ var _user$project$Views_Scales$mixolydianModeView = function (model) {
 				},
 				{
 					ctor: '::',
-					_0: A4(_user$project$Views_Scales$scaleNameMajor, model, ' MIXOLYDIAN MODE ', ' ( b7 ) ', '7'),
+					_0: A4(_user$project$Views_Scales$scaleNameMajor, model, ' MIXOLYDIAN MODE ', ' b7 ', '7'),
 					_1: {ctor: '[]'}
 				}),
 			_1: {
@@ -1302,7 +1302,7 @@ var _user$project$Views_Scales$lydianModeView = function (model) {
 				},
 				{
 					ctor: '::',
-					_0: A4(_user$project$Views_Scales$scaleNameMajor, model, ' LYDIAN MODE ', ' ( #4 ) ', 'Maj7'),
+					_0: A4(_user$project$Views_Scales$scaleNameMajor, model, ' LYDIAN MODE ', ' #4 ', 'Maj7'),
 					_1: {ctor: '[]'}
 				}),
 			_1: {
@@ -2068,7 +2068,7 @@ var _user$project$Views_Scales$scalesPage = function (model) {
 			_0: _elm_lang$html$Html_Attributes$style(
 				{
 					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'paddingTop', _1: '50px'},
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'paddingTop', '50px'),
 					_1: {ctor: '[]'}
 				}),
 			_1: {ctor: '[]'}

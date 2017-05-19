@@ -1,0 +1,8 @@
+var _user$project$Logic_Ports$send = _elm_lang$core$Native_Platform.outgoingPort(
+	'send',
+	function (v) {
+		return {
+			note: {frequency: v.note.frequency, octave: v.note.octave, sustain: v.note.sustain},
+			waveType: v.waveType
+		};
+	});

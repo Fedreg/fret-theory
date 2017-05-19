@@ -2,19 +2,19 @@ var _user$project$Views_Strum$printNotation = function (notes) {
 	var strumNotationDotStyle = _elm_lang$html$Html_Attributes$style(
 		{
 			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'position', _1: 'absolute'},
+			_0: A2(_user$project$Logic_Utils_ops['=>'], 'position', 'absolute'),
 			_1: {
 				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'bottom', _1: '-30px'},
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'bottom', '-30px'),
 				_1: {
 					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'right', _1: '-15px'},
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'right', '-15px'),
 					_1: {
 						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '50px'},
+						_0: A2(_user$project$Logic_Utils_ops['=>'], 'fontSize', '50px'),
 						_1: {
 							ctor: '::',
-							_0: {ctor: '_Tuple2', _0: 'color', _1: '#555'},
+							_0: A2(_user$project$Logic_Utils_ops['=>'], 'color', '#555'),
 							_1: {ctor: '[]'}
 						}
 					}
@@ -25,31 +25,31 @@ var _user$project$Views_Strum$printNotation = function (notes) {
 		return _elm_lang$html$Html_Attributes$style(
 			{
 				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'position', _1: 'absolute'},
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'position', 'absolute'),
 				_1: {
 					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'top', _1: '-7px'},
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'top', '-7px'),
 					_1: {
 						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'right', _1: '-15px'},
+						_0: A2(_user$project$Logic_Utils_ops['=>'], 'right', '-15px'),
 						_1: {
 							ctor: '::',
-							_0: {ctor: '_Tuple2', _0: 'width', _1: '15px'},
+							_0: A2(_user$project$Logic_Utils_ops['=>'], 'width', '15px'),
 							_1: {
 								ctor: '::',
-								_0: {ctor: '_Tuple2', _0: 'height', _1: '15px'},
+								_0: A2(_user$project$Logic_Utils_ops['=>'], 'height', '15px'),
 								_1: {
 									ctor: '::',
-									_0: {ctor: '_Tuple2', _0: 'transform', _1: 'skew(30deg)'},
+									_0: A2(_user$project$Logic_Utils_ops['=>'], 'transform', 'skew(30deg)'),
 									_1: {
 										ctor: '::',
-										_0: {ctor: '_Tuple2', _0: 'visibility', _1: flag},
+										_0: A2(_user$project$Logic_Utils_ops['=>'], 'visibility', flag),
 										_1: {
 											ctor: '::',
-											_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '20px'},
+											_0: A2(_user$project$Logic_Utils_ops['=>'], 'fontSize', '20px'),
 											_1: {
 												ctor: '::',
-												_0: {ctor: '_Tuple2', _0: 'color', _1: '#555'},
+												_0: A2(_user$project$Logic_Utils_ops['=>'], 'color', '#555'),
 												_1: {ctor: '[]'}
 											}
 										}
@@ -64,13 +64,13 @@ var _user$project$Views_Strum$printNotation = function (notes) {
 	var strumNotationContainerStyle = _elm_lang$html$Html_Attributes$style(
 		{
 			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'position', _1: 'relative'},
+			_0: A2(_user$project$Logic_Utils_ops['=>'], 'position', 'relative'),
 			_1: {
 				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'height', _1: '35px'},
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'height', '35px'),
 				_1: {
 					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'borderRight', _1: '2px solid #555'},
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'borderRight', '2px solid #555'),
 					_1: {ctor: '[]'}
 				}
 			}
@@ -79,31 +79,31 @@ var _user$project$Views_Strum$printNotation = function (notes) {
 		return _elm_lang$html$Html_Attributes$style(
 			{
 				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'position', _1: 'absolute'},
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'position', 'absolute'),
 				_1: {
 					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'bottom', _1: '-10px'},
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'bottom', '-10px'),
 					_1: {
 						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'left', _1: '-5px'},
+						_0: A2(_user$project$Logic_Utils_ops['=>'], 'left', '-5px'),
 						_1: {
 							ctor: '::',
-							_0: {ctor: '_Tuple2', _0: 'width', _1: '14px'},
+							_0: A2(_user$project$Logic_Utils_ops['=>'], 'width', '14px'),
 							_1: {
 								ctor: '::',
-								_0: {ctor: '_Tuple2', _0: 'height', _1: '15px'},
+								_0: A2(_user$project$Logic_Utils_ops['=>'], 'height', '15px'),
 								_1: {
 									ctor: '::',
-									_0: {ctor: '_Tuple2', _0: 'transform', _1: 'skew(-20deg)'},
+									_0: A2(_user$project$Logic_Utils_ops['=>'], 'transform', 'skew(-20deg)'),
 									_1: {
 										ctor: '::',
-										_0: {ctor: '_Tuple2', _0: 'border', _1: '2px solid #555'},
+										_0: A2(_user$project$Logic_Utils_ops['=>'], 'border', '2px solid #555'),
 										_1: {
 											ctor: '::',
-											_0: {ctor: '_Tuple2', _0: 'borderRadius', _1: '10px'},
+											_0: A2(_user$project$Logic_Utils_ops['=>'], 'borderRadius', '10px'),
 											_1: {
 												ctor: '::',
-												_0: {ctor: '_Tuple2', _0: 'backgroundColor', _1: fill},
+												_0: A2(_user$project$Logic_Utils_ops['=>'], 'backgroundColor', fill),
 												_1: {ctor: '[]'}
 											}
 										}
@@ -237,33 +237,31 @@ var _user$project$Views_Strum$arrow = function (col) {
 			return _elm_lang$html$Html_Attributes$style(
 				{
 					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'transform', _1: 'rotate(45deg)'},
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'transform', 'rotate(45deg)'),
 					_1: {
 						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'width', _1: width},
+						_0: A2(_user$project$Logic_Utils_ops['=>'], 'width', width),
 						_1: {
 							ctor: '::',
-							_0: {ctor: '_Tuple2', _0: 'height', _1: height},
+							_0: A2(_user$project$Logic_Utils_ops['=>'], 'height', height),
 							_1: {
 								ctor: '::',
-								_0: {
-									ctor: '_Tuple2',
-									_0: 'borderTop',
-									_1: A2(_elm_lang$core$Basics_ops['++'], '9px solid ', col)
-								},
+								_0: A2(
+									_user$project$Logic_Utils_ops['=>'],
+									'borderTop',
+									A2(_elm_lang$core$Basics_ops['++'], '9px solid ', col)),
 								_1: {
 									ctor: '::',
-									_0: {
-										ctor: '_Tuple2',
-										_0: 'borderLeft',
-										_1: A2(_elm_lang$core$Basics_ops['++'], '9px solid ', col)
-									},
+									_0: A2(
+										_user$project$Logic_Utils_ops['=>'],
+										'borderLeft',
+										A2(_elm_lang$core$Basics_ops['++'], '9px solid ', col)),
 									_1: {
 										ctor: '::',
-										_0: {ctor: '_Tuple2', _0: 'marginLeft', _1: x},
+										_0: A2(_user$project$Logic_Utils_ops['=>'], 'marginLeft', x),
 										_1: {
 											ctor: '::',
-											_0: {ctor: '_Tuple2', _0: 'marginTop', _1: y},
+											_0: A2(_user$project$Logic_Utils_ops['=>'], 'marginTop', y),
 											_1: {ctor: '[]'}
 										}
 									}
@@ -303,7 +301,7 @@ var _user$project$Views_Strum$strumGroupNumberSelector = A2(
 			_0: _elm_lang$html$Html_Attributes$style(
 				{
 					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'width', _1: '200px'},
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'width', '200px'),
 					_1: {ctor: '[]'}
 				}),
 			_1: {ctor: '[]'}
@@ -380,10 +378,10 @@ var _user$project$Views_Strum$strumGroup = F6(
 					_0: _elm_lang$html$Html_Attributes$style(
 						{
 							ctor: '::',
-							_0: {ctor: '_Tuple2', _0: 'width', _1: '10px'},
+							_0: A2(_user$project$Logic_Utils_ops['=>'], 'width', '10px'),
 							_1: {
 								ctor: '::',
-								_0: {ctor: '_Tuple2', _0: 'margin', _1: '20px 55px 0'},
+								_0: A2(_user$project$Logic_Utils_ops['=>'], 'margin', '20px 55px 0'),
 								_1: {ctor: '[]'}
 							}
 						}),
@@ -403,10 +401,10 @@ var _user$project$Views_Strum$strumGroup = F6(
 					_0: _elm_lang$html$Html_Attributes$style(
 						{
 							ctor: '::',
-							_0: {ctor: '_Tuple2', _0: 'width', _1: '10px'},
+							_0: A2(_user$project$Logic_Utils_ops['=>'], 'width', '10px'),
 							_1: {
 								ctor: '::',
-								_0: {ctor: '_Tuple2', _0: 'margin', _1: '0 55px 0'},
+								_0: A2(_user$project$Logic_Utils_ops['=>'], 'margin', '0 55px 0'),
 								_1: {ctor: '[]'}
 							}
 						}),
@@ -435,7 +433,7 @@ var _user$project$Views_Strum$strumGroup = F6(
 						_0: _elm_lang$html$Html_Attributes$style(
 							{
 								ctor: '::',
-								_0: {ctor: '_Tuple2', _0: 'display', _1: 'flex'},
+								_0: A2(_user$project$Logic_Utils_ops['=>'], 'display', 'flex'),
 								_1: {ctor: '[]'}
 							}),
 						_1: {ctor: '[]'}
@@ -486,7 +484,7 @@ var _user$project$Views_Strum$strumGroup = F6(
 							_0: _elm_lang$html$Html_Attributes$style(
 								{
 									ctor: '::',
-									_0: {ctor: '_Tuple2', _0: 'display', _1: 'flex'},
+									_0: A2(_user$project$Logic_Utils_ops['=>'], 'display', 'flex'),
 									_1: {ctor: '[]'}
 								}),
 							_1: {ctor: '[]'}
@@ -504,7 +502,7 @@ var _user$project$Views_Strum$strumGroup = F6(
 								_0: _elm_lang$html$Html_Attributes$style(
 									{
 										ctor: '::',
-										_0: {ctor: '_Tuple2', _0: 'display', _1: 'flex'},
+										_0: A2(_user$project$Logic_Utils_ops['=>'], 'display', 'flex'),
 										_1: {ctor: '[]'}
 									}),
 								_1: {ctor: '[]'}

@@ -1665,11 +1665,23 @@ require.register("web/elm/Logic/Audio.elm", function(exports, require, module) {
 
 });
 
+;require.register("web/elm/Logic/Ports.elm", function(exports, require, module) {
+
+});
+
 ;require.register("web/elm/Logic/Routing.elm", function(exports, require, module) {
 
 });
 
 ;require.register("web/elm/Logic/Types.elm", function(exports, require, module) {
+
+});
+
+;require.register("web/elm/Logic/Update.elm", function(exports, require, module) {
+
+});
+
+;require.register("web/elm/Logic/Utils.elm", function(exports, require, module) {
 
 });
 
@@ -25918,6 +25930,15 @@ var _user$project$Logic_Audio$notes = function (key) {
 	}
 };
 
+var _user$project$Logic_Ports$send = _elm_lang$core$Native_Platform.outgoingPort(
+	'send',
+	function (v) {
+		return {
+			note: {frequency: v.note.frequency, octave: v.note.octave, sustain: v.note.sustain},
+			waveType: v.waveType
+		};
+	});
+
 var _user$project$Logic_Routing$fingerPickingPath = '#fingerpicking/';
 var _user$project$Logic_Routing$homePath = '#home/';
 var _user$project$Logic_Routing$strummingPath = '#strumming/';
@@ -26054,6 +26075,12 @@ var _user$project$Logic_Routing$parseLocation = function (location) {
 	}
 };
 
+var _user$project$Logic_Utils_ops = _user$project$Logic_Utils_ops || {};
+_user$project$Logic_Utils_ops['=>'] = F2(
+	function (v0, v1) {
+		return {ctor: '_Tuple2', _0: v0, _1: v1};
+	});
+
 var _user$project$Styles_FretboardStyles$hrLedgerStyleLo = F2(
 	function (notePosition, offset) {
 		var pos = notePosition;
@@ -26061,41 +26088,40 @@ var _user$project$Styles_FretboardStyles$hrLedgerStyleLo = F2(
 		return _elm_lang$html$Html_Attributes$style(
 			{
 				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'position', _1: 'absolute'},
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'position', 'absolute'),
 				_1: {
 					ctor: '::',
-					_0: {
-						ctor: '_Tuple2',
-						_0: 'bottom',
-						_1: A2(
+					_0: A2(
+						_user$project$Logic_Utils_ops['=>'],
+						'bottom',
+						A2(
 							_elm_lang$core$Basics_ops['++'],
 							_elm_lang$core$Basics$toString(offset),
-							'px')
-					},
+							'px')),
 					_1: {
 						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'left', _1: '45%'},
+						_0: A2(_user$project$Logic_Utils_ops['=>'], 'left', '45%'),
 						_1: {
 							ctor: '::',
-							_0: {ctor: '_Tuple2', _0: 'width', _1: '50px'},
+							_0: A2(_user$project$Logic_Utils_ops['=>'], 'width', '50px'),
 							_1: {
 								ctor: '::',
-								_0: {ctor: '_Tuple2', _0: 'margin', _1: '0 auto'},
+								_0: A2(_user$project$Logic_Utils_ops['=>'], 'margin', '0 auto'),
 								_1: {
 									ctor: '::',
-									_0: {ctor: '_Tuple2', _0: 'padding', _1: '10px'},
+									_0: A2(_user$project$Logic_Utils_ops['=>'], 'padding', '10px'),
 									_1: {
 										ctor: '::',
-										_0: {ctor: '_Tuple2', _0: 'opacity', _1: visibility},
+										_0: A2(_user$project$Logic_Utils_ops['=>'], 'opacity', visibility),
 										_1: {
 											ctor: '::',
-											_0: {ctor: '_Tuple2', _0: 'borderTop', _1: '0.1rem solid #444'},
+											_0: A2(_user$project$Logic_Utils_ops['=>'], 'borderTop', '0.1rem solid #444'),
 											_1: {
 												ctor: '::',
-												_0: {ctor: '_Tuple2', _0: 'transition', _1: 'opacity 0.5s ease'},
+												_0: A2(_user$project$Logic_Utils_ops['=>'], 'transition', 'opacity 0.5s ease'),
 												_1: {
 													ctor: '::',
-													_0: {ctor: '_Tuple2', _0: 'zIndex', _1: '0'},
+													_0: A2(_user$project$Logic_Utils_ops['=>'], 'zIndex', '0'),
 													_1: {ctor: '[]'}
 												}
 											}
@@ -26115,41 +26141,40 @@ var _user$project$Styles_FretboardStyles$hrLedgerStyleHi = F2(
 		return _elm_lang$html$Html_Attributes$style(
 			{
 				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'position', _1: 'absolute'},
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'position', 'absolute'),
 				_1: {
 					ctor: '::',
-					_0: {
-						ctor: '_Tuple2',
-						_0: 'bottom',
-						_1: A2(
+					_0: A2(
+						_user$project$Logic_Utils_ops['=>'],
+						'bottom',
+						A2(
 							_elm_lang$core$Basics_ops['++'],
 							_elm_lang$core$Basics$toString(offset),
-							'px')
-					},
+							'px')),
 					_1: {
 						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'left', _1: '45%'},
+						_0: A2(_user$project$Logic_Utils_ops['=>'], 'left', '45%'),
 						_1: {
 							ctor: '::',
-							_0: {ctor: '_Tuple2', _0: 'width', _1: '50px'},
+							_0: A2(_user$project$Logic_Utils_ops['=>'], 'width', '50px'),
 							_1: {
 								ctor: '::',
-								_0: {ctor: '_Tuple2', _0: 'margin', _1: '0 auto'},
+								_0: A2(_user$project$Logic_Utils_ops['=>'], 'margin', '0 auto'),
 								_1: {
 									ctor: '::',
-									_0: {ctor: '_Tuple2', _0: 'padding', _1: '10px'},
+									_0: A2(_user$project$Logic_Utils_ops['=>'], 'padding', '10px'),
 									_1: {
 										ctor: '::',
-										_0: {ctor: '_Tuple2', _0: 'opacity', _1: visibility},
+										_0: A2(_user$project$Logic_Utils_ops['=>'], 'opacity', visibility),
 										_1: {
 											ctor: '::',
-											_0: {ctor: '_Tuple2', _0: 'borderTop', _1: '0.1rem solid #444'},
+											_0: A2(_user$project$Logic_Utils_ops['=>'], 'borderTop', '0.1rem solid #444'),
 											_1: {
 												ctor: '::',
-												_0: {ctor: '_Tuple2', _0: 'transition', _1: 'opacity 0.5s ease'},
+												_0: A2(_user$project$Logic_Utils_ops['=>'], 'transition', 'opacity 0.5s ease'),
 												_1: {
 													ctor: '::',
-													_0: {ctor: '_Tuple2', _0: 'zIndex', _1: '0'},
+													_0: A2(_user$project$Logic_Utils_ops['=>'], 'zIndex', '0'),
 													_1: {ctor: '[]'}
 												}
 											}
@@ -26165,16 +26190,16 @@ var _user$project$Styles_FretboardStyles$hrLedgerStyleHi = F2(
 var _user$project$Styles_FretboardStyles$hrStyle = _elm_lang$html$Html_Attributes$style(
 	{
 		ctor: '::',
-		_0: {ctor: '_Tuple2', _0: 'width', _1: '280px'},
+		_0: A2(_user$project$Logic_Utils_ops['=>'], 'width', '280px'),
 		_1: {
 			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'margin', _1: '0 auto'},
+			_0: A2(_user$project$Logic_Utils_ops['=>'], 'margin', '0 auto'),
 			_1: {
 				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'padding', _1: '10px'},
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'padding', '10px'),
 				_1: {
 					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'borderTop', _1: '0.1rem solid #444'},
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'borderTop', '0.1rem solid #444'),
 					_1: {ctor: '[]'}
 				}
 			}
@@ -26185,38 +26210,37 @@ var _user$project$Styles_FretboardStyles$notationAccidentalStyle = F2(
 		return _elm_lang$html$Html_Attributes$style(
 			{
 				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '28px'},
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'fontSize', '28px'),
 				_1: {
 					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'position', _1: 'absolute'},
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'position', 'absolute'),
 					_1: {
 						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'marginBottom', _1: '-10px'},
+						_0: A2(_user$project$Logic_Utils_ops['=>'], 'marginBottom', '-10px'),
 						_1: {
 							ctor: '::',
-							_0: {
-								ctor: '_Tuple2',
-								_0: 'bottom',
-								_1: A2(
+							_0: A2(
+								_user$project$Logic_Utils_ops['=>'],
+								'bottom',
+								A2(
 									_elm_lang$core$Basics_ops['++'],
 									_elm_lang$core$Basics$toString(offset - 3),
-									'px')
-							},
+									'px')),
 							_1: {
 								ctor: '::',
-								_0: {ctor: '_Tuple2', _0: 'left', _1: '44%'},
+								_0: A2(_user$project$Logic_Utils_ops['=>'], 'left', '44%'),
 								_1: {
 									ctor: '::',
-									_0: {ctor: '_Tuple2', _0: 'color', _1: '#03a9f4'},
+									_0: A2(_user$project$Logic_Utils_ops['=>'], 'color', '#03a9f4'),
 									_1: {
 										ctor: '::',
-										_0: {ctor: '_Tuple2', _0: 'opacity', _1: visibility},
+										_0: A2(_user$project$Logic_Utils_ops['=>'], 'opacity', visibility),
 										_1: {
 											ctor: '::',
-											_0: {ctor: '_Tuple2', _0: 'transition', _1: 'all 0.5s ease'},
+											_0: A2(_user$project$Logic_Utils_ops['=>'], 'transition', 'all 0.5s ease'),
 											_1: {
 												ctor: '::',
-												_0: {ctor: '_Tuple2', _0: 'zIndex', _1: '1'},
+												_0: A2(_user$project$Logic_Utils_ops['=>'], 'zIndex', '1'),
 												_1: {ctor: '[]'}
 											}
 										}
@@ -26232,43 +26256,38 @@ var _user$project$Styles_FretboardStyles$notationNoteStyle = function (offset) {
 	return _elm_lang$html$Html_Attributes$style(
 		{
 			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'width', _1: '18px'},
+			_0: A2(_user$project$Logic_Utils_ops['=>'], 'width', '18px'),
 			_1: {
 				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'height', _1: '18px'},
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'height', '18px'),
 				_1: {
 					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'borderRadius', _1: '9px'},
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'borderRadius', '9px'),
 					_1: {
 						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'position', _1: 'absolute'},
+						_0: A2(_user$project$Logic_Utils_ops['=>'], 'position', 'absolute'),
 						_1: {
 							ctor: '::',
-							_0: {
-								ctor: '_Tuple2',
-								_0: 'bottom',
-								_1: A2(
+							_0: A2(
+								_user$project$Logic_Utils_ops['=>'],
+								'bottom',
+								A2(
 									_elm_lang$core$Basics_ops['++'],
 									_elm_lang$core$Basics$toString(offset),
-									'px')
-							},
+									'px')),
 							_1: {
 								ctor: '::',
-								_0: {ctor: '_Tuple2', _0: 'left', _1: '50%'},
+								_0: A2(_user$project$Logic_Utils_ops['=>'], 'left', '50%'),
 								_1: {
 									ctor: '::',
-									_0: {ctor: '_Tuple2', _0: 'backgroundColor', _1: '#03a9f4'},
+									_0: A2(_user$project$Logic_Utils_ops['=>'], 'backgroundColor', '#03a9f4'),
 									_1: {
 										ctor: '::',
-										_0: {ctor: '_Tuple2', _0: 'transition', _1: 'all 0.5s ease'},
+										_0: A2(_user$project$Logic_Utils_ops['=>'], 'transition', 'all 0.5s ease'),
 										_1: {
 											ctor: '::',
-											_0: {ctor: '_Tuple2', _0: 'zIndex', _1: '1'},
-											_1: {
-												ctor: '::',
-												_0: {ctor: '_Tuple2', _0: 'boxShadow', _1: '3px 3px 15px rgba*0,0,0,0.9)'},
-												_1: {ctor: '[]'}
-											}
+											_0: A2(_user$project$Logic_Utils_ops['=>'], 'zIndex', '1'),
+											_1: {ctor: '[]'}
 										}
 									}
 								}
@@ -26282,16 +26301,16 @@ var _user$project$Styles_FretboardStyles$notationNoteStyle = function (offset) {
 var _user$project$Styles_FretboardStyles$notationClefStyle = _elm_lang$html$Html_Attributes$style(
 	{
 		ctor: '::',
-		_0: {ctor: '_Tuple2', _0: 'position', _1: 'absolute'},
+		_0: A2(_user$project$Logic_Utils_ops['=>'], 'position', 'absolute'),
 		_1: {
 			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'bottom', _1: '50px'},
+			_0: A2(_user$project$Logic_Utils_ops['=>'], 'bottom', '50px'),
 			_1: {
 				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'left', _1: '40px'},
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'left', '40px'),
 				_1: {
 					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'height', _1: '100px'},
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'height', '100px'),
 					_1: {ctor: '[]'}
 				}
 			}
@@ -26300,19 +26319,19 @@ var _user$project$Styles_FretboardStyles$notationClefStyle = _elm_lang$html$Html
 var _user$project$Styles_FretboardStyles$notationContainerStyle = _elm_lang$html$Html_Attributes$style(
 	{
 		ctor: '::',
-		_0: {ctor: '_Tuple2', _0: 'width', _1: '350px'},
+		_0: A2(_user$project$Logic_Utils_ops['=>'], 'width', '350px'),
 		_1: {
 			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'padding', _1: '50px 10px'},
+			_0: A2(_user$project$Logic_Utils_ops['=>'], 'padding', '50px 10px'),
 			_1: {
 				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'margin', _1: '70px auto'},
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'margin', '70px auto'),
 				_1: {
 					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'position', _1: 'relative'},
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'position', 'relative'),
 					_1: {
 						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'textAlign', _1: 'center'},
+						_0: A2(_user$project$Logic_Utils_ops['=>'], 'textAlign', 'center'),
 						_1: {ctor: '[]'}
 					}
 				}
@@ -26322,31 +26341,31 @@ var _user$project$Styles_FretboardStyles$notationContainerStyle = _elm_lang$html
 var _user$project$Styles_FretboardStyles$noteGroupStyle = _elm_lang$html$Html_Attributes$style(
 	{
 		ctor: '::',
-		_0: {ctor: '_Tuple2', _0: 'postion', _1: 'relative'},
+		_0: A2(_user$project$Logic_Utils_ops['=>'], 'postion', 'relative'),
 		_1: {ctor: '[]'}
 	});
 var _user$project$Styles_FretboardStyles$fretNumberStyle = _elm_lang$html$Html_Attributes$style(
 	{
 		ctor: '::',
-		_0: {ctor: '_Tuple2', _0: 'width', _1: '100px'},
+		_0: A2(_user$project$Logic_Utils_ops['=>'], 'width', '100px'),
 		_1: {
 			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'marginBottom', _1: '-70px'},
+			_0: A2(_user$project$Logic_Utils_ops['=>'], 'marginBottom', '-70px'),
 			_1: {
 				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'padding', _1: '5px'},
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'padding', '5px'),
 				_1: {
 					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'textTransform', _1: 'uppercase'},
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'textTransform', 'uppercase'),
 					_1: {
 						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'color', _1: '#03a9f4'},
+						_0: A2(_user$project$Logic_Utils_ops['=>'], 'color', '#03a9f4'),
 						_1: {
 							ctor: '::',
-							_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '20px'},
+							_0: A2(_user$project$Logic_Utils_ops['=>'], 'fontSize', '20px'),
 							_1: {
 								ctor: '::',
-								_0: {ctor: '_Tuple2', _0: 'textAlign', _1: 'center'},
+								_0: A2(_user$project$Logic_Utils_ops['=>'], 'textAlign', 'center'),
 								_1: {ctor: '[]'}
 							}
 						}
@@ -26358,13 +26377,13 @@ var _user$project$Styles_FretboardStyles$fretNumberStyle = _elm_lang$html$Html_A
 var _user$project$Styles_FretboardStyles$fretBlankStyle = _elm_lang$html$Html_Attributes$style(
 	{
 		ctor: '::',
-		_0: {ctor: '_Tuple2', _0: 'color', _1: 'rgba(0,0,0,0)'},
+		_0: A2(_user$project$Logic_Utils_ops['=>'], 'color', 'rgba(0,0,0,0)'),
 		_1: {
 			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'width', _1: '100px'},
+			_0: A2(_user$project$Logic_Utils_ops['=>'], 'width', '100px'),
 			_1: {
 				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'padding', _1: '5px'},
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'padding', '5px'),
 				_1: {ctor: '[]'}
 			}
 		}
@@ -26374,37 +26393,37 @@ var _user$project$Styles_FretboardStyles$fretNoteStyle = F2(
 		return _elm_lang$html$Html_Attributes$style(
 			{
 				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'width', _1: '100px'},
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'width', '100px'),
 				_1: {
 					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'padding', _1: '14px 5px'},
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'padding', '14px 5px'),
 					_1: {
 						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'textTransform', _1: 'uppercase'},
+						_0: A2(_user$project$Logic_Utils_ops['=>'], 'textTransform', 'uppercase'),
 						_1: {
 							ctor: '::',
-							_0: {ctor: '_Tuple2', _0: 'color', _1: color},
+							_0: A2(_user$project$Logic_Utils_ops['=>'], 'color', color),
 							_1: {
 								ctor: '::',
-								_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '18px'},
+								_0: A2(_user$project$Logic_Utils_ops['=>'], 'fontSize', '18px'),
 								_1: {
 									ctor: '::',
-									_0: {ctor: '_Tuple2', _0: 'textAlign', _1: 'center'},
+									_0: A2(_user$project$Logic_Utils_ops['=>'], 'textAlign', 'center'),
 									_1: {
 										ctor: '::',
-										_0: {ctor: '_Tuple2', _0: 'borderBottom', _1: '1px solid #aaa'},
+										_0: A2(_user$project$Logic_Utils_ops['=>'], 'borderBottom', '1px solid #aaa'),
 										_1: {
 											ctor: '::',
-											_0: {ctor: '_Tuple2', _0: 'borderCollapse', _1: 'collapse'},
+											_0: A2(_user$project$Logic_Utils_ops['=>'], 'borderCollapse', 'collapse'),
 											_1: {
 												ctor: '::',
-												_0: {ctor: '_Tuple2', _0: 'transition', _1: 'all 0.4s ease'},
+												_0: A2(_user$project$Logic_Utils_ops['=>'], 'transition', 'all 0.4s ease'),
 												_1: {
 													ctor: '::',
-													_0: {ctor: '_Tuple2', _0: 'backgroundColor', _1: bgCol},
+													_0: A2(_user$project$Logic_Utils_ops['=>'], 'backgroundColor', bgCol),
 													_1: {
 														ctor: '::',
-														_0: {ctor: '_Tuple2', _0: 'zIndex', _1: '1'},
+														_0: A2(_user$project$Logic_Utils_ops['=>'], 'zIndex', '1'),
 														_1: {ctor: '[]'}
 													}
 												}
@@ -26421,19 +26440,19 @@ var _user$project$Styles_FretboardStyles$fretNoteStyle = F2(
 var _user$project$Styles_FretboardStyles$fretboardStringStyle = _elm_lang$html$Html_Attributes$style(
 	{
 		ctor: '::',
-		_0: {ctor: '_Tuple2', _0: 'display', _1: 'flex'},
+		_0: A2(_user$project$Logic_Utils_ops['=>'], 'display', 'flex'),
 		_1: {ctor: '[]'}
 	});
 var _user$project$Styles_FretboardStyles$fretboardContainerStyle = _elm_lang$html$Html_Attributes$style(
 	{
 		ctor: '::',
-		_0: {ctor: '_Tuple2', _0: 'margin', _1: '50px'},
+		_0: A2(_user$project$Logic_Utils_ops['=>'], 'margin', '50px'),
 		_1: {
 			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'width', _1: '90%'},
+			_0: A2(_user$project$Logic_Utils_ops['=>'], 'width', '90%'),
 			_1: {
 				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'position', _1: 'relative'},
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'position', 'relative'),
 				_1: {ctor: '[]'}
 			}
 		}
@@ -26441,16 +26460,16 @@ var _user$project$Styles_FretboardStyles$fretboardContainerStyle = _elm_lang$htm
 var _user$project$Styles_FretboardStyles$fretboardTitleStyle = _elm_lang$html$Html_Attributes$style(
 	{
 		ctor: '::',
-		_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '18px'},
+		_0: A2(_user$project$Logic_Utils_ops['=>'], 'fontSize', '18px'),
 		_1: {
 			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'textAlign', _1: 'left'},
+			_0: A2(_user$project$Logic_Utils_ops['=>'], 'textAlign', 'left'),
 			_1: {
 				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'margin', _1: '100px 0 30px'},
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'margin', '100px 0 30px'),
 				_1: {
 					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'color', _1: '#666'},
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'color', '#666'),
 					_1: {ctor: '[]'}
 				}
 			}
@@ -27196,19 +27215,19 @@ var _user$project$Views_Fretboard$fretboardPage = function (model) {
 	};
 	var highlight = {
 		ctor: '::',
-		_0: {ctor: '_Tuple2', _0: 'background-color', _1: '#03a9f4'},
+		_0: A2(_user$project$Logic_Utils_ops['=>'], 'background-color', '#03a9f4'),
 		_1: {
 			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'transform', _1: 'scale(1.5, 1.5)'},
+			_0: A2(_user$project$Logic_Utils_ops['=>'], 'transform', 'scale(1.5, 1.5)'),
 			_1: {
 				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'color', _1: '#fff'},
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'color', '#fff'),
 				_1: {
 					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'z-index', _1: '2'},
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'z-index', '2'),
 					_1: {
 						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'borderRadius', _1: '50px'},
+						_0: A2(_user$project$Logic_Utils_ops['=>'], 'borderRadius', '50px'),
 						_1: {ctor: '[]'}
 					}
 				}
@@ -27302,7 +27321,7 @@ var _user$project$Views_Fretboard$fretboardPage = function (model) {
 			_0: _elm_lang$html$Html_Attributes$style(
 				{
 					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'position', _1: 'relative'},
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'position', 'relative'),
 					_1: {ctor: '[]'}
 				}),
 			_1: {ctor: '[]'}
@@ -27456,22 +27475,22 @@ var _user$project$Views_Fretboard$fretboardPage = function (model) {
 var _user$project$Styles_ChordStyles$soloOnLinkStyle = _elm_lang$html$Html_Attributes$style(
 	{
 		ctor: '::',
-		_0: {ctor: '_Tuple2', _0: 'color', _1: '#aaa'},
+		_0: A2(_user$project$Logic_Utils_ops['=>'], 'color', '#aaa'),
 		_1: {ctor: '[]'}
 	});
 var _user$project$Styles_ChordStyles$soloOnTextStyle = _elm_lang$html$Html_Attributes$style(
 	{
 		ctor: '::',
-		_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '18px'},
+		_0: A2(_user$project$Logic_Utils_ops['=>'], 'fontSize', '18px'),
 		_1: {
 			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'paddingBottom', _1: '50px'},
+			_0: A2(_user$project$Logic_Utils_ops['=>'], 'paddingBottom', '50px'),
 			_1: {
 				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'color', _1: '#A8A7A7'},
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'color', '#A8A7A7'),
 				_1: {
 					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'textDecoration', _1: 'inherit'},
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'textDecoration', 'inherit'),
 					_1: {ctor: '[]'}
 				}
 			}
@@ -27480,10 +27499,10 @@ var _user$project$Styles_ChordStyles$soloOnTextStyle = _elm_lang$html$Html_Attri
 var _user$project$Styles_ChordStyles$soloOnNumberStyle = _elm_lang$html$Html_Attributes$style(
 	{
 		ctor: '::',
-		_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '25px'},
+		_0: A2(_user$project$Logic_Utils_ops['=>'], 'fontSize', '25px'),
 		_1: {
 			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'color', _1: '#03a9f4'},
+			_0: A2(_user$project$Logic_Utils_ops['=>'], 'color', '#03a9f4'),
 			_1: {ctor: '[]'}
 		}
 	});
@@ -27500,45 +27519,43 @@ var _user$project$Styles_ChordStyles$fretMarkerStyle = function (dot) {
 		return _elm_lang$html$Html_Attributes$style(
 			{
 				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'transition', _1: 'all 0.5s ease'},
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'transition', 'all 0.5s ease'),
 				_1: {
 					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'position', _1: 'absolute'},
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'position', 'absolute'),
 					_1: {
 						ctor: '::',
-						_0: {
-							ctor: '_Tuple2',
-							_0: 'top',
-							_1: A2(_elm_lang$core$Basics_ops['++'], dot.stringNo, 'px')
-						},
+						_0: A2(
+							_user$project$Logic_Utils_ops['=>'],
+							'top',
+							A2(_elm_lang$core$Basics_ops['++'], dot.stringNo, 'px')),
 						_1: {
 							ctor: '::',
-							_0: {
-								ctor: '_Tuple2',
-								_0: 'right',
-								_1: A2(_elm_lang$core$Basics_ops['++'], dot.fretNo, 'px')
-							},
+							_0: A2(
+								_user$project$Logic_Utils_ops['=>'],
+								'right',
+								A2(_elm_lang$core$Basics_ops['++'], dot.fretNo, 'px')),
 							_1: {
 								ctor: '::',
-								_0: {ctor: '_Tuple2', _0: 'width', _1: '15px'},
+								_0: A2(_user$project$Logic_Utils_ops['=>'], 'width', '15px'),
 								_1: {
 									ctor: '::',
-									_0: {ctor: '_Tuple2', _0: 'height', _1: barSize},
+									_0: A2(_user$project$Logic_Utils_ops['=>'], 'height', barSize),
 									_1: {
 										ctor: '::',
-										_0: {ctor: '_Tuple2', _0: 'borderRadius', _1: '7px'},
+										_0: A2(_user$project$Logic_Utils_ops['=>'], 'borderRadius', '7px'),
 										_1: {
 											ctor: '::',
-											_0: {ctor: '_Tuple2', _0: 'backgroundColor', _1: '#677077'},
+											_0: A2(_user$project$Logic_Utils_ops['=>'], 'backgroundColor', '#677077'),
 											_1: {
 												ctor: '::',
-												_0: {ctor: '_Tuple2', _0: 'color', _1: 'rgba(0,0,0,0)'},
+												_0: A2(_user$project$Logic_Utils_ops['=>'], 'color', 'rgba(0,0,0,0)'),
 												_1: {
 													ctor: '::',
-													_0: {ctor: '_Tuple2', _0: 'zIndex', _1: '10'},
+													_0: A2(_user$project$Logic_Utils_ops['=>'], 'zIndex', '10'),
 													_1: {
 														ctor: '::',
-														_0: {ctor: '_Tuple2', _0: 'boxShadow', _1: '5px 5px 10px rgba(0,0,0,0.25)'},
+														_0: A2(_user$project$Logic_Utils_ops['=>'], 'boxShadow', '5px 5px 10px rgba(0,0,0,0.25)'),
 														_1: {ctor: '[]'}
 													}
 												}
@@ -27556,42 +27573,40 @@ var _user$project$Styles_ChordStyles$fretMarkerStyle = function (dot) {
 			return _elm_lang$html$Html_Attributes$style(
 				{
 					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'transition', _1: 'all 0.5s ease'},
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'transition', 'all 0.5s ease'),
 					_1: {
 						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'position', _1: 'absolute'},
+						_0: A2(_user$project$Logic_Utils_ops['=>'], 'position', 'absolute'),
 						_1: {
 							ctor: '::',
-							_0: {
-								ctor: '_Tuple2',
-								_0: 'top',
-								_1: A2(_elm_lang$core$Basics_ops['++'], dot.stringNo, 'px')
-							},
+							_0: A2(
+								_user$project$Logic_Utils_ops['=>'],
+								'top',
+								A2(_elm_lang$core$Basics_ops['++'], dot.stringNo, 'px')),
 							_1: {
 								ctor: '::',
-								_0: {
-									ctor: '_Tuple2',
-									_0: 'right',
-									_1: A2(_elm_lang$core$Basics_ops['++'], dot.fretNo, 'px')
-								},
+								_0: A2(
+									_user$project$Logic_Utils_ops['=>'],
+									'right',
+									A2(_elm_lang$core$Basics_ops['++'], dot.fretNo, 'px')),
 								_1: {
 									ctor: '::',
-									_0: {ctor: '_Tuple2', _0: 'width', _1: '15px'},
+									_0: A2(_user$project$Logic_Utils_ops['=>'], 'width', '15px'),
 									_1: {
 										ctor: '::',
-										_0: {ctor: '_Tuple2', _0: 'height', _1: '25px'},
+										_0: A2(_user$project$Logic_Utils_ops['=>'], 'height', '25px'),
 										_1: {
 											ctor: '::',
-											_0: {ctor: '_Tuple2', _0: 'borderRadius', _1: '7px'},
+											_0: A2(_user$project$Logic_Utils_ops['=>'], 'borderRadius', '7px'),
 											_1: {
 												ctor: '::',
-												_0: {ctor: '_Tuple2', _0: 'backgroundColor', _1: 'rgba(0,0,0,0)'},
+												_0: A2(_user$project$Logic_Utils_ops['=>'], 'backgroundColor', 'rgba(0,0,0,0)'),
 												_1: {
 													ctor: '::',
-													_0: {ctor: '_Tuple2', _0: 'color', _1: '#777'},
+													_0: A2(_user$project$Logic_Utils_ops['=>'], 'color', '#777'),
 													_1: {
 														ctor: '::',
-														_0: {ctor: '_Tuple2', _0: 'textTransform', _1: 'uppercase'},
+														_0: A2(_user$project$Logic_Utils_ops['=>'], 'textTransform', 'uppercase'),
 														_1: {ctor: '[]'}
 													}
 												}
@@ -27607,45 +27622,43 @@ var _user$project$Styles_ChordStyles$fretMarkerStyle = function (dot) {
 			return _elm_lang$html$Html_Attributes$style(
 				{
 					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'transition', _1: 'all 0.5s ease'},
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'transition', 'all 0.5s ease'),
 					_1: {
 						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'position', _1: 'absolute'},
+						_0: A2(_user$project$Logic_Utils_ops['=>'], 'position', 'absolute'),
 						_1: {
 							ctor: '::',
-							_0: {
-								ctor: '_Tuple2',
-								_0: 'top',
-								_1: A2(_elm_lang$core$Basics_ops['++'], dot.stringNo, 'px')
-							},
+							_0: A2(
+								_user$project$Logic_Utils_ops['=>'],
+								'top',
+								A2(_elm_lang$core$Basics_ops['++'], dot.stringNo, 'px')),
 							_1: {
 								ctor: '::',
-								_0: {
-									ctor: '_Tuple2',
-									_0: 'right',
-									_1: A2(_elm_lang$core$Basics_ops['++'], dot.fretNo, 'px')
-								},
+								_0: A2(
+									_user$project$Logic_Utils_ops['=>'],
+									'right',
+									A2(_elm_lang$core$Basics_ops['++'], dot.fretNo, 'px')),
 								_1: {
 									ctor: '::',
-									_0: {ctor: '_Tuple2', _0: 'width', _1: '15px'},
+									_0: A2(_user$project$Logic_Utils_ops['=>'], 'width', '15px'),
 									_1: {
 										ctor: '::',
-										_0: {ctor: '_Tuple2', _0: 'height', _1: '25px'},
+										_0: A2(_user$project$Logic_Utils_ops['=>'], 'height', '25px'),
 										_1: {
 											ctor: '::',
-											_0: {ctor: '_Tuple2', _0: 'borderRadius', _1: '7px'},
+											_0: A2(_user$project$Logic_Utils_ops['=>'], 'borderRadius', '7px'),
 											_1: {
 												ctor: '::',
-												_0: {ctor: '_Tuple2', _0: 'backgroundColor', _1: dot.tint},
+												_0: A2(_user$project$Logic_Utils_ops['=>'], 'backgroundColor', dot.tint),
 												_1: {
 													ctor: '::',
-													_0: {ctor: '_Tuple2', _0: 'boxShadow', _1: '5px 5px 10px rgba(0,0,0,0.25)'},
+													_0: A2(_user$project$Logic_Utils_ops['=>'], 'boxShadow', '5px 5px 10px rgba(0,0,0,0.25)'),
 													_1: {
 														ctor: '::',
-														_0: {ctor: '_Tuple2', _0: 'color', _1: 'rgba(0,0,0,0)'},
+														_0: A2(_user$project$Logic_Utils_ops['=>'], 'color', 'rgba(0,0,0,0)'),
 														_1: {
 															ctor: '::',
-															_0: {ctor: '_Tuple2', _0: 'zIndex', _1: '5'},
+															_0: A2(_user$project$Logic_Utils_ops['=>'], 'zIndex', '5'),
 															_1: {ctor: '[]'}
 														}
 													}
@@ -27664,10 +27677,10 @@ var _user$project$Styles_ChordStyles$fretMarkerStyle = function (dot) {
 var _user$project$Styles_ChordStyles$fingerChartTextStyle = _elm_lang$html$Html_Attributes$style(
 	{
 		ctor: '::',
-		_0: {ctor: '_Tuple2', _0: 'padding', _1: '15px'},
+		_0: A2(_user$project$Logic_Utils_ops['=>'], 'padding', '15px'),
 		_1: {
 			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'lineHeight', _1: '9px'},
+			_0: A2(_user$project$Logic_Utils_ops['=>'], 'lineHeight', '9px'),
 			_1: {ctor: '[]'}
 		}
 	});
@@ -27675,16 +27688,16 @@ var _user$project$Styles_ChordStyles$fingerChartDotStyle = function (col) {
 	return _elm_lang$html$Html_Attributes$style(
 		{
 			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'width', _1: '15px'},
+			_0: A2(_user$project$Logic_Utils_ops['=>'], 'width', '15px'),
 			_1: {
 				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'height', _1: '25px'},
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'height', '25px'),
 				_1: {
 					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'borderRadius', _1: '7px'},
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'borderRadius', '7px'),
 					_1: {
 						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'backgroundColor', _1: col},
+						_0: A2(_user$project$Logic_Utils_ops['=>'], 'backgroundColor', col),
 						_1: {ctor: '[]'}
 					}
 				}
@@ -27694,19 +27707,19 @@ var _user$project$Styles_ChordStyles$fingerChartDotStyle = function (col) {
 var _user$project$Styles_ChordStyles$fingerChartStyle = _elm_lang$html$Html_Attributes$style(
 	{
 		ctor: '::',
-		_0: {ctor: '_Tuple2', _0: 'display', _1: 'flex'},
+		_0: A2(_user$project$Logic_Utils_ops['=>'], 'display', 'flex'),
 		_1: {
 			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'flexDirection', _1: 'column'},
+			_0: A2(_user$project$Logic_Utils_ops['=>'], 'flexDirection', 'column'),
 			_1: {
 				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'position', _1: 'absolute'},
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'position', 'absolute'),
 				_1: {
 					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'top', _1: '100px'},
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'top', '100px'),
 					_1: {
 						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'left', _1: '20px'},
+						_0: A2(_user$project$Logic_Utils_ops['=>'], 'left', '20px'),
 						_1: {ctor: '[]'}
 					}
 				}
@@ -27716,16 +27729,16 @@ var _user$project$Styles_ChordStyles$fingerChartStyle = _elm_lang$html$Html_Attr
 var _user$project$Styles_ChordStyles$chordFunctionStyle = _elm_lang$html$Html_Attributes$style(
 	{
 		ctor: '::',
-		_0: {ctor: '_Tuple2', _0: 'color', _1: '#999'},
+		_0: A2(_user$project$Logic_Utils_ops['=>'], 'color', '#999'),
 		_1: {
 			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '20px'},
+			_0: A2(_user$project$Logic_Utils_ops['=>'], 'fontSize', '20px'),
 			_1: {
 				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'marginLeft', _1: '150px'},
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'marginLeft', '150px'),
 				_1: {
 					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'margin', _1: '0 auto'},
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'margin', '0 auto'),
 					_1: {ctor: '[]'}
 				}
 			}
@@ -27734,16 +27747,16 @@ var _user$project$Styles_ChordStyles$chordFunctionStyle = _elm_lang$html$Html_At
 var _user$project$Styles_ChordStyles$chordNameStyle = _elm_lang$html$Html_Attributes$style(
 	{
 		ctor: '::',
-		_0: {ctor: '_Tuple2', _0: 'color', _1: '#000'},
+		_0: A2(_user$project$Logic_Utils_ops['=>'], 'color', '#000'),
 		_1: {
 			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '25px'},
+			_0: A2(_user$project$Logic_Utils_ops['=>'], 'fontSize', '25px'),
 			_1: {
 				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'marginLeft', _1: '150px'},
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'marginLeft', '150px'),
 				_1: {
 					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'margin', _1: '0 auto'},
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'margin', '0 auto'),
 					_1: {ctor: '[]'}
 				}
 			}
@@ -27753,26 +27766,25 @@ var _user$project$Styles_ChordStyles$fretStyle = function (fret) {
 	return _elm_lang$html$Html_Attributes$style(
 		{
 			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'position', _1: 'absolute'},
+			_0: A2(_user$project$Logic_Utils_ops['=>'], 'position', 'absolute'),
 			_1: {
 				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'top', _1: '0'},
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'top', '0'),
 				_1: {
 					ctor: '::',
-					_0: {
-						ctor: '_Tuple2',
-						_0: 'right',
-						_1: A2(
+					_0: A2(
+						_user$project$Logic_Utils_ops['=>'],
+						'right',
+						A2(
 							_elm_lang$core$Basics_ops['++'],
 							_elm_lang$core$Basics$toString(43 * fret),
-							'px')
-					},
+							'px')),
 					_1: {
 						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'height', _1: '150px'},
+						_0: A2(_user$project$Logic_Utils_ops['=>'], 'height', '150px'),
 						_1: {
 							ctor: '::',
-							_0: {ctor: '_Tuple2', _0: 'borderRight', _1: '1px solid #607d8b'},
+							_0: A2(_user$project$Logic_Utils_ops['=>'], 'borderRight', '1px solid #607d8b'),
 							_1: {ctor: '[]'}
 						}
 					}
@@ -27784,22 +27796,22 @@ var _user$project$Styles_ChordStyles$chartContainerStyle = function (direction) 
 	return _elm_lang$html$Html_Attributes$style(
 		{
 			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'position', _1: 'relative'},
+			_0: A2(_user$project$Logic_Utils_ops['=>'], 'position', 'relative'),
 			_1: {
 				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'display', _1: 'flex'},
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'display', 'flex'),
 				_1: {
 					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'margin', _1: '25px auto'},
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'margin', '25px auto'),
 					_1: {
 						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'flexDirection', _1: direction},
+						_0: A2(_user$project$Logic_Utils_ops['=>'], 'flexDirection', direction),
 						_1: {
 							ctor: '::',
-							_0: {ctor: '_Tuple2', _0: 'transition', _1: 'all 0.3s ease'},
+							_0: A2(_user$project$Logic_Utils_ops['=>'], 'transition', 'all 0.3s ease'),
 							_1: {
 								ctor: '::',
-								_0: {ctor: '_Tuple2', _0: 'cursor', _1: 'pointer'},
+								_0: A2(_user$project$Logic_Utils_ops['=>'], 'cursor', 'pointer'),
 								_1: {ctor: '[]'}
 							}
 						}
@@ -27811,19 +27823,19 @@ var _user$project$Styles_ChordStyles$chartContainerStyle = function (direction) 
 var _user$project$Styles_ChordStyles$nutStyle = _elm_lang$html$Html_Attributes$style(
 	{
 		ctor: '::',
-		_0: {ctor: '_Tuple2', _0: 'width', _1: '10px'},
+		_0: A2(_user$project$Logic_Utils_ops['=>'], 'width', '10px'),
 		_1: {
 			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'height', _1: '151px'},
+			_0: A2(_user$project$Logic_Utils_ops['=>'], 'height', '151px'),
 			_1: {
 				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'backgroundColor', _1: '#333'},
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'backgroundColor', '#333'),
 				_1: {
 					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'borderBottom', _1: '1px solid #333'},
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'borderBottom', '1px solid #333'),
 					_1: {
 						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'boxShadow', _1: '5px 10px 20px  rgba(0,0,0,0.25)'},
+						_0: A2(_user$project$Logic_Utils_ops['=>'], 'boxShadow', '5px 10px 20px  rgba(0,0,0,0.25)'),
 						_1: {ctor: '[]'}
 					}
 				}
@@ -27833,13 +27845,13 @@ var _user$project$Styles_ChordStyles$nutStyle = _elm_lang$html$Html_Attributes$s
 var _user$project$Styles_ChordStyles$stringStyle = _elm_lang$html$Html_Attributes$style(
 	{
 		ctor: '::',
-		_0: {ctor: '_Tuple2', _0: 'width', _1: '180px'},
+		_0: A2(_user$project$Logic_Utils_ops['=>'], 'width', '180px'),
 		_1: {
 			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'height', _1: '30px'},
+			_0: A2(_user$project$Logic_Utils_ops['=>'], 'height', '30px'),
 			_1: {
 				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'borderBottom', _1: '1px solid #607d8b'},
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'borderBottom', '1px solid #607d8b'),
 				_1: {ctor: '[]'}
 			}
 		}
@@ -27847,25 +27859,25 @@ var _user$project$Styles_ChordStyles$stringStyle = _elm_lang$html$Html_Attribute
 var _user$project$Styles_ChordStyles$chartStyle = _elm_lang$html$Html_Attributes$style(
 	{
 		ctor: '::',
-		_0: {ctor: '_Tuple2', _0: 'position', _1: 'relative'},
+		_0: A2(_user$project$Logic_Utils_ops['=>'], 'position', 'relative'),
 		_1: {
 			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'width', _1: '180px'},
+			_0: A2(_user$project$Logic_Utils_ops['=>'], 'width', '180px'),
 			_1: {
 				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'height', _1: '151px'},
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'height', '151px'),
 				_1: {
 					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'border', _1: '1px solid #607d8b'},
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'border', '1px solid #607d8b'),
 					_1: {
 						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'borderTopLeftRadius', _1: '10px'},
+						_0: A2(_user$project$Logic_Utils_ops['=>'], 'borderTopLeftRadius', '10px'),
 						_1: {
 							ctor: '::',
-							_0: {ctor: '_Tuple2', _0: 'borderBottomLeftRadius', _1: '10px'},
+							_0: A2(_user$project$Logic_Utils_ops['=>'], 'borderBottomLeftRadius', '10px'),
 							_1: {
 								ctor: '::',
-								_0: {ctor: '_Tuple2', _0: 'boxShadow', _1: '0 10px 20px rgba(0,0,0,0.25)'},
+								_0: A2(_user$project$Logic_Utils_ops['=>'], 'boxShadow', '0 10px 20px rgba(0,0,0,0.25)'),
 								_1: {ctor: '[]'}
 							}
 						}
@@ -27877,19 +27889,19 @@ var _user$project$Styles_ChordStyles$chartStyle = _elm_lang$html$Html_Attributes
 var _user$project$Styles_ChordStyles$chordBarPosStyle = _elm_lang$html$Html_Attributes$style(
 	{
 		ctor: '::',
-		_0: {ctor: '_Tuple2', _0: 'position', _1: 'absolute'},
+		_0: A2(_user$project$Logic_Utils_ops['=>'], 'position', 'absolute'),
 		_1: {
 			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'top', _1: '-15px'},
+			_0: A2(_user$project$Logic_Utils_ops['=>'], 'top', '-15px'),
 			_1: {
 				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'right', _1: '30%'},
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'right', '30%'),
 				_1: {
 					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'color', _1: '#03a9f4'},
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'color', '#03a9f4'),
 					_1: {
 						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'transition', _1: 'all 0.3s ease'},
+						_0: A2(_user$project$Logic_Utils_ops['=>'], 'transition', 'all 0.3s ease'),
 						_1: {ctor: '[]'}
 					}
 				}
@@ -27899,13 +27911,13 @@ var _user$project$Styles_ChordStyles$chordBarPosStyle = _elm_lang$html$Html_Attr
 var _user$project$Styles_ChordStyles$chordsPageStyle = _elm_lang$html$Html_Attributes$style(
 	{
 		ctor: '::',
-		_0: {ctor: '_Tuple2', _0: 'textAlign', _1: 'center'},
+		_0: A2(_user$project$Logic_Utils_ops['=>'], 'textAlign', 'center'),
 		_1: {
 			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'width', _1: '95vw'},
+			_0: A2(_user$project$Logic_Utils_ops['=>'], 'width', '95vw'),
 			_1: {
 				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'paddingTop', _1: '125px'},
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'paddingTop', '125px'),
 				_1: {ctor: '[]'}
 			}
 		}
@@ -29113,16 +29125,16 @@ var _user$project$Views_Chords$chordsPage = function (model) {
 var _user$project$Styles_ScalesStyles$scalePageStyle = _elm_lang$html$Html_Attributes$style(
 	{
 		ctor: '::',
-		_0: {ctor: '_Tuple2', _0: 'display', _1: 'flex'},
+		_0: A2(_user$project$Logic_Utils_ops['=>'], 'display', 'flex'),
 		_1: {
 			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'flexDirection', _1: 'row'},
+			_0: A2(_user$project$Logic_Utils_ops['=>'], 'flexDirection', 'row'),
 			_1: {
 				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'flexWrap', _1: 'wrap'},
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'flexWrap', 'wrap'),
 				_1: {
 					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'justifyContent', _1: 'center'},
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'justifyContent', 'center'),
 					_1: {ctor: '[]'}
 				}
 			}
@@ -29131,10 +29143,10 @@ var _user$project$Styles_ScalesStyles$scalePageStyle = _elm_lang$html$Html_Attri
 var _user$project$Styles_ScalesStyles$fretNumberGroupStyle = _elm_lang$html$Html_Attributes$style(
 	{
 		ctor: '::',
-		_0: {ctor: '_Tuple2', _0: 'paddingRight', _1: '10px'},
+		_0: A2(_user$project$Logic_Utils_ops['=>'], 'paddingRight', '10px'),
 		_1: {
 			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '18px'},
+			_0: A2(_user$project$Logic_Utils_ops['=>'], 'fontSize', '18px'),
 			_1: {ctor: '[]'}
 		}
 	});
@@ -29142,20 +29154,19 @@ var _user$project$Styles_ScalesStyles$fretNumberStyle = function (margin) {
 	return _elm_lang$html$Html_Attributes$style(
 		{
 			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'position', _1: 'relative'},
+			_0: A2(_user$project$Logic_Utils_ops['=>'], 'position', 'relative'),
 			_1: {
 				ctor: '::',
-				_0: {
-					ctor: '_Tuple2',
-					_0: 'margin',
-					_1: A2(_elm_lang$core$Basics_ops['++'], '5px ', margin)
-				},
+				_0: A2(
+					_user$project$Logic_Utils_ops['=>'],
+					'margin',
+					A2(_elm_lang$core$Basics_ops['++'], '5px ', margin)),
 				_1: {
 					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'color', _1: '#000'},
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'color', '#000'),
 					_1: {
 						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'zIndex', _1: '1'},
+						_0: A2(_user$project$Logic_Utils_ops['=>'], 'zIndex', '1'),
 						_1: {ctor: '[]'}
 					}
 				}
@@ -29165,13 +29176,13 @@ var _user$project$Styles_ScalesStyles$fretNumberStyle = function (margin) {
 var _user$project$Styles_ScalesStyles$stringContainerStyle = _elm_lang$html$Html_Attributes$style(
 	{
 		ctor: '::',
-		_0: {ctor: '_Tuple2', _0: 'position', _1: 'absolute'},
+		_0: A2(_user$project$Logic_Utils_ops['=>'], 'position', 'absolute'),
 		_1: {
 			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'top', _1: '12px'},
+			_0: A2(_user$project$Logic_Utils_ops['=>'], 'top', '12px'),
 			_1: {
 				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'left', _1: '25px'},
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'left', '25px'),
 				_1: {ctor: '[]'}
 			}
 		}
@@ -29179,16 +29190,16 @@ var _user$project$Styles_ScalesStyles$stringContainerStyle = _elm_lang$html$Html
 var _user$project$Styles_ScalesStyles$stringStyle = _elm_lang$html$Html_Attributes$style(
 	{
 		ctor: '::',
-		_0: {ctor: '_Tuple2', _0: 'width', _1: '600px'},
+		_0: A2(_user$project$Logic_Utils_ops['=>'], 'width', '600px'),
 		_1: {
 			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'borderBottom', _1: '1px solid #ccc'},
+			_0: A2(_user$project$Logic_Utils_ops['=>'], 'borderBottom', '1px solid #ccc'),
 			_1: {
 				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'marginTop', _1: '32px'},
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'marginTop', '32px'),
 				_1: {
 					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'zIndex', _1: '0'},
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'zIndex', '0'),
 					_1: {ctor: '[]'}
 				}
 			}
@@ -29197,16 +29208,16 @@ var _user$project$Styles_ScalesStyles$stringStyle = _elm_lang$html$Html_Attribut
 var _user$project$Styles_ScalesStyles$scaleContainerStyle = _elm_lang$html$Html_Attributes$style(
 	{
 		ctor: '::',
-		_0: {ctor: '_Tuple2', _0: 'position', _1: 'relative'},
+		_0: A2(_user$project$Logic_Utils_ops['=>'], 'position', 'relative'),
 		_1: {
 			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'width', _1: '650px'},
+			_0: A2(_user$project$Logic_Utils_ops['=>'], 'width', '650px'),
 			_1: {
 				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'margin', _1: '30px 0'},
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'margin', '30px 0'),
 				_1: {
 					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'cursor', _1: 'pointer'},
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'cursor', 'pointer'),
 					_1: {ctor: '[]'}
 				}
 			}
@@ -29215,13 +29226,13 @@ var _user$project$Styles_ScalesStyles$scaleContainerStyle = _elm_lang$html$Html_
 var _user$project$Styles_ScalesStyles$scaleTitleStyle = _elm_lang$html$Html_Attributes$style(
 	{
 		ctor: '::',
-		_0: {ctor: '_Tuple2', _0: 'position', _1: 'relative'},
+		_0: A2(_user$project$Logic_Utils_ops['=>'], 'position', 'relative'),
 		_1: {
 			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'marginLeft', _1: '25px'},
+			_0: A2(_user$project$Logic_Utils_ops['=>'], 'marginLeft', '25px'),
 			_1: {
 				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'color', _1: '#03a9f4'},
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'color', '#03a9f4'),
 				_1: {ctor: '[]'}
 			}
 		}
@@ -29751,7 +29762,7 @@ var _user$project$Views_Scales$scaleNameMinor = F2(
 							_0: _elm_lang$html$Html_Attributes$style(
 								{
 									ctor: '::',
-									_0: {ctor: '_Tuple2', _0: 'color', _1: '#444'},
+									_0: A2(_user$project$Logic_Utils_ops['=>'], 'color', '#444'),
 									_1: {ctor: '[]'}
 								}),
 							_1: {ctor: '[]'}
@@ -29771,7 +29782,7 @@ var _user$project$Views_Scales$scaleNameMinor = F2(
 								_0: _elm_lang$html$Html_Attributes$style(
 									{
 										ctor: '::',
-										_0: {ctor: '_Tuple2', _0: 'color', _1: '#aaa'},
+										_0: A2(_user$project$Logic_Utils_ops['=>'], 'color', '#aaa'),
 										_1: {ctor: '[]'}
 									}),
 								_1: {ctor: '[]'}
@@ -29811,7 +29822,7 @@ var _user$project$Views_Scales$scaleNameMinor = F2(
 							_0: _elm_lang$html$Html_Attributes$style(
 								{
 									ctor: '::',
-									_0: {ctor: '_Tuple2', _0: 'color', _1: '#444'},
+									_0: A2(_user$project$Logic_Utils_ops['=>'], 'color', '#444'),
 									_1: {ctor: '[]'}
 								}),
 							_1: {ctor: '[]'}
@@ -29830,7 +29841,7 @@ var _user$project$Views_Scales$scaleNameMinor = F2(
 								_0: _elm_lang$html$Html_Attributes$style(
 									{
 										ctor: '::',
-										_0: {ctor: '_Tuple2', _0: 'color', _1: '#aaa'},
+										_0: A2(_user$project$Logic_Utils_ops['=>'], 'color', '#aaa'),
 										_1: {ctor: '[]'}
 									}),
 								_1: {ctor: '[]'}
@@ -29881,7 +29892,7 @@ var _user$project$Views_Scales$scaleNameMajor = F4(
 							_0: _elm_lang$html$Html_Attributes$style(
 								{
 									ctor: '::',
-									_0: {ctor: '_Tuple2', _0: 'color', _1: '#444'},
+									_0: A2(_user$project$Logic_Utils_ops['=>'], 'color', '#444'),
 									_1: {ctor: '[]'}
 								}),
 							_1: {ctor: '[]'}
@@ -29900,7 +29911,7 @@ var _user$project$Views_Scales$scaleNameMajor = F4(
 								_0: _elm_lang$html$Html_Attributes$style(
 									{
 										ctor: '::',
-										_0: {ctor: '_Tuple2', _0: 'color', _1: '#03a9f4'},
+										_0: A2(_user$project$Logic_Utils_ops['=>'], 'color', '#03a9f4'),
 										_1: {ctor: '[]'}
 									}),
 								_1: {ctor: '[]'}
@@ -29919,7 +29930,7 @@ var _user$project$Views_Scales$scaleNameMajor = F4(
 									_0: _elm_lang$html$Html_Attributes$style(
 										{
 											ctor: '::',
-											_0: {ctor: '_Tuple2', _0: 'color', _1: '#aaa'},
+											_0: A2(_user$project$Logic_Utils_ops['=>'], 'color', '#aaa'),
 											_1: {ctor: '[]'}
 										}),
 									_1: {ctor: '[]'}
@@ -29959,7 +29970,7 @@ var _user$project$Views_Scales$scaleNameMajor = F4(
 							_0: _elm_lang$html$Html_Attributes$style(
 								{
 									ctor: '::',
-									_0: {ctor: '_Tuple2', _0: 'color', _1: '#444'},
+									_0: A2(_user$project$Logic_Utils_ops['=>'], 'color', '#444'),
 									_1: {ctor: '[]'}
 								}),
 							_1: {ctor: '[]'}
@@ -29978,7 +29989,7 @@ var _user$project$Views_Scales$scaleNameMajor = F4(
 								_0: _elm_lang$html$Html_Attributes$style(
 									{
 										ctor: '::',
-										_0: {ctor: '_Tuple2', _0: 'color', _1: '#03a9f4'},
+										_0: A2(_user$project$Logic_Utils_ops['=>'], 'color', '#03a9f4'),
 										_1: {ctor: '[]'}
 									}),
 								_1: {ctor: '[]'}
@@ -29997,14 +30008,14 @@ var _user$project$Views_Scales$scaleNameMajor = F4(
 									_0: _elm_lang$html$Html_Attributes$style(
 										{
 											ctor: '::',
-											_0: {ctor: '_Tuple2', _0: 'color', _1: '#aaa'},
+											_0: A2(_user$project$Logic_Utils_ops['=>'], 'color', '#aaa'),
 											_1: {ctor: '[]'}
 										}),
 									_1: {ctor: '[]'}
 								},
 								{
 									ctor: '::',
-									_0: _elm_lang$html$Html$text(', relative major'),
+									_0: _elm_lang$html$Html$text(' => relative major'),
 									_1: {ctor: '[]'}
 								}),
 							_1: {ctor: '[]'}
@@ -30207,7 +30218,7 @@ var _user$project$Views_Scales$dorianModeView = function (model) {
 				},
 				{
 					ctor: '::',
-					_0: A4(_user$project$Views_Scales$scaleNameMajor, model, ' DORIAN MODE ', ' ( b3, b7 ) ', 'min7'),
+					_0: A4(_user$project$Views_Scales$scaleNameMajor, model, ' DORIAN MODE ', ' b3, b7 ', 'min7'),
 					_1: {ctor: '[]'}
 				}),
 			_1: {
@@ -30369,7 +30380,7 @@ var _user$project$Views_Scales$mixolydianModeView = function (model) {
 				},
 				{
 					ctor: '::',
-					_0: A4(_user$project$Views_Scales$scaleNameMajor, model, ' MIXOLYDIAN MODE ', ' ( b7 ) ', '7'),
+					_0: A4(_user$project$Views_Scales$scaleNameMajor, model, ' MIXOLYDIAN MODE ', ' b7 ', '7'),
 					_1: {ctor: '[]'}
 				}),
 			_1: {
@@ -30531,7 +30542,7 @@ var _user$project$Views_Scales$lydianModeView = function (model) {
 				},
 				{
 					ctor: '::',
-					_0: A4(_user$project$Views_Scales$scaleNameMajor, model, ' LYDIAN MODE ', ' ( #4 ) ', 'Maj7'),
+					_0: A4(_user$project$Views_Scales$scaleNameMajor, model, ' LYDIAN MODE ', ' #4 ', 'Maj7'),
 					_1: {ctor: '[]'}
 				}),
 			_1: {
@@ -31297,7 +31308,7 @@ var _user$project$Views_Scales$scalesPage = function (model) {
 			_0: _elm_lang$html$Html_Attributes$style(
 				{
 					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'paddingTop', _1: '50px'},
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'paddingTop', '50px'),
 					_1: {ctor: '[]'}
 				}),
 			_1: {ctor: '[]'}
@@ -31349,16 +31360,16 @@ var _user$project$Styles_HomeStyles$secondaryTitleStyle = F2(
 		return _elm_lang$html$Html_Attributes$style(
 			{
 				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'margin', _1: '0 20px 30px'},
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'margin', '0 20px 30px'),
 				_1: {
 					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'fontSize', _1: fontSize},
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'fontSize', fontSize),
 					_1: {
 						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'color', _1: color},
+						_0: A2(_user$project$Logic_Utils_ops['=>'], 'color', color),
 						_1: {
 							ctor: '::',
-							_0: {ctor: '_Tuple2', _0: 'zIndex', _1: '50'},
+							_0: A2(_user$project$Logic_Utils_ops['=>'], 'zIndex', '50'),
 							_1: {ctor: '[]'}
 						}
 					}
@@ -31370,13 +31381,13 @@ var _user$project$Styles_HomeStyles$titleStyle = F2(
 		return _elm_lang$html$Html_Attributes$style(
 			{
 				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'margin', _1: '125px auto 25px'},
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'margin', '125px auto 25px'),
 				_1: {
 					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'fontSize', _1: fontSize},
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'fontSize', fontSize),
 					_1: {
 						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'color', _1: color},
+						_0: A2(_user$project$Logic_Utils_ops['=>'], 'color', color),
 						_1: {ctor: '[]'}
 					}
 				}
@@ -31385,13 +31396,13 @@ var _user$project$Styles_HomeStyles$titleStyle = F2(
 var _user$project$Styles_HomeStyles$homePageModalIconStyle = _elm_lang$html$Html_Attributes$style(
 	{
 		ctor: '::',
-		_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '20px'},
+		_0: A2(_user$project$Logic_Utils_ops['=>'], 'fontSize', '20px'),
 		_1: {
 			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'fontWeight', _1: '700'},
+			_0: A2(_user$project$Logic_Utils_ops['=>'], 'fontWeight', '700'),
 			_1: {
 				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'color', _1: '#03a9f4'},
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'color', '#03a9f4'),
 				_1: {ctor: '[]'}
 			}
 		}
@@ -31399,22 +31410,22 @@ var _user$project$Styles_HomeStyles$homePageModalIconStyle = _elm_lang$html$Html
 var _user$project$Styles_HomeStyles$homePageTextListItemStyle = _elm_lang$html$Html_Attributes$style(
 	{
 		ctor: '::',
-		_0: {ctor: '_Tuple2', _0: 'paddingRight', _1: '30px'},
+		_0: A2(_user$project$Logic_Utils_ops['=>'], 'paddingRight', '30px'),
 		_1: {ctor: '[]'}
 	});
 var _user$project$Styles_HomeStyles$homePageTextListStyle = _elm_lang$html$Html_Attributes$style(
 	{
 		ctor: '::',
-		_0: {ctor: '_Tuple2', _0: 'color', _1: '#444'},
+		_0: A2(_user$project$Logic_Utils_ops['=>'], 'color', '#444'),
 		_1: {
 			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'margin ', _1: '0 auto'},
+			_0: A2(_user$project$Logic_Utils_ops['=>'], 'margin ', '0 auto'),
 			_1: {
 				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'textDecoration', _1: 'none'},
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'textDecoration', 'none'),
 				_1: {
 					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '24px'},
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'fontSize', '24px'),
 					_1: {ctor: '[]'}
 				}
 			}
@@ -31423,10 +31434,10 @@ var _user$project$Styles_HomeStyles$homePageTextListStyle = _elm_lang$html$Html_
 var _user$project$Styles_HomeStyles$homePageStyle = _elm_lang$html$Html_Attributes$style(
 	{
 		ctor: '::',
-		_0: {ctor: '_Tuple2', _0: 'height', _1: '100vh'},
+		_0: A2(_user$project$Logic_Utils_ops['=>'], 'height', '100vh'),
 		_1: {
 			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'textAlign', _1: 'center'},
+			_0: A2(_user$project$Logic_Utils_ops['=>'], 'textAlign', 'center'),
 			_1: {ctor: '[]'}
 		}
 	});
@@ -31685,16 +31696,16 @@ var _user$project$Views_Home$homePage = function (model) {
 var _user$project$Styles_StrumStyles$buttonStyle = _elm_lang$html$Html_Attributes$style(
 	{
 		ctor: '::',
-		_0: {ctor: '_Tuple2', _0: 'background', _1: 'none'},
+		_0: A2(_user$project$Logic_Utils_ops['=>'], 'background', 'none'),
 		_1: {
 			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'marginTop', _1: '50px'},
+			_0: A2(_user$project$Logic_Utils_ops['=>'], 'marginTop', '50px'),
 			_1: {
 				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'border', _1: '1px solid #333'},
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'border', '1px solid #333'),
 				_1: {
 					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'color', _1: '#03a9f4'},
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'color', '#03a9f4'),
 					_1: {ctor: '[]'}
 				}
 			}
@@ -31703,16 +31714,16 @@ var _user$project$Styles_StrumStyles$buttonStyle = _elm_lang$html$Html_Attribute
 var _user$project$Styles_StrumStyles$beatStyle = _elm_lang$html$Html_Attributes$style(
 	{
 		ctor: '::',
-		_0: {ctor: '_Tuple2', _0: 'position', _1: 'absolute'},
+		_0: A2(_user$project$Logic_Utils_ops['=>'], 'position', 'absolute'),
 		_1: {
 			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'top', _1: '225px'},
+			_0: A2(_user$project$Logic_Utils_ops['=>'], 'top', '225px'),
 			_1: {
 				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'left', _1: '0'},
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'left', '0'),
 				_1: {
 					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'paddingRight', _1: '20px'},
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'paddingRight', '20px'),
 					_1: {ctor: '[]'}
 				}
 			}
@@ -31756,54 +31767,52 @@ var _user$project$Styles_StrumStyles$strumArrowStyle = F4(
 		return _elm_lang$html$Html_Attributes$style(
 			{
 				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'width', _1: '100px'},
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'width', '100px'),
 				_1: {
 					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'height', _1: '180px'},
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'height', '180px'),
 					_1: {
 						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'margin', _1: '10px 10px 20px'},
+						_0: A2(_user$project$Logic_Utils_ops['=>'], 'margin', '10px 10px 20px'),
 						_1: {
 							ctor: '::',
-							_0: {ctor: '_Tuple2', _0: 'opacity', _1: opacity},
+							_0: A2(_user$project$Logic_Utils_ops['=>'], 'opacity', opacity),
 							_1: {
 								ctor: '::',
-								_0: {ctor: '_Tuple2', _0: 'paddingTop', _1: '50px'},
+								_0: A2(_user$project$Logic_Utils_ops['=>'], 'paddingTop', '50px'),
 								_1: {
 									ctor: '::',
-									_0: {ctor: '_Tuple2', _0: 'display', _1: 'flex'},
+									_0: A2(_user$project$Logic_Utils_ops['=>'], 'display', 'flex'),
 									_1: {
 										ctor: '::',
-										_0: {
-											ctor: '_Tuple2',
-											_0: 'border',
-											_1: A2(_elm_lang$core$Basics_ops['++'], '1px solid ', borderCol)
-										},
+										_0: A2(
+											_user$project$Logic_Utils_ops['=>'],
+											'border',
+											A2(_elm_lang$core$Basics_ops['++'], '1px solid ', borderCol)),
 										_1: {
 											ctor: '::',
-											_0: {ctor: '_Tuple2', _0: 'borderRadius', _1: '10px'},
+											_0: A2(_user$project$Logic_Utils_ops['=>'], 'borderRadius', '10px'),
 											_1: {
 												ctor: '::',
-												_0: {ctor: '_Tuple2', _0: 'justifyContent', _1: 'center'},
+												_0: A2(_user$project$Logic_Utils_ops['=>'], 'justifyContent', 'center'),
 												_1: {
 													ctor: '::',
-													_0: {
-														ctor: '_Tuple2',
-														_0: 'transform',
-														_1: A2(
+													_0: A2(
+														_user$project$Logic_Utils_ops['=>'],
+														'transform',
+														A2(
 															_elm_lang$core$Basics_ops['++'],
 															'rotate(',
-															A2(_elm_lang$core$Basics_ops['++'], rotate, ')'))
-													},
+															A2(_elm_lang$core$Basics_ops['++'], rotate, ')'))),
 													_1: {
 														ctor: '::',
-														_0: {ctor: '_Tuple2', _0: 'transition', _1: 'all 0.4s ease'},
+														_0: A2(_user$project$Logic_Utils_ops['=>'], 'transition', 'all 0.4s ease'),
 														_1: {
 															ctor: '::',
-															_0: {ctor: '_Tuple2', _0: 'boxShadow', _1: shadow},
+															_0: A2(_user$project$Logic_Utils_ops['=>'], 'boxShadow', shadow),
 															_1: {
 																ctor: '::',
-																_0: {ctor: '_Tuple2', _0: 'backgroundColor', _1: background},
+																_0: A2(_user$project$Logic_Utils_ops['=>'], 'backgroundColor', background),
 																_1: {ctor: '[]'}
 															}
 														}
@@ -31822,13 +31831,13 @@ var _user$project$Styles_StrumStyles$strumArrowStyle = F4(
 var _user$project$Styles_StrumStyles$strumGroupMatrixStyle = _elm_lang$html$Html_Attributes$style(
 	{
 		ctor: '::',
-		_0: {ctor: '_Tuple2', _0: 'display', _1: 'flex'},
+		_0: A2(_user$project$Logic_Utils_ops['=>'], 'display', 'flex'),
 		_1: {
 			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'flexWrap', _1: 'wrap'},
+			_0: A2(_user$project$Logic_Utils_ops['=>'], 'flexWrap', 'wrap'),
 			_1: {
 				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'justifyContent', _1: 'center'},
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'justifyContent', 'center'),
 				_1: {ctor: '[]'}
 			}
 		}
@@ -31838,20 +31847,19 @@ var _user$project$Styles_StrumStyles$strumGroupStyle = F2(
 		return _elm_lang$html$Html_Attributes$style(
 			{
 				ctor: '::',
-				_0: {
-					ctor: '_Tuple2',
-					_0: 'transform',
-					_1: A2(
+				_0: A2(
+					_user$project$Logic_Utils_ops['=>'],
+					'transform',
+					A2(
 						_elm_lang$core$Basics_ops['++'],
 						'scale(',
-						A2(_elm_lang$core$Basics_ops['++'], scale, ')'))
-				},
+						A2(_elm_lang$core$Basics_ops['++'], scale, ')'))),
 				_1: {
 					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'width', _1: '950px'},
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'width', '950px'),
 					_1: {
 						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'margin', _1: margin},
+						_0: A2(_user$project$Logic_Utils_ops['=>'], 'margin', margin),
 						_1: {ctor: '[]'}
 					}
 				}
@@ -31872,19 +31880,19 @@ var _user$project$Styles_StrumStyles$strumPageStyle = function (size) {
 	return _elm_lang$html$Html_Attributes$style(
 		{
 			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'display', _1: 'flex'},
+			_0: A2(_user$project$Logic_Utils_ops['=>'], 'display', 'flex'),
 			_1: {
 				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'flexDirection', _1: 'column'},
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'flexDirection', 'column'),
 				_1: {
 					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'paddingTop', _1: pad},
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'paddingTop', pad),
 					_1: {
 						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'alignItems', _1: 'center'},
+						_0: A2(_user$project$Logic_Utils_ops['=>'], 'alignItems', 'center'),
 						_1: {
 							ctor: '::',
-							_0: {ctor: '_Tuple2', _0: 'transition', _1: 'all 0.3s'},
+							_0: A2(_user$project$Logic_Utils_ops['=>'], 'transition', 'all 0.3s'),
 							_1: {ctor: '[]'}
 						}
 					}
@@ -31897,19 +31905,19 @@ var _user$project$Views_Strum$printNotation = function (notes) {
 	var strumNotationDotStyle = _elm_lang$html$Html_Attributes$style(
 		{
 			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'position', _1: 'absolute'},
+			_0: A2(_user$project$Logic_Utils_ops['=>'], 'position', 'absolute'),
 			_1: {
 				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'bottom', _1: '-30px'},
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'bottom', '-30px'),
 				_1: {
 					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'right', _1: '-15px'},
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'right', '-15px'),
 					_1: {
 						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '50px'},
+						_0: A2(_user$project$Logic_Utils_ops['=>'], 'fontSize', '50px'),
 						_1: {
 							ctor: '::',
-							_0: {ctor: '_Tuple2', _0: 'color', _1: '#555'},
+							_0: A2(_user$project$Logic_Utils_ops['=>'], 'color', '#555'),
 							_1: {ctor: '[]'}
 						}
 					}
@@ -31920,31 +31928,31 @@ var _user$project$Views_Strum$printNotation = function (notes) {
 		return _elm_lang$html$Html_Attributes$style(
 			{
 				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'position', _1: 'absolute'},
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'position', 'absolute'),
 				_1: {
 					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'top', _1: '-7px'},
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'top', '-7px'),
 					_1: {
 						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'right', _1: '-15px'},
+						_0: A2(_user$project$Logic_Utils_ops['=>'], 'right', '-15px'),
 						_1: {
 							ctor: '::',
-							_0: {ctor: '_Tuple2', _0: 'width', _1: '15px'},
+							_0: A2(_user$project$Logic_Utils_ops['=>'], 'width', '15px'),
 							_1: {
 								ctor: '::',
-								_0: {ctor: '_Tuple2', _0: 'height', _1: '15px'},
+								_0: A2(_user$project$Logic_Utils_ops['=>'], 'height', '15px'),
 								_1: {
 									ctor: '::',
-									_0: {ctor: '_Tuple2', _0: 'transform', _1: 'skew(30deg)'},
+									_0: A2(_user$project$Logic_Utils_ops['=>'], 'transform', 'skew(30deg)'),
 									_1: {
 										ctor: '::',
-										_0: {ctor: '_Tuple2', _0: 'visibility', _1: flag},
+										_0: A2(_user$project$Logic_Utils_ops['=>'], 'visibility', flag),
 										_1: {
 											ctor: '::',
-											_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '20px'},
+											_0: A2(_user$project$Logic_Utils_ops['=>'], 'fontSize', '20px'),
 											_1: {
 												ctor: '::',
-												_0: {ctor: '_Tuple2', _0: 'color', _1: '#555'},
+												_0: A2(_user$project$Logic_Utils_ops['=>'], 'color', '#555'),
 												_1: {ctor: '[]'}
 											}
 										}
@@ -31959,13 +31967,13 @@ var _user$project$Views_Strum$printNotation = function (notes) {
 	var strumNotationContainerStyle = _elm_lang$html$Html_Attributes$style(
 		{
 			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'position', _1: 'relative'},
+			_0: A2(_user$project$Logic_Utils_ops['=>'], 'position', 'relative'),
 			_1: {
 				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'height', _1: '35px'},
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'height', '35px'),
 				_1: {
 					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'borderRight', _1: '2px solid #555'},
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'borderRight', '2px solid #555'),
 					_1: {ctor: '[]'}
 				}
 			}
@@ -31974,31 +31982,31 @@ var _user$project$Views_Strum$printNotation = function (notes) {
 		return _elm_lang$html$Html_Attributes$style(
 			{
 				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'position', _1: 'absolute'},
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'position', 'absolute'),
 				_1: {
 					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'bottom', _1: '-10px'},
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'bottom', '-10px'),
 					_1: {
 						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'left', _1: '-5px'},
+						_0: A2(_user$project$Logic_Utils_ops['=>'], 'left', '-5px'),
 						_1: {
 							ctor: '::',
-							_0: {ctor: '_Tuple2', _0: 'width', _1: '14px'},
+							_0: A2(_user$project$Logic_Utils_ops['=>'], 'width', '14px'),
 							_1: {
 								ctor: '::',
-								_0: {ctor: '_Tuple2', _0: 'height', _1: '15px'},
+								_0: A2(_user$project$Logic_Utils_ops['=>'], 'height', '15px'),
 								_1: {
 									ctor: '::',
-									_0: {ctor: '_Tuple2', _0: 'transform', _1: 'skew(-20deg)'},
+									_0: A2(_user$project$Logic_Utils_ops['=>'], 'transform', 'skew(-20deg)'),
 									_1: {
 										ctor: '::',
-										_0: {ctor: '_Tuple2', _0: 'border', _1: '2px solid #555'},
+										_0: A2(_user$project$Logic_Utils_ops['=>'], 'border', '2px solid #555'),
 										_1: {
 											ctor: '::',
-											_0: {ctor: '_Tuple2', _0: 'borderRadius', _1: '10px'},
+											_0: A2(_user$project$Logic_Utils_ops['=>'], 'borderRadius', '10px'),
 											_1: {
 												ctor: '::',
-												_0: {ctor: '_Tuple2', _0: 'backgroundColor', _1: fill},
+												_0: A2(_user$project$Logic_Utils_ops['=>'], 'backgroundColor', fill),
 												_1: {ctor: '[]'}
 											}
 										}
@@ -32132,33 +32140,31 @@ var _user$project$Views_Strum$arrow = function (col) {
 			return _elm_lang$html$Html_Attributes$style(
 				{
 					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'transform', _1: 'rotate(45deg)'},
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'transform', 'rotate(45deg)'),
 					_1: {
 						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'width', _1: width},
+						_0: A2(_user$project$Logic_Utils_ops['=>'], 'width', width),
 						_1: {
 							ctor: '::',
-							_0: {ctor: '_Tuple2', _0: 'height', _1: height},
+							_0: A2(_user$project$Logic_Utils_ops['=>'], 'height', height),
 							_1: {
 								ctor: '::',
-								_0: {
-									ctor: '_Tuple2',
-									_0: 'borderTop',
-									_1: A2(_elm_lang$core$Basics_ops['++'], '9px solid ', col)
-								},
+								_0: A2(
+									_user$project$Logic_Utils_ops['=>'],
+									'borderTop',
+									A2(_elm_lang$core$Basics_ops['++'], '9px solid ', col)),
 								_1: {
 									ctor: '::',
-									_0: {
-										ctor: '_Tuple2',
-										_0: 'borderLeft',
-										_1: A2(_elm_lang$core$Basics_ops['++'], '9px solid ', col)
-									},
+									_0: A2(
+										_user$project$Logic_Utils_ops['=>'],
+										'borderLeft',
+										A2(_elm_lang$core$Basics_ops['++'], '9px solid ', col)),
 									_1: {
 										ctor: '::',
-										_0: {ctor: '_Tuple2', _0: 'marginLeft', _1: x},
+										_0: A2(_user$project$Logic_Utils_ops['=>'], 'marginLeft', x),
 										_1: {
 											ctor: '::',
-											_0: {ctor: '_Tuple2', _0: 'marginTop', _1: y},
+											_0: A2(_user$project$Logic_Utils_ops['=>'], 'marginTop', y),
 											_1: {ctor: '[]'}
 										}
 									}
@@ -32198,7 +32204,7 @@ var _user$project$Views_Strum$strumGroupNumberSelector = A2(
 			_0: _elm_lang$html$Html_Attributes$style(
 				{
 					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'width', _1: '200px'},
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'width', '200px'),
 					_1: {ctor: '[]'}
 				}),
 			_1: {ctor: '[]'}
@@ -32275,10 +32281,10 @@ var _user$project$Views_Strum$strumGroup = F6(
 					_0: _elm_lang$html$Html_Attributes$style(
 						{
 							ctor: '::',
-							_0: {ctor: '_Tuple2', _0: 'width', _1: '10px'},
+							_0: A2(_user$project$Logic_Utils_ops['=>'], 'width', '10px'),
 							_1: {
 								ctor: '::',
-								_0: {ctor: '_Tuple2', _0: 'margin', _1: '20px 55px 0'},
+								_0: A2(_user$project$Logic_Utils_ops['=>'], 'margin', '20px 55px 0'),
 								_1: {ctor: '[]'}
 							}
 						}),
@@ -32298,10 +32304,10 @@ var _user$project$Views_Strum$strumGroup = F6(
 					_0: _elm_lang$html$Html_Attributes$style(
 						{
 							ctor: '::',
-							_0: {ctor: '_Tuple2', _0: 'width', _1: '10px'},
+							_0: A2(_user$project$Logic_Utils_ops['=>'], 'width', '10px'),
 							_1: {
 								ctor: '::',
-								_0: {ctor: '_Tuple2', _0: 'margin', _1: '0 55px 0'},
+								_0: A2(_user$project$Logic_Utils_ops['=>'], 'margin', '0 55px 0'),
 								_1: {ctor: '[]'}
 							}
 						}),
@@ -32330,7 +32336,7 @@ var _user$project$Views_Strum$strumGroup = F6(
 						_0: _elm_lang$html$Html_Attributes$style(
 							{
 								ctor: '::',
-								_0: {ctor: '_Tuple2', _0: 'display', _1: 'flex'},
+								_0: A2(_user$project$Logic_Utils_ops['=>'], 'display', 'flex'),
 								_1: {ctor: '[]'}
 							}),
 						_1: {ctor: '[]'}
@@ -32381,7 +32387,7 @@ var _user$project$Views_Strum$strumGroup = F6(
 							_0: _elm_lang$html$Html_Attributes$style(
 								{
 									ctor: '::',
-									_0: {ctor: '_Tuple2', _0: 'display', _1: 'flex'},
+									_0: A2(_user$project$Logic_Utils_ops['=>'], 'display', 'flex'),
 									_1: {ctor: '[]'}
 								}),
 							_1: {ctor: '[]'}
@@ -32399,7 +32405,7 @@ var _user$project$Views_Strum$strumGroup = F6(
 								_0: _elm_lang$html$Html_Attributes$style(
 									{
 										ctor: '::',
-										_0: {ctor: '_Tuple2', _0: 'display', _1: 'flex'},
+										_0: A2(_user$project$Logic_Utils_ops['=>'], 'display', 'flex'),
 										_1: {ctor: '[]'}
 									}),
 								_1: {ctor: '[]'}
@@ -32604,19 +32610,19 @@ var _user$project$Views_Strum$strummingPage = function (model) {
 var _user$project$Styles_FingerPickStyles$fingerPickNotationDotStyle = _elm_lang$html$Html_Attributes$style(
 	{
 		ctor: '::',
-		_0: {ctor: '_Tuple2', _0: 'position', _1: 'absolute'},
+		_0: A2(_user$project$Logic_Utils_ops['=>'], 'position', 'absolute'),
 		_1: {
 			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'bottom', _1: '-30px'},
+			_0: A2(_user$project$Logic_Utils_ops['=>'], 'bottom', '-30px'),
 			_1: {
 				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'right', _1: '-15px'},
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'right', '-15px'),
 				_1: {
 					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '50px'},
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'fontSize', '50px'),
 					_1: {
 						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'color', _1: '#555'},
+						_0: A2(_user$project$Logic_Utils_ops['=>'], 'color', '#555'),
 						_1: {ctor: '[]'}
 					}
 				}
@@ -32627,31 +32633,31 @@ var _user$project$Styles_FingerPickStyles$fingerPickNotationFlagStyle = function
 	return _elm_lang$html$Html_Attributes$style(
 		{
 			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'position', _1: 'absolute'},
+			_0: A2(_user$project$Logic_Utils_ops['=>'], 'position', 'absolute'),
 			_1: {
 				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'top', _1: '-7px'},
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'top', '-7px'),
 				_1: {
 					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'right', _1: '-15px'},
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'right', '-15px'),
 					_1: {
 						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'width', _1: '15px'},
+						_0: A2(_user$project$Logic_Utils_ops['=>'], 'width', '15px'),
 						_1: {
 							ctor: '::',
-							_0: {ctor: '_Tuple2', _0: 'height', _1: '15px'},
+							_0: A2(_user$project$Logic_Utils_ops['=>'], 'height', '15px'),
 							_1: {
 								ctor: '::',
-								_0: {ctor: '_Tuple2', _0: 'transform', _1: 'skew(30deg)'},
+								_0: A2(_user$project$Logic_Utils_ops['=>'], 'transform', 'skew(30deg)'),
 								_1: {
 									ctor: '::',
-									_0: {ctor: '_Tuple2', _0: 'visibility', _1: flag},
+									_0: A2(_user$project$Logic_Utils_ops['=>'], 'visibility', flag),
 									_1: {
 										ctor: '::',
-										_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '20px'},
+										_0: A2(_user$project$Logic_Utils_ops['=>'], 'fontSize', '20px'),
 										_1: {
 											ctor: '::',
-											_0: {ctor: '_Tuple2', _0: 'color', _1: '#555'},
+											_0: A2(_user$project$Logic_Utils_ops['=>'], 'color', '#555'),
 											_1: {ctor: '[]'}
 										}
 									}
@@ -32666,13 +32672,13 @@ var _user$project$Styles_FingerPickStyles$fingerPickNotationFlagStyle = function
 var _user$project$Styles_FingerPickStyles$fingerPickNotationContainerStyle = _elm_lang$html$Html_Attributes$style(
 	{
 		ctor: '::',
-		_0: {ctor: '_Tuple2', _0: 'position', _1: 'relative'},
+		_0: A2(_user$project$Logic_Utils_ops['=>'], 'position', 'relative'),
 		_1: {
 			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'height', _1: '35px'},
+			_0: A2(_user$project$Logic_Utils_ops['=>'], 'height', '35px'),
 			_1: {
 				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'borderRight', _1: '2px solid #555'},
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'borderRight', '2px solid #555'),
 				_1: {ctor: '[]'}
 			}
 		}
@@ -32681,31 +32687,31 @@ var _user$project$Styles_FingerPickStyles$fingerPickNotationBaseStyles = functio
 	return _elm_lang$html$Html_Attributes$style(
 		{
 			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'position', _1: 'absolute'},
+			_0: A2(_user$project$Logic_Utils_ops['=>'], 'position', 'absolute'),
 			_1: {
 				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'bottom', _1: '-10px'},
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'bottom', '-10px'),
 				_1: {
 					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'left', _1: '-5px'},
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'left', '-5px'),
 					_1: {
 						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'width', _1: '14px'},
+						_0: A2(_user$project$Logic_Utils_ops['=>'], 'width', '14px'),
 						_1: {
 							ctor: '::',
-							_0: {ctor: '_Tuple2', _0: 'height', _1: '15px'},
+							_0: A2(_user$project$Logic_Utils_ops['=>'], 'height', '15px'),
 							_1: {
 								ctor: '::',
-								_0: {ctor: '_Tuple2', _0: 'transform', _1: 'skew(-20deg)'},
+								_0: A2(_user$project$Logic_Utils_ops['=>'], 'transform', 'skew(-20deg)'),
 								_1: {
 									ctor: '::',
-									_0: {ctor: '_Tuple2', _0: 'border', _1: '2px solid #555'},
+									_0: A2(_user$project$Logic_Utils_ops['=>'], 'border', '2px solid #555'),
 									_1: {
 										ctor: '::',
-										_0: {ctor: '_Tuple2', _0: 'borderRadius', _1: '10px'},
+										_0: A2(_user$project$Logic_Utils_ops['=>'], 'borderRadius', '10px'),
 										_1: {
 											ctor: '::',
-											_0: {ctor: '_Tuple2', _0: 'backgroundColor', _1: fill},
+											_0: A2(_user$project$Logic_Utils_ops['=>'], 'backgroundColor', fill),
 											_1: {ctor: '[]'}
 										}
 									}
@@ -32720,16 +32726,16 @@ var _user$project$Styles_FingerPickStyles$fingerPickNotationBaseStyles = functio
 var _user$project$Styles_FingerPickStyles$buttonStyle = _elm_lang$html$Html_Attributes$style(
 	{
 		ctor: '::',
-		_0: {ctor: '_Tuple2', _0: 'background', _1: 'none'},
+		_0: A2(_user$project$Logic_Utils_ops['=>'], 'background', 'none'),
 		_1: {
 			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'marginTop', _1: '50px'},
+			_0: A2(_user$project$Logic_Utils_ops['=>'], 'marginTop', '50px'),
 			_1: {
 				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'border', _1: '1px solid #333'},
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'border', '1px solid #333'),
 				_1: {
 					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'color', _1: '#03a9f4'},
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'color', '#03a9f4'),
 					_1: {ctor: '[]'}
 				}
 			}
@@ -32738,25 +32744,25 @@ var _user$project$Styles_FingerPickStyles$buttonStyle = _elm_lang$html$Html_Attr
 var _user$project$Styles_FingerPickStyles$fingerPickChordTitleStyle = _elm_lang$html$Html_Attributes$style(
 	{
 		ctor: '::',
-		_0: {ctor: '_Tuple2', _0: 'position', _1: 'fixed'},
+		_0: A2(_user$project$Logic_Utils_ops['=>'], 'position', 'fixed'),
 		_1: {
 			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'top', _1: '50px'},
+			_0: A2(_user$project$Logic_Utils_ops['=>'], 'top', '50px'),
 			_1: {
 				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'left', _1: '30px'},
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'left', '30px'),
 				_1: {
 					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'color', _1: '#000'},
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'color', '#000'),
 					_1: {
 						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'transform', _1: 'scale(0.8, 0.8)'},
+						_0: A2(_user$project$Logic_Utils_ops['=>'], 'transform', 'scale(0.8, 0.8)'),
 						_1: {
 							ctor: '::',
-							_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '20px'},
+							_0: A2(_user$project$Logic_Utils_ops['=>'], 'fontSize', '20px'),
 							_1: {
 								ctor: '::',
-								_0: {ctor: '_Tuple2', _0: 'textAlign', _1: 'center'},
+								_0: A2(_user$project$Logic_Utils_ops['=>'], 'textAlign', 'center'),
 								_1: {ctor: '[]'}
 							}
 						}
@@ -32768,13 +32774,13 @@ var _user$project$Styles_FingerPickStyles$fingerPickChordTitleStyle = _elm_lang$
 var _user$project$Styles_FingerPickStyles$beatStyle = _elm_lang$html$Html_Attributes$style(
 	{
 		ctor: '::',
-		_0: {ctor: '_Tuple2', _0: 'display', _1: 'flex'},
+		_0: A2(_user$project$Logic_Utils_ops['=>'], 'display', 'flex'),
 		_1: {
 			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'color', _1: '#03a9f4'},
+			_0: A2(_user$project$Logic_Utils_ops['=>'], 'color', '#03a9f4'),
 			_1: {
 				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'paddingRight', _1: '200px'},
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'paddingRight', '200px'),
 				_1: {ctor: '[]'}
 			}
 		}
@@ -32782,16 +32788,16 @@ var _user$project$Styles_FingerPickStyles$beatStyle = _elm_lang$html$Html_Attrib
 var _user$project$Styles_FingerPickStyles$stringStyle = _elm_lang$html$Html_Attributes$style(
 	{
 		ctor: '::',
-		_0: {ctor: '_Tuple2', _0: 'width', _1: '950px'},
+		_0: A2(_user$project$Logic_Utils_ops['=>'], 'width', '950px'),
 		_1: {
 			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'borderBottom', _1: '1px solid #aaa'},
+			_0: A2(_user$project$Logic_Utils_ops['=>'], 'borderBottom', '1px solid #aaa'),
 			_1: {
 				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'marginTop', _1: '32px'},
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'marginTop', '32px'),
 				_1: {
 					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'zIndex', _1: '-1'},
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'zIndex', '-1'),
 					_1: {ctor: '[]'}
 				}
 			}
@@ -32813,34 +32819,34 @@ var _user$project$Styles_FingerPickStyles$fretStyle = F2(
 		return _elm_lang$html$Html_Attributes$style(
 			{
 				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'width', _1: '100px'},
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'width', '100px'),
 				_1: {
 					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'height', _1: '180px'},
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'height', '180px'),
 					_1: {
 						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'margin', _1: '10px 10px 20px'},
+						_0: A2(_user$project$Logic_Utils_ops['=>'], 'margin', '10px 10px 20px'),
 						_1: {
 							ctor: '::',
-							_0: {ctor: '_Tuple2', _0: 'opacity', _1: opacity},
+							_0: A2(_user$project$Logic_Utils_ops['=>'], 'opacity', opacity),
 							_1: {
 								ctor: '::',
-								_0: {ctor: '_Tuple2', _0: 'paddingTop', _1: '50px'},
+								_0: A2(_user$project$Logic_Utils_ops['=>'], 'paddingTop', '50px'),
 								_1: {
 									ctor: '::',
-									_0: {ctor: '_Tuple2', _0: 'display', _1: 'flex'},
+									_0: A2(_user$project$Logic_Utils_ops['=>'], 'display', 'flex'),
 									_1: {
 										ctor: '::',
-										_0: {ctor: '_Tuple2', _0: 'borderRadius', _1: '10px'},
+										_0: A2(_user$project$Logic_Utils_ops['=>'], 'borderRadius', '10px'),
 										_1: {
 											ctor: '::',
-											_0: {ctor: '_Tuple2', _0: 'justifyContent', _1: 'center'},
+											_0: A2(_user$project$Logic_Utils_ops['=>'], 'justifyContent', 'center'),
 											_1: {
 												ctor: '::',
-												_0: {ctor: '_Tuple2', _0: 'transition', _1: 'all 0.4s ease'},
+												_0: A2(_user$project$Logic_Utils_ops['=>'], 'transition', 'all 0.4s ease'),
 												_1: {
 													ctor: '::',
-													_0: {ctor: '_Tuple2', _0: 'color', _1: '#000'},
+													_0: A2(_user$project$Logic_Utils_ops['=>'], 'color', '#000'),
 													_1: {ctor: '[]'}
 												}
 											}
@@ -32856,20 +32862,20 @@ var _user$project$Styles_FingerPickStyles$fretStyle = F2(
 var _user$project$Styles_FingerPickStyles$fingerPickGroupNotationStyle = _elm_lang$html$Html_Attributes$style(
 	{
 		ctor: '::',
-		_0: {ctor: '_Tuple2', _0: 'width', _1: '10px'},
+		_0: A2(_user$project$Logic_Utils_ops['=>'], 'width', '10px'),
 		_1: {
 			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'margin', _1: '5px 55px 0'},
+			_0: A2(_user$project$Logic_Utils_ops['=>'], 'margin', '5px 55px 0'),
 			_1: {ctor: '[]'}
 		}
 	});
 var _user$project$Styles_FingerPickStyles$fingerPickGroupBeatStyle = _elm_lang$html$Html_Attributes$style(
 	{
 		ctor: '::',
-		_0: {ctor: '_Tuple2', _0: 'width', _1: '10px'},
+		_0: A2(_user$project$Logic_Utils_ops['=>'], 'width', '10px'),
 		_1: {
 			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'margin', _1: '5px 55px 10px'},
+			_0: A2(_user$project$Logic_Utils_ops['=>'], 'margin', '5px 55px 10px'),
 			_1: {ctor: '[]'}
 		}
 	});
@@ -32877,23 +32883,22 @@ var _user$project$Styles_FingerPickStyles$fingerPickGroupStyle = function (scale
 	return _elm_lang$html$Html_Attributes$style(
 		{
 			ctor: '::',
-			_0: {
-				ctor: '_Tuple2',
-				_0: 'transform',
-				_1: A2(
+			_0: A2(
+				_user$project$Logic_Utils_ops['=>'],
+				'transform',
+				A2(
 					_elm_lang$core$Basics_ops['++'],
 					'scale(',
-					A2(_elm_lang$core$Basics_ops['++'], scale, ')'))
-			},
+					A2(_elm_lang$core$Basics_ops['++'], scale, ')'))),
 			_1: {
 				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'position', _1: 'relative'},
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'position', 'relative'),
 				_1: {
 					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'margin', _1: '125px 0 0 200px'},
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'margin', '125px 0 0 200px'),
 					_1: {
 						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'cursor', _1: 'pointer'},
+						_0: A2(_user$project$Logic_Utils_ops['=>'], 'cursor', 'pointer'),
 						_1: {ctor: '[]'}
 					}
 				}
@@ -32903,22 +32908,22 @@ var _user$project$Styles_FingerPickStyles$fingerPickGroupStyle = function (scale
 var _user$project$Styles_FingerPickStyles$fingerPickingPageStyle = _elm_lang$html$Html_Attributes$style(
 	{
 		ctor: '::',
-		_0: {ctor: '_Tuple2', _0: 'height', _1: '100vh'},
+		_0: A2(_user$project$Logic_Utils_ops['=>'], 'height', '100vh'),
 		_1: {
 			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'width', _1: '100vw'},
+			_0: A2(_user$project$Logic_Utils_ops['=>'], 'width', '100vw'),
 			_1: {
 				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'display', _1: 'flex'},
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'display', 'flex'),
 				_1: {
 					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'flexDirection', _1: 'column'},
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'flexDirection', 'column'),
 					_1: {
 						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'paddingTop', _1: '150px'},
+						_0: A2(_user$project$Logic_Utils_ops['=>'], 'paddingTop', '150px'),
 						_1: {
 							ctor: '::',
-							_0: {ctor: '_Tuple2', _0: 'alignItems', _1: 'center'},
+							_0: A2(_user$project$Logic_Utils_ops['=>'], 'alignItems', 'center'),
 							_1: {ctor: '[]'}
 						}
 					}
@@ -33280,7 +33285,7 @@ var _user$project$Views_FingerPick$stringView = A2(
 		_0: _elm_lang$html$Html_Attributes$style(
 			{
 				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'marginBottom', _1: '20px'},
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'marginBottom', '20px'),
 				_1: {ctor: '[]'}
 			}),
 		_1: {ctor: '[]'}
@@ -33384,25 +33389,25 @@ var _user$project$Views_FingerPick$fret = F2(
 		var baseStyles = _elm_lang$html$Html_Attributes$style(
 			{
 				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'display', _1: 'flex'},
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'display', 'flex'),
 				_1: {
 					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'marginTop', _1: height},
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'marginTop', height),
 					_1: {
 						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'width', _1: '120px'},
+						_0: A2(_user$project$Logic_Utils_ops['=>'], 'width', '120px'),
 						_1: {
 							ctor: '::',
-							_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '20px'},
+							_0: A2(_user$project$Logic_Utils_ops['=>'], 'fontSize', '20px'),
 							_1: {
 								ctor: '::',
-								_0: {ctor: '_Tuple2', _0: 'color', _1: '#000'},
+								_0: A2(_user$project$Logic_Utils_ops['=>'], 'color', '#000'),
 								_1: {
 									ctor: '::',
-									_0: {ctor: '_Tuple2', _0: 'justifyContent', _1: 'center'},
+									_0: A2(_user$project$Logic_Utils_ops['=>'], 'justifyContent', 'center'),
 									_1: {
 										ctor: '::',
-										_0: {ctor: '_Tuple2', _0: 'opacity', _1: opacity},
+										_0: A2(_user$project$Logic_Utils_ops['=>'], 'opacity', opacity),
 										_1: {ctor: '[]'}
 									}
 								}
@@ -33512,7 +33517,7 @@ var _user$project$Views_FingerPick$fingerPickGroup = F4(
 							_0: _elm_lang$html$Html_Attributes$style(
 								{
 									ctor: '::',
-									_0: {ctor: '_Tuple2', _0: 'display', _1: 'flex'},
+									_0: A2(_user$project$Logic_Utils_ops['=>'], 'display', 'flex'),
 									_1: {ctor: '[]'}
 								}),
 							_1: {ctor: '[]'}
@@ -33527,7 +33532,7 @@ var _user$project$Views_FingerPick$fingerPickGroup = F4(
 								_0: _elm_lang$html$Html_Attributes$style(
 									{
 										ctor: '::',
-										_0: {ctor: '_Tuple2', _0: 'display', _1: 'flex'},
+										_0: A2(_user$project$Logic_Utils_ops['=>'], 'display', 'flex'),
 										_1: {ctor: '[]'}
 									}),
 								_1: {ctor: '[]'}
@@ -33555,7 +33560,7 @@ var _user$project$Views_FingerPick$fingerPickGroup = F4(
 										_0: _elm_lang$html$Html_Attributes$style(
 											{
 												ctor: '::',
-												_0: {ctor: '_Tuple2', _0: 'display', _1: 'flex'},
+												_0: A2(_user$project$Logic_Utils_ops['=>'], 'display', 'flex'),
 												_1: {ctor: '[]'}
 											}),
 										_1: {ctor: '[]'}
@@ -33639,22 +33644,22 @@ var _user$project$Views_FingerPick$fingerPickingPage = function (model) {
 var _user$project$Styles_ModalStyles$modalHeaderStyle = _elm_lang$html$Html_Attributes$style(
 	{
 		ctor: '::',
-		_0: {ctor: '_Tuple2', _0: 'backgroundColor', _1: '#333'},
+		_0: A2(_user$project$Logic_Utils_ops['=>'], 'backgroundColor', '#333'),
 		_1: {
 			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'margin', _1: '-25px 0 25px -25px'},
+			_0: A2(_user$project$Logic_Utils_ops['=>'], 'margin', '-25px 0 25px -25px'),
 			_1: {
 				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'padding', _1: '20px 25px'},
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'padding', '20px 25px'),
 				_1: {
 					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'width', _1: '100vw'},
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'width', '100vw'),
 					_1: {
 						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'height', _1: '75px'},
+						_0: A2(_user$project$Logic_Utils_ops['=>'], 'height', '75px'),
 						_1: {
 							ctor: '::',
-							_0: {ctor: '_Tuple2', _0: 'color', _1: '#f40331'},
+							_0: A2(_user$project$Logic_Utils_ops['=>'], 'color', '#f40331'),
 							_1: {ctor: '[]'}
 						}
 					}
@@ -33665,13 +33670,13 @@ var _user$project$Styles_ModalStyles$modalHeaderStyle = _elm_lang$html$Html_Attr
 var _user$project$Styles_ModalStyles$modalContentStyle = _elm_lang$html$Html_Attributes$style(
 	{
 		ctor: '::',
-		_0: {ctor: '_Tuple2', _0: 'position', _1: 'relative'},
+		_0: A2(_user$project$Logic_Utils_ops['=>'], 'position', 'relative'),
 		_1: {
 			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'textAlign', _1: 'left'},
+			_0: A2(_user$project$Logic_Utils_ops['=>'], 'textAlign', 'left'),
 			_1: {
 				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'padding', _1: '25px'},
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'padding', '25px'),
 				_1: {ctor: '[]'}
 			}
 		}
@@ -33679,22 +33684,22 @@ var _user$project$Styles_ModalStyles$modalContentStyle = _elm_lang$html$Html_Att
 var _user$project$Styles_ModalStyles$closeModalIcon = _elm_lang$html$Html_Attributes$style(
 	{
 		ctor: '::',
-		_0: {ctor: '_Tuple2', _0: 'position', _1: 'fixed'},
+		_0: A2(_user$project$Logic_Utils_ops['=>'], 'position', 'fixed'),
 		_1: {
 			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'top', _1: '20px'},
+			_0: A2(_user$project$Logic_Utils_ops['=>'], 'top', '20px'),
 			_1: {
 				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'right', _1: '20px'},
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'right', '20px'),
 				_1: {
 					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '20px'},
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'fontSize', '20px'),
 					_1: {
 						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'cursor', _1: 'pointer'},
+						_0: A2(_user$project$Logic_Utils_ops['=>'], 'cursor', 'pointer'),
 						_1: {
 							ctor: '::',
-							_0: {ctor: '_Tuple2', _0: 'color', _1: '#f40331'},
+							_0: A2(_user$project$Logic_Utils_ops['=>'], 'color', '#f40331'),
 							_1: {ctor: '[]'}
 						}
 					}
@@ -33708,31 +33713,31 @@ var _user$project$Styles_ModalStyles$modalIconStyle = function (model) {
 			return _elm_lang$html$Html_Attributes$style(
 				{
 					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'position', _1: 'absolute'},
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'position', 'absolute'),
 					_1: {
 						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'top', _1: offset},
+						_0: A2(_user$project$Logic_Utils_ops['=>'], 'top', offset),
 						_1: {
 							ctor: '::',
-							_0: {ctor: '_Tuple2', _0: 'right', _1: '60px'},
+							_0: A2(_user$project$Logic_Utils_ops['=>'], 'right', '60px'),
 							_1: {
 								ctor: '::',
-								_0: {ctor: '_Tuple2', _0: 'color', _1: color},
+								_0: A2(_user$project$Logic_Utils_ops['=>'], 'color', color),
 								_1: {
 									ctor: '::',
-									_0: {ctor: '_Tuple2', _0: 'textAlign', _1: 'center'},
+									_0: A2(_user$project$Logic_Utils_ops['=>'], 'textAlign', 'center'),
 									_1: {
 										ctor: '::',
-										_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '40px'},
+										_0: A2(_user$project$Logic_Utils_ops['=>'], 'fontSize', '40px'),
 										_1: {
 											ctor: '::',
-											_0: {ctor: '_Tuple2', _0: 'fontWeight', _1: '700'},
+											_0: A2(_user$project$Logic_Utils_ops['=>'], 'fontWeight', '700'),
 											_1: {
 												ctor: '::',
-												_0: {ctor: '_Tuple2', _0: 'cursor', _1: 'pointer'},
+												_0: A2(_user$project$Logic_Utils_ops['=>'], 'cursor', 'pointer'),
 												_1: {
 													ctor: '::',
-													_0: {ctor: '_Tuple2', _0: 'zIndex', _1: '10001'},
+													_0: A2(_user$project$Logic_Utils_ops['=>'], 'zIndex', '10001'),
 													_1: {ctor: '[]'}
 												}
 											}
@@ -33752,43 +33757,43 @@ var _user$project$Styles_ModalStyles$modalStyle = function (model) {
 			return _elm_lang$html$Html_Attributes$style(
 				{
 					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'position', _1: 'fixed'},
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'position', 'fixed'),
 					_1: {
 						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'top', _1: '75px'},
+						_0: A2(_user$project$Logic_Utils_ops['=>'], 'top', '75px'),
 						_1: {
 							ctor: '::',
-							_0: {ctor: '_Tuple2', _0: 'left', _1: '0'},
+							_0: A2(_user$project$Logic_Utils_ops['=>'], 'left', '0'),
 							_1: {
 								ctor: '::',
-								_0: {ctor: '_Tuple2', _0: 'width', _1: '100vw'},
+								_0: A2(_user$project$Logic_Utils_ops['=>'], 'width', '100vw'),
 								_1: {
 									ctor: '::',
-									_0: {ctor: '_Tuple2', _0: 'height', _1: '90vh'},
+									_0: A2(_user$project$Logic_Utils_ops['=>'], 'height', '90vh'),
 									_1: {
 										ctor: '::',
-										_0: {ctor: '_Tuple2', _0: 'backgroundColor', _1: 'rgba(0,0,0,1)'},
+										_0: A2(_user$project$Logic_Utils_ops['=>'], 'backgroundColor', 'rgba(0,0,0,1)'),
 										_1: {
 											ctor: '::',
-											_0: {ctor: '_Tuple2', _0: 'zIndex', _1: '50'},
+											_0: A2(_user$project$Logic_Utils_ops['=>'], 'zIndex', '50'),
 											_1: {
 												ctor: '::',
-												_0: {ctor: '_Tuple2', _0: 'color', _1: '#ccc'},
+												_0: A2(_user$project$Logic_Utils_ops['=>'], 'color', '#ccc'),
 												_1: {
 													ctor: '::',
-													_0: {ctor: '_Tuple2', _0: 'textAlign', _1: 'center'},
+													_0: A2(_user$project$Logic_Utils_ops['=>'], 'textAlign', 'center'),
 													_1: {
 														ctor: '::',
-														_0: {ctor: '_Tuple2', _0: 'overflow', _1: 'scroll'},
+														_0: A2(_user$project$Logic_Utils_ops['=>'], 'overflow', 'scroll'),
 														_1: {
 															ctor: '::',
-															_0: {ctor: '_Tuple2', _0: 'opacity', _1: opacity},
+															_0: A2(_user$project$Logic_Utils_ops['=>'], 'opacity', opacity),
 															_1: {
 																ctor: '::',
-																_0: {ctor: '_Tuple2', _0: 'transform', _1: trans},
+																_0: A2(_user$project$Logic_Utils_ops['=>'], 'transform', trans),
 																_1: {
 																	ctor: '::',
-																	_0: {ctor: '_Tuple2', _0: 'transition', _1: 'all 0.3s linear'},
+																	_0: A2(_user$project$Logic_Utils_ops['=>'], 'transition', 'all 0.3s linear'),
 																	_1: {ctor: '[]'}
 																}
 															}
@@ -34407,22 +34412,22 @@ var _user$project$Views_Modal$modal = function (model) {
 var _user$project$Styles_MainStyles$signatureStyle = _elm_lang$html$Html_Attributes$style(
 	{
 		ctor: '::',
-		_0: {ctor: '_Tuple2', _0: 'position', _1: 'absolute'},
+		_0: A2(_user$project$Logic_Utils_ops['=>'], 'position', 'absolute'),
 		_1: {
 			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'bottom', _1: '10px'},
+			_0: A2(_user$project$Logic_Utils_ops['=>'], 'bottom', '10px'),
 			_1: {
 				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'right', _1: '10px'},
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'right', '10px'),
 				_1: {
 					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '12px'},
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'fontSize', '12px'),
 					_1: {
 						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'color', _1: '#FFF'},
+						_0: A2(_user$project$Logic_Utils_ops['=>'], 'color', '#FFF'),
 						_1: {
 							ctor: '::',
-							_0: {ctor: '_Tuple2', _0: 'textDecoration', _1: 'none'},
+							_0: A2(_user$project$Logic_Utils_ops['=>'], 'textDecoration', 'none'),
 							_1: {ctor: '[]'}
 						}
 					}
@@ -34432,16 +34437,16 @@ var _user$project$Styles_MainStyles$signatureStyle = _elm_lang$html$Html_Attribu
 	});
 var _user$project$Styles_MainStyles$highlight = {
 	ctor: '::',
-	_0: {ctor: '_Tuple2', _0: 'color', _1: '#03a9f4'},
+	_0: A2(_user$project$Logic_Utils_ops['=>'], 'color', '#03a9f4'),
 	_1: {ctor: '[]'}
 };
 var _user$project$Styles_MainStyles$textContainerStyle = _elm_lang$html$Html_Attributes$style(
 	{
 		ctor: '::',
-		_0: {ctor: '_Tuple2', _0: 'display', _1: 'flex'},
+		_0: A2(_user$project$Logic_Utils_ops['=>'], 'display', 'flex'),
 		_1: {
 			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'flexFlow', _1: 'row wrap '},
+			_0: A2(_user$project$Logic_Utils_ops['=>'], 'flexFlow', 'row wrap '),
 			_1: {ctor: '[]'}
 		}
 	});
@@ -34451,31 +34456,31 @@ var _user$project$Styles_MainStyles$keyListContainerStyle = function (navOpen) {
 			return _elm_lang$html$Html_Attributes$style(
 				{
 					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'display', _1: 'flex'},
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'display', 'flex'),
 					_1: {
 						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'opacity', _1: display},
+						_0: A2(_user$project$Logic_Utils_ops['=>'], 'opacity', display),
 						_1: {
 							ctor: '::',
-							_0: {ctor: '_Tuple2', _0: 'position', _1: 'fixed'},
+							_0: A2(_user$project$Logic_Utils_ops['=>'], 'position', 'fixed'),
 							_1: {
 								ctor: '::',
-								_0: {ctor: '_Tuple2', _0: 'top', _1: '200px'},
+								_0: A2(_user$project$Logic_Utils_ops['=>'], 'top', '200px'),
 								_1: {
 									ctor: '::',
-									_0: {ctor: '_Tuple2', _0: 'right', _1: '50px'},
+									_0: A2(_user$project$Logic_Utils_ops['=>'], 'right', '50px'),
 									_1: {
 										ctor: '::',
-										_0: {ctor: '_Tuple2', _0: 'width', _1: '500px'},
+										_0: A2(_user$project$Logic_Utils_ops['=>'], 'width', '500px'),
 										_1: {
 											ctor: '::',
-											_0: {ctor: '_Tuple2', _0: 'textAlign', _1: 'center'},
+											_0: A2(_user$project$Logic_Utils_ops['=>'], 'textAlign', 'center'),
 											_1: {
 												ctor: '::',
-												_0: {ctor: '_Tuple2', _0: 'transform', _1: shift},
+												_0: A2(_user$project$Logic_Utils_ops['=>'], 'transform', shift),
 												_1: {
 													ctor: '::',
-													_0: {ctor: '_Tuple2', _0: 'transition', _1: 'all 0.4s ease'},
+													_0: A2(_user$project$Logic_Utils_ops['=>'], 'transition', 'all 0.4s ease'),
 													_1: {ctor: '[]'}
 												}
 											}
@@ -34497,25 +34502,25 @@ var _user$project$Styles_MainStyles$keyListContainerStyle = function (navOpen) {
 var _user$project$Styles_MainStyles$keyListKeyTitleStyle = _elm_lang$html$Html_Attributes$style(
 	{
 		ctor: '::',
-		_0: {ctor: '_Tuple2', _0: 'position', _1: 'fixed'},
+		_0: A2(_user$project$Logic_Utils_ops['=>'], 'position', 'fixed'),
 		_1: {
 			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'top', _1: '-30px'},
+			_0: A2(_user$project$Logic_Utils_ops['=>'], 'top', '-30px'),
 			_1: {
 				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'right', _1: '50px'},
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'right', '50px'),
 				_1: {
 					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'width', _1: '450px'},
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'width', '450px'),
 					_1: {
 						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'textAlign', _1: 'right'},
+						_0: A2(_user$project$Logic_Utils_ops['=>'], 'textAlign', 'right'),
 						_1: {
 							ctor: '::',
-							_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '16px'},
+							_0: A2(_user$project$Logic_Utils_ops['=>'], 'fontSize', '16px'),
 							_1: {
 								ctor: '::',
-								_0: {ctor: '_Tuple2', _0: 'textTransform', _1: 'underline'},
+								_0: A2(_user$project$Logic_Utils_ops['=>'], 'textTransform', 'underline'),
 								_1: {ctor: '[]'}
 							}
 						}
@@ -34527,28 +34532,28 @@ var _user$project$Styles_MainStyles$keyListKeyTitleStyle = _elm_lang$html$Html_A
 var _user$project$Styles_MainStyles$keyListStyle = _elm_lang$html$Html_Attributes$style(
 	{
 		ctor: '::',
-		_0: {ctor: '_Tuple2', _0: 'width', _1: '60px'},
+		_0: A2(_user$project$Logic_Utils_ops['=>'], 'width', '60px'),
 		_1: {
 			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'margin', _1: '10px 10px 0 0 '},
+			_0: A2(_user$project$Logic_Utils_ops['=>'], 'margin', '10px 10px 0 0 '),
 			_1: {
 				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'cursor', _1: 'pointer'},
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'cursor', 'pointer'),
 				_1: {
 					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'lineHeight', _1: '60px'},
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'lineHeight', '60px'),
 					_1: {
 						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'border', _1: '1px solid #333'},
+						_0: A2(_user$project$Logic_Utils_ops['=>'], 'border', '1px solid #333'),
 						_1: {
 							ctor: '::',
-							_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '16px'},
+							_0: A2(_user$project$Logic_Utils_ops['=>'], 'fontSize', '16px'),
 							_1: {
 								ctor: '::',
-								_0: {ctor: '_Tuple2', _0: 'transition', _1: 'all 0.4s ease'},
+								_0: A2(_user$project$Logic_Utils_ops['=>'], 'transition', 'all 0.4s ease'),
 								_1: {
 									ctor: '::',
-									_0: {ctor: '_Tuple2', _0: 'color', _1: '#fff'},
+									_0: A2(_user$project$Logic_Utils_ops['=>'], 'color', '#fff'),
 									_1: {ctor: '[]'}
 								}
 							}
@@ -34561,22 +34566,22 @@ var _user$project$Styles_MainStyles$keyListStyle = _elm_lang$html$Html_Attribute
 var _user$project$Styles_MainStyles$navTitleStyle = _elm_lang$html$Html_Attributes$style(
 	{
 		ctor: '::',
-		_0: {ctor: '_Tuple2', _0: 'position', _1: 'fixed'},
+		_0: A2(_user$project$Logic_Utils_ops['=>'], 'position', 'fixed'),
 		_1: {
 			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'top', _1: '10px'},
+			_0: A2(_user$project$Logic_Utils_ops['=>'], 'top', '10px'),
 			_1: {
 				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'left', _1: '20px'},
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'left', '20px'),
 				_1: {
 					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'color', _1: '#000'},
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'color', '#000'),
 					_1: {
 						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '30px'},
+						_0: A2(_user$project$Logic_Utils_ops['=>'], 'fontSize', '30px'),
 						_1: {
 							ctor: '::',
-							_0: {ctor: '_Tuple2', _0: 'fontWeight', _1: '700'},
+							_0: A2(_user$project$Logic_Utils_ops['=>'], 'fontWeight', '700'),
 							_1: {ctor: '[]'}
 						}
 					}
@@ -34590,22 +34595,22 @@ var _user$project$Styles_MainStyles$navItemStyle = function (bool) {
 			return _elm_lang$html$Html_Attributes$style(
 				{
 					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'display', _1: display},
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'display', display),
 					_1: {
 						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'margin', _1: '0 0 5px 50px'},
+						_0: A2(_user$project$Logic_Utils_ops['=>'], 'margin', '0 0 5px 50px'),
 						_1: {
 							ctor: '::',
-							_0: {ctor: '_Tuple2', _0: 'padding', _1: '5px'},
+							_0: A2(_user$project$Logic_Utils_ops['=>'], 'padding', '5px'),
 							_1: {
 								ctor: '::',
-								_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '24px'},
+								_0: A2(_user$project$Logic_Utils_ops['=>'], 'fontSize', '24px'),
 								_1: {
 									ctor: '::',
-									_0: {ctor: '_Tuple2', _0: 'textAlign', _1: 'left'},
+									_0: A2(_user$project$Logic_Utils_ops['=>'], 'textAlign', 'left'),
 									_1: {
 										ctor: '::',
-										_0: {ctor: '_Tuple2', _0: 'color', _1: iconColor},
+										_0: A2(_user$project$Logic_Utils_ops['=>'], 'color', iconColor),
 										_1: {ctor: '[]'}
 									}
 								}
@@ -34624,7 +34629,7 @@ var _user$project$Styles_MainStyles$navItemStyle = function (bool) {
 var _user$project$Styles_MainStyles$navStyle = _elm_lang$html$Html_Attributes$style(
 	{
 		ctor: '::',
-		_0: {ctor: '_Tuple2', _0: 'textAlign', _1: 'center'},
+		_0: A2(_user$project$Logic_Utils_ops['=>'], 'textAlign', 'center'),
 		_1: {ctor: '[]'}
 	});
 var _user$project$Styles_MainStyles$navIconStyleHr = function (bool) {
@@ -34632,14 +34637,13 @@ var _user$project$Styles_MainStyles$navIconStyleHr = function (bool) {
 		return _elm_lang$html$Html_Attributes$style(
 			{
 				ctor: '::',
-				_0: {
-					ctor: '_Tuple2',
-					_0: 'borderTop',
-					_1: A2(_elm_lang$core$Basics_ops['++'], '5px solid ', color)
-				},
+				_0: A2(
+					_user$project$Logic_Utils_ops['=>'],
+					'borderTop',
+					A2(_elm_lang$core$Basics_ops['++'], '5px solid ', color)),
 				_1: {
 					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'margin', _1: '0 0 5px'},
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'margin', '0 0 5px'),
 					_1: {ctor: '[]'}
 				}
 			});
@@ -34656,28 +34660,28 @@ var _user$project$Styles_MainStyles$navIconStyle = function (model) {
 		return _elm_lang$html$Html_Attributes$style(
 			{
 				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'position', _1: 'fixed'},
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'position', 'fixed'),
 				_1: {
 					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'top', _1: '20px'},
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'top', '20px'),
 					_1: {
 						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'right', _1: '20px'},
+						_0: A2(_user$project$Logic_Utils_ops['=>'], 'right', '20px'),
 						_1: {
 							ctor: '::',
-							_0: {ctor: '_Tuple2', _0: 'width', _1: '25px'},
+							_0: A2(_user$project$Logic_Utils_ops['=>'], 'width', '25px'),
 							_1: {
 								ctor: '::',
-								_0: {ctor: '_Tuple2', _0: 'transition', _1: 'all 0.5s'},
+								_0: A2(_user$project$Logic_Utils_ops['=>'], 'transition', 'all 0.5s'),
 								_1: {
 									ctor: '::',
-									_0: {ctor: '_Tuple2', _0: 'cursor', _1: 'pointer'},
+									_0: A2(_user$project$Logic_Utils_ops['=>'], 'cursor', 'pointer'),
 									_1: {
 										ctor: '::',
-										_0: {ctor: '_Tuple2', _0: 'zIndex', _1: '10001'},
+										_0: A2(_user$project$Logic_Utils_ops['=>'], 'zIndex', '10001'),
 										_1: {
 											ctor: '::',
-											_0: {ctor: '_Tuple2', _0: 'transform', _1: difference},
+											_0: A2(_user$project$Logic_Utils_ops['=>'], 'transform', difference),
 											_1: {ctor: '[]'}
 										}
 									}
@@ -34701,37 +34705,37 @@ var _user$project$Styles_MainStyles$navMenuStyle = function (model) {
 			return _elm_lang$html$Html_Attributes$style(
 				{
 					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'position', _1: 'fixed'},
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'position', 'fixed'),
 					_1: {
 						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'top', _1: '0'},
+						_0: A2(_user$project$Logic_Utils_ops['=>'], 'top', '0'),
 						_1: {
 							ctor: '::',
-							_0: {ctor: '_Tuple2', _0: 'right', _1: '0'},
+							_0: A2(_user$project$Logic_Utils_ops['=>'], 'right', '0'),
 							_1: {
 								ctor: '::',
-								_0: {ctor: '_Tuple2', _0: 'transform', _1: 'translateX(0)'},
+								_0: A2(_user$project$Logic_Utils_ops['=>'], 'transform', 'translateX(0)'),
 								_1: {
 									ctor: '::',
-									_0: {ctor: '_Tuple2', _0: 'width', _1: '100vw'},
+									_0: A2(_user$project$Logic_Utils_ops['=>'], 'width', '100vw'),
 									_1: {
 										ctor: '::',
-										_0: {ctor: '_Tuple2', _0: 'height', _1: h},
+										_0: A2(_user$project$Logic_Utils_ops['=>'], 'height', h),
 										_1: {
 											ctor: '::',
-											_0: {ctor: '_Tuple2', _0: 'paddingTop', _1: pad},
+											_0: A2(_user$project$Logic_Utils_ops['=>'], 'paddingTop', pad),
 											_1: {
 												ctor: '::',
-												_0: {ctor: '_Tuple2', _0: 'backgroundColor', _1: color},
+												_0: A2(_user$project$Logic_Utils_ops['=>'], 'backgroundColor', color),
 												_1: {
 													ctor: '::',
-													_0: {ctor: '_Tuple2', _0: 'transition', _1: 'all 0.3s ease'},
+													_0: A2(_user$project$Logic_Utils_ops['=>'], 'transition', 'all 0.3s ease'),
 													_1: {
 														ctor: '::',
-														_0: {ctor: '_Tuple2', _0: 'zIndex', _1: '10000'},
+														_0: A2(_user$project$Logic_Utils_ops['=>'], 'zIndex', '10000'),
 														_1: {
 															ctor: '::',
-															_0: {ctor: '_Tuple2', _0: 'borderBottom', _1: '1px solid #ccc'},
+															_0: A2(_user$project$Logic_Utils_ops['=>'], 'borderBottom', '1px solid #ccc'),
 															_1: {ctor: '[]'}
 														}
 													}
@@ -34764,7 +34768,7 @@ var _user$project$Views_MainViews$playbackSpeedSlider = function (model) {
 				_0: _elm_lang$html$Html_Attributes$style(
 					{
 						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'marginTop', _1: '100px'},
+						_0: A2(_user$project$Logic_Utils_ops['=>'], 'marginTop', '100px'),
 						_1: {ctor: '[]'}
 					}),
 				_1: {ctor: '[]'}
@@ -34822,10 +34826,10 @@ var _user$project$Views_MainViews$notFoundPage = A2(
 		_0: _elm_lang$html$Html_Attributes$style(
 			{
 				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'margin', _1: '100px 300px'},
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'margin', '100px 300px'),
 				_1: {
 					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'color', _1: '#03a9f4'},
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'color', '#03a9f4'),
 					_1: {ctor: '[]'}
 				}
 			}),
@@ -34881,7 +34885,7 @@ var _user$project$Views_MainViews$signature = function (bool) {
 						_0: _elm_lang$html$Html_Attributes$style(
 							{
 								ctor: '::',
-								_0: {ctor: '_Tuple2', _0: 'color', _1: '#666'},
+								_0: A2(_user$project$Logic_Utils_ops['=>'], 'color', '#666'),
 								_1: {ctor: '[]'}
 							}),
 						_1: {ctor: '[]'}
@@ -34911,10 +34915,10 @@ var _user$project$Views_MainViews$keyListView = function (model) {
 						_0: _elm_lang$html$Html_Attributes$style(
 							{
 								ctor: '::',
-								_0: {ctor: '_Tuple2', _0: 'border', _1: '1px solid #03a9f4'},
+								_0: A2(_user$project$Logic_Utils_ops['=>'], 'border', '1px solid #03a9f4'),
 								_1: {
 									ctor: '::',
-									_0: {ctor: '_Tuple2', _0: 'color', _1: '#03a9f4'},
+									_0: A2(_user$project$Logic_Utils_ops['=>'], 'color', '#03a9f4'),
 									_1: {ctor: '[]'}
 								}
 							}),
@@ -34940,10 +34944,10 @@ var _user$project$Views_MainViews$keyListView = function (model) {
 						_0: _elm_lang$html$Html_Attributes$style(
 							{
 								ctor: '::',
-								_0: {ctor: '_Tuple2', _0: 'border', _1: '1px solid #333'},
+								_0: A2(_user$project$Logic_Utils_ops['=>'], 'border', '1px solid #333'),
 								_1: {
 									ctor: '::',
-									_0: {ctor: '_Tuple2', _0: 'color', _1: '#fff'},
+									_0: A2(_user$project$Logic_Utils_ops['=>'], 'color', '#fff'),
 									_1: {ctor: '[]'}
 								}
 							}),
@@ -35125,7 +35129,7 @@ var _user$project$Views_MainViews$nav = function (model) {
 							_0: _elm_lang$html$Html_Attributes$style(
 								{
 									ctor: '::',
-									_0: {ctor: '_Tuple2', _0: 'color', _1: '#03a9f4'},
+									_0: A2(_user$project$Logic_Utils_ops['=>'], 'color', '#03a9f4'),
 									_1: {ctor: '[]'}
 								}),
 							_1: {ctor: '[]'}
@@ -35203,7 +35207,7 @@ var _user$project$Views_MainViews$nav = function (model) {
 										_0: _elm_lang$html$Html_Attributes$style(
 											{
 												ctor: '::',
-												_0: {ctor: '_Tuple2', _0: 'position', _1: 'relative'},
+												_0: A2(_user$project$Logic_Utils_ops['=>'], 'position', 'relative'),
 												_1: {ctor: '[]'}
 											}),
 										_1: {ctor: '[]'}
@@ -35233,13 +35237,13 @@ var _user$project$Views_MainViews$mainView = function (model) {
 			_0: _elm_lang$html$Html_Attributes$style(
 				{
 					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'position', _1: 'relative'},
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'position', 'relative'),
 					_1: {
 						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'overflow', _1: 'hidden'},
+						_0: A2(_user$project$Logic_Utils_ops['=>'], 'overflow', 'hidden'),
 						_1: {
 							ctor: '::',
-							_0: {ctor: '_Tuple2', _0: 'padding', _1: '5px'},
+							_0: A2(_user$project$Logic_Utils_ops['=>'], 'padding', '5px'),
 							_1: {ctor: '[]'}
 						}
 					}
@@ -35261,7 +35265,7 @@ var _user$project$Views_MainViews$mainView = function (model) {
 		});
 };
 
-var _user$project$Main$chordDecoder = A3(
+var _user$project$Logic_Update$chordDecoder = A3(
 	_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$required,
 	'key',
 	_elm_lang$core$Json_Decode$string,
@@ -35318,281 +35322,11 @@ var _user$project$Main$chordDecoder = A3(
 														'i',
 														_elm_lang$core$Json_Decode$string,
 														_NoRedInk$elm_decode_pipeline$Json_Decode_Pipeline$decode(_user$project$Logic_Types$ChordChartData)))))))))))))));
-var _user$project$Main$subscriptions = function (model) {
-	return _elm_lang$core$Platform_Sub$batch(
-		{
-			ctor: '::',
-			_0: function () {
-				var val = _elm_lang$core$Basics$toFloat(model.sliderValue) / 10.0;
-				return (_elm_lang$core$Native_Utils.cmp(
-					model.index,
-					_elm_lang$core$List$length(model.currentChord)) < 0) ? A2(
-					_elm_lang$core$Time$every,
-					val * _elm_lang$core$Time$second,
-					_elm_lang$core$Basics$always(_user$project$Logic_Types$SendNotes)) : _elm_lang$core$Platform_Sub$none;
-			}(),
-			_1: {
-				ctor: '::',
-				_0: A2(_fbonetti$elm_phoenix_socket$Phoenix_Socket$listen, model.phxSocket, _user$project$Logic_Types$PhoenixMsg),
-				_1: {ctor: '[]'}
-			}
-		});
-};
-var _user$project$Main$initPhoenixSocket = A4(
-	_fbonetti$elm_phoenix_socket$Phoenix_Socket$on,
-	'chord_select',
-	'chordChannel:chords',
-	_user$project$Logic_Types$ReceiveMessage,
-	_fbonetti$elm_phoenix_socket$Phoenix_Socket$withDebug(
-		_fbonetti$elm_phoenix_socket$Phoenix_Socket$init('wss://damp-wave-74595.herokuapp.com/socket/websocket')));
-var _user$project$Main$joinChannel = A2(
+var _user$project$Logic_Update$joinChannel = A2(
 	_elm_lang$core$Task$perform,
 	_elm_lang$core$Basics$identity,
 	_elm_lang$core$Task$succeed(_user$project$Logic_Types$JoinChannel));
-var _user$project$Main$init = function (location) {
-	var currentRoute = _user$project$Logic_Routing$parseLocation(location);
-	return {
-		ctor: '_Tuple2',
-		_0: {
-			route: currentRoute,
-			musKey: 'C',
-			index: 6,
-			currentChord: {ctor: '[]'},
-			displayedChords: _user$project$Views_Chords$startKey,
-			notePosition: 80.0,
-			showAccidental: '0',
-			sliderValue: 1,
-			navMenuOpen: false,
-			pitchShift: 0,
-			modalOpen: false,
-			strumGroupNumber: '1',
-			strumArrow: {
-				ctor: '::',
-				_0: {
-					ctor: '::',
-					_0: 1,
-					_1: {
-						ctor: '::',
-						_0: 2,
-						_1: {
-							ctor: '::',
-							_0: 1,
-							_1: {
-								ctor: '::',
-								_0: 1,
-								_1: {
-									ctor: '::',
-									_0: 2,
-									_1: {
-										ctor: '::',
-										_0: 1,
-										_1: {
-											ctor: '::',
-											_0: 1,
-											_1: {
-												ctor: '::',
-												_0: 1,
-												_1: {ctor: '[]'}
-											}
-										}
-									}
-								}
-							}
-						}
-					}
-				},
-				_1: {
-					ctor: '::',
-					_0: {
-						ctor: '::',
-						_0: 1,
-						_1: {
-							ctor: '::',
-							_0: 2,
-							_1: {
-								ctor: '::',
-								_0: 1,
-								_1: {
-									ctor: '::',
-									_0: 1,
-									_1: {
-										ctor: '::',
-										_0: 2,
-										_1: {
-											ctor: '::',
-											_0: 1,
-											_1: {
-												ctor: '::',
-												_0: 1,
-												_1: {
-													ctor: '::',
-													_0: 1,
-													_1: {ctor: '[]'}
-												}
-											}
-										}
-									}
-								}
-							}
-						}
-					},
-					_1: {
-						ctor: '::',
-						_0: {
-							ctor: '::',
-							_0: 1,
-							_1: {
-								ctor: '::',
-								_0: 2,
-								_1: {
-									ctor: '::',
-									_0: 1,
-									_1: {
-										ctor: '::',
-										_0: 1,
-										_1: {
-											ctor: '::',
-											_0: 2,
-											_1: {
-												ctor: '::',
-												_0: 1,
-												_1: {
-													ctor: '::',
-													_0: 1,
-													_1: {
-														ctor: '::',
-														_0: 1,
-														_1: {ctor: '[]'}
-													}
-												}
-											}
-										}
-									}
-								}
-							}
-						},
-						_1: {
-							ctor: '::',
-							_0: {
-								ctor: '::',
-								_0: 1,
-								_1: {
-									ctor: '::',
-									_0: 2,
-									_1: {
-										ctor: '::',
-										_0: 1,
-										_1: {
-											ctor: '::',
-											_0: 1,
-											_1: {
-												ctor: '::',
-												_0: 2,
-												_1: {
-													ctor: '::',
-													_0: 1,
-													_1: {
-														ctor: '::',
-														_0: 1,
-														_1: {
-															ctor: '::',
-															_0: 1,
-															_1: {ctor: '[]'}
-														}
-													}
-												}
-											}
-										}
-									}
-								}
-							},
-							_1: {ctor: '[]'}
-						}
-					}
-				}
-			},
-			fingerPickPattern: {
-				a: {
-					ctor: '::',
-					_0: 2,
-					_1: {
-						ctor: '::',
-						_0: 0,
-						_1: {
-							ctor: '::',
-							_0: 0,
-							_1: {
-								ctor: '::',
-								_0: 3,
-								_1: {
-									ctor: '::',
-									_0: 0,
-									_1: {
-										ctor: '::',
-										_0: 1,
-										_1: {
-											ctor: '::',
-											_0: 0,
-											_1: {
-												ctor: '::',
-												_0: 2,
-												_1: {ctor: '[]'}
-											}
-										}
-									}
-								}
-							}
-						}
-					}
-				},
-				b: {
-					ctor: '::',
-					_0: 5,
-					_1: {
-						ctor: '::',
-						_0: 0,
-						_1: {
-							ctor: '::',
-							_0: 4,
-							_1: {
-								ctor: '::',
-								_0: 0,
-								_1: {
-									ctor: '::',
-									_0: 5,
-									_1: {
-										ctor: '::',
-										_0: 0,
-										_1: {
-											ctor: '::',
-											_0: 5,
-											_1: {
-												ctor: '::',
-												_0: 0,
-												_1: {ctor: '[]'}
-											}
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-			},
-			phxSocket: _user$project$Main$initPhoenixSocket
-		},
-		_1: _user$project$Main$joinChannel
-	};
-};
-var _user$project$Main$send = _elm_lang$core$Native_Platform.outgoingPort(
-	'send',
-	function (v) {
-		return {
-			note: {frequency: v.note.frequency, octave: v.note.octave, sustain: v.note.sustain},
-			waveType: v.waveType
-		};
-	});
-var _user$project$Main$update = F2(
+var _user$project$Logic_Update$update = F2(
 	function (msg, model) {
 		var _p0 = msg;
 		switch (_p0.ctor) {
@@ -35658,7 +35392,7 @@ var _user$project$Main$update = F2(
 					_user$project$Views_Chords$startKey,
 					A2(
 						_elm_lang$core$Json_Decode$decodeString,
-						_user$project$Main$chordDecoder,
+						_user$project$Logic_Update$chordDecoder,
 						A2(_elm_lang$core$Json_Encode$encode, 0, _p0._0)));
 				return A2(
 					_elm_lang$core$Platform_Cmd_ops['!'],
@@ -35799,9 +35533,9 @@ var _user$project$Main$update = F2(
 						_0: _elm_lang$core$Native_Utils.update(
 							model,
 							{musKey: _p10, navMenuOpen: false}),
-						_1: _user$project$Main$joinChannel
+						_1: _user$project$Logic_Update$joinChannel
 					},
-					_user$project$Main$update(
+					_user$project$Logic_Update$update(
 						_user$project$Logic_Types$SendMessage(_p10)));
 			case 'Play':
 				return A2(
@@ -35814,8 +35548,8 @@ var _user$project$Main$update = F2(
 								model,
 								{currentChord: _p0._0, pitchShift: _p0._1}),
 							{ctor: '[]'}),
-						_user$project$Main$update(_user$project$Logic_Types$ResetIndex)),
-					_user$project$Main$update(_user$project$Logic_Types$SendNotes));
+						_user$project$Logic_Update$update(_user$project$Logic_Types$ResetIndex)),
+					_user$project$Logic_Update$update(_user$project$Logic_Types$SendNotes));
 			case 'ResetIndex':
 				return A2(
 					_elm_lang$core$Platform_Cmd_ops['!'],
@@ -35842,7 +35576,7 @@ var _user$project$Main$update = F2(
 					_0: _elm_lang$core$Native_Utils.update(
 						model,
 						{index: model.index + 1}),
-					_1: _user$project$Main$send(
+					_1: _user$project$Logic_Ports$send(
 						A2(_user$project$Logic_Types$PlayBundle, shiftedNote, 'triangle'))
 				};
 			case 'DrawNote':
@@ -35868,10 +35602,275 @@ var _user$project$Main$update = F2(
 					{ctor: '[]'});
 		}
 	});
+
+var _user$project$Main$subscriptions = function (model) {
+	return _elm_lang$core$Platform_Sub$batch(
+		{
+			ctor: '::',
+			_0: function () {
+				var val = _elm_lang$core$Basics$toFloat(model.sliderValue) / 10.0;
+				return (_elm_lang$core$Native_Utils.cmp(
+					model.index,
+					_elm_lang$core$List$length(model.currentChord)) < 0) ? A2(
+					_elm_lang$core$Time$every,
+					val * _elm_lang$core$Time$second,
+					_elm_lang$core$Basics$always(_user$project$Logic_Types$SendNotes)) : _elm_lang$core$Platform_Sub$none;
+			}(),
+			_1: {
+				ctor: '::',
+				_0: A2(_fbonetti$elm_phoenix_socket$Phoenix_Socket$listen, model.phxSocket, _user$project$Logic_Types$PhoenixMsg),
+				_1: {ctor: '[]'}
+			}
+		});
+};
+var _user$project$Main$initPhoenixSocket = A4(
+	_fbonetti$elm_phoenix_socket$Phoenix_Socket$on,
+	'chord_select',
+	'chordChannel:chords',
+	_user$project$Logic_Types$ReceiveMessage,
+	_fbonetti$elm_phoenix_socket$Phoenix_Socket$withDebug(
+		_fbonetti$elm_phoenix_socket$Phoenix_Socket$init('wss://damp-wave-74595.herokuapp.com/socket/websocket')));
+var _user$project$Main$initFingerPickPattern = {
+	a: {
+		ctor: '::',
+		_0: 2,
+		_1: {
+			ctor: '::',
+			_0: 0,
+			_1: {
+				ctor: '::',
+				_0: 0,
+				_1: {
+					ctor: '::',
+					_0: 3,
+					_1: {
+						ctor: '::',
+						_0: 0,
+						_1: {
+							ctor: '::',
+							_0: 1,
+							_1: {
+								ctor: '::',
+								_0: 0,
+								_1: {
+									ctor: '::',
+									_0: 2,
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	},
+	b: {
+		ctor: '::',
+		_0: 5,
+		_1: {
+			ctor: '::',
+			_0: 0,
+			_1: {
+				ctor: '::',
+				_0: 4,
+				_1: {
+					ctor: '::',
+					_0: 0,
+					_1: {
+						ctor: '::',
+						_0: 5,
+						_1: {
+							ctor: '::',
+							_0: 0,
+							_1: {
+								ctor: '::',
+								_0: 5,
+								_1: {
+									ctor: '::',
+									_0: 0,
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+};
+var _user$project$Main$initStrumArrows = {
+	ctor: '::',
+	_0: {
+		ctor: '::',
+		_0: 1,
+		_1: {
+			ctor: '::',
+			_0: 2,
+			_1: {
+				ctor: '::',
+				_0: 1,
+				_1: {
+					ctor: '::',
+					_0: 1,
+					_1: {
+						ctor: '::',
+						_0: 2,
+						_1: {
+							ctor: '::',
+							_0: 1,
+							_1: {
+								ctor: '::',
+								_0: 1,
+								_1: {
+									ctor: '::',
+									_0: 1,
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	},
+	_1: {
+		ctor: '::',
+		_0: {
+			ctor: '::',
+			_0: 1,
+			_1: {
+				ctor: '::',
+				_0: 2,
+				_1: {
+					ctor: '::',
+					_0: 1,
+					_1: {
+						ctor: '::',
+						_0: 1,
+						_1: {
+							ctor: '::',
+							_0: 2,
+							_1: {
+								ctor: '::',
+								_0: 1,
+								_1: {
+									ctor: '::',
+									_0: 1,
+									_1: {
+										ctor: '::',
+										_0: 1,
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		_1: {
+			ctor: '::',
+			_0: {
+				ctor: '::',
+				_0: 1,
+				_1: {
+					ctor: '::',
+					_0: 2,
+					_1: {
+						ctor: '::',
+						_0: 1,
+						_1: {
+							ctor: '::',
+							_0: 1,
+							_1: {
+								ctor: '::',
+								_0: 2,
+								_1: {
+									ctor: '::',
+									_0: 1,
+									_1: {
+										ctor: '::',
+										_0: 1,
+										_1: {
+											ctor: '::',
+											_0: 1,
+											_1: {ctor: '[]'}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			},
+			_1: {
+				ctor: '::',
+				_0: {
+					ctor: '::',
+					_0: 1,
+					_1: {
+						ctor: '::',
+						_0: 2,
+						_1: {
+							ctor: '::',
+							_0: 1,
+							_1: {
+								ctor: '::',
+								_0: 1,
+								_1: {
+									ctor: '::',
+									_0: 2,
+									_1: {
+										ctor: '::',
+										_0: 1,
+										_1: {
+											ctor: '::',
+											_0: 1,
+											_1: {
+												ctor: '::',
+												_0: 1,
+												_1: {ctor: '[]'}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				_1: {ctor: '[]'}
+			}
+		}
+	}
+};
+var _user$project$Main$init = function (location) {
+	var currentRoute = _user$project$Logic_Routing$parseLocation(location);
+	return {
+		ctor: '_Tuple2',
+		_0: {
+			route: currentRoute,
+			musKey: 'C',
+			index: 6,
+			currentChord: {ctor: '[]'},
+			displayedChords: _user$project$Views_Chords$startKey,
+			notePosition: 80.0,
+			showAccidental: '0',
+			sliderValue: 1,
+			navMenuOpen: false,
+			pitchShift: 0,
+			modalOpen: false,
+			strumGroupNumber: '1',
+			strumArrow: _user$project$Main$initStrumArrows,
+			fingerPickPattern: _user$project$Main$initFingerPickPattern,
+			phxSocket: _user$project$Main$initPhoenixSocket
+		},
+		_1: _user$project$Logic_Update$joinChannel
+	};
+};
 var _user$project$Main$main = A2(
 	_elm_lang$navigation$Navigation$program,
 	_user$project$Logic_Types$OnLocationChange,
-	{init: _user$project$Main$init, update: _user$project$Main$update, view: _user$project$Views_MainViews$mainView, subscriptions: _user$project$Main$subscriptions})();
+	{init: _user$project$Main$init, update: _user$project$Logic_Update$update, view: _user$project$Views_MainViews$mainView, subscriptions: _user$project$Main$subscriptions})();
 
 var Elm = {};
 Elm['Main'] = Elm['Main'] || {};
@@ -35986,8 +35985,8 @@ exports.default = socket;
 });
 
 ;require.alias("process/browser.js", "process");
-require.alias("phoenix/priv/static/phoenix.js", "phoenix");
-require.alias("phoenix_html/priv/static/phoenix_html.js", "phoenix_html");process = require('process');require.register("___globals___", function(exports, require, module) {
+require.alias("phoenix_html/priv/static/phoenix_html.js", "phoenix_html");
+require.alias("phoenix/priv/static/phoenix.js", "phoenix");process = require('process');require.register("___globals___", function(exports, require, module) {
   
 });})();require('___globals___');
 

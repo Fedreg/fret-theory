@@ -7,6 +7,7 @@ import Views.Chords exposing (chordChartModel)
 import Logic.Types exposing (Model, Msg(Randomize, ShowModal))
 import Styles.FingerPickStyles exposing (..)
 import List.Extra exposing (getAt)
+import Logic.Utils exposing ((=>))
 
 
 fingerPickingPage : Model -> Html Msg
@@ -36,13 +37,13 @@ fingerPickGroup scale notes1 notes2 model =
     in
         div [ fingerPickGroupStyle scale ]
             [ stringView
-            , div [ style [ ( "display", "flex" ) ] ]
+            , div [ style [ "display" => "flex" ] ]
                 (List.map frets notes1)
-            , div [ style [ ( "display", "flex" ) ] ]
+            , div [ style [ "display" => "flex" ] ]
                 (List.map frets notes2)
             , div [ beatStyle ]
                 (List.map beats <| List.range 1 8)
-            , div [ style [ ( "display", "flex" ) ] ]
+            , div [ style [ "display" => "flex" ] ]
                 (List.map notation <| calculateNotation [] 0 notes1 notes2)
             ]
 
@@ -111,13 +112,13 @@ fret num model =
 
         baseStyles =
             style
-                [ ( "display", "flex" )
-                , ( "marginTop", height )
-                , ( "width", "120px" )
-                , ( "fontSize", "20px" )
-                , ( "color", "#000" )
-                , ( "justifyContent", "center" )
-                , ( "opacity", opacity )
+                [ "display" => "flex"
+                , "marginTop" => height
+                , "width" => "120px"
+                , "fontSize" => "20px"
+                , "color" => "#000"
+                , "justifyContent" => "center"
+                , "opacity" => opacity
                 ]
     in
         div [ baseStyles ] [ text message ]
@@ -125,7 +126,7 @@ fret num model =
 
 stringView : Html Msg
 stringView =
-    div [ style [ ( "marginBottom", "20px" ) ] ]
+    div [ style [ "marginBottom" => "20px" ] ]
         [ div [ stringStyle ] []
         , div [ stringStyle ] []
         , div [ stringStyle ] []

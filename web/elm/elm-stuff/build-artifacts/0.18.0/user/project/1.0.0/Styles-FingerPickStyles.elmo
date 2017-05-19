@@ -1,19 +1,19 @@
 var _user$project$Styles_FingerPickStyles$fingerPickNotationDotStyle = _elm_lang$html$Html_Attributes$style(
 	{
 		ctor: '::',
-		_0: {ctor: '_Tuple2', _0: 'position', _1: 'absolute'},
+		_0: A2(_user$project$Logic_Utils_ops['=>'], 'position', 'absolute'),
 		_1: {
 			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'bottom', _1: '-30px'},
+			_0: A2(_user$project$Logic_Utils_ops['=>'], 'bottom', '-30px'),
 			_1: {
 				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'right', _1: '-15px'},
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'right', '-15px'),
 				_1: {
 					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '50px'},
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'fontSize', '50px'),
 					_1: {
 						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'color', _1: '#555'},
+						_0: A2(_user$project$Logic_Utils_ops['=>'], 'color', '#555'),
 						_1: {ctor: '[]'}
 					}
 				}
@@ -24,31 +24,31 @@ var _user$project$Styles_FingerPickStyles$fingerPickNotationFlagStyle = function
 	return _elm_lang$html$Html_Attributes$style(
 		{
 			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'position', _1: 'absolute'},
+			_0: A2(_user$project$Logic_Utils_ops['=>'], 'position', 'absolute'),
 			_1: {
 				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'top', _1: '-7px'},
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'top', '-7px'),
 				_1: {
 					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'right', _1: '-15px'},
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'right', '-15px'),
 					_1: {
 						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'width', _1: '15px'},
+						_0: A2(_user$project$Logic_Utils_ops['=>'], 'width', '15px'),
 						_1: {
 							ctor: '::',
-							_0: {ctor: '_Tuple2', _0: 'height', _1: '15px'},
+							_0: A2(_user$project$Logic_Utils_ops['=>'], 'height', '15px'),
 							_1: {
 								ctor: '::',
-								_0: {ctor: '_Tuple2', _0: 'transform', _1: 'skew(30deg)'},
+								_0: A2(_user$project$Logic_Utils_ops['=>'], 'transform', 'skew(30deg)'),
 								_1: {
 									ctor: '::',
-									_0: {ctor: '_Tuple2', _0: 'visibility', _1: flag},
+									_0: A2(_user$project$Logic_Utils_ops['=>'], 'visibility', flag),
 									_1: {
 										ctor: '::',
-										_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '20px'},
+										_0: A2(_user$project$Logic_Utils_ops['=>'], 'fontSize', '20px'),
 										_1: {
 											ctor: '::',
-											_0: {ctor: '_Tuple2', _0: 'color', _1: '#555'},
+											_0: A2(_user$project$Logic_Utils_ops['=>'], 'color', '#555'),
 											_1: {ctor: '[]'}
 										}
 									}
@@ -63,13 +63,13 @@ var _user$project$Styles_FingerPickStyles$fingerPickNotationFlagStyle = function
 var _user$project$Styles_FingerPickStyles$fingerPickNotationContainerStyle = _elm_lang$html$Html_Attributes$style(
 	{
 		ctor: '::',
-		_0: {ctor: '_Tuple2', _0: 'position', _1: 'relative'},
+		_0: A2(_user$project$Logic_Utils_ops['=>'], 'position', 'relative'),
 		_1: {
 			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'height', _1: '35px'},
+			_0: A2(_user$project$Logic_Utils_ops['=>'], 'height', '35px'),
 			_1: {
 				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'borderRight', _1: '2px solid #555'},
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'borderRight', '2px solid #555'),
 				_1: {ctor: '[]'}
 			}
 		}
@@ -78,31 +78,31 @@ var _user$project$Styles_FingerPickStyles$fingerPickNotationBaseStyles = functio
 	return _elm_lang$html$Html_Attributes$style(
 		{
 			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'position', _1: 'absolute'},
+			_0: A2(_user$project$Logic_Utils_ops['=>'], 'position', 'absolute'),
 			_1: {
 				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'bottom', _1: '-10px'},
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'bottom', '-10px'),
 				_1: {
 					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'left', _1: '-5px'},
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'left', '-5px'),
 					_1: {
 						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'width', _1: '14px'},
+						_0: A2(_user$project$Logic_Utils_ops['=>'], 'width', '14px'),
 						_1: {
 							ctor: '::',
-							_0: {ctor: '_Tuple2', _0: 'height', _1: '15px'},
+							_0: A2(_user$project$Logic_Utils_ops['=>'], 'height', '15px'),
 							_1: {
 								ctor: '::',
-								_0: {ctor: '_Tuple2', _0: 'transform', _1: 'skew(-20deg)'},
+								_0: A2(_user$project$Logic_Utils_ops['=>'], 'transform', 'skew(-20deg)'),
 								_1: {
 									ctor: '::',
-									_0: {ctor: '_Tuple2', _0: 'border', _1: '2px solid #555'},
+									_0: A2(_user$project$Logic_Utils_ops['=>'], 'border', '2px solid #555'),
 									_1: {
 										ctor: '::',
-										_0: {ctor: '_Tuple2', _0: 'borderRadius', _1: '10px'},
+										_0: A2(_user$project$Logic_Utils_ops['=>'], 'borderRadius', '10px'),
 										_1: {
 											ctor: '::',
-											_0: {ctor: '_Tuple2', _0: 'backgroundColor', _1: fill},
+											_0: A2(_user$project$Logic_Utils_ops['=>'], 'backgroundColor', fill),
 											_1: {ctor: '[]'}
 										}
 									}
@@ -117,16 +117,16 @@ var _user$project$Styles_FingerPickStyles$fingerPickNotationBaseStyles = functio
 var _user$project$Styles_FingerPickStyles$buttonStyle = _elm_lang$html$Html_Attributes$style(
 	{
 		ctor: '::',
-		_0: {ctor: '_Tuple2', _0: 'background', _1: 'none'},
+		_0: A2(_user$project$Logic_Utils_ops['=>'], 'background', 'none'),
 		_1: {
 			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'marginTop', _1: '50px'},
+			_0: A2(_user$project$Logic_Utils_ops['=>'], 'marginTop', '50px'),
 			_1: {
 				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'border', _1: '1px solid #333'},
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'border', '1px solid #333'),
 				_1: {
 					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'color', _1: '#03a9f4'},
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'color', '#03a9f4'),
 					_1: {ctor: '[]'}
 				}
 			}
@@ -135,25 +135,25 @@ var _user$project$Styles_FingerPickStyles$buttonStyle = _elm_lang$html$Html_Attr
 var _user$project$Styles_FingerPickStyles$fingerPickChordTitleStyle = _elm_lang$html$Html_Attributes$style(
 	{
 		ctor: '::',
-		_0: {ctor: '_Tuple2', _0: 'position', _1: 'fixed'},
+		_0: A2(_user$project$Logic_Utils_ops['=>'], 'position', 'fixed'),
 		_1: {
 			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'top', _1: '50px'},
+			_0: A2(_user$project$Logic_Utils_ops['=>'], 'top', '50px'),
 			_1: {
 				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'left', _1: '30px'},
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'left', '30px'),
 				_1: {
 					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'color', _1: '#000'},
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'color', '#000'),
 					_1: {
 						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'transform', _1: 'scale(0.8, 0.8)'},
+						_0: A2(_user$project$Logic_Utils_ops['=>'], 'transform', 'scale(0.8, 0.8)'),
 						_1: {
 							ctor: '::',
-							_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '20px'},
+							_0: A2(_user$project$Logic_Utils_ops['=>'], 'fontSize', '20px'),
 							_1: {
 								ctor: '::',
-								_0: {ctor: '_Tuple2', _0: 'textAlign', _1: 'center'},
+								_0: A2(_user$project$Logic_Utils_ops['=>'], 'textAlign', 'center'),
 								_1: {ctor: '[]'}
 							}
 						}
@@ -165,13 +165,13 @@ var _user$project$Styles_FingerPickStyles$fingerPickChordTitleStyle = _elm_lang$
 var _user$project$Styles_FingerPickStyles$beatStyle = _elm_lang$html$Html_Attributes$style(
 	{
 		ctor: '::',
-		_0: {ctor: '_Tuple2', _0: 'display', _1: 'flex'},
+		_0: A2(_user$project$Logic_Utils_ops['=>'], 'display', 'flex'),
 		_1: {
 			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'color', _1: '#03a9f4'},
+			_0: A2(_user$project$Logic_Utils_ops['=>'], 'color', '#03a9f4'),
 			_1: {
 				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'paddingRight', _1: '200px'},
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'paddingRight', '200px'),
 				_1: {ctor: '[]'}
 			}
 		}
@@ -179,16 +179,16 @@ var _user$project$Styles_FingerPickStyles$beatStyle = _elm_lang$html$Html_Attrib
 var _user$project$Styles_FingerPickStyles$stringStyle = _elm_lang$html$Html_Attributes$style(
 	{
 		ctor: '::',
-		_0: {ctor: '_Tuple2', _0: 'width', _1: '950px'},
+		_0: A2(_user$project$Logic_Utils_ops['=>'], 'width', '950px'),
 		_1: {
 			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'borderBottom', _1: '1px solid #aaa'},
+			_0: A2(_user$project$Logic_Utils_ops['=>'], 'borderBottom', '1px solid #aaa'),
 			_1: {
 				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'marginTop', _1: '32px'},
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'marginTop', '32px'),
 				_1: {
 					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'zIndex', _1: '-1'},
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'zIndex', '-1'),
 					_1: {ctor: '[]'}
 				}
 			}
@@ -210,34 +210,34 @@ var _user$project$Styles_FingerPickStyles$fretStyle = F2(
 		return _elm_lang$html$Html_Attributes$style(
 			{
 				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'width', _1: '100px'},
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'width', '100px'),
 				_1: {
 					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'height', _1: '180px'},
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'height', '180px'),
 					_1: {
 						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'margin', _1: '10px 10px 20px'},
+						_0: A2(_user$project$Logic_Utils_ops['=>'], 'margin', '10px 10px 20px'),
 						_1: {
 							ctor: '::',
-							_0: {ctor: '_Tuple2', _0: 'opacity', _1: opacity},
+							_0: A2(_user$project$Logic_Utils_ops['=>'], 'opacity', opacity),
 							_1: {
 								ctor: '::',
-								_0: {ctor: '_Tuple2', _0: 'paddingTop', _1: '50px'},
+								_0: A2(_user$project$Logic_Utils_ops['=>'], 'paddingTop', '50px'),
 								_1: {
 									ctor: '::',
-									_0: {ctor: '_Tuple2', _0: 'display', _1: 'flex'},
+									_0: A2(_user$project$Logic_Utils_ops['=>'], 'display', 'flex'),
 									_1: {
 										ctor: '::',
-										_0: {ctor: '_Tuple2', _0: 'borderRadius', _1: '10px'},
+										_0: A2(_user$project$Logic_Utils_ops['=>'], 'borderRadius', '10px'),
 										_1: {
 											ctor: '::',
-											_0: {ctor: '_Tuple2', _0: 'justifyContent', _1: 'center'},
+											_0: A2(_user$project$Logic_Utils_ops['=>'], 'justifyContent', 'center'),
 											_1: {
 												ctor: '::',
-												_0: {ctor: '_Tuple2', _0: 'transition', _1: 'all 0.4s ease'},
+												_0: A2(_user$project$Logic_Utils_ops['=>'], 'transition', 'all 0.4s ease'),
 												_1: {
 													ctor: '::',
-													_0: {ctor: '_Tuple2', _0: 'color', _1: '#000'},
+													_0: A2(_user$project$Logic_Utils_ops['=>'], 'color', '#000'),
 													_1: {ctor: '[]'}
 												}
 											}
@@ -253,20 +253,20 @@ var _user$project$Styles_FingerPickStyles$fretStyle = F2(
 var _user$project$Styles_FingerPickStyles$fingerPickGroupNotationStyle = _elm_lang$html$Html_Attributes$style(
 	{
 		ctor: '::',
-		_0: {ctor: '_Tuple2', _0: 'width', _1: '10px'},
+		_0: A2(_user$project$Logic_Utils_ops['=>'], 'width', '10px'),
 		_1: {
 			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'margin', _1: '5px 55px 0'},
+			_0: A2(_user$project$Logic_Utils_ops['=>'], 'margin', '5px 55px 0'),
 			_1: {ctor: '[]'}
 		}
 	});
 var _user$project$Styles_FingerPickStyles$fingerPickGroupBeatStyle = _elm_lang$html$Html_Attributes$style(
 	{
 		ctor: '::',
-		_0: {ctor: '_Tuple2', _0: 'width', _1: '10px'},
+		_0: A2(_user$project$Logic_Utils_ops['=>'], 'width', '10px'),
 		_1: {
 			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'margin', _1: '5px 55px 10px'},
+			_0: A2(_user$project$Logic_Utils_ops['=>'], 'margin', '5px 55px 10px'),
 			_1: {ctor: '[]'}
 		}
 	});
@@ -274,23 +274,22 @@ var _user$project$Styles_FingerPickStyles$fingerPickGroupStyle = function (scale
 	return _elm_lang$html$Html_Attributes$style(
 		{
 			ctor: '::',
-			_0: {
-				ctor: '_Tuple2',
-				_0: 'transform',
-				_1: A2(
+			_0: A2(
+				_user$project$Logic_Utils_ops['=>'],
+				'transform',
+				A2(
 					_elm_lang$core$Basics_ops['++'],
 					'scale(',
-					A2(_elm_lang$core$Basics_ops['++'], scale, ')'))
-			},
+					A2(_elm_lang$core$Basics_ops['++'], scale, ')'))),
 			_1: {
 				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'position', _1: 'relative'},
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'position', 'relative'),
 				_1: {
 					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'margin', _1: '125px 0 0 200px'},
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'margin', '125px 0 0 200px'),
 					_1: {
 						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'cursor', _1: 'pointer'},
+						_0: A2(_user$project$Logic_Utils_ops['=>'], 'cursor', 'pointer'),
 						_1: {ctor: '[]'}
 					}
 				}
@@ -300,22 +299,22 @@ var _user$project$Styles_FingerPickStyles$fingerPickGroupStyle = function (scale
 var _user$project$Styles_FingerPickStyles$fingerPickingPageStyle = _elm_lang$html$Html_Attributes$style(
 	{
 		ctor: '::',
-		_0: {ctor: '_Tuple2', _0: 'height', _1: '100vh'},
+		_0: A2(_user$project$Logic_Utils_ops['=>'], 'height', '100vh'),
 		_1: {
 			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'width', _1: '100vw'},
+			_0: A2(_user$project$Logic_Utils_ops['=>'], 'width', '100vw'),
 			_1: {
 				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'display', _1: 'flex'},
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'display', 'flex'),
 				_1: {
 					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'flexDirection', _1: 'column'},
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'flexDirection', 'column'),
 					_1: {
 						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'paddingTop', _1: '150px'},
+						_0: A2(_user$project$Logic_Utils_ops['=>'], 'paddingTop', '150px'),
 						_1: {
 							ctor: '::',
-							_0: {ctor: '_Tuple2', _0: 'alignItems', _1: 'center'},
+							_0: A2(_user$project$Logic_Utils_ops['=>'], 'alignItems', 'center'),
 							_1: {ctor: '[]'}
 						}
 					}
