@@ -60,6 +60,7 @@ exports.config = {
       elmFolder: 'web/elm',
       mainModules: ['Main.elm'],
       outputFolder: '../static/js',
+      outputFile: 'main.js'
     }, 
     // uglify: {
     //   mangle: false,

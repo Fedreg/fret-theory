@@ -1,0 +1,5 @@
+var _user$project$Logic_Utils_ops = _user$project$Logic_Utils_ops || {};
+_user$project$Logic_Utils_ops['=>'] = F2(
+	function (v0, v1) {
+		return {ctor: '_Tuple2', _0: v0, _1: v1};
+	});

@@ -8,11 +8,12 @@ import Views.Chords exposing (keyList)
 import List.Extra exposing (getAt, elemIndex)
 import Logic.Audio exposing (scales)
 import Styles.ScalesStyles exposing (..)
+import Logic.Utils exposing ((=>))
 
 
 scalesPage : Model -> Html Msg
 scalesPage model =
-    div [ style [ ( "paddingTop", "50px" ) ] ]
+    div [ style [ "paddingTop" => "50px" ] ]
         [ div [ scalePageStyle ]
             [ ionianModeView model
             , aeolianModeView model
@@ -32,7 +33,7 @@ ionianModeView model =
             scaleStringSchema (fretOffset model) model.musKey ionianMode |> accessor
 
         markup a =
-            span [ style [ ( "paddingRight", "10px" ), ( "fontSize", "18px" ) ] ] [ text (toString a) ]
+            span [ fretNumberGroupStyle ] [ text (toString a) ]
     in
         div [ scaleContainerStyle, onClick (Play (scales "major") (fretOffset model)) ]
             [ div [ scaleTitleStyle ] [ scaleNameMajor model " MAJOR SCALE " "" "" ]
@@ -59,7 +60,7 @@ aeolianModeView model =
             scaleStringSchema computedOffset model.musKey aeolianMode |> accessor
 
         markup a =
-            span [ style [ ( "paddingRight", "10px" ), ( "fontSize", "18px" ) ] ] [ text (toString a) ]
+            span [ fretNumberGroupStyle ] [ text (toString a) ]
     in
         div [ scaleContainerStyle, onClick (Play (scales "minor") (fretOffset model)) ]
             [ div [ scaleTitleStyle ] [ scaleNameMinor model " MINOR SCALE " ]
@@ -80,7 +81,7 @@ majorPentatonicView model =
             scaleStringSchema (fretOffset model) model.musKey majorPentatonicMode |> accessor
 
         markup a =
-            span [ style [ ( "paddingRight", "10px" ), ( "fontSize", "18px" ) ] ] [ text (toString a) ]
+            span [ fretNumberGroupStyle ] [ text (toString a) ]
     in
         div [ scaleContainerStyle, onClick (Play (scales "majPentatonic") (fretOffset model)) ]
             [ div [ scaleTitleStyle ] [ scaleNameMajor model " MAJOR PENTATONIC SCALE " "" "" ]
@@ -107,7 +108,7 @@ minorPentatonicView model =
             scaleStringSchema computedOffset model.musKey minorPentatonicMode |> accessor
 
         markup a =
-            span [ style [ ( "paddingRight", "10px" ), ( "fontSize", "18px" ) ] ] [ text (toString a) ]
+            span [ fretNumberGroupStyle ] [ text (toString a) ]
     in
         div [ scaleContainerStyle, onClick (Play (scales "minPentatonic") (fretOffset model)) ]
             [ div [ scaleTitleStyle ] [ scaleNameMinor model " MINOR PENTATONIC SCALE " ]
@@ -128,10 +129,10 @@ lydianModeView model =
             scaleStringSchema (fretOffset model) model.musKey lydianMode |> accessor
 
         markup a =
-            span [ style [ ( "paddingRight", "10px" ), ( "fontSize", "18px" ) ] ] [ text (toString a) ]
+            span [ fretNumberGroupStyle ] [ text (toString a) ]
     in
         div [ scaleContainerStyle, onClick (Play (scales "lydian") (fretOffset model)) ]
-            [ div [ scaleTitleStyle ] [ scaleNameMajor model " LYDIAN MODE " " ( #4 ) " "Maj7" ]
+            [ div [ scaleTitleStyle ] [ scaleNameMajor model " LYDIAN MODE " " #4 " "Maj7" ]
             , stringView
             , div [ fretNumberStyle "490px" ] (List.map markup <| data .one)
             , div [ fretNumberStyle "390px" ] (List.map markup <| data .two)
@@ -149,10 +150,10 @@ mixolydianModeView model =
             scaleStringSchema (fretOffset model) model.musKey mixolydianMode |> accessor
 
         markup a =
-            span [ style [ ( "paddingRight", "10px" ), ( "fontSize", "18px" ) ] ] [ text (toString a) ]
+            span [ fretNumberGroupStyle ] [ text (toString a) ]
     in
         div [ scaleContainerStyle, onClick (Play (scales "mixolydian") (fretOffset model)) ]
-            [ div [ scaleTitleStyle ] [ scaleNameMajor model " MIXOLYDIAN MODE " " ( b7 ) " "7" ]
+            [ div [ scaleTitleStyle ] [ scaleNameMajor model " MIXOLYDIAN MODE " " b7 " "7" ]
             , stringView
             , div [ fretNumberStyle "490px" ] (List.map markup <| data .one)
             , div [ fretNumberStyle "390px" ] (List.map markup <| data .two)
@@ -170,10 +171,10 @@ dorianModeView model =
             scaleStringSchema (fretOffset model) model.musKey dorianMode |> accessor
 
         markup a =
-            span [ style [ ( "paddingRight", "10px" ), ( "fontSize", "18px" ) ] ] [ text (toString a) ]
+            span [ fretNumberGroupStyle ] [ text (toString a) ]
     in
         div [ scaleContainerStyle, onClick (Play (scales "dorian") (fretOffset model)) ]
-            [ div [ scaleTitleStyle ] [ scaleNameMajor model " DORIAN MODE " " ( b3, b7 ) " "min7" ]
+            [ div [ scaleTitleStyle ] [ scaleNameMajor model " DORIAN MODE " " b3, b7 " "min7" ]
             , stringView
             , div [ fretNumberStyle "500px" ] (List.map markup <| data .one)
             , div [ fretNumberStyle "410px" ] (List.map markup <| data .two)
@@ -309,16 +310,16 @@ scaleNameMajor model scaleName modifiedNotes matchingChord =
         if slicer (String.toUpper model.musKey) == slicer model.musKey then
             div []
                 [ span [] [ text model.musKey ]
-                , span [ style [ ( "color", "#444" ) ] ] [ text scaleName ]
-                , span [ style [ ( "color", "#03a9f4" ) ] ] [ text modifiedNotes ]
-                , span [ style [ ( "color", "#aaa" ) ] ] [ text playOver ]
+                , span [ style [ "color" => "#444" ] ] [ text scaleName ]
+                , span [ style [ "color" => "#03a9f4" ] ] [ text modifiedNotes ]
+                , span [ style [ "color" => "#aaa" ] ] [ text playOver ]
                 ]
         else
             div []
                 [ span [] [ text (Maybe.withDefault "C" <| getAt (index - 12) keyList) ]
-                , span [ style [ ( "color", "#444" ) ] ] [ text scaleName ]
-                , span [ style [ ( "color", "#03a9f4" ) ] ] [ text modifiedNotes ]
-                , span [ style [ ( "color", "#aaa" ) ] ] [ text ", relative major" ]
+                , span [ style [ "color" => "#444" ] ] [ text scaleName ]
+                , span [ style [ "color" => "#03a9f4" ] ] [ text modifiedNotes ]
+                , span [ style [ "color" => "#aaa" ] ] [ text " => relative major" ]
                 ]
 
 
@@ -337,14 +338,14 @@ scaleNameMinor model scaleName =
         if slicer (String.toLower model.musKey) == slicer model.musKey then
             div []
                 [ span [] [ text (String.toUpper (slicer model.musKey) ++ String.slice 1 2 model.musKey) ]
-                , span [ style [ ( "color", "#444" ) ] ] [ text (" " ++ scaleName) ]
-                , span [ style [ ( "color", "#aaa" ) ] ] [ text playOver ]
+                , span [ style [ "color" => "#444" ] ] [ text (" " ++ scaleName) ]
+                , span [ style [ "color" => "#aaa" ] ] [ text playOver ]
                 ]
         else
             div []
                 [ span [] [ text (String.toUpper (Maybe.withDefault "a" <| getAt (index + 12) keyList)) ]
-                , span [ style [ ( "color", "#444" ) ] ] [ text scaleName ]
-                , span [ style [ ( "color", "#aaa" ) ] ] [ text (" , relative minor") ]
+                , span [ style [ "color" => "#444" ] ] [ text scaleName ]
+                , span [ style [ "color" => "#aaa" ] ] [ text (" , relative minor") ]
                 ]
 
 

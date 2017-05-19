@@ -9,7 +9,7 @@ var _user$project$Views_MainViews$playbackSpeedSlider = function (model) {
 				_0: _elm_lang$html$Html_Attributes$style(
 					{
 						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'marginTop', _1: '100px'},
+						_0: A2(_user$project$Logic_Utils_ops['=>'], 'marginTop', '100px'),
 						_1: {ctor: '[]'}
 					}),
 				_1: {ctor: '[]'}
@@ -60,6 +60,27 @@ var _user$project$Views_MainViews$playbackSpeedSlider = function (model) {
 			}
 		});
 };
+var _user$project$Views_MainViews$notFoundPage = A2(
+	_elm_lang$html$Html$h1,
+	{
+		ctor: '::',
+		_0: _elm_lang$html$Html_Attributes$style(
+			{
+				ctor: '::',
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'margin', '100px 300px'),
+				_1: {
+					ctor: '::',
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'color', '#03a9f4'),
+					_1: {ctor: '[]'}
+				}
+			}),
+		_1: {ctor: '[]'}
+	},
+	{
+		ctor: '::',
+		_0: _elm_lang$html$Html$text('Page Not Found! '),
+		_1: {ctor: '[]'}
+	});
 var _user$project$Views_MainViews$page = function (model) {
 	var _p0 = model.route;
 	switch (_p0.ctor) {
@@ -76,27 +97,7 @@ var _user$project$Views_MainViews$page = function (model) {
 		case 'FingerPickingPage':
 			return _user$project$Views_FingerPick$fingerPickingPage(model);
 		default:
-			return A2(
-				_elm_lang$html$Html$h1,
-				{
-					ctor: '::',
-					_0: _elm_lang$html$Html_Attributes$style(
-						{
-							ctor: '::',
-							_0: {ctor: '_Tuple2', _0: 'margin', _1: '100px 300px'},
-							_1: {
-								ctor: '::',
-								_0: {ctor: '_Tuple2', _0: 'color', _1: '#03a9f4'},
-								_1: {ctor: '[]'}
-							}
-						}),
-					_1: {ctor: '[]'}
-				},
-				{
-					ctor: '::',
-					_0: _elm_lang$html$Html$text('Page Not Found! '),
-					_1: {ctor: '[]'}
-				});
+			return _user$project$Views_MainViews$notFoundPage;
 	}
 };
 var _user$project$Views_MainViews$signature = function (bool) {
@@ -125,7 +126,7 @@ var _user$project$Views_MainViews$signature = function (bool) {
 						_0: _elm_lang$html$Html_Attributes$style(
 							{
 								ctor: '::',
-								_0: {ctor: '_Tuple2', _0: 'color', _1: '#666'},
+								_0: A2(_user$project$Logic_Utils_ops['=>'], 'color', '#666'),
 								_1: {ctor: '[]'}
 							}),
 						_1: {ctor: '[]'}
@@ -155,10 +156,10 @@ var _user$project$Views_MainViews$keyListView = function (model) {
 						_0: _elm_lang$html$Html_Attributes$style(
 							{
 								ctor: '::',
-								_0: {ctor: '_Tuple2', _0: 'border', _1: '1px solid #03a9f4'},
+								_0: A2(_user$project$Logic_Utils_ops['=>'], 'border', '1px solid #03a9f4'),
 								_1: {
 									ctor: '::',
-									_0: {ctor: '_Tuple2', _0: 'color', _1: '#03a9f4'},
+									_0: A2(_user$project$Logic_Utils_ops['=>'], 'color', '#03a9f4'),
 									_1: {ctor: '[]'}
 								}
 							}),
@@ -184,10 +185,10 @@ var _user$project$Views_MainViews$keyListView = function (model) {
 						_0: _elm_lang$html$Html_Attributes$style(
 							{
 								ctor: '::',
-								_0: {ctor: '_Tuple2', _0: 'border', _1: '1px solid #333'},
+								_0: A2(_user$project$Logic_Utils_ops['=>'], 'border', '1px solid #333'),
 								_1: {
 									ctor: '::',
-									_0: {ctor: '_Tuple2', _0: 'color', _1: '#fff'},
+									_0: A2(_user$project$Logic_Utils_ops['=>'], 'color', '#fff'),
 									_1: {ctor: '[]'}
 								}
 							}),
@@ -369,7 +370,7 @@ var _user$project$Views_MainViews$nav = function (model) {
 							_0: _elm_lang$html$Html_Attributes$style(
 								{
 									ctor: '::',
-									_0: {ctor: '_Tuple2', _0: 'color', _1: '#03a9f4'},
+									_0: A2(_user$project$Logic_Utils_ops['=>'], 'color', '#03a9f4'),
 									_1: {ctor: '[]'}
 								}),
 							_1: {ctor: '[]'}
@@ -447,7 +448,7 @@ var _user$project$Views_MainViews$nav = function (model) {
 										_0: _elm_lang$html$Html_Attributes$style(
 											{
 												ctor: '::',
-												_0: {ctor: '_Tuple2', _0: 'position', _1: 'relative'},
+												_0: A2(_user$project$Logic_Utils_ops['=>'], 'position', 'relative'),
 												_1: {ctor: '[]'}
 											}),
 										_1: {ctor: '[]'}
@@ -477,13 +478,13 @@ var _user$project$Views_MainViews$mainView = function (model) {
 			_0: _elm_lang$html$Html_Attributes$style(
 				{
 					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'position', _1: 'relative'},
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'position', 'relative'),
 					_1: {
 						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'overflow', _1: 'hidden'},
+						_0: A2(_user$project$Logic_Utils_ops['=>'], 'overflow', 'hidden'),
 						_1: {
 							ctor: '::',
-							_0: {ctor: '_Tuple2', _0: 'padding', _1: '5px'},
+							_0: A2(_user$project$Logic_Utils_ops['=>'], 'padding', '5px'),
 							_1: {ctor: '[]'}
 						}
 					}

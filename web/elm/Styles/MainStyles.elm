@@ -3,6 +3,7 @@ module Styles.MainStyles exposing (..)
 import Html exposing (Attribute)
 import Html.Attributes exposing (style)
 import Logic.Types exposing (Model, Msg(..))
+import Logic.Utils exposing ((=>))
 
 
 navMenuStyle : Model -> Attribute Msg
@@ -10,17 +11,17 @@ navMenuStyle model =
     let
         baseStyles h color pad =
             style
-                [ ( "position", "fixed" )
-                , ( "top", "0" )
-                , ( "right", "0" )
-                , ( "transform", "translateX(0)" )
-                , ( "width", "100vw" )
-                , ( "height", h )
-                , ( "paddingTop", pad )
-                , ( "backgroundColor", color )
-                , ( "transition", "all 0.3s ease" )
-                , ( "zIndex", "10000" )
-                , ( "borderBottom", "1px solid #ccc" )
+                [ "position" => "fixed"
+                , "top" => "0"
+                , "right" => "0"
+                , "transform" => "translateX(0)"
+                , "width" => "100vw"
+                , "height" => h
+                , "paddingTop" => pad
+                , "backgroundColor" => color
+                , "transition" => "all 0.3s ease"
+                , "zIndex" => "10000"
+                , "borderBottom" => "1px solid #ccc"
                 ]
     in
         case model.navMenuOpen of
@@ -36,14 +37,14 @@ navIconStyle model =
     let
         baseStyles difference =
             style
-                [ ( "position", "fixed" )
-                , ( "top", "20px" )
-                , ( "right", "20px" )
-                , ( "width", "25px" )
-                , ( "transition", "all 0.5s" )
-                , ( "cursor", "pointer" )
-                , ( "zIndex", "10001" )
-                , ( "transform", difference )
+                [ "position" => "fixed"
+                , "top" => "20px"
+                , "right" => "20px"
+                , "width" => "25px"
+                , "transition" => "all 0.5s"
+                , "cursor" => "pointer"
+                , "zIndex" => "10001"
+                , "transform" => difference
                 ]
     in
         case model.navMenuOpen of
@@ -59,8 +60,8 @@ navIconStyleHr bool =
     let
         baseStyles color =
             style
-                [ ( "borderTop", "5px solid " ++ color )
-                , ( "margin", "0 0 5px" )
+                [ "borderTop" => ("5px solid " ++ color)
+                , "margin" => "0 0 5px"
                 ]
     in
         case bool of
@@ -74,7 +75,7 @@ navIconStyleHr bool =
 navStyle : Attribute msg
 navStyle =
     style
-        [ ( "textAlign", "center" ) ]
+        [ "textAlign" => "center" ]
 
 
 navItemStyle : Bool -> Attribute msg
@@ -82,12 +83,12 @@ navItemStyle bool =
     let
         baseStyles iconColor display =
             style
-                [ ( "display", display )
-                , ( "margin", "0 0 5px 50px" )
-                , ( "padding", "5px" )
-                , ( "fontSize", "24px" )
-                , ( "textAlign", "left" )
-                , ( "color", iconColor )
+                [ "display" => display
+                , "margin" => "0 0 5px 50px"
+                , "padding" => "5px"
+                , "fontSize" => "24px"
+                , "textAlign" => "left"
+                , "color" => iconColor
                 ]
     in
         case bool of
@@ -101,39 +102,39 @@ navItemStyle bool =
 navTitleStyle : Attribute msg
 navTitleStyle =
     style
-        [ ( "position", "fixed" )
-        , ( "top", "10px" )
-        , ( "left", "20px" )
-        , ( "color", "#000" )
-        , ( "fontSize", "30px" )
-        , ( "fontWeight", "700" )
+        [ "position" => "fixed"
+        , "top" => "10px"
+        , "left" => "20px"
+        , "color" => "#000"
+        , "fontSize" => "30px"
+        , "fontWeight" => "700"
         ]
 
 
 keyListStyle : Attribute msg
 keyListStyle =
     style
-        [ ( "width", "60px" )
-        , ( "margin", "10px 10px 0 0 " )
-        , ( "cursor", "pointer" )
-        , ( "lineHeight", "60px" )
-        , ( "border", "1px solid #333" )
-        , ( "fontSize", "16px" )
-        , ( "transition", "all 0.4s ease" )
-        , ( "color", "#fff" )
+        [ "width" => "60px"
+        , "margin" => "10px 10px 0 0 "
+        , "cursor" => "pointer"
+        , "lineHeight" => "60px"
+        , "border" => "1px solid #333"
+        , "fontSize" => "16px"
+        , "transition" => "all 0.4s ease"
+        , "color" => "#fff"
         ]
 
 
 keyListKeyTitleStyle : Attribute msg
 keyListKeyTitleStyle =
     style
-        [ ( "position", "fixed" )
-        , ( "top", "-30px" )
-        , ( "right", "50px" )
-        , ( "width", "450px" )
-        , ( "textAlign", "right" )
-        , ( "fontSize", "16px" )
-        , ( "textTransform", "underline" )
+        [ "position" => "fixed"
+        , "top" => "-30px"
+        , "right" => "50px"
+        , "width" => "450px"
+        , "textAlign" => "right"
+        , "fontSize" => "16px"
+        , "textTransform" => "underline"
         ]
 
 
@@ -142,15 +143,15 @@ keyListContainerStyle navOpen =
     let
         baseStyles display shift =
             style
-                [ ( "display", "flex" )
-                , ( "opacity", display )
-                , ( "position", "fixed" )
-                , ( "top", "200px" )
-                , ( "right", "50px" )
-                , ( "width", "500px" )
-                , ( "textAlign", "center" )
-                , ( "transform", shift )
-                , ( "transition", "all 0.4s ease" )
+                [ "display" => "flex"
+                , "opacity" => display
+                , "position" => "fixed"
+                , "top" => "200px"
+                , "right" => "50px"
+                , "width" => "500px"
+                , "textAlign" => "center"
+                , "transform" => shift
+                , "transition" => "all 0.4s ease"
                 ]
     in
         case navOpen of
@@ -164,24 +165,24 @@ keyListContainerStyle navOpen =
 textContainerStyle : Attribute msg
 textContainerStyle =
     style
-        [ ( "display", "flex" )
-        , ( "flexFlow", "row wrap " )
+        [ "display" => "flex"
+        , "flexFlow" => "row wrap "
         ]
 
 
 highlight : List ( String, String )
 highlight =
-    [ ( "color", "#03a9f4" )
+    [ "color" => "#03a9f4"
     ]
 
 
 signatureStyle : Attribute msg
 signatureStyle =
     style
-        [ ( "position", "absolute" )
-        , ( "bottom", "10px" )
-        , ( "right", "10px" )
-        , ( "fontSize", "12px" )
-        , ( "color", "#FFF" )
-        , ( "textDecoration", "none" )
+        [ "position" => "absolute"
+        , "bottom" => "10px"
+        , "right" => "10px"
+        , "fontSize" => "12px"
+        , "color" => "#FFF"
+        , "textDecoration" => "none"
         ]

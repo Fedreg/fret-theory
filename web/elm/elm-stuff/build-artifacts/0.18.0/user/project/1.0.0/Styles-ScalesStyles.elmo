@@ -1,39 +1,48 @@
 var _user$project$Styles_ScalesStyles$scalePageStyle = _elm_lang$html$Html_Attributes$style(
 	{
 		ctor: '::',
-		_0: {ctor: '_Tuple2', _0: 'display', _1: 'flex'},
+		_0: A2(_user$project$Logic_Utils_ops['=>'], 'display', 'flex'),
 		_1: {
 			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'flexDirection', _1: 'row'},
+			_0: A2(_user$project$Logic_Utils_ops['=>'], 'flexDirection', 'row'),
 			_1: {
 				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'flexWrap', _1: 'wrap'},
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'flexWrap', 'wrap'),
 				_1: {
 					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'justifyContent', _1: 'center'},
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'justifyContent', 'center'),
 					_1: {ctor: '[]'}
 				}
 			}
+		}
+	});
+var _user$project$Styles_ScalesStyles$fretNumberGroupStyle = _elm_lang$html$Html_Attributes$style(
+	{
+		ctor: '::',
+		_0: A2(_user$project$Logic_Utils_ops['=>'], 'paddingRight', '10px'),
+		_1: {
+			ctor: '::',
+			_0: A2(_user$project$Logic_Utils_ops['=>'], 'fontSize', '18px'),
+			_1: {ctor: '[]'}
 		}
 	});
 var _user$project$Styles_ScalesStyles$fretNumberStyle = function (margin) {
 	return _elm_lang$html$Html_Attributes$style(
 		{
 			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'position', _1: 'relative'},
+			_0: A2(_user$project$Logic_Utils_ops['=>'], 'position', 'relative'),
 			_1: {
 				ctor: '::',
-				_0: {
-					ctor: '_Tuple2',
-					_0: 'margin',
-					_1: A2(_elm_lang$core$Basics_ops['++'], '5px ', margin)
-				},
+				_0: A2(
+					_user$project$Logic_Utils_ops['=>'],
+					'margin',
+					A2(_elm_lang$core$Basics_ops['++'], '5px ', margin)),
 				_1: {
 					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'color', _1: '#000'},
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'color', '#000'),
 					_1: {
 						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'zIndex', _1: '1'},
+						_0: A2(_user$project$Logic_Utils_ops['=>'], 'zIndex', '1'),
 						_1: {ctor: '[]'}
 					}
 				}
@@ -43,13 +52,13 @@ var _user$project$Styles_ScalesStyles$fretNumberStyle = function (margin) {
 var _user$project$Styles_ScalesStyles$stringContainerStyle = _elm_lang$html$Html_Attributes$style(
 	{
 		ctor: '::',
-		_0: {ctor: '_Tuple2', _0: 'position', _1: 'absolute'},
+		_0: A2(_user$project$Logic_Utils_ops['=>'], 'position', 'absolute'),
 		_1: {
 			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'top', _1: '12px'},
+			_0: A2(_user$project$Logic_Utils_ops['=>'], 'top', '12px'),
 			_1: {
 				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'left', _1: '25px'},
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'left', '25px'),
 				_1: {ctor: '[]'}
 			}
 		}
@@ -57,16 +66,16 @@ var _user$project$Styles_ScalesStyles$stringContainerStyle = _elm_lang$html$Html
 var _user$project$Styles_ScalesStyles$stringStyle = _elm_lang$html$Html_Attributes$style(
 	{
 		ctor: '::',
-		_0: {ctor: '_Tuple2', _0: 'width', _1: '600px'},
+		_0: A2(_user$project$Logic_Utils_ops['=>'], 'width', '600px'),
 		_1: {
 			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'borderBottom', _1: '1px solid #ccc'},
+			_0: A2(_user$project$Logic_Utils_ops['=>'], 'borderBottom', '1px solid #ccc'),
 			_1: {
 				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'marginTop', _1: '32px'},
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'marginTop', '32px'),
 				_1: {
 					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'zIndex', _1: '0'},
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'zIndex', '0'),
 					_1: {ctor: '[]'}
 				}
 			}
@@ -75,16 +84,16 @@ var _user$project$Styles_ScalesStyles$stringStyle = _elm_lang$html$Html_Attribut
 var _user$project$Styles_ScalesStyles$scaleContainerStyle = _elm_lang$html$Html_Attributes$style(
 	{
 		ctor: '::',
-		_0: {ctor: '_Tuple2', _0: 'position', _1: 'relative'},
+		_0: A2(_user$project$Logic_Utils_ops['=>'], 'position', 'relative'),
 		_1: {
 			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'width', _1: '650px'},
+			_0: A2(_user$project$Logic_Utils_ops['=>'], 'width', '650px'),
 			_1: {
 				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'margin', _1: '30px 0'},
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'margin', '30px 0'),
 				_1: {
 					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'cursor', _1: 'pointer'},
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'cursor', 'pointer'),
 					_1: {ctor: '[]'}
 				}
 			}
@@ -93,13 +102,13 @@ var _user$project$Styles_ScalesStyles$scaleContainerStyle = _elm_lang$html$Html_
 var _user$project$Styles_ScalesStyles$scaleTitleStyle = _elm_lang$html$Html_Attributes$style(
 	{
 		ctor: '::',
-		_0: {ctor: '_Tuple2', _0: 'position', _1: 'relative'},
+		_0: A2(_user$project$Logic_Utils_ops['=>'], 'position', 'relative'),
 		_1: {
 			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'marginLeft', _1: '25px'},
+			_0: A2(_user$project$Logic_Utils_ops['=>'], 'marginLeft', '25px'),
 			_1: {
 				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'color', _1: '#03a9f4'},
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'color', '#03a9f4'),
 				_1: {ctor: '[]'}
 			}
 		}

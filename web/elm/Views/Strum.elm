@@ -7,6 +7,7 @@ import Logic.Types exposing (Model, Msg(Randomize, ShowModal, StrumArrowDirectio
 import Logic.Audio exposing (notes)
 import Styles.StrumStyles exposing (..)
 import List.Extra exposing (getAt)
+import Logic.Utils exposing ((=>))
 
 
 strummingPage : Model -> Html Msg
@@ -54,20 +55,20 @@ strumGroup : String -> List Int -> String -> String -> String -> String -> Html 
 strumGroup scale notes borderCol arrowCol background margin =
     let
         beats a =
-            div [ style [ ( "width", "10px" ), ( "margin", "0 55px 0" ) ] ] [ text <| toString a ]
+            div [ style [ "width" => "10px", "margin" => "0 55px 0" ] ] [ text <| toString a ]
 
         notation a =
-            div [ style [ ( "width", "10px" ), ( "margin", "20px 55px 0" ) ] ] [ printNotation a ]
+            div [ style [ "width" => "10px", "margin" => "20px 55px 0" ] ] [ printNotation a ]
 
         arrows a b =
             div [ strumArrowStyle a b borderCol background ] [ arrow arrowCol ]
     in
         div [ strumGroupStyle scale margin ]
-            [ div [ style [ ( "display", "flex" ) ] ]
+            [ div [ style [ "display" => "flex" ] ]
                 (List.map2 arrows notes [ 1, 2, 1, 2, 1, 2, 1, 2 ])
-            , div [ style [ ( "display", "flex" ) ] ]
+            , div [ style [ "display" => "flex" ] ]
                 (List.map beats <| List.range 1 8)
-            , div [ style [ ( "display", "flex" ) ] ]
+            , div [ style [ "display" => "flex" ] ]
                 (List.map notation <| calculateNotation [] 0 notes)
             ]
 
@@ -77,7 +78,7 @@ strumGroupNumberSelector =
     select
         [ onInput ChangeStrumGroupNumber
         , style
-            [ ( "width", "200px" ) ]
+            [ "width" => "200px" ]
         ]
         [ option [ value "1" ] [ text "NUMBER OF MEASURES: 1" ]
         , option [ value "2" ] [ text "NUMBER OF MEASURES: 2" ]
@@ -92,13 +93,13 @@ arrow col =
     let
         baseStyles height width x y =
             style
-                [ ( "transform", "rotate(45deg)" )
-                , ( "width", width )
-                , ( "height", height )
-                , ( "borderTop", "9px solid " ++ col )
-                , ( "borderLeft", "9px solid " ++ col )
-                , ( "marginLeft", x )
-                , ( "marginTop", y )
+                [ "transform" => "rotate(45deg)"
+                , "width" => width
+                , "height" => height
+                , "borderTop" => ("9px solid " ++ col)
+                , "borderLeft" => ("9px solid " ++ col)
+                , "marginLeft" => x
+                , "marginTop" => y
                 ]
     in
         div [ baseStyles "50px" "50px" "0" "0" ]
@@ -145,44 +146,44 @@ printNotation notes =
     let
         baseStyles fill =
             style
-                [ ( "position", "absolute" )
-                , ( "bottom", "-10px" )
-                , ( "left", "-5px" )
-                , ( "width", "14px" )
-                , ( "height", "15px" )
-                , ( "transform", "skew(-20deg)" )
-                , ( "border", "2px solid #555" )
-                , ( "borderRadius", "10px" )
-                , ( "backgroundColor", fill )
+                [ "position" => "absolute"
+                , "bottom" => "-10px"
+                , "left" => "-5px"
+                , "width" => "14px"
+                , "height" => "15px"
+                , "transform" => "skew(-20deg)"
+                , "border" => "2px solid #555"
+                , "borderRadius" => "10px"
+                , "backgroundColor" => fill
                 ]
 
         strumNotationContainerStyle =
             style
-                [ ( "position", "relative" )
-                , ( "height", "35px" )
-                , ( "borderRight", "2px solid #555" )
+                [ "position" => "relative"
+                , "height" => "35px"
+                , "borderRight" => "2px solid #555"
                 ]
 
         strumNotationFlagStyle flag =
             style
-                [ ( "position", "absolute" )
-                , ( "top", "-7px" )
-                , ( "right", "-15px" )
-                , ( "width", "15px" )
-                , ( "height", "15px" )
-                , ( "transform", "skew(30deg)" )
-                , ( "visibility", flag )
-                , ( "fontSize", "20px" )
-                , ( "color", "#555" )
+                [ "position" => "absolute"
+                , "top" => "-7px"
+                , "right" => "-15px"
+                , "width" => "15px"
+                , "height" => "15px"
+                , "transform" => "skew(30deg)"
+                , "visibility" => flag
+                , "fontSize" => "20px"
+                , "color" => "#555"
                 ]
 
         strumNotationDotStyle =
             style
-                [ ( "position", "absolute" )
-                , ( "bottom", "-30px" )
-                , ( "right", "-15px" )
-                , ( "fontSize", "50px" )
-                , ( "color", "#555" )
+                [ "position" => "absolute"
+                , "bottom" => "-30px"
+                , "right" => "-15px"
+                , "fontSize" => "50px"
+                , "color" => "#555"
                 ]
 
         markup fill dot flag =

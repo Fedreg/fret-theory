@@ -15,11 +15,12 @@ import Views.FingerPick exposing (fingerPickingPage)
 import Views.Modal exposing (..)
 import Styles.MainStyles exposing (..)
 import InlineHover exposing (hover)
+import Logic.Utils exposing ((=>))
 
 
 mainView : Model -> Html Msg
 mainView model =
-    div [ style [ ( "position", "relative" ), ( "overflow", "hidden" ), ( "padding", "5px" ) ] ]
+    div [ style [ "position" => "relative", "overflow" => "hidden", "padding" => "5px" ] ]
         [ nav model
         , page model
         , modal model
@@ -31,7 +32,7 @@ nav model =
     let
         navItem rte page =
             if String.startsWith page (String.toUpper <| toString model.route) == True then
-                a [ onClick <| NewUrl rte, navItemStyle model.navMenuOpen, style [ ( "color", "#03a9f4" ) ] ] [ text page ]
+                a [ onClick <| NewUrl rte, navItemStyle model.navMenuOpen, style [ "color" => "#03a9f4" ] ] [ text page ]
             else
                 a [ onClick <| NewUrl rte, navItemStyle model.navMenuOpen ] [ text page ]
     in
@@ -42,7 +43,7 @@ nav model =
             , div []
                 (List.map2 navItem (pathList model) pageList)
             , playbackSpeedSlider model
-            , div [ style [ ( "position", "relative" ) ] ] [ keyListView model ]
+            , div [ style [ "position" => "relative" ] ] [ keyListView model ]
             , signature model.navMenuOpen
             ]
 
@@ -83,9 +84,9 @@ keyListView model =
     let
         keyOptions key =
             if key == model.musKey then
-                span [ keyListStyle, onClick <| ChangeKey key, style [ ( "border", "1px solid #03a9f4" ), ("color", "#03a9f4" ) ] ] [ text key ]
+                span [ keyListStyle, onClick <| ChangeKey key, style [ "border" => "1px solid #03a9f4", "color" => "#03a9f4" ] ] [ text key ]
             else
-                span [ keyListStyle, onClick <| ChangeKey key, style [ ( "border", "1px solid #333" ), ("color", "#fff") ] ] [ text key ]
+                span [ keyListStyle, onClick <| ChangeKey key, style [ "border" => "1px solid #333", "color" => "#fff" ] ] [ text key ]
     in
         div [ keyListContainerStyle model.navMenuOpen ]
             [ h3 [ keyListKeyTitleStyle ] [ text "SELECT KEY" ]
@@ -99,7 +100,7 @@ keyListView model =
 signature : Bool -> Html Msg
 signature bool =
     div [ navItemStyle bool, signatureStyle ]
-        [ hover highlight a [ href "https://www.github.com/fedreg", style [ ( "color", "#666" ) ] ] [ text "c. 2017 FedReg (v. 0.1)" ] ]
+        [ hover highlight a [ href "https://www.github.com/fedreg", style [ "color" => "#666" ] ] [ text "c. 2017 FedReg (v. 0.1)" ] ]
 
 
 page : Model -> Html Msg
@@ -124,12 +125,16 @@ page model =
             fingerPickingPage model
 
         NotFoundPage ->
-            h1 [ style [ ( "margin", "100px 300px" ), ( "color", "#03a9f4" ) ] ] [ text ("Page Not Found! ") ]
+            notFoundPage
+
+
+notFoundPage =
+    h1 [ style [ "margin" => "100px 300px", "color" => "#03a9f4" ] ] [ text ("Page Not Found! ") ]
 
 
 playbackSpeedSlider : Model -> Html Msg
 playbackSpeedSlider model =
-    div [ navItemStyle model.navMenuOpen, style [ ( "marginTop", "100px" ) ] ]
+    div [ navItemStyle model.navMenuOpen, style [ "marginTop" => "100px" ] ]
         [ div [] [ text ("+ " ++ "AUDIO SPEED" ++ " -") ]
         , input
             [ type_ "range"

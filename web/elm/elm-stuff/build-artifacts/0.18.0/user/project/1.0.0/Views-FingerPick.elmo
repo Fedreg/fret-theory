@@ -1,127 +1,11 @@
 var _user$project$Views_FingerPick$printNotation = function (notes) {
-	var strumNotationDotStyle = _elm_lang$html$Html_Attributes$style(
-		{
-			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'position', _1: 'absolute'},
-			_1: {
-				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'bottom', _1: '-30px'},
-				_1: {
-					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'right', _1: '-15px'},
-					_1: {
-						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '50px'},
-						_1: {
-							ctor: '::',
-							_0: {ctor: '_Tuple2', _0: 'color', _1: '#555'},
-							_1: {ctor: '[]'}
-						}
-					}
-				}
-			}
-		});
-	var strumNotationFlagStyle = function (flag) {
-		return _elm_lang$html$Html_Attributes$style(
-			{
-				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'position', _1: 'absolute'},
-				_1: {
-					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'top', _1: '-7px'},
-					_1: {
-						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'right', _1: '-15px'},
-						_1: {
-							ctor: '::',
-							_0: {ctor: '_Tuple2', _0: 'width', _1: '15px'},
-							_1: {
-								ctor: '::',
-								_0: {ctor: '_Tuple2', _0: 'height', _1: '15px'},
-								_1: {
-									ctor: '::',
-									_0: {ctor: '_Tuple2', _0: 'transform', _1: 'skew(30deg)'},
-									_1: {
-										ctor: '::',
-										_0: {ctor: '_Tuple2', _0: 'visibility', _1: flag},
-										_1: {
-											ctor: '::',
-											_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '20px'},
-											_1: {
-												ctor: '::',
-												_0: {ctor: '_Tuple2', _0: 'color', _1: '#555'},
-												_1: {ctor: '[]'}
-											}
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-			});
-	};
-	var strumNotationContainerStyle = _elm_lang$html$Html_Attributes$style(
-		{
-			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'position', _1: 'relative'},
-			_1: {
-				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'height', _1: '35px'},
-				_1: {
-					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'borderRight', _1: '2px solid #555'},
-					_1: {ctor: '[]'}
-				}
-			}
-		});
-	var baseStyles = function (fill) {
-		return _elm_lang$html$Html_Attributes$style(
-			{
-				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'position', _1: 'absolute'},
-				_1: {
-					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'bottom', _1: '-10px'},
-					_1: {
-						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'left', _1: '-5px'},
-						_1: {
-							ctor: '::',
-							_0: {ctor: '_Tuple2', _0: 'width', _1: '14px'},
-							_1: {
-								ctor: '::',
-								_0: {ctor: '_Tuple2', _0: 'height', _1: '15px'},
-								_1: {
-									ctor: '::',
-									_0: {ctor: '_Tuple2', _0: 'transform', _1: 'skew(-20deg)'},
-									_1: {
-										ctor: '::',
-										_0: {ctor: '_Tuple2', _0: 'border', _1: '2px solid #555'},
-										_1: {
-											ctor: '::',
-											_0: {ctor: '_Tuple2', _0: 'borderRadius', _1: '10px'},
-											_1: {
-												ctor: '::',
-												_0: {ctor: '_Tuple2', _0: 'backgroundColor', _1: fill},
-												_1: {ctor: '[]'}
-											}
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-			});
-	};
 	var markup = F3(
 		function (fill, dot, flag) {
 			return A2(
 				_elm_lang$html$Html$div,
 				{
 					ctor: '::',
-					_0: strumNotationContainerStyle,
+					_0: _user$project$Styles_FingerPickStyles$fingerPickNotationContainerStyle,
 					_1: {ctor: '[]'}
 				},
 				{
@@ -130,7 +14,7 @@ var _user$project$Views_FingerPick$printNotation = function (notes) {
 						_elm_lang$html$Html$div,
 						{
 							ctor: '::',
-							_0: baseStyles(fill),
+							_0: _user$project$Styles_FingerPickStyles$fingerPickNotationBaseStyles(fill),
 							_1: {ctor: '[]'}
 						},
 						{ctor: '[]'}),
@@ -140,7 +24,7 @@ var _user$project$Views_FingerPick$printNotation = function (notes) {
 							_elm_lang$html$Html$div,
 							{
 								ctor: '::',
-								_0: strumNotationFlagStyle(flag),
+								_0: _user$project$Styles_FingerPickStyles$fingerPickNotationFlagStyle(flag),
 								_1: {ctor: '[]'}
 							},
 							{
@@ -154,7 +38,7 @@ var _user$project$Views_FingerPick$printNotation = function (notes) {
 								_elm_lang$html$Html$div,
 								{
 									ctor: '::',
-									_0: strumNotationDotStyle,
+									_0: _user$project$Styles_FingerPickStyles$fingerPickNotationDotStyle,
 									_1: {ctor: '[]'}
 								},
 								{
@@ -467,7 +351,7 @@ var _user$project$Views_FingerPick$stringView = A2(
 		_0: _elm_lang$html$Html_Attributes$style(
 			{
 				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'marginBottom', _1: '20px'},
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'marginBottom', '20px'),
 				_1: {ctor: '[]'}
 			}),
 		_1: {ctor: '[]'}
@@ -571,25 +455,25 @@ var _user$project$Views_FingerPick$fret = F2(
 		var baseStyles = _elm_lang$html$Html_Attributes$style(
 			{
 				ctor: '::',
-				_0: {ctor: '_Tuple2', _0: 'display', _1: 'flex'},
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'display', 'flex'),
 				_1: {
 					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'marginTop', _1: height},
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'marginTop', height),
 					_1: {
 						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'width', _1: '120px'},
+						_0: A2(_user$project$Logic_Utils_ops['=>'], 'width', '120px'),
 						_1: {
 							ctor: '::',
-							_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '20px'},
+							_0: A2(_user$project$Logic_Utils_ops['=>'], 'fontSize', '20px'),
 							_1: {
 								ctor: '::',
-								_0: {ctor: '_Tuple2', _0: 'color', _1: '#000'},
+								_0: A2(_user$project$Logic_Utils_ops['=>'], 'color', '#000'),
 								_1: {
 									ctor: '::',
-									_0: {ctor: '_Tuple2', _0: 'justifyContent', _1: 'center'},
+									_0: A2(_user$project$Logic_Utils_ops['=>'], 'justifyContent', 'center'),
 									_1: {
 										ctor: '::',
-										_0: {ctor: '_Tuple2', _0: 'opacity', _1: opacity},
+										_0: A2(_user$project$Logic_Utils_ops['=>'], 'opacity', opacity),
 										_1: {ctor: '[]'}
 									}
 								}
@@ -656,16 +540,7 @@ var _user$project$Views_FingerPick$fingerPickGroup = F4(
 				_elm_lang$html$Html$div,
 				{
 					ctor: '::',
-					_0: _elm_lang$html$Html_Attributes$style(
-						{
-							ctor: '::',
-							_0: {ctor: '_Tuple2', _0: 'width', _1: '10px'},
-							_1: {
-								ctor: '::',
-								_0: {ctor: '_Tuple2', _0: 'margin', _1: '5px 55px 0'},
-								_1: {ctor: '[]'}
-							}
-						}),
+					_0: _user$project$Styles_FingerPickStyles$fingerPickGroupNotationStyle,
 					_1: {ctor: '[]'}
 				},
 				{
@@ -679,16 +554,7 @@ var _user$project$Views_FingerPick$fingerPickGroup = F4(
 				_elm_lang$html$Html$div,
 				{
 					ctor: '::',
-					_0: _elm_lang$html$Html_Attributes$style(
-						{
-							ctor: '::',
-							_0: {ctor: '_Tuple2', _0: 'width', _1: '10px'},
-							_1: {
-								ctor: '::',
-								_0: {ctor: '_Tuple2', _0: 'margin', _1: '5px 55px 10px'},
-								_1: {ctor: '[]'}
-							}
-						}),
+					_0: _user$project$Styles_FingerPickStyles$fingerPickGroupBeatStyle,
 					_1: {ctor: '[]'}
 				},
 				{
@@ -717,7 +583,7 @@ var _user$project$Views_FingerPick$fingerPickGroup = F4(
 							_0: _elm_lang$html$Html_Attributes$style(
 								{
 									ctor: '::',
-									_0: {ctor: '_Tuple2', _0: 'display', _1: 'flex'},
+									_0: A2(_user$project$Logic_Utils_ops['=>'], 'display', 'flex'),
 									_1: {ctor: '[]'}
 								}),
 							_1: {ctor: '[]'}
@@ -732,7 +598,7 @@ var _user$project$Views_FingerPick$fingerPickGroup = F4(
 								_0: _elm_lang$html$Html_Attributes$style(
 									{
 										ctor: '::',
-										_0: {ctor: '_Tuple2', _0: 'display', _1: 'flex'},
+										_0: A2(_user$project$Logic_Utils_ops['=>'], 'display', 'flex'),
 										_1: {ctor: '[]'}
 									}),
 								_1: {ctor: '[]'}
@@ -760,7 +626,7 @@ var _user$project$Views_FingerPick$fingerPickGroup = F4(
 										_0: _elm_lang$html$Html_Attributes$style(
 											{
 												ctor: '::',
-												_0: {ctor: '_Tuple2', _0: 'display', _1: 'flex'},
+												_0: A2(_user$project$Logic_Utils_ops['=>'], 'display', 'flex'),
 												_1: {ctor: '[]'}
 											}),
 										_1: {ctor: '[]'}
