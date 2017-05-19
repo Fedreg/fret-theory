@@ -1,0 +1,904 @@
+var _user$project$Pages_Strum$printNotation = function (notes) {
+	var strumNotationDotStyle = _elm_lang$html$Html_Attributes$style(
+		{
+			ctor: '::',
+			_0: {ctor: '_Tuple2', _0: 'position', _1: 'absolute'},
+			_1: {
+				ctor: '::',
+				_0: {ctor: '_Tuple2', _0: 'bottom', _1: '-30px'},
+				_1: {
+					ctor: '::',
+					_0: {ctor: '_Tuple2', _0: 'right', _1: '-15px'},
+					_1: {
+						ctor: '::',
+						_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '50px'},
+						_1: {
+							ctor: '::',
+							_0: {ctor: '_Tuple2', _0: 'color', _1: '#555'},
+							_1: {ctor: '[]'}
+						}
+					}
+				}
+			}
+		});
+	var strumNotationFlagStyle = function (flag) {
+		return _elm_lang$html$Html_Attributes$style(
+			{
+				ctor: '::',
+				_0: {ctor: '_Tuple2', _0: 'position', _1: 'absolute'},
+				_1: {
+					ctor: '::',
+					_0: {ctor: '_Tuple2', _0: 'top', _1: '-7px'},
+					_1: {
+						ctor: '::',
+						_0: {ctor: '_Tuple2', _0: 'right', _1: '-15px'},
+						_1: {
+							ctor: '::',
+							_0: {ctor: '_Tuple2', _0: 'width', _1: '15px'},
+							_1: {
+								ctor: '::',
+								_0: {ctor: '_Tuple2', _0: 'height', _1: '15px'},
+								_1: {
+									ctor: '::',
+									_0: {ctor: '_Tuple2', _0: 'transform', _1: 'skew(30deg)'},
+									_1: {
+										ctor: '::',
+										_0: {ctor: '_Tuple2', _0: 'visibility', _1: flag},
+										_1: {
+											ctor: '::',
+											_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '20px'},
+											_1: {
+												ctor: '::',
+												_0: {ctor: '_Tuple2', _0: 'color', _1: '#555'},
+												_1: {ctor: '[]'}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			});
+	};
+	var strumNotationContainerStyle = _elm_lang$html$Html_Attributes$style(
+		{
+			ctor: '::',
+			_0: {ctor: '_Tuple2', _0: 'position', _1: 'relative'},
+			_1: {
+				ctor: '::',
+				_0: {ctor: '_Tuple2', _0: 'height', _1: '35px'},
+				_1: {
+					ctor: '::',
+					_0: {ctor: '_Tuple2', _0: 'borderRight', _1: '2px solid #555'},
+					_1: {ctor: '[]'}
+				}
+			}
+		});
+	var baseStyles = function (fill) {
+		return _elm_lang$html$Html_Attributes$style(
+			{
+				ctor: '::',
+				_0: {ctor: '_Tuple2', _0: 'position', _1: 'absolute'},
+				_1: {
+					ctor: '::',
+					_0: {ctor: '_Tuple2', _0: 'bottom', _1: '-10px'},
+					_1: {
+						ctor: '::',
+						_0: {ctor: '_Tuple2', _0: 'left', _1: '-5px'},
+						_1: {
+							ctor: '::',
+							_0: {ctor: '_Tuple2', _0: 'width', _1: '14px'},
+							_1: {
+								ctor: '::',
+								_0: {ctor: '_Tuple2', _0: 'height', _1: '15px'},
+								_1: {
+									ctor: '::',
+									_0: {ctor: '_Tuple2', _0: 'transform', _1: 'skew(-20deg)'},
+									_1: {
+										ctor: '::',
+										_0: {ctor: '_Tuple2', _0: 'border', _1: '2px solid #555'},
+										_1: {
+											ctor: '::',
+											_0: {ctor: '_Tuple2', _0: 'borderRadius', _1: '10px'},
+											_1: {
+												ctor: '::',
+												_0: {ctor: '_Tuple2', _0: 'backgroundColor', _1: fill},
+												_1: {ctor: '[]'}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			});
+	};
+	var markup = F3(
+		function (fill, dot, flag) {
+			return A2(
+				_elm_lang$html$Html$div,
+				{
+					ctor: '::',
+					_0: strumNotationContainerStyle,
+					_1: {ctor: '[]'}
+				},
+				{
+					ctor: '::',
+					_0: A2(
+						_elm_lang$html$Html$div,
+						{
+							ctor: '::',
+							_0: baseStyles(fill),
+							_1: {ctor: '[]'}
+						},
+						{ctor: '[]'}),
+					_1: {
+						ctor: '::',
+						_0: A2(
+							_elm_lang$html$Html$div,
+							{
+								ctor: '::',
+								_0: strumNotationFlagStyle(flag),
+								_1: {ctor: '[]'}
+							},
+							{
+								ctor: '::',
+								_0: _elm_lang$html$Html$text(')'),
+								_1: {ctor: '[]'}
+							}),
+						_1: {
+							ctor: '::',
+							_0: A2(
+								_elm_lang$html$Html$div,
+								{
+									ctor: '::',
+									_0: strumNotationDotStyle,
+									_1: {ctor: '[]'}
+								},
+								{
+									ctor: '::',
+									_0: _elm_lang$html$Html$text(dot),
+									_1: {ctor: '[]'}
+								}),
+							_1: {ctor: '[]'}
+						}
+					}
+				});
+		});
+	var _p0 = notes;
+	switch (_p0) {
+		case 0:
+			return A2(
+				_elm_lang$html$Html$div,
+				{ctor: '[]'},
+				{ctor: '[]'});
+		case 1:
+			return A3(markup, '#555', '', 'visible');
+		case 2:
+			return A3(markup, '#555', '', 'hidden');
+		case 3:
+			return A3(markup, '#555', '.', 'hidden');
+		case 4:
+			return A3(markup, 'none', '', 'hidden');
+		default:
+			return A2(
+				_elm_lang$html$Html$div,
+				{ctor: '[]'},
+				{ctor: '[]'});
+	}
+};
+var _user$project$Pages_Strum$calculateNotation = F3(
+	function (list, index, notes) {
+		calculateNotation:
+		while (true) {
+			var getter = function (a) {
+				return A2(
+					_elm_lang$core$Maybe$withDefault,
+					1,
+					A2(_elm_community$list_extra$List_Extra$getAt, index + a, notes));
+			};
+			var notation = (_elm_lang$core$Native_Utils.eq(
+				getter(0),
+				1) && _elm_lang$core$Native_Utils.eq(
+				getter(1),
+				2)) ? (_elm_lang$core$Native_Utils.eq(
+				getter(2),
+				1) ? 2 : (_elm_lang$core$Native_Utils.eq(
+				getter(3),
+				1) ? 3 : 4)) : ((_elm_lang$core$Native_Utils.eq(
+				getter(0),
+				1) && _elm_lang$core$Native_Utils.eq(
+				getter(1),
+				1)) ? 1 : ((_elm_lang$core$Native_Utils.eq(
+				getter(4),
+				1) && _elm_lang$core$Native_Utils.eq(
+				getter(7),
+				2)) ? 4 : 0));
+			if (_elm_lang$core$Native_Utils.cmp(
+				index,
+				_elm_lang$core$List$length(notes)) < 0) {
+				var _v1 = {ctor: '::', _0: notation, _1: list},
+					_v2 = index + 1,
+					_v3 = notes;
+				list = _v1;
+				index = _v2;
+				notes = _v3;
+				continue calculateNotation;
+			} else {
+				return _elm_lang$core$List$reverse(list);
+			}
+		}
+	});
+var _user$project$Pages_Strum$arrow = function (col) {
+	var baseStyles = F4(
+		function (height, width, x, y) {
+			return _elm_lang$html$Html_Attributes$style(
+				{
+					ctor: '::',
+					_0: {ctor: '_Tuple2', _0: 'transform', _1: 'rotate(45deg)'},
+					_1: {
+						ctor: '::',
+						_0: {ctor: '_Tuple2', _0: 'width', _1: width},
+						_1: {
+							ctor: '::',
+							_0: {ctor: '_Tuple2', _0: 'height', _1: height},
+							_1: {
+								ctor: '::',
+								_0: {
+									ctor: '_Tuple2',
+									_0: 'borderTop',
+									_1: A2(_elm_lang$core$Basics_ops['++'], '9px solid ', col)
+								},
+								_1: {
+									ctor: '::',
+									_0: {
+										ctor: '_Tuple2',
+										_0: 'borderLeft',
+										_1: A2(_elm_lang$core$Basics_ops['++'], '9px solid ', col)
+									},
+									_1: {
+										ctor: '::',
+										_0: {ctor: '_Tuple2', _0: 'marginLeft', _1: x},
+										_1: {
+											ctor: '::',
+											_0: {ctor: '_Tuple2', _0: 'marginTop', _1: y},
+											_1: {ctor: '[]'}
+										}
+									}
+								}
+							}
+						}
+					}
+				});
+		});
+	return A2(
+		_elm_lang$html$Html$div,
+		{
+			ctor: '::',
+			_0: A4(baseStyles, '50px', '50px', '0', '0'),
+			_1: {ctor: '[]'}
+		},
+		{
+			ctor: '::',
+			_0: A2(
+				_elm_lang$html$Html$hr,
+				{
+					ctor: '::',
+					_0: A4(baseStyles, '1px', '100px', '-20px', '25px'),
+					_1: {ctor: '[]'}
+				},
+				{ctor: '[]'}),
+			_1: {ctor: '[]'}
+		});
+};
+var _user$project$Pages_Strum$strumGroup = F6(
+	function (scale, notes, borderCol, arrowCol, background, margin) {
+		var arrows = F2(
+			function (a, b) {
+				return A2(
+					_elm_lang$html$Html$div,
+					{
+						ctor: '::',
+						_0: A4(_user$project$Styles_StrumStyles$strumArrowStyle, a, b, borderCol, background),
+						_1: {ctor: '[]'}
+					},
+					{
+						ctor: '::',
+						_0: _user$project$Pages_Strum$arrow(arrowCol),
+						_1: {ctor: '[]'}
+					});
+			});
+		var notation = function (a) {
+			return A2(
+				_elm_lang$html$Html$div,
+				{
+					ctor: '::',
+					_0: _elm_lang$html$Html_Attributes$style(
+						{
+							ctor: '::',
+							_0: {ctor: '_Tuple2', _0: 'width', _1: '10px'},
+							_1: {
+								ctor: '::',
+								_0: {ctor: '_Tuple2', _0: 'margin', _1: '20px 55px 0'},
+								_1: {ctor: '[]'}
+							}
+						}),
+					_1: {ctor: '[]'}
+				},
+				{
+					ctor: '::',
+					_0: _user$project$Pages_Strum$printNotation(a),
+					_1: {ctor: '[]'}
+				});
+		};
+		var beats = function (a) {
+			return A2(
+				_elm_lang$html$Html$div,
+				{
+					ctor: '::',
+					_0: _elm_lang$html$Html_Attributes$style(
+						{
+							ctor: '::',
+							_0: {ctor: '_Tuple2', _0: 'width', _1: '10px'},
+							_1: {
+								ctor: '::',
+								_0: {ctor: '_Tuple2', _0: 'margin', _1: '0 55px 0'},
+								_1: {ctor: '[]'}
+							}
+						}),
+					_1: {ctor: '[]'}
+				},
+				{
+					ctor: '::',
+					_0: _elm_lang$html$Html$text(
+						_elm_lang$core$Basics$toString(a)),
+					_1: {ctor: '[]'}
+				});
+		};
+		return A2(
+			_elm_lang$html$Html$div,
+			{
+				ctor: '::',
+				_0: A2(_user$project$Styles_StrumStyles$strumGroupStyle, scale, margin),
+				_1: {ctor: '[]'}
+			},
+			{
+				ctor: '::',
+				_0: A2(
+					_elm_lang$html$Html$div,
+					{
+						ctor: '::',
+						_0: _elm_lang$html$Html_Attributes$style(
+							{
+								ctor: '::',
+								_0: {ctor: '_Tuple2', _0: 'display', _1: 'flex'},
+								_1: {ctor: '[]'}
+							}),
+						_1: {ctor: '[]'}
+					},
+					A3(
+						_elm_lang$core$List$map2,
+						arrows,
+						notes,
+						{
+							ctor: '::',
+							_0: 1,
+							_1: {
+								ctor: '::',
+								_0: 2,
+								_1: {
+									ctor: '::',
+									_0: 1,
+									_1: {
+										ctor: '::',
+										_0: 2,
+										_1: {
+											ctor: '::',
+											_0: 1,
+											_1: {
+												ctor: '::',
+												_0: 2,
+												_1: {
+													ctor: '::',
+													_0: 1,
+													_1: {
+														ctor: '::',
+														_0: 2,
+														_1: {ctor: '[]'}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						})),
+				_1: {
+					ctor: '::',
+					_0: A2(
+						_elm_lang$html$Html$div,
+						{
+							ctor: '::',
+							_0: _elm_lang$html$Html_Attributes$style(
+								{
+									ctor: '::',
+									_0: {ctor: '_Tuple2', _0: 'display', _1: 'flex'},
+									_1: {ctor: '[]'}
+								}),
+							_1: {ctor: '[]'}
+						},
+						A2(
+							_elm_lang$core$List$map,
+							beats,
+							A2(_elm_lang$core$List$range, 1, 8))),
+					_1: {
+						ctor: '::',
+						_0: A2(
+							_elm_lang$html$Html$div,
+							{
+								ctor: '::',
+								_0: _elm_lang$html$Html_Attributes$style(
+									{
+										ctor: '::',
+										_0: {ctor: '_Tuple2', _0: 'display', _1: 'flex'},
+										_1: {ctor: '[]'}
+									}),
+								_1: {ctor: '[]'}
+							},
+							A2(
+								_elm_lang$core$List$map,
+								notation,
+								A3(
+									_user$project$Pages_Strum$calculateNotation,
+									{ctor: '[]'},
+									0,
+									notes))),
+						_1: {ctor: '[]'}
+					}
+				}
+			});
+	});
+var _user$project$Pages_Strum$strumGroupMatrix = function (model) {
+	var strumPattern = function (n) {
+		return A2(
+			_elm_lang$core$Maybe$withDefault,
+			{ctor: '[]'},
+			A2(_elm_community$list_extra$List_Extra$getAt, n, model.strumArrow));
+	};
+	var _p1 = model.strumGroupNumber;
+	switch (_p1) {
+		case '1':
+			return A2(
+				_elm_lang$html$Html$div,
+				{ctor: '[]'},
+				{
+					ctor: '::',
+					_0: A6(
+						_user$project$Pages_Strum$strumGroup,
+						'1,1',
+						strumPattern(0),
+						'#CCC',
+						'#000',
+						'#FFF',
+						'0'),
+					_1: {ctor: '[]'}
+				});
+		case '2':
+			return A2(
+				_elm_lang$html$Html$div,
+				{ctor: '[]'},
+				{
+					ctor: '::',
+					_0: A6(
+						_user$project$Pages_Strum$strumGroup,
+						'0.8,0.8',
+						strumPattern(0),
+						'#CCC',
+						'#000',
+						'#FFF',
+						'-20px -175px'),
+					_1: {
+						ctor: '::',
+						_0: A6(
+							_user$project$Pages_Strum$strumGroup,
+							'0.8,0.8',
+							strumPattern(1),
+							'#CCC',
+							'#000',
+							'#03a9f4',
+							'-30px -175px'),
+						_1: {ctor: '[]'}
+					}
+				});
+		case '4':
+			return A2(
+				_elm_lang$html$Html$div,
+				{ctor: '[]'},
+				{
+					ctor: '::',
+					_0: A2(
+						_elm_lang$html$Html$div,
+						{
+							ctor: '::',
+							_0: _user$project$Styles_StrumStyles$strumGroupMatrixStyle,
+							_1: {ctor: '[]'}
+						},
+						{
+							ctor: '::',
+							_0: A6(
+								_user$project$Pages_Strum$strumGroup,
+								'0.6,0.6',
+								strumPattern(0),
+								'#CCC',
+								'#000',
+								'#FFF',
+								'-25px -175px'),
+							_1: {
+								ctor: '::',
+								_0: A6(
+									_user$project$Pages_Strum$strumGroup,
+									'0.6,0.6',
+									strumPattern(1),
+									'#CCC',
+									'#000',
+									'#03a9f4',
+									'-25px -175px'),
+								_1: {ctor: '[]'}
+							}
+						}),
+					_1: {
+						ctor: '::',
+						_0: A2(
+							_elm_lang$html$Html$div,
+							{
+								ctor: '::',
+								_0: _user$project$Styles_StrumStyles$strumGroupMatrixStyle,
+								_1: {ctor: '[]'}
+							},
+							{
+								ctor: '::',
+								_0: A6(
+									_user$project$Pages_Strum$strumGroup,
+									'0.6,0.6',
+									strumPattern(2),
+									'#CCC',
+									'#000',
+									'#FFF',
+									'-25px -175px'),
+								_1: {
+									ctor: '::',
+									_0: A6(
+										_user$project$Pages_Strum$strumGroup,
+										'0.6,0.6',
+										strumPattern(3),
+										'#CCC',
+										'#000',
+										'#03a9f4',
+										'-25px -175px'),
+									_1: {ctor: '[]'}
+								}
+							}),
+						_1: {ctor: '[]'}
+					}
+				});
+		default:
+			return A2(
+				_elm_lang$html$Html$div,
+				{
+					ctor: '::',
+					_0: _user$project$Styles_StrumStyles$strumGroupMatrixStyle,
+					_1: {ctor: '[]'}
+				},
+				{
+					ctor: '::',
+					_0: A6(
+						_user$project$Pages_Strum$strumGroup,
+						'0.5,0.5',
+						strumPattern(0),
+						'#CCC',
+						'#000',
+						'#FFF',
+						'0'),
+					_1: {ctor: '[]'}
+				});
+	}
+};
+var _user$project$Pages_Strum$init = {
+	strumArrow: {
+		ctor: '::',
+		_0: {
+			ctor: '::',
+			_0: 1,
+			_1: {
+				ctor: '::',
+				_0: 2,
+				_1: {
+					ctor: '::',
+					_0: 1,
+					_1: {
+						ctor: '::',
+						_0: 1,
+						_1: {
+							ctor: '::',
+							_0: 2,
+							_1: {
+								ctor: '::',
+								_0: 1,
+								_1: {
+									ctor: '::',
+									_0: 1,
+									_1: {
+										ctor: '::',
+										_0: 1,
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		_1: {
+			ctor: '::',
+			_0: {
+				ctor: '::',
+				_0: 1,
+				_1: {
+					ctor: '::',
+					_0: 2,
+					_1: {
+						ctor: '::',
+						_0: 1,
+						_1: {
+							ctor: '::',
+							_0: 1,
+							_1: {
+								ctor: '::',
+								_0: 2,
+								_1: {
+									ctor: '::',
+									_0: 1,
+									_1: {
+										ctor: '::',
+										_0: 1,
+										_1: {
+											ctor: '::',
+											_0: 1,
+											_1: {ctor: '[]'}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			},
+			_1: {
+				ctor: '::',
+				_0: {
+					ctor: '::',
+					_0: 1,
+					_1: {
+						ctor: '::',
+						_0: 2,
+						_1: {
+							ctor: '::',
+							_0: 1,
+							_1: {
+								ctor: '::',
+								_0: 1,
+								_1: {
+									ctor: '::',
+									_0: 2,
+									_1: {
+										ctor: '::',
+										_0: 1,
+										_1: {
+											ctor: '::',
+											_0: 1,
+											_1: {
+												ctor: '::',
+												_0: 1,
+												_1: {ctor: '[]'}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				_1: {
+					ctor: '::',
+					_0: {
+						ctor: '::',
+						_0: 1,
+						_1: {
+							ctor: '::',
+							_0: 2,
+							_1: {
+								ctor: '::',
+								_0: 1,
+								_1: {
+									ctor: '::',
+									_0: 1,
+									_1: {
+										ctor: '::',
+										_0: 2,
+										_1: {
+											ctor: '::',
+											_0: 1,
+											_1: {
+												ctor: '::',
+												_0: 1,
+												_1: {
+													ctor: '::',
+													_0: 1,
+													_1: {ctor: '[]'}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					},
+					_1: {ctor: '[]'}
+				}
+			}
+		}
+	},
+	strumGroupNumber: '1'
+};
+var _user$project$Pages_Strum$Model = F2(
+	function (a, b) {
+		return {strumArrow: a, strumGroupNumber: b};
+	});
+var _user$project$Pages_Strum$ChangeStrumGroupNumber = function (a) {
+	return {ctor: 'ChangeStrumGroupNumber', _0: a};
+};
+var _user$project$Pages_Strum$strumGroupNumberSelector = A2(
+	_elm_lang$html$Html$select,
+	{
+		ctor: '::',
+		_0: _elm_lang$html$Html_Events$onInput(_user$project$Pages_Strum$ChangeStrumGroupNumber),
+		_1: {
+			ctor: '::',
+			_0: _elm_lang$html$Html_Attributes$style(
+				{
+					ctor: '::',
+					_0: {ctor: '_Tuple2', _0: 'width', _1: '200px'},
+					_1: {ctor: '[]'}
+				}),
+			_1: {ctor: '[]'}
+		}
+	},
+	{
+		ctor: '::',
+		_0: A2(
+			_elm_lang$html$Html$option,
+			{
+				ctor: '::',
+				_0: _elm_lang$html$Html_Attributes$value('1'),
+				_1: {ctor: '[]'}
+			},
+			{
+				ctor: '::',
+				_0: _elm_lang$html$Html$text('NUMBER OF MEASURES: 1'),
+				_1: {ctor: '[]'}
+			}),
+		_1: {
+			ctor: '::',
+			_0: A2(
+				_elm_lang$html$Html$option,
+				{
+					ctor: '::',
+					_0: _elm_lang$html$Html_Attributes$value('2'),
+					_1: {ctor: '[]'}
+				},
+				{
+					ctor: '::',
+					_0: _elm_lang$html$Html$text('NUMBER OF MEASURES: 2'),
+					_1: {ctor: '[]'}
+				}),
+			_1: {
+				ctor: '::',
+				_0: A2(
+					_elm_lang$html$Html$option,
+					{
+						ctor: '::',
+						_0: _elm_lang$html$Html_Attributes$value('4'),
+						_1: {ctor: '[]'}
+					},
+					{
+						ctor: '::',
+						_0: _elm_lang$html$Html$text('NUMBER OF MEASURES: 4'),
+						_1: {ctor: '[]'}
+					}),
+				_1: {ctor: '[]'}
+			}
+		}
+	});
+var _user$project$Pages_Strum$StrumArrowDirection = function (a) {
+	return {ctor: 'StrumArrowDirection', _0: a};
+};
+var _user$project$Pages_Strum$update = F2(
+	function (msg, model) {
+		var _p2 = model.route;
+		switch (_p2.ctor) {
+			case 'Randomize':
+				return {
+					ctor: '_Tuple2',
+					_0: model,
+					_1: A2(
+						_elm_lang$core$Random$generate,
+						_user$project$Pages_Strum$StrumArrowDirection,
+						A2(
+							_elm_lang$core$Random$list,
+							4,
+							A2(
+								_elm_lang$core$Random$list,
+								8,
+								A2(_elm_lang$core$Random$int, _p2._0, _p2._1))))
+				};
+			case 'StrumArrowDirection':
+				return A2(
+					_elm_lang$core$Platform_Cmd_ops['!'],
+					_elm_lang$core$Native_Utils.update(
+						model,
+						{strumArrow: _p2._0}),
+					{ctor: '[]'});
+			default:
+				return A2(
+					_elm_lang$core$Platform_Cmd_ops['!'],
+					_elm_lang$core$Native_Utils.update(
+						model,
+						{strumGroupNumber: _p2._0}),
+					{ctor: '[]'});
+		}
+	});
+var _user$project$Pages_Strum$Randomize = F2(
+	function (a, b) {
+		return {ctor: 'Randomize', _0: a, _1: b};
+	});
+var _user$project$Pages_Strum$view = function (model) {
+	return A2(
+		_elm_lang$html$Html$div,
+		{
+			ctor: '::',
+			_0: _user$project$Styles_StrumStyles$strumPageStyle(model.strumGroupNumber),
+			_1: {ctor: '[]'}
+		},
+		{
+			ctor: '::',
+			_0: _user$project$Pages_Strum$strumGroupNumberSelector,
+			_1: {
+				ctor: '::',
+				_0: _user$project$Pages_Strum$strumGroupMatrix(model),
+				_1: {
+					ctor: '::',
+					_0: A2(
+						_elm_lang$html$Html$button,
+						{
+							ctor: '::',
+							_0: _user$project$Styles_StrumStyles$buttonStyle,
+							_1: {
+								ctor: '::',
+								_0: _elm_lang$html$Html_Events$onClick(
+									A2(_user$project$Pages_Strum$Randomize, 1, 2)),
+								_1: {ctor: '[]'}
+							}
+						},
+						{
+							ctor: '::',
+							_0: _elm_lang$html$Html$text('Generate Random Strum Pattern'),
+							_1: {ctor: '[]'}
+						}),
+					_1: {ctor: '[]'}
+				}
+			}
+		});
+};

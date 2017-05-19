@@ -1,16 +1,49 @@
-module Pages.Fretboard exposing (fretboardPage, fretNotation, noteFretPos, noteStringPos)
+module Pages.Fretboard exposing (view, fretNotation, noteFretPos, noteStringPos, Model)
 
 import Html exposing (Html, div, span, text, hr, img)
 import Html.Events exposing (onClick)
 import Html.Attributes exposing (style, src)
-import Logic.Types exposing (Model, Msg(..))
 import InlineHover exposing (hover)
 import List.Extra exposing (getAt, elemIndex)
 import Styles.FretboardStyles exposing (..)
 
 
-fretboardPage : Model -> Html Msg
-fretboardPage model =
+type alias Model =
+    { notePosition : Float
+    , showAccidental : String
+    , musKey : String
+    }
+
+
+init =
+    { musKey = "C"
+    , notePosition = 80.0
+    , showAccidental = "1"
+    }
+
+
+type Msg
+    = DrawNote String String String
+
+
+update msg model =
+    case msg of
+        DrawNote index string accidental ->
+            let
+                stringOffset =
+                    noteStringPos string
+
+                fretOffset =
+                    noteFretPos index
+
+                finalOffset =
+                    fretOffset + stringOffset
+            in
+                { model | notePosition = finalOffset, showAccidental = accidental } ! []
+
+
+view : Model -> Html Msg
+view model =
     let
         highlight =
             [ ( "background-color", "#03a9f4" )

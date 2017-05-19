@@ -5,16 +5,15 @@ import Html exposing (Html, div, span, hr, text, a, input, h3)
 import Html.Attributes exposing (style, href, value, type_, href)
 import Html.Events exposing (onClick, onInput)
 import Logic.Routing as Routing
-import Logic.Types exposing (Model, Msg(..), Route(..), PlayBundle)
-import Pages.Home exposing (homePage)
-import Pages.Chords exposing (chordsPage, keyListMajor, keyListMinor)
-import Pages.Scales exposing (scalesPage)
-import Pages.Fretboard exposing (fretboardPage)
-import Pages.Strum exposing (view, model)
-import Pages.FingerPick exposing (view, model)
-import Pages.Modal exposing (..)
+import Pages.Home exposing (view)
+import Pages.Chords exposing (view, keyListMajor, keyListMinor)
+import Pages.Scales exposing (view)
+import Pages.Fretboard exposing (view)
+import Pages.Strum exposing (view, strumGroup)
+import Pages.FingerPick exposing (view)
 import Styles.MainStyles exposing (..)
 import InlineHover exposing (hover)
+import Styles.ModalStyles exposing (..)
 
 
 mainView : Model -> Html Msg
@@ -106,22 +105,22 @@ page : Model -> Html Msg
 page model =
     case model.route of
         ChordsRoute _ ->
-            Pages.Chords.view Pages.Chords.model
+            Pages.Chords.view Pages.Chords.Model
 
         FretboardRoute _ ->
-            fretboardPage model
+            Pages.Fretboard.view Pages.Fretboard.Model
 
         ScalesRoute _ ->
-            scalesPage model
+            Pages.Scales.view Pages.Scales.Model
 
         HomeRoute ->
-            homePage model
+            Pages.Home.view Pges.Home.Model
 
         StrummingRoute ->
-            Pages.Strum.view Pages.Strum.model
+            Pages.Strum.view Pages.Strum.Model
 
         FingerPickingRoute ->
-            Pages.FingerPick.view Pages.FingerPick.model
+            Pages.FingerPick.view Pages.FingerPick.Model
 
         NotFoundRoute ->
             notFoundPage

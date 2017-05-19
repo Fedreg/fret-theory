@@ -1,0 +1,1324 @@
+var _user$project$Pages_Chords$startKey = {
+	i: '06x353242030121010',
+	ii: '06x05x040232423111',
+	iii: '060152242030020010',
+	iv: '06x06x343232121010',
+	v: '263152040030323413',
+	vi: '06x050242332121010',
+	vii: '06x15224343432301x',
+	i7: '06x353242433121010',
+	iv7: '06x05x142334223414',
+	v7: '363252040030020111',
+	vi7: '06x050242030121010',
+	names: {
+		ctor: '::',
+		_0: 'C',
+		_1: {
+			ctor: '::',
+			_0: 'Dm',
+			_1: {
+				ctor: '::',
+				_0: 'Em',
+				_1: {
+					ctor: '::',
+					_0: 'F',
+					_1: {
+						ctor: '::',
+						_0: 'G',
+						_1: {
+							ctor: '::',
+							_0: 'Am',
+							_1: {
+								ctor: '::',
+								_0: 'Bdim7',
+								_1: {
+									ctor: '::',
+									_0: 'CM7',
+									_1: {
+										ctor: '::',
+										_0: 'FM7',
+										_1: {
+											ctor: '::',
+											_0: 'G7',
+											_1: {
+												ctor: '::',
+												_0: 'Am7',
+												_1: {
+													ctor: '::',
+													_0: '5',
+													_1: {ctor: '[]'}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	},
+	bars: {
+		ctor: '::',
+		_0: '',
+		_1: {
+			ctor: '::',
+			_0: '',
+			_1: {
+				ctor: '::',
+				_0: '',
+				_1: {
+					ctor: '::',
+					_0: '',
+					_1: {
+						ctor: '::',
+						_0: '',
+						_1: {
+							ctor: '::',
+							_0: '',
+							_1: {
+								ctor: '::',
+								_0: '',
+								_1: {
+									ctor: '::',
+									_0: '',
+									_1: {
+										ctor: '::',
+										_0: '3',
+										_1: {
+											ctor: '::',
+											_0: '',
+											_1: {
+												ctor: '::',
+												_0: '',
+												_1: {ctor: '[]'}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	},
+	key: 'C'
+};
+var _user$project$Pages_Chords$keyList = {
+	ctor: '::',
+	_0: 'C',
+	_1: {
+		ctor: '::',
+		_0: 'G',
+		_1: {
+			ctor: '::',
+			_0: 'D',
+			_1: {
+				ctor: '::',
+				_0: 'A',
+				_1: {
+					ctor: '::',
+					_0: 'E',
+					_1: {
+						ctor: '::',
+						_0: 'B',
+						_1: {
+							ctor: '::',
+							_0: 'F#',
+							_1: {
+								ctor: '::',
+								_0: 'Db',
+								_1: {
+									ctor: '::',
+									_0: 'Ab',
+									_1: {
+										ctor: '::',
+										_0: 'Eb',
+										_1: {
+											ctor: '::',
+											_0: 'Bb',
+											_1: {
+												ctor: '::',
+												_0: 'F',
+												_1: {
+													ctor: '::',
+													_0: 'a',
+													_1: {
+														ctor: '::',
+														_0: 'e',
+														_1: {
+															ctor: '::',
+															_0: 'b',
+															_1: {
+																ctor: '::',
+																_0: 'f#',
+																_1: {
+																	ctor: '::',
+																	_0: 'c#',
+																	_1: {
+																		ctor: '::',
+																		_0: 'g#',
+																		_1: {
+																			ctor: '::',
+																			_0: 'd#',
+																			_1: {
+																				ctor: '::',
+																				_0: 'bb',
+																				_1: {
+																					ctor: '::',
+																					_0: 'f',
+																					_1: {
+																						ctor: '::',
+																						_0: 'c',
+																						_1: {
+																							ctor: '::',
+																							_0: 'g',
+																							_1: {
+																								ctor: '::',
+																								_0: 'd',
+																								_1: {ctor: '[]'}
+																							}
+																						}
+																					}
+																				}
+																			}
+																		}
+																	}
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+};
+var _user$project$Pages_Chords$keyListMinor = {
+	ctor: '::',
+	_0: 'a',
+	_1: {
+		ctor: '::',
+		_0: 'e',
+		_1: {
+			ctor: '::',
+			_0: 'b',
+			_1: {
+				ctor: '::',
+				_0: 'f#',
+				_1: {
+					ctor: '::',
+					_0: 'c#',
+					_1: {
+						ctor: '::',
+						_0: 'g#',
+						_1: {
+							ctor: '::',
+							_0: 'd#',
+							_1: {
+								ctor: '::',
+								_0: 'bb',
+								_1: {
+									ctor: '::',
+									_0: 'f',
+									_1: {
+										ctor: '::',
+										_0: 'c',
+										_1: {
+											ctor: '::',
+											_0: 'g',
+											_1: {
+												ctor: '::',
+												_0: 'd',
+												_1: {ctor: '[]'}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+};
+var _user$project$Pages_Chords$keyListMajor = {
+	ctor: '::',
+	_0: 'C',
+	_1: {
+		ctor: '::',
+		_0: 'G',
+		_1: {
+			ctor: '::',
+			_0: 'D',
+			_1: {
+				ctor: '::',
+				_0: 'A',
+				_1: {
+					ctor: '::',
+					_0: 'E',
+					_1: {
+						ctor: '::',
+						_0: 'B',
+						_1: {
+							ctor: '::',
+							_0: 'F#',
+							_1: {
+								ctor: '::',
+								_0: 'Db',
+								_1: {
+									ctor: '::',
+									_0: 'Ab',
+									_1: {
+										ctor: '::',
+										_0: 'Eb',
+										_1: {
+											ctor: '::',
+											_0: 'Bb',
+											_1: {
+												ctor: '::',
+												_0: 'F',
+												_1: {ctor: '[]'}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+};
+var _user$project$Pages_Chords$chordChart = function (chord) {
+	return A2(
+		_elm_lang$html$Html$div,
+		{
+			ctor: '::',
+			_0: _user$project$Styles_ChordStyles$chartContainerStyle('row'),
+			_1: {ctor: '[]'}
+		},
+		{
+			ctor: '::',
+			_0: A2(
+				_elm_lang$html$Html$div,
+				{
+					ctor: '::',
+					_0: _user$project$Styles_ChordStyles$chartStyle,
+					_1: {ctor: '[]'}
+				},
+				{
+					ctor: '::',
+					_0: A2(
+						_elm_lang$html$Html$div,
+						{
+							ctor: '::',
+							_0: _user$project$Styles_ChordStyles$stringStyle,
+							_1: {ctor: '[]'}
+						},
+						{ctor: '[]'}),
+					_1: {
+						ctor: '::',
+						_0: A2(
+							_elm_lang$html$Html$div,
+							{
+								ctor: '::',
+								_0: _user$project$Styles_ChordStyles$stringStyle,
+								_1: {ctor: '[]'}
+							},
+							{ctor: '[]'}),
+						_1: {
+							ctor: '::',
+							_0: A2(
+								_elm_lang$html$Html$div,
+								{
+									ctor: '::',
+									_0: _user$project$Styles_ChordStyles$stringStyle,
+									_1: {ctor: '[]'}
+								},
+								{ctor: '[]'}),
+							_1: {
+								ctor: '::',
+								_0: A2(
+									_elm_lang$html$Html$div,
+									{
+										ctor: '::',
+										_0: _user$project$Styles_ChordStyles$stringStyle,
+										_1: {ctor: '[]'}
+									},
+									{ctor: '[]'}),
+								_1: {
+									ctor: '::',
+									_0: A2(
+										_elm_lang$html$Html$div,
+										{
+											ctor: '::',
+											_0: _user$project$Styles_ChordStyles$fretStyle(1),
+											_1: {ctor: '[]'}
+										},
+										{ctor: '[]'}),
+									_1: {
+										ctor: '::',
+										_0: A2(
+											_elm_lang$html$Html$div,
+											{
+												ctor: '::',
+												_0: _user$project$Styles_ChordStyles$fretStyle(2),
+												_1: {ctor: '[]'}
+											},
+											{ctor: '[]'}),
+										_1: {
+											ctor: '::',
+											_0: A2(
+												_elm_lang$html$Html$div,
+												{
+													ctor: '::',
+													_0: _user$project$Styles_ChordStyles$fretStyle(3),
+													_1: {ctor: '[]'}
+												},
+												{ctor: '[]'}),
+											_1: {
+												ctor: '::',
+												_0: chord,
+												_1: {ctor: '[]'}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}),
+			_1: {
+				ctor: '::',
+				_0: A2(
+					_elm_lang$html$Html$div,
+					{
+						ctor: '::',
+						_0: _user$project$Styles_ChordStyles$nutStyle,
+						_1: {ctor: '[]'}
+					},
+					{ctor: '[]'}),
+				_1: {ctor: '[]'}
+			}
+		});
+};
+var _user$project$Pages_Chords$chordBarPosition = F2(
+	function (index, key) {
+		var barPosition = A2(_elm_community$list_extra$List_Extra$getAt, index, key.bars);
+		return (_elm_lang$core$Native_Utils.cmp(
+			_elm_lang$core$String$length(
+				A2(_elm_lang$core$Maybe$withDefault, '', barPosition)),
+			0) > 0) ? A2(
+			_elm_lang$html$Html$div,
+			{
+				ctor: '::',
+				_0: _user$project$Styles_ChordStyles$chordBarPosStyle,
+				_1: {ctor: '[]'}
+			},
+			{
+				ctor: '::',
+				_0: _elm_lang$html$Html$text(
+					A2(
+						_elm_lang$core$Basics_ops['++'],
+						'Fret ',
+						A3(
+							_elm_lang$core$String$slice,
+							1,
+							2,
+							_elm_lang$core$Basics$toString(
+								A2(_elm_lang$core$Maybe$withDefault, '', barPosition))))),
+				_1: {ctor: '[]'}
+			}) : A2(
+			_elm_lang$html$Html$div,
+			{ctor: '[]'},
+			{ctor: '[]'});
+	});
+var _user$project$Pages_Chords$chordFunction = F2(
+	function (num, key) {
+		return _elm_lang$html$Html$text(
+			A2(
+				_elm_lang$core$Maybe$withDefault,
+				'0',
+				A2(_elm_community$list_extra$List_Extra$getAt, num, key.names)));
+	});
+var _user$project$Pages_Chords$fretNo = function (fret) {
+	var _p0 = fret;
+	switch (_p0) {
+		case '0':
+			return '-30';
+		case '1':
+			return '15';
+		case '2':
+			return '58';
+		case '3':
+			return '102';
+		case '4':
+			return '145';
+		default:
+			return '-30';
+	}
+};
+var _user$project$Pages_Chords$stringNo = function (string) {
+	var _p1 = string;
+	switch (_p1) {
+		case '1':
+			return '135';
+		case '2':
+			return '105';
+		case '3':
+			return '75';
+		case '4':
+			return '45';
+		case '5':
+			return '15';
+		case '6':
+			return '-15';
+		default:
+			return '';
+	}
+};
+var _user$project$Pages_Chords$fingerNo = function (finger) {
+	var _p2 = finger;
+	switch (_p2) {
+		case 'b':
+			return 'bar';
+		case '1':
+			return '#677077';
+		case '2':
+			return '#B5B5B6';
+		case '3':
+			return '#333';
+		case '4':
+			return '#03a9f4';
+		default:
+			return 'none';
+	}
+};
+var _user$project$Pages_Chords$fingerChart = A2(
+	_elm_lang$html$Html$div,
+	{
+		ctor: '::',
+		_0: _user$project$Styles_ChordStyles$fingerChartStyle,
+		_1: {ctor: '[]'}
+	},
+	{
+		ctor: '::',
+		_0: A2(
+			_elm_lang$html$Html$div,
+			{
+				ctor: '::',
+				_0: _elm_lang$html$Html_Attributes$style(
+					{
+						ctor: '::',
+						_0: {ctor: '_Tuple2', _0: 'display', _1: 'flex'},
+						_1: {ctor: '[]'}
+					}),
+				_1: {ctor: '[]'}
+			},
+			{
+				ctor: '::',
+				_0: A2(
+					_elm_lang$html$Html$div,
+					{
+						ctor: '::',
+						_0: _user$project$Styles_ChordStyles$fingerChartDotStyle(
+							_user$project$Pages_Chords$fingerNo('1')),
+						_1: {ctor: '[]'}
+					},
+					{ctor: '[]'}),
+				_1: {
+					ctor: '::',
+					_0: A2(
+						_elm_lang$html$Html$div,
+						{
+							ctor: '::',
+							_0: _user$project$Styles_ChordStyles$fingerChartTextStyle,
+							_1: {ctor: '[]'}
+						},
+						{
+							ctor: '::',
+							_0: _elm_lang$html$Html$text('Pointer'),
+							_1: {ctor: '[]'}
+						}),
+					_1: {
+						ctor: '::',
+						_0: A2(
+							_elm_lang$html$Html$div,
+							{
+								ctor: '::',
+								_0: _user$project$Styles_ChordStyles$fingerChartDotStyle(
+									_user$project$Pages_Chords$fingerNo('2')),
+								_1: {ctor: '[]'}
+							},
+							{ctor: '[]'}),
+						_1: {
+							ctor: '::',
+							_0: A2(
+								_elm_lang$html$Html$div,
+								{
+									ctor: '::',
+									_0: _user$project$Styles_ChordStyles$fingerChartTextStyle,
+									_1: {ctor: '[]'}
+								},
+								{
+									ctor: '::',
+									_0: _elm_lang$html$Html$text('Middle'),
+									_1: {ctor: '[]'}
+								}),
+							_1: {
+								ctor: '::',
+								_0: A2(
+									_elm_lang$html$Html$div,
+									{
+										ctor: '::',
+										_0: _user$project$Styles_ChordStyles$fingerChartDotStyle(
+											_user$project$Pages_Chords$fingerNo('3')),
+										_1: {ctor: '[]'}
+									},
+									{ctor: '[]'}),
+								_1: {
+									ctor: '::',
+									_0: A2(
+										_elm_lang$html$Html$div,
+										{
+											ctor: '::',
+											_0: _user$project$Styles_ChordStyles$fingerChartTextStyle,
+											_1: {ctor: '[]'}
+										},
+										{
+											ctor: '::',
+											_0: _elm_lang$html$Html$text('Ring'),
+											_1: {ctor: '[]'}
+										}),
+									_1: {
+										ctor: '::',
+										_0: A2(
+											_elm_lang$html$Html$div,
+											{
+												ctor: '::',
+												_0: _user$project$Styles_ChordStyles$fingerChartDotStyle(
+													_user$project$Pages_Chords$fingerNo('4')),
+												_1: {ctor: '[]'}
+											},
+											{ctor: '[]'}),
+										_1: {
+											ctor: '::',
+											_0: A2(
+												_elm_lang$html$Html$div,
+												{
+													ctor: '::',
+													_0: _user$project$Styles_ChordStyles$fingerChartTextStyle,
+													_1: {ctor: '[]'}
+												},
+												{
+													ctor: '::',
+													_0: _elm_lang$html$Html$text('Pinky'),
+													_1: {ctor: '[]'}
+												}),
+											_1: {ctor: '[]'}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}),
+		_1: {ctor: '[]'}
+	});
+var _user$project$Pages_Chords$init = {
+	currentChord: {ctor: '[]'},
+	displayedChords: _user$project$Pages_Chords$startKey,
+	musKey: 'C',
+	sliderValue: 1,
+	pitchShift: 0,
+	index: 6
+};
+var _user$project$Pages_Chords$Model = F6(
+	function (a, b, c, d, e, f) {
+		return {currentChord: a, displayedChords: b, musKey: c, sliderValue: d, pitchShift: e, index: f};
+	});
+var _user$project$Pages_Chords$PlayBundle = F2(
+	function (a, b) {
+		return {note: a, waveType: b};
+	});
+var _user$project$Pages_Chords$ChordChartData = function (a) {
+	return function (b) {
+		return function (c) {
+			return function (d) {
+				return function (e) {
+					return function (f) {
+						return function (g) {
+							return function (h) {
+								return function (i) {
+									return function (j) {
+										return function (k) {
+											return function (l) {
+												return function (m) {
+													return function (n) {
+														return {i: a, ii: b, iii: c, iv: d, v: e, vi: f, vii: g, i7: h, iv7: i, v7: j, vi7: k, bars: l, names: m, key: n};
+													};
+												};
+											};
+										};
+									};
+								};
+							};
+						};
+					};
+				};
+			};
+		};
+	};
+};
+var _user$project$Pages_Chords$Dot = F3(
+	function (a, b, c) {
+		return {tint: a, stringNo: b, fretNo: c};
+	});
+var _user$project$Pages_Chords$chordBuilder = function (chord) {
+	var string = F2(
+		function (a, b) {
+			return A3(_elm_lang$core$String$slice, a, b, chord);
+		});
+	return A2(
+		_elm_lang$html$Html$div,
+		{ctor: '[]'},
+		{
+			ctor: '::',
+			_0: A2(
+				_elm_lang$html$Html$div,
+				{
+					ctor: '::',
+					_0: _user$project$Styles_ChordStyles$fretMarkerStyle(
+						A3(
+							_user$project$Pages_Chords$Dot,
+							_user$project$Pages_Chords$fingerNo(
+								A2(string, 0, 1)),
+							_user$project$Pages_Chords$stringNo(
+								A2(string, 1, 2)),
+							_user$project$Pages_Chords$fretNo(
+								A2(string, 2, 3)))),
+					_1: {ctor: '[]'}
+				},
+				{
+					ctor: '::',
+					_0: _elm_lang$html$Html$text(
+						A2(string, 2, 3)),
+					_1: {ctor: '[]'}
+				}),
+			_1: {
+				ctor: '::',
+				_0: A2(
+					_elm_lang$html$Html$div,
+					{
+						ctor: '::',
+						_0: _user$project$Styles_ChordStyles$fretMarkerStyle(
+							A3(
+								_user$project$Pages_Chords$Dot,
+								_user$project$Pages_Chords$fingerNo(
+									A2(string, 3, 4)),
+								_user$project$Pages_Chords$stringNo(
+									A2(string, 4, 5)),
+								_user$project$Pages_Chords$fretNo(
+									A2(string, 5, 6)))),
+						_1: {ctor: '[]'}
+					},
+					{
+						ctor: '::',
+						_0: _elm_lang$html$Html$text(
+							A2(string, 5, 6)),
+						_1: {ctor: '[]'}
+					}),
+				_1: {
+					ctor: '::',
+					_0: A2(
+						_elm_lang$html$Html$div,
+						{
+							ctor: '::',
+							_0: _user$project$Styles_ChordStyles$fretMarkerStyle(
+								A3(
+									_user$project$Pages_Chords$Dot,
+									_user$project$Pages_Chords$fingerNo(
+										A2(string, 6, 7)),
+									_user$project$Pages_Chords$stringNo(
+										A2(string, 7, 8)),
+									_user$project$Pages_Chords$fretNo(
+										A2(string, 8, 9)))),
+							_1: {ctor: '[]'}
+						},
+						{
+							ctor: '::',
+							_0: _elm_lang$html$Html$text(
+								A2(string, 8, 9)),
+							_1: {ctor: '[]'}
+						}),
+					_1: {
+						ctor: '::',
+						_0: A2(
+							_elm_lang$html$Html$div,
+							{
+								ctor: '::',
+								_0: _user$project$Styles_ChordStyles$fretMarkerStyle(
+									A3(
+										_user$project$Pages_Chords$Dot,
+										_user$project$Pages_Chords$fingerNo(
+											A2(string, 9, 10)),
+										_user$project$Pages_Chords$stringNo(
+											A2(string, 10, 11)),
+										_user$project$Pages_Chords$fretNo(
+											A2(string, 11, 12)))),
+								_1: {ctor: '[]'}
+							},
+							{
+								ctor: '::',
+								_0: _elm_lang$html$Html$text(
+									A2(string, 11, 12)),
+								_1: {ctor: '[]'}
+							}),
+						_1: {
+							ctor: '::',
+							_0: A2(
+								_elm_lang$html$Html$div,
+								{
+									ctor: '::',
+									_0: _user$project$Styles_ChordStyles$fretMarkerStyle(
+										A3(
+											_user$project$Pages_Chords$Dot,
+											_user$project$Pages_Chords$fingerNo(
+												A2(string, 12, 13)),
+											_user$project$Pages_Chords$stringNo(
+												A2(string, 13, 14)),
+											_user$project$Pages_Chords$fretNo(
+												A2(string, 14, 15)))),
+									_1: {ctor: '[]'}
+								},
+								{
+									ctor: '::',
+									_0: _elm_lang$html$Html$text(
+										A2(string, 14, 15)),
+									_1: {ctor: '[]'}
+								}),
+							_1: {
+								ctor: '::',
+								_0: A2(
+									_elm_lang$html$Html$div,
+									{
+										ctor: '::',
+										_0: _user$project$Styles_ChordStyles$fretMarkerStyle(
+											A3(
+												_user$project$Pages_Chords$Dot,
+												_user$project$Pages_Chords$fingerNo(
+													A2(string, 15, 16)),
+												_user$project$Pages_Chords$stringNo(
+													A2(string, 16, 17)),
+												_user$project$Pages_Chords$fretNo(
+													A2(string, 17, 18)))),
+										_1: {ctor: '[]'}
+									},
+									{
+										ctor: '::',
+										_0: _elm_lang$html$Html$text(
+											A2(string, 17, 18)),
+										_1: {ctor: '[]'}
+									}),
+								_1: {ctor: '[]'}
+							}
+						}
+					}
+				}
+			}
+		});
+};
+var _user$project$Pages_Chords$ChangeSliderValue = function (a) {
+	return {ctor: 'ChangeSliderValue', _0: a};
+};
+var _user$project$Pages_Chords$SendNotes = {ctor: 'SendNotes'};
+var _user$project$Pages_Chords$subscriptions = function (model) {
+	var val = _elm_lang$core$Basics$toFloat(model.sliderValue) / 10.0;
+	return (_elm_lang$core$Native_Utils.cmp(
+		model.index,
+		_elm_lang$core$List$length(model.currentChord)) < 0) ? A2(
+		_elm_lang$core$Time$every,
+		val * _elm_lang$core$Time$second,
+		_elm_lang$core$Basics$always(_user$project$Pages_Chords$SendNotes)) : _elm_lang$core$Platform_Sub$none;
+};
+var _user$project$Pages_Chords$ResetIndex = {ctor: 'ResetIndex'};
+var _user$project$Pages_Chords$update = F2(
+	function (msg, model) {
+		var _p3 = msg;
+		switch (_p3.ctor) {
+			case 'Play':
+				return A2(
+					_ccapndave$elm_update_extra$Update_Extra_Infix_ops[':>'],
+					A2(
+						_ccapndave$elm_update_extra$Update_Extra_Infix_ops[':>'],
+						A2(
+							_elm_lang$core$Platform_Cmd_ops['!'],
+							_elm_lang$core$Native_Utils.update(
+								model,
+								{currentChord: _p3._0, pitchShift: _p3._1}),
+							{ctor: '[]'}),
+						_user$project$Pages_Chords$update(_user$project$Pages_Chords$ResetIndex)),
+					_user$project$Pages_Chords$update(_user$project$Pages_Chords$SendNotes));
+			case 'ResetIndex':
+				return A2(
+					_elm_lang$core$Platform_Cmd_ops['!'],
+					_elm_lang$core$Native_Utils.update(
+						model,
+						{index: 0}),
+					{ctor: '[]'});
+			case 'SendNotes':
+				var note = _user$project$Logic_Audio$noteSorter(
+					A2(
+						_elm_lang$core$Maybe$withDefault,
+						'e2w',
+						A2(_elm_community$list_extra$List_Extra$getAt, model.index, model.currentChord)));
+				var shiftedNote = _elm_lang$core$Native_Utils.update(
+					note,
+					{
+						frequency: note.frequency * Math.pow(
+							1.059463,
+							_elm_lang$core$Basics$toFloat(model.pitchShift)),
+						sustain: note.sustain * (_elm_lang$core$Basics$toFloat(model.sliderValue) / 2)
+					});
+				return {
+					ctor: '_Tuple2',
+					_0: _elm_lang$core$Native_Utils.update(
+						model,
+						{index: model.index + 1}),
+					_1: _user$project$Logic_Ports$send(
+						A2(_user$project$Pages_Chords$PlayBundle, shiftedNote, 'triangle'))
+				};
+			default:
+				var val = A2(
+					_elm_lang$core$Result$withDefault,
+					1,
+					_elm_lang$core$String$toInt(_p3._0));
+				return A2(
+					_elm_lang$core$Platform_Cmd_ops['!'],
+					_elm_lang$core$Native_Utils.update(
+						model,
+						{sliderValue: val}),
+					{ctor: '[]'});
+		}
+	});
+var _user$project$Pages_Chords$Play = F2(
+	function (a, b) {
+		return {ctor: 'Play', _0: a, _1: b};
+	});
+var _user$project$Pages_Chords$chordChartModel = F5(
+	function (model, index, name, accessor1, accessor2) {
+		return A2(
+			_elm_lang$html$Html$div,
+			{
+				ctor: '::',
+				_0: _user$project$Styles_ChordStyles$chartContainerStyle('column'),
+				_1: {
+					ctor: '::',
+					_0: _elm_lang$html$Html_Events$onClick(
+						A2(
+							_user$project$Pages_Chords$Play,
+							accessor1(
+								_user$project$Logic_Audio$notes(model.musKey)),
+							0)),
+					_1: {ctor: '[]'}
+				}
+			},
+			{
+				ctor: '::',
+				_0: A2(
+					_elm_lang$html$Html$div,
+					{ctor: '[]'},
+					{
+						ctor: '::',
+						_0: A2(_user$project$Pages_Chords$chordBarPosition, index, model.displayedChords),
+						_1: {ctor: '[]'}
+					}),
+				_1: {
+					ctor: '::',
+					_0: _user$project$Pages_Chords$chordChart(
+						_user$project$Pages_Chords$chordBuilder(
+							accessor2(model.displayedChords))),
+					_1: {
+						ctor: '::',
+						_0: A2(
+							_elm_lang$html$Html$div,
+							{
+								ctor: '::',
+								_0: _user$project$Styles_ChordStyles$chordNameStyle,
+								_1: {ctor: '[]'}
+							},
+							{
+								ctor: '::',
+								_0: A2(_user$project$Pages_Chords$chordFunction, index, model.displayedChords),
+								_1: {ctor: '[]'}
+							}),
+						_1: {
+							ctor: '::',
+							_0: A2(
+								_elm_lang$html$Html$div,
+								{
+									ctor: '::',
+									_0: _user$project$Styles_ChordStyles$chordFunctionStyle,
+									_1: {ctor: '[]'}
+								},
+								{
+									ctor: '::',
+									_0: _elm_lang$html$Html$text(name),
+									_1: {ctor: '[]'}
+								}),
+							_1: {ctor: '[]'}
+						}
+					}
+				}
+			});
+	});
+var _user$project$Pages_Chords$view = function (model) {
+	var keyOptions = function (key) {
+		return A2(
+			_elm_lang$html$Html$option,
+			{
+				ctor: '::',
+				_0: _elm_lang$html$Html_Attributes$value(key),
+				_1: {ctor: '[]'}
+			},
+			{
+				ctor: '::',
+				_0: _elm_lang$html$Html$text(key),
+				_1: {ctor: '[]'}
+			});
+	};
+	var soloFretMin = A2(
+		_elm_lang$core$Maybe$withDefault,
+		'0',
+		A2(_elm_community$list_extra$List_Extra$getAt, 11, model.displayedChords.names));
+	var soloFretMaj = _elm_lang$core$Basics$toString(
+		A2(
+			_elm_lang$core$Basics_ops['%'],
+			A2(
+				_elm_lang$core$Result$withDefault,
+				0,
+				_elm_lang$core$String$toInt(soloFretMin)) + 3,
+			12));
+	return A2(
+		_elm_lang$html$Html$div,
+		{
+			ctor: '::',
+			_0: _user$project$Styles_ChordStyles$chordsPageStyle,
+			_1: {ctor: '[]'}
+		},
+		{
+			ctor: '::',
+			_0: A2(
+				_elm_lang$html$Html$div,
+				{ctor: '[]'},
+				{
+					ctor: '::',
+					_0: _user$project$Pages_Chords$fingerChart,
+					_1: {ctor: '[]'}
+				}),
+			_1: {
+				ctor: '::',
+				_0: A2(
+					_elm_lang$html$Html$div,
+					{
+						ctor: '::',
+						_0: _user$project$Styles_ChordStyles$chartContainerStyle('row'),
+						_1: {ctor: '[]'}
+					},
+					{
+						ctor: '::',
+						_0: A5(
+							_user$project$Pages_Chords$chordChartModel,
+							model,
+							0,
+							'I',
+							function (_) {
+								return _.i;
+							},
+							function (_) {
+								return _.i;
+							}),
+						_1: {
+							ctor: '::',
+							_0: A5(
+								_user$project$Pages_Chords$chordChartModel,
+								model,
+								3,
+								'IV',
+								function (_) {
+									return _.iv;
+								},
+								function (_) {
+									return _.iv;
+								}),
+							_1: {
+								ctor: '::',
+								_0: A5(
+									_user$project$Pages_Chords$chordChartModel,
+									model,
+									4,
+									'V',
+									function (_) {
+										return _.v;
+									},
+									function (_) {
+										return _.v;
+									}),
+								_1: {
+									ctor: '::',
+									_0: A5(
+										_user$project$Pages_Chords$chordChartModel,
+										model,
+										5,
+										'VI',
+										function (_) {
+											return _.vi;
+										},
+										function (_) {
+											return _.vi;
+										}),
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}),
+				_1: {
+					ctor: '::',
+					_0: A2(
+						_elm_lang$html$Html$div,
+						{
+							ctor: '::',
+							_0: _user$project$Styles_ChordStyles$chartContainerStyle('row'),
+							_1: {ctor: '[]'}
+						},
+						{
+							ctor: '::',
+							_0: A5(
+								_user$project$Pages_Chords$chordChartModel,
+								model,
+								1,
+								'II',
+								function (_) {
+									return _.ii;
+								},
+								function (_) {
+									return _.ii;
+								}),
+							_1: {
+								ctor: '::',
+								_0: A5(
+									_user$project$Pages_Chords$chordChartModel,
+									model,
+									2,
+									'III',
+									function (_) {
+										return _.iii;
+									},
+									function (_) {
+										return _.iii;
+									}),
+								_1: {
+									ctor: '::',
+									_0: A5(
+										_user$project$Pages_Chords$chordChartModel,
+										model,
+										6,
+										'VII',
+										function (_) {
+											return _.vii;
+										},
+										function (_) {
+											return _.vii;
+										}),
+									_1: {ctor: '[]'}
+								}
+							}
+						}),
+					_1: {
+						ctor: '::',
+						_0: A2(
+							_elm_lang$html$Html$h4,
+							{ctor: '[]'},
+							{
+								ctor: '::',
+								_0: _elm_lang$html$Html$text('7th CHORDS'),
+								_1: {ctor: '[]'}
+							}),
+						_1: {
+							ctor: '::',
+							_0: A2(
+								_elm_lang$html$Html$div,
+								{
+									ctor: '::',
+									_0: _user$project$Styles_ChordStyles$chartContainerStyle('row'),
+									_1: {ctor: '[]'}
+								},
+								{
+									ctor: '::',
+									_0: A5(
+										_user$project$Pages_Chords$chordChartModel,
+										model,
+										7,
+										'I7',
+										function (_) {
+											return _.i;
+										},
+										function (_) {
+											return _.i7;
+										}),
+									_1: {
+										ctor: '::',
+										_0: A5(
+											_user$project$Pages_Chords$chordChartModel,
+											model,
+											8,
+											'IV7',
+											function (_) {
+												return _.iv;
+											},
+											function (_) {
+												return _.iv7;
+											}),
+										_1: {
+											ctor: '::',
+											_0: A5(
+												_user$project$Pages_Chords$chordChartModel,
+												model,
+												9,
+												'V7',
+												function (_) {
+													return _.v;
+												},
+												function (_) {
+													return _.v7;
+												}),
+											_1: {
+												ctor: '::',
+												_0: A5(
+													_user$project$Pages_Chords$chordChartModel,
+													model,
+													10,
+													'VI7',
+													function (_) {
+														return _.vi;
+													},
+													function (_) {
+														return _.vi7;
+													}),
+												_1: {ctor: '[]'}
+											}
+										}
+									}
+								}),
+							_1: {
+								ctor: '::',
+								_0: A2(
+									_elm_lang$html$Html$div,
+									{
+										ctor: '::',
+										_0: _user$project$Styles_ChordStyles$soloOnTextStyle,
+										_1: {ctor: '[]'}
+									},
+									{
+										ctor: '::',
+										_0: A2(
+											_elm_lang$html$Html$span,
+											{ctor: '[]'},
+											{
+												ctor: '::',
+												_0: _elm_lang$html$Html$text('SOLO ON FRET: '),
+												_1: {ctor: '[]'}
+											}),
+										_1: {
+											ctor: '::',
+											_0: A2(
+												_elm_lang$html$Html$span,
+												{
+													ctor: '::',
+													_0: _user$project$Styles_ChordStyles$soloOnNumberStyle,
+													_1: {ctor: '[]'}
+												},
+												{
+													ctor: '::',
+													_0: _elm_lang$html$Html$text(soloFretMin),
+													_1: {ctor: '[]'}
+												}),
+											_1: {
+												ctor: '::',
+												_0: A2(
+													_elm_lang$html$Html$a,
+													{
+														ctor: '::',
+														_0: _user$project$Styles_ChordStyles$soloOnLinkStyle,
+														_1: {
+															ctor: '::',
+															_0: _elm_lang$html$Html_Attributes$href(
+																_user$project$Logic_Routing$scalesPath(model.musKey)),
+															_1: {ctor: '[]'}
+														}
+													},
+													{
+														ctor: '::',
+														_0: _elm_lang$html$Html$text(' (MINOR SCALE), OR FRET: '),
+														_1: {ctor: '[]'}
+													}),
+												_1: {
+													ctor: '::',
+													_0: A2(
+														_elm_lang$html$Html$span,
+														{
+															ctor: '::',
+															_0: _user$project$Styles_ChordStyles$soloOnNumberStyle,
+															_1: {ctor: '[]'}
+														},
+														{
+															ctor: '::',
+															_0: _elm_lang$html$Html$text(soloFretMaj),
+															_1: {ctor: '[]'}
+														}),
+													_1: {
+														ctor: '::',
+														_0: A2(
+															_elm_lang$html$Html$a,
+															{
+																ctor: '::',
+																_0: _user$project$Styles_ChordStyles$soloOnLinkStyle,
+																_1: {
+																	ctor: '::',
+																	_0: _elm_lang$html$Html_Attributes$href(
+																		_user$project$Logic_Routing$scalesPath(model.musKey)),
+																	_1: {ctor: '[]'}
+																}
+															},
+															{
+																ctor: '::',
+																_0: _elm_lang$html$Html$text(' (MAJOR SCALE)'),
+																_1: {ctor: '[]'}
+															}),
+														_1: {ctor: '[]'}
+													}
+												}
+											}
+										}
+									}),
+								_1: {ctor: '[]'}
+							}
+						}
+					}
+				}
+			}
+		});
+};

@@ -1,17 +1,18 @@
-module Pages.Home exposing (homePage)
+module Pages.Home exposing (view)
 
 import Html exposing (..)
 import Html.Attributes exposing (..)
-import Pages.Chords exposing (chordChartModel)
+import Pages.Chords exposing (chordChartModel, Model)
 import Pages.Fretboard exposing (..)
 import Pages.Scales exposing (..)
-import Logic.Types exposing (Model, Msg(..))
 import Styles.HomeStyles exposing (..)
 import Styles.ChordStyles exposing (chartContainerStyle)
 
 
-homePage : Model -> Html Msg
-homePage model =
+-- view : Model -> Html msg
+
+
+view model =
     div [ homePageStyle ]
         [ div [ titleStyle "30px" "#444" ] [ text "Applied Music Theory For Guitarists" ]
         , div [ chartContainerStyle "row" ]

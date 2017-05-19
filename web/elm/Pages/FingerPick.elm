@@ -3,13 +3,10 @@ module Pages.FingerPick exposing (view, Model)
 import Html exposing (Html, div, button, text, span, hr, h1, h3, h4, h5)
 import Html.Attributes exposing (style, attribute)
 import Html.Events exposing (onClick)
-import Pages.Chords exposing (chordChartModel, startKey)
-
-
--- import Logic.Types exposing (Msg(Randomize, ShowModal))
-
+import Pages.Chords exposing (chordChartModel, startKey, ChordChartData)
 import Styles.FingerPickStyles exposing (..)
 import List.Extra exposing (getAt)
+import Random
 
 
 type alias Model =
@@ -68,8 +65,8 @@ update msg model =
 view : Model -> Html Msg
 view model =
     div [ fingerPickingPageStyle ]
-        [ h1 [ fingerPickChordTitleStyle ] [ chordChartModel model 0 "" .i .i ]
-        , fingerPickGroup "1,1" model.fingerPickPattern.a model.fingerPickPattern.b model
+        -- [ h1 [ fingerPickChordTitleStyle ] [ chordChartModel model 0 "" .i .i ]
+        [ fingerPickGroup "1,1" model.fingerPickPatternA model.fingerPickPatternB model
         , button [ buttonStyle, onClick (Randomize 0 8) ] [ text "Generate Random Fingerpicking Pattern" ]
         ]
 

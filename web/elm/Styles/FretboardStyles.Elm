@@ -2,7 +2,6 @@ module Styles.FretboardStyles exposing (..)
 
 import Html exposing (Attribute)
 import Html.Attributes exposing (style)
-import Logic.Types exposing (Model)
 
 
 fretboardTitleStyle : Attribute msg

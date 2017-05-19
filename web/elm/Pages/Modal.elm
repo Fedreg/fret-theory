@@ -1,11 +1,19 @@
-module Pages.Modal exposing (modal, modalIcon)
+module Pages.Modals exposing (modal)
 
-import Html exposing (Html, div, span, a, text, h3, h4)
-import Html.Attributes exposing (style, class)
-import Html.Events exposing (onClick)
-import Logic.Types exposing (Model, Msg(ShowModal), Route(..))
+import Html exposing (Html, div, span, hr, text, a, input, h3, h1)
+import Html exposing (Html, div, span, hr, text, a, input, h3)
+import Html.Attributes exposing (style, href, value, type_, href)
+import Html.Events exposing (onClick, onInput)
+import Logic.Routing as Routing
+import Pages.Home exposing (view)
+import Pages.Chords exposing (view, Model, keyListMajor, keyListMinor)
+import Pages.Scales exposing (view, Model)
+import Pages.Fretboard exposing (view, Model)
+import Pages.Strum exposing (view, Model, strumGroup)
+import Pages.FingerPick exposing (view, Model)
+import Styles.MainStyles exposing (..)
+import InlineHover exposing (hover)
 import Styles.ModalStyles exposing (..)
-import Pages.Strum exposing (strumGroup)
 import Markdown exposing (toHtml)
 
 

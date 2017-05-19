@@ -1,13 +1,16 @@
-module Pages.Chords exposing (view, init, keyList, chordChartModel, startKey, keyListMajor, keyListMinor)
+module Pages.Chords exposing (..)
 
 import Html exposing (Html, div, span, a, text, option, h4)
 import Html.Attributes exposing (style, value, href)
 import Html.Events exposing (onClick)
 import List.Extra exposing (getAt)
 import Logic.Audio exposing (notes)
-import Logic.Types exposing (Dot)
 import Logic.Routing exposing (scalesPath)
 import Styles.ChordStyles exposing (..)
+import Logic.Audio exposing (Note, noteSorter)
+import Logic.Ports exposing (send)
+import Time exposing (every, second)
+import Update.Extra.Infix exposing ((:>))
 
 
 type alias Model =
@@ -15,6 +18,8 @@ type alias Model =
     , displayedChords : ChordChartData
     , musKey : String
     , sliderValue : Int
+    , pitchShift : Int
+    , index : Int
     }
 
 
@@ -23,6 +28,39 @@ init =
     , displayedChords = startKey
     , musKey = "C"
     , sliderValue = 1
+    , pitchShift = 0
+    , index = 6
+    }
+
+
+type alias PlayBundle =
+    { note : Note
+    , waveType : String
+    }
+
+
+type alias ChordChartData =
+    { i : String
+    , ii : String
+    , iii : String
+    , iv : String
+    , v : String
+    , vi : String
+    , vii : String
+    , i7 : String
+    , iv7 : String
+    , v7 : String
+    , vi7 : String
+    , bars : List String
+    , names : List String
+    , key : String
+    }
+
+
+type alias Dot =
+    { tint : String
+    , stringNo : String
+    , fretNo : String
     }
 
 
@@ -30,6 +68,7 @@ type Msg
     = Play (List String) Int
     | ResetIndex
     | SendNotes
+    | ChangeSliderValue String
 
 
 update msg model =
@@ -54,6 +93,25 @@ update msg model =
                 ( { model | index = model.index + 1 }
                 , send (PlayBundle shiftedNote "triangle")
                 )
+
+        ChangeSliderValue newVal ->
+            let
+                val =
+                    Result.withDefault 1 <| String.toInt newVal
+            in
+                { model | sliderValue = val } ! []
+
+
+subscriptions : Model -> Sub Msg
+subscriptions model =
+    let
+        val =
+            toFloat model.sliderValue / 10.0
+    in
+        if model.index < List.length model.currentChord then
+            Time.every (val * Time.second) (always SendNotes)
+        else
+            Sub.none
 
 
 view : Model -> Html Msg

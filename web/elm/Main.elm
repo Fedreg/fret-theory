@@ -1,14 +1,13 @@
-port module Main exposing (main, init, update, send, subscriptions)
+module Main exposing (main, init, update, send, subscriptions, Route, Msg(..))
 
 import List.Extra exposing (getAt)
 import Logic.Routing as Routing
-import Logic.Types exposing (Model, Msg(..), Route(..), PlayBundle, ChordChartData)
 import Logic.Audio exposing (noteSorter)
 import Pages.Fretboard exposing (noteStringPos, noteFretPos)
 import Pages.MainViews exposing (mainView)
-import Pages.Chords exposing (startKey)
-import Pages.FingerPick exposing (init)
-import Pages.Strum exposing (init)
+import Pages.Chords exposing (init, Model, startKey)
+import Pages.FingerPick exposing (init, Model)
+import Pages.Strum exposing (init, Model)
 import Navigation exposing (Location, newUrl)
 import Time
 import Update.Extra.Infix exposing ((:>))
@@ -31,42 +30,64 @@ main =
         }
 
 
+type alias Model =
+    { route : Route
+    , currentPage : Page
+    , fingerPickModel : Pages.FingerPick.Model
+    , strumModel : Pages.Strum.Model
+    , chordsModel : Pages.Chords.Model
+    , scalesModel : Pages.Scales.Model
+    , musKey : String
+    , navMenuOpen : Bool
+    , modalOpen : Bool
+    , phxSocket : Phoenix.Socket.Socket Msg
+    }
+
+    
 init location =
     let
         currentRoute =
             Routing.parseLocation location
     in
         ( { route = currentRoute
-          , musKey = "C"
-          , index = 6
+          , musKey ="C"
           , fingerPickModel = Pages.FingerPick.init
           , strumModel = Pages.Strum.init
-          , chordsModel =
-                Pages.Chords.init
-                --   , currentChord = []
-                --   , displayedChords = startKey
-          , notePosition = 80.0
-          , showAccidental =
-                "0"
-                --   , sliderValue = 1
+          , chordsModel = Pages.Chords.init
+          , fretboardModel = Pages.Fretboard.init
+          , scalesModel = Pages.Scales.init
           , navMenuOpen = False
-          , pitchShift = 0
-          , modalOpen =
-                False
-                --   , strumGroupNumber = "1"
-                --   , strumArrow =
-                --         [ [ 1, 2, 1, 1, 2, 1, 1, 1 ], [ 1, 2, 1, 1, 2, 1, 1, 1 ], [ 1, 2, 1, 1, 2, 1, 1, 1 ], [ 1, 2, 1, 1, 2, 1, 1, 1 ] ]
-                --   , fingerPickPattern =
-                --         { a = [ 2, 0, 0, 3, 0, 1, 0, 2 ]
-                --         , b = [ 5, 0, 4, 0, 5, 0, 5, 0 ]
-                --         }
+          , modalOpen = False
           , phxSocket = initPhoenixSocket
           }
         , joinChannel
         )
 
 
-port send : PlayBundle -> Cmd msg
+
+
+type Msg
+    = ChangeKey String
+    | OnLocationChange Location
+    | NewUrl String
+    | NoOp
+    | ShowNavMenu
+    | ShowModal
+    | JoinChannel
+    | SendMessage String
+    | ReceiveMessage Json.Encode.Value
+    | PhoenixMsg (Phoenix.Socket.Msg Msg)
+
+type Page
+    = Chords
+    | FingerPick
+    | Fretboard
+    | Home
+    | Scales
+    | Strum
+
+    
+
 
 
 joinChannel : Cmd Msg
@@ -76,8 +97,8 @@ joinChannel =
 
 
 initPhoenixSocket =
-    Phoenix.Socket.init "wss://damp-wave-74595.herokuapp.com/socket/websocket"
-        -- Phoenix.Socket.init "ws:localhost:4000/socket/websocket"
+    -- Phoenix.Socket.init "wss://damp-wave-74595.herokuapp.com/socket/websocket"
+        Phoenix.Socket.init "ws:localhost:4000/socket/websocket"
         |>
             Phoenix.Socket.withDebug
         |> Phoenix.Socket.on "chord_select"
@@ -144,45 +165,7 @@ update msg model =
         ShowModal ->
             { model | modalOpen = not model.modalOpen } ! []
 
-        -- Randomize hi lo ->
-        --     case model.route of
-        --         StrummingRoute ->
-        --             ( model, Random.generate StrumArrowDirection <| Random.list 4 <| Random.list 8 (Random.int hi lo) )
-
-                -- FingerPickingRoute ->
-                --     ( model
-                --     , Cmd.batch
-                --         [ Random.generate FingerPickPatternBuilderA <| Random.list 8 (Random.int hi lo)
-                --         , Random.generate FingerPickPatternBuilderB <| Random.list 8 (Random.int hi lo)
-                --         ]
-                --     )
-                -- _ ->
-                --     (model ! [])
-
-        -- StrumArrowDirection numList ->
-        --     let
-        --         _ =
-        --             Debug.log "numList" numList
-        --     in
-        --         { model | strumArrow = numList } ! []
-        -- ChangeStrumGroupNumber text ->
-        --     { model | strumGroupNumber = text } ! []
-        -- FingerPickPatternBuilderA numList ->
-        --     let
-        --         pattern =
-        --             model.fingerPickPModel
-        --         newPattern =
-        --             { pattern | fingerPickPatternA = numList }
-        --     in
-        --         { model | fingerPickModel = newPattern } ! []
-        -- FingerPickPatternBuilderB numList ->
-        --     let
-        --         pattern =
-        --             model.fingerPickModel
-        --         newPattern =
-        --             { pattern | fingerPickPatternB = numList }
-        --     in
-        --         { model | fingerPickModel = newPattern } ! []
+        -
         OnLocationChange location ->
             let
                 newRoute =
@@ -201,63 +184,16 @@ update msg model =
             , joinChannel
             )
                 :> update (SendMessage key)
-
-        -- :> update JoinChannel
-        Play chord hzShift ->
-            { model | currentChord = chord, pitchShift = hzShift }
-                ! []
-                :> update ResetIndex
-                :> update SendNotes
-
-        ResetIndex ->
-            { model | index = 0 } ! []
-
-        SendNotes ->
-            let
-                note =
-                    noteSorter <| Maybe.withDefault "e2w" <| getAt model.index model.currentChord
-
-                shiftedNote =
-                    { note | frequency = note.frequency * (1.059463 ^ toFloat model.pitchShift), sustain = note.sustain * (toFloat model.sliderValue / 2) }
-            in
-                ( { model | index = model.index + 1 }
-                , send (PlayBundle shiftedNote "triangle")
-                )
-
-        DrawNote index string accidental ->
-            let
-                stringOffset =
-                    noteStringPos string
-
-                fretOffset =
-                    noteFretPos index
-
-                finalOffset =
-                    fretOffset + stringOffset
-            in
-                { model | notePosition = finalOffset, showAccidental = accidental } ! []
-
-        ChangeSliderValue newVal ->
-            let
-                val =
-                    Result.withDefault 1 <| String.toInt newVal
-            in
-                { model | sliderValue = val } ! []
+                
 
 
 subscriptions : Model -> Sub Msg
 subscriptions model =
     Sub.batch
-        [ let
-            val =
-                toFloat model.sliderValue / 10.0
-          in
-            if model.index < List.length model.currentChord then
-                Time.every (val * Time.second) (always SendNotes)
-            else
-                Sub.none
+        [ always Sub.none
         , Phoenix.Socket.listen model.phxSocket PhoenixMsg
         ]
+
 
 
 chordDecoder : JD.Decoder ChordChartData

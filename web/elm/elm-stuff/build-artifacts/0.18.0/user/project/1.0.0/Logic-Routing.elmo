@@ -10,80 +10,31 @@ var _user$project$Logic_Routing$scalesPath = function (key) {
 var _user$project$Logic_Routing$chordsPath = function (key) {
 	return A2(_elm_lang$core$Basics_ops['++'], '#chords/', key);
 };
-var _user$project$Logic_Routing$modelUpdateOnHash = F2(
-	function (model, location) {
-		var _p0 = model.route;
-		switch (_p0.ctor) {
-			case 'ChordsRoute':
-				return A2(
-					_evancz$url_parser$UrlParser$parseHash,
-					A2(
-						_evancz$url_parser$UrlParser_ops['</>'],
-						_evancz$url_parser$UrlParser$s('chords'),
-						_evancz$url_parser$UrlParser$string),
-					location);
-			case 'ScalesRoute':
-				return A2(
-					_evancz$url_parser$UrlParser$parseHash,
-					A2(
-						_evancz$url_parser$UrlParser_ops['</>'],
-						_evancz$url_parser$UrlParser$s('scales'),
-						_evancz$url_parser$UrlParser$string),
-					location);
-			case 'FretboardRoute':
-				return A2(
-					_evancz$url_parser$UrlParser$parseHash,
-					A2(
-						_evancz$url_parser$UrlParser_ops['</>'],
-						_evancz$url_parser$UrlParser$s('fretboard'),
-						_evancz$url_parser$UrlParser$string),
-					location);
-			case 'StrummingRoute':
-				return A2(
-					_evancz$url_parser$UrlParser$parseHash,
-					A2(
-						_evancz$url_parser$UrlParser_ops['</>'],
-						_evancz$url_parser$UrlParser$s('strum'),
-						_evancz$url_parser$UrlParser$string),
-					location);
-			case 'FingerPickingRoute':
-				return A2(
-					_evancz$url_parser$UrlParser$parseHash,
-					A2(
-						_evancz$url_parser$UrlParser_ops['</>'],
-						_evancz$url_parser$UrlParser$s('fingerpicking'),
-						_evancz$url_parser$UrlParser$string),
-					location);
-			case 'HomeRoute':
-				return A2(
-					_evancz$url_parser$UrlParser$parseHash,
-					A2(
-						_evancz$url_parser$UrlParser_ops['</>'],
-						_evancz$url_parser$UrlParser$s('home'),
-						_evancz$url_parser$UrlParser$string),
-					location);
-			default:
-				return A2(
-					_evancz$url_parser$UrlParser$parseHash,
-					A2(
-						_evancz$url_parser$UrlParser_ops['</>'],
-						_evancz$url_parser$UrlParser$s(''),
-						_evancz$url_parser$UrlParser$string),
-					location);
-		}
-	});
+var _user$project$Logic_Routing$FingerPickingRoute = {ctor: 'FingerPickingRoute'};
+var _user$project$Logic_Routing$StrummingRoute = {ctor: 'StrummingRoute'};
+var _user$project$Logic_Routing$HomeRoute = {ctor: 'HomeRoute'};
+var _user$project$Logic_Routing$NotFoundRoute = {ctor: 'NotFoundRoute'};
+var _user$project$Logic_Routing$FretboardRoute = function (a) {
+	return {ctor: 'FretboardRoute', _0: a};
+};
+var _user$project$Logic_Routing$ScalesRoute = function (a) {
+	return {ctor: 'ScalesRoute', _0: a};
+};
+var _user$project$Logic_Routing$ChordsRoute = function (a) {
+	return {ctor: 'ChordsRoute', _0: a};
+};
 var _user$project$Logic_Routing$matchers = _evancz$url_parser$UrlParser$oneOf(
 	{
 		ctor: '::',
 		_0: A2(
 			_evancz$url_parser$UrlParser$map,
-			_user$project$Logic_Types$HomeRoute,
+			_user$project$Logic_Routing$HomeRoute,
 			_evancz$url_parser$UrlParser$s('home')),
 		_1: {
 			ctor: '::',
 			_0: A2(
 				_evancz$url_parser$UrlParser$map,
-				_user$project$Logic_Types$ChordsRoute,
+				_user$project$Logic_Routing$ChordsRoute,
 				A2(
 					_evancz$url_parser$UrlParser_ops['</>'],
 					_evancz$url_parser$UrlParser$s('chords'),
@@ -92,7 +43,7 @@ var _user$project$Logic_Routing$matchers = _evancz$url_parser$UrlParser$oneOf(
 				ctor: '::',
 				_0: A2(
 					_evancz$url_parser$UrlParser$map,
-					_user$project$Logic_Types$ScalesRoute,
+					_user$project$Logic_Routing$ScalesRoute,
 					A2(
 						_evancz$url_parser$UrlParser_ops['</>'],
 						_evancz$url_parser$UrlParser$s('scales'),
@@ -101,7 +52,7 @@ var _user$project$Logic_Routing$matchers = _evancz$url_parser$UrlParser$oneOf(
 					ctor: '::',
 					_0: A2(
 						_evancz$url_parser$UrlParser$map,
-						_user$project$Logic_Types$FretboardRoute,
+						_user$project$Logic_Routing$FretboardRoute,
 						A2(
 							_evancz$url_parser$UrlParser_ops['</>'],
 							_evancz$url_parser$UrlParser$s('fretboard'),
@@ -110,13 +61,13 @@ var _user$project$Logic_Routing$matchers = _evancz$url_parser$UrlParser$oneOf(
 						ctor: '::',
 						_0: A2(
 							_evancz$url_parser$UrlParser$map,
-							_user$project$Logic_Types$StrummingRoute,
+							_user$project$Logic_Routing$StrummingRoute,
 							_evancz$url_parser$UrlParser$s('strumming')),
 						_1: {
 							ctor: '::',
 							_0: A2(
 								_evancz$url_parser$UrlParser$map,
-								_user$project$Logic_Types$FingerPickingRoute,
+								_user$project$Logic_Routing$FingerPickingRoute,
 								_evancz$url_parser$UrlParser$s('fingerpicking')),
 							_1: {ctor: '[]'}
 						}
@@ -126,10 +77,10 @@ var _user$project$Logic_Routing$matchers = _evancz$url_parser$UrlParser$oneOf(
 		}
 	});
 var _user$project$Logic_Routing$parseLocation = function (location) {
-	var _p1 = A2(_evancz$url_parser$UrlParser$parseHash, _user$project$Logic_Routing$matchers, location);
-	if (_p1.ctor === 'Just') {
-		return _p1._0;
+	var _p0 = A2(_evancz$url_parser$UrlParser$parseHash, _user$project$Logic_Routing$matchers, location);
+	if (_p0.ctor === 'Just') {
+		return _p0._0;
 	} else {
-		return _user$project$Logic_Types$NotFoundRoute;
+		return _user$project$Logic_Routing$NotFoundRoute;
 	}
 };

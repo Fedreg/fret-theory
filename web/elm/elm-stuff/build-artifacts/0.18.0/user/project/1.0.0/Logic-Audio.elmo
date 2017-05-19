@@ -66,91 +66,9 @@ var _user$project$Logic_Audio$sustain = function (duration) {
 			return 0.0;
 	}
 };
-var _user$project$Logic_Audio$noteSorter = function (string) {
-	var _p3 = _elm_lang$core$String$length(string);
-	switch (_p3) {
-		case 3:
-			return A3(
-				_user$project$Logic_Types$Note,
-				_user$project$Logic_Audio$frequencies(
-					A3(_elm_lang$core$String$slice, 0, 1, string)),
-				_user$project$Logic_Audio$octave(
-					A2(
-						_elm_lang$core$Result$withDefault,
-						0,
-						_elm_lang$core$String$toInt(
-							A3(_elm_lang$core$String$slice, 1, 2, string)))),
-				_user$project$Logic_Audio$sustain(
-					A3(_elm_lang$core$String$slice, 2, 3, string)));
-		case 4:
-			return _elm_lang$core$Native_Utils.eq(
-				A3(_elm_lang$core$String$slice, 1, 2, string),
-				'#') ? A3(
-				_user$project$Logic_Types$Note,
-				_user$project$Logic_Audio$frequencies(
-					A3(_elm_lang$core$String$slice, 0, 2, string)),
-				_user$project$Logic_Audio$octave(
-					A2(
-						_elm_lang$core$Result$withDefault,
-						0,
-						_elm_lang$core$String$toInt(
-							A3(_elm_lang$core$String$slice, 2, 3, string)))),
-				_user$project$Logic_Audio$sustain(
-					A3(_elm_lang$core$String$slice, 3, 4, string))) : A3(
-				_user$project$Logic_Types$Note,
-				_user$project$Logic_Audio$frequencies(
-					A3(_elm_lang$core$String$slice, 0, 1, string)),
-				_user$project$Logic_Audio$octave(
-					A2(
-						_elm_lang$core$Result$withDefault,
-						0,
-						_elm_lang$core$String$toInt(
-							A3(_elm_lang$core$String$slice, 1, 2, string)))),
-				_user$project$Logic_Audio$sustain(
-					A3(_elm_lang$core$String$slice, 2, 4, string)));
-		case 5:
-			return A3(
-				_user$project$Logic_Types$Note,
-				_user$project$Logic_Audio$frequencies(
-					A3(_elm_lang$core$String$slice, 0, 2, string)),
-				_user$project$Logic_Audio$octave(
-					A2(
-						_elm_lang$core$Result$withDefault,
-						0,
-						_elm_lang$core$String$toInt(
-							A3(_elm_lang$core$String$slice, 2, 3, string)))),
-				_user$project$Logic_Audio$sustain(
-					A3(_elm_lang$core$String$slice, 3, 5, string)));
-		default:
-			return A3(_user$project$Logic_Types$Note, 0.0, 0, 0.0);
-	}
-};
-var _user$project$Logic_Audio$stringToNote = F2(
-	function (chord, n) {
-		stringToNote:
-		while (true) {
-			var note = A2(
-				_elm_lang$core$Maybe$withDefault,
-				'c0s',
-				A2(_elm_community$list_extra$List_Extra$getAt, n, chord));
-			var computedNote = _user$project$Logic_Audio$noteSorter(note);
-			var chordList = {ctor: '[]'};
-			if (_elm_lang$core$Native_Utils.cmp(
-				n,
-				_elm_lang$core$List$length(chord)) < 0) {
-				return {ctor: '::', _0: computedNote, _1: chordList};
-			} else {
-				var _v4 = chord,
-					_v5 = n + 1;
-				chord = _v4;
-				n = _v5;
-				continue stringToNote;
-			}
-		}
-	});
 var _user$project$Logic_Audio$scales = function (scale) {
-	var _p4 = scale;
-	switch (_p4) {
+	var _p3 = scale;
+	switch (_p3) {
 		case 'major':
 			return {
 				ctor: '::',
@@ -594,8 +512,8 @@ var _user$project$Logic_Audio$scales = function (scale) {
 	}
 };
 var _user$project$Logic_Audio$notes = function (key) {
-	var _p5 = key;
-	switch (_p5) {
+	var _p4 = key;
+	switch (_p4) {
 		case 'C':
 			return {
 				i: {
@@ -4340,3 +4258,97 @@ var _user$project$Logic_Audio$notes = function (key) {
 			};
 	}
 };
+var _user$project$Logic_Audio$ChordAudioData = F7(
+	function (a, b, c, d, e, f, g) {
+		return {i: a, ii: b, iii: c, iv: d, v: e, vi: f, vii: g};
+	});
+var _user$project$Logic_Audio$Note = F3(
+	function (a, b, c) {
+		return {frequency: a, octave: b, sustain: c};
+	});
+var _user$project$Logic_Audio$noteSorter = function (string) {
+	var _p5 = _elm_lang$core$String$length(string);
+	switch (_p5) {
+		case 3:
+			return A3(
+				_user$project$Logic_Audio$Note,
+				_user$project$Logic_Audio$frequencies(
+					A3(_elm_lang$core$String$slice, 0, 1, string)),
+				_user$project$Logic_Audio$octave(
+					A2(
+						_elm_lang$core$Result$withDefault,
+						0,
+						_elm_lang$core$String$toInt(
+							A3(_elm_lang$core$String$slice, 1, 2, string)))),
+				_user$project$Logic_Audio$sustain(
+					A3(_elm_lang$core$String$slice, 2, 3, string)));
+		case 4:
+			return _elm_lang$core$Native_Utils.eq(
+				A3(_elm_lang$core$String$slice, 1, 2, string),
+				'#') ? A3(
+				_user$project$Logic_Audio$Note,
+				_user$project$Logic_Audio$frequencies(
+					A3(_elm_lang$core$String$slice, 0, 2, string)),
+				_user$project$Logic_Audio$octave(
+					A2(
+						_elm_lang$core$Result$withDefault,
+						0,
+						_elm_lang$core$String$toInt(
+							A3(_elm_lang$core$String$slice, 2, 3, string)))),
+				_user$project$Logic_Audio$sustain(
+					A3(_elm_lang$core$String$slice, 3, 4, string))) : A3(
+				_user$project$Logic_Audio$Note,
+				_user$project$Logic_Audio$frequencies(
+					A3(_elm_lang$core$String$slice, 0, 1, string)),
+				_user$project$Logic_Audio$octave(
+					A2(
+						_elm_lang$core$Result$withDefault,
+						0,
+						_elm_lang$core$String$toInt(
+							A3(_elm_lang$core$String$slice, 1, 2, string)))),
+				_user$project$Logic_Audio$sustain(
+					A3(_elm_lang$core$String$slice, 2, 4, string)));
+		case 5:
+			return A3(
+				_user$project$Logic_Audio$Note,
+				_user$project$Logic_Audio$frequencies(
+					A3(_elm_lang$core$String$slice, 0, 2, string)),
+				_user$project$Logic_Audio$octave(
+					A2(
+						_elm_lang$core$Result$withDefault,
+						0,
+						_elm_lang$core$String$toInt(
+							A3(_elm_lang$core$String$slice, 2, 3, string)))),
+				_user$project$Logic_Audio$sustain(
+					A3(_elm_lang$core$String$slice, 3, 5, string)));
+		default:
+			return A3(_user$project$Logic_Audio$Note, 0.0, 0, 0.0);
+	}
+};
+var _user$project$Logic_Audio$stringToNote = F2(
+	function (chord, n) {
+		stringToNote:
+		while (true) {
+			var note = A2(
+				_elm_lang$core$Maybe$withDefault,
+				'c0s',
+				A2(_elm_community$list_extra$List_Extra$getAt, n, chord));
+			var computedNote = _user$project$Logic_Audio$noteSorter(note);
+			var chordList = {ctor: '[]'};
+			if (_elm_lang$core$Native_Utils.cmp(
+				n,
+				_elm_lang$core$List$length(chord)) < 0) {
+				return {ctor: '::', _0: computedNote, _1: chordList};
+			} else {
+				var _v6 = chord,
+					_v7 = n + 1;
+				chord = _v6;
+				n = _v7;
+				continue stringToNote;
+			}
+		}
+	});
+var _user$project$Logic_Audio$PlayBundle = F2(
+	function (a, b) {
+		return {note: a, waveType: b};
+	});

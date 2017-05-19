@@ -1,17 +1,120 @@
-module Pages.Scales exposing (scalesPage)
+module Pages.Scales exposing (view, Model)
 
 import Html exposing (Html, div, span, text)
 import Html.Attributes exposing (style)
 import Html.Events exposing (onClick)
-import Logic.Types exposing (ScaleData, ScaleSchemaData, Msg(Play, ShowModal), Model)
 import Pages.Chords exposing (keyList)
 import List.Extra exposing (getAt, elemIndex)
-import Logic.Audio exposing (scales)
+import Logic.Audio exposing (scales, noteSorter)
 import Styles.ScalesStyles exposing (..)
+import Time exposing (every, second)
+import Logic.Ports exposing (send)
+import Update.Extra.Infix exposing ((:>))
 
 
-scalesPage : Model -> Html Msg
-scalesPage model =
+type alias Model =
+    { musKey : String
+    , index : Int
+    , currentChord : List String
+    , sliderValue : Int
+    , pitchShift : Int
+    }
+
+
+init =
+    { musKey = "C"
+    , index = 6
+    , currentChord = []
+    , sliderValue = 1
+    , pitchShift = 0
+    }
+
+
+type alias Note =
+    { frequency : Float
+    , octave : Int
+    , sustain : Float
+    }
+
+
+type alias PlayBundle =
+    { note : Note
+    , waveType : String
+    }
+
+
+type alias ScaleData =
+    { e : List Int
+    , b : List Int
+    , g : List Int
+    , d : List Int
+    , a : List Int
+    , e6 : List Int
+    }
+
+
+type alias ScaleSchemaData =
+    { one : List Int
+    , two : List Int
+    , three : List Int
+    , four : List Int
+    , five : List Int
+    , six : List Int
+    }
+
+
+type Msg
+    = Play (List String) Int
+    | ResetIndex
+    | SendNotes
+    | ChangeSliderValue String
+
+
+update msg model =
+    case msg of
+        Play chord hzShift ->
+            { model | currentChord = chord, pitchShift = hzShift }
+                ! []
+                :> update ResetIndex
+                :> update SendNotes
+
+        ResetIndex ->
+            { model | index = 0 } ! []
+
+        SendNotes ->
+            let
+                note =
+                    noteSorter <| Maybe.withDefault "e2w" <| getAt model.index model.currentChord
+
+                shiftedNote =
+                    { note | frequency = note.frequency * (1.059463 ^ toFloat model.pitchShift), sustain = note.sustain * (toFloat model.sliderValue / 2) }
+            in
+                ( { model | index = model.index + 1 }
+                , send (PlayBundle shiftedNote "triangle")
+                )
+
+        ChangeSliderValue newVal ->
+            let
+                val =
+                    Result.withDefault 1 <| String.toInt newVal
+            in
+                { model | sliderValue = val } ! []
+
+
+subscriptions : Model -> Sub Msg
+subscriptions model =
+    let
+        val =
+            toFloat model.sliderValue / 10.0
+    in
+        if model.index < List.length model.currentChord then
+            Time.every (val * Time.second) (always SendNotes)
+        else
+            Sub.none
+
+
+view : Model -> Html Msg
+view model =
     div [ style [ ( "paddingTop", "50px" ) ] ]
         [ div [ scalePageStyle ]
             [ ionianModeView model

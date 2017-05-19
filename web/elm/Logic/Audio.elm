@@ -1,8 +1,31 @@
-module Logic.Audio exposing (notes, scales, noteSorter)
+module Logic.Audio exposing (notes, scales, noteSorter, Note, PlayBundle)
 
-import Logic.Types exposing (Model, Note, ChordAudioData)
 import List.Extra exposing (getAt)
-import String exposing (slice, toInt)
+import String exposing (toInt, slice, length)
+
+
+type alias ChordAudioData =
+    { i : List String
+    , ii : List String
+    , iii : List String
+    , iv : List String
+    , v : List String
+    , vi : List String
+    , vii : List String
+    }
+
+
+type alias Note =
+    { frequency : Float
+    , octave : Int
+    , sustain : Float
+    }
+
+
+type alias PlayBundle =
+    { note : Note
+    , waveType : String
+    }
 
 
 {-| Defines audio Notes to be played for each string of every chord. "c0s" is default for no sound.

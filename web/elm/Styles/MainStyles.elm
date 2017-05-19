@@ -2,11 +2,10 @@ module Styles.MainStyles exposing (..)
 
 import Html exposing (Attribute)
 import Html.Attributes exposing (style)
-import Logic.Types exposing (Model, Msg(..))
 
 
-navMenuStyle : Model -> Attribute Msg
-navMenuStyle model =
+navMenuStyle : Bool -> Attribute msg
+navMenuStyle navBool =
     let
         baseStyles h color pad =
             style
@@ -23,7 +22,7 @@ navMenuStyle model =
                 , ( "borderBottom", "1px solid #ccc" )
                 ]
     in
-        case model.navMenuOpen of
+        case navBool of
             True ->
                 baseStyles "100vh" "rgba(0,0,0,0.9)" "100px"
 
@@ -31,8 +30,8 @@ navMenuStyle model =
                 baseStyles "75px" "#FFF" "15px"
 
 
-navIconStyle : Model -> Attribute msg
-navIconStyle model =
+navIconStyle : Bool -> Attribute msg
+navIconStyle navBool =
     let
         baseStyles difference =
             style
@@ -46,7 +45,7 @@ navIconStyle model =
                 , ( "transform", difference )
                 ]
     in
-        case model.navMenuOpen of
+        case navBool of
             True ->
                 baseStyles "rotate(270deg)"
 

@@ -2,10 +2,12 @@ module Styles.ChordStyles exposing (..)
 
 import Html exposing (Attribute)
 import Html.Attributes exposing (style)
-import Logic.Types exposing (Dot)
 
 
-chordsPageStyle : Attribute Msg
+-- import Pages.Chords exposing (Dot)
+
+
+chordsPageStyle : Attribute msg
 chordsPageStyle =
     style
         [ ( "textAlign", "center" )
@@ -14,7 +16,7 @@ chordsPageStyle =
         ]
 
 
-chordBarPosStyle : Attribute Msg
+chordBarPosStyle : Attribute msg
 chordBarPosStyle =
     style
         [ ( "position", "absolute" )
@@ -25,7 +27,7 @@ chordBarPosStyle =
         ]
 
 
-chartStyle : Attribute Msg
+chartStyle : Attribute msg
 chartStyle =
     style
         [ ( "position", "relative" )
@@ -35,12 +37,10 @@ chartStyle =
         , ( "borderTopLeftRadius", "10px" )
         , ( "borderBottomLeftRadius", "10px" )
         , ( "boxShadow", "0 10px 20px rgba(0,0,0,0.25)" )
-          -- , ( "backgroundColor", "#252839" )
-          -- , ( "backgroundColor", "#333" )
         ]
 
 
-stringStyle : Attribute Msg
+stringStyle : Attribute msg
 stringStyle =
     style
         [ ( "width", "180px" )
@@ -49,7 +49,7 @@ stringStyle =
         ]
 
 
-nutStyle : Attribute Msg
+nutStyle : Attribute msg
 nutStyle =
     style
         [ ( "width", "10px" )
@@ -60,7 +60,7 @@ nutStyle =
         ]
 
 
-chartContainerStyle : String -> Attribute Msg
+chartContainerStyle : String -> Attribute msg
 chartContainerStyle direction =
     style
         [ ( "position", "relative" )
@@ -72,7 +72,7 @@ chartContainerStyle direction =
         ]
 
 
-fretStyle : Int -> Attribute Msg
+fretStyle : Int -> Attribute msg
 fretStyle fret =
     style
         [ ( "position", "absolute" )
@@ -83,7 +83,7 @@ fretStyle fret =
         ]
 
 
-chordNameStyle : Attribute Msg
+chordNameStyle : Attribute msg
 chordNameStyle =
     style
         [ ( "color", "#000" )
@@ -93,7 +93,7 @@ chordNameStyle =
         ]
 
 
-chordFunctionStyle : Attribute Msg
+chordFunctionStyle : Attribute msg
 chordFunctionStyle =
     style
         [ ( "color", "#999" )
@@ -103,7 +103,7 @@ chordFunctionStyle =
         ]
 
 
-fingerChartStyle : Attribute Msg
+fingerChartStyle : Attribute msg
 fingerChartStyle =
     style
         [ ( "display", "flex" )
@@ -114,7 +114,7 @@ fingerChartStyle =
         ]
 
 
-fingerChartDotStyle : String -> Attribute Msg
+fingerChartDotStyle : String -> Attribute msg
 fingerChartDotStyle col =
     style
         [ ( "width", "15px" )
@@ -124,7 +124,7 @@ fingerChartDotStyle col =
         ]
 
 
-fingerChartTextStyle : Attribute Msg
+fingerChartTextStyle : Attribute msg
 fingerChartTextStyle =
     style
         [ ( "padding", "15px" )
@@ -134,7 +134,12 @@ fingerChartTextStyle =
 
 {-| Determines if fret marker dot is a bar, a dot, or a 'X', or 'O'.
 -}
-fretMarkerStyle : Dot -> Attribute Msg
+
+
+
+-- fretMarkerStyle : Dot -> Attribute msg
+
+
 fretMarkerStyle dot =
     if dot.tint == "bar" then
         let
@@ -186,7 +191,7 @@ fretMarkerStyle dot =
             ]
 
 
-soloOnNumberStyle : Attribute Msg
+soloOnNumberStyle : Attribute msg
 soloOnNumberStyle =
     style
         [ ( "fontSize", "25px" )
@@ -194,7 +199,7 @@ soloOnNumberStyle =
         ]
 
 
-soloOnTextStyle : Attribute Msg
+soloOnTextStyle : Attribute msg
 soloOnTextStyle =
     style
         [ ( "fontSize", "18px" )
@@ -204,6 +209,6 @@ soloOnTextStyle =
         ]
 
 
-soloOnLinkStyle : Attribute Msg
+soloOnLinkStyle : Attribute msg
 soloOnLinkStyle =
     style [ ( "color", "#aaa" ) ]

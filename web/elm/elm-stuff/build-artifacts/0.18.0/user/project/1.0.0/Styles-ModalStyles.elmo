@@ -64,38 +64,40 @@ var _user$project$Styles_ModalStyles$closeModalIcon = _elm_lang$html$Html_Attrib
 			}
 		}
 	});
-var _user$project$Styles_ModalStyles$modalIconStyle = function (model) {
-	var baseStyles = F2(
-		function (color, offset) {
-			return _elm_lang$html$Html_Attributes$style(
-				{
-					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'position', _1: 'absolute'},
-					_1: {
+var _user$project$Styles_ModalStyles$modalIconStyle = F2(
+	function (bool, navBool) {
+		var baseStyles = F2(
+			function (color, offset) {
+				return _elm_lang$html$Html_Attributes$style(
+					{
 						ctor: '::',
-						_0: {ctor: '_Tuple2', _0: 'top', _1: offset},
+						_0: {ctor: '_Tuple2', _0: 'position', _1: 'absolute'},
 						_1: {
 							ctor: '::',
-							_0: {ctor: '_Tuple2', _0: 'right', _1: '60px'},
+							_0: {ctor: '_Tuple2', _0: 'top', _1: offset},
 							_1: {
 								ctor: '::',
-								_0: {ctor: '_Tuple2', _0: 'color', _1: color},
+								_0: {ctor: '_Tuple2', _0: 'right', _1: '60px'},
 								_1: {
 									ctor: '::',
-									_0: {ctor: '_Tuple2', _0: 'textAlign', _1: 'center'},
+									_0: {ctor: '_Tuple2', _0: 'color', _1: color},
 									_1: {
 										ctor: '::',
-										_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '40px'},
+										_0: {ctor: '_Tuple2', _0: 'textAlign', _1: 'center'},
 										_1: {
 											ctor: '::',
-											_0: {ctor: '_Tuple2', _0: 'fontWeight', _1: '700'},
+											_0: {ctor: '_Tuple2', _0: 'fontSize', _1: '40px'},
 											_1: {
 												ctor: '::',
-												_0: {ctor: '_Tuple2', _0: 'cursor', _1: 'pointer'},
+												_0: {ctor: '_Tuple2', _0: 'fontWeight', _1: '700'},
 												_1: {
 													ctor: '::',
-													_0: {ctor: '_Tuple2', _0: 'zIndex', _1: '10001'},
-													_1: {ctor: '[]'}
+													_0: {ctor: '_Tuple2', _0: 'cursor', _1: 'pointer'},
+													_1: {
+														ctor: '::',
+														_0: {ctor: '_Tuple2', _0: 'zIndex', _1: '10001'},
+														_1: {ctor: '[]'}
+													}
 												}
 											}
 										}
@@ -103,12 +105,11 @@ var _user$project$Styles_ModalStyles$modalIconStyle = function (model) {
 								}
 							}
 						}
-					}
-				});
-		});
-	return _elm_lang$core$Native_Utils.eq(model.navMenuOpen, true) ? A2(baseStyles, '#FFF', '2px') : (_elm_lang$core$Native_Utils.eq(model.modalOpen, true) ? A2(baseStyles, '#f40331', '2px') : A2(baseStyles, '#03a9f4', '0'));
-};
-var _user$project$Styles_ModalStyles$modalStyle = function (model) {
+					});
+			});
+		return _elm_lang$core$Native_Utils.eq(navBool, true) ? A2(baseStyles, '#FFF', '2px') : (_elm_lang$core$Native_Utils.eq(bool, true) ? A2(baseStyles, '#f40331', '2px') : A2(baseStyles, '#03a9f4', '0'));
+	});
+var _user$project$Styles_ModalStyles$modalStyle = function (bool) {
 	var baseStyles = F2(
 		function (trans, opacity) {
 			return _elm_lang$html$Html_Attributes$style(
@@ -166,7 +167,7 @@ var _user$project$Styles_ModalStyles$modalStyle = function (model) {
 					}
 				});
 		});
-	var _p0 = model.modalOpen;
+	var _p0 = bool;
 	if (_p0 === true) {
 		return A2(baseStyles, 'translateX(0)', '1');
 	} else {

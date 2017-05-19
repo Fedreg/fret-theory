@@ -1,7 +1,6 @@
 module Logic.Routing exposing (..)
 
 import Navigation exposing (Location)
-import Logic.Types exposing (Route(..), Model, Msg)
 import UrlParser exposing (..)
 
 
@@ -27,29 +26,24 @@ parseLocation location =
             NotFoundRoute
 
 
-modelUpdateOnHash : Model -> Location -> Maybe String
-modelUpdateOnHash model location =
-    case model.route of
-        ChordsRoute _ ->
-            parseHash (s "chords" </> string) location
 
-        ScalesRoute _ ->
-            parseHash (s "scales" </> string) location
-
-        FretboardRoute _ ->
-            parseHash (s "fretboard" </> string) location
-
-        StrummingRoute ->
-            parseHash (s "strum" </> string) location
-
-        FingerPickingRoute ->
-            parseHash (s "fingerpicking" </> string) location
-
-        HomeRoute ->
-            parseHash (s "home" </> string) location
-
-        NotFoundRoute ->
-            parseHash (s "" </> string) location
+-- modelUpdateOnHash : Model -> Location -> Maybe String
+-- modelUpdateOnHash model location =
+--     case model.route of
+--         ChordsRoute _ ->
+--             parseHash (s "chords" </> string) location
+--         ScalesRoute _ ->
+--             parseHash (s "scales" </> string) location
+--         FretboardRoute _ ->
+--             parseHash (s "fretboard" </> string) location
+--         StrummingRoute ->
+--             parseHash (s "strum" </> string) location
+--         FingerPickingRoute ->
+--             parseHash (s "fingerpicking" </> string) location
+--         HomeRoute ->
+--             parseHash (s "home" </> string) location
+--         NotFoundRoute ->
+--             parseHash (s "" </> string) location
 
 
 chordsPath : String -> String
@@ -80,3 +74,13 @@ homePath =
 fingerPickingPath : String
 fingerPickingPath =
     "#fingerpicking/"
+
+
+type Route
+    = ChordsRoute String
+    | ScalesRoute String
+    | FretboardRoute String
+    | NotFoundRoute
+    | HomeRoute
+    | StrummingRoute
+    | FingerPickingRoute
