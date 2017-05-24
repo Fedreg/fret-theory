@@ -1,0 +1,43 @@
+var _user$project$Chords_Types$Model = F5(
+	function (a, b, c, d, e) {
+		return {musKey: a, displayedChords: b, currentChord: c, index: d, pitchShift: e};
+	});
+var _user$project$Chords_Types$ChordChartData = function (a) {
+	return function (b) {
+		return function (c) {
+			return function (d) {
+				return function (e) {
+					return function (f) {
+						return function (g) {
+							return function (h) {
+								return function (i) {
+									return function (j) {
+										return function (k) {
+											return function (l) {
+												return function (m) {
+													return function (n) {
+														return {i: a, ii: b, iii: c, iv: d, v: e, vi: f, vii: g, i7: h, iv7: i, v7: j, vi7: k, bars: l, names: m, key: n};
+													};
+												};
+											};
+										};
+									};
+								};
+							};
+						};
+					};
+				};
+			};
+		};
+	};
+};
+var _user$project$Chords_Types$Dot = F3(
+	function (a, b, c) {
+		return {tint: a, stringNo: b, fretNo: c};
+	});
+var _user$project$Chords_Types$SendNotes = {ctor: 'SendNotes'};
+var _user$project$Chords_Types$ResetIndex = {ctor: 'ResetIndex'};
+var _user$project$Chords_Types$Play = F2(
+	function (a, b) {
+		return {ctor: 'Play', _0: a, _1: b};
+	});

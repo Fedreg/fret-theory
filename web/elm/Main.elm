@@ -70,10 +70,9 @@ initFingerPickPattern =
 
 
 initPhoenixSocket =
-    Phoenix.Socket.init "wss://damp-wave-74595.herokuapp.com/socket/websocket"
-        -- Phoenix.Socket.init "ws:localhost:4000/socket/websocket"
-        |>
-            Phoenix.Socket.withDebug
+    -- Phoenix.Socket.init "wss://damp-wave-74595.herokuapp.com/socket/websocket"
+    Phoenix.Socket.init "ws:localhost:4000/socket/websocket"
+        |> Phoenix.Socket.withDebug
         |> Phoenix.Socket.on "chord_select"
             "chordChannel:chords"
             ReceiveMessage

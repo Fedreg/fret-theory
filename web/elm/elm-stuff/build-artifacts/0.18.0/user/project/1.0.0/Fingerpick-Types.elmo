@@ -1,0 +1,14 @@
+var _user$project$Fingerpick_Types$Model = F2(
+	function (a, b) {
+		return {musKey: a, fingerPickPattern: b};
+	});
+var _user$project$Fingerpick_Types$FingerPickPatternBuilderB = function (a) {
+	return {ctor: 'FingerPickPatternBuilderB', _0: a};
+};
+var _user$project$Fingerpick_Types$FingerPickPatternBuilderA = function (a) {
+	return {ctor: 'FingerPickPatternBuilderA', _0: a};
+};
+var _user$project$Fingerpick_Types$Randomize = F2(
+	function (a, b) {
+		return {ctor: 'Randomize', _0: a, _1: b};
+	});

@@ -1,0 +1,14 @@
+var _user$project$Strum_Types$Model = F2(
+	function (a, b) {
+		return {strumArrow: a, strumGroupNumber: b};
+	});
+var _user$project$Strum_Types$ChangeStrumGroupNumber = function (a) {
+	return {ctor: 'ChangeStrumGroupNumber', _0: a};
+};
+var _user$project$Strum_Types$StrumArrowDirection = function (a) {
+	return {ctor: 'StrumArrowDirection', _0: a};
+};
+var _user$project$Strum_Types$Randomize = F2(
+	function (a, b) {
+		return {ctor: 'Randomize', _0: a, _1: b};
+	});

@@ -1,4 +1,4 @@
-module Views.Scales exposing (scalesPage)
+module Scales.View exposing (scalesPage)
 
 import Html exposing (Html, div, span, text)
 import Html.Attributes exposing (style)
@@ -7,7 +7,7 @@ import Logic.Types exposing (ScaleData, ScaleSchemaData, Msg(Play, ShowModal), M
 import Views.Chords exposing (keyList)
 import List.Extra exposing (getAt, elemIndex)
 import Logic.Audio exposing (scales)
-import Styles.ScalesStyles exposing (..)
+import Scales.Styles exposing (..)
 import Logic.Utils exposing ((=>))
 
 

@@ -1,4 +1,4 @@
-var _user$project$Views_FingerPick$printNotation = function (notes) {
+var _user$project$Fingerpick_View$printNotation = function (notes) {
 	var markup = F3(
 		function (fill, dot, flag) {
 			return A2(
@@ -73,7 +73,7 @@ var _user$project$Views_FingerPick$printNotation = function (notes) {
 				{ctor: '[]'});
 	}
 };
-var _user$project$Views_FingerPick$calculateNotation = F4(
+var _user$project$Fingerpick_View$calculateNotation = F4(
 	function (list, index, notes1, notes2) {
 		calculateNotation:
 		while (true) {
@@ -138,7 +138,7 @@ var _user$project$Views_FingerPick$calculateNotation = F4(
 			}
 		}
 	});
-var _user$project$Views_FingerPick$chordNotes = function (model) {
+var _user$project$Fingerpick_View$chordNotes = function (model) {
 	var finalChord = {ctor: '[]'};
 	var bar = A2(
 		_elm_lang$core$Maybe$withDefault,
@@ -344,7 +344,7 @@ var _user$project$Views_FingerPick$chordNotes = function (model) {
 								_1: finalChord
 							})))))));
 };
-var _user$project$Views_FingerPick$stringView = A2(
+var _user$project$Fingerpick_View$stringView = A2(
 	_elm_lang$html$Html$div,
 	{
 		ctor: '::',
@@ -423,7 +423,7 @@ var _user$project$Views_FingerPick$stringView = A2(
 			}
 		}
 	});
-var _user$project$Views_FingerPick$fret = F2(
+var _user$project$Fingerpick_View$fret = F2(
 	function (num, model) {
 		var opacity = function () {
 			var _p1 = num;
@@ -489,7 +489,7 @@ var _user$project$Views_FingerPick$fret = F2(
 				A2(
 					_elm_community$list_extra$List_Extra$getAt,
 					a,
-					_user$project$Views_FingerPick$chordNotes(model)));
+					_user$project$Fingerpick_View$chordNotes(model)));
 		};
 		var message = function () {
 			var _p3 = num;
@@ -523,7 +523,7 @@ var _user$project$Views_FingerPick$fret = F2(
 				_1: {ctor: '[]'}
 			});
 	});
-var _user$project$Views_FingerPick$fingerPickGroup = F4(
+var _user$project$Fingerpick_View$fingerPickGroup = F4(
 	function (scale, notes1, notes2, model) {
 		var frets = function (a) {
 			return A2(
@@ -531,7 +531,7 @@ var _user$project$Views_FingerPick$fingerPickGroup = F4(
 				{ctor: '[]'},
 				{
 					ctor: '::',
-					_0: A2(_user$project$Views_FingerPick$fret, a, model),
+					_0: A2(_user$project$Fingerpick_View$fret, a, model),
 					_1: {ctor: '[]'}
 				});
 		};
@@ -545,7 +545,7 @@ var _user$project$Views_FingerPick$fingerPickGroup = F4(
 				},
 				{
 					ctor: '::',
-					_0: _user$project$Views_FingerPick$printNotation(a),
+					_0: _user$project$Fingerpick_View$printNotation(a),
 					_1: {ctor: '[]'}
 				});
 		};
@@ -573,7 +573,7 @@ var _user$project$Views_FingerPick$fingerPickGroup = F4(
 			},
 			{
 				ctor: '::',
-				_0: _user$project$Views_FingerPick$stringView,
+				_0: _user$project$Fingerpick_View$stringView,
 				_1: {
 					ctor: '::',
 					_0: A2(
@@ -635,7 +635,7 @@ var _user$project$Views_FingerPick$fingerPickGroup = F4(
 										_elm_lang$core$List$map,
 										notation,
 										A4(
-											_user$project$Views_FingerPick$calculateNotation,
+											_user$project$Fingerpick_View$calculateNotation,
 											{ctor: '[]'},
 											0,
 											notes1,
@@ -647,7 +647,7 @@ var _user$project$Views_FingerPick$fingerPickGroup = F4(
 				}
 			});
 	});
-var _user$project$Views_FingerPick$fingerPickingPage = function (model) {
+var _user$project$Fingerpick_View$fingerPickingPage = function (model) {
 	return A2(
 		_elm_lang$html$Html$div,
 		{
@@ -681,7 +681,7 @@ var _user$project$Views_FingerPick$fingerPickingPage = function (model) {
 				}),
 			_1: {
 				ctor: '::',
-				_0: A4(_user$project$Views_FingerPick$fingerPickGroup, '1,1', model.fingerPickPattern.a, model.fingerPickPattern.b, model),
+				_0: A4(_user$project$Fingerpick_View$fingerPickGroup, '1,1', model.fingerPickPattern.a, model.fingerPickPattern.b, model),
 				_1: {
 					ctor: '::',
 					_0: A2(
@@ -710,7 +710,7 @@ var _user$project$Views_FingerPick$fingerPickingPage = function (model) {
 								ctor: '::',
 								_0: _elm_lang$html$Html$text(
 									_elm_lang$core$Basics$toString(
-										_user$project$Views_FingerPick$chordNotes(model))),
+										_user$project$Fingerpick_View$chordNotes(model))),
 								_1: {ctor: '[]'}
 							}),
 						_1: {ctor: '[]'}

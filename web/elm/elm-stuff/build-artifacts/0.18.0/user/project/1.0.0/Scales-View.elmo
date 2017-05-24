@@ -1,4 +1,4 @@
-var _user$project$Views_Scales$dorianMode = {
+var _user$project$Scales_View$dorianMode = {
 	e: {
 		ctor: '::',
 		_0: 8,
@@ -74,7 +74,7 @@ var _user$project$Views_Scales$dorianMode = {
 		}
 	}
 };
-var _user$project$Views_Scales$mixolydianMode = {
+var _user$project$Scales_View$mixolydianMode = {
 	e: {
 		ctor: '::',
 		_0: 8,
@@ -146,7 +146,7 @@ var _user$project$Views_Scales$mixolydianMode = {
 		}
 	}
 };
-var _user$project$Views_Scales$lydianMode = {
+var _user$project$Scales_View$lydianMode = {
 	e: {
 		ctor: '::',
 		_0: 7,
@@ -218,7 +218,7 @@ var _user$project$Views_Scales$lydianMode = {
 		}
 	}
 };
-var _user$project$Views_Scales$minorPentatonicMode = {
+var _user$project$Scales_View$minorPentatonicMode = {
 	e: {
 		ctor: '::',
 		_0: 8,
@@ -274,7 +274,7 @@ var _user$project$Views_Scales$minorPentatonicMode = {
 		}
 	}
 };
-var _user$project$Views_Scales$majorPentatonicMode = {
+var _user$project$Scales_View$majorPentatonicMode = {
 	e: {
 		ctor: '::',
 		_0: 8,
@@ -330,7 +330,7 @@ var _user$project$Views_Scales$majorPentatonicMode = {
 		}
 	}
 };
-var _user$project$Views_Scales$aeolianMode = {
+var _user$project$Scales_View$aeolianMode = {
 	e: {
 		ctor: '::',
 		_0: 8,
@@ -406,7 +406,7 @@ var _user$project$Views_Scales$aeolianMode = {
 		}
 	}
 };
-var _user$project$Views_Scales$ionianMode = {
+var _user$project$Scales_View$ionianMode = {
 	e: {
 		ctor: '::',
 		_0: 7,
@@ -478,7 +478,7 @@ var _user$project$Views_Scales$ionianMode = {
 		}
 	}
 };
-var _user$project$Views_Scales$scaleNameMinor = F2(
+var _user$project$Scales_View$scaleNameMinor = F2(
 	function (model, scaleName) {
 		var playOver = A2(
 			_elm_lang$core$Basics_ops['++'],
@@ -616,7 +616,7 @@ var _user$project$Views_Scales$scaleNameMinor = F2(
 				}
 			});
 	});
-var _user$project$Views_Scales$scaleNameMajor = F4(
+var _user$project$Scales_View$scaleNameMajor = F4(
 	function (model, scaleName, modifiedNotes, matchingChord) {
 		var playOver = A2(
 			_elm_lang$core$Basics_ops['++'],
@@ -784,7 +784,7 @@ var _user$project$Views_Scales$scaleNameMajor = F4(
 				}
 			});
 	});
-var _user$project$Views_Scales$fretOffset = function (model) {
+var _user$project$Scales_View$fretOffset = function (model) {
 	var _p0 = model.musKey;
 	switch (_p0) {
 		case 'C':
@@ -839,7 +839,7 @@ var _user$project$Views_Scales$fretOffset = function (model) {
 			return 0;
 	}
 };
-var _user$project$Views_Scales$scaleStringSchema = F3(
+var _user$project$Scales_View$scaleStringSchema = F3(
 	function (offset, key, scale) {
 		var mapper = _elm_lang$core$List$map(
 			function (a) {
@@ -854,11 +854,11 @@ var _user$project$Views_Scales$scaleStringSchema = F3(
 			six: mapper(scale.e6)
 		};
 	});
-var _user$project$Views_Scales$stringView = A2(
+var _user$project$Scales_View$stringView = A2(
 	_elm_lang$html$Html$div,
 	{
 		ctor: '::',
-		_0: _user$project$Styles_ScalesStyles$stringContainerStyle,
+		_0: _user$project$Scales_Styles$stringContainerStyle,
 		_1: {ctor: '[]'}
 	},
 	{
@@ -867,7 +867,7 @@ var _user$project$Views_Scales$stringView = A2(
 			_elm_lang$html$Html$div,
 			{
 				ctor: '::',
-				_0: _user$project$Styles_ScalesStyles$stringStyle,
+				_0: _user$project$Scales_Styles$stringStyle,
 				_1: {ctor: '[]'}
 			},
 			{ctor: '[]'}),
@@ -877,7 +877,7 @@ var _user$project$Views_Scales$stringView = A2(
 				_elm_lang$html$Html$div,
 				{
 					ctor: '::',
-					_0: _user$project$Styles_ScalesStyles$stringStyle,
+					_0: _user$project$Scales_Styles$stringStyle,
 					_1: {ctor: '[]'}
 				},
 				{ctor: '[]'}),
@@ -887,7 +887,7 @@ var _user$project$Views_Scales$stringView = A2(
 					_elm_lang$html$Html$div,
 					{
 						ctor: '::',
-						_0: _user$project$Styles_ScalesStyles$stringStyle,
+						_0: _user$project$Scales_Styles$stringStyle,
 						_1: {ctor: '[]'}
 					},
 					{ctor: '[]'}),
@@ -897,7 +897,7 @@ var _user$project$Views_Scales$stringView = A2(
 						_elm_lang$html$Html$div,
 						{
 							ctor: '::',
-							_0: _user$project$Styles_ScalesStyles$stringStyle,
+							_0: _user$project$Scales_Styles$stringStyle,
 							_1: {ctor: '[]'}
 						},
 						{ctor: '[]'}),
@@ -907,7 +907,7 @@ var _user$project$Views_Scales$stringView = A2(
 							_elm_lang$html$Html$div,
 							{
 								ctor: '::',
-								_0: _user$project$Styles_ScalesStyles$stringStyle,
+								_0: _user$project$Scales_Styles$stringStyle,
 								_1: {ctor: '[]'}
 							},
 							{ctor: '[]'}),
@@ -917,7 +917,7 @@ var _user$project$Views_Scales$stringView = A2(
 								_elm_lang$html$Html$div,
 								{
 									ctor: '::',
-									_0: _user$project$Styles_ScalesStyles$stringStyle,
+									_0: _user$project$Scales_Styles$stringStyle,
 									_1: {ctor: '[]'}
 								},
 								{ctor: '[]'}),
@@ -928,13 +928,13 @@ var _user$project$Views_Scales$stringView = A2(
 			}
 		}
 	});
-var _user$project$Views_Scales$dorianModeView = function (model) {
+var _user$project$Scales_View$dorianModeView = function (model) {
 	var markup = function (a) {
 		return A2(
 			_elm_lang$html$Html$span,
 			{
 				ctor: '::',
-				_0: _user$project$Styles_ScalesStyles$fretNumberGroupStyle,
+				_0: _user$project$Scales_Styles$fretNumberGroupStyle,
 				_1: {ctor: '[]'}
 			},
 			{
@@ -947,23 +947,23 @@ var _user$project$Views_Scales$dorianModeView = function (model) {
 	var data = function (accessor) {
 		return accessor(
 			A3(
-				_user$project$Views_Scales$scaleStringSchema,
-				_user$project$Views_Scales$fretOffset(model),
+				_user$project$Scales_View$scaleStringSchema,
+				_user$project$Scales_View$fretOffset(model),
 				model.musKey,
-				_user$project$Views_Scales$dorianMode));
+				_user$project$Scales_View$dorianMode));
 	};
 	return A2(
 		_elm_lang$html$Html$div,
 		{
 			ctor: '::',
-			_0: _user$project$Styles_ScalesStyles$scaleContainerStyle,
+			_0: _user$project$Scales_Styles$scaleContainerStyle,
 			_1: {
 				ctor: '::',
 				_0: _elm_lang$html$Html_Events$onClick(
 					A2(
 						_user$project$Logic_Types$Play,
 						_user$project$Logic_Audio$scales('dorian'),
-						_user$project$Views_Scales$fretOffset(model))),
+						_user$project$Scales_View$fretOffset(model))),
 				_1: {ctor: '[]'}
 			}
 		},
@@ -973,24 +973,24 @@ var _user$project$Views_Scales$dorianModeView = function (model) {
 				_elm_lang$html$Html$div,
 				{
 					ctor: '::',
-					_0: _user$project$Styles_ScalesStyles$scaleTitleStyle,
+					_0: _user$project$Scales_Styles$scaleTitleStyle,
 					_1: {ctor: '[]'}
 				},
 				{
 					ctor: '::',
-					_0: A4(_user$project$Views_Scales$scaleNameMajor, model, ' DORIAN MODE ', ' b3, b7 ', 'min7'),
+					_0: A4(_user$project$Scales_View$scaleNameMajor, model, ' DORIAN MODE ', ' b3, b7 ', 'min7'),
 					_1: {ctor: '[]'}
 				}),
 			_1: {
 				ctor: '::',
-				_0: _user$project$Views_Scales$stringView,
+				_0: _user$project$Scales_View$stringView,
 				_1: {
 					ctor: '::',
 					_0: A2(
 						_elm_lang$html$Html$div,
 						{
 							ctor: '::',
-							_0: _user$project$Styles_ScalesStyles$fretNumberStyle('500px'),
+							_0: _user$project$Scales_Styles$fretNumberStyle('500px'),
 							_1: {ctor: '[]'}
 						},
 						A2(
@@ -1006,7 +1006,7 @@ var _user$project$Views_Scales$dorianModeView = function (model) {
 							_elm_lang$html$Html$div,
 							{
 								ctor: '::',
-								_0: _user$project$Styles_ScalesStyles$fretNumberStyle('410px'),
+								_0: _user$project$Scales_Styles$fretNumberStyle('410px'),
 								_1: {ctor: '[]'}
 							},
 							A2(
@@ -1022,7 +1022,7 @@ var _user$project$Views_Scales$dorianModeView = function (model) {
 								_elm_lang$html$Html$div,
 								{
 									ctor: '::',
-									_0: _user$project$Styles_ScalesStyles$fretNumberStyle('310px'),
+									_0: _user$project$Scales_Styles$fretNumberStyle('310px'),
 									_1: {ctor: '[]'}
 								},
 								A2(
@@ -1038,7 +1038,7 @@ var _user$project$Views_Scales$dorianModeView = function (model) {
 									_elm_lang$html$Html$div,
 									{
 										ctor: '::',
-										_0: _user$project$Styles_ScalesStyles$fretNumberStyle('210px'),
+										_0: _user$project$Scales_Styles$fretNumberStyle('210px'),
 										_1: {ctor: '[]'}
 									},
 									A2(
@@ -1054,7 +1054,7 @@ var _user$project$Views_Scales$dorianModeView = function (model) {
 										_elm_lang$html$Html$div,
 										{
 											ctor: '::',
-											_0: _user$project$Styles_ScalesStyles$fretNumberStyle('140px'),
+											_0: _user$project$Scales_Styles$fretNumberStyle('140px'),
 											_1: {ctor: '[]'}
 										},
 										A2(
@@ -1070,7 +1070,7 @@ var _user$project$Views_Scales$dorianModeView = function (model) {
 											_elm_lang$html$Html$div,
 											{
 												ctor: '::',
-												_0: _user$project$Styles_ScalesStyles$fretNumberStyle('40px'),
+												_0: _user$project$Scales_Styles$fretNumberStyle('40px'),
 												_1: {ctor: '[]'}
 											},
 											A2(
@@ -1090,13 +1090,13 @@ var _user$project$Views_Scales$dorianModeView = function (model) {
 			}
 		});
 };
-var _user$project$Views_Scales$mixolydianModeView = function (model) {
+var _user$project$Scales_View$mixolydianModeView = function (model) {
 	var markup = function (a) {
 		return A2(
 			_elm_lang$html$Html$span,
 			{
 				ctor: '::',
-				_0: _user$project$Styles_ScalesStyles$fretNumberGroupStyle,
+				_0: _user$project$Scales_Styles$fretNumberGroupStyle,
 				_1: {ctor: '[]'}
 			},
 			{
@@ -1109,23 +1109,23 @@ var _user$project$Views_Scales$mixolydianModeView = function (model) {
 	var data = function (accessor) {
 		return accessor(
 			A3(
-				_user$project$Views_Scales$scaleStringSchema,
-				_user$project$Views_Scales$fretOffset(model),
+				_user$project$Scales_View$scaleStringSchema,
+				_user$project$Scales_View$fretOffset(model),
 				model.musKey,
-				_user$project$Views_Scales$mixolydianMode));
+				_user$project$Scales_View$mixolydianMode));
 	};
 	return A2(
 		_elm_lang$html$Html$div,
 		{
 			ctor: '::',
-			_0: _user$project$Styles_ScalesStyles$scaleContainerStyle,
+			_0: _user$project$Scales_Styles$scaleContainerStyle,
 			_1: {
 				ctor: '::',
 				_0: _elm_lang$html$Html_Events$onClick(
 					A2(
 						_user$project$Logic_Types$Play,
 						_user$project$Logic_Audio$scales('mixolydian'),
-						_user$project$Views_Scales$fretOffset(model))),
+						_user$project$Scales_View$fretOffset(model))),
 				_1: {ctor: '[]'}
 			}
 		},
@@ -1135,24 +1135,24 @@ var _user$project$Views_Scales$mixolydianModeView = function (model) {
 				_elm_lang$html$Html$div,
 				{
 					ctor: '::',
-					_0: _user$project$Styles_ScalesStyles$scaleTitleStyle,
+					_0: _user$project$Scales_Styles$scaleTitleStyle,
 					_1: {ctor: '[]'}
 				},
 				{
 					ctor: '::',
-					_0: A4(_user$project$Views_Scales$scaleNameMajor, model, ' MIXOLYDIAN MODE ', ' b7 ', '7'),
+					_0: A4(_user$project$Scales_View$scaleNameMajor, model, ' MIXOLYDIAN MODE ', ' b7 ', '7'),
 					_1: {ctor: '[]'}
 				}),
 			_1: {
 				ctor: '::',
-				_0: _user$project$Views_Scales$stringView,
+				_0: _user$project$Scales_View$stringView,
 				_1: {
 					ctor: '::',
 					_0: A2(
 						_elm_lang$html$Html$div,
 						{
 							ctor: '::',
-							_0: _user$project$Styles_ScalesStyles$fretNumberStyle('490px'),
+							_0: _user$project$Scales_Styles$fretNumberStyle('490px'),
 							_1: {ctor: '[]'}
 						},
 						A2(
@@ -1168,7 +1168,7 @@ var _user$project$Views_Scales$mixolydianModeView = function (model) {
 							_elm_lang$html$Html$div,
 							{
 								ctor: '::',
-								_0: _user$project$Styles_ScalesStyles$fretNumberStyle('390px'),
+								_0: _user$project$Scales_Styles$fretNumberStyle('390px'),
 								_1: {ctor: '[]'}
 							},
 							A2(
@@ -1184,7 +1184,7 @@ var _user$project$Views_Scales$mixolydianModeView = function (model) {
 								_elm_lang$html$Html$div,
 								{
 									ctor: '::',
-									_0: _user$project$Styles_ScalesStyles$fretNumberStyle('320px'),
+									_0: _user$project$Scales_Styles$fretNumberStyle('320px'),
 									_1: {ctor: '[]'}
 								},
 								A2(
@@ -1200,7 +1200,7 @@ var _user$project$Views_Scales$mixolydianModeView = function (model) {
 									_elm_lang$html$Html$div,
 									{
 										ctor: '::',
-										_0: _user$project$Styles_ScalesStyles$fretNumberStyle('220px'),
+										_0: _user$project$Scales_Styles$fretNumberStyle('220px'),
 										_1: {ctor: '[]'}
 									},
 									A2(
@@ -1216,7 +1216,7 @@ var _user$project$Views_Scales$mixolydianModeView = function (model) {
 										_elm_lang$html$Html$div,
 										{
 											ctor: '::',
-											_0: _user$project$Styles_ScalesStyles$fretNumberStyle('120px'),
+											_0: _user$project$Scales_Styles$fretNumberStyle('120px'),
 											_1: {ctor: '[]'}
 										},
 										A2(
@@ -1232,7 +1232,7 @@ var _user$project$Views_Scales$mixolydianModeView = function (model) {
 											_elm_lang$html$Html$div,
 											{
 												ctor: '::',
-												_0: _user$project$Styles_ScalesStyles$fretNumberStyle('50px'),
+												_0: _user$project$Scales_Styles$fretNumberStyle('50px'),
 												_1: {ctor: '[]'}
 											},
 											A2(
@@ -1252,13 +1252,13 @@ var _user$project$Views_Scales$mixolydianModeView = function (model) {
 			}
 		});
 };
-var _user$project$Views_Scales$lydianModeView = function (model) {
+var _user$project$Scales_View$lydianModeView = function (model) {
 	var markup = function (a) {
 		return A2(
 			_elm_lang$html$Html$span,
 			{
 				ctor: '::',
-				_0: _user$project$Styles_ScalesStyles$fretNumberGroupStyle,
+				_0: _user$project$Scales_Styles$fretNumberGroupStyle,
 				_1: {ctor: '[]'}
 			},
 			{
@@ -1271,23 +1271,23 @@ var _user$project$Views_Scales$lydianModeView = function (model) {
 	var data = function (accessor) {
 		return accessor(
 			A3(
-				_user$project$Views_Scales$scaleStringSchema,
-				_user$project$Views_Scales$fretOffset(model),
+				_user$project$Scales_View$scaleStringSchema,
+				_user$project$Scales_View$fretOffset(model),
 				model.musKey,
-				_user$project$Views_Scales$lydianMode));
+				_user$project$Scales_View$lydianMode));
 	};
 	return A2(
 		_elm_lang$html$Html$div,
 		{
 			ctor: '::',
-			_0: _user$project$Styles_ScalesStyles$scaleContainerStyle,
+			_0: _user$project$Scales_Styles$scaleContainerStyle,
 			_1: {
 				ctor: '::',
 				_0: _elm_lang$html$Html_Events$onClick(
 					A2(
 						_user$project$Logic_Types$Play,
 						_user$project$Logic_Audio$scales('lydian'),
-						_user$project$Views_Scales$fretOffset(model))),
+						_user$project$Scales_View$fretOffset(model))),
 				_1: {ctor: '[]'}
 			}
 		},
@@ -1297,24 +1297,24 @@ var _user$project$Views_Scales$lydianModeView = function (model) {
 				_elm_lang$html$Html$div,
 				{
 					ctor: '::',
-					_0: _user$project$Styles_ScalesStyles$scaleTitleStyle,
+					_0: _user$project$Scales_Styles$scaleTitleStyle,
 					_1: {ctor: '[]'}
 				},
 				{
 					ctor: '::',
-					_0: A4(_user$project$Views_Scales$scaleNameMajor, model, ' LYDIAN MODE ', ' #4 ', 'Maj7'),
+					_0: A4(_user$project$Scales_View$scaleNameMajor, model, ' LYDIAN MODE ', ' #4 ', 'Maj7'),
 					_1: {ctor: '[]'}
 				}),
 			_1: {
 				ctor: '::',
-				_0: _user$project$Views_Scales$stringView,
+				_0: _user$project$Scales_View$stringView,
 				_1: {
 					ctor: '::',
 					_0: A2(
 						_elm_lang$html$Html$div,
 						{
 							ctor: '::',
-							_0: _user$project$Styles_ScalesStyles$fretNumberStyle('490px'),
+							_0: _user$project$Scales_Styles$fretNumberStyle('490px'),
 							_1: {ctor: '[]'}
 						},
 						A2(
@@ -1330,7 +1330,7 @@ var _user$project$Views_Scales$lydianModeView = function (model) {
 							_elm_lang$html$Html$div,
 							{
 								ctor: '::',
-								_0: _user$project$Styles_ScalesStyles$fretNumberStyle('390px'),
+								_0: _user$project$Scales_Styles$fretNumberStyle('390px'),
 								_1: {ctor: '[]'}
 							},
 							A2(
@@ -1346,7 +1346,7 @@ var _user$project$Views_Scales$lydianModeView = function (model) {
 								_elm_lang$html$Html$div,
 								{
 									ctor: '::',
-									_0: _user$project$Styles_ScalesStyles$fretNumberStyle('320px'),
+									_0: _user$project$Scales_Styles$fretNumberStyle('320px'),
 									_1: {ctor: '[]'}
 								},
 								A2(
@@ -1362,7 +1362,7 @@ var _user$project$Views_Scales$lydianModeView = function (model) {
 									_elm_lang$html$Html$div,
 									{
 										ctor: '::',
-										_0: _user$project$Styles_ScalesStyles$fretNumberStyle('220px'),
+										_0: _user$project$Scales_Styles$fretNumberStyle('220px'),
 										_1: {ctor: '[]'}
 									},
 									A2(
@@ -1378,7 +1378,7 @@ var _user$project$Views_Scales$lydianModeView = function (model) {
 										_elm_lang$html$Html$div,
 										{
 											ctor: '::',
-											_0: _user$project$Styles_ScalesStyles$fretNumberStyle('120px'),
+											_0: _user$project$Scales_Styles$fretNumberStyle('120px'),
 											_1: {ctor: '[]'}
 										},
 										A2(
@@ -1394,7 +1394,7 @@ var _user$project$Views_Scales$lydianModeView = function (model) {
 											_elm_lang$html$Html$div,
 											{
 												ctor: '::',
-												_0: _user$project$Styles_ScalesStyles$fretNumberStyle('50px'),
+												_0: _user$project$Scales_Styles$fretNumberStyle('50px'),
 												_1: {ctor: '[]'}
 											},
 											A2(
@@ -1414,13 +1414,13 @@ var _user$project$Views_Scales$lydianModeView = function (model) {
 			}
 		});
 };
-var _user$project$Views_Scales$minorPentatonicView = function (model) {
+var _user$project$Scales_View$minorPentatonicView = function (model) {
 	var markup = function (a) {
 		return A2(
 			_elm_lang$html$Html$span,
 			{
 				ctor: '::',
-				_0: _user$project$Styles_ScalesStyles$fretNumberGroupStyle,
+				_0: _user$project$Scales_Styles$fretNumberGroupStyle,
 				_1: {ctor: '[]'}
 			},
 			{
@@ -1431,24 +1431,24 @@ var _user$project$Views_Scales$minorPentatonicView = function (model) {
 			});
 	};
 	var computedOffset = (_elm_lang$core$Native_Utils.cmp(
-		_user$project$Views_Scales$fretOffset(model) - 3,
-		-8) < 0) ? (_user$project$Views_Scales$fretOffset(model) + 9) : (_user$project$Views_Scales$fretOffset(model) - 3);
+		_user$project$Scales_View$fretOffset(model) - 3,
+		-8) < 0) ? (_user$project$Scales_View$fretOffset(model) + 9) : (_user$project$Scales_View$fretOffset(model) - 3);
 	var data = function (accessor) {
 		return accessor(
-			A3(_user$project$Views_Scales$scaleStringSchema, computedOffset, model.musKey, _user$project$Views_Scales$minorPentatonicMode));
+			A3(_user$project$Scales_View$scaleStringSchema, computedOffset, model.musKey, _user$project$Scales_View$minorPentatonicMode));
 	};
 	return A2(
 		_elm_lang$html$Html$div,
 		{
 			ctor: '::',
-			_0: _user$project$Styles_ScalesStyles$scaleContainerStyle,
+			_0: _user$project$Scales_Styles$scaleContainerStyle,
 			_1: {
 				ctor: '::',
 				_0: _elm_lang$html$Html_Events$onClick(
 					A2(
 						_user$project$Logic_Types$Play,
 						_user$project$Logic_Audio$scales('minPentatonic'),
-						_user$project$Views_Scales$fretOffset(model))),
+						_user$project$Scales_View$fretOffset(model))),
 				_1: {ctor: '[]'}
 			}
 		},
@@ -1458,24 +1458,24 @@ var _user$project$Views_Scales$minorPentatonicView = function (model) {
 				_elm_lang$html$Html$div,
 				{
 					ctor: '::',
-					_0: _user$project$Styles_ScalesStyles$scaleTitleStyle,
+					_0: _user$project$Scales_Styles$scaleTitleStyle,
 					_1: {ctor: '[]'}
 				},
 				{
 					ctor: '::',
-					_0: A2(_user$project$Views_Scales$scaleNameMinor, model, ' MINOR PENTATONIC SCALE '),
+					_0: A2(_user$project$Scales_View$scaleNameMinor, model, ' MINOR PENTATONIC SCALE '),
 					_1: {ctor: '[]'}
 				}),
 			_1: {
 				ctor: '::',
-				_0: _user$project$Views_Scales$stringView,
+				_0: _user$project$Scales_View$stringView,
 				_1: {
 					ctor: '::',
 					_0: A2(
 						_elm_lang$html$Html$div,
 						{
 							ctor: '::',
-							_0: _user$project$Styles_ScalesStyles$fretNumberStyle('450px'),
+							_0: _user$project$Scales_Styles$fretNumberStyle('450px'),
 							_1: {ctor: '[]'}
 						},
 						A2(
@@ -1491,7 +1491,7 @@ var _user$project$Views_Scales$minorPentatonicView = function (model) {
 							_elm_lang$html$Html$div,
 							{
 								ctor: '::',
-								_0: _user$project$Styles_ScalesStyles$fretNumberStyle('370px'),
+								_0: _user$project$Scales_Styles$fretNumberStyle('370px'),
 								_1: {ctor: '[]'}
 							},
 							A2(
@@ -1507,7 +1507,7 @@ var _user$project$Views_Scales$minorPentatonicView = function (model) {
 								_elm_lang$html$Html$div,
 								{
 									ctor: '::',
-									_0: _user$project$Styles_ScalesStyles$fretNumberStyle('290px'),
+									_0: _user$project$Scales_Styles$fretNumberStyle('290px'),
 									_1: {ctor: '[]'}
 								},
 								A2(
@@ -1523,7 +1523,7 @@ var _user$project$Views_Scales$minorPentatonicView = function (model) {
 									_elm_lang$html$Html$div,
 									{
 										ctor: '::',
-										_0: _user$project$Styles_ScalesStyles$fretNumberStyle('210px'),
+										_0: _user$project$Scales_Styles$fretNumberStyle('210px'),
 										_1: {ctor: '[]'}
 									},
 									A2(
@@ -1539,7 +1539,7 @@ var _user$project$Views_Scales$minorPentatonicView = function (model) {
 										_elm_lang$html$Html$div,
 										{
 											ctor: '::',
-											_0: _user$project$Styles_ScalesStyles$fretNumberStyle('130px'),
+											_0: _user$project$Scales_Styles$fretNumberStyle('130px'),
 											_1: {ctor: '[]'}
 										},
 										A2(
@@ -1555,7 +1555,7 @@ var _user$project$Views_Scales$minorPentatonicView = function (model) {
 											_elm_lang$html$Html$div,
 											{
 												ctor: '::',
-												_0: _user$project$Styles_ScalesStyles$fretNumberStyle('50px'),
+												_0: _user$project$Scales_Styles$fretNumberStyle('50px'),
 												_1: {ctor: '[]'}
 											},
 											A2(
@@ -1575,13 +1575,13 @@ var _user$project$Views_Scales$minorPentatonicView = function (model) {
 			}
 		});
 };
-var _user$project$Views_Scales$majorPentatonicView = function (model) {
+var _user$project$Scales_View$majorPentatonicView = function (model) {
 	var markup = function (a) {
 		return A2(
 			_elm_lang$html$Html$span,
 			{
 				ctor: '::',
-				_0: _user$project$Styles_ScalesStyles$fretNumberGroupStyle,
+				_0: _user$project$Scales_Styles$fretNumberGroupStyle,
 				_1: {ctor: '[]'}
 			},
 			{
@@ -1594,23 +1594,23 @@ var _user$project$Views_Scales$majorPentatonicView = function (model) {
 	var data = function (accessor) {
 		return accessor(
 			A3(
-				_user$project$Views_Scales$scaleStringSchema,
-				_user$project$Views_Scales$fretOffset(model),
+				_user$project$Scales_View$scaleStringSchema,
+				_user$project$Scales_View$fretOffset(model),
 				model.musKey,
-				_user$project$Views_Scales$majorPentatonicMode));
+				_user$project$Scales_View$majorPentatonicMode));
 	};
 	return A2(
 		_elm_lang$html$Html$div,
 		{
 			ctor: '::',
-			_0: _user$project$Styles_ScalesStyles$scaleContainerStyle,
+			_0: _user$project$Scales_Styles$scaleContainerStyle,
 			_1: {
 				ctor: '::',
 				_0: _elm_lang$html$Html_Events$onClick(
 					A2(
 						_user$project$Logic_Types$Play,
 						_user$project$Logic_Audio$scales('majPentatonic'),
-						_user$project$Views_Scales$fretOffset(model))),
+						_user$project$Scales_View$fretOffset(model))),
 				_1: {ctor: '[]'}
 			}
 		},
@@ -1620,24 +1620,24 @@ var _user$project$Views_Scales$majorPentatonicView = function (model) {
 				_elm_lang$html$Html$div,
 				{
 					ctor: '::',
-					_0: _user$project$Styles_ScalesStyles$scaleTitleStyle,
+					_0: _user$project$Scales_Styles$scaleTitleStyle,
 					_1: {ctor: '[]'}
 				},
 				{
 					ctor: '::',
-					_0: A4(_user$project$Views_Scales$scaleNameMajor, model, ' MAJOR PENTATONIC SCALE ', '', ''),
+					_0: A4(_user$project$Scales_View$scaleNameMajor, model, ' MAJOR PENTATONIC SCALE ', '', ''),
 					_1: {ctor: '[]'}
 				}),
 			_1: {
 				ctor: '::',
-				_0: _user$project$Views_Scales$stringView,
+				_0: _user$project$Scales_View$stringView,
 				_1: {
 					ctor: '::',
 					_0: A2(
 						_elm_lang$html$Html$div,
 						{
 							ctor: '::',
-							_0: _user$project$Styles_ScalesStyles$fretNumberStyle('450px'),
+							_0: _user$project$Scales_Styles$fretNumberStyle('450px'),
 							_1: {ctor: '[]'}
 						},
 						A2(
@@ -1653,7 +1653,7 @@ var _user$project$Views_Scales$majorPentatonicView = function (model) {
 							_elm_lang$html$Html$div,
 							{
 								ctor: '::',
-								_0: _user$project$Styles_ScalesStyles$fretNumberStyle('370px'),
+								_0: _user$project$Scales_Styles$fretNumberStyle('370px'),
 								_1: {ctor: '[]'}
 							},
 							A2(
@@ -1669,7 +1669,7 @@ var _user$project$Views_Scales$majorPentatonicView = function (model) {
 								_elm_lang$html$Html$div,
 								{
 									ctor: '::',
-									_0: _user$project$Styles_ScalesStyles$fretNumberStyle('290px'),
+									_0: _user$project$Scales_Styles$fretNumberStyle('290px'),
 									_1: {ctor: '[]'}
 								},
 								A2(
@@ -1685,7 +1685,7 @@ var _user$project$Views_Scales$majorPentatonicView = function (model) {
 									_elm_lang$html$Html$div,
 									{
 										ctor: '::',
-										_0: _user$project$Styles_ScalesStyles$fretNumberStyle('210px'),
+										_0: _user$project$Scales_Styles$fretNumberStyle('210px'),
 										_1: {ctor: '[]'}
 									},
 									A2(
@@ -1701,7 +1701,7 @@ var _user$project$Views_Scales$majorPentatonicView = function (model) {
 										_elm_lang$html$Html$div,
 										{
 											ctor: '::',
-											_0: _user$project$Styles_ScalesStyles$fretNumberStyle('130px'),
+											_0: _user$project$Scales_Styles$fretNumberStyle('130px'),
 											_1: {ctor: '[]'}
 										},
 										A2(
@@ -1717,7 +1717,7 @@ var _user$project$Views_Scales$majorPentatonicView = function (model) {
 											_elm_lang$html$Html$div,
 											{
 												ctor: '::',
-												_0: _user$project$Styles_ScalesStyles$fretNumberStyle('50px'),
+												_0: _user$project$Scales_Styles$fretNumberStyle('50px'),
 												_1: {ctor: '[]'}
 											},
 											A2(
@@ -1737,13 +1737,13 @@ var _user$project$Views_Scales$majorPentatonicView = function (model) {
 			}
 		});
 };
-var _user$project$Views_Scales$aeolianModeView = function (model) {
+var _user$project$Scales_View$aeolianModeView = function (model) {
 	var markup = function (a) {
 		return A2(
 			_elm_lang$html$Html$span,
 			{
 				ctor: '::',
-				_0: _user$project$Styles_ScalesStyles$fretNumberGroupStyle,
+				_0: _user$project$Scales_Styles$fretNumberGroupStyle,
 				_1: {ctor: '[]'}
 			},
 			{
@@ -1754,24 +1754,24 @@ var _user$project$Views_Scales$aeolianModeView = function (model) {
 			});
 	};
 	var computedOffset = (_elm_lang$core$Native_Utils.cmp(
-		_user$project$Views_Scales$fretOffset(model) - 3,
-		-8) < 0) ? (_user$project$Views_Scales$fretOffset(model) + 9) : (_user$project$Views_Scales$fretOffset(model) - 3);
+		_user$project$Scales_View$fretOffset(model) - 3,
+		-8) < 0) ? (_user$project$Scales_View$fretOffset(model) + 9) : (_user$project$Scales_View$fretOffset(model) - 3);
 	var data = function (accessor) {
 		return accessor(
-			A3(_user$project$Views_Scales$scaleStringSchema, computedOffset, model.musKey, _user$project$Views_Scales$aeolianMode));
+			A3(_user$project$Scales_View$scaleStringSchema, computedOffset, model.musKey, _user$project$Scales_View$aeolianMode));
 	};
 	return A2(
 		_elm_lang$html$Html$div,
 		{
 			ctor: '::',
-			_0: _user$project$Styles_ScalesStyles$scaleContainerStyle,
+			_0: _user$project$Scales_Styles$scaleContainerStyle,
 			_1: {
 				ctor: '::',
 				_0: _elm_lang$html$Html_Events$onClick(
 					A2(
 						_user$project$Logic_Types$Play,
 						_user$project$Logic_Audio$scales('minor'),
-						_user$project$Views_Scales$fretOffset(model))),
+						_user$project$Scales_View$fretOffset(model))),
 				_1: {ctor: '[]'}
 			}
 		},
@@ -1781,24 +1781,24 @@ var _user$project$Views_Scales$aeolianModeView = function (model) {
 				_elm_lang$html$Html$div,
 				{
 					ctor: '::',
-					_0: _user$project$Styles_ScalesStyles$scaleTitleStyle,
+					_0: _user$project$Scales_Styles$scaleTitleStyle,
 					_1: {ctor: '[]'}
 				},
 				{
 					ctor: '::',
-					_0: A2(_user$project$Views_Scales$scaleNameMinor, model, ' MINOR SCALE '),
+					_0: A2(_user$project$Scales_View$scaleNameMinor, model, ' MINOR SCALE '),
 					_1: {ctor: '[]'}
 				}),
 			_1: {
 				ctor: '::',
-				_0: _user$project$Views_Scales$stringView,
+				_0: _user$project$Scales_View$stringView,
 				_1: {
 					ctor: '::',
 					_0: A2(
 						_elm_lang$html$Html$div,
 						{
 							ctor: '::',
-							_0: _user$project$Styles_ScalesStyles$fretNumberStyle('460px'),
+							_0: _user$project$Scales_Styles$fretNumberStyle('460px'),
 							_1: {ctor: '[]'}
 						},
 						A2(
@@ -1814,7 +1814,7 @@ var _user$project$Views_Scales$aeolianModeView = function (model) {
 							_elm_lang$html$Html$div,
 							{
 								ctor: '::',
-								_0: _user$project$Styles_ScalesStyles$fretNumberStyle('380px'),
+								_0: _user$project$Scales_Styles$fretNumberStyle('380px'),
 								_1: {ctor: '[]'}
 							},
 							A2(
@@ -1830,7 +1830,7 @@ var _user$project$Views_Scales$aeolianModeView = function (model) {
 								_elm_lang$html$Html$div,
 								{
 									ctor: '::',
-									_0: _user$project$Styles_ScalesStyles$fretNumberStyle('320px'),
+									_0: _user$project$Scales_Styles$fretNumberStyle('320px'),
 									_1: {ctor: '[]'}
 								},
 								A2(
@@ -1846,7 +1846,7 @@ var _user$project$Views_Scales$aeolianModeView = function (model) {
 									_elm_lang$html$Html$div,
 									{
 										ctor: '::',
-										_0: _user$project$Styles_ScalesStyles$fretNumberStyle('240px'),
+										_0: _user$project$Scales_Styles$fretNumberStyle('240px'),
 										_1: {ctor: '[]'}
 									},
 									A2(
@@ -1862,7 +1862,7 @@ var _user$project$Views_Scales$aeolianModeView = function (model) {
 										_elm_lang$html$Html$div,
 										{
 											ctor: '::',
-											_0: _user$project$Styles_ScalesStyles$fretNumberStyle('150px'),
+											_0: _user$project$Scales_Styles$fretNumberStyle('150px'),
 											_1: {ctor: '[]'}
 										},
 										A2(
@@ -1878,7 +1878,7 @@ var _user$project$Views_Scales$aeolianModeView = function (model) {
 											_elm_lang$html$Html$div,
 											{
 												ctor: '::',
-												_0: _user$project$Styles_ScalesStyles$fretNumberStyle('50px'),
+												_0: _user$project$Scales_Styles$fretNumberStyle('50px'),
 												_1: {ctor: '[]'}
 											},
 											A2(
@@ -1898,13 +1898,13 @@ var _user$project$Views_Scales$aeolianModeView = function (model) {
 			}
 		});
 };
-var _user$project$Views_Scales$ionianModeView = function (model) {
+var _user$project$Scales_View$ionianModeView = function (model) {
 	var markup = function (a) {
 		return A2(
 			_elm_lang$html$Html$span,
 			{
 				ctor: '::',
-				_0: _user$project$Styles_ScalesStyles$fretNumberGroupStyle,
+				_0: _user$project$Scales_Styles$fretNumberGroupStyle,
 				_1: {ctor: '[]'}
 			},
 			{
@@ -1917,23 +1917,23 @@ var _user$project$Views_Scales$ionianModeView = function (model) {
 	var data = function (accessor) {
 		return accessor(
 			A3(
-				_user$project$Views_Scales$scaleStringSchema,
-				_user$project$Views_Scales$fretOffset(model),
+				_user$project$Scales_View$scaleStringSchema,
+				_user$project$Scales_View$fretOffset(model),
 				model.musKey,
-				_user$project$Views_Scales$ionianMode));
+				_user$project$Scales_View$ionianMode));
 	};
 	return A2(
 		_elm_lang$html$Html$div,
 		{
 			ctor: '::',
-			_0: _user$project$Styles_ScalesStyles$scaleContainerStyle,
+			_0: _user$project$Scales_Styles$scaleContainerStyle,
 			_1: {
 				ctor: '::',
 				_0: _elm_lang$html$Html_Events$onClick(
 					A2(
 						_user$project$Logic_Types$Play,
 						_user$project$Logic_Audio$scales('major'),
-						_user$project$Views_Scales$fretOffset(model))),
+						_user$project$Scales_View$fretOffset(model))),
 				_1: {ctor: '[]'}
 			}
 		},
@@ -1943,24 +1943,24 @@ var _user$project$Views_Scales$ionianModeView = function (model) {
 				_elm_lang$html$Html$div,
 				{
 					ctor: '::',
-					_0: _user$project$Styles_ScalesStyles$scaleTitleStyle,
+					_0: _user$project$Scales_Styles$scaleTitleStyle,
 					_1: {ctor: '[]'}
 				},
 				{
 					ctor: '::',
-					_0: A4(_user$project$Views_Scales$scaleNameMajor, model, ' MAJOR SCALE ', '', ''),
+					_0: A4(_user$project$Scales_View$scaleNameMajor, model, ' MAJOR SCALE ', '', ''),
 					_1: {ctor: '[]'}
 				}),
 			_1: {
 				ctor: '::',
-				_0: _user$project$Views_Scales$stringView,
+				_0: _user$project$Scales_View$stringView,
 				_1: {
 					ctor: '::',
 					_0: A2(
 						_elm_lang$html$Html$div,
 						{
 							ctor: '::',
-							_0: _user$project$Styles_ScalesStyles$fretNumberStyle('490px'),
+							_0: _user$project$Scales_Styles$fretNumberStyle('490px'),
 							_1: {ctor: '[]'}
 						},
 						A2(
@@ -1976,7 +1976,7 @@ var _user$project$Views_Scales$ionianModeView = function (model) {
 							_elm_lang$html$Html$div,
 							{
 								ctor: '::',
-								_0: _user$project$Styles_ScalesStyles$fretNumberStyle('420px'),
+								_0: _user$project$Scales_Styles$fretNumberStyle('420px'),
 								_1: {ctor: '[]'}
 							},
 							A2(
@@ -1992,7 +1992,7 @@ var _user$project$Views_Scales$ionianModeView = function (model) {
 								_elm_lang$html$Html$div,
 								{
 									ctor: '::',
-									_0: _user$project$Styles_ScalesStyles$fretNumberStyle('320px'),
+									_0: _user$project$Scales_Styles$fretNumberStyle('320px'),
 									_1: {ctor: '[]'}
 								},
 								A2(
@@ -2008,7 +2008,7 @@ var _user$project$Views_Scales$ionianModeView = function (model) {
 									_elm_lang$html$Html$div,
 									{
 										ctor: '::',
-										_0: _user$project$Styles_ScalesStyles$fretNumberStyle('220px'),
+										_0: _user$project$Scales_Styles$fretNumberStyle('220px'),
 										_1: {ctor: '[]'}
 									},
 									A2(
@@ -2024,7 +2024,7 @@ var _user$project$Views_Scales$ionianModeView = function (model) {
 										_elm_lang$html$Html$div,
 										{
 											ctor: '::',
-											_0: _user$project$Styles_ScalesStyles$fretNumberStyle('120px'),
+											_0: _user$project$Scales_Styles$fretNumberStyle('120px'),
 											_1: {ctor: '[]'}
 										},
 										A2(
@@ -2040,7 +2040,7 @@ var _user$project$Views_Scales$ionianModeView = function (model) {
 											_elm_lang$html$Html$div,
 											{
 												ctor: '::',
-												_0: _user$project$Styles_ScalesStyles$fretNumberStyle('50px'),
+												_0: _user$project$Scales_Styles$fretNumberStyle('50px'),
 												_1: {ctor: '[]'}
 											},
 											A2(
@@ -2060,7 +2060,7 @@ var _user$project$Views_Scales$ionianModeView = function (model) {
 			}
 		});
 };
-var _user$project$Views_Scales$scalesPage = function (model) {
+var _user$project$Scales_View$scalesPage = function (model) {
 	return A2(
 		_elm_lang$html$Html$div,
 		{
@@ -2079,30 +2079,30 @@ var _user$project$Views_Scales$scalesPage = function (model) {
 				_elm_lang$html$Html$div,
 				{
 					ctor: '::',
-					_0: _user$project$Styles_ScalesStyles$scalePageStyle,
+					_0: _user$project$Scales_Styles$scalePageStyle,
 					_1: {ctor: '[]'}
 				},
 				{
 					ctor: '::',
-					_0: _user$project$Views_Scales$ionianModeView(model),
+					_0: _user$project$Scales_View$ionianModeView(model),
 					_1: {
 						ctor: '::',
-						_0: _user$project$Views_Scales$aeolianModeView(model),
+						_0: _user$project$Scales_View$aeolianModeView(model),
 						_1: {
 							ctor: '::',
-							_0: _user$project$Views_Scales$majorPentatonicView(model),
+							_0: _user$project$Scales_View$majorPentatonicView(model),
 							_1: {
 								ctor: '::',
-								_0: _user$project$Views_Scales$minorPentatonicView(model),
+								_0: _user$project$Scales_View$minorPentatonicView(model),
 								_1: {
 									ctor: '::',
-									_0: _user$project$Views_Scales$lydianModeView(model),
+									_0: _user$project$Scales_View$lydianModeView(model),
 									_1: {
 										ctor: '::',
-										_0: _user$project$Views_Scales$mixolydianModeView(model),
+										_0: _user$project$Scales_View$mixolydianModeView(model),
 										_1: {
 											ctor: '::',
-											_0: _user$project$Views_Scales$dorianModeView(model),
+											_0: _user$project$Scales_View$dorianModeView(model),
 											_1: {ctor: '[]'}
 										}
 									}

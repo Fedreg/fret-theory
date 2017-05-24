@@ -1,0 +1,26 @@
+var _user$project$Scales_Types$Model = F4(
+	function (a, b, c, d) {
+		return {musKey: a, currentChord: b, index: c, pitchShift: d};
+	});
+var _user$project$Scales_Types$ScaleData = F6(
+	function (a, b, c, d, e, f) {
+		return {e: a, b: b, g: c, d: d, a: e, e6: f};
+	});
+var _user$project$Scales_Types$ScaleSchemaData = F6(
+	function (a, b, c, d, e, f) {
+		return {one: a, two: b, three: c, four: d, five: e, six: f};
+	});
+var _user$project$Scales_Types$Note = F3(
+	function (a, b, c) {
+		return {frequency: a, octave: b, sustain: c};
+	});
+var _user$project$Scales_Types$PlayBundle = F2(
+	function (a, b) {
+		return {note: a, waveType: b};
+	});
+var _user$project$Scales_Types$SendNotes = {ctor: 'SendNotes'};
+var _user$project$Scales_Types$ResetIndex = {ctor: 'ResetIndex'};
+var _user$project$Scales_Types$Play = F2(
+	function (a, b) {
+		return {ctor: 'Play', _0: a, _1: b};
+	});

@@ -1,4 +1,4 @@
-module Views.FingerPick exposing (fingerPickingPage)
+module Fingerpick.View exposing (fingerPickingPage)
 
 import Html exposing (Html, div, button, text, span, hr, h1, h3, h4, h5)
 import Html.Attributes exposing (style, attribute)

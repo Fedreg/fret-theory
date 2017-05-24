@@ -24,7 +24,7 @@ var _user$project$Main$initPhoenixSocket = A4(
 	'chordChannel:chords',
 	_user$project$Logic_Types$ReceiveMessage,
 	_fbonetti$elm_phoenix_socket$Phoenix_Socket$withDebug(
-		_fbonetti$elm_phoenix_socket$Phoenix_Socket$init('wss://damp-wave-74595.herokuapp.com/socket/websocket')));
+		_fbonetti$elm_phoenix_socket$Phoenix_Socket$init('ws:localhost:4000/socket/websocket')));
 var _user$project$Main$initFingerPickPattern = {
 	a: {
 		ctor: '::',

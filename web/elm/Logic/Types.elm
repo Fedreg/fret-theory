@@ -95,25 +95,25 @@ type alias PlayBundle =
 
 type Msg
     = ChangeKey String
-    | SendNotes
-    | Play (List String) Int
-    | ResetIndex
-    | OnLocationChange Location
-    | NewUrl String
-    | DrawNote String String String
     | ChangeSliderValue String
-    | NoOp
-    | ShowNavMenu
-    | ShowModal
     | ChangeStrumGroupNumber String
-    | StrumArrowDirection (List (List Int))
+    | DrawNote String String String
     | FingerPickPatternBuilderA (List Int)
     | FingerPickPatternBuilderB (List Int)
-    | Randomize Int Int
     | JoinChannel
-    | SendMessage String
-    | ReceiveMessage Json.Encode.Value
+    | NewUrl String
+    | NoOp
+    | OnLocationChange Location
     | PhoenixMsg (Phoenix.Socket.Msg Msg)
+    | Play (List String) Int
+    | Randomize Int Int
+    | ReceiveMessage Json.Encode.Value
+    | ResetIndex
+    | SendMessage String
+    | SendNotes
+    | ShowModal
+    | ShowNavMenu
+    | StrumArrowDirection (List (List Int))
 
 
 type Route

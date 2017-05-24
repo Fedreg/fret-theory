@@ -62,14 +62,14 @@ exports.config = {
       outputFolder: '../static/js',
       outputFile: 'main.js'
     }, 
-    // uglify: {
-    //   mangle: false,
-    //   compress: {
-    //     global_defs: {
-    //       DEBUG: false
-    //     }
-    //   }
-    // }
+    uglify: {
+      mangle: true,
+      compress: {
+        global_defs: {
+          DEBUG: false
+        }
+      }
+    }
   },
 
   modules: {

@@ -1661,7 +1661,39 @@ process.chdir = function (dir) {
 process.umask = function() { return 0; };
   })();
 });
-require.register("web/elm/Logic/Audio.elm", function(exports, require, module) {
+require.register("web/elm/Chords/State.elm", function(exports, require, module) {
+
+});
+
+;require.register("web/elm/Chords/Styles.elm", function(exports, require, module) {
+
+});
+
+;require.register("web/elm/Chords/Types.elm", function(exports, require, module) {
+
+});
+
+;require.register("web/elm/Chords/View.elm", function(exports, require, module) {
+
+});
+
+;require.register("web/elm/Fingerpick/State.elm", function(exports, require, module) {
+
+});
+
+;require.register("web/elm/Fingerpick/Styles.elm", function(exports, require, module) {
+
+});
+
+;require.register("web/elm/Fingerpick/Types.elm", function(exports, require, module) {
+
+});
+
+;require.register("web/elm/Fingerpick/View.elm", function(exports, require, module) {
+
+});
+
+;require.register("web/elm/Logic/Audio.elm", function(exports, require, module) {
 
 });
 
@@ -1686,6 +1718,38 @@ require.register("web/elm/Logic/Audio.elm", function(exports, require, module) {
 });
 
 ;require.register("web/elm/Main.elm", function(exports, require, module) {
+
+});
+
+;require.register("web/elm/Scales/State.elm", function(exports, require, module) {
+
+});
+
+;require.register("web/elm/Scales/Styles.elm", function(exports, require, module) {
+
+});
+
+;require.register("web/elm/Scales/Types.elm", function(exports, require, module) {
+
+});
+
+;require.register("web/elm/Scales/View.elm", function(exports, require, module) {
+
+});
+
+;require.register("web/elm/Strum/State.elm", function(exports, require, module) {
+
+});
+
+;require.register("web/elm/Strum/Styles.elm", function(exports, require, module) {
+
+});
+
+;require.register("web/elm/Strum/Types.elm", function(exports, require, module) {
+
+});
+
+;require.register("web/elm/Strum/View.elm", function(exports, require, module) {
 
 });
 
@@ -21522,54 +21586,54 @@ var _user$project$Logic_Types$PlayBundle = F2(
 	function (a, b) {
 		return {note: a, waveType: b};
 	});
-var _user$project$Logic_Types$PhoenixMsg = function (a) {
-	return {ctor: 'PhoenixMsg', _0: a};
+var _user$project$Logic_Types$StrumArrowDirection = function (a) {
+	return {ctor: 'StrumArrowDirection', _0: a};
 };
-var _user$project$Logic_Types$ReceiveMessage = function (a) {
-	return {ctor: 'ReceiveMessage', _0: a};
-};
+var _user$project$Logic_Types$ShowNavMenu = {ctor: 'ShowNavMenu'};
+var _user$project$Logic_Types$ShowModal = {ctor: 'ShowModal'};
+var _user$project$Logic_Types$SendNotes = {ctor: 'SendNotes'};
 var _user$project$Logic_Types$SendMessage = function (a) {
 	return {ctor: 'SendMessage', _0: a};
 };
-var _user$project$Logic_Types$JoinChannel = {ctor: 'JoinChannel'};
+var _user$project$Logic_Types$ResetIndex = {ctor: 'ResetIndex'};
+var _user$project$Logic_Types$ReceiveMessage = function (a) {
+	return {ctor: 'ReceiveMessage', _0: a};
+};
 var _user$project$Logic_Types$Randomize = F2(
 	function (a, b) {
 		return {ctor: 'Randomize', _0: a, _1: b};
 	});
+var _user$project$Logic_Types$Play = F2(
+	function (a, b) {
+		return {ctor: 'Play', _0: a, _1: b};
+	});
+var _user$project$Logic_Types$PhoenixMsg = function (a) {
+	return {ctor: 'PhoenixMsg', _0: a};
+};
+var _user$project$Logic_Types$OnLocationChange = function (a) {
+	return {ctor: 'OnLocationChange', _0: a};
+};
+var _user$project$Logic_Types$NoOp = {ctor: 'NoOp'};
+var _user$project$Logic_Types$NewUrl = function (a) {
+	return {ctor: 'NewUrl', _0: a};
+};
+var _user$project$Logic_Types$JoinChannel = {ctor: 'JoinChannel'};
 var _user$project$Logic_Types$FingerPickPatternBuilderB = function (a) {
 	return {ctor: 'FingerPickPatternBuilderB', _0: a};
 };
 var _user$project$Logic_Types$FingerPickPatternBuilderA = function (a) {
 	return {ctor: 'FingerPickPatternBuilderA', _0: a};
 };
-var _user$project$Logic_Types$StrumArrowDirection = function (a) {
-	return {ctor: 'StrumArrowDirection', _0: a};
-};
-var _user$project$Logic_Types$ChangeStrumGroupNumber = function (a) {
-	return {ctor: 'ChangeStrumGroupNumber', _0: a};
-};
-var _user$project$Logic_Types$ShowModal = {ctor: 'ShowModal'};
-var _user$project$Logic_Types$ShowNavMenu = {ctor: 'ShowNavMenu'};
-var _user$project$Logic_Types$NoOp = {ctor: 'NoOp'};
-var _user$project$Logic_Types$ChangeSliderValue = function (a) {
-	return {ctor: 'ChangeSliderValue', _0: a};
-};
 var _user$project$Logic_Types$DrawNote = F3(
 	function (a, b, c) {
 		return {ctor: 'DrawNote', _0: a, _1: b, _2: c};
 	});
-var _user$project$Logic_Types$NewUrl = function (a) {
-	return {ctor: 'NewUrl', _0: a};
+var _user$project$Logic_Types$ChangeStrumGroupNumber = function (a) {
+	return {ctor: 'ChangeStrumGroupNumber', _0: a};
 };
-var _user$project$Logic_Types$OnLocationChange = function (a) {
-	return {ctor: 'OnLocationChange', _0: a};
+var _user$project$Logic_Types$ChangeSliderValue = function (a) {
+	return {ctor: 'ChangeSliderValue', _0: a};
 };
-var _user$project$Logic_Types$ResetIndex = {ctor: 'ResetIndex'};
-var _user$project$Logic_Types$Play = F2(
-	function (a, b) {
-		return {ctor: 'Play', _0: a, _1: b};
-	});
-var _user$project$Logic_Types$SendNotes = {ctor: 'SendNotes'};
 var _user$project$Logic_Types$ChangeKey = function (a) {
 	return {ctor: 'ChangeKey', _0: a};
 };
@@ -30015,7 +30079,7 @@ var _user$project$Views_Scales$scaleNameMajor = F4(
 								},
 								{
 									ctor: '::',
-									_0: _elm_lang$html$Html$text(' => relative major'),
+									_0: _elm_lang$html$Html$text(' , relative major'),
 									_1: {ctor: '[]'}
 								}),
 							_1: {ctor: '[]'}
@@ -33635,7 +33699,20 @@ var _user$project$Views_FingerPick$fingerPickingPage = function (model) {
 							_0: _elm_lang$html$Html$text('Generate Random Fingerpicking Pattern'),
 							_1: {ctor: '[]'}
 						}),
-					_1: {ctor: '[]'}
+					_1: {
+						ctor: '::',
+						_0: A2(
+							_elm_lang$html$Html$div,
+							{ctor: '[]'},
+							{
+								ctor: '::',
+								_0: _elm_lang$html$Html$text(
+									_elm_lang$core$Basics$toString(
+										_user$project$Views_FingerPick$chordNotes(model))),
+								_1: {ctor: '[]'}
+							}),
+						_1: {ctor: '[]'}
+					}
 				}
 			}
 		});
@@ -35629,7 +35706,7 @@ var _user$project$Main$initPhoenixSocket = A4(
 	'chordChannel:chords',
 	_user$project$Logic_Types$ReceiveMessage,
 	_fbonetti$elm_phoenix_socket$Phoenix_Socket$withDebug(
-		_fbonetti$elm_phoenix_socket$Phoenix_Socket$init('wss://damp-wave-74595.herokuapp.com/socket/websocket')));
+		_fbonetti$elm_phoenix_socket$Phoenix_Socket$init('ws:localhost:4000/socket/websocket')));
 var _user$project$Main$initFingerPickPattern = {
 	a: {
 		ctor: '::',
