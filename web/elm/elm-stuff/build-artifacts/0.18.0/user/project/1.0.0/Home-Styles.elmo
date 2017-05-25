@@ -1,0 +1,86 @@
+var _user$project$Home_Styles$secondaryTitleStyle = F2(
+	function (fontSize, color) {
+		return _elm_lang$html$Html_Attributes$style(
+			{
+				ctor: '::',
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'margin', '0 20px 30px'),
+				_1: {
+					ctor: '::',
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'fontSize', fontSize),
+					_1: {
+						ctor: '::',
+						_0: A2(_user$project$Logic_Utils_ops['=>'], 'color', color),
+						_1: {
+							ctor: '::',
+							_0: A2(_user$project$Logic_Utils_ops['=>'], 'zIndex', '50'),
+							_1: {ctor: '[]'}
+						}
+					}
+				}
+			});
+	});
+var _user$project$Home_Styles$titleStyle = F2(
+	function (fontSize, color) {
+		return _elm_lang$html$Html_Attributes$style(
+			{
+				ctor: '::',
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'margin', '125px auto 25px'),
+				_1: {
+					ctor: '::',
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'fontSize', fontSize),
+					_1: {
+						ctor: '::',
+						_0: A2(_user$project$Logic_Utils_ops['=>'], 'color', color),
+						_1: {ctor: '[]'}
+					}
+				}
+			});
+	});
+var _user$project$Home_Styles$homePageModalIconStyle = _elm_lang$html$Html_Attributes$style(
+	{
+		ctor: '::',
+		_0: A2(_user$project$Logic_Utils_ops['=>'], 'fontSize', '20px'),
+		_1: {
+			ctor: '::',
+			_0: A2(_user$project$Logic_Utils_ops['=>'], 'fontWeight', '700'),
+			_1: {
+				ctor: '::',
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'color', '#03a9f4'),
+				_1: {ctor: '[]'}
+			}
+		}
+	});
+var _user$project$Home_Styles$homePageTextListItemStyle = _elm_lang$html$Html_Attributes$style(
+	{
+		ctor: '::',
+		_0: A2(_user$project$Logic_Utils_ops['=>'], 'paddingRight', '30px'),
+		_1: {ctor: '[]'}
+	});
+var _user$project$Home_Styles$homePageTextListStyle = _elm_lang$html$Html_Attributes$style(
+	{
+		ctor: '::',
+		_0: A2(_user$project$Logic_Utils_ops['=>'], 'color', '#444'),
+		_1: {
+			ctor: '::',
+			_0: A2(_user$project$Logic_Utils_ops['=>'], 'margin ', '0 auto'),
+			_1: {
+				ctor: '::',
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'textDecoration', 'none'),
+				_1: {
+					ctor: '::',
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'fontSize', '24px'),
+					_1: {ctor: '[]'}
+				}
+			}
+		}
+	});
+var _user$project$Home_Styles$homePageStyle = _elm_lang$html$Html_Attributes$style(
+	{
+		ctor: '::',
+		_0: A2(_user$project$Logic_Utils_ops['=>'], 'height', '100vh'),
+		_1: {
+			ctor: '::',
+			_0: A2(_user$project$Logic_Utils_ops['=>'], 'textAlign', 'center'),
+			_1: {ctor: '[]'}
+		}
+	});

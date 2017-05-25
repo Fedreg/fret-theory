@@ -1,0 +1,175 @@
+var _user$project$Modal_Styles$modalHeaderStyle = _elm_lang$html$Html_Attributes$style(
+	{
+		ctor: '::',
+		_0: A2(_user$project$Logic_Utils_ops['=>'], 'backgroundColor', '#333'),
+		_1: {
+			ctor: '::',
+			_0: A2(_user$project$Logic_Utils_ops['=>'], 'margin', '-25px 0 25px -25px'),
+			_1: {
+				ctor: '::',
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'padding', '20px 25px'),
+				_1: {
+					ctor: '::',
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'width', '100vw'),
+					_1: {
+						ctor: '::',
+						_0: A2(_user$project$Logic_Utils_ops['=>'], 'height', '75px'),
+						_1: {
+							ctor: '::',
+							_0: A2(_user$project$Logic_Utils_ops['=>'], 'color', '#f40331'),
+							_1: {ctor: '[]'}
+						}
+					}
+				}
+			}
+		}
+	});
+var _user$project$Modal_Styles$modalContentStyle = _elm_lang$html$Html_Attributes$style(
+	{
+		ctor: '::',
+		_0: A2(_user$project$Logic_Utils_ops['=>'], 'position', 'relative'),
+		_1: {
+			ctor: '::',
+			_0: A2(_user$project$Logic_Utils_ops['=>'], 'textAlign', 'left'),
+			_1: {
+				ctor: '::',
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'padding', '25px'),
+				_1: {ctor: '[]'}
+			}
+		}
+	});
+var _user$project$Modal_Styles$closeModalIcon = _elm_lang$html$Html_Attributes$style(
+	{
+		ctor: '::',
+		_0: A2(_user$project$Logic_Utils_ops['=>'], 'position', 'fixed'),
+		_1: {
+			ctor: '::',
+			_0: A2(_user$project$Logic_Utils_ops['=>'], 'top', '20px'),
+			_1: {
+				ctor: '::',
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'right', '20px'),
+				_1: {
+					ctor: '::',
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'fontSize', '20px'),
+					_1: {
+						ctor: '::',
+						_0: A2(_user$project$Logic_Utils_ops['=>'], 'cursor', 'pointer'),
+						_1: {
+							ctor: '::',
+							_0: A2(_user$project$Logic_Utils_ops['=>'], 'color', '#f40331'),
+							_1: {ctor: '[]'}
+						}
+					}
+				}
+			}
+		}
+	});
+var _user$project$Modal_Styles$modalIconStyle = function (model) {
+	var baseStyles = F2(
+		function (color, offset) {
+			return _elm_lang$html$Html_Attributes$style(
+				{
+					ctor: '::',
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'position', 'absolute'),
+					_1: {
+						ctor: '::',
+						_0: A2(_user$project$Logic_Utils_ops['=>'], 'top', offset),
+						_1: {
+							ctor: '::',
+							_0: A2(_user$project$Logic_Utils_ops['=>'], 'right', '60px'),
+							_1: {
+								ctor: '::',
+								_0: A2(_user$project$Logic_Utils_ops['=>'], 'color', color),
+								_1: {
+									ctor: '::',
+									_0: A2(_user$project$Logic_Utils_ops['=>'], 'textAlign', 'center'),
+									_1: {
+										ctor: '::',
+										_0: A2(_user$project$Logic_Utils_ops['=>'], 'fontSize', '40px'),
+										_1: {
+											ctor: '::',
+											_0: A2(_user$project$Logic_Utils_ops['=>'], 'fontWeight', '700'),
+											_1: {
+												ctor: '::',
+												_0: A2(_user$project$Logic_Utils_ops['=>'], 'cursor', 'pointer'),
+												_1: {
+													ctor: '::',
+													_0: A2(_user$project$Logic_Utils_ops['=>'], 'zIndex', '10001'),
+													_1: {ctor: '[]'}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				});
+		});
+	return _elm_lang$core$Native_Utils.eq(model.navMenuOpen, true) ? A2(baseStyles, '#FFF', '2px') : (_elm_lang$core$Native_Utils.eq(model.modalOpen, true) ? A2(baseStyles, '#f40331', '2px') : A2(baseStyles, '#03a9f4', '0'));
+};
+var _user$project$Modal_Styles$modalStyle = function (model) {
+	var baseStyles = F2(
+		function (trans, opacity) {
+			return _elm_lang$html$Html_Attributes$style(
+				{
+					ctor: '::',
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'position', 'fixed'),
+					_1: {
+						ctor: '::',
+						_0: A2(_user$project$Logic_Utils_ops['=>'], 'top', '75px'),
+						_1: {
+							ctor: '::',
+							_0: A2(_user$project$Logic_Utils_ops['=>'], 'left', '0'),
+							_1: {
+								ctor: '::',
+								_0: A2(_user$project$Logic_Utils_ops['=>'], 'width', '100vw'),
+								_1: {
+									ctor: '::',
+									_0: A2(_user$project$Logic_Utils_ops['=>'], 'height', '90vh'),
+									_1: {
+										ctor: '::',
+										_0: A2(_user$project$Logic_Utils_ops['=>'], 'backgroundColor', 'rgba(0,0,0,1)'),
+										_1: {
+											ctor: '::',
+											_0: A2(_user$project$Logic_Utils_ops['=>'], 'zIndex', '50'),
+											_1: {
+												ctor: '::',
+												_0: A2(_user$project$Logic_Utils_ops['=>'], 'color', '#ccc'),
+												_1: {
+													ctor: '::',
+													_0: A2(_user$project$Logic_Utils_ops['=>'], 'textAlign', 'center'),
+													_1: {
+														ctor: '::',
+														_0: A2(_user$project$Logic_Utils_ops['=>'], 'overflow', 'scroll'),
+														_1: {
+															ctor: '::',
+															_0: A2(_user$project$Logic_Utils_ops['=>'], 'opacity', opacity),
+															_1: {
+																ctor: '::',
+																_0: A2(_user$project$Logic_Utils_ops['=>'], 'transform', trans),
+																_1: {
+																	ctor: '::',
+																	_0: A2(_user$project$Logic_Utils_ops['=>'], 'transition', 'all 0.3s linear'),
+																	_1: {ctor: '[]'}
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				});
+		});
+	var _p0 = model.modalOpen;
+	if (_p0 === true) {
+		return A2(baseStyles, 'translateX(0)', '1');
+	} else {
+		return A2(baseStyles, 'translateX(101vw)', '0');
+	}
+};

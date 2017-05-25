@@ -1,0 +1,394 @@
+var _user$project$Fretboard_Styles$hrLedgerStyleLo = F2(
+	function (notePosition, offset) {
+		var pos = notePosition;
+		var visibility = (_elm_lang$core$Native_Utils.cmp(pos, offset + 20.0) < 0) ? '1' : '0';
+		return _elm_lang$html$Html_Attributes$style(
+			{
+				ctor: '::',
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'position', 'absolute'),
+				_1: {
+					ctor: '::',
+					_0: A2(
+						_user$project$Logic_Utils_ops['=>'],
+						'bottom',
+						A2(
+							_elm_lang$core$Basics_ops['++'],
+							_elm_lang$core$Basics$toString(offset),
+							'px')),
+					_1: {
+						ctor: '::',
+						_0: A2(_user$project$Logic_Utils_ops['=>'], 'left', '45%'),
+						_1: {
+							ctor: '::',
+							_0: A2(_user$project$Logic_Utils_ops['=>'], 'width', '50px'),
+							_1: {
+								ctor: '::',
+								_0: A2(_user$project$Logic_Utils_ops['=>'], 'margin', '0 auto'),
+								_1: {
+									ctor: '::',
+									_0: A2(_user$project$Logic_Utils_ops['=>'], 'padding', '10px'),
+									_1: {
+										ctor: '::',
+										_0: A2(_user$project$Logic_Utils_ops['=>'], 'opacity', visibility),
+										_1: {
+											ctor: '::',
+											_0: A2(_user$project$Logic_Utils_ops['=>'], 'borderTop', '0.1rem solid #444'),
+											_1: {
+												ctor: '::',
+												_0: A2(_user$project$Logic_Utils_ops['=>'], 'transition', 'opacity 0.5s ease'),
+												_1: {
+													ctor: '::',
+													_0: A2(_user$project$Logic_Utils_ops['=>'], 'zIndex', '0'),
+													_1: {ctor: '[]'}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			});
+	});
+var _user$project$Fretboard_Styles$hrLedgerStyleHi = F2(
+	function (notePosition, offset) {
+		var pos = notePosition;
+		var visibility = (_elm_lang$core$Native_Utils.cmp(pos, offset) > 0) ? '1' : '0';
+		return _elm_lang$html$Html_Attributes$style(
+			{
+				ctor: '::',
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'position', 'absolute'),
+				_1: {
+					ctor: '::',
+					_0: A2(
+						_user$project$Logic_Utils_ops['=>'],
+						'bottom',
+						A2(
+							_elm_lang$core$Basics_ops['++'],
+							_elm_lang$core$Basics$toString(offset),
+							'px')),
+					_1: {
+						ctor: '::',
+						_0: A2(_user$project$Logic_Utils_ops['=>'], 'left', '45%'),
+						_1: {
+							ctor: '::',
+							_0: A2(_user$project$Logic_Utils_ops['=>'], 'width', '50px'),
+							_1: {
+								ctor: '::',
+								_0: A2(_user$project$Logic_Utils_ops['=>'], 'margin', '0 auto'),
+								_1: {
+									ctor: '::',
+									_0: A2(_user$project$Logic_Utils_ops['=>'], 'padding', '10px'),
+									_1: {
+										ctor: '::',
+										_0: A2(_user$project$Logic_Utils_ops['=>'], 'opacity', visibility),
+										_1: {
+											ctor: '::',
+											_0: A2(_user$project$Logic_Utils_ops['=>'], 'borderTop', '0.1rem solid #444'),
+											_1: {
+												ctor: '::',
+												_0: A2(_user$project$Logic_Utils_ops['=>'], 'transition', 'opacity 0.5s ease'),
+												_1: {
+													ctor: '::',
+													_0: A2(_user$project$Logic_Utils_ops['=>'], 'zIndex', '0'),
+													_1: {ctor: '[]'}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			});
+	});
+var _user$project$Fretboard_Styles$hrStyle = _elm_lang$html$Html_Attributes$style(
+	{
+		ctor: '::',
+		_0: A2(_user$project$Logic_Utils_ops['=>'], 'width', '280px'),
+		_1: {
+			ctor: '::',
+			_0: A2(_user$project$Logic_Utils_ops['=>'], 'margin', '0 auto'),
+			_1: {
+				ctor: '::',
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'padding', '10px'),
+				_1: {
+					ctor: '::',
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'borderTop', '0.1rem solid #444'),
+					_1: {ctor: '[]'}
+				}
+			}
+		}
+	});
+var _user$project$Fretboard_Styles$notationAccidentalStyle = F2(
+	function (offset, visibility) {
+		return _elm_lang$html$Html_Attributes$style(
+			{
+				ctor: '::',
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'fontSize', '28px'),
+				_1: {
+					ctor: '::',
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'position', 'absolute'),
+					_1: {
+						ctor: '::',
+						_0: A2(_user$project$Logic_Utils_ops['=>'], 'marginBottom', '-10px'),
+						_1: {
+							ctor: '::',
+							_0: A2(
+								_user$project$Logic_Utils_ops['=>'],
+								'bottom',
+								A2(
+									_elm_lang$core$Basics_ops['++'],
+									_elm_lang$core$Basics$toString(offset - 3),
+									'px')),
+							_1: {
+								ctor: '::',
+								_0: A2(_user$project$Logic_Utils_ops['=>'], 'left', '44%'),
+								_1: {
+									ctor: '::',
+									_0: A2(_user$project$Logic_Utils_ops['=>'], 'color', '#03a9f4'),
+									_1: {
+										ctor: '::',
+										_0: A2(_user$project$Logic_Utils_ops['=>'], 'opacity', visibility),
+										_1: {
+											ctor: '::',
+											_0: A2(_user$project$Logic_Utils_ops['=>'], 'transition', 'all 0.5s ease'),
+											_1: {
+												ctor: '::',
+												_0: A2(_user$project$Logic_Utils_ops['=>'], 'zIndex', '1'),
+												_1: {ctor: '[]'}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			});
+	});
+var _user$project$Fretboard_Styles$notationNoteStyle = function (offset) {
+	return _elm_lang$html$Html_Attributes$style(
+		{
+			ctor: '::',
+			_0: A2(_user$project$Logic_Utils_ops['=>'], 'width', '18px'),
+			_1: {
+				ctor: '::',
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'height', '18px'),
+				_1: {
+					ctor: '::',
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'borderRadius', '9px'),
+					_1: {
+						ctor: '::',
+						_0: A2(_user$project$Logic_Utils_ops['=>'], 'position', 'absolute'),
+						_1: {
+							ctor: '::',
+							_0: A2(
+								_user$project$Logic_Utils_ops['=>'],
+								'bottom',
+								A2(
+									_elm_lang$core$Basics_ops['++'],
+									_elm_lang$core$Basics$toString(offset),
+									'px')),
+							_1: {
+								ctor: '::',
+								_0: A2(_user$project$Logic_Utils_ops['=>'], 'left', '50%'),
+								_1: {
+									ctor: '::',
+									_0: A2(_user$project$Logic_Utils_ops['=>'], 'backgroundColor', '#03a9f4'),
+									_1: {
+										ctor: '::',
+										_0: A2(_user$project$Logic_Utils_ops['=>'], 'transition', 'all 0.5s ease'),
+										_1: {
+											ctor: '::',
+											_0: A2(_user$project$Logic_Utils_ops['=>'], 'zIndex', '1'),
+											_1: {ctor: '[]'}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		});
+};
+var _user$project$Fretboard_Styles$notationClefStyle = _elm_lang$html$Html_Attributes$style(
+	{
+		ctor: '::',
+		_0: A2(_user$project$Logic_Utils_ops['=>'], 'position', 'absolute'),
+		_1: {
+			ctor: '::',
+			_0: A2(_user$project$Logic_Utils_ops['=>'], 'bottom', '50px'),
+			_1: {
+				ctor: '::',
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'left', '40px'),
+				_1: {
+					ctor: '::',
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'height', '100px'),
+					_1: {ctor: '[]'}
+				}
+			}
+		}
+	});
+var _user$project$Fretboard_Styles$notationContainerStyle = _elm_lang$html$Html_Attributes$style(
+	{
+		ctor: '::',
+		_0: A2(_user$project$Logic_Utils_ops['=>'], 'width', '350px'),
+		_1: {
+			ctor: '::',
+			_0: A2(_user$project$Logic_Utils_ops['=>'], 'padding', '50px 10px'),
+			_1: {
+				ctor: '::',
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'margin', '70px auto'),
+				_1: {
+					ctor: '::',
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'position', 'relative'),
+					_1: {
+						ctor: '::',
+						_0: A2(_user$project$Logic_Utils_ops['=>'], 'textAlign', 'center'),
+						_1: {ctor: '[]'}
+					}
+				}
+			}
+		}
+	});
+var _user$project$Fretboard_Styles$noteGroupStyle = _elm_lang$html$Html_Attributes$style(
+	{
+		ctor: '::',
+		_0: A2(_user$project$Logic_Utils_ops['=>'], 'postion', 'relative'),
+		_1: {ctor: '[]'}
+	});
+var _user$project$Fretboard_Styles$fretNumberStyle = _elm_lang$html$Html_Attributes$style(
+	{
+		ctor: '::',
+		_0: A2(_user$project$Logic_Utils_ops['=>'], 'width', '100px'),
+		_1: {
+			ctor: '::',
+			_0: A2(_user$project$Logic_Utils_ops['=>'], 'marginBottom', '-70px'),
+			_1: {
+				ctor: '::',
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'padding', '5px'),
+				_1: {
+					ctor: '::',
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'textTransform', 'uppercase'),
+					_1: {
+						ctor: '::',
+						_0: A2(_user$project$Logic_Utils_ops['=>'], 'color', '#03a9f4'),
+						_1: {
+							ctor: '::',
+							_0: A2(_user$project$Logic_Utils_ops['=>'], 'fontSize', '20px'),
+							_1: {
+								ctor: '::',
+								_0: A2(_user$project$Logic_Utils_ops['=>'], 'textAlign', 'center'),
+								_1: {ctor: '[]'}
+							}
+						}
+					}
+				}
+			}
+		}
+	});
+var _user$project$Fretboard_Styles$fretBlankStyle = _elm_lang$html$Html_Attributes$style(
+	{
+		ctor: '::',
+		_0: A2(_user$project$Logic_Utils_ops['=>'], 'color', 'rgba(0,0,0,0)'),
+		_1: {
+			ctor: '::',
+			_0: A2(_user$project$Logic_Utils_ops['=>'], 'width', '100px'),
+			_1: {
+				ctor: '::',
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'padding', '5px'),
+				_1: {ctor: '[]'}
+			}
+		}
+	});
+var _user$project$Fretboard_Styles$fretNoteStyle = F2(
+	function (color, bgCol) {
+		return _elm_lang$html$Html_Attributes$style(
+			{
+				ctor: '::',
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'width', '100px'),
+				_1: {
+					ctor: '::',
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'padding', '14px 5px'),
+					_1: {
+						ctor: '::',
+						_0: A2(_user$project$Logic_Utils_ops['=>'], 'textTransform', 'uppercase'),
+						_1: {
+							ctor: '::',
+							_0: A2(_user$project$Logic_Utils_ops['=>'], 'color', color),
+							_1: {
+								ctor: '::',
+								_0: A2(_user$project$Logic_Utils_ops['=>'], 'fontSize', '18px'),
+								_1: {
+									ctor: '::',
+									_0: A2(_user$project$Logic_Utils_ops['=>'], 'textAlign', 'center'),
+									_1: {
+										ctor: '::',
+										_0: A2(_user$project$Logic_Utils_ops['=>'], 'borderBottom', '1px solid #aaa'),
+										_1: {
+											ctor: '::',
+											_0: A2(_user$project$Logic_Utils_ops['=>'], 'borderCollapse', 'collapse'),
+											_1: {
+												ctor: '::',
+												_0: A2(_user$project$Logic_Utils_ops['=>'], 'transition', 'all 0.4s ease'),
+												_1: {
+													ctor: '::',
+													_0: A2(_user$project$Logic_Utils_ops['=>'], 'backgroundColor', bgCol),
+													_1: {
+														ctor: '::',
+														_0: A2(_user$project$Logic_Utils_ops['=>'], 'zIndex', '1'),
+														_1: {ctor: '[]'}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			});
+	});
+var _user$project$Fretboard_Styles$fretboardStringStyle = _elm_lang$html$Html_Attributes$style(
+	{
+		ctor: '::',
+		_0: A2(_user$project$Logic_Utils_ops['=>'], 'display', 'flex'),
+		_1: {ctor: '[]'}
+	});
+var _user$project$Fretboard_Styles$fretboardContainerStyle = _elm_lang$html$Html_Attributes$style(
+	{
+		ctor: '::',
+		_0: A2(_user$project$Logic_Utils_ops['=>'], 'margin', '50px'),
+		_1: {
+			ctor: '::',
+			_0: A2(_user$project$Logic_Utils_ops['=>'], 'width', '90%'),
+			_1: {
+				ctor: '::',
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'position', 'relative'),
+				_1: {ctor: '[]'}
+			}
+		}
+	});
+var _user$project$Fretboard_Styles$fretboardTitleStyle = _elm_lang$html$Html_Attributes$style(
+	{
+		ctor: '::',
+		_0: A2(_user$project$Logic_Utils_ops['=>'], 'fontSize', '18px'),
+		_1: {
+			ctor: '::',
+			_0: A2(_user$project$Logic_Utils_ops['=>'], 'textAlign', 'left'),
+			_1: {
+				ctor: '::',
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'margin', '100px 0 30px'),
+				_1: {
+					ctor: '::',
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'color', '#666'),
+					_1: {ctor: '[]'}
+				}
+			}
+		}
+	});

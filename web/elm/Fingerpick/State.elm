@@ -2,7 +2,7 @@ module Fingerpick.State exposing (..)
 
 import Fingerpick.Types as FT exposing (..)
 import Random exposing (..)
-import Logic.Types as App exposing (Model)
+import Types as App exposing (Model)
 
 
 initialModel : FT.Model

@@ -7,7 +7,7 @@ import List.Extra exposing (getAt)
 import Logic.Audio exposing (notes)
 import Chords.Types exposing (Model, ChordChartData, Msg(..), Dot)
 import Logic.Routing exposing (scalesPath)
-import Chords.Style exposing (..)
+import Chords.Styles exposing (..)
 
 
 chordsPage : Model -> Html Msg
@@ -230,6 +230,3 @@ keyListMinor =
 keyList : List String
 keyList =
     [ "C", "G", "D", "A", "E", "B", "F#", "Db", "Ab", "Eb", "Bb", "F", "a", "e", "b", "f#", "c#", "g#", "d#", "bb", "f", "c", "g", "d" ]
-
-
-

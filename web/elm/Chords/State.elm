@@ -1,7 +1,7 @@
 module Chords.State exposing (..)
 
 import Chords.Types as CT exposing (..)
-import Logic.Types as App exposing (Model)
+import Types as App exposing (Model)
 
 
 initialModel : CT.Model

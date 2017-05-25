@@ -1,7 +1,7 @@
 module Scales.State exposing (..)
 
 import Scales.Types as Scale exposing (Model, Msg(..), PlayBundle)
-import Logic.Types as App exposing (Model)
+import Types as App exposing (Model)
 import Logic.Ports exposing (send)
 import Time
 import Update.Extra.Infix exposing ((:>))

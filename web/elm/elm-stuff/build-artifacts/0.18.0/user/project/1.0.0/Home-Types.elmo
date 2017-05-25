@@ -1,0 +1,34 @@
+var _user$project$Home_Types$Model = F2(
+	function (a, b) {
+		return {musKey: a, displayedChords: b};
+	});
+var _user$project$Home_Types$ChordChartData = function (a) {
+	return function (b) {
+		return function (c) {
+			return function (d) {
+				return function (e) {
+					return function (f) {
+						return function (g) {
+							return function (h) {
+								return function (i) {
+									return function (j) {
+										return function (k) {
+											return function (l) {
+												return function (m) {
+													return function (n) {
+														return {i: a, ii: b, iii: c, iv: d, v: e, vi: f, vii: g, i7: h, iv7: i, v7: j, vi7: k, bars: l, names: m, key: n};
+													};
+												};
+											};
+										};
+									};
+								};
+							};
+						};
+					};
+				};
+			};
+		};
+	};
+};
+var _user$project$Home_Types$NoOp = {ctor: 'NoOp'};

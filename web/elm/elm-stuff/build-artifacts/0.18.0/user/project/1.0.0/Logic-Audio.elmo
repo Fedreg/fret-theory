@@ -71,7 +71,7 @@ var _user$project$Logic_Audio$noteSorter = function (string) {
 	switch (_p3) {
 		case 3:
 			return A3(
-				_user$project$Logic_Types$Note,
+				_user$project$Types$Note,
 				_user$project$Logic_Audio$frequencies(
 					A3(_elm_lang$core$String$slice, 0, 1, string)),
 				_user$project$Logic_Audio$octave(
@@ -86,7 +86,7 @@ var _user$project$Logic_Audio$noteSorter = function (string) {
 			return _elm_lang$core$Native_Utils.eq(
 				A3(_elm_lang$core$String$slice, 1, 2, string),
 				'#') ? A3(
-				_user$project$Logic_Types$Note,
+				_user$project$Types$Note,
 				_user$project$Logic_Audio$frequencies(
 					A3(_elm_lang$core$String$slice, 0, 2, string)),
 				_user$project$Logic_Audio$octave(
@@ -97,7 +97,7 @@ var _user$project$Logic_Audio$noteSorter = function (string) {
 							A3(_elm_lang$core$String$slice, 2, 3, string)))),
 				_user$project$Logic_Audio$sustain(
 					A3(_elm_lang$core$String$slice, 3, 4, string))) : A3(
-				_user$project$Logic_Types$Note,
+				_user$project$Types$Note,
 				_user$project$Logic_Audio$frequencies(
 					A3(_elm_lang$core$String$slice, 0, 1, string)),
 				_user$project$Logic_Audio$octave(
@@ -110,7 +110,7 @@ var _user$project$Logic_Audio$noteSorter = function (string) {
 					A3(_elm_lang$core$String$slice, 2, 4, string)));
 		case 5:
 			return A3(
-				_user$project$Logic_Types$Note,
+				_user$project$Types$Note,
 				_user$project$Logic_Audio$frequencies(
 					A3(_elm_lang$core$String$slice, 0, 2, string)),
 				_user$project$Logic_Audio$octave(
@@ -122,7 +122,7 @@ var _user$project$Logic_Audio$noteSorter = function (string) {
 				_user$project$Logic_Audio$sustain(
 					A3(_elm_lang$core$String$slice, 3, 5, string)));
 		default:
-			return A3(_user$project$Logic_Types$Note, 0.0, 0, 0.0);
+			return A3(_user$project$Types$Note, 0.0, 0, 0.0);
 	}
 };
 var _user$project$Logic_Audio$stringToNote = F2(

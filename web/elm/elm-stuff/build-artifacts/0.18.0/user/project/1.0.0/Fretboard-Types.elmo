@@ -1,0 +1,8 @@
+var _user$project$Fretboard_Types$Model = F3(
+	function (a, b, c) {
+		return {musKey: a, notePosition: b, showAccidental: c};
+	});
+var _user$project$Fretboard_Types$DrawNote = F3(
+	function (a, b, c) {
+		return {ctor: 'DrawNote', _0: a, _1: b, _2: c};
+	});

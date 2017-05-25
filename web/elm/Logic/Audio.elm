@@ -1,6 +1,6 @@
 module Logic.Audio exposing (notes, scales, noteSorter)
 
-import Logic.Types exposing (Model, Note, ChordAudioData)
+import Types exposing (Model, Note, ChordAudioData)
 import List.Extra exposing (getAt)
 import String exposing (slice, toInt)
 
