@@ -1,0 +1,347 @@
+var _user$project$Styles$signatureStyle = _elm_lang$html$Html_Attributes$style(
+	{
+		ctor: '::',
+		_0: A2(_user$project$Logic_Utils_ops['=>'], 'position', 'absolute'),
+		_1: {
+			ctor: '::',
+			_0: A2(_user$project$Logic_Utils_ops['=>'], 'bottom', '10px'),
+			_1: {
+				ctor: '::',
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'right', '10px'),
+				_1: {
+					ctor: '::',
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'fontSize', '12px'),
+					_1: {
+						ctor: '::',
+						_0: A2(_user$project$Logic_Utils_ops['=>'], 'color', '#FFF'),
+						_1: {
+							ctor: '::',
+							_0: A2(_user$project$Logic_Utils_ops['=>'], 'textDecoration', 'none'),
+							_1: {ctor: '[]'}
+						}
+					}
+				}
+			}
+		}
+	});
+var _user$project$Styles$highlight = {
+	ctor: '::',
+	_0: A2(_user$project$Logic_Utils_ops['=>'], 'color', '#03a9f4'),
+	_1: {ctor: '[]'}
+};
+var _user$project$Styles$textContainerStyle = _elm_lang$html$Html_Attributes$style(
+	{
+		ctor: '::',
+		_0: A2(_user$project$Logic_Utils_ops['=>'], 'display', 'flex'),
+		_1: {
+			ctor: '::',
+			_0: A2(_user$project$Logic_Utils_ops['=>'], 'flexFlow', 'row wrap '),
+			_1: {ctor: '[]'}
+		}
+	});
+var _user$project$Styles$keyListContainerStyle = function (navOpen) {
+	var baseStyles = F2(
+		function (display, shift) {
+			return _elm_lang$html$Html_Attributes$style(
+				{
+					ctor: '::',
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'display', 'flex'),
+					_1: {
+						ctor: '::',
+						_0: A2(_user$project$Logic_Utils_ops['=>'], 'opacity', display),
+						_1: {
+							ctor: '::',
+							_0: A2(_user$project$Logic_Utils_ops['=>'], 'position', 'fixed'),
+							_1: {
+								ctor: '::',
+								_0: A2(_user$project$Logic_Utils_ops['=>'], 'top', '200px'),
+								_1: {
+									ctor: '::',
+									_0: A2(_user$project$Logic_Utils_ops['=>'], 'right', '50px'),
+									_1: {
+										ctor: '::',
+										_0: A2(_user$project$Logic_Utils_ops['=>'], 'width', '500px'),
+										_1: {
+											ctor: '::',
+											_0: A2(_user$project$Logic_Utils_ops['=>'], 'textAlign', 'center'),
+											_1: {
+												ctor: '::',
+												_0: A2(_user$project$Logic_Utils_ops['=>'], 'transform', shift),
+												_1: {
+													ctor: '::',
+													_0: A2(_user$project$Logic_Utils_ops['=>'], 'transition', 'all 0.4s ease'),
+													_1: {ctor: '[]'}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				});
+		});
+	var _p0 = navOpen;
+	if (_p0 === true) {
+		return A2(baseStyles, '1', 'translateY(0)');
+	} else {
+		return A2(baseStyles, '0', 'translateY(-600px)');
+	}
+};
+var _user$project$Styles$keyListKeyTitleStyle = _elm_lang$html$Html_Attributes$style(
+	{
+		ctor: '::',
+		_0: A2(_user$project$Logic_Utils_ops['=>'], 'position', 'fixed'),
+		_1: {
+			ctor: '::',
+			_0: A2(_user$project$Logic_Utils_ops['=>'], 'top', '-30px'),
+			_1: {
+				ctor: '::',
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'right', '50px'),
+				_1: {
+					ctor: '::',
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'width', '450px'),
+					_1: {
+						ctor: '::',
+						_0: A2(_user$project$Logic_Utils_ops['=>'], 'textAlign', 'right'),
+						_1: {
+							ctor: '::',
+							_0: A2(_user$project$Logic_Utils_ops['=>'], 'fontSize', '16px'),
+							_1: {
+								ctor: '::',
+								_0: A2(_user$project$Logic_Utils_ops['=>'], 'textTransform', 'underline'),
+								_1: {ctor: '[]'}
+							}
+						}
+					}
+				}
+			}
+		}
+	});
+var _user$project$Styles$keyListStyle = _elm_lang$html$Html_Attributes$style(
+	{
+		ctor: '::',
+		_0: A2(_user$project$Logic_Utils_ops['=>'], 'width', '60px'),
+		_1: {
+			ctor: '::',
+			_0: A2(_user$project$Logic_Utils_ops['=>'], 'margin', '10px 10px 0 0 '),
+			_1: {
+				ctor: '::',
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'cursor', 'pointer'),
+				_1: {
+					ctor: '::',
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'lineHeight', '60px'),
+					_1: {
+						ctor: '::',
+						_0: A2(_user$project$Logic_Utils_ops['=>'], 'border', '1px solid #333'),
+						_1: {
+							ctor: '::',
+							_0: A2(_user$project$Logic_Utils_ops['=>'], 'fontSize', '16px'),
+							_1: {
+								ctor: '::',
+								_0: A2(_user$project$Logic_Utils_ops['=>'], 'transition', 'all 0.4s ease'),
+								_1: {
+									ctor: '::',
+									_0: A2(_user$project$Logic_Utils_ops['=>'], 'color', '#fff'),
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	});
+var _user$project$Styles$navTitleStyle = _elm_lang$html$Html_Attributes$style(
+	{
+		ctor: '::',
+		_0: A2(_user$project$Logic_Utils_ops['=>'], 'position', 'fixed'),
+		_1: {
+			ctor: '::',
+			_0: A2(_user$project$Logic_Utils_ops['=>'], 'top', '10px'),
+			_1: {
+				ctor: '::',
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'left', '20px'),
+				_1: {
+					ctor: '::',
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'color', '#000'),
+					_1: {
+						ctor: '::',
+						_0: A2(_user$project$Logic_Utils_ops['=>'], 'fontSize', '30px'),
+						_1: {
+							ctor: '::',
+							_0: A2(_user$project$Logic_Utils_ops['=>'], 'fontWeight', '700'),
+							_1: {ctor: '[]'}
+						}
+					}
+				}
+			}
+		}
+	});
+var _user$project$Styles$navItemStyle = function (bool) {
+	var baseStyles = F2(
+		function (iconColor, display) {
+			return _elm_lang$html$Html_Attributes$style(
+				{
+					ctor: '::',
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'display', display),
+					_1: {
+						ctor: '::',
+						_0: A2(_user$project$Logic_Utils_ops['=>'], 'margin', '0 0 5px 50px'),
+						_1: {
+							ctor: '::',
+							_0: A2(_user$project$Logic_Utils_ops['=>'], 'padding', '5px'),
+							_1: {
+								ctor: '::',
+								_0: A2(_user$project$Logic_Utils_ops['=>'], 'fontSize', '24px'),
+								_1: {
+									ctor: '::',
+									_0: A2(_user$project$Logic_Utils_ops['=>'], 'textAlign', 'left'),
+									_1: {
+										ctor: '::',
+										_0: A2(_user$project$Logic_Utils_ops['=>'], 'color', iconColor),
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				});
+		});
+	var _p1 = bool;
+	if (_p1 === true) {
+		return A2(baseStyles, '#FFF', 'block');
+	} else {
+		return A2(baseStyles, '#000', 'none');
+	}
+};
+var _user$project$Styles$navStyle = _elm_lang$html$Html_Attributes$style(
+	{
+		ctor: '::',
+		_0: A2(_user$project$Logic_Utils_ops['=>'], 'textAlign', 'center'),
+		_1: {ctor: '[]'}
+	});
+var _user$project$Styles$navIconStyleHr = function (bool) {
+	var baseStyles = function (color) {
+		return _elm_lang$html$Html_Attributes$style(
+			{
+				ctor: '::',
+				_0: A2(
+					_user$project$Logic_Utils_ops['=>'],
+					'borderTop',
+					A2(_elm_lang$core$Basics_ops['++'], '5px solid ', color)),
+				_1: {
+					ctor: '::',
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'margin', '0 0 5px'),
+					_1: {ctor: '[]'}
+				}
+			});
+	};
+	var _p2 = bool;
+	if (_p2 === true) {
+		return baseStyles('#FFF');
+	} else {
+		return baseStyles('#000');
+	}
+};
+var _user$project$Styles$navIconStyle = function (model) {
+	var baseStyles = function (difference) {
+		return _elm_lang$html$Html_Attributes$style(
+			{
+				ctor: '::',
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'position', 'fixed'),
+				_1: {
+					ctor: '::',
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'top', '20px'),
+					_1: {
+						ctor: '::',
+						_0: A2(_user$project$Logic_Utils_ops['=>'], 'right', '20px'),
+						_1: {
+							ctor: '::',
+							_0: A2(_user$project$Logic_Utils_ops['=>'], 'width', '25px'),
+							_1: {
+								ctor: '::',
+								_0: A2(_user$project$Logic_Utils_ops['=>'], 'transition', 'all 0.5s'),
+								_1: {
+									ctor: '::',
+									_0: A2(_user$project$Logic_Utils_ops['=>'], 'cursor', 'pointer'),
+									_1: {
+										ctor: '::',
+										_0: A2(_user$project$Logic_Utils_ops['=>'], 'zIndex', '10001'),
+										_1: {
+											ctor: '::',
+											_0: A2(_user$project$Logic_Utils_ops['=>'], 'transform', difference),
+											_1: {ctor: '[]'}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			});
+	};
+	var _p3 = model.navMenuOpen;
+	if (_p3 === true) {
+		return baseStyles('rotate(270deg)');
+	} else {
+		return baseStyles('none');
+	}
+};
+var _user$project$Styles$navMenuStyle = function (model) {
+	var baseStyles = F3(
+		function (h, color, pad) {
+			return _elm_lang$html$Html_Attributes$style(
+				{
+					ctor: '::',
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'position', 'fixed'),
+					_1: {
+						ctor: '::',
+						_0: A2(_user$project$Logic_Utils_ops['=>'], 'top', '0'),
+						_1: {
+							ctor: '::',
+							_0: A2(_user$project$Logic_Utils_ops['=>'], 'right', '0'),
+							_1: {
+								ctor: '::',
+								_0: A2(_user$project$Logic_Utils_ops['=>'], 'transform', 'translateX(0)'),
+								_1: {
+									ctor: '::',
+									_0: A2(_user$project$Logic_Utils_ops['=>'], 'width', '100vw'),
+									_1: {
+										ctor: '::',
+										_0: A2(_user$project$Logic_Utils_ops['=>'], 'height', h),
+										_1: {
+											ctor: '::',
+											_0: A2(_user$project$Logic_Utils_ops['=>'], 'paddingTop', pad),
+											_1: {
+												ctor: '::',
+												_0: A2(_user$project$Logic_Utils_ops['=>'], 'backgroundColor', color),
+												_1: {
+													ctor: '::',
+													_0: A2(_user$project$Logic_Utils_ops['=>'], 'transition', 'all 0.3s ease'),
+													_1: {
+														ctor: '::',
+														_0: A2(_user$project$Logic_Utils_ops['=>'], 'zIndex', '10000'),
+														_1: {
+															ctor: '::',
+															_0: A2(_user$project$Logic_Utils_ops['=>'], 'borderBottom', '1px solid #ccc'),
+															_1: {ctor: '[]'}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				});
+		});
+	var _p4 = model.navMenuOpen;
+	if (_p4 === true) {
+		return A3(baseStyles, '100vh', 'rgba(0,0,0,0.9)', '100px');
+	} else {
+		return A3(baseStyles, '75px', '#FFF', '15px');
+	}
+};

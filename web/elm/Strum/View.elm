@@ -1,10 +1,9 @@
-module Strum.View exposing (view)
+module Strum.View exposing (..)
 
 import Html exposing (Html, div, button, text, span, hr, h3, h4, h5, select, option)
 import Html.Attributes exposing (style, attribute, value)
 import Html.Events exposing (onClick, onInput)
 import Logic.Types exposing (Model, Msg(Randomize, ShowModal, StrumArrowDirection, Play, ChangeStrumGroupNumber))
-import Logic.Audio exposing (notes)
 import Styles.StrumStyles exposing (..)
 import List.Extra exposing (getAt)
 import Logic.Utils exposing ((=>))
