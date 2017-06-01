@@ -1,0 +1,207 @@
+var _user$project$Strum_Styles$buttonStyle = _elm_lang$html$Html_Attributes$style(
+	{
+		ctor: '::',
+		_0: A2(_user$project$Logic_Utils_ops['=>'], 'background', 'none'),
+		_1: {
+			ctor: '::',
+			_0: A2(_user$project$Logic_Utils_ops['=>'], 'marginTop', '50px'),
+			_1: {
+				ctor: '::',
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'border', '1px solid #333'),
+				_1: {
+					ctor: '::',
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'color', '#03a9f4'),
+					_1: {ctor: '[]'}
+				}
+			}
+		}
+	});
+var _user$project$Strum_Styles$beatStyle = _elm_lang$html$Html_Attributes$style(
+	{
+		ctor: '::',
+		_0: A2(_user$project$Logic_Utils_ops['=>'], 'position', 'absolute'),
+		_1: {
+			ctor: '::',
+			_0: A2(_user$project$Logic_Utils_ops['=>'], 'top', '225px'),
+			_1: {
+				ctor: '::',
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'left', '0'),
+				_1: {
+					ctor: '::',
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'paddingRight', '20px'),
+					_1: {ctor: '[]'}
+				}
+			}
+		}
+	});
+var _user$project$Strum_Styles$strumArrowStyle = F4(
+	function (num, mover, borderCol, background) {
+		var shadow = function () {
+			var _p0 = mover;
+			switch (_p0) {
+				case 1:
+					return '-5px -15px 20px -10px rgba(0,0,0,0.5)';
+				case 2:
+					return '5px 15px 20px -10px rgba(0,0,0,0.5)';
+				default:
+					return '0';
+			}
+		}();
+		var rotate = function () {
+			var _p1 = mover;
+			switch (_p1) {
+				case 1:
+					return '180deg';
+				case 2:
+					return '0';
+				default:
+					return '0';
+			}
+		}();
+		var opacity = function () {
+			var _p2 = num;
+			switch (_p2) {
+				case 1:
+					return '1';
+				case 2:
+					return '0';
+				default:
+					return 'hidden';
+			}
+		}();
+		return _elm_lang$html$Html_Attributes$style(
+			{
+				ctor: '::',
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'width', '100px'),
+				_1: {
+					ctor: '::',
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'height', '180px'),
+					_1: {
+						ctor: '::',
+						_0: A2(_user$project$Logic_Utils_ops['=>'], 'margin', '10px 10px 20px'),
+						_1: {
+							ctor: '::',
+							_0: A2(_user$project$Logic_Utils_ops['=>'], 'opacity', opacity),
+							_1: {
+								ctor: '::',
+								_0: A2(_user$project$Logic_Utils_ops['=>'], 'paddingTop', '50px'),
+								_1: {
+									ctor: '::',
+									_0: A2(_user$project$Logic_Utils_ops['=>'], 'display', 'flex'),
+									_1: {
+										ctor: '::',
+										_0: A2(
+											_user$project$Logic_Utils_ops['=>'],
+											'border',
+											A2(_elm_lang$core$Basics_ops['++'], '1px solid ', borderCol)),
+										_1: {
+											ctor: '::',
+											_0: A2(_user$project$Logic_Utils_ops['=>'], 'borderRadius', '10px'),
+											_1: {
+												ctor: '::',
+												_0: A2(_user$project$Logic_Utils_ops['=>'], 'justifyContent', 'center'),
+												_1: {
+													ctor: '::',
+													_0: A2(
+														_user$project$Logic_Utils_ops['=>'],
+														'transform',
+														A2(
+															_elm_lang$core$Basics_ops['++'],
+															'rotate(',
+															A2(_elm_lang$core$Basics_ops['++'], rotate, ')'))),
+													_1: {
+														ctor: '::',
+														_0: A2(_user$project$Logic_Utils_ops['=>'], 'transition', 'all 0.4s ease'),
+														_1: {
+															ctor: '::',
+															_0: A2(_user$project$Logic_Utils_ops['=>'], 'boxShadow', shadow),
+															_1: {
+																ctor: '::',
+																_0: A2(_user$project$Logic_Utils_ops['=>'], 'backgroundColor', background),
+																_1: {ctor: '[]'}
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			});
+	});
+var _user$project$Strum_Styles$strumGroupMatrixStyle = _elm_lang$html$Html_Attributes$style(
+	{
+		ctor: '::',
+		_0: A2(_user$project$Logic_Utils_ops['=>'], 'display', 'flex'),
+		_1: {
+			ctor: '::',
+			_0: A2(_user$project$Logic_Utils_ops['=>'], 'flexWrap', 'wrap'),
+			_1: {
+				ctor: '::',
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'justifyContent', 'center'),
+				_1: {ctor: '[]'}
+			}
+		}
+	});
+var _user$project$Strum_Styles$strumGroupStyle = F2(
+	function (scale, margin) {
+		return _elm_lang$html$Html_Attributes$style(
+			{
+				ctor: '::',
+				_0: A2(
+					_user$project$Logic_Utils_ops['=>'],
+					'transform',
+					A2(
+						_elm_lang$core$Basics_ops['++'],
+						'scale(',
+						A2(_elm_lang$core$Basics_ops['++'], scale, ')'))),
+				_1: {
+					ctor: '::',
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'width', '950px'),
+					_1: {
+						ctor: '::',
+						_0: A2(_user$project$Logic_Utils_ops['=>'], 'margin', margin),
+						_1: {ctor: '[]'}
+					}
+				}
+			});
+	});
+var _user$project$Strum_Styles$strumPageStyle = function (size) {
+	var pad = function () {
+		var _p3 = size;
+		switch (_p3) {
+			case '4':
+				return '100px';
+			case '2':
+				return '100px';
+			default:
+				return '175px';
+		}
+	}();
+	return _elm_lang$html$Html_Attributes$style(
+		{
+			ctor: '::',
+			_0: A2(_user$project$Logic_Utils_ops['=>'], 'display', 'flex'),
+			_1: {
+				ctor: '::',
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'flexDirection', 'column'),
+				_1: {
+					ctor: '::',
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'paddingTop', pad),
+					_1: {
+						ctor: '::',
+						_0: A2(_user$project$Logic_Utils_ops['=>'], 'alignItems', 'center'),
+						_1: {
+							ctor: '::',
+							_0: A2(_user$project$Logic_Utils_ops['=>'], 'transition', 'all 0.3s'),
+							_1: {ctor: '[]'}
+						}
+					}
+				}
+			}
+		});
+};

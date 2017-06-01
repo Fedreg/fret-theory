@@ -1,4 +1,4 @@
-module Chords.View exposing (chordsPage, keyList, chordChartModel, startKey, keyListMajor, keyListMinor)
+module Chords.View exposing (chordsPage, keyList, chordChartModel, keyListMajor, keyListMinor)
 
 import Html exposing (Html, div, span, a, text, option, h4)
 import Html.Attributes exposing (style, value, href)

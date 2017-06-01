@@ -16,6 +16,12 @@ import Json.Encode as JE
 import Json.Decode as JD
 import Json.Decode.Pipeline as JDP
 import Task
+import Chords.State as Chords
+import Fingerpick.State as Fingerpick
+import Fretboard.State as Fretboard
+import Home.State as Home
+import Scales.State as Scales
+import Strum.State as Strum
 
 
 init location =
@@ -29,6 +35,12 @@ init location =
           , navMenuOpen = False
           , modalOpen = False
           , phxSocket = initPhoenixSocket
+          , chords = Chords.initialModel
+          , fingerpick = Fingerpick.initialModel
+          , fretbord = Fretboard.initialModel
+          , home = Home.initialModel
+          , scales = Scales.initialModel
+          , strum = Strum.initialModel
           }
         , Logic.Update.joinChannel
         )
@@ -153,6 +165,24 @@ update msg model =
                     Result.withDefault 1 <| String.toInt newVal
             in
                 { model | sliderValue = val } ! []
+
+        ChordsMsg secondaryMsg ->
+            Model ! []
+
+        FingerpickMsg secondaryMsg ->
+            Model ! []
+
+        FretboardMsg secondaryMsg ->
+            Model ! []
+
+        HomeMsg secondaryMsg ->
+            Model ! []
+
+        ScalesMsg secondaryMsg ->
+            Model ! []
+
+        StrumMsg secondaryMsg ->
+            Model ! []
 
 
 subscriptions : Model -> Sub Msg

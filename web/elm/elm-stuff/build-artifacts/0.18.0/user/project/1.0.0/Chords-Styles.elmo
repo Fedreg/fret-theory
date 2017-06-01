@@ -1,0 +1,450 @@
+var _user$project$Chords_Styles$soloOnLinkStyle = _elm_lang$html$Html_Attributes$style(
+	{
+		ctor: '::',
+		_0: A2(_user$project$Logic_Utils_ops['=>'], 'color', '#aaa'),
+		_1: {ctor: '[]'}
+	});
+var _user$project$Chords_Styles$soloOnTextStyle = _elm_lang$html$Html_Attributes$style(
+	{
+		ctor: '::',
+		_0: A2(_user$project$Logic_Utils_ops['=>'], 'fontSize', '18px'),
+		_1: {
+			ctor: '::',
+			_0: A2(_user$project$Logic_Utils_ops['=>'], 'paddingBottom', '50px'),
+			_1: {
+				ctor: '::',
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'color', '#A8A7A7'),
+				_1: {
+					ctor: '::',
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'textDecoration', 'inherit'),
+					_1: {ctor: '[]'}
+				}
+			}
+		}
+	});
+var _user$project$Chords_Styles$soloOnNumberStyle = _elm_lang$html$Html_Attributes$style(
+	{
+		ctor: '::',
+		_0: A2(_user$project$Logic_Utils_ops['=>'], 'fontSize', '25px'),
+		_1: {
+			ctor: '::',
+			_0: A2(_user$project$Logic_Utils_ops['=>'], 'color', '#03a9f4'),
+			_1: {ctor: '[]'}
+		}
+	});
+var _user$project$Chords_Styles$fretMarkerStyle = function (dot) {
+	if (_elm_lang$core$Native_Utils.eq(dot.tint, 'bar')) {
+		var stringHeight = A2(
+			_elm_lang$core$Result$withDefault,
+			-15,
+			_elm_lang$core$String$toInt(dot.stringNo));
+		var barSize = A2(
+			_elm_lang$core$Basics_ops['++'],
+			_elm_lang$core$Basics$toString(160 - stringHeight),
+			'px');
+		return _elm_lang$html$Html_Attributes$style(
+			{
+				ctor: '::',
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'transition', 'all 0.5s ease'),
+				_1: {
+					ctor: '::',
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'position', 'absolute'),
+					_1: {
+						ctor: '::',
+						_0: A2(
+							_user$project$Logic_Utils_ops['=>'],
+							'top',
+							A2(_elm_lang$core$Basics_ops['++'], dot.stringNo, 'px')),
+						_1: {
+							ctor: '::',
+							_0: A2(
+								_user$project$Logic_Utils_ops['=>'],
+								'right',
+								A2(_elm_lang$core$Basics_ops['++'], dot.fretNo, 'px')),
+							_1: {
+								ctor: '::',
+								_0: A2(_user$project$Logic_Utils_ops['=>'], 'width', '15px'),
+								_1: {
+									ctor: '::',
+									_0: A2(_user$project$Logic_Utils_ops['=>'], 'height', barSize),
+									_1: {
+										ctor: '::',
+										_0: A2(_user$project$Logic_Utils_ops['=>'], 'borderRadius', '7px'),
+										_1: {
+											ctor: '::',
+											_0: A2(_user$project$Logic_Utils_ops['=>'], 'backgroundColor', '#677077'),
+											_1: {
+												ctor: '::',
+												_0: A2(_user$project$Logic_Utils_ops['=>'], 'color', 'rgba(0,0,0,0)'),
+												_1: {
+													ctor: '::',
+													_0: A2(_user$project$Logic_Utils_ops['=>'], 'zIndex', '10'),
+													_1: {
+														ctor: '::',
+														_0: A2(_user$project$Logic_Utils_ops['=>'], 'boxShadow', '5px 5px 10px rgba(0,0,0,0.25)'),
+														_1: {ctor: '[]'}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			});
+	} else {
+		if (_elm_lang$core$Native_Utils.eq(dot.fretNo, '-30')) {
+			return _elm_lang$html$Html_Attributes$style(
+				{
+					ctor: '::',
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'transition', 'all 0.5s ease'),
+					_1: {
+						ctor: '::',
+						_0: A2(_user$project$Logic_Utils_ops['=>'], 'position', 'absolute'),
+						_1: {
+							ctor: '::',
+							_0: A2(
+								_user$project$Logic_Utils_ops['=>'],
+								'top',
+								A2(_elm_lang$core$Basics_ops['++'], dot.stringNo, 'px')),
+							_1: {
+								ctor: '::',
+								_0: A2(
+									_user$project$Logic_Utils_ops['=>'],
+									'right',
+									A2(_elm_lang$core$Basics_ops['++'], dot.fretNo, 'px')),
+								_1: {
+									ctor: '::',
+									_0: A2(_user$project$Logic_Utils_ops['=>'], 'width', '15px'),
+									_1: {
+										ctor: '::',
+										_0: A2(_user$project$Logic_Utils_ops['=>'], 'height', '25px'),
+										_1: {
+											ctor: '::',
+											_0: A2(_user$project$Logic_Utils_ops['=>'], 'borderRadius', '7px'),
+											_1: {
+												ctor: '::',
+												_0: A2(_user$project$Logic_Utils_ops['=>'], 'backgroundColor', 'rgba(0,0,0,0)'),
+												_1: {
+													ctor: '::',
+													_0: A2(_user$project$Logic_Utils_ops['=>'], 'color', '#777'),
+													_1: {
+														ctor: '::',
+														_0: A2(_user$project$Logic_Utils_ops['=>'], 'textTransform', 'uppercase'),
+														_1: {ctor: '[]'}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				});
+		} else {
+			return _elm_lang$html$Html_Attributes$style(
+				{
+					ctor: '::',
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'transition', 'all 0.5s ease'),
+					_1: {
+						ctor: '::',
+						_0: A2(_user$project$Logic_Utils_ops['=>'], 'position', 'absolute'),
+						_1: {
+							ctor: '::',
+							_0: A2(
+								_user$project$Logic_Utils_ops['=>'],
+								'top',
+								A2(_elm_lang$core$Basics_ops['++'], dot.stringNo, 'px')),
+							_1: {
+								ctor: '::',
+								_0: A2(
+									_user$project$Logic_Utils_ops['=>'],
+									'right',
+									A2(_elm_lang$core$Basics_ops['++'], dot.fretNo, 'px')),
+								_1: {
+									ctor: '::',
+									_0: A2(_user$project$Logic_Utils_ops['=>'], 'width', '15px'),
+									_1: {
+										ctor: '::',
+										_0: A2(_user$project$Logic_Utils_ops['=>'], 'height', '25px'),
+										_1: {
+											ctor: '::',
+											_0: A2(_user$project$Logic_Utils_ops['=>'], 'borderRadius', '7px'),
+											_1: {
+												ctor: '::',
+												_0: A2(_user$project$Logic_Utils_ops['=>'], 'backgroundColor', dot.tint),
+												_1: {
+													ctor: '::',
+													_0: A2(_user$project$Logic_Utils_ops['=>'], 'boxShadow', '5px 5px 10px rgba(0,0,0,0.25)'),
+													_1: {
+														ctor: '::',
+														_0: A2(_user$project$Logic_Utils_ops['=>'], 'color', 'rgba(0,0,0,0)'),
+														_1: {
+															ctor: '::',
+															_0: A2(_user$project$Logic_Utils_ops['=>'], 'zIndex', '5'),
+															_1: {ctor: '[]'}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				});
+		}
+	}
+};
+var _user$project$Chords_Styles$fingerChartTextStyle = _elm_lang$html$Html_Attributes$style(
+	{
+		ctor: '::',
+		_0: A2(_user$project$Logic_Utils_ops['=>'], 'padding', '15px'),
+		_1: {
+			ctor: '::',
+			_0: A2(_user$project$Logic_Utils_ops['=>'], 'lineHeight', '9px'),
+			_1: {ctor: '[]'}
+		}
+	});
+var _user$project$Chords_Styles$fingerChartDotStyle = function (col) {
+	return _elm_lang$html$Html_Attributes$style(
+		{
+			ctor: '::',
+			_0: A2(_user$project$Logic_Utils_ops['=>'], 'width', '15px'),
+			_1: {
+				ctor: '::',
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'height', '25px'),
+				_1: {
+					ctor: '::',
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'borderRadius', '7px'),
+					_1: {
+						ctor: '::',
+						_0: A2(_user$project$Logic_Utils_ops['=>'], 'backgroundColor', col),
+						_1: {ctor: '[]'}
+					}
+				}
+			}
+		});
+};
+var _user$project$Chords_Styles$fingerChartStyle = _elm_lang$html$Html_Attributes$style(
+	{
+		ctor: '::',
+		_0: A2(_user$project$Logic_Utils_ops['=>'], 'display', 'flex'),
+		_1: {
+			ctor: '::',
+			_0: A2(_user$project$Logic_Utils_ops['=>'], 'flexDirection', 'column'),
+			_1: {
+				ctor: '::',
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'position', 'absolute'),
+				_1: {
+					ctor: '::',
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'top', '100px'),
+					_1: {
+						ctor: '::',
+						_0: A2(_user$project$Logic_Utils_ops['=>'], 'left', '20px'),
+						_1: {ctor: '[]'}
+					}
+				}
+			}
+		}
+	});
+var _user$project$Chords_Styles$chordFunctionStyle = _elm_lang$html$Html_Attributes$style(
+	{
+		ctor: '::',
+		_0: A2(_user$project$Logic_Utils_ops['=>'], 'color', '#999'),
+		_1: {
+			ctor: '::',
+			_0: A2(_user$project$Logic_Utils_ops['=>'], 'fontSize', '20px'),
+			_1: {
+				ctor: '::',
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'marginLeft', '150px'),
+				_1: {
+					ctor: '::',
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'margin', '0 auto'),
+					_1: {ctor: '[]'}
+				}
+			}
+		}
+	});
+var _user$project$Chords_Styles$chordNameStyle = _elm_lang$html$Html_Attributes$style(
+	{
+		ctor: '::',
+		_0: A2(_user$project$Logic_Utils_ops['=>'], 'color', '#000'),
+		_1: {
+			ctor: '::',
+			_0: A2(_user$project$Logic_Utils_ops['=>'], 'fontSize', '25px'),
+			_1: {
+				ctor: '::',
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'marginLeft', '150px'),
+				_1: {
+					ctor: '::',
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'margin', '0 auto'),
+					_1: {ctor: '[]'}
+				}
+			}
+		}
+	});
+var _user$project$Chords_Styles$fretStyle = function (fret) {
+	return _elm_lang$html$Html_Attributes$style(
+		{
+			ctor: '::',
+			_0: A2(_user$project$Logic_Utils_ops['=>'], 'position', 'absolute'),
+			_1: {
+				ctor: '::',
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'top', '0'),
+				_1: {
+					ctor: '::',
+					_0: A2(
+						_user$project$Logic_Utils_ops['=>'],
+						'right',
+						A2(
+							_elm_lang$core$Basics_ops['++'],
+							_elm_lang$core$Basics$toString(43 * fret),
+							'px')),
+					_1: {
+						ctor: '::',
+						_0: A2(_user$project$Logic_Utils_ops['=>'], 'height', '150px'),
+						_1: {
+							ctor: '::',
+							_0: A2(_user$project$Logic_Utils_ops['=>'], 'borderRight', '1px solid #607d8b'),
+							_1: {ctor: '[]'}
+						}
+					}
+				}
+			}
+		});
+};
+var _user$project$Chords_Styles$chartContainerStyle = function (direction) {
+	return _elm_lang$html$Html_Attributes$style(
+		{
+			ctor: '::',
+			_0: A2(_user$project$Logic_Utils_ops['=>'], 'position', 'relative'),
+			_1: {
+				ctor: '::',
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'display', 'flex'),
+				_1: {
+					ctor: '::',
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'margin', '25px auto'),
+					_1: {
+						ctor: '::',
+						_0: A2(_user$project$Logic_Utils_ops['=>'], 'flexDirection', direction),
+						_1: {
+							ctor: '::',
+							_0: A2(_user$project$Logic_Utils_ops['=>'], 'transition', 'all 0.3s ease'),
+							_1: {
+								ctor: '::',
+								_0: A2(_user$project$Logic_Utils_ops['=>'], 'cursor', 'pointer'),
+								_1: {ctor: '[]'}
+							}
+						}
+					}
+				}
+			}
+		});
+};
+var _user$project$Chords_Styles$nutStyle = _elm_lang$html$Html_Attributes$style(
+	{
+		ctor: '::',
+		_0: A2(_user$project$Logic_Utils_ops['=>'], 'width', '10px'),
+		_1: {
+			ctor: '::',
+			_0: A2(_user$project$Logic_Utils_ops['=>'], 'height', '151px'),
+			_1: {
+				ctor: '::',
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'backgroundColor', '#333'),
+				_1: {
+					ctor: '::',
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'borderBottom', '1px solid #333'),
+					_1: {
+						ctor: '::',
+						_0: A2(_user$project$Logic_Utils_ops['=>'], 'boxShadow', '5px 10px 20px  rgba(0,0,0,0.25)'),
+						_1: {ctor: '[]'}
+					}
+				}
+			}
+		}
+	});
+var _user$project$Chords_Styles$stringStyle = _elm_lang$html$Html_Attributes$style(
+	{
+		ctor: '::',
+		_0: A2(_user$project$Logic_Utils_ops['=>'], 'width', '180px'),
+		_1: {
+			ctor: '::',
+			_0: A2(_user$project$Logic_Utils_ops['=>'], 'height', '30px'),
+			_1: {
+				ctor: '::',
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'borderBottom', '1px solid #607d8b'),
+				_1: {ctor: '[]'}
+			}
+		}
+	});
+var _user$project$Chords_Styles$chartStyle = _elm_lang$html$Html_Attributes$style(
+	{
+		ctor: '::',
+		_0: A2(_user$project$Logic_Utils_ops['=>'], 'position', 'relative'),
+		_1: {
+			ctor: '::',
+			_0: A2(_user$project$Logic_Utils_ops['=>'], 'width', '180px'),
+			_1: {
+				ctor: '::',
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'height', '151px'),
+				_1: {
+					ctor: '::',
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'border', '1px solid #607d8b'),
+					_1: {
+						ctor: '::',
+						_0: A2(_user$project$Logic_Utils_ops['=>'], 'borderTopLeftRadius', '10px'),
+						_1: {
+							ctor: '::',
+							_0: A2(_user$project$Logic_Utils_ops['=>'], 'borderBottomLeftRadius', '10px'),
+							_1: {
+								ctor: '::',
+								_0: A2(_user$project$Logic_Utils_ops['=>'], 'boxShadow', '0 10px 20px rgba(0,0,0,0.25)'),
+								_1: {ctor: '[]'}
+							}
+						}
+					}
+				}
+			}
+		}
+	});
+var _user$project$Chords_Styles$chordBarPosStyle = _elm_lang$html$Html_Attributes$style(
+	{
+		ctor: '::',
+		_0: A2(_user$project$Logic_Utils_ops['=>'], 'position', 'absolute'),
+		_1: {
+			ctor: '::',
+			_0: A2(_user$project$Logic_Utils_ops['=>'], 'top', '-15px'),
+			_1: {
+				ctor: '::',
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'right', '30%'),
+				_1: {
+					ctor: '::',
+					_0: A2(_user$project$Logic_Utils_ops['=>'], 'color', '#03a9f4'),
+					_1: {
+						ctor: '::',
+						_0: A2(_user$project$Logic_Utils_ops['=>'], 'transition', 'all 0.3s ease'),
+						_1: {ctor: '[]'}
+					}
+				}
+			}
+		}
+	});
+var _user$project$Chords_Styles$chordsPageStyle = _elm_lang$html$Html_Attributes$style(
+	{
+		ctor: '::',
+		_0: A2(_user$project$Logic_Utils_ops['=>'], 'textAlign', 'center'),
+		_1: {
+			ctor: '::',
+			_0: A2(_user$project$Logic_Utils_ops['=>'], 'width', '95vw'),
+			_1: {
+				ctor: '::',
+				_0: A2(_user$project$Logic_Utils_ops['=>'], 'paddingTop', '125px'),
+				_1: {ctor: '[]'}
+			}
+		}
+	});

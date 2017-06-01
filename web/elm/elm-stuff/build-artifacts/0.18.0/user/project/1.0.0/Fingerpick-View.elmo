@@ -5,7 +5,7 @@ var _user$project$Fingerpick_View$printNotation = function (notes) {
 				_elm_lang$html$Html$div,
 				{
 					ctor: '::',
-					_0: _user$project$Styles_FingerPickStyles$fingerPickNotationContainerStyle,
+					_0: _user$project$Fingerpick_Styles$fingerPickNotationContainerStyle,
 					_1: {ctor: '[]'}
 				},
 				{
@@ -14,7 +14,7 @@ var _user$project$Fingerpick_View$printNotation = function (notes) {
 						_elm_lang$html$Html$div,
 						{
 							ctor: '::',
-							_0: _user$project$Styles_FingerPickStyles$fingerPickNotationBaseStyles(fill),
+							_0: _user$project$Fingerpick_Styles$fingerPickNotationBaseStyles(fill),
 							_1: {ctor: '[]'}
 						},
 						{ctor: '[]'}),
@@ -24,7 +24,7 @@ var _user$project$Fingerpick_View$printNotation = function (notes) {
 							_elm_lang$html$Html$div,
 							{
 								ctor: '::',
-								_0: _user$project$Styles_FingerPickStyles$fingerPickNotationFlagStyle(flag),
+								_0: _user$project$Fingerpick_Styles$fingerPickNotationFlagStyle(flag),
 								_1: {ctor: '[]'}
 							},
 							{
@@ -38,7 +38,7 @@ var _user$project$Fingerpick_View$printNotation = function (notes) {
 								_elm_lang$html$Html$div,
 								{
 									ctor: '::',
-									_0: _user$project$Styles_FingerPickStyles$fingerPickNotationDotStyle,
+									_0: _user$project$Fingerpick_Styles$fingerPickNotationDotStyle,
 									_1: {ctor: '[]'}
 								},
 								{
@@ -362,7 +362,7 @@ var _user$project$Fingerpick_View$stringView = A2(
 			_elm_lang$html$Html$div,
 			{
 				ctor: '::',
-				_0: _user$project$Styles_FingerPickStyles$stringStyle,
+				_0: _user$project$Fingerpick_Styles$stringStyle,
 				_1: {ctor: '[]'}
 			},
 			{ctor: '[]'}),
@@ -372,7 +372,7 @@ var _user$project$Fingerpick_View$stringView = A2(
 				_elm_lang$html$Html$div,
 				{
 					ctor: '::',
-					_0: _user$project$Styles_FingerPickStyles$stringStyle,
+					_0: _user$project$Fingerpick_Styles$stringStyle,
 					_1: {ctor: '[]'}
 				},
 				{ctor: '[]'}),
@@ -382,7 +382,7 @@ var _user$project$Fingerpick_View$stringView = A2(
 					_elm_lang$html$Html$div,
 					{
 						ctor: '::',
-						_0: _user$project$Styles_FingerPickStyles$stringStyle,
+						_0: _user$project$Fingerpick_Styles$stringStyle,
 						_1: {ctor: '[]'}
 					},
 					{ctor: '[]'}),
@@ -392,7 +392,7 @@ var _user$project$Fingerpick_View$stringView = A2(
 						_elm_lang$html$Html$div,
 						{
 							ctor: '::',
-							_0: _user$project$Styles_FingerPickStyles$stringStyle,
+							_0: _user$project$Fingerpick_Styles$stringStyle,
 							_1: {ctor: '[]'}
 						},
 						{ctor: '[]'}),
@@ -402,7 +402,7 @@ var _user$project$Fingerpick_View$stringView = A2(
 							_elm_lang$html$Html$div,
 							{
 								ctor: '::',
-								_0: _user$project$Styles_FingerPickStyles$stringStyle,
+								_0: _user$project$Fingerpick_Styles$stringStyle,
 								_1: {ctor: '[]'}
 							},
 							{ctor: '[]'}),
@@ -412,7 +412,7 @@ var _user$project$Fingerpick_View$stringView = A2(
 								_elm_lang$html$Html$div,
 								{
 									ctor: '::',
-									_0: _user$project$Styles_FingerPickStyles$stringStyle,
+									_0: _user$project$Fingerpick_Styles$stringStyle,
 									_1: {ctor: '[]'}
 								},
 								{ctor: '[]'}),
@@ -540,7 +540,7 @@ var _user$project$Fingerpick_View$fingerPickGroup = F4(
 				_elm_lang$html$Html$div,
 				{
 					ctor: '::',
-					_0: _user$project$Styles_FingerPickStyles$fingerPickGroupNotationStyle,
+					_0: _user$project$Fingerpick_Styles$fingerPickGroupNotationStyle,
 					_1: {ctor: '[]'}
 				},
 				{
@@ -554,7 +554,7 @@ var _user$project$Fingerpick_View$fingerPickGroup = F4(
 				_elm_lang$html$Html$div,
 				{
 					ctor: '::',
-					_0: _user$project$Styles_FingerPickStyles$fingerPickGroupBeatStyle,
+					_0: _user$project$Fingerpick_Styles$fingerPickGroupBeatStyle,
 					_1: {ctor: '[]'}
 				},
 				{
@@ -568,7 +568,7 @@ var _user$project$Fingerpick_View$fingerPickGroup = F4(
 			_elm_lang$html$Html$div,
 			{
 				ctor: '::',
-				_0: _user$project$Styles_FingerPickStyles$fingerPickGroupStyle(scale),
+				_0: _user$project$Fingerpick_Styles$fingerPickGroupStyle(scale),
 				_1: {ctor: '[]'}
 			},
 			{
@@ -610,7 +610,7 @@ var _user$project$Fingerpick_View$fingerPickGroup = F4(
 								_elm_lang$html$Html$div,
 								{
 									ctor: '::',
-									_0: _user$project$Styles_FingerPickStyles$beatStyle,
+									_0: _user$project$Fingerpick_Styles$beatStyle,
 									_1: {ctor: '[]'}
 								},
 								A2(
@@ -652,7 +652,7 @@ var _user$project$Fingerpick_View$fingerPickingPage = function (model) {
 		_elm_lang$html$Html$div,
 		{
 			ctor: '::',
-			_0: _user$project$Styles_FingerPickStyles$fingerPickingPageStyle,
+			_0: _user$project$Fingerpick_Styles$fingerPickingPageStyle,
 			_1: {ctor: '[]'}
 		},
 		{
@@ -661,24 +661,10 @@ var _user$project$Fingerpick_View$fingerPickingPage = function (model) {
 				_elm_lang$html$Html$h1,
 				{
 					ctor: '::',
-					_0: _user$project$Styles_FingerPickStyles$fingerPickChordTitleStyle,
+					_0: _user$project$Fingerpick_Styles$fingerPickChordTitleStyle,
 					_1: {ctor: '[]'}
 				},
-				{
-					ctor: '::',
-					_0: A5(
-						_user$project$Views_Chords$chordChartModel,
-						model,
-						0,
-						'',
-						function (_) {
-							return _.i;
-						},
-						function (_) {
-							return _.i;
-						}),
-					_1: {ctor: '[]'}
-				}),
+				{ctor: '[]'}),
 			_1: {
 				ctor: '::',
 				_0: A4(_user$project$Fingerpick_View$fingerPickGroup, '1,1', model.fingerPickPattern.a, model.fingerPickPattern.b, model),
@@ -688,11 +674,11 @@ var _user$project$Fingerpick_View$fingerPickingPage = function (model) {
 						_elm_lang$html$Html$button,
 						{
 							ctor: '::',
-							_0: _user$project$Styles_FingerPickStyles$buttonStyle,
+							_0: _user$project$Fingerpick_Styles$buttonStyle,
 							_1: {
 								ctor: '::',
 								_0: _elm_lang$html$Html_Events$onClick(
-									A2(_user$project$Logic_Types$Randomize, 0, 8)),
+									A2(_user$project$Fingerpick_Types$Randomize, 0, 8)),
 								_1: {ctor: '[]'}
 							}
 						},

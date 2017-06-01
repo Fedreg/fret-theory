@@ -77,13 +77,13 @@ var _user$project$Logic_Routing$matchers = _evancz$url_parser$UrlParser$oneOf(
 		ctor: '::',
 		_0: A2(
 			_evancz$url_parser$UrlParser$map,
-			_user$project$Logic_Types$HomePage,
+			_user$project$Types$HomePage,
 			_evancz$url_parser$UrlParser$s('home')),
 		_1: {
 			ctor: '::',
 			_0: A2(
 				_evancz$url_parser$UrlParser$map,
-				_user$project$Logic_Types$ChordsPage,
+				_user$project$Types$ChordsPage,
 				A2(
 					_evancz$url_parser$UrlParser_ops['</>'],
 					_evancz$url_parser$UrlParser$s('chords'),
@@ -92,7 +92,7 @@ var _user$project$Logic_Routing$matchers = _evancz$url_parser$UrlParser$oneOf(
 				ctor: '::',
 				_0: A2(
 					_evancz$url_parser$UrlParser$map,
-					_user$project$Logic_Types$ScalesPage,
+					_user$project$Types$ScalesPage,
 					A2(
 						_evancz$url_parser$UrlParser_ops['</>'],
 						_evancz$url_parser$UrlParser$s('scales'),
@@ -101,7 +101,7 @@ var _user$project$Logic_Routing$matchers = _evancz$url_parser$UrlParser$oneOf(
 					ctor: '::',
 					_0: A2(
 						_evancz$url_parser$UrlParser$map,
-						_user$project$Logic_Types$FretboardPage,
+						_user$project$Types$FretboardPage,
 						A2(
 							_evancz$url_parser$UrlParser_ops['</>'],
 							_evancz$url_parser$UrlParser$s('fretboard'),
@@ -110,13 +110,13 @@ var _user$project$Logic_Routing$matchers = _evancz$url_parser$UrlParser$oneOf(
 						ctor: '::',
 						_0: A2(
 							_evancz$url_parser$UrlParser$map,
-							_user$project$Logic_Types$StrummingPage,
+							_user$project$Types$StrummingPage,
 							_evancz$url_parser$UrlParser$s('strumming')),
 						_1: {
 							ctor: '::',
 							_0: A2(
 								_evancz$url_parser$UrlParser$map,
-								_user$project$Logic_Types$FingerPickingPage,
+								_user$project$Types$FingerPickingPage,
 								_evancz$url_parser$UrlParser$s('fingerpicking')),
 							_1: {ctor: '[]'}
 						}
@@ -130,6 +130,6 @@ var _user$project$Logic_Routing$parseLocation = function (location) {
 	if (_p1.ctor === 'Just') {
 		return _p1._0;
 	} else {
-		return _user$project$Logic_Types$NotFoundPage;
+		return _user$project$Types$NotFoundPage;
 	}
 };

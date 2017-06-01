@@ -491,7 +491,7 @@ var _user$project$Scales_View$scaleNameMinor = F2(
 		var index = A2(
 			_elm_lang$core$Maybe$withDefault,
 			0,
-			A2(_elm_community$list_extra$List_Extra$elemIndex, model.musKey, _user$project$Views_Chords$keyList));
+			A2(_elm_community$list_extra$List_Extra$elemIndex, model.musKey, _user$project$Chords_View$keyList));
 		return _elm_lang$core$Native_Utils.eq(
 			slicer(
 				_elm_lang$core$String$toLower(model.musKey)),
@@ -570,7 +570,7 @@ var _user$project$Scales_View$scaleNameMinor = F2(
 								A2(
 									_elm_lang$core$Maybe$withDefault,
 									'a',
-									A2(_elm_community$list_extra$List_Extra$getAt, index + 12, _user$project$Views_Chords$keyList)))),
+									A2(_elm_community$list_extra$List_Extra$getAt, index + 12, _user$project$Chords_View$keyList)))),
 						_1: {ctor: '[]'}
 					}),
 				_1: {
@@ -626,7 +626,7 @@ var _user$project$Scales_View$scaleNameMajor = F4(
 		var index = A2(
 			_elm_lang$core$Maybe$withDefault,
 			0,
-			A2(_elm_community$list_extra$List_Extra$elemIndex, model.musKey, _user$project$Views_Chords$keyList));
+			A2(_elm_community$list_extra$List_Extra$elemIndex, model.musKey, _user$project$Chords_View$keyList));
 		return _elm_lang$core$Native_Utils.eq(
 			slicer(
 				_elm_lang$core$String$toUpper(model.musKey)),
@@ -718,7 +718,7 @@ var _user$project$Scales_View$scaleNameMajor = F4(
 							A2(
 								_elm_lang$core$Maybe$withDefault,
 								'C',
-								A2(_elm_community$list_extra$List_Extra$getAt, index - 12, _user$project$Views_Chords$keyList))),
+								A2(_elm_community$list_extra$List_Extra$getAt, index - 12, _user$project$Chords_View$keyList))),
 						_1: {ctor: '[]'}
 					}),
 				_1: {
@@ -961,7 +961,7 @@ var _user$project$Scales_View$dorianModeView = function (model) {
 				ctor: '::',
 				_0: _elm_lang$html$Html_Events$onClick(
 					A2(
-						_user$project$Logic_Types$Play,
+						_user$project$Scales_Types$Play,
 						_user$project$Logic_Audio$scales('dorian'),
 						_user$project$Scales_View$fretOffset(model))),
 				_1: {ctor: '[]'}
@@ -1123,7 +1123,7 @@ var _user$project$Scales_View$mixolydianModeView = function (model) {
 				ctor: '::',
 				_0: _elm_lang$html$Html_Events$onClick(
 					A2(
-						_user$project$Logic_Types$Play,
+						_user$project$Scales_Types$Play,
 						_user$project$Logic_Audio$scales('mixolydian'),
 						_user$project$Scales_View$fretOffset(model))),
 				_1: {ctor: '[]'}
@@ -1285,7 +1285,7 @@ var _user$project$Scales_View$lydianModeView = function (model) {
 				ctor: '::',
 				_0: _elm_lang$html$Html_Events$onClick(
 					A2(
-						_user$project$Logic_Types$Play,
+						_user$project$Scales_Types$Play,
 						_user$project$Logic_Audio$scales('lydian'),
 						_user$project$Scales_View$fretOffset(model))),
 				_1: {ctor: '[]'}
@@ -1446,7 +1446,7 @@ var _user$project$Scales_View$minorPentatonicView = function (model) {
 				ctor: '::',
 				_0: _elm_lang$html$Html_Events$onClick(
 					A2(
-						_user$project$Logic_Types$Play,
+						_user$project$Scales_Types$Play,
 						_user$project$Logic_Audio$scales('minPentatonic'),
 						_user$project$Scales_View$fretOffset(model))),
 				_1: {ctor: '[]'}
@@ -1608,7 +1608,7 @@ var _user$project$Scales_View$majorPentatonicView = function (model) {
 				ctor: '::',
 				_0: _elm_lang$html$Html_Events$onClick(
 					A2(
-						_user$project$Logic_Types$Play,
+						_user$project$Scales_Types$Play,
 						_user$project$Logic_Audio$scales('majPentatonic'),
 						_user$project$Scales_View$fretOffset(model))),
 				_1: {ctor: '[]'}
@@ -1769,7 +1769,7 @@ var _user$project$Scales_View$aeolianModeView = function (model) {
 				ctor: '::',
 				_0: _elm_lang$html$Html_Events$onClick(
 					A2(
-						_user$project$Logic_Types$Play,
+						_user$project$Scales_Types$Play,
 						_user$project$Logic_Audio$scales('minor'),
 						_user$project$Scales_View$fretOffset(model))),
 				_1: {ctor: '[]'}
@@ -1931,7 +1931,7 @@ var _user$project$Scales_View$ionianModeView = function (model) {
 				ctor: '::',
 				_0: _elm_lang$html$Html_Events$onClick(
 					A2(
-						_user$project$Logic_Types$Play,
+						_user$project$Scales_Types$Play,
 						_user$project$Logic_Audio$scales('major'),
 						_user$project$Scales_View$fretOffset(model))),
 				_1: {ctor: '[]'}

@@ -2,7 +2,6 @@ module Fingerpick.Styles exposing (..)
 
 import Html exposing (Attribute)
 import Html.Attributes exposing (style)
-import Logic.Types exposing (Model)
 import Logic.Utils exposing ((=>))
 
 

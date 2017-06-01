@@ -3,14 +3,14 @@ module Strum.View exposing (..)
 import Html exposing (Html, div, button, text, span, hr, h3, h4, h5, select, option)
 import Html.Attributes exposing (style, attribute, value)
 import Html.Events exposing (onClick, onInput)
-import Logic.Types exposing (Model, Msg(Randomize, ShowModal, StrumArrowDirection, Play, ChangeStrumGroupNumber))
-import Styles.StrumStyles exposing (..)
+import Strum.Types exposing (Model, Msg(Randomize, StrumArrowDirection, ChangeStrumGroupNumber))
+import Strum.Styles exposing (..)
 import List.Extra exposing (getAt)
 import Logic.Utils exposing ((=>))
 
 
-view : Model -> Html Msg
-view model =
+strummingPage : Model -> Html Msg
+strummingPage model =
     div [ strumPageStyle model.strumGroupNumber ]
         [ strumGroupNumberSelector
         , strumGroupMatrix model

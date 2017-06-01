@@ -1,0 +1,121 @@
+var _user$project$Home_State$subscriptions = function (model) {
+	return _elm_lang$core$Platform_Sub$none;
+};
+var _user$project$Home_State$update = F2(
+	function (msg, model) {
+		var _p0 = msg;
+		return A2(
+			_elm_lang$core$Platform_Cmd_ops['!'],
+			model,
+			{ctor: '[]'});
+	});
+var _user$project$Home_State$initialCommands = _elm_lang$core$Platform_Cmd$none;
+var _user$project$Home_State$initialKey = {
+	i: '06x353242030121010',
+	ii: '06x05x040232423111',
+	iii: '060152242030020010',
+	iv: '06x06x343232121010',
+	v: '263152040030323413',
+	vi: '06x050242332121010',
+	vii: '06x15224343432301x',
+	i7: '06x353242433121010',
+	iv7: '06x05x142334223414',
+	v7: '363252040030020111',
+	vi7: '06x050242030121010',
+	names: {
+		ctor: '::',
+		_0: 'C',
+		_1: {
+			ctor: '::',
+			_0: 'Dm',
+			_1: {
+				ctor: '::',
+				_0: 'Em',
+				_1: {
+					ctor: '::',
+					_0: 'F',
+					_1: {
+						ctor: '::',
+						_0: 'G',
+						_1: {
+							ctor: '::',
+							_0: 'Am',
+							_1: {
+								ctor: '::',
+								_0: 'Bdim7',
+								_1: {
+									ctor: '::',
+									_0: 'CM7',
+									_1: {
+										ctor: '::',
+										_0: 'FM7',
+										_1: {
+											ctor: '::',
+											_0: 'G7',
+											_1: {
+												ctor: '::',
+												_0: 'Am7',
+												_1: {
+													ctor: '::',
+													_0: '5',
+													_1: {ctor: '[]'}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	},
+	bars: {
+		ctor: '::',
+		_0: '',
+		_1: {
+			ctor: '::',
+			_0: '',
+			_1: {
+				ctor: '::',
+				_0: '',
+				_1: {
+					ctor: '::',
+					_0: '',
+					_1: {
+						ctor: '::',
+						_0: '',
+						_1: {
+							ctor: '::',
+							_0: '',
+							_1: {
+								ctor: '::',
+								_0: '',
+								_1: {
+									ctor: '::',
+									_0: '',
+									_1: {
+										ctor: '::',
+										_0: '3',
+										_1: {
+											ctor: '::',
+											_0: '',
+											_1: {
+												ctor: '::',
+												_0: '',
+												_1: {ctor: '[]'}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	},
+	key: 'C'
+};
+var _user$project$Home_State$initialModel = {musKey: 'C', displayedChords: _user$project$Home_State$initialKey};

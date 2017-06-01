@@ -1,0 +1,48 @@
+var _user$project$Fretboard_State$noteStringPos = function (stringNo) {
+	var num = A2(
+		_elm_lang$core$Result$withDefault,
+		0,
+		_elm_lang$core$String$toInt(stringNo));
+	var _p0 = num;
+	switch (_p0) {
+		case 6:
+			return -8.0;
+		case 5:
+			return 22.0;
+		case 4:
+			return 52.0;
+		case 3:
+			return 82.0;
+		case 2:
+			return 104.0;
+		case 1:
+			return 136.0;
+		default:
+			return 0.0;
+	}
+};
+var _user$project$Fretboard_State$noteFretPos = function (index) {
+	var num = A2(
+		_elm_lang$core$Result$withDefault,
+		0,
+		_elm_lang$core$String$toInt(index));
+	return _elm_lang$core$Basics$toFloat(num) * 10.25;
+};
+var _user$project$Fretboard_State$subscriptions = function (model) {
+	return _elm_lang$core$Platform_Sub$none;
+};
+var _user$project$Fretboard_State$update = F2(
+	function (msg, model) {
+		var _p1 = msg;
+		var fretOffset = _user$project$Fretboard_State$noteFretPos(_p1._0);
+		var stringOffset = _user$project$Fretboard_State$noteStringPos(_p1._1);
+		var finalOffset = fretOffset + stringOffset;
+		return A2(
+			_elm_lang$core$Platform_Cmd_ops['!'],
+			_elm_lang$core$Native_Utils.update(
+				model,
+				{notePosition: finalOffset, showAccidental: _p1._2}),
+			{ctor: '[]'});
+	});
+var _user$project$Fretboard_State$initialCommands = _elm_lang$core$Platform_Cmd$none;
+var _user$project$Fretboard_State$initialModel = {musKey: 'C', notePosition: 80.0, showAccidental: '0'};

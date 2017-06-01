@@ -3,6 +3,13 @@ module Types exposing (..)
 import Navigation exposing (Location)
 import Phoenix.Socket
 import Json.Encode
+import Chords.Types as Chords
+import Fingerpick.Types as Fingerpick
+import Fretboard.Types as Fretboard
+import Home.Types as Home
+import Scales.Types as Scales
+import Strum.Types as Strum
+import Html
 
 
 type alias Model =
@@ -12,6 +19,12 @@ type alias Model =
     , modalOpen : Bool
     , phxSocket : Phoenix.Socket.Socket Msg
     , sliderValue : Int
+    , chords : Chords.Model
+    , fingerpick : Fingerpick.Model
+    , fretboard : Fretboard.Model
+    , home : Home.Model
+    , scales : Scales.Model
+    , strum : Strum.Model
     }
 
 
@@ -51,6 +64,12 @@ type Msg
     | SendMessage String
     | ShowModal
     | ShowNavMenu
+    | ChordsMsg Chords.Msg
+    | FingerpickMsg Fingerpick.Msg
+    | FretboardMsg Fretboard.Msg
+    | HomeMsg Home.Msg
+    | ScalesMsg Scales.Msg
+    | StrumMsg Strum.Msg
 
 
 type Route
@@ -61,3 +80,13 @@ type Route
     | HomePage
     | StrummingPage
     | FingerPickingPage
+
+
+type Page
+    = Chords Chords.Model
+    | Scales Scales.Model
+    | Fretboard Fretboard.Model
+    | Fingerpick Fingerpick.Model
+    | Home Home.Model
+    | Strum Strum.Model
+    | NotFound

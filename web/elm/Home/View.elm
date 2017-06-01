@@ -3,17 +3,20 @@ module Home.View exposing (homePage)
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import Chords.View exposing (chordChartModel)
+import Home.Types as HT exposing (..)
 
 
 -- import Fretboard.View exposing (..)
 -- import Views.Scales exposing (..)
+-- import Types exposing (Model, Msg(..))
 
-import Logic.Types exposing (Model, Msg(..))
 import Home.Styles exposing (..)
 import Chords.Styles exposing (chartContainerStyle)
 
 
-homePage : Model -> Html Msg
+-- homePage : HT.Model -> Html HT.Msg
+
+
 homePage model =
     div [ homePageStyle ]
         [ div [ titleStyle "30px" "#444" ] [ text "Applied Music Theory For Guitarists" ]

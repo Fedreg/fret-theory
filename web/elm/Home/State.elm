@@ -4,9 +4,9 @@ import Home.Types as HT exposing (..)
 import Types as App exposing (Model)
 
 
-initialModel : CT.Model
+initialModel : HT.Model
 initialModel =
-    { musKey = App.Model.musKey
+    { musKey = "C"
     , displayedChords = initialKey
     }
 
@@ -37,13 +37,13 @@ initialCommands =
     Cmd.none
 
 
-update : Msg -> Scale.Model -> ( Scale.Model, Cmd Msg )
+update : Msg -> HT.Model -> ( HT.Model, Cmd Msg )
 update msg model =
     case msg of
         NoOp ->
             model ! []
 
 
-subscriptions : Model -> Sub Msg
+subscriptions : HT.Model -> Sub Msg
 subscriptions model =
-    always Sub.none
+    Sub.none

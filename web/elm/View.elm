@@ -5,7 +5,7 @@ import Html exposing (Html, div, span, hr, text, a, input, h3)
 import Html.Attributes exposing (style, href, value, type_, href)
 import Html.Events exposing (onClick, onInput)
 import Logic.Routing as Routing
-import Logic.Types exposing (Model, Msg(..), Route(..), PlayBundle)
+import Types exposing (Model, Msg(..), Route(..), Page(..), PlayBundle)
 import Home.View exposing (homePage)
 import Chords.View exposing (chordsPage, keyListMajor, keyListMinor)
 import Scales.View exposing (scalesPage)
@@ -27,7 +27,7 @@ mainView model =
         ]
 
 
-nav : Model -> Html Msg
+nav : Model -> Html Types.Msg
 nav model =
     let
         navItem rte page =
@@ -103,16 +103,16 @@ signature bool =
         [ hover highlight a [ href "https://www.github.com/fedreg", style [ "color" => "#666" ] ] [ text "c. 2017 FedReg (v. 0.1)" ] ]
 
 
-page : Model -> Html Msg
+page : Model -> Page
 page model =
     case model.route of
-        ChordsPage _ ->
+        ChordsPage a ->
             chordsPage model
 
-        FretboardPage _ ->
+        FretboardPage a ->
             fretboardPage model
 
-        ScalesPage _ ->
+        ScalesPage a ->
             scalesPage model
 
         HomePage ->

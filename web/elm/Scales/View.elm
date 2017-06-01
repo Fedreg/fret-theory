@@ -3,12 +3,12 @@ module Scales.View exposing (scalesPage)
 import Html exposing (Html, div, span, text)
 import Html.Attributes exposing (style)
 import Html.Events exposing (onClick)
-import Logic.Types exposing (ScaleData, ScaleSchemaData, Msg(Play, ShowModal), Model)
-import Views.Chords exposing (keyList)
+import Scales.Types exposing (ScaleData, ScaleSchemaData, Msg(Play), Model)
 import List.Extra exposing (getAt, elemIndex)
 import Logic.Audio exposing (scales)
 import Scales.Styles exposing (..)
 import Logic.Utils exposing ((=>))
+import Chords.View exposing (keyList)
 
 
 scalesPage : Model -> Html Msg

@@ -1,0 +1,130 @@
+var _user$project$Fingerpick_State$subscriptions = function (model) {
+	return _elm_lang$core$Platform_Sub$none;
+};
+var _user$project$Fingerpick_State$update = F2(
+	function (msg, model) {
+		var _p0 = msg;
+		switch (_p0.ctor) {
+			case 'Randomize':
+				var _p2 = _p0._1;
+				var _p1 = _p0._0;
+				return {
+					ctor: '_Tuple2',
+					_0: model,
+					_1: _elm_lang$core$Platform_Cmd$batch(
+						{
+							ctor: '::',
+							_0: A2(
+								_elm_lang$core$Random$generate,
+								_user$project$Fingerpick_Types$FingerPickPatternBuilderA,
+								A2(
+									_elm_lang$core$Random$list,
+									8,
+									A2(_elm_lang$core$Random$int, _p1, _p2))),
+							_1: {
+								ctor: '::',
+								_0: A2(
+									_elm_lang$core$Random$generate,
+									_user$project$Fingerpick_Types$FingerPickPatternBuilderB,
+									A2(
+										_elm_lang$core$Random$list,
+										8,
+										A2(_elm_lang$core$Random$int, _p1, _p2))),
+								_1: {ctor: '[]'}
+							}
+						})
+				};
+			case 'FingerPickPatternBuilderA':
+				var pattern = model.fingerPickPattern;
+				var newPattern = _elm_lang$core$Native_Utils.update(
+					pattern,
+					{a: _p0._0});
+				return A2(
+					_elm_lang$core$Platform_Cmd_ops['!'],
+					_elm_lang$core$Native_Utils.update(
+						model,
+						{fingerPickPattern: newPattern}),
+					{ctor: '[]'});
+			default:
+				var pattern = model.fingerPickPattern;
+				var newPattern = _elm_lang$core$Native_Utils.update(
+					pattern,
+					{b: _p0._0});
+				return A2(
+					_elm_lang$core$Platform_Cmd_ops['!'],
+					_elm_lang$core$Native_Utils.update(
+						model,
+						{fingerPickPattern: newPattern}),
+					{ctor: '[]'});
+		}
+	});
+var _user$project$Fingerpick_State$initFingerPickPattern = {
+	a: {
+		ctor: '::',
+		_0: 2,
+		_1: {
+			ctor: '::',
+			_0: 0,
+			_1: {
+				ctor: '::',
+				_0: 0,
+				_1: {
+					ctor: '::',
+					_0: 3,
+					_1: {
+						ctor: '::',
+						_0: 0,
+						_1: {
+							ctor: '::',
+							_0: 1,
+							_1: {
+								ctor: '::',
+								_0: 0,
+								_1: {
+									ctor: '::',
+									_0: 2,
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	},
+	b: {
+		ctor: '::',
+		_0: 5,
+		_1: {
+			ctor: '::',
+			_0: 0,
+			_1: {
+				ctor: '::',
+				_0: 4,
+				_1: {
+					ctor: '::',
+					_0: 0,
+					_1: {
+						ctor: '::',
+						_0: 5,
+						_1: {
+							ctor: '::',
+							_0: 0,
+							_1: {
+								ctor: '::',
+								_0: 5,
+								_1: {
+									ctor: '::',
+									_0: 0,
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+};
+var _user$project$Fingerpick_State$initialCommands = _elm_lang$core$Platform_Cmd$none;
+var _user$project$Fingerpick_State$initialModel = {musKey: 'C', fingerPickPattern: _user$project$Fingerpick_State$initFingerPickPattern};

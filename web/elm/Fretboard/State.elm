@@ -1,12 +1,12 @@
 module Fretboard.State exposing (..)
 
-import Fretboard.Types as FT exposing (..)
 import Types exposing (Model)
+import Fretboard.Types as FT exposing (..)
 
 
 initialModel : FT.Model
 initialModel =
-    { musKey = Types.Model.musKey
+    { musKey = "C"
     , notePosition = 80.0
     , showAccidental = "0"
     }
@@ -36,7 +36,8 @@ update msg model =
 
 subscriptions : FT.Model -> Sub Msg
 subscriptions model =
-    always Sub.none
+    Sub.none
+
 
 {-| More specifically determines note x position per note on fretboard.
 -}
@@ -47,6 +48,7 @@ noteFretPos index =
             Result.withDefault 0 <| String.toInt index
     in
         toFloat num * 10.25
+
 
 {-| Determines note x position per string.
 -}
@@ -77,4 +79,3 @@ noteStringPos stringNo =
 
             _ ->
                 0.0
-

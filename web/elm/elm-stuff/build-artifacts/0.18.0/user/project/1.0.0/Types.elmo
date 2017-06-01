@@ -1,7 +1,28 @@
-var _user$project$Types$Model = F6(
-	function (a, b, c, d, e, f) {
-		return {route: a, musKey: b, navMenuOpen: c, modalOpen: d, phxSocket: e, sliderValue: f};
-	});
+var _user$project$Types$Model = function (a) {
+	return function (b) {
+		return function (c) {
+			return function (d) {
+				return function (e) {
+					return function (f) {
+						return function (g) {
+							return function (h) {
+								return function (i) {
+									return function (j) {
+										return function (k) {
+											return function (l) {
+												return {route: a, musKey: b, navMenuOpen: c, modalOpen: d, phxSocket: e, sliderValue: f, chords: g, fingerpick: h, fretboard: i, home: j, scales: k, strum: l};
+											};
+										};
+									};
+								};
+							};
+						};
+					};
+				};
+			};
+		};
+	};
+};
 var _user$project$Types$ChordAudioData = F7(
 	function (a, b, c, d, e, f, g) {
 		return {i: a, ii: b, iii: c, iv: d, v: e, vi: f, vii: g};
@@ -14,6 +35,24 @@ var _user$project$Types$PlayBundle = F2(
 	function (a, b) {
 		return {note: a, waveType: b};
 	});
+var _user$project$Types$StrumMsg = function (a) {
+	return {ctor: 'StrumMsg', _0: a};
+};
+var _user$project$Types$ScalesMsg = function (a) {
+	return {ctor: 'ScalesMsg', _0: a};
+};
+var _user$project$Types$HomeMsg = function (a) {
+	return {ctor: 'HomeMsg', _0: a};
+};
+var _user$project$Types$FretboardMsg = function (a) {
+	return {ctor: 'FretboardMsg', _0: a};
+};
+var _user$project$Types$FingerpickMsg = function (a) {
+	return {ctor: 'FingerpickMsg', _0: a};
+};
+var _user$project$Types$ChordsMsg = function (a) {
+	return {ctor: 'ChordsMsg', _0: a};
+};
 var _user$project$Types$ShowNavMenu = {ctor: 'ShowNavMenu'};
 var _user$project$Types$ShowModal = {ctor: 'ShowModal'};
 var _user$project$Types$SendMessage = function (a) {
@@ -51,4 +90,23 @@ var _user$project$Types$ScalesPage = function (a) {
 };
 var _user$project$Types$ChordsPage = function (a) {
 	return {ctor: 'ChordsPage', _0: a};
+};
+var _user$project$Types$NotFound = {ctor: 'NotFound'};
+var _user$project$Types$Strum = function (a) {
+	return {ctor: 'Strum', _0: a};
+};
+var _user$project$Types$Home = function (a) {
+	return {ctor: 'Home', _0: a};
+};
+var _user$project$Types$Fingerpick = function (a) {
+	return {ctor: 'Fingerpick', _0: a};
+};
+var _user$project$Types$Fretboard = function (a) {
+	return {ctor: 'Fretboard', _0: a};
+};
+var _user$project$Types$Scales = function (a) {
+	return {ctor: 'Scales', _0: a};
+};
+var _user$project$Types$Chords = function (a) {
+	return {ctor: 'Chords', _0: a};
 };

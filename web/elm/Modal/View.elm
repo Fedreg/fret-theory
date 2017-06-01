@@ -3,7 +3,7 @@ module Modal.View exposing (modal, modalIcon)
 import Html exposing (Html, div, span, a, text, h3, h4)
 import Html.Attributes exposing (style, class)
 import Html.Events exposing (onClick)
-import Logic.Types exposing (Model, Msg(ShowModal), Route(..))
+import Types exposing (Model, Msg(ShowModal), Route(..))
 import Modal.Styles exposing (..)
 import Strum.View exposing (strumGroup)
 import Markdown exposing (toHtml)
@@ -186,17 +186,20 @@ Scales are usually defined as a collection of 8 notes grouped together by a spec
 """
 
 
-strummingModal : Model -> Html Msg
+
+-- strummingModal : Model -> Html Msg
+
+
 strummingModal model =
     div [ modalStyle model ]
         [ div [ modalContentStyle ]
             [ div [ closeModalIcon, onClick ShowModal ] [ text "x" ]
             , h3 [ modalHeaderStyle ] [ text "Strumming" ]
             , toHtml [] strumModalContent
-            , strumGroup "0.75,0.75" [ 1, 2, 1, 1, 2, 1, 1, 1 ] "#444" "#FFF" "none" "0"
-            , strumGroup "0.75,0.75" [ 1, 1, 1, 2, 1, 1, 1, 2 ] "#444" "#FFF" "none" "0"
-            , strumGroup "0.75,0.75" [ 1, 1, 2, 1, 1, 2, 1, 1 ] "#444" "#FFF" "none" "0"
-            , strumGroup "0.75,0.75" [ 2, 1, 2, 1, 2, 1, 2, 1 ] "#444" "#FFF" "none" "0"
+              -- , strumGroup "0.75,0.75" [ 1, 2, 1, 1, 2, 1, 1, 1 ] "#444" "#FFF" "none" "0"
+              -- , strumGroup "0.75,0.75" [ 1, 1, 1, 2, 1, 1, 1, 2 ] "#444" "#FFF" "none" "0"
+              -- , strumGroup "0.75,0.75" [ 1, 1, 2, 1, 1, 2, 1, 1 ] "#444" "#FFF" "none" "0"
+              -- , strumGroup "0.75,0.75" [ 2, 1, 2, 1, 2, 1, 2, 1 ] "#444" "#FFF" "none" "0"
             ]
         ]
 

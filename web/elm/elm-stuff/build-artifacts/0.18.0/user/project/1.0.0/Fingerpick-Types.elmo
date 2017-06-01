@@ -1,6 +1,6 @@
-var _user$project$Fingerpick_Types$Model = F2(
-	function (a, b) {
-		return {musKey: a, fingerPickPattern: b};
+var _user$project$Fingerpick_Types$Model = F3(
+	function (a, b, c) {
+		return {musKey: a, fingerPickPattern: b, displayedChords: c};
 	});
 var _user$project$Fingerpick_Types$FingerPickPatternBuilderB = function (a) {
 	return {ctor: 'FingerPickPatternBuilderB', _0: a};

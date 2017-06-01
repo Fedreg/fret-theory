@@ -295,7 +295,7 @@ var _user$project$Strum_View$strumGroupNumberSelector = A2(
 	_elm_lang$html$Html$select,
 	{
 		ctor: '::',
-		_0: _elm_lang$html$Html_Events$onInput(_user$project$Logic_Types$ChangeStrumGroupNumber),
+		_0: _elm_lang$html$Html_Events$onInput(_user$project$Strum_Types$ChangeStrumGroupNumber),
 		_1: {
 			ctor: '::',
 			_0: _elm_lang$html$Html_Attributes$style(
@@ -361,7 +361,7 @@ var _user$project$Strum_View$strumGroup = F6(
 					_elm_lang$html$Html$div,
 					{
 						ctor: '::',
-						_0: A4(_user$project$Styles_StrumStyles$strumArrowStyle, a, b, borderCol, background),
+						_0: A4(_user$project$Strum_Styles$strumArrowStyle, a, b, borderCol, background),
 						_1: {ctor: '[]'}
 					},
 					{
@@ -421,7 +421,7 @@ var _user$project$Strum_View$strumGroup = F6(
 			_elm_lang$html$Html$div,
 			{
 				ctor: '::',
-				_0: A2(_user$project$Styles_StrumStyles$strumGroupStyle, scale, margin),
+				_0: A2(_user$project$Strum_Styles$strumGroupStyle, scale, margin),
 				_1: {ctor: '[]'}
 			},
 			{
@@ -582,7 +582,7 @@ var _user$project$Strum_View$strumGroupMatrix = function (model) {
 						_elm_lang$html$Html$div,
 						{
 							ctor: '::',
-							_0: _user$project$Styles_StrumStyles$strumGroupMatrixStyle,
+							_0: _user$project$Strum_Styles$strumGroupMatrixStyle,
 							_1: {ctor: '[]'}
 						},
 						{
@@ -614,7 +614,7 @@ var _user$project$Strum_View$strumGroupMatrix = function (model) {
 							_elm_lang$html$Html$div,
 							{
 								ctor: '::',
-								_0: _user$project$Styles_StrumStyles$strumGroupMatrixStyle,
+								_0: _user$project$Strum_Styles$strumGroupMatrixStyle,
 								_1: {ctor: '[]'}
 							},
 							{
@@ -648,7 +648,7 @@ var _user$project$Strum_View$strumGroupMatrix = function (model) {
 				_elm_lang$html$Html$div,
 				{
 					ctor: '::',
-					_0: _user$project$Styles_StrumStyles$strumGroupMatrixStyle,
+					_0: _user$project$Strum_Styles$strumGroupMatrixStyle,
 					_1: {ctor: '[]'}
 				},
 				{
@@ -665,12 +665,12 @@ var _user$project$Strum_View$strumGroupMatrix = function (model) {
 				});
 	}
 };
-var _user$project$Strum_View$view = function (model) {
+var _user$project$Strum_View$strummingPage = function (model) {
 	return A2(
 		_elm_lang$html$Html$div,
 		{
 			ctor: '::',
-			_0: _user$project$Styles_StrumStyles$strumPageStyle(model.strumGroupNumber),
+			_0: _user$project$Strum_Styles$strumPageStyle(model.strumGroupNumber),
 			_1: {ctor: '[]'}
 		},
 		{
@@ -685,11 +685,11 @@ var _user$project$Strum_View$view = function (model) {
 						_elm_lang$html$Html$button,
 						{
 							ctor: '::',
-							_0: _user$project$Styles_StrumStyles$buttonStyle,
+							_0: _user$project$Strum_Styles$buttonStyle,
 							_1: {
 								ctor: '::',
 								_0: _elm_lang$html$Html_Events$onClick(
-									A2(_user$project$Logic_Types$Randomize, 1, 2)),
+									A2(_user$project$Strum_Types$Randomize, 1, 2)),
 								_1: {ctor: '[]'}
 							}
 						},

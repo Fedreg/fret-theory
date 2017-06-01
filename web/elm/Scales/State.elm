@@ -11,7 +11,7 @@ import Logic.Audio exposing (noteSorter)
 
 initialModel : Scale.Model
 initialModel =
-    { musKey = App.Model.musKey
+    { musKey = "C"
     , currentChord = []
     , pitchShift = 0
     , index = 6
@@ -36,8 +36,7 @@ update : Msg -> Scale.Model -> ( Scale.Model, Cmd Msg )
 update msg model =
     case msg of
         Play chord hzShift ->
-            { model | currentChord = chord, pitchShift = hzShift }
-                ! []
+            ({ model | currentChord = chord, pitchShift = hzShift }, Cmd.none)
                 :> update ResetIndex
                 :> update SendNotes
 
@@ -58,10 +57,9 @@ update msg model =
 
 subscriptions : Model -> Sub Msg
 subscriptions model =
-    Sub.batch
-        [ let
-            val =
-                toFloat model.sliderValue / 10.0
-          in
-            if model.index < List.length model.currentChord then
-                Time.every (val * Time.second) (always SendNotes)
+    let
+        val =
+            toFloat model.sliderValue / 10.0
+    in
+        if model.index < List.length model.currentChord then
+            Time.every (val * Time.second) (always SendNotes)

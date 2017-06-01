@@ -1,7 +1,7 @@
 module Logic.Routing exposing (..)
 
 import Navigation exposing (Location)
-import Logic.Types exposing (Route(..), Model, Msg)
+import Types exposing (Route(..), Model, Msg)
 import UrlParser exposing (..)
 
 

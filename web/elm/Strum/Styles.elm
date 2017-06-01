@@ -1,8 +1,7 @@
-module Styles.StrumStyles exposing (..)
+module Strum.Styles exposing (..)
 
 import Html exposing (Attribute)
 import Html.Attributes exposing (style)
-import Strum.Types exposing (Model)
 import Logic.Utils exposing ((=>))
 
 

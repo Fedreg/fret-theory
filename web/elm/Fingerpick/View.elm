@@ -3,26 +3,30 @@ module Fingerpick.View exposing (fingerPickingPage)
 import Html exposing (Html, div, button, text, span, hr, h1, h3, h4, h5)
 import Html.Attributes exposing (style, attribute)
 import Html.Events exposing (onClick)
-import Views.Chords exposing (chordChartModel)
-import Logic.Types exposing (Model, Msg(Randomize, ShowModal))
-import Styles.FingerPickStyles exposing (..)
+import Fingerpick.Types as FT exposing (Model, Msg(Randomize))
+import Fingerpick.Styles exposing (..)
 import List.Extra exposing (getAt)
 import Logic.Utils exposing ((=>))
+import Chords.View exposing (chordChartModel)
 
 
-fingerPickingPage : Model -> Html Msg
+fingerPickingPage : FT.Model -> Html Msg
 fingerPickingPage model =
     div [ fingerPickingPageStyle ]
-        [ h1 [ fingerPickChordTitleStyle ] [ chordChartModel model 0 "" .i .i ]
+        [ h1 [ fingerPickChordTitleStyle ] []
         , fingerPickGroup "1,1" model.fingerPickPattern.a model.fingerPickPattern.b model
         , button [ buttonStyle, onClick (Randomize 0 8) ] [ text "Generate Random Fingerpicking Pattern" ]
         , div [] [ text <| toString <| chordNotes model ]
         ]
 
 
+
+-- chordChartModel model.musKey model.displayedChords 0 "" .i .i
+
+
 {-| Draws the frets on each string
 -}
-fingerPickGroup : String -> List Int -> List Int -> Model -> Html Msg
+fingerPickGroup : String -> List Int -> List Int -> FT.Model -> Html Msg
 fingerPickGroup scale notes1 notes2 model =
     let
         beats a =
@@ -51,7 +55,7 @@ fingerPickGroup scale notes1 notes2 model =
 
 {-| The up / down arrow itself.  Made up of a rotated div and a hr.
 -}
-fret : Int -> Model -> Html Msg
+fret : Int -> FT.Model -> Html Msg
 fret num model =
     let
         getter a =
@@ -138,7 +142,7 @@ stringView =
 
 
 {-| Determines the "Frets" to be displayed on the strings based on the current Model.
-*****TODO: Creat a function that determines chord pitch based on chordNotes function above.
+*****TODO: Create a function that determines chord pitch based on chordNotes function above.
 chordNotes returns a list of strings and I can getAt 1 for first string and multiply each "fret" by the formula to determine pitch.
 Then use a Note constructor to build a list of Note ****
 -}

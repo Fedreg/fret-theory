@@ -25,7 +25,7 @@ var _user$project$Modal_View$strummingModal = function (model) {
 							_0: _user$project$Modal_Styles$closeModalIcon,
 							_1: {
 								ctor: '::',
-								_0: _elm_lang$html$Html_Events$onClick(_user$project$Logic_Types$ShowModal),
+								_0: _elm_lang$html$Html_Events$onClick(_user$project$Types$ShowModal),
 								_1: {ctor: '[]'}
 							}
 						},
@@ -54,179 +54,7 @@ var _user$project$Modal_View$strummingModal = function (model) {
 								_evancz$elm_markdown$Markdown$toHtml,
 								{ctor: '[]'},
 								_user$project$Modal_View$strumModalContent),
-							_1: {
-								ctor: '::',
-								_0: A6(
-									_user$project$Strum_View$strumGroup,
-									'0.75,0.75',
-									{
-										ctor: '::',
-										_0: 1,
-										_1: {
-											ctor: '::',
-											_0: 2,
-											_1: {
-												ctor: '::',
-												_0: 1,
-												_1: {
-													ctor: '::',
-													_0: 1,
-													_1: {
-														ctor: '::',
-														_0: 2,
-														_1: {
-															ctor: '::',
-															_0: 1,
-															_1: {
-																ctor: '::',
-																_0: 1,
-																_1: {
-																	ctor: '::',
-																	_0: 1,
-																	_1: {ctor: '[]'}
-																}
-															}
-														}
-													}
-												}
-											}
-										}
-									},
-									'#444',
-									'#FFF',
-									'none',
-									'0'),
-								_1: {
-									ctor: '::',
-									_0: A6(
-										_user$project$Strum_View$strumGroup,
-										'0.75,0.75',
-										{
-											ctor: '::',
-											_0: 1,
-											_1: {
-												ctor: '::',
-												_0: 1,
-												_1: {
-													ctor: '::',
-													_0: 1,
-													_1: {
-														ctor: '::',
-														_0: 2,
-														_1: {
-															ctor: '::',
-															_0: 1,
-															_1: {
-																ctor: '::',
-																_0: 1,
-																_1: {
-																	ctor: '::',
-																	_0: 1,
-																	_1: {
-																		ctor: '::',
-																		_0: 2,
-																		_1: {ctor: '[]'}
-																	}
-																}
-															}
-														}
-													}
-												}
-											}
-										},
-										'#444',
-										'#FFF',
-										'none',
-										'0'),
-									_1: {
-										ctor: '::',
-										_0: A6(
-											_user$project$Strum_View$strumGroup,
-											'0.75,0.75',
-											{
-												ctor: '::',
-												_0: 1,
-												_1: {
-													ctor: '::',
-													_0: 1,
-													_1: {
-														ctor: '::',
-														_0: 2,
-														_1: {
-															ctor: '::',
-															_0: 1,
-															_1: {
-																ctor: '::',
-																_0: 1,
-																_1: {
-																	ctor: '::',
-																	_0: 2,
-																	_1: {
-																		ctor: '::',
-																		_0: 1,
-																		_1: {
-																			ctor: '::',
-																			_0: 1,
-																			_1: {ctor: '[]'}
-																		}
-																	}
-																}
-															}
-														}
-													}
-												}
-											},
-											'#444',
-											'#FFF',
-											'none',
-											'0'),
-										_1: {
-											ctor: '::',
-											_0: A6(
-												_user$project$Strum_View$strumGroup,
-												'0.75,0.75',
-												{
-													ctor: '::',
-													_0: 2,
-													_1: {
-														ctor: '::',
-														_0: 1,
-														_1: {
-															ctor: '::',
-															_0: 2,
-															_1: {
-																ctor: '::',
-																_0: 1,
-																_1: {
-																	ctor: '::',
-																	_0: 2,
-																	_1: {
-																		ctor: '::',
-																		_0: 1,
-																		_1: {
-																			ctor: '::',
-																			_0: 2,
-																			_1: {
-																				ctor: '::',
-																				_0: 1,
-																				_1: {ctor: '[]'}
-																			}
-																		}
-																	}
-																}
-															}
-														}
-													}
-												},
-												'#444',
-												'#FFF',
-												'none',
-												'0'),
-											_1: {ctor: '[]'}
-										}
-									}
-								}
-							}
+							_1: {ctor: '[]'}
 						}
 					}
 				}),
@@ -260,7 +88,7 @@ var _user$project$Modal_View$scalesModal = function (model) {
 							_0: _user$project$Modal_Styles$closeModalIcon,
 							_1: {
 								ctor: '::',
-								_0: _elm_lang$html$Html_Events$onClick(_user$project$Logic_Types$ShowModal),
+								_0: _elm_lang$html$Html_Events$onClick(_user$project$Types$ShowModal),
 								_1: {ctor: '[]'}
 							}
 						},
@@ -323,7 +151,7 @@ var _user$project$Modal_View$fretboardModal = function (model) {
 							_0: _user$project$Modal_Styles$closeModalIcon,
 							_1: {
 								ctor: '::',
-								_0: _elm_lang$html$Html_Events$onClick(_user$project$Logic_Types$ShowModal),
+								_0: _elm_lang$html$Html_Events$onClick(_user$project$Types$ShowModal),
 								_1: {ctor: '[]'}
 							}
 						},
@@ -386,7 +214,7 @@ var _user$project$Modal_View$fingerPickModal = function (model) {
 							_0: _user$project$Modal_Styles$closeModalIcon,
 							_1: {
 								ctor: '::',
-								_0: _elm_lang$html$Html_Events$onClick(_user$project$Logic_Types$ShowModal),
+								_0: _elm_lang$html$Html_Events$onClick(_user$project$Types$ShowModal),
 								_1: {ctor: '[]'}
 							}
 						},
@@ -449,7 +277,7 @@ var _user$project$Modal_View$chordModal = function (model) {
 							_0: _user$project$Modal_Styles$closeModalIcon,
 							_1: {
 								ctor: '::',
-								_0: _elm_lang$html$Html_Events$onClick(_user$project$Logic_Types$ShowModal),
+								_0: _elm_lang$html$Html_Events$onClick(_user$project$Types$ShowModal),
 								_1: {ctor: '[]'}
 							}
 						},
@@ -512,7 +340,7 @@ var _user$project$Modal_View$homeModal = function (model) {
 							_0: _user$project$Modal_Styles$closeModalIcon,
 							_1: {
 								ctor: '::',
-								_0: _elm_lang$html$Html_Events$onClick(_user$project$Logic_Types$ShowModal),
+								_0: _elm_lang$html$Html_Events$onClick(_user$project$Types$ShowModal),
 								_1: {ctor: '[]'}
 							}
 						},
@@ -556,7 +384,7 @@ var _user$project$Modal_View$modalIcon = function (model) {
 			_0: _user$project$Modal_Styles$modalIconStyle(model),
 			_1: {
 				ctor: '::',
-				_0: _elm_lang$html$Html_Events$onClick(_user$project$Logic_Types$ShowModal),
+				_0: _elm_lang$html$Html_Events$onClick(_user$project$Types$ShowModal),
 				_1: {ctor: '[]'}
 			}
 		},

@@ -2,7 +2,7 @@ module Chords.Styles exposing (..)
 
 import Html exposing (Attribute)
 import Html.Attributes exposing (style)
-import Chords.Types exposing (Dot)
+import Chords.Types exposing (..)
 import Logic.Utils exposing ((=>))
 
 

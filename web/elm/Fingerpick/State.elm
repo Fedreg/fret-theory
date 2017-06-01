@@ -3,12 +3,14 @@ module Fingerpick.State exposing (..)
 import Fingerpick.Types as FT exposing (..)
 import Random exposing (..)
 import Types as App exposing (Model)
+import Chords.State as Chords exposing (initialKey)
 
 
 initialModel : FT.Model
 initialModel =
-    { musKey = App.Model.musKey
+    { musKey = "C"
     , fingerPickPattern = initFingerPickPattern
+    , displayedChords = Chords.initialKey
     }
 
 
@@ -34,7 +36,6 @@ update msg model =
                 , Random.generate FingerPickPatternBuilderB <| Random.list 8 (Random.int hi lo)
                 ]
             )
-                ! []
 
         FingerPickPatternBuilderA numList ->
             let
@@ -59,4 +60,4 @@ update msg model =
 
 subscriptions : FT.Model -> Sub Msg
 subscriptions model =
-    always Sub.none
+    Sub.none

@@ -2,7 +2,7 @@ module Modal.Styles exposing (..)
 
 import Html exposing (Attribute)
 import Html.Attributes exposing (style)
-import Logic.Types exposing (Model, Msg(..), Dot)
+import Types exposing (Model, Msg(..))
 import Logic.Utils exposing ((=>))
 
 
