@@ -80,13 +80,3 @@ type Route
     | HomePage
     | StrummingPage
     | FingerPickingPage
-
-
-type Page
-    = Chords Chords.Model
-    | Scales Scales.Model
-    | Fretboard Fretboard.Model
-    | Fingerpick Fingerpick.Model
-    | Home Home.Model
-    | Strum Strum.Model
-    | NotFound

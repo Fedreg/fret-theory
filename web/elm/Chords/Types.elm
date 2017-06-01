@@ -7,6 +7,7 @@ type alias Model =
     , currentChord : List String
     , index : Int
     , pitchShift : Int
+    , sliderValue : Int
     }
 
 

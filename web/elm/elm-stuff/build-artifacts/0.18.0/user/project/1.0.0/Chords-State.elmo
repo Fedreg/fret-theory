@@ -1,0 +1,175 @@
+var _user$project$Chords_State$subscriptions = function (model) {
+	var val = _elm_lang$core$Basics$toFloat(model.sliderValue) / 10.0;
+	return (_elm_lang$core$Native_Utils.cmp(
+		model.index,
+		_elm_lang$core$List$length(model.currentChord)) < 0) ? A2(
+		_elm_lang$core$Time$every,
+		val * _elm_lang$core$Time$second,
+		_elm_lang$core$Basics$always(_user$project$Chords_Types$SendNotes)) : _elm_lang$core$Platform_Sub$none;
+};
+var _user$project$Chords_State$update = F2(
+	function (msg, model) {
+		var _p0 = msg;
+		switch (_p0.ctor) {
+			case 'Play':
+				return A2(
+					_ccapndave$elm_update_extra$Update_Extra_Infix_ops[':>'],
+					A2(
+						_ccapndave$elm_update_extra$Update_Extra_Infix_ops[':>'],
+						{
+							ctor: '_Tuple2',
+							_0: _elm_lang$core$Native_Utils.update(
+								model,
+								{currentChord: _p0._0, pitchShift: _p0._1}),
+							_1: _elm_lang$core$Platform_Cmd$none
+						},
+						_user$project$Chords_State$update(_user$project$Chords_Types$ResetIndex)),
+					_user$project$Chords_State$update(_user$project$Chords_Types$SendNotes));
+			case 'ResetIndex':
+				return A2(
+					_elm_lang$core$Platform_Cmd_ops['!'],
+					_elm_lang$core$Native_Utils.update(
+						model,
+						{index: 0}),
+					{ctor: '[]'});
+			default:
+				var note = _user$project$Logic_Audio$noteSorter(
+					A2(
+						_elm_lang$core$Maybe$withDefault,
+						'e2w',
+						A2(_elm_community$list_extra$List_Extra$getAt, model.index, model.currentChord)));
+				var shiftedNote = _elm_lang$core$Native_Utils.update(
+					note,
+					{
+						frequency: note.frequency * Math.pow(
+							1.059463,
+							_elm_lang$core$Basics$toFloat(model.pitchShift)),
+						sustain: note.sustain * (_elm_lang$core$Basics$toFloat(model.sliderValue) / 2)
+					});
+				return {
+					ctor: '_Tuple2',
+					_0: _elm_lang$core$Native_Utils.update(
+						model,
+						{index: model.index + 1}),
+					_1: _user$project$Logic_Ports$send(
+						A2(_user$project$Types$PlayBundle, shiftedNote, 'triangle'))
+				};
+		}
+	});
+var _user$project$Chords_State$initialCommands = _elm_lang$core$Platform_Cmd$none;
+var _user$project$Chords_State$initialKey = {
+	i: '06x353242030121010',
+	ii: '06x05x040232423111',
+	iii: '060152242030020010',
+	iv: '06x06x343232121010',
+	v: '263152040030323413',
+	vi: '06x050242332121010',
+	vii: '06x15224343432301x',
+	i7: '06x353242433121010',
+	iv7: '06x05x142334223414',
+	v7: '363252040030020111',
+	vi7: '06x050242030121010',
+	names: {
+		ctor: '::',
+		_0: 'C',
+		_1: {
+			ctor: '::',
+			_0: 'Dm',
+			_1: {
+				ctor: '::',
+				_0: 'Em',
+				_1: {
+					ctor: '::',
+					_0: 'F',
+					_1: {
+						ctor: '::',
+						_0: 'G',
+						_1: {
+							ctor: '::',
+							_0: 'Am',
+							_1: {
+								ctor: '::',
+								_0: 'Bdim7',
+								_1: {
+									ctor: '::',
+									_0: 'CM7',
+									_1: {
+										ctor: '::',
+										_0: 'FM7',
+										_1: {
+											ctor: '::',
+											_0: 'G7',
+											_1: {
+												ctor: '::',
+												_0: 'Am7',
+												_1: {
+													ctor: '::',
+													_0: '5',
+													_1: {ctor: '[]'}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	},
+	bars: {
+		ctor: '::',
+		_0: '',
+		_1: {
+			ctor: '::',
+			_0: '',
+			_1: {
+				ctor: '::',
+				_0: '',
+				_1: {
+					ctor: '::',
+					_0: '',
+					_1: {
+						ctor: '::',
+						_0: '',
+						_1: {
+							ctor: '::',
+							_0: '',
+							_1: {
+								ctor: '::',
+								_0: '',
+								_1: {
+									ctor: '::',
+									_0: '',
+									_1: {
+										ctor: '::',
+										_0: '3',
+										_1: {
+											ctor: '::',
+											_0: '',
+											_1: {
+												ctor: '::',
+												_0: '',
+												_1: {ctor: '[]'}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	},
+	key: 'C'
+};
+var _user$project$Chords_State$initialModel = {
+	musKey: 'C',
+	displayedChords: _user$project$Chords_State$initialKey,
+	currentChord: {ctor: '[]'},
+	pitchShift: 0,
+	index: 6,
+	sliderValue: 5
+};

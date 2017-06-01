@@ -1,15 +1,22 @@
 module Chords.State exposing (..)
 
 import Chords.Types as CT exposing (..)
-import Types as App exposing (Model)
+import Types exposing (PlayBundle)
+import Update.Extra.Infix exposing ((:>))
+import List.Extra exposing (getAt)
+import Logic.Ports exposing (send)
+import Logic.Audio exposing (noteSorter)
+import Time
 
 
 initialModel : CT.Model
 initialModel =
-    { musKey = App.Model.musKey
+    { musKey = "C"
     , displayedChords = initialKey
     , currentChord = []
     , pitchShift = 0
+    , index = 6
+    , sliderValue = 5
     }
 
 
@@ -33,17 +40,22 @@ initialKey =
     , key = "C"
     }
 
+
 initialCommands : Cmd Msg
 initialCommands =
     Cmd.none
 
 
-
-update : Msg -> Scale.Model -> ( Scale.Model, Cmd Msg )
+update : Msg -> CT.Model -> ( CT.Model, Cmd Msg )
 update msg model =
     case msg of
         Play chord hzShift ->
-            ({ model | currentChord = chord, pitchShift = hzShift }, Cmd.none)
+            ( { model
+                | currentChord = chord
+                , pitchShift = hzShift
+              }
+            , Cmd.none
+            )
                 :> update ResetIndex
                 :> update SendNotes
 
@@ -56,18 +68,23 @@ update msg model =
                     noteSorter <| Maybe.withDefault "e2w" <| getAt model.index model.currentChord
 
                 shiftedNote =
-                    { note | frequency = note.frequency * (1.059463 ^ toFloat model.pitchShift), sustain = note.sustain * (toFloat model.sliderValue / 2) }
+                    { note
+                        | frequency = note.frequency * (1.059463 ^ toFloat model.pitchShift)
+                        , sustain = note.sustain * (toFloat model.sliderValue / 2)
+                    }
             in
                 ( { model | index = model.index + 1 }
                 , send (PlayBundle shiftedNote "triangle")
                 )
 
-subscriptions : Model -> Sub Msg
+
+subscriptions : CT.Model -> Sub Msg
 subscriptions model =
     let
         val =
             toFloat model.sliderValue / 10.0
     in
         if model.index < List.length model.currentChord then
-                Time.every (val * Time.second) (always SendNotes) 
-                
+            Time.every (val * Time.second) (always SendNotes)
+        else
+            Sub.none

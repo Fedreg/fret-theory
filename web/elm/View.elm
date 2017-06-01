@@ -5,7 +5,7 @@ import Html exposing (Html, div, span, hr, text, a, input, h3)
 import Html.Attributes exposing (style, href, value, type_, href)
 import Html.Events exposing (onClick, onInput)
 import Logic.Routing as Routing
-import Types exposing (Model, Msg(..), Route(..), Page(..), PlayBundle)
+import Types exposing (Model, Msg(..), Route(..), PlayBundle)
 import Home.View exposing (homePage)
 import Chords.View exposing (chordsPage, keyListMajor, keyListMinor)
 import Scales.View exposing (scalesPage)
@@ -103,26 +103,26 @@ signature bool =
         [ hover highlight a [ href "https://www.github.com/fedreg", style [ "color" => "#666" ] ] [ text "c. 2017 FedReg (v. 0.1)" ] ]
 
 
-page : Model -> Page
+page : Model -> Html Msg
 page model =
     case model.route of
         ChordsPage a ->
-            chordsPage model
+            Html.map ChordsMsg <| chordsPage model.chords
 
         FretboardPage a ->
-            fretboardPage model
+            Html.map FretboardMsg <| fretboardPage model.fretboard
 
         ScalesPage a ->
-            scalesPage model
+            Html.map ScalesMsg <| scalesPage model.scales
 
         HomePage ->
-            homePage model
+            Html.map ChordsMsg <| homePage model.chords
 
         StrummingPage ->
-            strummingPage model
+            Html.map StrumMsg <| strummingPage model.strum
 
         FingerPickingPage ->
-            fingerPickingPage model
+            Html.map FingerpickMsg <| fingerPickingPage model.fingerpick
 
         NotFoundPage ->
             notFoundPage

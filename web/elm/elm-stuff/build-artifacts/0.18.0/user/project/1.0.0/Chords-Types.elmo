@@ -1,6 +1,6 @@
-var _user$project$Chords_Types$Model = F5(
-	function (a, b, c, d, e) {
-		return {musKey: a, displayedChords: b, currentChord: c, index: d, pitchShift: e};
+var _user$project$Chords_Types$Model = F6(
+	function (a, b, c, d, e, f) {
+		return {musKey: a, displayedChords: b, currentChord: c, index: d, pitchShift: e, sliderValue: f};
 	});
 var _user$project$Chords_Types$ChordChartData = function (a) {
 	return function (b) {

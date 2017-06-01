@@ -3,7 +3,7 @@ var _user$project$View$playbackSpeedSlider = function (model) {
 		_elm_lang$html$Html$div,
 		{
 			ctor: '::',
-			_0: _user$project$Styles_MainStyles$navItemStyle(model.navMenuOpen),
+			_0: _user$project$Styles$navItemStyle(model.navMenuOpen),
 			_1: {
 				ctor: '::',
 				_0: _elm_lang$html$Html_Attributes$style(
@@ -48,7 +48,7 @@ var _user$project$View$playbackSpeedSlider = function (model) {
 										_elm_lang$core$Basics$toString(model.sliderValue)),
 									_1: {
 										ctor: '::',
-										_0: _elm_lang$html$Html_Events$onInput(_user$project$Logic_Types$ChangeSliderValue),
+										_0: _elm_lang$html$Html_Events$onInput(_user$project$Types$ChangeSliderValue),
 										_1: {ctor: '[]'}
 									}
 								}
@@ -85,17 +85,35 @@ var _user$project$View$page = function (model) {
 	var _p0 = model.route;
 	switch (_p0.ctor) {
 		case 'ChordsPage':
-			return _user$project$Views_Chords$chordsPage(model);
+			return A2(
+				_elm_lang$html$Html$map,
+				_user$project$Types$ChordsMsg,
+				_user$project$Chords_View$chordsPage(model.chords));
 		case 'FretboardPage':
-			return _user$project$Views_Fretboard$fretboardPage(model);
+			return A2(
+				_elm_lang$html$Html$map,
+				_user$project$Types$FretboardMsg,
+				_user$project$Fretboard_View$fretboardPage(model.fretboard));
 		case 'ScalesPage':
-			return _user$project$Views_Scales$scalesPage(model);
+			return A2(
+				_elm_lang$html$Html$map,
+				_user$project$Types$ScalesMsg,
+				_user$project$Scales_View$scalesPage(model.scales));
 		case 'HomePage':
-			return _user$project$Views_Home$homePage(model);
+			return A2(
+				_elm_lang$html$Html$map,
+				_user$project$Types$ChordsMsg,
+				_user$project$Home_View$homePage(model.chords));
 		case 'StrummingPage':
-			return _user$project$Views_Strum$strummingPage(model);
+			return A2(
+				_elm_lang$html$Html$map,
+				_user$project$Types$StrumMsg,
+				_user$project$Strum_View$strummingPage(model.strum));
 		case 'FingerPickingPage':
-			return _user$project$Views_FingerPick$fingerPickingPage(model);
+			return A2(
+				_elm_lang$html$Html$map,
+				_user$project$Types$FingerpickMsg,
+				_user$project$Fingerpick_View$fingerPickingPage(model.fingerpick));
 		default:
 			return _user$project$View$notFoundPage;
 	}
@@ -105,10 +123,10 @@ var _user$project$View$signature = function (bool) {
 		_elm_lang$html$Html$div,
 		{
 			ctor: '::',
-			_0: _user$project$Styles_MainStyles$navItemStyle(bool),
+			_0: _user$project$Styles$navItemStyle(bool),
 			_1: {
 				ctor: '::',
-				_0: _user$project$Styles_MainStyles$signatureStyle,
+				_0: _user$project$Styles$signatureStyle,
 				_1: {ctor: '[]'}
 			}
 		},
@@ -116,7 +134,7 @@ var _user$project$View$signature = function (bool) {
 			ctor: '::',
 			_0: A4(
 				_jinjor$elm_inline_hover$InlineHover$hover,
-				_user$project$Styles_MainStyles$highlight,
+				_user$project$Styles$highlight,
 				_elm_lang$html$Html$a,
 				{
 					ctor: '::',
@@ -146,11 +164,11 @@ var _user$project$View$keyListView = function (model) {
 			_elm_lang$html$Html$span,
 			{
 				ctor: '::',
-				_0: _user$project$Styles_MainStyles$keyListStyle,
+				_0: _user$project$Styles$keyListStyle,
 				_1: {
 					ctor: '::',
 					_0: _elm_lang$html$Html_Events$onClick(
-						_user$project$Logic_Types$ChangeKey(key)),
+						_user$project$Types$ChangeKey(key)),
 					_1: {
 						ctor: '::',
 						_0: _elm_lang$html$Html_Attributes$style(
@@ -175,11 +193,11 @@ var _user$project$View$keyListView = function (model) {
 			_elm_lang$html$Html$span,
 			{
 				ctor: '::',
-				_0: _user$project$Styles_MainStyles$keyListStyle,
+				_0: _user$project$Styles$keyListStyle,
 				_1: {
 					ctor: '::',
 					_0: _elm_lang$html$Html_Events$onClick(
-						_user$project$Logic_Types$ChangeKey(key)),
+						_user$project$Types$ChangeKey(key)),
 					_1: {
 						ctor: '::',
 						_0: _elm_lang$html$Html_Attributes$style(
@@ -206,7 +224,7 @@ var _user$project$View$keyListView = function (model) {
 		_elm_lang$html$Html$div,
 		{
 			ctor: '::',
-			_0: _user$project$Styles_MainStyles$keyListContainerStyle(model.navMenuOpen),
+			_0: _user$project$Styles$keyListContainerStyle(model.navMenuOpen),
 			_1: {ctor: '[]'}
 		},
 		{
@@ -215,7 +233,7 @@ var _user$project$View$keyListView = function (model) {
 				_elm_lang$html$Html$h3,
 				{
 					ctor: '::',
-					_0: _user$project$Styles_MainStyles$keyListKeyTitleStyle,
+					_0: _user$project$Styles$keyListKeyTitleStyle,
 					_1: {ctor: '[]'}
 				},
 				{
@@ -229,20 +247,20 @@ var _user$project$View$keyListView = function (model) {
 					_elm_lang$html$Html$div,
 					{
 						ctor: '::',
-						_0: _user$project$Styles_MainStyles$textContainerStyle,
+						_0: _user$project$Styles$textContainerStyle,
 						_1: {ctor: '[]'}
 					},
-					A2(_elm_lang$core$List$map, keyOptions, _user$project$Views_Chords$keyListMajor)),
+					A2(_elm_lang$core$List$map, keyOptions, _user$project$Chords_View$keyListMajor)),
 				_1: {
 					ctor: '::',
 					_0: A2(
 						_elm_lang$html$Html$div,
 						{
 							ctor: '::',
-							_0: _user$project$Styles_MainStyles$textContainerStyle,
+							_0: _user$project$Styles$textContainerStyle,
 							_1: {ctor: '[]'}
 						},
-						A2(_elm_lang$core$List$map, keyOptions, _user$project$Views_Chords$keyListMinor)),
+						A2(_elm_lang$core$List$map, keyOptions, _user$project$Chords_View$keyListMinor)),
 					_1: {ctor: '[]'}
 				}
 			}
@@ -253,10 +271,10 @@ var _user$project$View$navIcon = function (model) {
 		_elm_lang$html$Html$div,
 		{
 			ctor: '::',
-			_0: _user$project$Styles_MainStyles$navIconStyle(model),
+			_0: _user$project$Styles$navIconStyle(model),
 			_1: {
 				ctor: '::',
-				_0: _elm_lang$html$Html_Events$onClick(_user$project$Logic_Types$ShowNavMenu),
+				_0: _elm_lang$html$Html_Events$onClick(_user$project$Types$ShowNavMenu),
 				_1: {ctor: '[]'}
 			}
 		},
@@ -266,7 +284,7 @@ var _user$project$View$navIcon = function (model) {
 				_elm_lang$html$Html$hr,
 				{
 					ctor: '::',
-					_0: _user$project$Styles_MainStyles$navIconStyleHr(model.navMenuOpen),
+					_0: _user$project$Styles$navIconStyleHr(model.navMenuOpen),
 					_1: {ctor: '[]'}
 				},
 				{ctor: '[]'}),
@@ -276,7 +294,7 @@ var _user$project$View$navIcon = function (model) {
 					_elm_lang$html$Html$hr,
 					{
 						ctor: '::',
-						_0: _user$project$Styles_MainStyles$navIconStyleHr(model.navMenuOpen),
+						_0: _user$project$Styles$navIconStyleHr(model.navMenuOpen),
 						_1: {ctor: '[]'}
 					},
 					{ctor: '[]'}),
@@ -286,7 +304,7 @@ var _user$project$View$navIcon = function (model) {
 						_elm_lang$html$Html$hr,
 						{
 							ctor: '::',
-							_0: _user$project$Styles_MainStyles$navIconStyleHr(model.navMenuOpen),
+							_0: _user$project$Styles$navIconStyleHr(model.navMenuOpen),
 							_1: {ctor: '[]'}
 						},
 						{ctor: '[]'}),
@@ -361,10 +379,10 @@ var _user$project$View$nav = function (model) {
 				{
 					ctor: '::',
 					_0: _elm_lang$html$Html_Events$onClick(
-						_user$project$Logic_Types$NewUrl(rte)),
+						_user$project$Types$NewUrl(rte)),
 					_1: {
 						ctor: '::',
-						_0: _user$project$Styles_MainStyles$navItemStyle(model.navMenuOpen),
+						_0: _user$project$Styles$navItemStyle(model.navMenuOpen),
 						_1: {
 							ctor: '::',
 							_0: _elm_lang$html$Html_Attributes$style(
@@ -386,10 +404,10 @@ var _user$project$View$nav = function (model) {
 				{
 					ctor: '::',
 					_0: _elm_lang$html$Html_Events$onClick(
-						_user$project$Logic_Types$NewUrl(rte)),
+						_user$project$Types$NewUrl(rte)),
 					_1: {
 						ctor: '::',
-						_0: _user$project$Styles_MainStyles$navItemStyle(model.navMenuOpen),
+						_0: _user$project$Styles$navItemStyle(model.navMenuOpen),
 						_1: {ctor: '[]'}
 					}
 				},
@@ -403,7 +421,7 @@ var _user$project$View$nav = function (model) {
 		_elm_lang$html$Html$div,
 		{
 			ctor: '::',
-			_0: _user$project$Styles_MainStyles$navMenuStyle(model),
+			_0: _user$project$Styles$navMenuStyle(model),
 			_1: {ctor: '[]'}
 		},
 		{
@@ -412,7 +430,7 @@ var _user$project$View$nav = function (model) {
 				_elm_lang$html$Html$div,
 				{
 					ctor: '::',
-					_0: _user$project$Styles_MainStyles$navTitleStyle,
+					_0: _user$project$Styles$navTitleStyle,
 					_1: {ctor: '[]'}
 				},
 				{
@@ -425,7 +443,7 @@ var _user$project$View$nav = function (model) {
 				_0: _user$project$View$navIcon(model),
 				_1: {
 					ctor: '::',
-					_0: _user$project$Views_Modal$modalIcon(model),
+					_0: _user$project$Modal_View$modalIcon(model),
 					_1: {
 						ctor: '::',
 						_0: A2(
@@ -499,7 +517,7 @@ var _user$project$View$mainView = function (model) {
 				_0: _user$project$View$page(model),
 				_1: {
 					ctor: '::',
-					_0: _user$project$Views_Modal$modal(model),
+					_0: _user$project$Modal_View$modal(model),
 					_1: {ctor: '[]'}
 				}
 			}

@@ -91,22 +91,3 @@ var _user$project$Types$ScalesPage = function (a) {
 var _user$project$Types$ChordsPage = function (a) {
 	return {ctor: 'ChordsPage', _0: a};
 };
-var _user$project$Types$NotFound = {ctor: 'NotFound'};
-var _user$project$Types$Strum = function (a) {
-	return {ctor: 'Strum', _0: a};
-};
-var _user$project$Types$Home = function (a) {
-	return {ctor: 'Home', _0: a};
-};
-var _user$project$Types$Fingerpick = function (a) {
-	return {ctor: 'Fingerpick', _0: a};
-};
-var _user$project$Types$Fretboard = function (a) {
-	return {ctor: 'Fretboard', _0: a};
-};
-var _user$project$Types$Scales = function (a) {
-	return {ctor: 'Scales', _0: a};
-};
-var _user$project$Types$Chords = function (a) {
-	return {ctor: 'Chords', _0: a};
-};

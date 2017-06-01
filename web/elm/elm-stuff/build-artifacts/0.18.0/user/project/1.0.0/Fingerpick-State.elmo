@@ -127,4 +127,4 @@ var _user$project$Fingerpick_State$initFingerPickPattern = {
 	}
 };
 var _user$project$Fingerpick_State$initialCommands = _elm_lang$core$Platform_Cmd$none;
-var _user$project$Fingerpick_State$initialModel = {musKey: 'C', fingerPickPattern: _user$project$Fingerpick_State$initFingerPickPattern};
+var _user$project$Fingerpick_State$initialModel = {musKey: 'C', fingerPickPattern: _user$project$Fingerpick_State$initFingerPickPattern, displayedChords: _user$project$Chords_State$initialKey};

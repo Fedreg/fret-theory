@@ -30,7 +30,6 @@ init location =
             Routing.parseLocation location
     in
         ( { route = currentRoute
-          , musKey = "C"
           , sliderValue = 1
           , navMenuOpen = False
           , modalOpen = False
@@ -147,7 +146,13 @@ update msg model =
                 newKey =
                     Maybe.withDefault "C" <| Routing.modelUpdateOnHash model location
             in
-                { model | route = newRoute, musKey = newKey, modalOpen = False, navMenuOpen = False } ! []
+                { model
+                    | route = newRoute
+                    , musKey = newKey
+                    , modalOpen = False
+                    , navMenuOpen = False
+                }
+                    ! []
 
         NewUrl url ->
             ( model, Navigation.newUrl url )
